@@ -1,0 +1,90 @@
+<!-- ═══ Accordion (cmp-acc v4) ═══════════════════════════════════════════════
+     THE accordion shell: heads and bodies are compositions. This demo's
+     bodies hold prose + CTA, a list-check, a whole cmp-cards duo and a
+     table — the shell is content-agnostic. Single-open by default; add
+     data-accordion="multi" to allow many open. ds.js data-accordion drives
+     it. No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-acc surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div class="section-head section-head-sm is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Product Suite</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Everything your business needs.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">From payments to trade and liquidity, every corporate capability sits within one connected platform.</p>
+    </div>
+    <div data-accordion>
+      <div data-acc class="is-open">
+        <button data-acc-head>
+          <span class="type-h5 ink-primary">Payments &amp; Collections</span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div data-acc-body><div class="ac-inner">
+          <p class="type-body ink-mute">Process domestic, international, bulk and regulatory payments from a single hub with real-time tracking.</p>
+          <a href="#" class="btn btn-text mt-4 is-arrow">Explore payments
+           </a>
+        </div></div>
+      </div>
+
+      <div data-acc>
+        <button data-acc-head>
+          <span class="type-h5 ink-primary">Trade Finance</span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div data-acc-body><div class="ac-inner">
+          <ul class="list-check">
+            <li class="ink-mute">Digital LC issuance and amendment</li>
+            <li class="ink-mute">Guarantees with same-day advising</li>
+            <li class="ink-mute">Export finance across 40+ corridors</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div data-acc>
+        <button data-acc-head>
+          <span class="type-h5 ink-primary">Liquidity &amp; Investments</span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div data-acc-body><div class="ac-inner">
+          <div class="cmp-cards is-cols-2">
+            <div class="cd-grid" role="list">
+              <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+                <div class="ds-stack">
+                  <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+                  <h4 class="type-h6 ink-primary">Payments</h4>
+                  <p class="type-body-sm ink-mute">Domestic, international and bulk payments from a single hub.</p>
+                </div>
+              </a>
+              <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+                <div class="ds-stack">
+                  <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2s7 7.5 7 12a7 7 0 0 1-14 0c0-4.5 7-12 7-12z"/></svg></span>
+                  <h4 class="type-h6 ink-primary">Liquidity</h4>
+                  <p class="type-body-sm ink-mute">Centralise cash, automate sweeping, optimise working capital.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <div data-acc>
+        <button data-acc-head>
+          <span class="type-h5 ink-primary">Accounts &amp; Reporting</span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div data-acc-body><div class="ac-inner">
+          <div class="tbl-wrap surface-white">
+            <table class="tbl">
+              <thead><tr><th>Reference</th><th>Type</th><th>Date</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">TRX-88214</td><td>Transfer</td><td>12 Aug 2026</td><td>AED 1,240,000.00</td></tr>
+                <tr><td class="mono">TRX-88198</td><td>FX forward</td><td>11 Aug 2026</td><td>USD 500,000.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Accordion ══════════════════════════════════════════════════════════ -->

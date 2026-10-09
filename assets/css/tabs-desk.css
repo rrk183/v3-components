@@ -1,0 +1,69 @@
+/* =========================================================================
+   Tabs - Desk reel (cmp-tabs-desk), shared stylesheet
+   Extracted verbatim from blocks/tabs-desk.html so pages can link it instead
+   of carrying an inline <style>. Two additions: the pinned track length
+   follows the number of desks (--td-n, set by tabs-desk.js), and a
+   surface-* class on the section overrides the default white.
+   ========================================================================= */
+.cmp-tabs-desk { --td-hdr: 0px; --td-sec: clamp(88px, 9vw, 128px); --td-warm: #f6f4f1; }
+.cmp-tabs-desk:not([class*="surface-"]) { background: #fff; }   /* a surface-* class on the section wins */
+/* On real pages the fixed site header (68-72px) would cover the top of the
+   pinned stage, so the pin starts below it. The library frame has no header
+   and keeps 0. */
+body:has(.cmp-site-header) .cmp-tabs-desk { --td-hdr: 72px; }
+.cmp-tabs-desk .td-track { position: relative; }
+.cmp-tabs-desk .td-pin { padding-block: var(--td-sec); }
+.cmp-tabs-desk .td-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+.cmp-tabs-desk .td-copy, .cmp-tabs-desk .td-stage { min-width: 0; }
+.cmp-tabs-desk .td-q { margin: 0 0 18px; }
+.cmp-tabs-desk .td-sentence { margin: 0; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; }
+.cmp-tabs-desk .td-sentence > span:not(.sr-only) { display: block; }
+.cmp-tabs-desk .td-slot { height: 1.2em; overflow: hidden; }
+.cmp-tabs-desk .td-reel { display: block; transform: translateY(calc(var(--i, 0) * -1.2em)); transition: transform .7s cubic-bezier(.2, .8, .2, 1); }
+.cmp-tabs-desk .td-reel > span { display: block; height: 1.2em; line-height: 1.2em; white-space: nowrap; transition: opacity .5s ease; opacity: .18; }
+.cmp-tabs-desk .td-reel > span.is-on { opacity: 1; }
+.cmp-tabs-desk .td-intents { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.cmp-tabs-desk .td-panel { margin-top: 24px; }
+.cmp-tabs-desk .td-panel p { margin: 0 0 22px; max-width: 44ch; }
+.cmp-tabs-desk .td-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.cmp-tabs-desk .td-stage { position: relative; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3; background: var(--td-warm); box-shadow: 0 30px 70px -34px rgba(7, 36, 71, .35); }
+.cmp-tabs-desk .td-shot { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: scale(1.06); transition: opacity .8s ease, transform 1.6s cubic-bezier(.2, .8, .2, 1); }
+.cmp-tabs-desk .td-shot.is-on { opacity: 1; transform: scale(1); }
+.cmp-tabs-desk .td-fact { position: absolute; inset-inline-start: 20px; inset-block-end: 20px; max-width: min(340px, calc(100% - 40px)); --card-pad: 16px 20px; display: grid; }
+.cmp-tabs-desk .td-fact > div { grid-area: 1 / 1; opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .5s cubic-bezier(.2, .8, .2, 1); }
+.cmp-tabs-desk .td-fact > div.is-on { opacity: 1; transform: none; transition-delay: .25s; }
+.cmp-tabs-desk .td-fact > div > span { display: block; }
+.cmp-tabs-desk .td-fact-num { margin: 2px 0; }
+@media (min-width: 1024px) {
+  .cmp-tabs-desk .td-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 5vw, 80px); align-items: center; width: 100%; }
+  .cmp-tabs-desk .td-fact { inset-inline-start: 28px; inset-block-end: 28px; }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .cmp-tabs-desk .td-track { height: calc(100vh + var(--td-n, 6) * 48vh); }
+  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100vh - var(--td-hdr)); display: flex; align-items: center; padding-block: 24px; }
+  .cmp-tabs-desk .td-stage { aspect-ratio: auto; height: min(calc(100vh - var(--td-hdr) - 96px), 640px); }
+}
+/* phones, foldables, tablets: same reel; the pin holds sentence, chips and photo,
+   the copy and CTAs follow in .td-after (moved there by the script) */
+@media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
+  .cmp-tabs-desk .td-track { height: calc(100svh + var(--td-n, 6) * 45svh); }
+  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100svh - var(--td-hdr)); display: flex; padding-block: 24px 20px; }
+  .cmp-tabs-desk .td-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; height: 100%; }
+  .cmp-tabs-desk .td-copy { flex: none; }
+  .cmp-tabs-desk .td-q { margin-bottom: 10px; }
+  .cmp-tabs-desk .td-intents { margin-top: 18px; }
+  .cmp-tabs-desk .td-stage { flex: 1 1 auto; min-height: 0; aspect-ratio: auto; }
+  .cmp-tabs-desk .td-after { padding-bottom: var(--td-sec); }
+  .cmp-tabs-desk .td-after .td-panel { margin-top: 8px; }
+}
+@media (max-width: 640px) {
+  .cmp-tabs-desk .td-stage { aspect-ratio: 4 / 5; }
+  .cmp-tabs-desk .td-fact { inset-inline-start: 12px; inset-block-end: 12px; max-width: calc(100% - 24px); --card-pad: 12px 14px; }
+}
+@media (max-width: 374px) {
+  .cmp-tabs-desk .td-ctas .btn { max-width: 100%; white-space: normal; text-align: center; line-height: 1.25; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmp-tabs-desk .td-reel, .cmp-tabs-desk .td-reel > span, .cmp-tabs-desk .td-shot, .cmp-tabs-desk .td-fact > div { transition: none !important; }
+  .cmp-tabs-desk .td-shot { transform: none; }
+}

@@ -1,0 +1,35 @@
+<!-- ═══ Scroll Story (declarative demo) ══════════════════════════════════════
+     A pinned 3-beat narrative authored ENTIRELY with data-anim keyframes — no
+     bespoke JS. Each beat declares its own in/out animation over a progress
+     range. data-behavior="scroll-story". This is the authoring contract for
+     future scroll stories: write markup + numbers, the recipe does the rest. -->
+<section class="cmp cmp-scroll-story surface-primary" data-animate>
+  <div class="sst" data-behavior="scroll-story" data-scrub-vh="460">
+    <div class="sst-stage">
+
+      <!-- Beat 1 — rises in, blurs out -->
+      <div class="sst-beat" data-anim='{"0-0.15":{"y":[50,0],"opacity":[0,1],"blur":[12,0]},"0.24-0.36":{"opacity":[1,0],"y":[0,-50],"blur":[0,12]}}'>
+        <span class="ds-eyebrow ink-accent-soft">Private Banking</span>
+        <h2 class="type-display-lg ink-white">Wealth, orchestrated.</h2>
+        <p class="type-body-lg sst-sub ink-soft">A dedicated team, a single relationship — across markets, currencies and generations.</p>
+      </div>
+
+      <!-- Beat 2 — scales in, drifts out -->
+      <div class="sst-beat" data-anim='{"0.34-0.5":{"y":[70,0],"opacity":[0,1],"scale":[0.88,1]},"0.6-0.72":{"opacity":[1,0],"scale":[1,0.93],"y":[0,-30]}}'>
+        <div class="sst-card">
+          <span class="ds-num is-lg ink-white">AED 1.2 T</span>
+          <span class="type-eyebrow ink-soft">Assets under management</span>
+        </div>
+      </div>
+
+      <!-- Beat 3 — final, settles in -->
+      <div class="sst-beat" data-anim='{"0.7-0.88":{"y":[60,0],"opacity":[0,1],"blur":[10,0]}}'>
+        <span class="ds-eyebrow ink-accent-soft">Ready when you are</span>
+        <h2 class="type-display-lg ink-white">Let&rsquo;s build what&rsquo;s next.</h2>
+        <a href="#" class="btn btn-accent btn-lg sst-cta">Talk to an advisor →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Scroll Story ════════════════════════════════════════════════════════ -->

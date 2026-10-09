@@ -1,0 +1,59 @@
+<!-- ═══ Device Scroll — Phone (device left) ═══════════════════════════════════════════════
+     The phone pins (sticky) and stays put while the feature copy scrolls past
+     it. The on-screen app view crossfades as each step arrives — driven by the
+     declarative scroll-story engine (data-anim opacity on each .dvs-media,
+     timed to when its step is centred). Steps themselves are plain flowing
+     content. Device renders are transparent PNGs. surface-white. -->
+<section class="cmp cmp-device-scroll cmp-device-phone is-device-left surface-white" data-animate>
+  <div class="container-ds dvs-head section-head">
+    <div class="ds-stack">
+      <span class="ds-eyebrow ink-accent" data-reveal="up">businessONLINE X</span>
+      <h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">Your treasury,<br>in your pocket.</h2>
+    </div>
+    <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Approve payments, track balances and act on alerts from anywhere, straight from your phone.</p>
+  </div>
+
+  <div class="dvs" data-behavior="scroll-story" data-scrub-vh="400">
+    <div class="container-ds dvs-grid">
+
+      <!-- Steps — plain flowing copy; each fills a viewport so it scrolls past the phone -->
+      <div class="dvs-steps">
+        <div class="dvs-step">
+          <span class="type-eyebrow ink-accent">01</span>
+          <h3 class="type-h3 ink-primary">Approve on the move</h3>
+          <p class="type-body measure ink-mute" style="--measure: 42ch">Authorise payments and releases from anywhere with secure biometric sign-off — no token, no desktop.</p>
+        </div>
+        <div class="dvs-step">
+          <span class="type-eyebrow ink-accent">02</span>
+          <h3 class="type-h3 ink-primary">Live balances, every entity</h3>
+          <p class="type-body measure ink-mute" style="--measure: 42ch">See consolidated positions across all your accounts and subsidiaries, refreshed in real time.</p>
+        </div>
+        <div class="dvs-step">
+          <span class="type-eyebrow ink-accent">03</span>
+          <h3 class="type-h3 ink-primary">Instant cross-border</h3>
+          <p class="type-body measure ink-mute" style="--measure: 42ch">Send multi-currency payments to 180+ markets and track them to settlement from the timeline.</p>
+        </div>
+        <div class="dvs-step">
+          <span class="type-eyebrow ink-accent">04</span>
+          <h3 class="type-h3 ink-primary">Alerts that matter</h3>
+          <p class="type-body measure ink-mute" style="--measure: 42ch">Smart notifications for approvals, large debits and FX moves — tuned to your thresholds.</p>
+        </div>
+      </div>
+
+      <!-- Phone — pinned; the app view crossfades as each step is centred -->
+      <div class="dvs-device">
+        <!-- the device — a stack of transparent PNG renders (chrome + screen)
+             that crossfade as each step is centred; pages swap the images.
+             Width via .dvs-shots (CSS). -->
+        <div class="dvs-shots">
+          <img class="dvs-media" src="assets/images/device/phone-1.png" alt="" data-anim='{"0-0.14":{"opacity":[1,1]},"0.14-0.19":{"opacity":[1,0]}}' />
+          <img class="dvs-media" src="assets/images/device/phone-2.png" alt="" data-anim='{"0.14-0.19":{"opacity":[0,1]},"0.48-0.53":{"opacity":[1,0]}}' />
+          <img class="dvs-media" src="assets/images/device/phone-3.png" alt="" data-anim='{"0.48-0.53":{"opacity":[0,1]},"0.81-0.86":{"opacity":[1,0]}}' />
+          <img class="dvs-media" src="assets/images/device/phone-4.png" alt="" data-anim='{"0.81-0.86":{"opacity":[0,1]}}' />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Device Scroll — Phone ═══════════════════════════════════════════════ -->

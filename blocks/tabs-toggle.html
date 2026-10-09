@@ -1,0 +1,80 @@
+<!-- ═══ Tabs — Toggle (cmp-tabs v4 composition) ══════════════════════════════
+     A segmented toggle: chip atoms grouped in the .is-tray pill well, active
+     segment raised white. Centered rail via the alignment axis (is-center).
+     Panels take ANY HTML — here an intro line + a cmp-cards duo per segment.
+     ds.js data-tabs drives it. -->
+<section class="cmp cmp-tabs is-center surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div data-tabs data-tabs-swipe>
+      <div class="tb-rail is-tray mb-10" role="tablist">
+        <button type="button" class="chip rounded-full active" data-tab="corp">Corporates</button>
+        <button type="button" class="chip rounded-full" data-tab="fi">Institutions</button>
+        <button type="button" class="chip rounded-full" data-tab="sme">SMEs</button>
+      </div>
+      <div data-panel="corp" class="tb-panel active">
+        <p class="type-body measure mx-auto text-center mb-8 ink-mute">One relationship across trade, cash and digital channels.</p>
+        <div class="cmp-cards is-cols-2 is-hover-lift">
+          <div class="cd-grid" role="list">
+            <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+              <div class="ds-stack">
+                <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+                <h4 class="type-h6 ink-primary">Payments</h4>
+                <p class="type-body-sm ink-mute">Domestic, international and bulk payments from a single hub.</p>
+              </div>
+            </a>
+            <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+              <div class="ds-stack">
+                <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2s7 7.5 7 12a7 7 0 0 1-14 0c0-4.5 7-12 7-12z"/></svg></span>
+                <h4 class="type-h6 ink-primary">Liquidity</h4>
+                <p class="type-body-sm ink-mute">Centralise cash, automate sweeping, optimise working capital.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div data-panel="fi" class="tb-panel">
+        <p class="type-body measure mx-auto text-center mb-8 ink-mute">Coverage built for banks, funds and sovereigns.</p>
+        <div class="cmp-cards is-cols-2 is-hover-lift">
+          <div class="cd-grid" role="list">
+            <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+              <div class="ds-stack">
+                <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 7l3-3M4 7l3 3M20 17H4m16 0l-3-3m3 3l-3 3"/></svg></span>
+                <h4 class="type-h6 ink-primary">Trade finance</h4>
+                <p class="type-body-sm ink-mute">LCs, guarantees and export finance &mdash; fully digital, end to end.</p>
+              </div>
+            </a>
+            <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+              <div class="ds-stack">
+                <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20z"/></svg></span>
+                <h4 class="type-h6 ink-primary">Global markets</h4>
+                <p class="type-body-sm ink-mute">Live pricing and one-click execution across rates, FX and commodities.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div data-panel="sme" class="tb-panel">
+        <p class="type-body measure mx-auto text-center mb-8 ink-mute">Banking that scales from first invoice to first acquisition.</p>
+        <div class="cmp-cards is-cols-2 is-hover-lift">
+          <div class="cd-grid" role="list">
+            <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+              <div class="ds-stack">
+                <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+                <h4 class="type-h6 ink-primary">businessONLINE</h4>
+                <p class="type-body-sm ink-mute">Run cash, trade and FX from one platform.</p>
+              </div>
+            </a>
+            <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+              <div class="ds-stack">
+                <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 13h4M4 7l2.5-3h11L20 7"/></svg></span>
+                <h4 class="type-h6 ink-primary">Emirates NBD Pay</h4>
+                <p class="type-body-sm ink-mute">POS, e-commerce and Pay-by-Link with next-morning settlement.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Tabs — Toggle ══════════════════════════════════════════════════════ -->

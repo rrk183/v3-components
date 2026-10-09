@@ -1,0 +1,66 @@
+<!-- ═══ Icon Tiles & Numbers ════════════════════════════════════════════════
+     Showcase of the mark ATOMS every card composes with: .icon-tile (the
+     standard squared icon container — sizes, shapes, fills; glyph = any
+     inline SVG, sized automatically at half the tile) and .ds-num (the
+     standard big stat figure — one ramp, three sizes, accent unit). A stat
+     panel is a COMPOSITION — card-panel + ds-num + label — not a class;
+     .stat-card is legacy (demoted 2026-09-01). Never hand-roll a new icon
+     square or number clamp. Nothing here is new CSS; the atoms live in
+     ds.css. Params: surface, data-animate. -->
+<section class="cmp cmp-icon-tiles surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Atoms</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Icon tiles &amp; numbers</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">The standard marks for cards and feature rows: one icon container, one number ramp. Any inline SVG drops in; the tile sizes the glyph itself.</p>
+    </div>
+
+    <div class="ds-stack" data-reveal="up" style="--ds-stack-gap:2.5rem">
+
+      <div>
+        <p class="bt-label ink-mute">Icon tile — sizes</p>
+        <div class="btn-row">
+          <span class="icon-tile is-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+          <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+          <span class="icon-tile is-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+          <span class="icon-tile" style="--it-size:64px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Icon tile — styles</p>
+        <div class="btn-row">
+          <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>
+          <span class="icon-tile is-solid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>
+          <span class="icon-tile is-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>
+          <span class="icon-tile is-round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>
+          <span class="icon-tile is-round is-solid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Stat number — one ramp, three sizes</p>
+        <div class="flex flex-wrap items-baseline gap-10">
+          <span class="ds-num is-sm ink-primary">120<span class="ds-num-unit ink-accent">+</span></span>
+          <span class="ds-num ink-primary">AED 4.2<span class="ds-num-unit ink-accent">bn</span></span>
+          <span class="ds-num is-lg ink-primary">98<span class="ds-num-unit ink-accent">%</span></span>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Composition — figure in a panel is card-panel + ds-num, not a new class</p>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="card-panel surface-white"><div class="ds-stack"><span class="ds-num ink-primary">60<span class="ds-num-unit ink-accent">+</span></span><p class="type-body-sm ink-mute">Markets reached through one regional network</p></div></div>
+          <div class="card-panel surface-white"><div class="ds-stack"><span class="ds-num ink-primary">AED 4.2<span class="ds-num-unit ink-accent">bn</span></span><p class="type-body-sm ink-mute">Trade flows financed in the last twelve months</p></div></div>
+          <div class="card-panel surface-white"><div class="ds-stack"><span class="ds-num ink-primary">98<span class="ds-num-unit ink-accent">%</span></span><p class="type-body-sm ink-mute">Instructions processed straight-through</p></div></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Icon Tiles & Numbers ═══════════════════════════════════════════════ -->

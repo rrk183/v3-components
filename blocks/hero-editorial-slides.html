@@ -1,0 +1,46 @@
+<!-- ═══ Hero — Editorial Carousel (cmp-hero v4 composition) ══════════════════
+     The editorial anatomy in carousel mode: each slide is a full editorial
+     stage — display-XL headline + its own stat strip. is-bottom root. -->
+<section class="cmp cmp-hero is-bottom surface-primary" style="--hero-auto: 8s" data-animate data-carousel data-autoplay="8000" aria-roledescription="carousel" aria-label="Featured">
+  <div class="hero-track" data-carousel-track>
+    <div class="hero-stage surface-image" data-carousel-slide aria-roledescription="slide">
+      <span class="media-cover" data-bg="assets/images/sustainability.jpg" aria-hidden="true"></span>
+      <span class="ov ov-dark ov-gradient-b ov-80" aria-hidden="true"></span>
+      <div class="container-ds hero-frame">
+        <div class="w-full">
+          <div class="hero-copy ds-stack" style="--hero-copy-max: 56rem">
+            <span class="ds-eyebrow ink-white">Sustainability</span>
+            <h2 class="type-display-xl ink-white">Banking a<br>sustainable future.</h2>
+            <p class="type-body-lg measure ink-soft">Directing capital where it matters most &mdash; financing the region&rsquo;s transition to a low-carbon economy.</p>
+          </div>
+          <div class="flex flex-wrap gap-x-14 gap-y-6 mt-12 pt-8 border-t border-ink"><div class="ds-stack" style="--ds-stack-gap: 2px"><span class="ds-num is-light ink-white">AED&nbsp;30<span class="u">bn</span></span><span class="type-caption ink-soft">Green financing by 2030</span></div><div class="ds-stack" style="--ds-stack-gap: 2px"><span class="ds-num is-light ink-white">60<span class="u">%</span></span><span class="type-caption ink-soft">Emissions cut across operations</span></div><div class="ds-stack" style="--ds-stack-gap: 2px"><span class="ds-num is-light ink-white">12<span class="u">+</span></span><span class="type-caption ink-soft">Sustainability-linked frameworks</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stage surface-image" data-carousel-slide aria-roledescription="slide">
+      <span class="media-cover" data-bg="assets/images/story-1.jpg" aria-hidden="true"></span>
+      <span class="ov ov-dark ov-gradient-b ov-80" aria-hidden="true"></span>
+      <div class="container-ds hero-frame">
+        <div class="w-full">
+          <div class="hero-copy ds-stack" style="--hero-copy-max: 56rem">
+            <span class="ds-eyebrow ink-white">Payments</span>
+            <h2 class="type-display-xl ink-white">Move money without friction.</h2>
+            <p class="type-body-lg measure ink-soft">Process domestic, international, bulk and regulatory payments from a single hub with real-time tracking.</p>
+          </div>
+          <div class="flex flex-wrap gap-x-14 gap-y-6 mt-12 pt-8 border-t border-ink"><div class="ds-stack" style="--ds-stack-gap: 2px"><span class="ds-num is-light ink-white">180<span class="u">+</span></span><span class="type-caption ink-soft">Countries reached</span></div><div class="ds-stack" style="--ds-stack-gap: 2px"><span class="ds-num is-light ink-white">30<span class="u">+</span></span><span class="type-caption ink-soft">Currencies supported</span></div><div class="ds-stack" style="--ds-stack-gap: 2px"><span class="ds-num is-light ink-white">24<span class="u">/7</span></span><span class="type-caption ink-soft">Instant payment rails</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-nav">
+    <div class="container-ds flex items-center gap-3">
+      <button class="crl-toggle" type="button" data-carousel-toggle aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
+      <div data-carousel-dots></div>
+      <div class="flex items-center gap-2 ms-auto">
+        <button type="button" class="crl-btn is-arrow-back" data-carousel-prev><span class="sr-only">Previous</span></button>
+        <button type="button" class="crl-btn is-arrow" data-carousel-next><span class="sr-only">Next</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Hero — Editorial Carousel ══════════════════════════════════════════ -->

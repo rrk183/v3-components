@@ -1,0 +1,32 @@
+<!-- ═══ Static Banner ═══════════════════════════════════════════════════════
+     Params: surface (surface-primary by default), data-animate (on/off).
+     Pure markup — NO inline styles, NO IDs. Styled by .cmp-static-banner in
+     ds.css, animated by ds.js (data-reveal). Bespoke navy gradient + radial glow stay;
+     the twin iPhones are a transparent PNG render.
+     NOTE: the phone-screen market-data is hardcoded static markup here (DFM +
+     ADX). The original built it from a JS data array — see NEEDS_MANUAL. -->
+<section class="cmp cmp-static-banner surface-primary" data-animate>
+  <div class="sb-glow" aria-hidden="true"></div>
+
+  <div class="container-ds relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 sb-min-h">
+
+    <!-- ── Left: text ─────────────────────────────────────────────── -->
+    <div class="flex flex-col gap-5 max-w-xl py-12">
+      <h2 class="type-h3 leading-tight ink-white" data-reveal="up">
+        50+ banking services,<br class="hidden md:block" />one powerful app.
+      </h2>
+      <p class="type-body ink-soft" data-reveal="up" data-reveal-delay=".12">
+        Access payments, FX, payroll, approvals, and more — all from one intelligent mobile banking app, anytime and anywhere.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-2" data-reveal="up" data-reveal-delay=".24">
+        <button class="btn btn-primary sb-cta">Download the App</button>
+      </div>
+    </div>
+
+    <!-- ── Right: two iPhone mockups ─────────────────────────────── -->
+    <!-- phones = ONE transparent render (captured from the DS mock, Hakan
+         doctrine: image not UI); the band crops it at the bottom edge -->
+    <img class="sb-phones-img" src="assets/images/device/sb-phones.png" alt="" data-reveal="left" data-reveal-delay=".3" />
+  </div>
+</section>
+<!-- ═══ /Static Banner ═══════════════════════════════════════════════════════ -->

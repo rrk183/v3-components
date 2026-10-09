@@ -1,0 +1,31 @@
+<!-- ═══ Hero — Scroll Frames (sprite/image-sequence scrub) ═══════════════════
+     Tier-3 recipe. Pure markup: the scroll-frames recipe in ds.js reads the
+     config off this element, preloads the sequence, and scrubs the canvas
+     against this block's own scroll position (works wherever it's placed).
+     Params on the recipe root:
+       data-scrub-vh   scroll length in viewport-heights (per instance)
+       data-source     "images" (sprite sequence) | "video"
+       data-count      number of frames
+       data-path       frame URL template; ### → zero-padded index
+       data-start      first index (default 1)
+     Recreate for new content: swap data-path/data-count + the overlay copy. -->
+<section class="cmp hero-image-sequence surface-primary" data-animate>
+  <div data-behavior="scroll-frames"
+       data-scrub-vh="300" data-source="images"
+       data-count="121" data-path="/assets/images/hero-frames/ezgif-frame-###.jpg" data-start="1">
+    <div data-sf-stage>
+      <canvas data-sf-canvas></canvas>
+      <div class="ov ov-gradient-b ov-70"></div>
+      <div class="absolute inset-0 z-10 flex flex-col justify-end pb-12 md:pb-24">
+        <div class="container-ds">
+          <div class="ds-stack">
+            <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Emirates NBD · Trade Finance</span>
+            <h1 class="type-display-lg ink-white" data-reveal="up">Capital at the speed<br>of commerce.</h1>
+            <p class="type-body-lg measure opacity-80 ink-white" data-reveal="up">Letters of credit, supply-chain finance and FX — across 180+ markets, scrubbed frame-by-frame as you scroll.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Hero — Scroll Frames ═══════════════════════════════════════════════ -->

@@ -1,0 +1,95 @@
+<!-- ═══ Video Chapters — video-backed scroll chapters (businessONLINE) ════════════════════
+     Pinned scroll sequence on the declarative scroll-story engine: 4 looping
+     video backgrounds crossfade (data-anim opacity — the videos keep playing,
+     they are NOT scrubbed) while each chapter's label/heading/bullets animate in as
+     you scroll through its segment. Content sits on the standard container-ds
+     gutter. Recreate: swap <video src> + the copy per layer. -->
+<section class="cmp cmp-video-chapters surface-primary" data-animate>
+  <div class="vt" data-behavior="scroll-story" data-scrub-vh="440">
+    <div class="vt-stage">
+
+      <!-- Looping video backgrounds — crossfade by scroll (still playing, not scrubbed) -->
+      <video class="vt-video-fill" autoplay muted loop playsinline src="/assets/videos/card-1.mp4" data-anim='{"0-0.20":{"opacity":[1,1]},"0.20-0.26":{"opacity":[1,0]}}'></video>
+      <video class="vt-video-fill" autoplay muted loop playsinline src="/assets/videos/card-2.mp4" data-anim='{"0.20-0.26":{"opacity":[0,1]},"0.45-0.51":{"opacity":[1,0]}}'></video>
+      <video class="vt-video-fill" autoplay muted loop playsinline src="/assets/videos/card-3.mp4" data-anim='{"0.45-0.51":{"opacity":[0,1]},"0.70-0.76":{"opacity":[1,0]}}'></video>
+      <video class="vt-video-fill" autoplay muted loop playsinline src="/assets/videos/card-4.mp4" data-anim='{"0.70-0.76":{"opacity":[0,1]}}'></video>
+      <div class="vt-gradient"></div>
+
+      <!-- ── Tab 1 — Total visibility ──────────────────────────────────────── -->
+      <div class="vt-layer" data-anim='{"0-0.05":{"opacity":[0,1],"y":[34,0]},"0.21-0.26":{"opacity":[1,0],"y":[0,-34]}}'>
+        <div class="container-ds vt-content">
+          <div class="type-eyebrow vt-label ink-soft">(1)</div>
+          <h2 class="type-h1 vt-heading ink-white">Total visibility.&#10;Every entity.</h2>
+          <div class="vt-bullets">
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Role-based dashboards tailored for CFOs, Treasurers, and Finance teams.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Comprehensive statement and balance reporting across all accounts.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Real-time cash flow insights and forward-looking forecasting tools.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Cross-entity and cross-currency visibility from a single login.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Tab 2 — Payments & Collections ────────────────────────────────── -->
+      <div class="vt-layer" data-anim='{"0.27-0.32":{"opacity":[0,1],"y":[34,0]},"0.46-0.51":{"opacity":[1,0],"y":[0,-34]}}'>
+        <div class="container-ds vt-content">
+          <div class="type-eyebrow vt-label ink-soft">(2)</div>
+          <h2 class="type-h1 vt-heading ink-white">Payments &amp;&#10;collections</h2>
+          <p class="type-h5 vt-suite ink-white">Payments</p>
+          <div class="vt-bullets vt-bullets-mb">
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Process single, bulk, and regulatory payments online — including VAT, GPSSA, and eDirham.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Multi-currency payments and FX conversions across 40+ currencies.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">QuickPay: one-click repeat transactions from your payment history.</p></div>
+          </div>
+          <p class="type-h5 vt-suite ink-white">Collections</p>
+          <div class="vt-bullets">
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Automated collections via Virtual Accounts with enhanced reconciliation.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Real-time visibility of all incoming payments.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Digital cash, cheque, and document collection management.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Tab 3 — Administration & Entitlements ─────────────────────────── -->
+      <div class="vt-layer" data-anim='{"0.52-0.57":{"opacity":[0,1],"y":[34,0]},"0.71-0.76":{"opacity":[1,0],"y":[0,-34]}}'>
+        <div class="container-ds vt-content">
+          <div class="type-eyebrow vt-label ink-soft">(3)</div>
+          <h2 class="type-h1 vt-heading ink-white">Administration &amp;&#10;entitlements</h2>
+          <p class="type-h5 vt-suite ink-white">Administration</p>
+          <div class="vt-bullets vt-bullets-mb">
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Multi-level approval workflows with full, tamper-proof audit trails.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Segregation of duties enforced through role-based access controls.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Delegate authority across limits, channels, and transaction types.</p></div>
+          </div>
+          <p class="type-h5 vt-suite ink-white">Entitlements</p>
+          <div class="vt-bullets">
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Centralised user management across all entities and accounts.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Customise access down to account, service, and transaction level.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Compliance-ready entitlement reporting, available on demand.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Tab 4 — Onboarding & Digital Efficiency ───────────────────────── -->
+      <div class="vt-layer" data-anim='{"0.77-0.82":{"opacity":[0,1],"y":[34,0]}}'>
+        <div class="container-ds vt-content">
+          <div class="type-eyebrow vt-label ink-soft">(4)</div>
+          <h2 class="type-h1 vt-heading ink-white">Onboarding &amp;&#10;digital efficiency</h2>
+          <p class="type-h5 vt-suite ink-white">Onboarding</p>
+          <div class="vt-bullets vt-bullets-mb">
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Fully digital account opening with e-signature and document upload.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Pre-filled forms using existing customer data for faster journeys.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Real-time status tracking for every onboarding application.</p></div>
+          </div>
+          <p class="type-h5 vt-suite ink-white">Digital Efficiency</p>
+          <div class="vt-bullets">
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Straight-through processing for routine banking transactions.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Direct ERP connectivity to eliminate manual reconciliation.</p></div>
+            <div class="vt-bullet"><span class="vt-bullet-mark">+</span><p class="type-body-sm vt-bullet-text ink-soft">Paperless workflows across payments, trade, and treasury.</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /VideoTab — Video-BG Storytelling ═══════════════════════════════════ -->

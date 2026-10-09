@@ -1,0 +1,57 @@
+<!-- ═══ Cards — Head Aside (layout modifier on cmp-cards) ══════════════════════
+     The section head (eyebrow + headline + lead) sits in a LEFT column; the
+     card grid sits on the RIGHT. is-head-aside is a LAYOUT modifier — it
+     composes with any media-less cards composition (kicker here; icon,
+     number, plain all work) and any is-cols-N (2-up reads best beside a
+     head). The head is vertically centred beside the grid; stacks head-over-cards <1024px.
+     No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards is-head-aside cards-kicker is-cols-2 surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Why Emirates NBD</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Built to move with you</h2>
+        <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".12">Four reasons corporates and institutions across the region choose us to fund their ambition.</p>
+      </div>
+    </div>
+
+    <div class="cd-grid" role="list">
+
+      <div class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Scale</span>
+          <h3 class="type-h6 ink-primary">The region&rsquo;s balance sheet</h3>
+          <p class="type-body-sm ink-mute">The capacity to structure, underwrite and hold large facilities, and lead syndicated deals for the region&rsquo;s biggest borrowers.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Speed</span>
+          <h3 class="type-h6 ink-primary">Digital-first execution</h3>
+          <p class="type-body-sm ink-mute">Straight-through processing and API connectivity that move money, documents and decisions without the wait.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Service</span>
+          <h3 class="type-h6 ink-primary">Dedicated coverage</h3>
+          <p class="type-body-sm ink-mute">Relationship teams and sector specialists who know the rhythms, regulations and opportunities of your industry.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".22">
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Reach</span>
+          <h3 class="type-h6 ink-primary">One network, sixty markets</h3>
+          <p class="type-body-sm ink-mute">On-the-ground presence and partner coverage that follow your business across the region and beyond.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Cards — Head Aside ════════════════════════════════════════════════ -->

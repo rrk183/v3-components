@@ -1,0 +1,102 @@
+<!-- ═══ Lottie — vector illustration from a JSON asset ══════════════════════
+     Capability 1 of the ILLUSTRATION DOCTRINE (Hakan, 2026-09-03 — see
+     docs/audits/page-fix-map.md Addendum 3 and CONVENTIONS.md "Illustrations").
+     The other capability is the chromeless baked-background MP4
+     (blocks/illustration-video.html); pick per use-case at authoring time.
+     Illustrations ship as CONTENT — here, a JSON upload — never as per-piece
+     code: on the CMS, code ships ~monthly and pages ship ~10x a day.
+
+     THE CONTRACT (four attributes and a poster — nothing else):
+       div.lot-stage  data-behavior="lottie"
+                      data-lottie-src   REQUIRED  path to the JSON asset
+                      data-lottie-loop  optional  "false" = play once (default true)
+                      data-lottie-speed optional  playback rate (default 1)
+         > img.lot-poster  the still, with an empty alt when decorative
+     Both stages below are that contract, verbatim — read one of them for the
+     exact attribute spelling and paths. data-behavior may sit on the section
+     root for a single-instance component; put it on the STAGE (as here)
+     whenever a section holds more than one.
+
+     THE POSTER IS NOT OPTIONAL. It is the sizer (the stage has no intrinsic
+     height), it is what shows while the player loads, it is the fallback if the
+     JSON 404s — and under prefers-reduced-motion it is ALL that ever shows:
+     the recipe returns before it touches the network, so a reduced-motion
+     reader downloads neither the player nor the JSON.
+
+     THE PLAYER IS VENDORED AND LAZY: assets/js/lottie_light.min.js (lottie-web
+     5.12.2, SVG renderer only). ds.js loads it on first sighting of a stage —
+     the Lenis pattern — so a page with no Lottie pays nothing, and a page with
+     six pays for one fetch. Pages never reference the player and never carry a
+     script tag of their own.
+
+     EXPORT RULES (the JSON is authored, not fixed in code):
+       · Brand palette IN-SOURCE. Colours live in the JSON, so an export in the
+         wrong blue ships in the wrong blue — the DS cannot recolour it.
+       · NO BAKED TEXT. Text in the artwork cannot be translated for the Arabic
+         site and cannot be read by a screen reader. Copy lives in the markup.
+       · MIRRORED EXPORT WHEN DIRECTIONAL. The ENGINE DOES NOT FLIP: an arrow
+         that travels left-to-right keeps travelling left-to-right in RTL
+         unless a mirrored JSON is authored and used. Same rule as a
+         directional image — direction is a content decision.
+       · TRANSPARENT BACKGROUND. This is the axis on which Lottie beats the
+         baked MP4: one file sits on every surface and every brand, as the two
+         faces below show. If the piece needs a photographic or gradient
+         backdrop, it is not a Lottie — it is a video.
+       · SHIP A POSTER PNG WITH EVERY JSON, exported from frame 0.
+
+     Recreate: swap data-lottie-src + the poster, keep the classes. Params:
+     surface, stage width, loop/speed. No IDs, no inline styles. ────────── -->
+<section class="cmp cmp-lottie surface-soft section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Illustration</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Lottie</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Vector illustration that arrives as a JSON asset and renders as live SVG &mdash; a few kilobytes, resolution-free, and transparent, so one file sits on any surface. Reach for it when the artwork is drawn; reach for the baked video when it is rendered.</p>
+    </div>
+
+    <!-- ONE JSON, TWO FACES — the transparency argument, made side by side. -->
+    <p class="bt-label ink-mute" data-reveal="up">One asset &middot; every surface &mdash; the same JSON on a light and a dark face</p>
+    <div class="grid gap-6 md:grid-cols-2">
+
+      <div class="card-panel surface-white" data-reveal="up">
+        <div class="lot-stage w-40 mx-auto" data-behavior="lottie" data-lottie-src="assets/lottie/demo-pulse.json" data-lottie-loop="true">
+          <img class="lot-poster" src="assets/lottie/demo-pulse.png" alt="" width="400" height="400">
+        </div>
+        <div class="ds-stack mt-6" style="--ds-stack-gap: 8px">
+          <h3 class="type-h5 ink-primary">Always on, always live</h3>
+          <p class="type-body-sm ink-mute">Drawn on transparency, so the card face shows through. Nothing about the asset changes between these two cards &mdash; only the surface under it.</p>
+          <code class="type-micro block ink-mute">assets/lottie/demo-pulse.json &middot; 3 KB</code>
+        </div>
+      </div>
+
+      <div class="card-panel surface-primary" data-reveal="up" data-reveal-delay=".08">
+        <div class="lot-stage w-40 mx-auto" data-behavior="lottie" data-lottie-src="assets/lottie/demo-pulse.json" data-lottie-loop="true">
+          <img class="lot-poster" src="assets/lottie/demo-pulse.png" alt="" width="400" height="400">
+        </div>
+        <div class="ds-stack mt-6" style="--ds-stack-gap: 8px">
+          <h3 class="type-h5 ink-white">The same file, no second export</h3>
+          <p class="type-body-sm ink-soft">Where a baked video needs one file per face, a transparent Lottie needs one file full stop. That is the trade: transparency and size against photographic richness.</p>
+          <code class="type-micro block ink-soft">assets/lottie/demo-pulse.json &middot; 3 KB</code>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- The still that reduced-motion readers get — shown as itself. -->
+    <p class="bt-label mt-14 ink-mute" data-reveal="up">The poster &middot; the still, the sizer and the reduced-motion state</p>
+    <div class="card-panel surface-white is-tile" data-reveal="up">
+      <div class="grid gap-6 md:grid-cols-2 items-center">
+        <img class="lot-poster block w-40 h-auto mx-auto" src="assets/lottie/demo-pulse.png" alt="" width="400" height="400">
+        <div class="ds-stack" style="--ds-stack-gap: 8px">
+          <h3 class="type-h5 ink-primary">No motion, no download</h3>
+          <p class="type-body-sm ink-mute">Under a reduced-motion preference the recipe stops before the network: the player is never fetched, the JSON is never fetched, and this frame stays. Export it from frame 0 of the animation so the two never disagree.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Lottie ═════════════════════════════════════════════════════════════ -->

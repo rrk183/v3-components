@@ -1,0 +1,79 @@
+<!-- ═══ Tabs — Experience (cmp-tabs v4 composition) ══════════════════════════
+     The experience-tabs pattern as a PURE composition: a media stage panel
+     (media-frame + icon-tile badge + type atoms) with a centered chips rail
+     below, auto-advancing. Zero CSS of its own — atoms flip surfaces
+     correctly, which the legacy component never did. -->
+<section class="cmp cmp-tabs tabs-experience is-center surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div data-tabs data-tabs-swipe data-autoplay="7000">
+      <div data-panel="payments" class="tb-panel active">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <span class="media-frame aspect-[4/3] relative">
+            <span class="media-cover" data-bg="assets/images/online-trading/ot-feat-1.jpg" role="img" aria-label="Real-time market data on a trading screen"></span>
+            <span class="icon-tile is-lg absolute top-4 end-4" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4H4V6h16v2zm0 10H4v-6h16v6z"/></svg></span>
+          </span>
+          <div class="ds-stack">
+            <p class="type-eyebrow m-0 ink-primary">MOVE MONEY FREELY</p>
+            <p class="type-h3 m-0 ink-primary">Send, receive and track every payment in one place, with real-time visibility wherever you are.</p>
+          </div>
+        </div>
+      </div>
+      <div data-panel="cards" class="tb-panel">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <span class="media-frame aspect-[4/3] relative">
+            <span class="media-cover" data-bg="assets/images/online-trading/ot-feat-2.jpg" role="img" aria-label="Spending and cards dashboard"></span>
+            <span class="icon-tile is-lg absolute top-4 end-4" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2zm0 4v6h16v-6H4zm2 3h6v2H6v-2z"/></svg></span>
+          </span>
+          <div class="ds-stack">
+            <p class="type-eyebrow m-0 ink-primary">SPEND SMARTER</p>
+            <p class="type-h3 m-0 ink-primary">Manage every card, set the controls you need and see spending as it happens, all from one dashboard.</p>
+          </div>
+        </div>
+      </div>
+      <div data-panel="insights" class="tb-panel">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <span class="media-frame aspect-[4/3] relative">
+            <span class="media-cover" data-bg="assets/images/online-trading/ot-feat-3.jpg" role="img" aria-label="Analytics and insights"></span>
+            <span class="icon-tile is-lg absolute top-4 end-4" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h3v8H3zM8 9h3v12H8zM13 5h3v16h-3zM18 11h3v10h-3z"/></svg></span>
+          </span>
+          <div class="ds-stack">
+            <p class="type-eyebrow m-0 ink-primary">KNOW YOUR NUMBERS</p>
+            <p class="type-h3 m-0 ink-primary">Turn everyday activity into clear insights that help you decide faster and plan with confidence.</p>
+          </div>
+        </div>
+      </div>
+      <div data-panel="support" class="tb-panel">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <span class="media-frame aspect-[4/3] relative">
+            <span class="media-cover" data-bg="assets/images/online-trading/ot-feat-4.jpg" role="img" aria-label="Support and assistance"></span>
+            <span class="icon-tile is-lg absolute top-4 end-4" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a9 9 0 00-9 9v5a3 3 0 003 3h1v-8H5a7 7 0 0114 0h-2v8h1a3 3 0 003-3v-5a9 9 0 00-9-9z"/></svg></span>
+          </span>
+          <div class="ds-stack">
+            <p class="type-eyebrow m-0 ink-primary">ALWAYS HERE</p>
+            <p class="type-h3 m-0 ink-primary">Reach a real person whenever you need one. Live support from our team is just a tap away.</p>
+          </div>
+        </div>
+      </div>
+      <div data-panel="security" class="tb-panel">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <span class="media-frame aspect-[4/3] relative">
+            <span class="media-cover" data-bg="assets/images/online-trading/ot-feat-5.jpg" role="img" aria-label="Security and protection"></span>
+            <span class="icon-tile is-lg absolute top-4 end-4" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-4-4 1.41-1.41L11 12.17l5.59-5.58L18 8l-7 7z"/></svg></span>
+          </span>
+          <div class="ds-stack">
+            <p class="type-eyebrow m-0 ink-primary">PROTECTED BY DESIGN</p>
+            <p class="type-h3 m-0 ink-primary">Bank-grade security and intelligent fraud protection keep every action you take safe.</p>
+          </div>
+        </div>
+      </div>
+      <div class="tb-rail gap-2 mt-8" role="tablist">
+        <button type="button" class="chip rounded-full active" data-tab="payments"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4H4V6h16v2zm0 10H4v-6h16v6z"/></svg>Payments</button>
+        <button type="button" class="chip rounded-full" data-tab="cards"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2zm0 4v6h16v-6H4zm2 3h6v2H6v-2z"/></svg>Cards</button>
+        <button type="button" class="chip rounded-full" data-tab="insights"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h3v8H3zM8 9h3v12H8zM13 5h3v16h-3zM18 11h3v10h-3z"/></svg>Insights</button>
+        <button type="button" class="chip rounded-full" data-tab="support"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a9 9 0 00-9 9v5a3 3 0 003 3h1v-8H5a7 7 0 0114 0h-2v8h1a3 3 0 003-3v-5a9 9 0 00-9-9z"/></svg>Support</button>
+        <button type="button" class="chip rounded-full" data-tab="security"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-4-4 1.41-1.41L11 12.17l5.59-5.58L18 8l-7 7z"/></svg>Security</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Tabs — Experience ══════════════════════════════════════════════════ -->

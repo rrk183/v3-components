@@ -1,0 +1,51 @@
+<!-- ═══ World Map: Global Reach network film ═══════════════════════════════
+     "Your ambition, powered by our network." Scroll-scrubbed canvas network
+     map, ported verbatim from cib-home-final.html (section 2). Landscape 16:9
+     on desktop/tablet, portrait composition on phones; real HTML copy + stats.
+     Styles/logic: assets/css/global-reach.css + assets/js/global-reach.js
+     (self-contained, gr-* namespaced). Element IDs are required by the script,
+     so use ONE per page. -->
+<link rel="stylesheet" href="assets/css/global-reach.css" />
+<section class="cmp gr-wrap" data-behavior="global-reach" aria-labelledby="netfilm-h">
+  <div class="sr-only">
+    <h2 id="netfilm-h">Your ambition, powered by our network.</h2>
+    <p>Global reach. Local intelligence.</p>
+    <p>Specialists on the ground where capital moves. Regional depth, global execution.</p>
+    <ul>
+      <li>5 core markets</li>
+      <li>4 global capital hubs: London, Singapore, Beijing, Mumbai</li>
+      <li>Partners: Visa, Mastercard, Partior, Komgo, iPiD</li>
+    </ul>
+    <!-- NEEDS SOURCE: the four rankings are new claims from Ram's network film; no cited source yet -->
+    <ul>
+      <li data-needs-source="rank-menat-loans">#1 MENAT: MENA Loans</li>
+      <li data-needs-source="rank-global-islamic-financing">#1 Global Islamic Financing</li>
+      <li data-needs-source="rank-ceemea-usd-bonds-sukuk">#5 CEEMEA USD Bonds &amp; Sukuk</li>
+      <li data-needs-source="rank-turkiye-bonds-sukuk">#1 T&uuml;rkiye Bonds &amp; Sukuk</li>
+    </ul>
+  </div>
+  <div class="gr-scrub" id="gr-scrub">
+    <div class="gr-scrub__pin">
+      <canvas id="gr-map" class="gr-map" aria-hidden="true"></canvas>
+      <section class="gr-reach" id="gr-reach" aria-hidden="true">
+        <div class="gr-reach__frame" id="gr-frame">
+          <div class="gr-stage" id="gr-stage">
+            <p class="gr-intro" data-anim="intro" aria-hidden="true"><span>Your ambition,</span><span>powered by our network.</span></p>
+            <div class="gr-copy">
+              <p class="gr-copy__eyebrow" data-anim="eyebrow">Global markets</p>
+              <h2 class="gr-copy__title" data-anim="title"><span>Global reach.</span><span>Local intelligence.</span></h2>
+              <p class="gr-copy__body" data-anim="body">Specialists on the ground where capital moves.<br>Regional depth, global execution.</p>
+            </div>
+            <ul class="gr-stats">
+              <li class="gr-stat" data-anim="stat0"><i class="gr-stat__rule"></i><span class="gr-stat__num">#1</span><span class="gr-stat__label">MENAT / MENA Loans</span></li>
+              <li class="gr-stat" data-anim="stat1"><i class="gr-stat__rule"></i><span class="gr-stat__num">#1</span><span class="gr-stat__label">Global Islamic Financing</span></li>
+              <li class="gr-stat" data-anim="stat2"><i class="gr-stat__rule"></i><span class="gr-stat__num">#5</span><span class="gr-stat__label">CEEMEA USD Bonds &amp; Sukuk</span></li>
+              <li class="gr-stat" data-anim="stat3"><i class="gr-stat__rule"></i><span class="gr-stat__num">#1</span><span class="gr-stat__label">T&uuml;rkiye Bonds &amp; Sukuk</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+<script defer src="assets/js/global-reach.js"></script>

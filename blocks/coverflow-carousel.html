@@ -1,0 +1,69 @@
+<!-- ═══ Coverflow Carousel ══════════════════════════════════════════════
+     Params: surface (surface-grey default | surface-white), data-animate.
+     Coverflow carousel: a sharp centre card flanked by blurred/scaled/dimmed
+     side cards, a faint blurred backdrop of the active image, synced
+     eyebrow/title/description, numbered nav + Explore. Auto-advances every
+     data-interval ms; pauses on hover; click a side card or use the arrows.
+     Pure markup — data-behavior="coverflow". Card images via data-bg, links
+     via data-fr-href. Styled by .cmp-coverflow-carousel. No IDs, no inline styles. -->
+<section class="cmp cmp-coverflow-carousel surface-soft section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <h2 class="type-h2 type-semibold ink-primary" data-reveal="up">Built for every type of mandate.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".08">Sovereigns, corporates, financial institutions, and multinationals — we have structured transactions for all of them.</p>
+    </div>
+
+    <div class="fr" data-behavior="coverflow" data-interval="5000">
+      <div class="fr-bg" data-fr-bg aria-hidden="true"></div>
+
+      <div class="fr-stage" data-fr-stage>
+        <div class="fr-card" data-fr-card data-fr-index="0" data-fr-href="#" data-bg="/assets/images/image-1.jpg" role="button" tabindex="0" aria-label="Sovereigns & Supras"></div>
+        <div class="fr-card" data-fr-card data-fr-index="1" data-fr-href="#" data-bg="/assets/images/image-2.jpg" role="button" tabindex="0" aria-label="Corporates"></div>
+        <div class="fr-card" data-fr-card data-fr-index="2" data-fr-href="#" data-bg="/assets/images/image-3.jpg" role="button" tabindex="0" aria-label="Financial Institutions"></div>
+        <div class="fr-card" data-fr-card data-fr-index="3" data-fr-href="#" data-bg="/assets/images/image-4.jpg" role="button" tabindex="0" aria-label="Multinationals & GREs"></div>
+      </div>
+
+      <div class="fr-foot">
+        <div class="fr-texts">
+          <div class="fr-text" data-fr-text data-fr-index="0">
+            <span class="ds-eyebrow ink-accent">Sovereign</span>
+            <h3 class="type-h2 fr-title ink-primary">Sovereigns &amp; supras</h3>
+            <p class="type-body ink-mute">Sovereign bond and sukuk issuance, debt advisory and liability management for governments and supranational institutions.</p>
+          </div>
+          <div class="fr-text" data-fr-text data-fr-index="1">
+            <span class="ds-eyebrow ink-accent">Corporate</span>
+            <h3 class="type-h2 fr-title ink-primary">Corporates</h3>
+            <p class="type-body ink-mute">IPOs, DCM issuance, acquisition finance and M&amp;A advisory for the region's leading corporates and family groups.</p>
+          </div>
+          <div class="fr-text" data-fr-text data-fr-index="2">
+            <span class="ds-eyebrow ink-accent">Financial Institutions</span>
+            <h3 class="type-h2 fr-title ink-primary">Financial institutions</h3>
+            <p class="type-body ink-mute">Capital, funding and structured solutions for banks, insurers and asset managers across the MENAT region.</p>
+          </div>
+          <div class="fr-text" data-fr-text data-fr-index="3">
+            <span class="ds-eyebrow ink-accent">Multinational</span>
+            <h3 class="type-h2 fr-title ink-primary">Multinationals &amp; GREs</h3>
+            <p class="type-body ink-mute">Cross-border M&amp;A, project finance, leveraged finance and privatisation advisory for government-related entities and multinationals building a regional presence.</p>
+          </div>
+        </div>
+
+        <div class="fr-nav">
+          <div class="fr-pager">
+            <button class="fr-arrow is-back" type="button" data-fr-prev aria-label="Previous mandate">
+            </button>
+            <span class="fr-count" data-fr-count>1 / 4</span>
+            <button class="fr-arrow is-next" type="button" data-fr-next aria-label="Next mandate">
+            </button>
+          </div>
+          <a class="btn btn-filled fr-explore is-up-right" href="#" data-fr-explore>Explore
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Coverflow Carousel ══════════════════════════════════════════════════════════ -->

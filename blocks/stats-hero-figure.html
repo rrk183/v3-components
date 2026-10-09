@@ -1,0 +1,45 @@
+<!-- ═══ Stats — Hero Figure ════════════════════════════════════════════════════
+     Params: surface (surface-white|grey|navy…), data-animate (on/off).
+     One hero stat + divider + three supporting stats. Figures count up
+     (data-countup) on reveal. Figures ride ds-num (is-xl hero / is-lg supporting); rules only for the dividers. -->
+<section class="cmp cmp-stats-hero-figure surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+
+      <!-- Hero number -->
+      <div class="mt2-hero flex items-center gap-5 shrink-0 justify-center lg:justify-start w-full lg:w-auto" data-reveal="up">
+        <span class="ds-num is-xl is-light ink-primary">
+          <span data-countup="50">50</span>
+        </span>
+        <span class="type-h3 type-semibold ink-primary">Years of<br>impact</span>
+      </div>
+
+      <span class="mt2-rule-v hidden lg:block border-ink"></span>
+
+      <!-- Supporting stats -->
+      <div class="flex flex-col md:flex-row items-center md:justify-around gap-6 md:gap-16 flex-1 w-full">
+
+        <div class="flex flex-col gap-2 items-center md:items-start text-center md:text-left" data-reveal="up" data-reveal-delay=".12">
+          <div class="ds-num is-lg is-light ink-primary"><span data-countup="200">200</span></div>
+          <p class="type-body-lg ink-mute">Wealth Advisors</p>
+        </div>
+
+        <span class="mt2-rule border-ink"></span>
+
+        <div class="flex flex-col gap-2 items-center md:items-start text-center md:text-left" data-reveal="up" data-reveal-delay=".24">
+          <div class="ds-num is-lg is-light ink-primary"><span data-countup="931" data-suffix="Bn">931Bn</span></div>
+          <p class="type-body-lg ink-mute">Total Assets</p>
+        </div>
+
+        <span class="mt2-rule border-ink"></span>
+
+        <div class="flex flex-col gap-2 items-center md:items-start text-center md:text-left" data-reveal="up" data-reveal-delay=".36">
+          <div class="ds-num is-lg is-light ink-primary"><span data-countup="13">13</span></div>
+          <p class="type-body-lg ink-mute">Countries Operated</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Metrics — Type 2 ═══════════════════════════════════════════════════ -->

@@ -1,0 +1,19 @@
+<!-- ═══ Sub-nav — in-page anchor bar ══════════════════════════════════════════
+     A thin row of jump links to the sections of a long page. Sits directly
+     under the hero and sticks to the top of the viewport as the page scrolls
+     (below the site header). Mark the current section with .is-active +
+     aria-current="true".
+     Promoted from page-local markup (it shipped on smartSCF with no CSS at
+     all, so it rendered as a raw line of unstyled links). Below 768 the row
+     scrolls sideways instead of wrapping — the bar must stay one line high.
+     Pure markup: hrefs point at section ids on the host page. -->
+<nav class="cmp cmp-subnav surface-white" aria-label="On this page">
+  <div class="container-ds sn-inner">
+    <a href="#how" class="sn-link is-active ink-mute" aria-current="true">How it works</a>
+    <a href="#benefits" class="sn-link ink-mute">Benefits</a>
+    <a href="#industries" class="sn-link ink-mute">Industries</a>
+    <a href="#faq" class="sn-link ink-mute">FAQ</a>
+    <a href="#contact" class="sn-link ink-mute">Talk to us</a>
+  </div>
+</nav>
+<!-- ═══ /Sub-nav ════════════════════════════════════════════════════════════ -->

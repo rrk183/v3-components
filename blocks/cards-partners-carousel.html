@@ -1,0 +1,103 @@
+<!-- ═══ Cards — Partners Carousel (composition of cmp-cards) ═══════════════
+     The SAME cards as Cards — Partners on the shared data-carousel recipe:
+     the track sits outside the container (full section width), --cd-edge
+     aligns slide 1 and the arrows with the contained header. Arrows are btn
+     atoms wired by data-carousel-prev/next (chevrons auto-mirror in RTL).
+     No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards cards-partners surface-soft section-y" data-animate>
+  <div class="container-ds">
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Partnerships</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Partnerships that deliver.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Named partnerships with the networks your customers already use — the relationship spelled out, not implied.</p>
+
+    </div>
+  </div>
+
+  <div class="cd-carousel" data-carousel>
+    <div class="cd-track" data-carousel-track>
+
+      <div class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex flex-col items-center text-center gap-2">
+          <span class="flex items-center justify-center min-h-[72px] w-full"><img src="assets/images/partners/visa.svg" alt="Visa" class="max-h-10 w-auto"></span>
+          <h3 class="type-h6 ink-primary">Visa</h3>
+          <p class="type-caption ink-mute">Emirates NBD Pay x Visa</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex flex-col items-center text-center gap-2">
+          <span class="flex items-center justify-center min-h-[72px] w-full"><img src="assets/images/partners/jpmorgan.svg" alt="Kinexys by J.P. Morgan" class="max-h-10 w-auto"></span>
+          <h3 class="type-h6 ink-primary">Kinexys</h3>
+          <p class="type-caption ink-mute">Emirates NBD Pay x Kinexys</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex flex-col items-center text-center gap-2">
+          <span class="flex items-center justify-center min-h-[72px] w-full"><img src="assets/images/partners/mastercard.svg" alt="Mastercard" class="max-h-10 w-auto"></span>
+          <h3 class="type-h6 ink-primary">Mastercard</h3>
+          <p class="type-caption ink-mute">Emirates NBD Pay x Mastercard</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex flex-col items-center text-center gap-2">
+          <span class="flex items-center justify-center min-h-[72px] w-full"><img src="assets/images/partners/visa.svg" alt="Visa Direct" class="max-h-10 w-auto"></span>
+          <h3 class="type-h6 ink-primary">Visa Direct</h3>
+          <p class="type-caption ink-mute">Emirates NBD Pay x Visa Direct</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex flex-col items-center text-center gap-2">
+          <span class="flex items-center justify-center min-h-[72px] w-full"><img src="assets/images/partners/visa.svg" alt="Visa" class="max-h-10 w-auto"></span>
+          <h3 class="type-h6 ink-primary">Visa</h3>
+          <p class="type-caption ink-mute">Emirates NBD Pay x Visa</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex flex-col items-center text-center gap-2">
+          <span class="flex items-center justify-center min-h-[72px] w-full"><img src="assets/images/partners/jpmorgan.svg" alt="Kinexys by J.P. Morgan" class="max-h-10 w-auto"></span>
+          <h3 class="type-h6 ink-primary">Kinexys</h3>
+          <p class="type-caption ink-mute">Emirates NBD Pay x Kinexys</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex flex-col items-center text-center gap-2">
+          <span class="flex items-center justify-center min-h-[72px] w-full"><img src="assets/images/partners/mastercard.svg" alt="Mastercard" class="max-h-10 w-auto"></span>
+          <h3 class="type-h6 ink-primary">Mastercard</h3>
+          <p class="type-caption ink-mute">Emirates NBD Pay x Mastercard</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex flex-col items-center text-center gap-2">
+          <span class="flex items-center justify-center min-h-[72px] w-full"><img src="assets/images/partners/visa.svg" alt="Visa Direct" class="max-h-10 w-auto"></span>
+          <h3 class="type-h6 ink-primary">Visa Direct</h3>
+          <p class="type-caption ink-mute">Emirates NBD Pay x Visa Direct</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="cd-arrows">
+      <button class="crl-toggle" type="button" data-carousel-toggle hidden aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
+      <div class="cd-dots" data-carousel-dots></div>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous</span></button>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next</span></button>
+    </div>
+  </div>
+
+  <div class="container-ds">
+    <div class="flex justify-center mt-10" data-reveal="up">
+      <a href="#" class="btn btn-text is-arrow">See Our Expertise &amp; Partnerships
+       </a>
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Cards — Partners Carousel ═════════════════════════════════════════ -->

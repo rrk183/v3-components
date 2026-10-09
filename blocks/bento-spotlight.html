@@ -1,0 +1,63 @@
+<!-- ═══ Bento — Spotlight (composition of cmp-bento) ═════════════════════════
+     Glass tiles (card-clear) over a dark section — text rides on-surface
+     tokens so the Surface control genuinely works; the feature tile is
+     flush media + .ov; the CTA tile paints surface-accent with a btn-glass
+     arrow; stats are ds-num + countups. Hover as built = lift + the
+     cursor-tracked spotlight glow (the shared recipe; tiles carry
+     data-spotlight-tile). Zero CSS of its own. -->
+<section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-white section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Why Emirates NBD</span>
+        <h2 class="type-h1 ink-primary" data-reveal="up" data-reveal-delay=".06">Scale, certainty,<br>and reach.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">The scale of a regional leader, the certainty your treasury runs on, and reach across 13 countries.</p>
+    </div>
+
+    <div class="bn-grid" role="list" data-behavior="spotlight" data-reveal="up" data-reveal-delay=".12">
+      <a href="#" class="bn-tile is-flush is-w6 is-h2 is-t-full justify-end surface-image" data-spotlight-tile data-reveal="up" data-reveal-delay=".12">
+        <span class="media-cover" data-bg="/assets/images/image-2.jpg" aria-hidden="true"></span>
+        <span class="ov ov-dark ov-gradient-b ov-80" aria-hidden="true"></span>
+        <div class="ds-stack p-6" style="--ds-stack-gap: 6px">
+          <span class="type-eyebrow ink-soft">Global network</span>
+          <h3 class="type-h3 ink-white">Banking that moves with your business &mdash; across 13 countries.</h3>
+          <span class="type-caption font-semibold ink-white">Explore the network &rarr;</span>
+        </div>
+      </a>
+      <div class="bn-tile card-clear is-w3 is-h1 justify-center" data-spotlight-tile data-reveal="up" data-reveal-delay=".16">
+        <span class="ds-num ink-primary"><span data-countup="180" data-duration="2">180</span>+</span>
+        <span class="type-caption block mt-1 ink-mute">Markets reached</span>
+      </div>
+      <div class="bn-tile card-clear is-w3 is-h1 justify-center" data-spotlight-tile data-reveal="up" data-reveal-delay=".20">
+        <span class="ds-num ink-primary"><span data-countup="99.9" data-decimals="1" data-duration="2">99.9</span>%</span>
+        <span class="type-caption block mt-1 ink-mute">Platform uptime</span>
+      </div>
+      <a href="#" class="bn-tile is-w6 is-h1 is-t-full surface-primary border border-ink" data-spotlight-tile data-reveal="up" data-reveal-delay=".24">
+        <div class="flex items-end justify-between gap-4 mt-auto w-full">
+          <div class="ds-stack" style="--ds-stack-gap: 4px">
+            <h3 class="type-h4 ink-white">Open a corporate account</h3>
+            <p class="type-caption measure ink-soft">Onboard in days, not weeks &mdash; with a dedicated relationship team.</p>
+          </div>
+          <span class="btn btn-glass btn-icon btn-pill is-up-right" aria-hidden="true"></span>
+        </div>
+      </a>
+      <div class="bn-tile card-clear is-w6 is-h1 is-t-full justify-center" data-spotlight-tile data-reveal="up" data-reveal-delay=".28">
+        <span class="icon-tile" style="--it-fill: rgba(var(--blue-rgb), .18); --it-ink: var(--blue-soft)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <h3 class="type-h5 mt-2 ink-primary">Real-time multi-currency liquidity</h3>
+        <p class="type-caption mt-1 ink-mute">See and move cash across every entity from one dashboard.</p>
+      </div>
+      <div class="bn-tile card-clear is-w3 is-h1 justify-center" data-spotlight-tile data-reveal="up" data-reveal-delay=".32">
+        <span class="ds-num ink-primary">&lt; <span data-countup="2" data-duration="1.6">2</span></span>
+        <span class="type-caption block mt-1 ink-mute">Min. cross-border settlement</span>
+      </div>
+      <div class="bn-tile card-clear is-w3 is-h1 justify-center" data-spotlight-tile data-reveal="up" data-reveal-delay=".36">
+        <span class="ds-num ink-primary"><span data-countup="40" data-suffix="+" data-duration="2">40+</span></span>
+        <span class="type-caption block mt-1 ink-mute">Syndicated loans closed</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Bento — Spotlight ══════════════════════════════════════════════════ -->

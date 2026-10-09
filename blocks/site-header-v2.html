@@ -1,0 +1,187 @@
+<!-- ═══ Site Header v2 — overflow-safe segment bar (smart "More" collapse) ═══
+     Same header as site-header (same theme, mega-menus, drawer, search) with
+     ONE change: the utility-bar segment nav can take ANY number of links.
+     ds.js (ishOverflowNav) measures the bar on load/resize; links that do not
+     fit are hidden and mirrored into the authored "More" dropdown below —
+     and move back out when there is room. The active segment never collapses.
+     The websites menu is renamed "Our Websites" so the two menus read apart.
+     Demo carries 12 segments (4 more than v1) to show the collapse working.
+     NO-HERO PAGES: same contract as site-header — add is-solid + data-solid. -->
+<header class="cmp cmp-site-header ish-v2" data-behavior="site-header">
+
+  <!-- Row 1 — utility / segment bar (always solid navy) -->
+  <div class="ish-utility">
+    <div class="ish-bar container-ds">
+      <div class="ish-segwrap">
+        <nav class="ish-segments" aria-label="Customer segments">
+          <a href="../personal-home-v3a.html">Personal</a>
+          <a href="#">Priority</a>
+          <a href="#">Private</a>
+          <a href="#">Emirati</a>
+          <a href="#">Business</a>
+          <a href="#" class="is-active" aria-current="page">Corporate &amp; Institutional</a>
+          <a href="#">Islamic</a>
+          <a href="#">International</a>
+          <a href="#">SME Banking</a>
+          <a href="#">Wealth Management</a>
+          <a href="#">Non-Resident</a>
+          <a href="#">Government</a>
+        </nav>
+        <!-- Authored overflow menu — EMPTY + hidden until ds.js moves links in -->
+        <div class="ish-ovf-wrap" data-dropdown hidden>
+          <button class="ish-ovf-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+            More
+            <svg class="ish-ovf-caret" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="ish-ovf-panel" role="menu" aria-label="More segments"></div>
+        </div>
+        <div class="ish-more-wrap" data-dropdown>
+          <button class="ish-more-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">
+            Our Websites
+          </button>
+          <div class="ish-more-panel surface-white" role="menu" aria-label="Our websites">
+            <div class="ish-col">
+              <h3 class="ish-col-h">Group entities</h3>
+              <a href="#">Emirates NBD Group</a><a href="#">Emirates NBD Capital</a><a href="#">Emirates NBD Securities</a><a href="#">Emirates NBD Asset Management</a><a href="#">Emirates NBD REIT</a>
+            </div>
+            <div class="ish-col">
+              <h3 class="ish-col-h">Digital platforms</h3>
+              <a href="#">Liv.</a><a href="#">E20.</a><a href="#">businessONLINE</a><a href="#">smartTRADE</a><a href="#">ENBD X</a>
+            </div>
+            <div class="ish-col">
+              <h3 class="ish-col-h">International</h3>
+              <a href="#">DenizBank</a><a href="#">Emirates NBD Egypt</a><a href="#">Emirates NBD KSA</a><a href="#">Emirates NBD UK</a><a href="#">Emirates NBD Singapore</a><a href="#">Emirates NBD India</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ish-utility-right">
+        <a class="ish-util-link" href="#">Branches &amp; ATMs</a>
+        <a class="ish-util-link" href="#">Support Centre</a>
+        <a class="ish-util-link" href="#">Contact Us</a>
+        <span class="ish-divider" aria-hidden="true"></span>
+        <button class="ish-lang" type="button" lang="ar">عربي</button>
+        <span class="ish-divider" aria-hidden="true"></span>
+        <div class="ish-login-wrap" data-dropdown>
+          <button class="ish-login is-down" type="button" aria-haspopup="true" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path></svg>
+            <span>Login</span>
+          </button>
+          <div class="ish-dropdown surface-white" role="menu" aria-label="Login">
+            <a href="#" role="menuitem">businessONLINE</a>
+            <a href="#" role="menuitem">Online Banking</a>
+            <a href="#" role="menuitem">signONLINE</a>
+            <a href="#" role="menuitem">Brokerage</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 — brand nav (transparent over hero, solidifies on scroll) -->
+  <div class="ish-brand">
+    <div class="ish-bar container-ds">
+      <div class="ish-brand-left">
+        <a class="ish-logo" href="../cib-home-final.html" aria-label="Emirates NBD — home"><span class="ish-logo-img" aria-hidden="true"></span></a>
+        <nav class="ish-menu" aria-label="Primary">
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">
+              Products &amp; Services
+            </button>
+            <div class="ish-panel surface-white" role="region" aria-label="Products & Services">
+              <div class="ish-panel-inner container-ds">
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Products &amp; Services</h3>
+                  <a href="#">Overview</a><a href="#">Cash Management</a><a href="#">Trade Finance</a><a href="#">Lending</a><a href="#">Markets</a><a href="#">Investment Banking</a><a href="#">Islamic Banking</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Rates and Charges</h3>
+                  <a href="#">Schedule of Charges</a><a href="#">Trade Finance Tariff</a><a href="#">Fixed Deposit Rates</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Useful Links</h3>
+                  <a href="../contact-us-v3.html">Contact Us</a><a href="#">Standard Settlement Instructions</a><a href="#">Fatwas</a><a href="#">Our Capabilities</a><a href="../form-centre-v2.html">Form Centre</a><a href="../form-centre-v2.html">Key Facts Statement (KFS)</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Insights</h3>
+                  <a href="#">Emirates NBD Research</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">
+              Digital Solutions
+            </button>
+            <div class="ish-panel surface-white" role="region" aria-label="Digital Solutions">
+              <div class="ish-panel-inner container-ds">
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Digital Solutions</h3>
+                  <a href="../digital-solutions-v1a.html">Overview</a><a href="../businessonline-x-v2.html">businessONLINE</a><a href="#">businessONLINE Connect</a><a href="#">smartCDM</a><a href="#">smartDEAL</a><a href="../smartscf-v1a.html">smartSCF</a><a href="../smarttrade-v1a.html">smartTRADE</a><a href="../api-banking-v1a.html">API Banking</a><a href="../instant-banking-services-v1a.html">Instant Banking Services</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Rates and Charges</h3>
+                  <a href="#">Schedule of Charges</a><a href="#">Trade Finance Tariff</a><a href="#">Fixed Deposit Rates</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Useful Links</h3>
+                  <a href="../contact-us-v3.html">Contact Us</a><a href="#">Standard Settlement Instructions</a><a href="#">Fatwas</a><a href="#">Our Capabilities</a><a href="../form-centre-v2.html">Form Centre</a><a href="../form-centre-v2.html">Key Facts Statement (KFS)</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Insights</h3>
+                  <a href="#">Emirates NBD Research</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+      <div class="ish-search-wrap" data-search>
+        <button class="ish-search is-search" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Search">
+        </button>
+        <div class="ish-search-panel surface-white" role="region" aria-label="Search">
+          <div class="ish-search-inner container-ds">
+            <form class="ish-search-form" role="search" onsubmit="return false">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input class="ish-search-input" type="search" placeholder="What are you looking for today?" aria-label="Search" />
+            </form>
+            <div class="ish-search-pop">
+              <span class="ish-search-pop-lbl">Popular</span>
+              <a href="#">businessONLINE</a><a href="#">smartTRADE</a><a href="#">Trade Finance</a><a href="#">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile-only language toggle — sits in the bar next to search + burger
+           (≤860px) so it isn't hidden behind the menu. Hidden on desktop (the
+           utility-bar language takes over there). -->
+      <button class="ish-lang-m" type="button" lang="ar" aria-label="عربي — switch to Arabic">عربي</button>
+      <!-- Mobile-only hamburger (≤860px) — opens the drawer below. ds.js wires
+           it off data-burger / data-drawer and fills the drawer from this nav.
+           Above 860px it is display:none and the search button takes over. -->
+      <button class="ish-burger" type="button" data-burger aria-haspopup="true" aria-expanded="false" aria-controls="ish-drawer-v2" aria-label="Open menu">
+        <span class="ish-burger-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav drawer (≤860px) — opened by .ish-burger. The body is populated
+       by ds.js from the primary mega-menus + search above, so it always mirrors
+       this page's actual nav (no second copy of the links to keep in sync). -->
+  <div class="ish-drawer" id="ish-drawer-v2" data-drawer>
+    <div class="ish-drawer-backdrop" data-drawer-close></div>
+    <div class="ish-drawer-panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="ish-drawer-head">
+        <span class="ish-drawer-logo" aria-hidden="true"></span>
+        <button class="ish-drawer-close is-close" type="button" data-drawer-close aria-label="Close menu">
+        </button>
+      </div>
+      <div class="ish-drawer-body"><!-- ds.js fills: search + mega-menu link groups --></div>
+    </div>
+  </div>
+
+</header>
+<!-- ═══ /Site Header v2 ═════════════════════════════════════════════════════════ -->

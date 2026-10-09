@@ -1,0 +1,128 @@
+<!-- ═══ Loan Calculator — split panel ═════════════════════════════════════════
+     Controls on the start side, a live result card on the end side. The
+     reference layout, rebuilt for accessibility and for the questions people
+     actually ask: not just "what's the monthly payment" but "what does this
+     cost me in total, and how much of that is interest".
+     A11y: loan type is a real radio group in a fieldset/legend (arrow keys work
+     for free); each slider is WRAPPED in its <label> so the block carries no
+     ids and can be pasted twice on one page; ds.js keeps an aria-valuetext on
+     each range so it announces "AED 30,000" rather than "30000"; only the
+     monthly figure is a live region, so one change announces one number.
+     SEO: every figure and bound is real text in the markup — the default state
+     is fully readable before a single script runs.
+     Rates/limits live on each radio (data-rate/min/max/term-*), so switching
+     product re-ranges both sliders. Wire it up by editing those attributes
+     only — the maths is ds.js's `loan-calculator` recipe. -->
+<section class="cmp cmp-loan-calculator surface-soft section-y" data-behavior="loan-calculator" data-animate>
+  <div class="container-ds">
+
+    <div class="ds-stack section-head is-center measure">
+      <span class="ds-eyebrow ink-accent" data-reveal="up">Loan calculator</span>
+      <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Looking for a loan? Estimate your monthly payment.</h2>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Move the sliders to see what you would repay each month, and what the loan costs over its full term.</p>
+    </div>
+
+    <div class="lc-split" data-reveal="up" data-reveal-delay=".16">
+
+      <!-- ── Controls ─────────────────────────────────────────────── -->
+      <div class="lc-controls">
+
+        <fieldset class="lc-types">
+          <legend class="lc-legend ink-mute">Choose a loan type</legend>
+
+          <label class="lc-type">
+            <input type="radio" name="lc-split-type" data-lc-type checked
+                   data-rate="5.99" data-min="30000" data-max="500000" data-amount="150000"
+                   data-term-min="1" data-term-max="4" data-term="3">
+            <span class="lc-type-inner ink-mute">
+            <span class="lc-type-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.5"></circle><path d="M6 9.5v5"></path><path d="M18 9.5v5"></path></svg></span>
+            <span class="lc-type-label">Personal Loan</span>
+            </span>
+          </label>
+
+          <label class="lc-type">
+            <input type="radio" name="lc-split-type" data-lc-type
+                   data-rate="3.49" data-min="20000" data-max="400000" data-amount="120000"
+                   data-term-min="1" data-term-max="5" data-term="4">
+            <span class="lc-type-inner ink-mute">
+            <span class="lc-type-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-3l1.8-4.2A2 2 0 0 1 7.6 7.5h8.8a2 2 0 0 1 1.8 1.3L20 13v3"></path><path d="M3 16h18"></path><circle cx="7.5" cy="17.5" r="1.6"></circle><circle cx="16.5" cy="17.5" r="1.6"></circle></svg></span>
+            <span class="lc-type-label">Auto Loan</span>
+            </span>
+          </label>
+
+          <label class="lc-type">
+            <input type="radio" name="lc-split-type" data-lc-type
+                   data-rate="4.25" data-min="250000" data-max="5000000" data-amount="1200000"
+                   data-term-min="5" data-term-max="25" data-term="20">
+            <span class="lc-type-inner ink-mute">
+            <span class="lc-type-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9.5L12 4l8 5.5V21"></path><path d="M9.5 21v-6h5v6"></path><path d="M2.5 21h19"></path></svg></span>
+            <span class="lc-type-label">Home Loan</span>
+            </span>
+          </label>
+        </fieldset>
+
+        <div class="lc-field">
+          <div class="lc-head">
+            <span class="type-h5 lc-label-text ink-primary">How much would you like to borrow?</span>
+            <output class="lc-value aed ink-primary" data-lc-amount-out>150,000</output>
+          </div>
+          <label>
+            <span class="sr-only">Amount you want to borrow</span>
+            <input class="range" type="range" data-lc-amount min="30000" max="500000" step="1000" value="150000">
+          </label>
+          <div class="lc-bounds ink-mute">
+            <span class="aed" data-lc-amount-min>30,000</span>
+            <span class="aed" data-lc-amount-max>500,000</span>
+          </div>
+        </div>
+
+        <div class="lc-field">
+          <div class="lc-head">
+            <span class="type-h5 lc-label-text ink-primary">Over how many years would you repay it?</span>
+            <output class="lc-value ink-primary"><span data-lc-term-months>36</span> <span data-lc-months-unit data-singular="Month" data-plural="Months">Months</span></output>
+          </div>
+          <label>
+            <span class="sr-only">Repayment period in years</span>
+            <input class="range" type="range" data-lc-term min="1" max="4" step="1" value="3">
+          </label>
+          <div class="lc-bounds ink-mute">
+            <span><span data-lc-term-min>1</span> <span data-lc-term-min-unit data-singular="Year" data-plural="Years">Year</span></span>
+            <span><span data-lc-term-max>4</span> <span data-lc-term-max-unit data-singular="Year" data-plural="Years">Years</span></span>
+          </div>
+        </div>
+
+        <p class="type-caption lc-note ink-mute">Effective rate <output data-lc-rate>5.99%</output> p.a. This is an indicative estimate, not an offer. Rates vary by tenor, salary transfer and bank policy; terms and conditions apply.</p>
+      </div>
+
+      <!-- ── Result ───────────────────────────────────────────────── -->
+      <div class="lc-result surface-primary">
+        <div class="lc-result-top">
+          <p class="type-body-sm lc-result-label ink-soft">Estimated monthly payment</p>
+          <output class="ds-num is-lg lc-monthly aed ink-white" data-lc-monthly aria-live="polite">4,563</output>
+
+          <dl class="lc-breakdown">
+            <div class="lc-row">
+              <dt class="ink-soft">Total repayment</dt>
+              <dd class="ink-white"><output class="aed" data-lc-total>164,254</output></dd>
+            </div>
+            <div class="lc-row">
+              <dt class="ink-soft">Total interest</dt>
+              <dd class="ink-white"><output class="aed" data-lc-interest>14,254</output></dd>
+            </div>
+          </dl>
+
+          <a href="#" class="btn btn-primary lc-cta">Apply for this loan</a>
+          <a href="#" class="btn btn-text lc-link is-arrow ink-white">See our fees and payment plans
+          </a>
+        </div>
+
+        <p class="lc-result-foot ink-soft">
+          <span class="lc-foot-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 1 3.5 10.9c-.5.4-.8.9-.8 1.5v.6h-5.4v-.6c0-.6-.3-1.1-.8-1.5A6 6 0 0 1 12 3z"></path></svg></span>
+          Borrow only what you can comfortably repay.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Loan Calculator — split panel ══════════════════════════════════════ -->

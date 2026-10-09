@@ -1,0 +1,56 @@
+<!-- ═══ Scroll Showcase — media right ══════════════════════════════════════════════════════════
+     A scroll-driven alternative to vertical tabs: a pinned image on one side
+     swaps as each item's copy scrolls past on the other, with a live "N / total"
+     counter. Lenis-safe rAF (reads live rects each frame). Ideal for product /
+     channel selectors where every item has its own image. -->
+<section class="cmp cmp-scroll-showcase is-rev surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned aria-label="One platform for every trade.">
+<div class="container-ds">
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Choose your channel</span>
+        <h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">One platform for every trade.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Scroll to move through each item; the pinned visual follows along.</p>
+    </div>
+    <div class="ss-wrap">
+      <div class="ss-sticky" aria-hidden="true">
+        <span class="ss-count"><b data-ss-num>1</b> / 4</span>
+        <div class="ss-img active" data-ss-img="0" data-bg="assets/images/trade-supply-chain-finance/smarttrade-t1.jpg" role="img" aria-label="smartTRADE"></div>
+        <div class="ss-img" data-ss-img="1" data-bg="assets/images/shared/common/smartscf-hero.jpg" role="img" aria-label="smartSCF"></div>
+        <div class="ss-img" data-ss-img="2" data-bg="assets/images/trade-supply-chain-finance/tscf-tab-swift.jpg" role="img" aria-label="SWIFT for Corporates"></div>
+        <div class="ss-img" data-ss-img="3" data-bg="assets/images/trade-supply-chain-finance/tscf-tab-guarantees.jpg" role="img" aria-label="smartGUARANTEES"></div>
+      </div>
+      <div class="ss-steps">
+        <div class="ss-step" data-ss-step="0">
+          <div class="ss-step-img" data-bg="assets/images/trade-supply-chain-finance/smarttrade-t1.jpg" aria-hidden="true"></div>
+          <h3 class="type-h3 ss-name ink-primary" data-reveal="up" data-reveal-delay=".05">smartTRADE</h3>
+          <p class="type-body ss-desc ink-mute" data-reveal="up" data-reveal-delay=".1">A fully digital trade finance platform to initiate, track and manage all your import and export transactions online.</p>
+          <ul class="ss-chips" data-reveal="up" data-reveal-delay=".14"><li class="chip rounded-full">Initiate &amp; amend online</li><li class="chip rounded-full">Real-time tracking</li><li class="chip rounded-full">Import &amp; export</li></ul>
+          <a href="#" class="btn btn-filled ss-cta" data-reveal="up" data-reveal-delay=".18">Visit smartTRADE</a>
+        </div>
+        <div class="ss-step" data-ss-step="1">
+          <div class="ss-step-img" data-bg="assets/images/shared/common/smartscf-hero.jpg" aria-hidden="true"></div>
+          <h3 class="type-h3 ss-name ink-primary" data-reveal="up" data-reveal-delay=".05">smartSCF</h3>
+          <p class="type-body ss-desc ink-mute" data-reveal="up" data-reveal-delay=".1">An end-to-end supply chain finance solution connecting buyers and suppliers for invoice discounting and early payments.</p>
+          <ul class="ss-chips" data-reveal="up" data-reveal-delay=".14"><li class="chip rounded-full">Invoice discounting</li><li class="chip rounded-full">Early supplier payments</li><li class="chip rounded-full">Working capital</li></ul>
+          <a href="#" class="btn btn-filled ss-cta" data-reveal="up" data-reveal-delay=".18">Visit smartSCF</a>
+        </div>
+        <div class="ss-step" data-ss-step="2">
+          <div class="ss-step-img" data-bg="assets/images/trade-supply-chain-finance/tscf-tab-swift.jpg" aria-hidden="true"></div>
+          <h3 class="type-h3 ss-name ink-primary" data-reveal="up" data-reveal-delay=".05">SWIFT for corporates</h3>
+          <p class="type-body ss-desc ink-mute" data-reveal="up" data-reveal-delay=".1">An ultra-secure channel for exchanging financial documents directly between your systems and the bank.</p>
+          <ul class="ss-chips" data-reveal="up" data-reveal-delay=".14"><li class="chip rounded-full">SWIFT FileAct</li><li class="chip rounded-full">System-to-bank</li><li class="chip rounded-full">Ultra-secure</li></ul>
+          <a href="#" class="btn btn-filled ss-cta" data-reveal="up" data-reveal-delay=".18">Discuss SWIFT for Corporates</a>
+        </div>
+        <div class="ss-step" data-ss-step="3">
+          <div class="ss-step-img" data-bg="assets/images/trade-supply-chain-finance/tscf-tab-guarantees.jpg" aria-hidden="true"></div>
+          <h3 class="type-h3 ss-name ink-primary" data-reveal="up" data-reveal-delay=".05">smartGUARANTEES</h3>
+          <p class="type-body ss-desc ink-mute" data-reveal="up" data-reveal-delay=".1">A secure online solution to issue, amend and track bank guarantees digitally, reducing turnaround times.</p>
+          <ul class="ss-chips" data-reveal="up" data-reveal-delay=".14"><li class="chip rounded-full">Issue &amp; amend</li><li class="chip rounded-full">Faster turnaround</li><li class="chip rounded-full">Full audit trail</li></ul>
+          <a href="#" class="btn btn-filled ss-cta" data-reveal="up" data-reveal-delay=".18">Talk to a guarantees specialist</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

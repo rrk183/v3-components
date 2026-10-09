@@ -1,0 +1,97 @@
+<!-- ═══ Cards — Tombstones Scroll (composition of cmp-cards) ═══════════════
+     Layout mode 3: the SAME cards as Cards — Tombstones on the generalized
+     scroll-track recipe — the section pins and the row pans sideways as the
+     page scrolls (data-scroll-outer / data-scroll-wrap / data-track hooks;
+     300vh stage). No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards cards-tombstones surface-soft" data-animate data-behavior="scroll-track">
+  <div class="cd-scroll-outer" data-scroll-outer>
+    <div class="cd-scroll-pin">
+      <div class="container-ds">
+        <div class="section-head-sm">
+          <div class="ds-stack">
+            <span class="ds-eyebrow ink-accent" data-reveal="up">Recent transactions</span>
+            <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Selected mandates we have led.</h2>
+          </div>
+          <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".08">A selection of recent transactions across sectors and geographies.</p>
+        </div>
+      </div>
+      <div class="cd-scroll-wrap" data-scroll-wrap>
+        <div class="cd-track" data-track>
+      <article class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/government-of-abu-dhabi.webp" alt="Government of Abu Dhabi" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 3,000m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Bond</li>
+          <li>3.75% due 2031</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>UAE</span><span>Feb 2026</span></p>
+      </article>
+      <article class="cd-card card-panel is-flat surface-white">
+        <span class="badge badge-ok badge-sm absolute top-3 end-3 z-10">ESG</span>
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/agricultural-bank-of-china.webp" alt="Agricultural Bank of China" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 300m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Green Bond</li>
+          <li>SOFR+35 due 2029</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>China</span><span>Apr 2026</span></p>
+      </article>
+      <article class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/qib-logo.jpg" alt="QIB" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 750m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Sukuk</li>
+          <li>4.402% due 2031</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Qatar</span><span>Feb 2026</span></p>
+      </article>
+      <article class="cd-card card-panel is-flat surface-white">
+        <p class="type-h5 ink-primary">USD 1.8bn</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Rights Issue</li>
+          <li>Lead Manager and Sole Receiving Bank</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>November 2019</span></p>
+      </article>
+      <article class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/government-of-abu-dhabi.webp" alt="Government of Abu Dhabi" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 3,000m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Bond</li>
+          <li>3.75% due 2031</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>UAE</span><span>Feb 2026</span></p>
+      </article>
+      <article class="cd-card card-panel is-flat surface-white">
+        <span class="badge badge-ok badge-sm absolute top-3 end-3 z-10">ESG</span>
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/agricultural-bank-of-china.webp" alt="Agricultural Bank of China" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 300m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Green Bond</li>
+          <li>SOFR+35 due 2029</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>China</span><span>Apr 2026</span></p>
+      </article>
+      <article class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/qib-logo.jpg" alt="QIB" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 750m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Sukuk</li>
+          <li>4.402% due 2031</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Qatar</span><span>Feb 2026</span></p>
+      </article>
+      <article class="cd-card card-panel is-flat surface-white">
+        <p class="type-h5 ink-primary">USD 1.8bn</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Rights Issue</li>
+          <li>Lead Manager and Sole Receiving Bank</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>November 2019</span></p>
+      </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Cards — Tombstones Scroll ═════════════════════════════════════════ -->

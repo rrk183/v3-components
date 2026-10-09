@@ -1,0 +1,72 @@
+<!-- ═══ Tabs — Directory (cmp-tabs v4 composition) ═══════════════════════════
+     The pills-in-content pattern: an underline rail over dense auto-filling
+     grids of card-panel tiles (one short service name each) — a scannable
+     directory for tabs holding MANY short items. Tiles are cmp-cards on the
+     auto columns axis; zero CSS of its own. -->
+<section class="cmp cmp-tabs tabs-directory surface-soft section-y" data-animate>
+  <div class="container-ds">
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">How we can help you</span>
+        <h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">We understand that every business is unique.</h2>
+      </div>
+    </div>
+    <div data-tabs data-tabs-swipe data-reveal="up" data-reveal-delay=".1">
+      <div class="tb-rail is-underline mb-8" role="tablist">
+        <button type="button" class="tb-tab active ink-primary" data-tab="outbound">Outbound Payments</button>
+        <button type="button" class="tb-tab ink-mute" data-tab="acceptance">Payment Acceptance</button>
+        <button type="button" class="tb-tab ink-mute" data-tab="value">Value-added Services</button>
+      </div>
+      <div data-panel="outbound" class="tb-panel active">
+        <p class="type-body-lg measure mb-6 ink-mute">Send funds with unmatched speed, precision and control, whatever the destination or currency.</p>
+        <div class="cmp-cards is-cols-auto is-hover-lift">
+          <div class="cd-grid" role="list">
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Instant payments</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Domestic payments</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Cross-border payments</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Utility &amp; bill payments</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Card payments</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Cash delivery</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Payroll &amp; pension payments (WPS)</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">VAT, income tax &amp; excise payments</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Cardless cash withdrawals</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Prepaid card services</h3></div>
+          </div>
+        </div>
+      </div>
+      <div data-panel="acceptance" class="tb-panel">
+        <p class="type-body-lg measure mb-6 ink-mute">Accept payments your way, through intelligent digital solutions that adapt to your business and your customers.</p>
+        <div class="cmp-cards is-cols-auto is-hover-lift">
+          <div class="cd-grid" role="list">
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Point of sale</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">e-Commerce</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Remote cheque deposit</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Cash &amp; cheque collection</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Direct debit (UAEDDS)</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">PDC lodgment</h3></div>
+          </div>
+        </div>
+      </div>
+      <div data-panel="value" class="tb-panel">
+        <p class="type-body-lg measure mb-6 ink-mute">Enhancing every transaction with services that go further, connecting data, insight and expertise to unlock new value.</p>
+        <div class="cmp-cards is-cols-auto is-hover-lift">
+          <div class="cd-grid" role="list">
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Statement &amp; balance reporting</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">UAE IBAN validation</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Payment tracker</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">KYC update</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Audit confirmation letter</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Balance confirmation letter</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Cheque book request</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Escrow</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Liquidity management</h3></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10" data-reveal="up" data-reveal-delay=".1">
+      <a href="businessonline-x.html" class="btn btn-filled btn-lg">Explore all services on businessONLINE</a>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Tabs — Directory ═══════════════════════════════════════════════════ -->

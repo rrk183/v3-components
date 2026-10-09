@@ -1,0 +1,441 @@
+/* ============================================================================
+   INTERNAL TOOLING — never ships, never loaded by product pages; hardcoded
+   brand constants are deliberate (ruling 2026-09-03).
+
+   Stylesheet for site-index-v2.html only. It must NOT be imported by ds.css,
+   must NOT be linked from any product page, and owes nothing to the theming
+   contract: tooling never themes, never mirrors RTL, and is light-only.
+   Everything below is self-contained apart from assets/css/fonts.css, which
+   supplies the Plus Jakarta Sans faces.
+   ========================================================================= */
+
+:root {
+  /* brand constants, hardcoded on purpose (see header) */
+  --navy: #072447;
+  --blue: #2765ff;
+  --blue-ink: #1b4bd0;
+  --ground: #f4f6f9;
+  --panel: #ffffff;
+  --line: #e2e7ee;
+  --line-soft: #eef1f6;
+  --ink: #0e2038;
+  --ink-mid: #4a5a72;
+  --ink-soft: #78879c;
+  --amber: #9a6b12;
+  --amber-bg: #fdf6e7;
+
+  --rail: 1px solid var(--line);
+  --indent: 1.25rem;
+  --radius: 10px;
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue-ink); }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 5rem;
+}
+
+/* ── masthead ─────────────────────────────────────────────────────────── */
+
+.mast {
+  background: var(--navy);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 1.75rem 1.75rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.mast-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #8fb0ff;
+  margin-bottom: .6rem;
+}
+
+.mast h1 {
+  margin: 0 0 .6rem;
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.mast p {
+  margin: 0 0 .55rem;
+  max-width: 68ch;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #b9c8dd;
+}
+
+.mast p strong { color: #e6edf7; font-weight: 600; }
+
+.mast code {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  background: rgba(255, 255, 255, .09);
+  padding: .1em .4em;
+  border-radius: 4px;
+  color: #d7e3f5;
+}
+
+.mast-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1.1rem;
+}
+
+.mast-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 999px;
+  padding: .4rem .85rem;
+}
+
+.mast-links a:hover { background: var(--blue); border-color: var(--blue); }
+
+/* ── toolbar ──────────────────────────────────────────────────────────── */
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: .7rem .8rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 3px rgba(7, 36, 71, .05);
+}
+
+.bar-search {
+  flex: 1 1 18rem;
+  min-width: 12rem;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--ground);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .5rem .75rem;
+}
+
+.bar-search:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+  background: #fff;
+}
+
+.bar-search::placeholder { color: var(--ink-soft); }
+
+.bar-btn {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-mid);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .5rem .8rem;
+  cursor: pointer;
+}
+
+.bar-btn:hover { border-color: var(--blue); color: var(--blue-ink); }
+.bar-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+
+.bar-stat {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+  padding-left: .5rem;
+}
+
+.bar-stat b { color: var(--ink); font-weight: 600; }
+
+/* ── the tree ─────────────────────────────────────────────────────────── */
+/* Depth is expressed by ONE custom property, --d, set on each branch. Type
+   scale and summary weight interpolate off it, so the grammar holds at any
+   depth without per-level classes. Indentation is structural: every branch
+   body nests inside its parent's, so the hairline rail accumulates by itself. */
+
+.tree { display: flex; flex-direction: column; gap: .6rem; }
+
+.br { --d: 1; }
+
+.br > summary {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  cursor: pointer;
+  list-style: none;
+  padding: .5rem .3rem;
+  border-radius: 8px;
+  /* one property drives the whole depth ramp */
+  font-size: clamp(.8125rem, calc(1.2rem - var(--d) * .13rem), 1.2rem);
+  font-weight: clamp(500, calc(800 - var(--d) * 100), 700);
+  letter-spacing: calc(-.02em + var(--d) * .004em);
+  color: var(--navy);
+}
+
+.br > summary::-webkit-details-marker { display: none; }
+.br > summary:hover { background: rgba(39, 101, 255, .05); }
+.br > summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+
+/* disclosure chevron — rotates on open, sized off the same depth property */
+.br > summary::before {
+  content: "";
+  flex: none;
+  width: .5em;
+  height: .5em;
+  border-right: 2px solid var(--ink-soft);
+  border-bottom: 2px solid var(--ink-soft);
+  transform: rotate(-45deg);
+  transition: transform .15s ease;
+  margin-left: .15rem;
+}
+
+.br[open] > summary::before { transform: rotate(45deg); }
+
+/* level 1 reads as a section card and stays meaningful when collapsed */
+.tree > .br {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: .5rem .9rem .1rem;
+  box-shadow: 0 1px 2px rgba(7, 36, 71, .04);
+}
+
+.tree > .br > summary { padding: .65rem .3rem; }
+
+.tree > .br[open] > summary { border-bottom: 1px solid var(--line-soft); }
+
+/* count pill — the collapsed-state payload */
+.br-n {
+  flex: none;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--blue-ink);
+  background: rgba(39, 101, 255, .1);
+  border-radius: 999px;
+  padding: .3em .55em;
+  letter-spacing: 0;
+}
+
+.br-landing {
+  flex: none;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--line);
+}
+
+.br-landing:hover { color: var(--blue-ink); border-color: currentColor; }
+
+.br-note {
+  flex: 1 1 auto;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+/* the indent rail: recursive, so it works to unlimited depth */
+.br-body {
+  margin: .25rem 0 .6rem .55rem;
+  padding-left: var(--indent);
+  border-left: var(--rail);
+}
+
+.tree > .br > .br-body { margin-bottom: .35rem; }
+
+/* ── leaves: a FAMILY row ─────────────────────────────────────────────── */
+
+.fams { list-style: none; margin: 0; padding: 0; }
+
+.fam {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .3rem .6rem;
+  padding: .4rem .3rem .4rem .5rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.fam:last-child { border-bottom: 0; }
+.fam:hover { background: rgba(39, 101, 255, .035); border-radius: 6px; }
+
+.fam-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.fam-link:hover { color: var(--blue-ink); border-bottom-color: var(--blue); }
+.fam-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.fam-date {
+  flex: none;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.fam-dl {
+  display: inline-flex;
+  gap: .3rem;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.fam-dl a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0 .35em;
+}
+
+.fam-dl a:hover { color: var(--blue-ink); border-color: var(--blue); }
+
+/* an asset the affordance promises but this checkout does not hold */
+.fam-dl .gone {
+  color: #c3ccd9;
+  border: 1px dashed var(--line-soft);
+  border-radius: 4px;
+  padding: 0 .35em;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* the archive strip — deliberately quiet; these move to /archive/ soon */
+.fam-arch {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .25rem;
+  margin-left: auto;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.fam-arch-lbl {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: var(--amber-bg);
+  border-radius: 3px;
+  padding: .15em .4em;
+}
+
+.fam-arch a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0 .3em;
+  border-radius: 3px;
+  background: #f0f3f8;
+}
+
+.fam-arch a:hover { color: #fff; background: var(--blue); }
+
+/* an archived version whose file is not in this checkout — shown, not linked */
+.fam-arch .gone {
+  color: #b2bccb;
+  padding: 0 .3em;
+  border-radius: 3px;
+  background: #f7f9fb;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* reserved slot for the coming /new/ world */
+.fam-new {
+  flex: none;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #c3ccd9;
+  border: 1px dashed var(--line);
+  border-radius: 3px;
+  padding: .15em .45em;
+}
+
+/* ── filter states (driven by site-index.js) ──────────────────────────── */
+
+[data-hit="0"] { display: none !important; }
+
+body[data-filtering="1"] .br > summary { background: none; }
+
+.empty {
+  display: none;
+  padding: 1.5rem .5rem;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+body[data-filtering="1"][data-hits="0"] .empty { display: block; }
+
+.foot {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 1rem .75rem 3rem; }
+  .mast { padding: 1.25rem 1rem; }
+  .fam-arch { margin-left: 0; width: 100%; }
+  .br-note { display: none; }
+  :root { --indent: .8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .br > summary::before { transition: none; }
+}

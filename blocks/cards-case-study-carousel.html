@@ -1,0 +1,117 @@
+<!-- ═══ Cards — Case Study Carousel (composition of cmp-cards) ═════════════
+     The SAME cards as Cards — Case Study on the shared data-carousel recipe:
+     the track sits outside the container (full section width), --cd-edge
+     aligns slide 1 and the arrows with the contained header. Arrows are btn
+     atoms wired by data-carousel-prev/next (chevrons auto-mirror in RTL).
+     No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards is-hover-zoom cards-case-study surface-soft section-y" data-animate>
+  <div class="container-ds">
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Case studies</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Selected transactions.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".1">A selection of landmark mandates across equity, debt and advisory.</p>
+    </div>
+  </div>
+
+  <div class="cd-carousel" data-carousel>
+    <div class="cd-track" data-carousel-track>
+
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="DEWA's USD 6.1bn IPO, the largest in the UAE's history." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="assets/images/shared/common/csl-dewa.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">DEWA's USD 6.1bn IPO, the largest in the UAE's history.</h3>
+          <p class="meta-dot ink-mute"><span>Utilities</span><span>UAE</span><span>12 Apr 2022</span><span>5 min read</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="SALIK, Dubai's road-toll operator, lists on the DFM." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="assets/images/case-study-library/csl-salik.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">SALIK, Dubai's road-toll operator, lists on the DFM.</h3>
+          <p class="meta-dot ink-mute"><span>Infrastructure</span><span>UAE</span><span>29 Sep 2022</span><span>3 min read</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="talabat's USD 2.0bn listing, the largest tech IPO globally in 2024." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="assets/images/shared/common/ib-case-talabat.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">talabat's USD 2.0bn listing, the largest tech IPO globally in 2024.</h3>
+          <p class="meta-dot ink-mute"><span>Technology</span><span>UAE</span><span>10 Dec 2024</span><span>4 min read</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="Lulu Retail's USD 1.7bn IPO brings the region's grocer to the ADX." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="assets/images/shared/common/csl-lulu.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">Lulu Retail's USD 1.7bn IPO brings the region's grocer to the ADX.</h3>
+          <p class="meta-dot ink-mute"><span>Retail</span><span>UAE</span><span>14 Nov 2024</span><span>4 min read</span></p>
+        </div>
+      </a>
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="A USD 1bn green bond that anchored the issuer’s sustainable financing framework." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="assets/images/case-study-library/csl-salik.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Debt Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">A USD 1bn green bond that anchored the issuer’s sustainable financing framework.</h3>
+          <p class="meta-dot ink-mute"><span>Energy</span><span>GCC</span><span>03 Mar 2025</span><span>6 min read</span></p>
+        </div>
+      </a>
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="A cross-border facility syndicated across 14 banks in three weeks." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="assets/images/shared/common/csl-hero.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Loan Syndications</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">A cross-border facility syndicated across 14 banks in three weeks.</h3>
+          <p class="meta-dot ink-mute"><span>Infrastructure</span><span>MENA</span><span>21 Jan 2025</span><span>5 min read</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="DEWA's USD 6.1bn IPO, the largest in the UAE's history." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="assets/images/shared/common/csl-dewa.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">DEWA's USD 6.1bn IPO, the largest in the UAE's history.</h3>
+          <p class="meta-dot ink-mute"><span>Utilities</span><span>UAE</span><span>12 Apr 2022</span><span>5 min read</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="SALIK, Dubai's road-toll operator, lists on the DFM." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="assets/images/case-study-library/csl-salik.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">SALIK, Dubai's road-toll operator, lists on the DFM.</h3>
+          <p class="meta-dot ink-mute"><span>Infrastructure</span><span>UAE</span><span>29 Sep 2022</span><span>3 min read</span></p>
+        </div>
+      </a>
+
+    </div>
+    <div class="cd-arrows">
+      <button class="crl-toggle" type="button" data-carousel-toggle hidden aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
+      <div class="cd-dots" data-carousel-dots></div>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous</span></button>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next</span></button>
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Cards — Case Study Carousel ═══════════════════════════════════════ -->

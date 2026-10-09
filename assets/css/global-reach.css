@@ -1,0 +1,144 @@
+/* =========================================================
+   GLOBAL REACH - scroll-driven canvas network map
+   Self-contained section ported from global-reach-scroll.html.
+   All classes namespaced gr-* and tokens scoped to .gr-wrap so
+   nothing leaks into the page's scoped DS (ds-cib-v6-base.css).
+   ========================================================= */
+.gr-wrap{
+  position:relative;color:#fff;
+  --navy:#0b2b5e;--navy-deep:#071d40;--blue:#1668e3;
+  --arc:#2f6dff;--arc-hot:#5b8dff;
+  --ink-on-dark:#ffffff;--ink-on-dark-2:rgba(214,222,236,.62);--ink-on-dark-3:rgba(214,222,236,.78);
+  --rule-on-dark:rgba(150,178,230,.22);--stage-bg:#041a45;
+}
+
+/* SCROLL SCRUB - tall track, pinned viewport */
+.gr-reach{position:relative;width:100%;overflow:hidden;z-index:1}
+.gr-scrub{position:relative;height:600vh}
+.gr-scrub__pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(60% 70% at var(--gx,62%) var(--gy,45%),#0c3576 0%,#08285e 38%,#051c49 70%,#03143a 100%),#030f2b}
+/* map canvas is full-bleed (covers the whole pinned viewport) so the dotted map
+   reaches every edge; the copy/stats stay in the centred 16:9 frame above it. */
+.gr-map{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.gr-scrub__hint{
+  position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font:600 12px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-on-dark-3);pointer-events:none;transition:opacity .3s;
+}
+.gr-scrub__hint svg{width:16px;height:16px;animation:gr-nudge 1.6s ease-in-out infinite}
+@keyframes gr-nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.gr-scrub__tail{height:40vh;background:#030f2b}
+.gr-reach__frame{position:relative;width:min(100%,calc(100vh*16/9));aspect-ratio:16/9;margin:0 auto}
+.gr-reach.gr-is-portrait .gr-reach__frame{width:100%;height:100vh;height:100svh;aspect-ratio:auto}
+
+/* fixed-size stage, scaled to fit the frame */
+.gr-stage{
+  position:absolute;left:0;top:0;width:1920px;height:1080px;
+  transform-origin:0 0;background:transparent;z-index:1;
+}
+.gr-reach.gr-is-portrait .gr-stage{width:1080px}
+
+/* COPY */
+.gr-intro{
+  position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+  text-align:center;margin:0;
+  font:700 72px/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.035em;
+}
+.gr-intro span{display:block}
+.gr-intro span+span{color:var(--ink-on-dark-2);font-weight:600}
+
+.gr-copy{position:absolute;left:112px;top:236px;width:700px}
+.gr-copy__eyebrow{margin:0 0 30px;font:600 17px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-on-dark-3);opacity:.8}
+.gr-copy__title{margin:0;font:700 82px/.98 'Plus Jakarta Sans',sans-serif;letter-spacing:-.045em}
+.gr-copy__title span{display:block}
+.gr-copy__title span+span{color:var(--ink-on-dark-2)}
+.gr-copy__body{margin:40px 0 0;font:400 24px/1.42 'Plus Jakarta Sans',sans-serif;color:var(--ink-on-dark-3)}
+
+.gr-stats{position:absolute;left:112px;right:112px;top:858px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin:0;padding:0;list-style:none}
+.gr-stat{position:relative;padding-top:28px}
+.gr-stat__rule{position:absolute;left:0;right:0;top:0;height:1px;background:var(--rule-on-dark);transform-origin:0 50%}
+.gr-stat__num{display:block;font:400 72px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em}
+.gr-stat__label{display:block;margin-top:20px;font:400 20px/1.3 'Plus Jakarta Sans',sans-serif;color:var(--ink-on-dark-3)}
+
+/* portrait composition */
+.gr-reach.gr-is-portrait .gr-intro{font-size:84px;padding:0 60px}
+.gr-reach.gr-is-portrait .gr-copy{left:72px;top:110px;width:936px}
+.gr-reach.gr-is-portrait .gr-copy__eyebrow{font-size:26px;margin-bottom:30px}
+.gr-reach.gr-is-portrait .gr-copy__title{font-size:96px}
+.gr-reach.gr-is-portrait .gr-copy__body{font-size:32px;margin-top:30px}
+.gr-reach.gr-is-portrait .gr-stats{left:72px;right:72px;top:auto;bottom:120px;grid-template-columns:1fr 1fr;gap:44px 48px}
+.gr-reach.gr-is-portrait .gr-stat{padding-top:24px}
+.gr-reach.gr-is-portrait .gr-stat__num{font-size:80px}
+.gr-reach.gr-is-portrait .gr-stat__label{font-size:30px;margin-top:14px}
+
+/* animated elements start hidden; JS drives them from the timeline.
+   Scoped to .gr-wrap so the page's own [data-anim] engine is untouched. */
+.gr-wrap [data-anim]{opacity:0;will-change:opacity,transform}
+
+@media (prefers-reduced-motion:reduce){.gr-wrap *{transition:none!important;animation:none!important}}
+
+/* portrait fit: one composed band (JS sets --gr-pad, the space outside it, and
+   --gr-t, a type step for short screens) so spacing reads the same on every phone */
+.gr-reach.gr-is-portrait .gr-copy{top:var(--gr-top,110px)}
+.gr-reach.gr-is-portrait .gr-copy__eyebrow{font-size:calc(22px * var(--gr-t,1));margin-bottom:calc(24px * var(--gr-t,1))}
+.gr-reach.gr-is-portrait .gr-copy__title{font-size:calc(84px * var(--gr-t,1))}
+.gr-reach.gr-is-portrait .gr-copy__body{font-size:calc(28px * var(--gr-t,1));margin-top:calc(24px * var(--gr-t,1))}
+.gr-reach.gr-is-portrait .gr-stats{bottom:calc(120px + var(--gr-pad,0px));gap:calc(36px * var(--gr-t,1)) 48px}
+.gr-reach.gr-is-portrait .gr-stat{padding-top:calc(20px * var(--gr-t,1))}
+.gr-reach.gr-is-portrait .gr-stat__num{font-size:calc(68px * var(--gr-t,1))}
+.gr-reach.gr-is-portrait .gr-stat__label{font-size:calc(26px * var(--gr-t,1));margin-top:calc(12px * var(--gr-t,1))}
+.gr-reach.gr-is-portrait .gr-intro{font-size:calc(80px * var(--gr-t,1))}
+
+/* =========================================================
+   SURFACES - the section follows a DS surface class on .gr-wrap
+   (component library Surface control, or authored on a page).
+   No surface class = the original navy film, unchanged.
+   --gr-* are RGB triplets the canvas reads (global-reach.js).
+   ========================================================= */
+/* any surface: the pin stops painting its own navy and lets the
+   section's surface show; a soft light still follows Dubai */
+.gr-wrap:not([class*="surface-"]){background:#030f2b}
+.gr-wrap[class*="surface-"] .gr-scrub__pin{background:radial-gradient(60% 70% at var(--gx,62%) var(--gy,45%),rgba(var(--gr-wash,255,255,255),.10) 0%,transparent 70%)}
+/* image: pinned to the viewport, so a 600vh section shows one cover frame */
+.gr-wrap.surface-image{background-attachment:fixed}
+
+/* light grounds: navy ink, navy map, brand-blue routes */
+.gr-wrap.surface-white,.gr-wrap.surface-soft,.gr-wrap.surface-grey,.gr-wrap.surface-mute,.gr-wrap.surface-grey-2,
+.gr-wrap.surface-primary-soft,.gr-wrap.surface-accent-soft,.gr-wrap.surface-clear{
+  color:var(--navy);
+  --ink-on-dark-2:rgba(7,36,71,.55);--ink-on-dark-3:rgba(7,36,71,.74);--rule-on-dark:rgba(7,36,71,.16);
+  --gr-wash:39,101,255;
+  --gr-ocean:7,36,71;--gr-land:7,36,71;--gr-land-a:.6;
+  --gr-arc:39,101,255;--gr-glow:39,101,255;--gr-glow-edge:39,101,255;--gr-glow-lite:39,101,255;
+  --gr-ring:39,101,255;--gr-node:39,101,255;--gr-core:255,255,255;--gr-label:7,36,71;--gr-head:39,101,255;
+}
+/* accent (brand blue): blue routes would vanish, so the network draws in white */
+.gr-wrap.surface-accent{
+  --ink-on-dark-2:rgba(255,255,255,.72);--ink-on-dark-3:rgba(255,255,255,.86);--rule-on-dark:rgba(255,255,255,.3);
+  --gr-ocean:255,255,255;--gr-land:255,255,255;--gr-land-a:.8;
+  --gr-arc:255,255,255;--gr-glow:255,255,255;--gr-glow-edge:255,255,255;--gr-glow-lite:255,255,255;
+  --gr-ring:255,255,255;--gr-node:255,255,255;--gr-core:39,101,255;--gr-label:255,255,255;--gr-head:255,255,255;
+}
+
+/* OVERLAYS (library Overlay control / authored .ov): the wash tints the ground
+   only, under the map and copy. It lands next to the canvas inside the pin
+   (viewport-sized); a second copy the harness hangs on the 600vh section
+   itself would double the tint and stretch gradients, so it is dropped. */
+.gr-wrap .gr-map{z-index:1}
+.gr-wrap .gr-reach{z-index:2}
+.gr-scrub__pin > .ov{z-index:0}
+.gr-wrap > .ov{display:none}
+
+/* ARABIC / RTL: Tajawal (the font shorthand above would otherwise win),
+   no negative tracking or caps spacing (breaks Arabic joining), copy and
+   stats read from the right. The map stays geographic, never mirrored. */
+[dir="rtl"] .gr-wrap :is(.gr-intro,.gr-copy__eyebrow,.gr-copy__title,.gr-copy__body,.gr-stat__num,.gr-stat__label){font-family:'Tajawal','Plus Jakarta Sans',sans-serif;letter-spacing:0;text-transform:none}
+[dir="rtl"] .gr-wrap :is(.gr-copy,.gr-stat){text-align:right}
+[dir="rtl"] .gr-wrap .gr-copy__title{line-height:1.12}
+[dir="rtl"] .gr-wrap .gr-intro{line-height:1.25}
+[dir="rtl"] .gr-wrap .gr-stat__num{font-weight:500;font-size:56px;line-height:1.1}
+[dir="rtl"] .gr-wrap .gr-stat__rule{transform-origin:100% 50%}
+/* RTL copy sits right-aligned in its box; a narrower box pulls it left, clear of the map cluster */
+[dir="rtl"] .gr-reach:not(.gr-is-portrait) .gr-copy{width:500px;top:290px}
+[dir="rtl"] .gr-reach:not(.gr-is-portrait) .gr-copy__body{white-space:nowrap}

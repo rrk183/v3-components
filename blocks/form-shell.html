@@ -1,0 +1,76 @@
+<!-- ═══ Form Shell — application / support form page pattern ════════════════
+     Two-column form page shell, now near-pure COMPOSITION: chips-as-tabs
+     (chip chip-lg + [data-aud], keyboard-wired by ds.js), card-panel panels,
+     .field atoms, type via .type-* classes, spacing via utilities. The
+     component owns ONLY structure + behavior states: .sac-shell grid,
+     fieldset rhythm + legend float fix, .sac-grid, error/success wiring.
+     Interactions auto-wired by ds.js: [data-aud]/[data-aud-panel] tabs and
+     form[data-mock-form] validation + success reveal (prototype only).
+     ID-free: fields label via aria-label + sibling label (no for/id).
+     Styled by .cmp-form-shell (structural rules only). -->
+<section class="cmp cmp-form-shell surface-soft section-y" data-animate>
+  <div class="container-ds">
+    <div class="sac-shell">
+      <div>
+        <p class="type-body-sm type-semibold mb-3 ink-primary">First, choose the area you would like to speak with us about.</p>
+        <div class="flex flex-wrap gap-2 mb-8" role="tablist">
+          <button type="button" class="chip chip-lg active" role="tab" aria-selected="true" data-aud="corp" tabindex="0">Corporate &amp; Institutional Banking</button>
+          <button type="button" class="chip chip-lg" role="tab" aria-selected="false" data-aud="trade" tabindex="-1">Trading &amp; Securities</button>
+        </div>
+        <div class="sac-card card-panel surface-white" style="--card-pad: clamp(26px,3vw,42px)" role="tabpanel" data-aud-panel="corp">
+          <form class="sac-form" novalidate data-mock-form>
+            <fieldset class="sac-fieldset">
+              <legend class="sac-legend type-h4 ink-primary">About you</legend>
+              <p class="type-body-sm clear-both mb-5 ink-mute">Tell us who we should speak with.</p>
+              <div class="sac-grid">
+                <div class="field">
+                  <input type="text" placeholder=" " name="name" required aria-required="true" aria-label="Full name" />
+                  <label>Full name <span class="field-req" aria-hidden="true">*</span></label>
+                  <p class="field-error">Please enter your full name.</p>
+                </div>
+                <div class="field">
+                  <input type="email" placeholder=" " name="email" required aria-required="true" aria-label="Work email" />
+                  <label>Work email <span class="field-req" aria-hidden="true">*</span></label>
+                  <p class="field-error">Please enter your work email.</p>
+                </div>
+              </div>
+            </fieldset>
+            <label class="check sac-consent">
+              <input type="checkbox" name="consent" required aria-required="true" />
+              <span class="box" aria-hidden="true"></span>
+              <span class="type-body-sm ink-mute">I confirm the information provided is accurate and consent to being contacted about this request.</span>
+            </label>
+            <p class="field-error mt-2" data-consent-error role="alert" hidden>Please confirm before submitting.</p>
+            <div class="flex flex-wrap items-center gap-4 mt-8">
+              <button type="submit" class="btn btn-filled btn-lg min-w-44">Submit now</button>
+              <p class="type-caption ink-mute">We aim to respond within 1 business day.</p>
+            </div>
+          </form>
+          <div class="sac-success" role="status" aria-live="polite">
+            <span class="icon-tile is-round sac-success-icon mb-5" style="--it-size:68px" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <h3 class="type-h3 mb-3 ink-primary">Thank you, your request has been received.</h3>
+            <p class="type-body measure mx-auto ink-mute">Your Relationship Team aims to respond within 1 business day.</p>
+          </div>
+        </div>
+        <div class="sac-card card-panel surface-white" style="--card-pad: clamp(26px,3vw,42px)" role="tabpanel" data-aud-panel="trade" hidden>
+          <p class="type-body ink-mute">The Trading &amp; Securities variant carries the same anatomy with its own fieldsets.</p>
+        </div>
+      </div>
+      <aside class="sac-aside" aria-label="What happens next">
+        <div class="card-panel surface-white" style="--card-pad: 28px 26px 30px">
+          <h3 class="type-h6 mb-3 ink-primary">What happens next</h3>
+          <ol class="sac-aside-list">
+            <li>We review your request and match it to the right team.</li>
+            <li>A specialist contacts you within one business day.</li>
+            <li>Together you agree the next steps.</li>
+          </ol>
+        </div>
+        <div class="card-panel surface-white" style="--card-pad: 28px 26px 30px">
+          <h3 class="type-h6 mb-3 ink-primary">Prefer to talk now?</h3>
+          <p class="type-body-sm ink-mute">Call the 24/7 service line on 600 54 0000, or <a class="type-semibold ink-accent" href="contact-us.html">contact us online</a>.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Form Shell ══════════════════════════════════════════════════════════ -->

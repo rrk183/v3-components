@@ -1,0 +1,52 @@
+<!-- ═══ Hero — Scroll Cinema (scrollytelling, scrubbed frames + phased text) ══
+     A scroll-scrubbed container-ship push-in (121-frame sequence) behind THREE
+     text phases, plus an overlay that darkens as the camera closes in — CTAs
+     land in the final phase. Built on the DECLARATIVE scroll-story-scrub engine:
+     the frame sequence scrubs by progress (data-source/data-count/data-path),
+     and each phase + the overlay carry their own data-anim keyframes. -->
+<section class="cmp cmp-hero-cinematic-pinned surface-primary" data-animate>
+  <div class="scin" data-behavior="scroll-story-scrub"
+       data-scrub-vh="340" data-source="images"
+       data-count="121" data-path="/assets/images/hero-frames/ezgif-frame-###.jpg" data-start="1">
+    <div class="scin-stage">
+      <canvas class="scin-canvas" data-story-canvas></canvas>
+      <div class="scin-overlay" aria-hidden="true" data-anim='{"0-1":{"opacity":[0.4,0.74]}}'></div>
+
+      <!-- Phase 1 — opener, bottom-left -->
+      <div class="scin-phase scin-bottom" data-anim='{"0-0.05":{"opacity":[0,1],"y":[40,0],"blur":[8,0]},"0.28-0.36":{"opacity":[1,0],"y":[0,-40],"blur":[0,8]}}'>
+        <div class="container-ds scin-inner">
+          <span class="ds-eyebrow ink-white">Emirates NBD · Trade Finance</span>
+          <h1 class="type-display-lg ink-white">Financing<br>global trade.</h1>
+          <p class="type-body-lg scin-sub ink-soft">Moving capital as far and as fast as your ambitions demand.</p>
+          <div class="scin-cue" aria-hidden="true">
+            <span class="scin-cue-line"></span>
+            <span class="scin-cue-label">Scroll to explore</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 — mid push-in, centered -->
+      <div class="scin-phase scin-center" data-anim='{"0.34-0.44":{"opacity":[0,1],"y":[40,0],"blur":[8,0]},"0.60-0.68":{"opacity":[1,0],"y":[0,-40],"blur":[0,8]}}'>
+        <div class="container-ds scin-inner">
+          <span class="ds-eyebrow ink-white">From port to portfolio</span>
+          <h2 class="type-display-lg ink-white">Capital at the speed<br>of commerce.</h2>
+          <p class="type-body-lg scin-sub ink-soft">Letters of credit, supply-chain finance and FX — in one place, across 180+ markets.</p>
+        </div>
+      </div>
+
+      <!-- Phase 3 — close-in, bottom-left + CTAs -->
+      <div class="scin-phase scin-bottom" data-anim='{"0.70-0.82":{"opacity":[0,1],"y":[40,0],"blur":[8,0]}}'>
+        <div class="container-ds scin-inner">
+          <span class="ds-eyebrow ink-white">Ready to move?</span>
+          <h2 class="type-display-lg ink-white">Your trade.<br>Our expertise.<br>Every market.</h2>
+          <div class="scin-actions">
+            <a href="#" class="btn btn-filled btn-lg">Get started →</a>
+            <a href="#" class="btn btn-outline-light btn-lg">Explore Trade Finance</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Hero — Scroll Cinema ════════════════════════════════════════════════ -->

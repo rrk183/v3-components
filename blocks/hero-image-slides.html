@@ -1,0 +1,56 @@
+<!-- ═══ Hero — Image Carousel (cmp-hero v4 composition) ══════════════════════
+     The image composition in carousel mode — all-image slides, each with
+     its OWN .ov overlays (gradient-left / gradient-bottom / radial + tint).
+     Same shared carousel core + numbered-pagination nav. -->
+<section class="cmp cmp-hero surface-primary" style="--hero-auto: 7s" data-animate data-carousel data-autoplay="7000" aria-roledescription="carousel" aria-label="Featured">
+  <div class="hero-track" data-carousel-track>
+    <div class="hero-stage surface-image" data-carousel-slide aria-roledescription="slide">
+      <span class="media-cover" data-bg="assets/images/story-1.jpg" aria-hidden="true"></span>
+      <span class="ov ov-dark ov-gradient-l ov-80" aria-hidden="true"></span>
+      <div class="container-ds hero-frame">
+        <div class="hero-copy ds-stack">
+          <span class="ds-eyebrow ink-white">Trade</span>
+          <h2 class="type-h1 ink-white">Trade that moves at your speed</h2>
+          <p class="type-body-lg measure ink-soft">Letters of credit and guarantees issued digitally, end to end.</p>
+          <div class="hero-ctas flex flex-wrap items-center gap-4 mt-2"><a href="#" class="btn btn-filled btn-lg">Explore trade</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stage surface-image" data-carousel-slide aria-roledescription="slide">
+      <span class="media-cover" data-bg="assets/images/story-2.jpg" aria-hidden="true"></span>
+      <span class="ov ov-dark ov-gradient-b ov-80" aria-hidden="true"></span>
+      <div class="container-ds hero-frame">
+        <div class="hero-copy ds-stack">
+          <span class="ds-eyebrow ink-white">Digital</span>
+          <h2 class="type-h1 ink-white">Connect your systems straight to the bank</h2>
+          <p class="type-body-lg measure ink-soft">APIs and host-to-host across payments, statements and reconciliation.</p>
+          <div class="hero-ctas flex flex-wrap items-center gap-4 mt-2"><a href="#" class="btn btn-filled btn-lg">Explore APIs</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stage surface-image" data-carousel-slide aria-roledescription="slide">
+      <span class="media-cover" data-bg="assets/images/story-4.jpg" aria-hidden="true"></span>
+      <span class="ov ov-dark ov-radial ov-70" aria-hidden="true"></span>
+      <span class="ov ov-accent ov-tint ov-30" aria-hidden="true"></span>
+      <div class="container-ds hero-frame">
+        <div class="hero-copy ds-stack">
+          <span class="ds-eyebrow ink-white">Markets</span>
+          <h2 class="type-h1 ink-white">See it. Hedge it. Book it.</h2>
+          <p class="type-body-lg measure ink-soft">Live pricing and one-click execution across rates, FX and commodities.</p>
+          <div class="hero-ctas flex flex-wrap items-center gap-4 mt-2"><a href="#" class="btn btn-filled btn-lg">Explore markets</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-nav">
+    <div class="container-ds flex items-center gap-3">
+      <button class="crl-toggle" type="button" data-carousel-toggle aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
+      <div data-carousel-dots></div>
+      <div class="flex items-center gap-2 ms-auto">
+        <button type="button" class="crl-btn is-arrow-back" data-carousel-prev><span class="sr-only">Previous</span></button>
+        <button type="button" class="crl-btn is-arrow" data-carousel-next><span class="sr-only">Next</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Hero — Image Carousel ══════════════════════════════════════════════ -->

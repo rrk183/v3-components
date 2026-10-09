@@ -1,0 +1,72 @@
+<!-- ═══ Tabs — Underline (cmp-tabs v4) ═══════════════════════════════════════
+     THE tabs shell, default rail: .tb-rail.is-underline of .tb-tab triggers.
+     Panels (.tb-panel) take ANY HTML — here prose, a cmp-cards grid and a
+     table, to prove the shell is content-agnostic. ds.js data-tabs drives it.
+     No IDs, no inline styles beyond --var passing. -->
+<section class="cmp cmp-tabs surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div data-tabs data-tabs-swipe>
+      <div class="tb-rail is-underline mb-8" role="tablist">
+        <button type="button" class="tb-tab active ink-primary" data-tab="overview">Overview</button>
+        <button type="button" class="tb-tab ink-mute" data-tab="solutions">Solutions</button>
+        <button type="button" class="tb-tab ink-mute" data-tab="activity">Recent activity</button>
+      </div>
+      <div data-panel="overview" class="tb-panel active">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div class="ds-stack">
+            <h3 class="type-h3 ink-primary">Account overview</h3>
+            <p class="type-body ink-mute">Your complete financial picture &mdash; balances, positions, and activity across every entity and currency, updated in real time.</p>
+            <ul class="list-check mt-2">
+              <li class="ink-mute">Balances across every entity and currency</li>
+              <li class="ink-mute">Real-time positions and activity</li>
+              <li class="ink-mute">One login for the whole group</li>
+            </ul>
+            <a href="#" class="btn btn-text mt-2 is-arrow">Open businessONLINE
+             </a>
+          </div>
+          <span class="media-frame aspect-[16/10]"><span class="media-cover" data-bg="assets/images/image-2.jpg" aria-hidden="true"></span></span>
+        </div>
+      </div>
+      <div data-panel="solutions" class="tb-panel">
+        <div class="cmp-cards is-cols-3 is-hover-lift">
+          <div class="cd-grid" role="list">
+            <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+              <div class="ds-stack">
+                <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+                <h4 class="type-h6 ink-primary">Payments</h4>
+                <p class="type-body-sm ink-mute">Domestic, international and bulk payments from a single hub.</p>
+              </div>
+            </a>
+            <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+              <div class="ds-stack">
+                <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 7l3-3M4 7l3 3M20 17H4m16 0l-3-3m3 3l-3 3"/></svg></span>
+                <h4 class="type-h6 ink-primary">Trade finance</h4>
+                <p class="type-body-sm ink-mute">LCs, guarantees and export finance &mdash; fully digital, end to end.</p>
+              </div>
+            </a>
+            <a href="#" class="cd-card card-panel surface-soft is-tile" role="listitem">
+              <div class="ds-stack">
+                <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2s7 7.5 7 12a7 7 0 0 1-14 0c0-4.5 7-12 7-12z"/></svg></span>
+                <h4 class="type-h6 ink-primary">Liquidity</h4>
+                <p class="type-body-sm ink-mute">Centralise cash, automate sweeping, optimise working capital.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div data-panel="activity" class="tb-panel">
+        <div class="tbl-wrap surface-white">
+          <table class="tbl">
+            <thead><tr><th>Reference</th><th>Type</th><th>Date</th><th>Amount</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">TRX-88214</td><td>Transfer</td><td>12 Aug 2026</td><td>AED 1,240,000.00</td></tr>
+              <tr><td class="mono">TRX-88198</td><td>FX forward</td><td>11 Aug 2026</td><td>USD 500,000.00</td></tr>
+              <tr><td class="mono">TRX-88171</td><td>LC issuance</td><td>09 Aug 2026</td><td>EUR 310,750.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Tabs — Underline ═══════════════════════════════════════════════════ -->

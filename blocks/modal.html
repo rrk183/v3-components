@@ -1,0 +1,237 @@
+<!-- ═══ Modal ═══════════════════════════════════════════════════════════════
+     Triggers + page-level overlays. ds.js wires data-modal-open/close/dismiss.
+     Overlay target IDs are required by the runtime (getElementById) and are the
+     one allowed ID use — kept descriptive. Six variants:
+       modal-transaction · modal-confirm · modal-delete · modal-add-beneficiary
+       modal-content-cover · modal-content-plain
+     -->
+<section class="cmp cmp-modal surface-soft section-y" data-animate>
+  <div class="container-ds">
+    <span class="ds-eyebrow ink-accent" data-reveal="up">Modal Dialogs — click to open</span>
+    <div class="flex flex-wrap gap-4 mt-6" data-reveal="up">
+      <button class="btn btn-primary" data-modal-open="modal-transaction">Default Modal</button>
+      <button class="btn btn-navy" data-modal-open="modal-confirm">Confirmation</button>
+      <button class="btn btn-danger" data-modal-open="modal-delete">Destructive</button>
+      <button class="btn btn-outline" data-modal-open="modal-add-beneficiary">Form Modal</button>
+      <button class="btn btn-navy" data-modal-open="modal-content-cover">Content · Cover</button>
+      <button class="btn btn-outline" data-modal-open="modal-content-plain">Content · No cover</button>
+      <button class="btn btn-outline" data-modal-open="modal-content-long">Content · Long body</button>
+      <button class="btn btn-outline" data-modal-open="modal-content-wide">Content · Wide</button>
+    </div>
+  </div>
+
+  <!-- ── Default · Transaction details ───────────────────────────────────── -->
+  <div class="modal-overlay" id="modal-transaction" data-modal-dismiss>
+    <div class="modal card-panel surface-white" style="--card-pad:2.5rem">
+      <div class="modal-header">
+        <div>
+          <h3 class="type-h4 mb-1 ink-primary">Transaction details</h3>
+          <p class="type-caption ink-mute">TXN-20250501-0041 · 01 May 2025, 14:32 GST</p>
+        </div>
+        <button class="btn btn-outline btn-icon btn-sm is-close" data-modal-close="modal-transaction"><span class="sr-only">Close</span>
+        </button>
+      </div>
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="modal-tile surface-white">
+            <p class="type-caption mb-1 ink-mute">Amount</p>
+            <p class="type-h4 ink-primary">USD 2,450,000</p>
+          </div>
+          <div class="modal-tile surface-white">
+            <p class="type-caption mb-1 ink-mute">Status</p>
+            <span class="badge badge-ok">● Completed</span>
+          </div>
+        </div>
+        <div class="modal-rows">
+          <div class="flex justify-between"><span class="type-body-sm ink-mute">Beneficiary</span><span class="type-body-sm font-semibold ink-primary">Al Futtaim LLC</span></div>
+          <div class="flex justify-between"><span class="type-body-sm ink-mute">IBAN</span><span class="type-body-sm mono ink-mute">AE07 0331 2345 6789 0</span></div>
+          <div class="flex justify-between"><span class="type-body-sm ink-mute">Bank</span><span class="type-body-sm ink-primary">Emirates NBD</span></div>
+          <div class="flex justify-between"><span class="type-body-sm ink-mute">Reference</span><span class="type-body-sm ink-primary">Invoice INV-2025-0041</span></div>
+        </div>
+        <div class="flex gap-3 pt-2">
+          <button class="btn btn-outline flex-1" data-modal-close="modal-transaction">Close</button>
+          <button class="btn btn-primary flex-1">Download Receipt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Confirmation ────────────────────────────────────────────────────── -->
+  <div class="modal-overlay" id="modal-confirm" data-modal-dismiss>
+    <div class="modal card-panel modal-w420 surface-white" style="--card-pad:2.5rem">
+      <div class="modal-header">
+        <span class="icon-tile modal-icon-info"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
+        <button class="btn btn-outline btn-icon btn-sm is-close" data-modal-close="modal-confirm"><span class="sr-only">Close</span></button>
+      </div>
+      <h3 class="type-h4 mb-2 ink-primary">Confirm payment</h3>
+      <p class="type-body mb-6 ink-mute">You're about to send <strong>USD 2,450,000</strong> to Al Futtaim LLC. This action cannot be undone.</p>
+      <div class="flex gap-3">
+        <button class="btn btn-outline flex-1" data-modal-close="modal-confirm">Cancel</button>
+        <button class="btn btn-primary flex-1" data-modal-close="modal-confirm">Confirm Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Destructive ─────────────────────────────────────────────────────── -->
+  <div class="modal-overlay" id="modal-delete" data-modal-dismiss>
+    <div class="modal card-panel modal-w420 surface-white" style="--card-pad:2.5rem">
+      <div class="modal-header">
+        <span class="icon-tile modal-icon-danger"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg></span>
+        <button class="btn btn-outline btn-icon btn-sm is-close" data-modal-close="modal-delete"><span class="sr-only">Close</span></button>
+      </div>
+      <h3 class="type-h4 mb-2 ink-primary">Delete beneficiary?</h3>
+      <p class="type-body mb-6 ink-mute">This will permanently remove <strong>Al Futtaim LLC</strong> from your saved beneficiaries. You cannot undo this.</p>
+      <div class="flex gap-3">
+        <button class="btn btn-outline flex-1" data-modal-close="modal-delete">Cancel</button>
+        <button class="btn btn-danger flex-1" data-modal-close="modal-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Form · Add beneficiary ──────────────────────────────────────────── -->
+  <div class="modal-overlay" id="modal-add-beneficiary" data-modal-dismiss>
+    <div class="modal card-panel modal-w480 surface-white" style="--card-pad:2.5rem">
+      <div class="modal-header">
+        <div><h3 class="type-h4 mb-1 ink-primary">Add new beneficiary</h3><p class="type-caption ink-mute">Fill in the details below</p></div>
+        <button class="btn btn-outline btn-icon btn-sm is-close" data-modal-close="modal-add-beneficiary"><span class="sr-only">Close</span></button>
+      </div>
+      <div class="space-y-4">
+        <div class="field">
+          <input type="text" placeholder=" " />
+          <label class="ink-mute">Beneficiary name</label>
+        </div>
+        <div class="field">
+          <input type="text" placeholder=" " />
+          <label class="ink-mute">IBAN</label>
+        </div>
+        <div class="flex gap-3 pt-2">
+          <button class="btn btn-outline flex-1" data-modal-close="modal-add-beneficiary">Cancel</button>
+          <button class="btn btn-navy flex-1" data-modal-close="modal-add-beneficiary">Save Beneficiary</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Content · With cover image ──────────────────────────────────────── -->
+  <div class="modal-overlay overlay-pad" id="modal-content-cover" data-modal-dismiss>
+    <div class="modal-content card-panel surface-white" style="--card-pad:0">
+      <button class="btn btn-outline btn-icon btn-sm modal-close-float is-close" data-modal-close="modal-content-cover"><span class="sr-only">Close</span>
+      </button>
+      <div class="modal-cover surface-image" data-bg="/assets/images/hero-bg.webp">
+        <div class="ov ov-gradient-b ov-70"></div>
+        <div class="modal-cover-text">
+          <span class="type-eyebrow ink-white">Announcement</span>
+          <h2 class="type-h4 ink-white" data-reveal="up">Introducing smartTRADE — trade finance, fully digital.</h2>
+        </div>
+      </div>
+      <div class="modal-content-body">
+        <p class="type-body type-medium mb-4 ink-primary">A single platform for letters of credit, guarantees, export finance and supply chain programmes — with the MENA expertise to back every transaction.</p>
+        <p class="type-body-sm mb-4 ink-mute">Issue and amend LCs in real time, track every document from application to settlement, and connect to 11,000+ correspondent banks across 180+ countries. No branch visits, no paper trails — just faster, more certain trade.</p>
+        <ul class="modal-list">
+          <li>Digital LC issuance &amp; discrepancy management</li>
+          <li>Performance, bid and advance-payment guarantees</li>
+          <li>Receivables discounting and forfaiting</li>
+        </ul>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" data-modal-close="modal-content-cover">Maybe later</button>
+          <button class="btn btn-primary" data-modal-close="modal-content-cover">Explore smartTRADE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Content · Without cover image ───────────────────────────────────── -->
+  <div class="modal-overlay overlay-pad" id="modal-content-plain" data-modal-dismiss>
+    <div class="modal-content card-panel surface-white" style="--card-pad:0">
+      <div class="modal-plain-head">
+        <div>
+          <span class="type-eyebrow ink-accent">Terms &amp; Conditions</span>
+          <h2 class="type-h4 ink-primary">Updated schedule of charges</h2>
+        </div>
+        <button class="btn btn-outline btn-icon btn-sm is-close" data-modal-close="modal-content-plain"><span class="sr-only">Close</span>
+        </button>
+      </div>
+      <div class="modal-content-body modal-content-body-plain">
+        <p class="type-body-sm mb-4 ink-mute">Effective 1 July 2025, the Schedule of Charges for Corporate &amp; Institutional Banking products has been updated. Please review the changes below before continuing to use businessONLINE.</p>
+        <div class="modal-scroll">
+          <p class="type-body-sm mb-4 ink-mute">1. Wire transfer fees for international payments have been revised in line with prevailing correspondent banking rates. Domestic payment processing remains free of charge for all account tiers.</p>
+          <p class="type-body-sm mb-4 ink-mute">2. Trade finance tariffs for letters of credit and guarantees are now tiered by transaction value, with preferential pricing for high-volume clients.</p>
+          <p class="type-body-sm mb-4 ink-mute">3. FX conversion spreads remain unchanged. Real-time rates continue to be available through the businessONLINE markets module.</p>
+        </div>
+        <label class="check modal-accept">
+          <input type="checkbox" />
+          <span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="modal-accept-text">I have read and accept the updated Schedule of Charges</span>
+        </label>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" data-modal-close="modal-content-plain">Cancel</button>
+          <button class="btn btn-navy" data-modal-close="modal-content-plain">Accept &amp; Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Content · Long body — the head (and its close) stays pinned while the
+       body scrolls; open this to test the plain-head anatomy under overflow ── -->
+  <div class="modal-overlay overlay-pad" id="modal-content-long" data-modal-dismiss>
+    <div class="modal-content card-panel surface-white" style="--card-pad:0">
+      <div class="modal-plain-head">
+        <div>
+          <span class="type-eyebrow ink-accent">Terms &amp; Conditions</span>
+          <h2 class="type-h4 ink-primary">Full schedule of charges</h2>
+        </div>
+        <button class="btn btn-outline btn-icon btn-sm is-close" data-modal-close="modal-content-long"><span class="sr-only">Close</span>
+        </button>
+      </div>
+      <div class="modal-content-body modal-content-body-plain">
+        <p class="type-body-sm mb-4 ink-mute">1. Wire transfer fees for international payments have been revised in line with prevailing correspondent banking rates. Domestic payment processing remains free of charge for all account tiers.</p>
+        <p class="type-body-sm mb-4 ink-mute">2. Trade finance tariffs for letters of credit and guarantees are now tiered by transaction value, with preferential pricing for high-volume clients.</p>
+        <p class="type-body-sm mb-4 ink-mute">3. FX conversion spreads remain unchanged. Real-time rates continue to be available through the businessONLINE markets module.</p>
+        <p class="type-body-sm mb-4 ink-mute">4. Account maintenance charges apply per account per calendar month and are debited on the first working day of the following month.</p>
+        <p class="type-body-sm mb-4 ink-mute">5. Cheque book issuance for corporate accounts is charged per book. Special cheque printing is quoted on request.</p>
+        <p class="type-body-sm mb-4 ink-mute">6. Payroll processing through the WPS channel is charged per employee record per cycle, with volume tiers applied quarterly.</p>
+        <p class="type-body-sm mb-4 ink-mute">7. Standing instructions are charged per execution. Failed executions due to insufficient funds incur a separate handling fee.</p>
+        <p class="type-body-sm mb-4 ink-mute">8. Duplicate statements and audit confirmation letters are produced within five working days of a complete request.</p>
+        <p class="type-body-sm mb-4 ink-mute">9. Escrow and agency service fees follow the schedule agreed in the relevant service agreement and are invoiced separately.</p>
+        <p class="type-body-sm mb-4 ink-mute">10. Collection items in foreign currency are subject to correspondent charges, which are passed through at cost.</p>
+        <p class="type-body-sm mb-4 ink-mute">11. Safe deposit and custody services are billed annually in advance, with pro-rata refunds on early termination.</p>
+        <p class="type-body-sm mb-4 ink-mute">12. Digital channel subscriptions cover platform access, token issuance and standard support during business hours.</p>
+        <p class="type-body-sm mb-4 ink-mute">13. Out-of-hours support and priority processing carry a surcharge, quoted at the time of request.</p>
+        <p class="type-body-sm mb-4 ink-mute">14. All charges are exclusive of VAT, which is applied at the prevailing rate under UAE law.</p>
+        <div class="modal-actions">
+          <button class="btn btn-outline" data-modal-close="modal-content-long">Cancel</button>
+          <button class="btn btn-filled" data-modal-close="modal-content-long">Accept &amp; Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Wide · two-column content (is-wide caps at 960px) ───────────────── -->
+  <div class="modal-overlay overlay-pad" id="modal-content-wide" data-modal-dismiss>
+    <div class="modal-content card-panel is-wide" style="--card-pad:0">
+      <div class="modal-plain-head">
+        <div>
+          <span class="type-eyebrow ink-accent">Sector desk</span>
+          <h2 class="type-h4 ink-primary">A wider conversation</h2>
+        </div>
+        <button class="btn btn-outline btn-icon btn-sm is-close" data-modal-close="modal-content-wide"><span class="sr-only">Close</span>
+        </button>
+      </div>
+      <div class="modal-content-body modal-content-body-plain">
+        <p class="type-body ink-mute">Use <code>is-wide</code> on <code>.modal-content</code> when the body carries columns, tables or paired lists — the default 560px column forces them to stack.</p>
+        <div class="grid sm:grid-cols-2 gap-x-10 gap-y-6 mt-6">
+          <div><h3 class="type-h6 ink-primary">First strength</h3><p class="type-body-sm ink-mute">Two-column content breathes at 960px where the default modal would fold it single-file.</p></div>
+          <div><h3 class="type-h6 ink-primary">Second strength</h3><p class="type-body-sm ink-mute">The close control on a plain white head is btn-outline — glass is reserved for cover imagery.</p></div>
+          <div><h3 class="type-h6 ink-primary">Third strength</h3><p class="type-body-sm ink-mute">Body scrolls past 88vh exactly like the default modal.</p></div>
+          <div><h3 class="type-h6 ink-primary">Fourth strength</h3><p class="type-body-sm ink-mute">Footer CTAs follow THE CTA LAW: navy filled on this light ground.</p></div>
+        </div>
+        <div class="flex justify-end gap-3 mt-8">
+          <button class="btn btn-outline" data-modal-close="modal-content-wide">Close</button>
+          <a class="btn btn-filled" href="#">Talk to a specialist</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Modal ═══════════════════════════════════════════════════════════════ -->

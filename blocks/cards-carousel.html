@@ -1,0 +1,119 @@
+<!-- ═══ Cards — Thumbnail Carousel (composition of cmp-cards) ═══════════════
+     The SAME media cards on the shared data-carousel recipe: the track sits
+     outside the container (full section width), --cd-edge aligns slide 1 and
+     the arrows with the contained header. Arrows are btn atoms wired by
+     data-carousel-prev/next (chevrons auto-mirror in RTL).
+     No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards is-hover-zoom cards-thumb surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Explore the full range of corporate solutions.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">One relationship across trade, cash, digital channels and institutional coverage — pick the thread that fits where your business is headed.</p>
+    </div>
+  </div>
+
+  <div class="cd-carousel" data-carousel data-autoplay="7000">
+    <div class="cd-track" data-carousel-track>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" data-carousel-slide aria-label="Trade &amp; Supply Chain Finance">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/trade-supply-chain-finance.png" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Trade</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">Import &amp; export</span>
+          <h3 class="type-h5 ink-white">Trade &amp; supply chain finance</h3>
+          <p class="type-body-sm ink-soft">Power trade and keep supplier networks moving.</p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" data-carousel-slide aria-label="Digital Channels">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/digital-channels.png" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Digital</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">APIs &amp; Host2Host</span>
+          <h3 class="type-h5 ink-white">Digital channels</h3>
+          <p class="type-body-sm ink-soft">Connect your own systems straight to the bank.</p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" data-carousel-slide aria-label="businessONLINE">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/businessonline.jpg" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Platform</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">Payments &amp; liquidity</span>
+          <h3 class="type-h5 ink-white">businessONLINE</h3>
+          <p class="type-body-sm ink-soft">Run cash, trade and FX from one platform.</p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" data-carousel-slide aria-label="Global Markets">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/global-markets-treasury.jpg" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Markets</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">FX &amp; hedging</span>
+          <h3 class="type-h5 ink-white">Global markets</h3>
+          <p class="type-body-sm ink-soft">Hedge exposure across rates, FX and commodities.</p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" data-carousel-slide aria-label="Trade &amp; Supply Chain Finance">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/trade-supply-chain-finance.png" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Trade</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">Import &amp; export</span>
+          <h3 class="type-h5 ink-white">Trade &amp; supply chain finance</h3>
+          <p class="type-body-sm ink-soft">Power trade and keep supplier networks moving.</p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" data-carousel-slide aria-label="Digital Channels">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/digital-channels.png" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Digital</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">APIs &amp; Host2Host</span>
+          <h3 class="type-h5 ink-white">Digital channels</h3>
+          <p class="type-body-sm ink-soft">Connect your own systems straight to the bank.</p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" data-carousel-slide aria-label="businessONLINE">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/businessonline.jpg" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Platform</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">Payments &amp; liquidity</span>
+          <h3 class="type-h5 ink-white">businessONLINE</h3>
+          <p class="type-body-sm ink-soft">Run cash, trade and FX from one platform.</p>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" data-carousel-slide aria-label="Global Markets">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/global-markets-treasury.jpg" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Markets</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">FX &amp; hedging</span>
+          <h3 class="type-h5 ink-white">Global markets</h3>
+          <p class="type-body-sm ink-soft">Hedge exposure across rates, FX and commodities.</p>
+        </div>
+      </a>
+
+    </div>
+    <div class="cd-arrows">
+      <button class="crl-toggle" type="button" data-carousel-toggle aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
+      <div class="cd-dots" data-carousel-dots></div>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous</span></button>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next</span></button>
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Cards — Thumbnail Carousel ═════════════════════════════════════════ -->

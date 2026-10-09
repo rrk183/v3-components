@@ -1,0 +1,30 @@
+<!-- ═══ Content Block — No Numbers ═══════════════════════════════════════════
+     Params: surface (surface-grey|white|navy…), data-animate (on/off).
+     Pure markup — NO inline styles. Type/surface/layout from ds.css; reveal
+     via ds.js. Two variants: stacked, and side-by-side. Heading is .type-h2,
+     body is .type-body in the muted on-surface tone. -->
+
+<!-- ── Variant 1: stacked ─────────────────────────────────────────────── -->
+<section class="cmp cmp-content-block-nonumbers surface-soft section-y-tight" data-animate>
+  <div class="container-ds">
+    <div class="flex flex-col gap-5">
+      <h2 class="type-h2 ink-primary" data-reveal="up">Mobile, secure, and always on</h2>
+      <p class="type-body measure ink-mute" data-reveal="up" data-reveal-delay=".1">
+        Stay in control wherever you are with the businessONLINE mobile app. Approve transactions, monitor cash positions, and access instant services from your phone, safely and effortlessly.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Variant 2: side-by-side ────────────────────────────────────────── -->
+<section class="cmp cmp-content-block-nonumbers surface-soft section-y-tight" data-animate>
+  <div class="container-ds">
+    <div class="flex flex-col md:flex-row md:gap-16 items-start">
+      <h2 class="type-h2 md:w-1/2 flex-shrink-0 ink-primary" data-reveal="up">Mobile, secure, and always on</h2>
+      <p class="type-body md:w-1/2 md:pt-3 ink-mute" data-reveal="up" data-reveal-delay=".1">
+        Stay in control wherever you are with the businessONLINE mobile app. Approve transactions, monitor cash positions, and access instant services from your phone, safely and effortlessly.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Content Block — No Numbers ═════════════════════════════════════════ -->

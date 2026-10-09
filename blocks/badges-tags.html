@@ -1,0 +1,109 @@
+<!-- ═══ Badges & Tags ═══════════════════════════════════════════════════════
+     THE BADGE MODEL (2026-09-01) — mirrors the button model:
+     TONE (role-named: badge-ok / -warn / -danger / -info / -neutral) ×
+     STYLE (tint default · badge-solid brand emphasis · badge-outline) ×
+     SIZE (badge-sm · default · badge-lg). Plus the global .chip atom
+     (selectable filter/tag pill) and the list-check atom.
+     Legacy color aliases (badge-green/amber/red/blue, badge-navy) stay
+     valid until the sweep; the old showcase-scoped bt-* variants are gone.
+     Nothing here is new CSS beyond the .bt-label chrome.
+     Params: surface, data-animate. No IDs — repeatable. -->
+<section class="cmp cmp-badges-tags surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Atoms</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Badges &amp; tags</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">One badge system: tone by role, style, size. Status colours come from the semantic tokens, so every brand re-tints them for free.</p>
+    </div>
+
+    <div class="ds-stack" data-reveal="up" style="--ds-stack-gap:2.5rem">
+
+      <!-- Tones — role-named -->
+      <div>
+        <p class="bt-label ink-mute">Tones — ok, warn, danger, info, neutral</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="badge badge-ok">● Completed</span>
+          <span class="badge badge-warn">● Pending</span>
+          <span class="badge badge-danger">● Failed</span>
+          <span class="badge badge-info">● Processing</span>
+          <span class="badge badge-neutral">● Inactive</span>
+        </div>
+      </div>
+
+      <!-- Styles -->
+      <div>
+        <p class="bt-label ink-mute">Styles — tint (default), solid, outline</p>
+        <div class="flex flex-wrap gap-3 items-center">
+          <span class="badge badge-ok">● Completed</span>
+          <span class="badge badge-solid">AI</span>
+          <span class="badge badge-ok badge-outline">Completed</span>
+          <span class="badge badge-info badge-outline">Processing</span>
+          <span class="badge badge-neutral badge-outline">Inactive</span>
+        </div>
+      </div>
+
+      <!-- Sizes -->
+      <div>
+        <p class="bt-label ink-mute">Sizes</p>
+        <div class="flex flex-wrap gap-3 items-center">
+          <span class="badge badge-solid badge-sm">Small</span>
+          <span class="badge badge-solid">Default</span>
+          <span class="badge badge-solid badge-lg">Large</span>
+          <span class="badge badge-ok badge-lg">● Completed</span>
+        </div>
+      </div>
+
+      <!-- Chips / filter tags -->
+      <div>
+        <p class="bt-label ink-mute">Chips / Filter Tags</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="chip chip-active">Cash Management <span class="chip-x">×</span></span>
+          <span class="chip chip-active">Trade Finance <span class="chip-x">×</span></span>
+          <span class="chip">Payments</span>
+          <span class="chip">FX &amp; Markets</span>
+          <span class="chip">Investment Banking</span>
+          <span class="chip">Islamic Solutions</span>
+        </div>
+      </div>
+
+      <!-- Labels — inline with text -->
+      <div>
+        <p class="bt-label ink-mute">Labels — inline with text</p>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <span class="bt-label-name">businessONLINE</span>
+            <span class="badge badge-ok badge-sm">Live</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="bt-label-name">Help &amp; Support</span>
+            <span class="badge badge-solid badge-sm">AI</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="bt-label-name">smartSCF</span>
+            <span class="badge badge-warn badge-sm">Coming soon</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="bt-label-name">Trade Finance Tariff</span>
+            <span class="badge badge-neutral badge-sm">Updated</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checked list — the list-check ATOM (generic; drops into any block) -->
+      <div>
+        <p class="bt-label ink-mute">Checked List</p>
+        <ul class="list-check">
+          <li class="ink-mute">Extensive international partnerships that safeguard your assets</li>
+          <li class="ink-mute">In-market specialists providing direct, on-the-ground support</li>
+          <li class="ink-mute">Continuous access to timely, data-driven market intelligence</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Badges & Tags ═══════════════════════════════════════════════════════ -->

@@ -1,0 +1,95 @@
+<!-- ═══ Cards — Thumbnail Box ═══════════════════════════════════════════════
+     The below-media sibling of Cards — Thumbnail. Media sits on top (3/2); the
+     content sits in a box BELOW on the card's own light surface. Only the label
+     pill stays on the media, straddling its bottom-left edge. Every per-card slot
+     is OPTIONAL (label / eyebrow / title / desc / CTA) and the card just grows
+     taller — content never overlaps.
+       .ct-media > .ct-img (data-bg) + .ct-label  — media block + straddling pill
+       .ct-body  > .ct-eyebrow / .ct-title / .ct-desc / .ct-cta  — the box below
+     CTA look is set by the CTA control (default circle / .is-cta-text /
+     .is-cta-btn); the Columns control sets desktop count. The Carousel variant
+     (cards-thumb-box-carousel) shows the SAME cards on the data-carousel recipe.
+     For a video card, swap <span class="ct-img" data-bg> for a <video>. No IDs,
+     no inline styles. Styled by .cmp-cards-thumb-box in ds.css. -->
+<section class="cmp cmp-cards-thumb-box surface-soft section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Explore the full range of corporate solutions.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">One relationship across trade, cash, digital channels and institutional coverage — pick the thread that fits where your business is headed.</p>
+    </div>
+
+    <div class="ct-grid" role="list">
+
+      <a href="#" class="ct-card" role="listitem" data-reveal="up" data-reveal-delay=".04" aria-label="Trade & Supply Chain Finance">
+        <span class="ct-media"><span class="ct-img" data-bg="/staging/corporate-solutions-cards/trade-supply-chain-finance.png" aria-hidden="true"></span><span class="ct-label">Trade</span></span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">Import &amp; export</span>
+          <h3 class="ct-title ink-primary">Trade &amp; supply chain finance</h3>
+          <p class="ct-desc ink-mute">Power trade and keep supplier networks moving.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card" role="listitem" data-reveal="up" data-reveal-delay=".10" aria-label="Digital Channels">
+        <span class="ct-media"><span class="ct-img" data-bg="/staging/corporate-solutions-cards/digital-channels.png" aria-hidden="true"></span><span class="ct-label">Digital</span></span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">APIs &amp; Host2Host</span>
+          <h3 class="ct-title ink-primary">Digital channels</h3>
+          <p class="ct-desc ink-mute">Connect your own systems straight to the bank.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card" role="listitem" data-reveal="up" data-reveal-delay=".16" aria-label="businessONLINE">
+        <span class="ct-media"><span class="ct-img" data-bg="/staging/corporate-solutions-cards/businessonline.jpg" aria-hidden="true"></span><span class="ct-label">Platform</span></span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">One login</span>
+          <h3 class="ct-title ink-primary">businessONLINE</h3>
+          <p class="ct-desc ink-mute">Payments, collections and liquidity in a single view.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card" role="listitem" data-reveal="up" data-reveal-delay=".22" aria-label="Global Markets">
+        <span class="ct-media"><span class="ct-img" data-bg="/staging/corporate-solutions-cards/global-markets-treasury.jpg" aria-hidden="true"></span><span class="ct-label">Markets</span></span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">FX &amp; hedging</span>
+          <h3 class="ct-title ink-primary">Global markets</h3>
+          <p class="ct-desc ink-mute">Manage currency and rate exposure with confidence.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card" role="listitem" data-reveal="up" data-reveal-delay=".28" aria-label="Investment Banking">
+        <span class="ct-media"><span class="ct-img" data-bg="/staging/corporate-solutions-cards/investment-banking.png" aria-hidden="true"></span><span class="ct-label">Banking</span></span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">DCM · ECM · M&amp;A</span>
+          <h3 class="ct-title ink-primary">Investment banking</h3>
+          <p class="ct-desc ink-mute">Landmark deals with regional depth.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card" role="listitem" data-reveal="up" data-reveal-delay=".34" aria-label="Cash Management">
+        <span class="ct-media"><span class="ct-img" data-bg="/staging/corporate-solutions-cards/cash-management.png" aria-hidden="true"></span><span class="ct-label">Cash</span></span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">Liquidity</span>
+          <h3 class="ct-title ink-primary">Cash management</h3>
+          <p class="ct-desc ink-mute">Real-time balances across every entity.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="ct-foot">
+      <a href="#" class="btn btn-navy btn-lg" data-reveal="up">View all solutions →</a>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Cards — Thumbnail Box ══════════════════════════════════════════════ -->

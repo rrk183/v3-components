@@ -1,0 +1,45 @@
+<!-- ═══ World Map — with Scale Stats ════════════════════════════════════════
+     The animated-routes World Map (recipe: data-behavior="world-map") with a
+     multi-column data strip folded in beneath it — one credibility section that
+     pairs reach with proof. The strip (.wm-scale) is surface-adaptive: numbers,
+     labels and dividers resolve from --on-surface* tokens, so it stays legible
+     on white, grey, navy or dark. Holds 2–4 columns of number + label (or short
+     text). Recreate: swap the data-dots routes and the .wm-scale figures.
+     No IDs, no inline styles. Styled by .cmp-world-map in ds.css. -->
+<section class="cmp cmp-world-map surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-center">
+      <div class="ds-stack">
+        <h2 class="type-h2 type-semibold ink-primary" data-reveal="up">From Dubai to the world.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".1">A presence in 13 countries and reach into 180+ markets means local teams on the ground in the corridors you trade.</p>
+    </div>
+
+    <div class="wm-map" data-behavior="world-map" data-map="dots" data-reveal="fade" data-reveal-delay=".2"
+      data-focus="400,200" data-zoom="1"
+      aria-label="World map of Emirates NBD's global network with routes linking Dubai, Paris, New York, Cairo, Mumbai, Singapore, Shanghai and Tokyo"
+      data-points='[
+        {"id":"dubai","label":"Dubai","side":"below","major":true,"hub":true},
+        {"id":"paris","label":"Paris","lat":48.8566,"lng":2.3522,"side":"below","major":true},
+        {"id":"new-york","label":"New York","lat":40.7128,"lng":-74.006,"side":"below","major":true},
+        {"id":"cairo","label":"Cairo","side":"below"},
+        {"id":"mumbai","label":"Mumbai","side":"below"},
+        {"id":"singapore","label":"Singapore","side":"below","major":true},
+        {"id":"shanghai","label":"Shanghai","major":true},
+        {"id":"tokyo","label":"Tokyo","lat":35.68,"lng":139.69,"major":true}
+      ]'
+      data-routes='[["dubai","paris"],["dubai","new-york"],["dubai","cairo"],["dubai","mumbai"],["dubai","singapore"],["singapore","shanghai"],["singapore","tokyo"]]'>
+    </div>
+
+    <!-- Scale stats folded in beneath the map (one credibility section) -->
+    <div class="wm-scale" data-reveal="up" data-reveal-delay=".3">
+      <div><span class="ds-num ink-primary">AED&nbsp;1.2T</span><span class="type-body-sm block mt-1 ink-mute">in assets (FY2024)</span></div>
+      <div><span class="ds-num ink-primary">13</span><span class="type-body-sm block mt-1 ink-mute">countries across MENAT, Europe &amp; Asia</span></div>
+      <div><span class="ds-num ink-primary">10M+</span><span class="type-body-sm block mt-1 ink-mute">active customers</span></div>
+      <div><span class="ds-num ink-primary">A1&nbsp;(Stable)</span><span class="type-body-sm block mt-1 ink-mute">Moody&rsquo;s rating</span></div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /World Map — with Scale Stats ═══════════════════════════════════════ -->

@@ -1,0 +1,106 @@
+<!-- ═══ Cards — Tombstones Carousel (composition of cmp-cards) ═════════════
+     The SAME cards as Cards — Tombstones on the shared data-carousel recipe:
+     the track sits outside the container (full section width), --cd-edge
+     aligns slide 1 and the arrows with the contained header. Arrows are btn
+     atoms wired by data-carousel-prev/next (chevrons auto-mirror in RTL).
+     No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards cards-tombstones surface-soft section-y" data-animate>
+  <div class="container-ds">
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Recent transactions</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Selected mandates we have led.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".08">A selection of recent transactions across sectors and geographies.</p>
+    </div>
+  </div>
+
+  <div class="cd-carousel" data-carousel>
+    <div class="cd-track" data-carousel-track>
+
+      <article class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/government-of-abu-dhabi.webp" alt="Government of Abu Dhabi" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 3,000m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Bond</li>
+          <li>3.75% due 2031</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>UAE</span><span>Feb 2026</span></p>
+      </article>
+
+      <article class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <span class="badge badge-ok badge-sm absolute top-3 end-3 z-10">ESG</span>
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/agricultural-bank-of-china.webp" alt="Agricultural Bank of China" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 300m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Green Bond</li>
+          <li>SOFR+35 due 2029</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>China</span><span>Apr 2026</span></p>
+      </article>
+
+      <article class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/qib-logo.jpg" alt="QIB" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 750m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Sukuk</li>
+          <li>4.402% due 2031</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Qatar</span><span>Feb 2026</span></p>
+      </article>
+
+      <article class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <p class="type-h5 ink-primary">USD 1.8bn</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Rights Issue</li>
+          <li>Lead Manager and Sole Receiving Bank</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>November 2019</span></p>
+      </article>
+
+      <article class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/agency-division/dubaiholding_agency_cib.jpg" alt="Dubai Holding" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">AED 8,500m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute"><li>Syndicated Facility</li><li>Facility Agent</li></ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>UAE</span><span>Nov 2025</span></p>
+      </article>
+      <article class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <span class="badge badge-ok badge-sm absolute top-3 end-3 z-10">ESG</span>
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/agency-division/fertiglobe_agency_cib.jpg" alt="Fertiglobe" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 900m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute"><li>Revolving Credit Facility</li><li>Sustainability-linked</li></ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>UAE</span><span>Sep 2025</span></p>
+      </article>
+
+      <article class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/government-of-abu-dhabi.webp" alt="Government of Abu Dhabi" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 3,000m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Bond</li>
+          <li>3.75% due 2031</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>UAE</span><span>Feb 2026</span></p>
+      </article>
+
+      <article class="cd-card card-panel is-flat surface-white" data-carousel-slide>
+        <span class="badge badge-ok badge-sm absolute top-3 end-3 z-10">ESG</span>
+        <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/debt-capital-markets/agricultural-bank-of-china.webp" alt="Agricultural Bank of China" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
+        <p class="type-h5 ink-primary">USD 300m</p>
+        <ul class="type-body-sm mt-2 flex flex-col gap-1 ink-mute">
+          <li>Senior Unsecured Green Bond</li>
+          <li>SOFR+35 due 2029</li>
+        </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>China</span><span>Apr 2026</span></p>
+      </article>
+
+    </div>
+    <div class="cd-arrows">
+      <button class="crl-toggle" type="button" data-carousel-toggle hidden aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
+      <div class="cd-dots" data-carousel-dots></div>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous</span></button>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next</span></button>
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Cards — Tombstones Carousel ═══════════════════════════════════════ -->

@@ -1,0 +1,106 @@
+<!-- ═══ Cards — Thumbnail (Carousel) ════════════════════════════════════════
+     The SAME cards as the Grid layout, on the shared data-carousel recipe. The
+     header stays inside .container-ds (contained, NEVER full-bleed); the
+     .ct-carousel sits OUTSIDE .container-ds as a direct child of the section, so
+     the CARDS ROW is the full section width — the whole viewport on a real page,
+     the card width in the gallery — and scrolls with the prev/next arrows.
+     --ct-edge (computed from the carousel's own width) keeps the first card and
+     the arrows aligned with the contained header. No IDs, no inline styles. -->
+<section class="cmp cmp-cards-thumb surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Explore the full range of corporate solutions.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">One relationship across trade, cash, digital channels and institutional coverage — pick the thread that fits where your business is headed.</p>
+    </div>
+  </div>
+
+  <div class="ct-carousel" data-carousel data-reveal="up" data-reveal-delay=".16">
+    <div class="ct-track" data-carousel-track role="list">
+
+      <a href="#" class="ct-card surface-image" data-carousel-slide role="listitem" aria-label="Trade & Supply Chain Finance">
+        <span class="ct-media" data-bg="/staging/corporate-solutions-cards/trade-supply-chain-finance.png" aria-hidden="true"></span>
+        <span class="ct-scrim" aria-hidden="true"></span>
+        <span class="ct-label">Trade</span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">Import &amp; export</span>
+          <h3 class="ct-title ink-white">Trade &amp; supply chain finance</h3>
+          <p class="ct-desc ink-soft">Power trade and keep supplier networks moving.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card surface-image" data-carousel-slide role="listitem" aria-label="Digital Channels">
+        <span class="ct-media" data-bg="/staging/corporate-solutions-cards/digital-channels.png" aria-hidden="true"></span>
+        <span class="ct-scrim" aria-hidden="true"></span>
+        <span class="ct-label">Digital</span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">APIs &amp; Host2Host</span>
+          <h3 class="ct-title ink-white">Digital channels</h3>
+          <p class="ct-desc ink-soft">Connect your own systems straight to the bank.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card surface-image" data-carousel-slide role="listitem" aria-label="businessONLINE">
+        <span class="ct-media" data-bg="/staging/corporate-solutions-cards/businessonline.jpg" aria-hidden="true"></span>
+        <span class="ct-scrim" aria-hidden="true"></span>
+        <span class="ct-label">Platform</span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">One login</span>
+          <h3 class="ct-title ink-white">businessONLINE</h3>
+          <p class="ct-desc ink-soft">Payments, collections and liquidity in a single view.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card surface-image" data-carousel-slide role="listitem" aria-label="Global Markets">
+        <span class="ct-media" data-bg="/staging/corporate-solutions-cards/global-markets-treasury.jpg" aria-hidden="true"></span>
+        <span class="ct-scrim" aria-hidden="true"></span>
+        <span class="ct-label">Markets</span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">FX &amp; hedging</span>
+          <h3 class="ct-title ink-white">Global markets</h3>
+          <p class="ct-desc ink-soft">Manage currency and rate exposure with confidence.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card surface-image" data-carousel-slide role="listitem" aria-label="Investment Banking">
+        <span class="ct-media" data-bg="/staging/corporate-solutions-cards/investment-banking.png" aria-hidden="true"></span>
+        <span class="ct-scrim" aria-hidden="true"></span>
+        <span class="ct-label">Banking</span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">DCM · ECM · M&amp;A</span>
+          <h3 class="ct-title ink-white">Investment banking</h3>
+          <p class="ct-desc ink-soft">Landmark deals with regional depth.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="ct-card surface-image" data-carousel-slide role="listitem" aria-label="Cash Management">
+        <span class="ct-media" data-bg="/staging/corporate-solutions-cards/cash-management.png" aria-hidden="true"></span>
+        <span class="ct-scrim" aria-hidden="true"></span>
+        <span class="ct-label">Cash</span>
+        <div class="ct-body">
+          <span class="ct-eyebrow">Liquidity</span>
+          <h3 class="ct-title ink-white">Cash management</h3>
+          <p class="ct-desc ink-soft">Real-time balances across every entity.</p>
+          <span class="ct-cta"><span class="ct-cta-t">Explore</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="ct-arrows">
+      <button type="button" class="ct-arrow is-arrow-back" data-carousel-prev aria-label="Previous">
+      </button>
+      <button type="button" class="ct-arrow is-arrow" data-carousel-next aria-label="Next">
+      </button>
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Cards — Thumbnail (Carousel) ═══════════════════════════════════════ -->

@@ -1,0 +1,136 @@
+<!-- ═══ Feature Tab Cards ════════════════════════════════════════════════════
+     Params: surface (surface-grey|white…), data-animate (on/off).
+     Pure markup — NO inline styles, NO IDs. Styled by .cmp-feature-tab-cards,
+     animated + tab-switched by ds.js (data-tabs/data-tab/data-panel).
+     Per-instance images via data-bg. Image card row = the tabs; each panel holds
+     a heading + CTA (left) and a feature list (right).
+     NOTE: original auto-advanced every 10s with a progress ring — that timer is
+     not part of ds.js data-tabs, so this is plain click/keyboard tabs. -->
+<section class="cmp cmp-feature-tab-cards surface-soft section-y" data-animate>
+  <div class="container-ds">
+    <div data-tabs data-autoplay="6000" class="ftc">
+
+      <!-- Tab cards (image + label) -->
+      <div class="ftc-row" role="tablist" aria-label="Feature tabs">
+        <button data-tab="sellers" class="ftc-card active" aria-label="Sellers">
+          <span class="ftc-img" data-bg="/assets/images/feature-1.jpg"></span>
+          <span class="ftc-label type-body-sm ink-mute">Sellers</span>
+        </button>
+        <button data-tab="leaders" class="ftc-card" aria-label="Sales Leaders">
+          <span class="ftc-img" data-bg="/assets/images/feature-2.jpg"></span>
+          <span class="ftc-label type-body-sm ink-mute">Sales Leaders</span>
+        </button>
+        <button data-tab="founders" class="ftc-card" aria-label="Founders">
+          <span class="ftc-img" data-bg="/assets/images/feature-3.jpg"></span>
+          <span class="ftc-label type-body-sm ink-mute">Founders</span>
+        </button>
+        <button data-tab="revops" class="ftc-card" aria-label="RevOps">
+          <span class="ftc-img" data-bg="/assets/images/feature-4.jpg"></span>
+          <span class="ftc-label type-body-sm ink-mute">RevOps</span>
+        </button>
+        <button data-tab="marketers" class="ftc-card" aria-label="Marketers">
+          <span class="ftc-img" data-bg="/assets/images/image-1.jpg"></span>
+          <span class="ftc-label type-body-sm ink-mute">Marketers</span>
+        </button>
+      </div>
+
+      <!-- Panels -->
+      <div data-panel="sellers" class="ftc-panel active">
+        <div class="ftc-left">
+          <h2 class="type-h2 type-semibold ink-primary" data-reveal="up">Turning reps into super reps</h2>
+          <a href="#" class="btn btn-outline ftc-cta is-arrow" data-reveal="up" data-reveal-delay=".06">
+            Explore Sellers solutions
+          </a>
+        </div>
+        <div class="ftc-right">
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".12">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Boost meetings booked by 60%</p>
+            <p class="type-body ink-mute">Use AI-delivered signals to add a new level of precision to your prospecting and watch your conversions soar.</p>
+          </div>
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".18">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Save 10 hours on research</p>
+            <p class="type-body ink-mute">Save hours on contact and account research, write perfect emails, and handle objections with generative AI that sounds just like you.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="leaders" class="ftc-panel">
+        <div class="ftc-left">
+          <h2 class="type-h2 type-semibold ink-primary" data-reveal="up">Build teams that consistently overperform</h2>
+          <a href="#" class="btn btn-outline ftc-cta is-arrow" data-reveal="up" data-reveal-delay=".06">
+            Explore Sales Leader solutions
+          </a>
+        </div>
+        <div class="ftc-right">
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".12">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Real-time pipeline visibility</p>
+            <p class="type-body ink-mute">Get instant insight into every deal, forecast with confidence and course-correct before it's too late.</p>
+          </div>
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".18">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Coach at scale</p>
+            <p class="type-body ink-mute">Identify skill gaps and replicate what top performers do — automatically, across every rep on your team.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="founders" class="ftc-panel">
+        <div class="ftc-left">
+          <h2 class="type-h2 type-semibold ink-primary" data-reveal="up">Close your first 100 customers faster</h2>
+          <a href="#" class="btn btn-outline ftc-cta is-arrow" data-reveal="up" data-reveal-delay=".06">
+            Explore Founder solutions
+          </a>
+        </div>
+        <div class="ftc-right">
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".12">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Go from idea to pipeline in days</p>
+            <p class="type-body ink-mute">Find your ICP, generate your first outreach and book meetings without hiring a full sales team.</p>
+          </div>
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".18">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Prove product-market fit with data</p>
+            <p class="type-body ink-mute">Understand exactly which messages resonate and iterate faster with signal-backed insights.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="revops" class="ftc-panel">
+        <div class="ftc-left">
+          <h2 class="type-h2 type-semibold ink-primary" data-reveal="up">Operate your revenue engine with precision</h2>
+          <a href="#" class="btn btn-outline ftc-cta is-arrow" data-reveal="up" data-reveal-delay=".06">
+            Explore RevOps solutions
+          </a>
+        </div>
+        <div class="ftc-right">
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".12">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Single source of truth</p>
+            <p class="type-body ink-mute">Unify data across every tool in your stack and eliminate the spreadsheet chaos slowing your teams down.</p>
+          </div>
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".18">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Automate the manual</p>
+            <p class="type-body ink-mute">Free your team from data entry and reporting — let the platform handle the operational heavy lifting.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="marketers" class="ftc-panel">
+        <div class="ftc-left">
+          <h2 class="type-h2 type-semibold ink-primary" data-reveal="up">Generate demand that actually converts</h2>
+          <a href="#" class="btn btn-outline ftc-cta is-arrow" data-reveal="up" data-reveal-delay=".06">
+            Explore Marketer solutions
+          </a>
+        </div>
+        <div class="ftc-right">
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".12">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Target the right accounts</p>
+            <p class="type-body ink-mute">Focus spend on accounts showing real buying intent — not just traffic — and watch pipeline quality soar.</p>
+          </div>
+          <div class="ftc-feature" data-reveal="up" data-reveal-delay=".18">
+            <p class="ftc-feature-title type-body type-semibold ink-primary">Prove marketing impact</p>
+            <p class="type-body ink-mute">Tie every campaign directly to revenue and finally show leadership the ROI of every dollar spent.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Feature Tab Cards ═══════════════════════════════════════════════════ -->

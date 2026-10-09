@@ -1,0 +1,185 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   cib-home-final-v2.css · ONLY the blocks cib-home-final-v2.html adds on top
+   of cib-home-final (stakeholder content restored from cib-v4). Loaded after
+   cib-home-flow.css and reuses its --hf-* tokens; every class is fv-*, so
+   cib-home-final.html is untouched by this file.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── shared: head + stats split ─────────────────────────────────────────── */
+.fv-split { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+.fv-split__head .hf-h { max-width: 14ch; }
+.fv-u { font-size: .55em; margin-left: .06em; }
+.fv-label { margin: 32px 0 0; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--hf-meta); }
+
+.fv-stats { display: grid; margin: 0; }
+.fv-stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fv-stats--1 { grid-template-columns: 1fr; }
+.fv-stat { margin: 0; padding: 24px 24px 28px 0; border-top: 1px solid var(--hf-line); display: flex; flex-direction: column; }
+.fv-stat dd { margin: 0; }
+.fv-stat__k { order: 1; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--hf-meta); }
+.fv-stat__n { order: 2; margin-top: 14px !important; font-size: clamp(32px, 3.2vw, 48px); font-weight: 400; line-height: 1; letter-spacing: -.03em; color: var(--hf-ink); white-space: nowrap; }
+.fv-stat__n--text { font-size: clamp(20px, 1.8vw, 26px); line-height: 1.25; white-space: normal; letter-spacing: -.02em; }
+.fv-stat__s { order: 3; margin-top: 10px !important; font-size: 14px; line-height: 1.45; color: var(--hf-body); max-width: 30ch; }
+
+/* stats in a row under body copy (trade, markets): number first, label under */
+.fv-stats--row { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 36px; }
+.fv-stats--row .fv-stat { padding-bottom: 0; }
+.fv-stats--row .fv-stat__n { order: 1; margin-top: 18px !important; font-size: clamp(28px, 2.6vw, 40px); }
+.fv-stats--row .fv-stat__s { order: 2; }
+
+/* ── 1b. FINANCIAL STRENGTH ─────────────────────────────────────────────── */
+.fv-strength { padding: var(--hf-sec) 0; background: var(--hf-warm); }
+
+/* ── 2b. NETWORK CODA · on the film's navy ──────────────────────────────── */
+.fv-net { position: relative; background: #030f2b; padding: clamp(24px, 3vw, 40px) 0 var(--hf-sec); }
+.fv-net__eyebrow { color: #8fb3ff; }
+.fv-net__body { color: rgba(255, 255, 255, .78); max-width: 46ch; }
+.fv-stats--dark .fv-stat { border-top-color: rgba(255, 255, 255, .16); display: grid; grid-template-columns: 9rem 1fr; column-gap: 24px; align-items: baseline; padding-right: 0; }
+.fv-stats--dark .fv-stat__k { grid-column: 1 / -1; color: rgba(255, 255, 255, .7); }
+.fv-stats--dark .fv-stat__n { color: #fff; }
+.fv-stats--dark .fv-stat__n--text { grid-column: 1 / -1; }
+.fv-stats--dark .fv-stat__s { color: rgba(255, 255, 255, .78); max-width: 44ch; }
+
+/* ── 3. RELATIONSHIP proof points ───────────────────────────────────────── */
+.fv-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0 0; }
+.fv-mini > div { display: flex; gap: 14px; align-items: flex-start; padding: 18px; border-radius: var(--r-lg); background: var(--hf-warm); }
+.fv-mini__n { font-size: 36px; font-weight: 400; line-height: 1; letter-spacing: -.03em; color: var(--hf-ink); min-width: .9em; }
+.fv-mini dd { margin: 0; font-size: 14px; line-height: 1.45; color: var(--hf-body); }
+.fv-mini dd b { display: block; font-weight: 600; color: var(--hf-ink); margin-bottom: 2px; }
+.hf-rel__text .fv-label + .hf-pillars { margin-top: 16px; }
+
+/* ── 4. PAYMENTS counts (inside the narrow head-aside column) ───────────── */
+.fv-count { margin: 28px 0 0; display: flex; flex-direction: column; }
+.fv-count > div { display: grid; grid-template-columns: 3.2rem 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--hf-warm-2); }
+.fv-count > div:last-child { border-bottom: 1px solid var(--hf-warm-2); }
+.fv-count dt { font-size: 26px; font-weight: 400; line-height: 1.05; letter-spacing: -.03em; color: var(--hf-ink); }
+.fv-count dd { margin: 0; font-size: 13px; line-height: 1.45; color: var(--hf-body); }
+.fv-count dd b { display: block; font-size: 14px; font-weight: 600; color: var(--hf-ink); margin-bottom: 2px; }
+
+/* ── 4b / 5b. FEATURE (trade, markets): photo + text ────────────────────── */
+.fv-feature { padding: var(--hf-sec) 0; background: #fff; }
+.fv-feature--warm { background: var(--hf-warm); }
+.fv-feature__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+.fv-feature--flip .fv-feature__media { order: 2; }
+.fv-feature__media { position: relative; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3.4; background: var(--hf-warm-2); }
+.fv-feature__img { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.fv-feature__text .hf-h { max-width: 16ch; }
+.fv-note { margin: 24px 0 0; font-size: 14px; line-height: 1.5; color: var(--hf-meta); max-width: 52ch; }
+
+/* ── 5. INVESTMENT BANKING lede + rankings ──────────────────────────────── */
+.fv-ib__copy { display: flex; flex-direction: column; gap: 16px; }
+.fv-ib__lede { margin: 0; max-width: 56ch; font-size: 16px; line-height: 1.55; color: rgba(255, 255, 255, .86); text-shadow: 0 1px 18px rgba(4, 18, 38, .5); }
+.fv-ranks { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
+.fv-ranks li { display: inline-flex; align-items: baseline; gap: 10px; padding: 10px 16px; border-radius: var(--r-pill); background: rgba(7, 36, 71, .62); border: 1px solid rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .88); font-size: 13px; line-height: 1.3; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.fv-ranks b { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -.01em; white-space: nowrap; }
+/* the film card grows to fit the extra lede + ranks */
+.hf-film--ib { max-height: none; min-height: 680px; }
+
+/* ── 8. RESEARCH claim + coverage tags ──────────────────────────────────── */
+.fv-res__claim { margin: -2px 0 0; font-size: 15px; color: var(--hf-body); }
+.fv-res__claim b { color: var(--hf-ink); font-weight: 600; }
+.fv-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 4px; padding: 0; list-style: none; }
+.fv-tags li { font-size: 12px; font-weight: 500; color: var(--hf-ink); padding: 6px 12px; border-radius: var(--r-pill); background: var(--hf-warm); }
+
+/* ── 8b. NEWSROOM ───────────────────────────────────────────────────────── */
+.fv-news { padding: var(--hf-sec) 0; background: var(--hf-warm); }
+.fv-news .hf-h { max-width: none; }
+.fv-news .sh-lead { margin-top: 0; }
+
+/* ── 9. CTA secondary app line ──────────────────────────────────────────── */
+.fv-cta__app { margin: 12px 0 0; font-size: 15px; line-height: 1.5; color: var(--hf-meta); max-width: 42ch; }
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .fv-split, .fv-feature__grid { grid-template-columns: 1fr; gap: 40px; }
+  .fv-split__head .hf-h, .fv-feature__text .hf-h { max-width: 20ch; }
+  .fv-feature--flip .fv-feature__media { order: 0; }
+  .fv-feature__media { aspect-ratio: 16 / 10; }
+}
+@media (max-width: 767px) {
+  .fv-stats--3 { grid-template-columns: 1fr 1fr; }
+  .fv-stats--3 .fv-stat { padding-right: 12px; }
+  .fv-stats--row { grid-template-columns: 1fr; }
+  .fv-stats--row .fv-stat { padding-bottom: 20px; }
+  .fv-stats--dark .fv-stat { grid-template-columns: 4.5rem 1fr; }
+  .fv-mini { grid-template-columns: 1fr; }
+  .fv-stat__n { font-size: 30px; }
+  .fv-ranks li { width: 100%; }
+}
+/* row variant: markup is dt (label) then dd (number); show the number first */
+.fv-stats--row .fv-stat__s { margin-top: 10px !important; }
+/* currency as a small prefix so AED/USD figures fit a third-width cell */
+.fv-c { font-size: .42em; font-weight: 500; letter-spacing: .02em; margin-right: .28em; vertical-align: .62em; }
+.fv-stats--3 .fv-stat__n { font-size: clamp(30px, 2.8vw, 44px); }
+/* relationship cards without the 1 / 4 numerals (Ram, 2026-10-02): title over text */
+.fv-mini > div { flex-direction: column; gap: 4px; }
+.fv-mini dt { font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--hf-ink); }
+/* payments list without the 7 / 7 / 3 / 24h numerals (Ram, 2026-10-02) */
+.fv-count > div { grid-template-columns: 1fr; gap: 2px; }
+.fv-count dt { font-size: 14px; font-weight: 600; line-height: 1.4; letter-spacing: 0; }
+
+/* ── 4b. TRADE + MARKETS · cinematic split ────────────────────────────────
+   Two hf-film panels side by side. The active one widens (flex) and reveals
+   its story; the other keeps photo, chip and title. Stacked under 1024px.  */
+.fv-duo { padding: var(--hf-sec) 0; background: #fff; }
+.fv-duo__row { display: flex; gap: 16px; height: clamp(640px, 84vh, 820px); }
+.fv-pane { flex: 1 1 0; min-width: 0; cursor: pointer; transition: flex-grow .9s var(--hf-ease); }
+.fv-pane.is-active { flex-grow: 1.7; cursor: default; }
+.fv-pane__img { transform: scale(1.08); transition: transform 2.4s var(--hf-ease), filter .9s var(--hf-ease); filter: saturate(.85) brightness(.82); }
+.fv-pane.is-active .fv-pane__img { transform: scale(1); filter: none; }
+.fv-pane__scrim { background:
+  linear-gradient(0deg, rgba(4, 18, 38, .92) 0%, rgba(4, 18, 38, .7) 30%, rgba(4, 18, 38, .2) 58%, rgba(4, 18, 38, 0) 74%),
+  linear-gradient(180deg, rgba(4, 18, 38, .45) 0%, rgba(4, 18, 38, 0) 22%); }
+.fv-pane__chip { position: absolute; z-index: 2; top: 20px; left: 20px; }
+
+/* illustrative UI fragment, top right of the open panel */
+.fv-pane__frag { position: absolute; z-index: 2; top: 20px; right: 20px; width: min(280px, 46%); display: flex; flex-direction: column; gap: 8px;
+  opacity: 0; transform: translateY(-10px); transition: opacity .6s ease, transform .9s var(--hf-ease); pointer-events: none; }
+.fv-pane.is-active .fv-pane__frag { opacity: 1; transform: none; transition-delay: .25s; }
+.fv-pane__frag .card-panel { box-shadow: var(--hf-shadow-ui); }
+.fv-pane__tag { color: #fff; border-color: rgba(255, 255, 255, .5); }
+.fv-fill { --card-pad: 16px 18px; font-variant-numeric: tabular-nums; }
+.fv-fill__top { display: flex; align-items: center; justify-content: space-between; margin: 0; }
+.fv-fill__pair { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--hf-meta); }
+.fv-fill__rate { margin: 8px 0 0; font-size: 34px; font-weight: 500; letter-spacing: -.03em; line-height: 1; color: var(--hf-ink); }
+.fv-fill__spark { display: block; width: 100%; height: 32px; margin-top: 10px; }
+.fv-fill__spark path { fill: none; stroke: var(--hf-cobalt); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 160; stroke-dashoffset: 160; transition: stroke-dashoffset 1.4s var(--hf-ease) .5s; }
+.fv-pane.is-active .fv-fill__spark path { stroke-dashoffset: 0; }
+.fv-fill__meta { margin: 8px 0 0; font-size: 12px; color: var(--hf-meta); }
+
+/* story: title always, the rest only on the open panel */
+.fv-pane__body { position: absolute; z-index: 2; left: clamp(24px, 3vw, 44px); right: clamp(24px, 3vw, 44px); bottom: clamp(24px, 3vw, 40px); }
+.fv-pane__h { font-size: clamp(30px, 2.8vw, 46px); max-width: 15ch; text-shadow: 0 1px 24px rgba(4, 18, 38, .4); }
+.fv-pane__more { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .9s var(--hf-ease), opacity .5s ease; }
+.fv-pane__more > * { min-height: 0; }
+.fv-pane.is-active .fv-pane__more { grid-template-rows: 1fr; opacity: 1; transition-delay: .1s, .3s; }
+.fv-pane__more { grid-template-columns: 1fr; }
+.fv-pane__more > :first-child { overflow: hidden; }
+.fv-pane__p { margin: 16px 0 0; max-width: 52ch; font-size: 16px; line-height: 1.55; color: rgba(255, 255, 255, .86); }
+.fv-pane__stats { margin-top: 22px; }
+.fv-pane__stats li { font-size: 13px; }
+.fv-pane__stats b { font-size: 17px; }
+.fv-pane__cta { justify-self: start; margin-top: 26px; }
+
+@media (max-width: 1023px) {
+  .fv-duo__row { flex-direction: column; height: auto; }
+  .fv-pane, .fv-pane.is-active { flex: none; min-height: 760px; cursor: default; }
+  .fv-pane__img { transform: none; filter: none; }
+  .fv-pane__frag, .fv-pane__more { opacity: 1; transform: none; grid-template-rows: 1fr; }
+  .fv-fill__spark path { stroke-dashoffset: 0; }
+}
+@media (max-width: 767px) {
+  .fv-pane, .fv-pane.is-active { min-height: 820px; }
+  .fv-pane__frag { top: 64px; left: 16px; right: auto; width: min(260px, calc(100% - 32px)); }
+  .fv-pane__chip { top: 16px; left: 16px; }
+  .fv-pane__stats li { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fv-duo__row { flex-direction: column; height: auto; }
+  .fv-pane, .fv-pane.is-active { flex: none; min-height: 720px; }
+  .fv-pane__frag, .fv-pane__more { opacity: 1; transform: none; grid-template-rows: 1fr; }
+  .fv-fill__spark path { stroke-dashoffset: 0; }
+}
+/* trade + markets panel CTAs in Cobalt, same as the hero primary rule (Ram, 2026-10-02) */
+.fv-pane .fv-pane__cta.btn-filled { background: var(--blue, #2765FF); color: #fff; }
+.fv-pane .fv-pane__cta.btn-filled:hover { background: var(--blue-strong, #1f52d6); }

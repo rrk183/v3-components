@@ -1,0 +1,25 @@
+<!-- ═══ Hero (cmp-hero v4) ═══════════════════════════════════════════════════
+     THE hero, video composition: media is a <video class="media-cover">,
+     washes are .ov atoms, copy is a ds-stack. Title is TAG-AGNOSTIC — h1 on
+     the page that owns it, <h2 class="type-h1"> elsewhere (one h1 per page).
+     Align (is-left/is-center/is-right) x Place (is-top/is-middle/is-bottom)
+     on the root; below 768 every combo reads bottom-start. -->
+<section class="cmp cmp-hero surface-primary" data-animate>
+  <div class="hero-stage surface-image">
+    <video class="media-cover" autoplay muted loop playsinline src="/assets/videos/hero-video.mp4"></video>
+    <span class="ov ov-dark ov-gradient-l ov-80" aria-hidden="true"></span>
+    <span class="ov ov-dark ov-gradient-t ov-50" aria-hidden="true"></span>
+    <div class="container-ds hero-frame">
+      <div class="hero-copy ds-stack">
+          <span class="ds-eyebrow ink-white" data-reveal="up">Proud of UAE</span>
+          <h1 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".08">Full-featured product suite that supports your working capital requirements</h1>
+          <p class="type-body-lg measure ink-soft" data-reveal="up" data-reveal-delay=".16">One relationship across trade, cash, digital channels and institutional coverage &mdash; built around the way your business runs.</p>
+          <div class="hero-ctas flex flex-wrap items-center gap-4 mt-2" data-reveal="up" data-reveal-delay=".24">
+            <a href="#" class="btn btn-filled btn-lg">Explore Our Story</a>
+          <a href="#" class="btn btn-outline-light btn-lg">See Our Impact</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Hero ═══════════════════════════════════════════════════════════════ -->

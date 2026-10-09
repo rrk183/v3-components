@@ -1,0 +1,74 @@
+<!-- ═══ Toast / Notifications ════════════════════════════════════════════════
+     Static showcase of toast + inline-banner variants (no live queue).
+     Params: surface, data-animate. Pure markup; reveals on content only. -->
+<section class="cmp cmp-toast surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Feedback</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Toast notifications</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Non-blocking confirmations and alerts that surface the outcome of an action, then dismiss.</p>
+    </div>
+
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 mb-16">
+      <div class="toast card-panel toast-success surface-white" style="--card-pad:14px 16px" data-reveal="up">
+        <span class="icon-tile is-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+        <div class="toast-body"><div class="type-body-sm type-semibold ink-primary">Payment sent</div><div class="type-caption ink-mute">USD 2,450,000 sent to Al Futtaim LLC successfully.</div></div>
+        <button class="btn btn-outline btn-icon btn-xs is-close" type="button"><span class="sr-only">Dismiss</span></button>
+        <div class="toast-progress"></div>
+      </div>
+      <div class="toast card-panel toast-error surface-white" style="--card-pad:14px 16px" data-reveal="up" data-reveal-delay="60">
+        <span class="icon-tile is-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg></span>
+        <div class="toast-body"><div class="type-body-sm type-semibold ink-primary">Transaction failed</div><div class="type-caption ink-mute">TXN-20250428-0067 could not be processed.</div></div>
+        <button class="btn btn-outline btn-icon btn-xs is-close" type="button"><span class="sr-only">Dismiss</span></button>
+        <div class="toast-progress"></div>
+      </div>
+      <div class="toast card-panel toast-warning surface-white" style="--card-pad:14px 16px" data-reveal="up" data-reveal-delay="120">
+        <span class="icon-tile is-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
+        <div class="toast-body"><div class="type-body-sm type-semibold ink-primary">Approval required</div><div class="type-caption ink-mute">3 transactions awaiting your approval.</div></div>
+        <button class="btn btn-outline btn-icon btn-xs is-close" type="button"><span class="sr-only">Dismiss</span></button>
+        <div class="toast-progress"></div>
+      </div>
+      <div class="toast card-panel toast-info surface-white" style="--card-pad:14px 16px" data-reveal="up">
+        <span class="icon-tile is-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
+        <div class="toast-body"><div class="type-body-sm type-semibold ink-primary">FX rate alert</div><div class="type-caption ink-mute">USD/AED has moved 0.5% since your last session.</div></div>
+        <button class="btn btn-outline btn-icon btn-xs is-close" type="button"><span class="sr-only">Dismiss</span></button>
+        <div class="toast-progress"></div>
+      </div>
+      <div class="toast card-panel toast-neutral surface-white" style="--card-pad:14px 16px" data-reveal="up" data-reveal-delay="60">
+        <span class="icon-tile is-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></span>
+        <div class="toast-body"><div class="type-body-sm type-semibold ink-primary">Session expiring</div><div class="type-caption ink-mute">Your session will expire in 5 minutes.</div></div>
+        <button class="btn btn-outline btn-icon btn-xs is-close" type="button"><span class="sr-only">Dismiss</span></button>
+        <div class="toast-progress"></div>
+      </div>
+    </div>
+
+    <div class="ds-stack section-head-sm">
+      <span class="ds-eyebrow ink-accent" data-reveal="up">Inline</span>
+      <h2 class="type-h3 ink-primary" data-reveal="up">Notification banners</h2>
+    </div>
+
+    <div class="flex flex-col gap-4 max-w-[640px]">
+      <div class="notif notif-success" data-reveal="up">
+        <span class="icon-tile is-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+        <div><p class="notif-title type-body-sm type-semibold">Payment sent successfully</p><p class="notif-msg type-caption mt-0.5">USD 2,450,000 has been sent to Al Futtaim LLC. Reference: TXN-20250501-0041</p></div>
+      </div>
+      <div class="notif notif-error" data-reveal="up" data-reveal-delay="60">
+        <span class="icon-tile is-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg></span>
+        <div><p class="notif-title type-body-sm type-semibold">Transaction failed</p><p class="notif-msg type-caption mt-0.5">TXN-20250428-0067 could not be processed. Please check the beneficiary details and try again.</p></div>
+      </div>
+      <div class="notif notif-warning" data-reveal="up" data-reveal-delay="120">
+        <span class="icon-tile is-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
+        <div><p class="notif-title type-body-sm type-semibold">Approval required</p><p class="notif-msg type-caption mt-0.5">3 transactions are awaiting your approval. Review before 5pm GST to ensure same-day processing.</p></div>
+      </div>
+      <div class="notif notif-info" data-reveal="up" data-reveal-delay="180">
+        <span class="icon-tile is-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
+        <div><p class="notif-title type-body-sm type-semibold">FX rate update</p><p class="notif-msg type-caption mt-0.5">USD/AED rate has moved more than 0.5% since your last session. Review your open positions.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Toast / Notifications ══════════════════════════════════════════════ -->

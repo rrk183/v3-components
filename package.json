@@ -1,0 +1,13 @@
+{
+  "name": "emiratesnbd-ds",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Emirates NBD Design System v4 \u2014 pure-markup components on one pre-deployed runtime.",
+  "scripts": {
+    "start": "node server.js",
+    "verify": "node scripts/verify.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

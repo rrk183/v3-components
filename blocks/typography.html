@@ -1,0 +1,68 @@
+<!-- ═══ Typography ══════════════════════════════════════════════════════════
+     Showcase of the type ATOM ramp — every .type-* size, weight and colour
+     class, straight from ds.css. Nothing here is new CSS beyond the .ty-row/
+     .ty-class specimen chrome; the classes are the ones pages compose with.
+     THE RULE THIS CARD TEACHES: type is TAG-AGNOSTIC. The HTML tag is chosen
+     for semantics (one h1 per page, SEO), the .type-* class for size — an
+     <h2 class="type-h1"> renders identically to an <h1 class="type-h1">.
+     Class names render in Latin by design (code identifiers, not copy).
+     Params: surface, data-animate. No IDs — repeatable. -->
+<section class="cmp cmp-typography surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Atoms</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Typography</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">One ramp, tag-agnostic: the HTML tag carries the semantics, the class carries the size. Plus Jakarta Sans only — drama comes from weight and scale, never a new typeface.</p>
+    </div>
+
+    <div class="ds-stack" data-reveal="up" style="--ds-stack-gap:2.5rem">
+
+      <div>
+        <p class="bt-label ink-mute">Display</p>
+        <div class="ty-row"><span class="ty-class">.type-display-xxl</span><span class="type-display-xxl ink-primary">Momentum</span></div>
+        <div class="ty-row"><span class="ty-class">.type-display-xl</span><span class="type-display-xl ink-primary">Momentum</span></div>
+        <div class="ty-row"><span class="ty-class">.type-display-lg</span><span class="type-display-lg ink-primary">Momentum</span></div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Headings</p>
+        <div class="ty-row"><span class="ty-class">.type-h1</span><span class="type-h1 ink-primary">Banking built around your business</span></div>
+        <div class="ty-row"><span class="ty-class">.type-h2</span><span class="type-h2 ink-primary">Banking built around your business</span></div>
+        <div class="ty-row"><span class="ty-class">.type-h3</span><span class="type-h3 ink-primary">Banking built around your business</span></div>
+        <div class="ty-row"><span class="ty-class">.type-h4</span><span class="type-h4 ink-primary">Banking built around your business</span></div>
+        <div class="ty-row"><span class="ty-class">.type-h5</span><span class="type-h5 ink-primary">Banking built around your business</span></div>
+        <div class="ty-row"><span class="ty-class">.type-h6</span><span class="type-h6 ink-primary">Banking built around your business</span></div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Body &amp; functional</p>
+        <div class="ty-row"><span class="ty-class">.type-body-lg</span><span class="type-body-lg ink-primary">Move funds, manage liquidity and track every position from a single relationship.</span></div>
+        <div class="ty-row"><span class="ty-class">.type-body</span><span class="type-body ink-primary">Move funds, manage liquidity and track every position from a single relationship.</span></div>
+        <div class="ty-row"><span class="ty-class">.type-body-sm</span><span class="type-body-sm ink-primary">Move funds, manage liquidity and track every position from a single relationship.</span></div>
+        <div class="ty-row"><span class="ty-class">.type-eyebrow</span><span class="type-eyebrow ink-accent">Corporate banking</span></div>
+        <div class="ty-row"><span class="ty-class">.ds-eyebrow.has-icon</span><span class="ds-eyebrow has-icon ink-accent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Global payments</span></div>
+        <div class="ty-row"><span class="ty-class">.type-caption</span><span class="type-caption ink-primary">Terms and conditions apply. Rates reviewed quarterly.</span></div>
+        <div class="ty-row"><span class="ty-class">.type-micro</span><span class="type-micro ink-primary">Last updated today</span></div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Weights &amp; colours</p>
+        <div class="ty-row"><span class="ty-class">.type-light … .type-extrabold</span><span class="type-h4 ink-primary"><span class="type-light">Light</span> · <span class="type-normal">Normal</span> · <span class="type-medium">Medium</span> · <span class="type-semibold">Semibold</span> · <span class="type-bold">Bold</span> · <span class="type-extrabold">Extrabold</span></span></div>
+        <div class="ty-row"><span class="ty-class">.type-navy / blue / mid</span><span class="type-h4 ink-primary"><span class="ink-primary">Navy</span> · <span class="ink-accent">Blue</span> · <span class="ink-mute">Mid</span></span></div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Tag-agnostic — same class, different tags, identical render</p>
+        <div class="ty-row"><span class="ty-class">&lt;h2 class="type-h1"&gt;</span><h2 class="type-h1 ink-primary">One relationship, every market.</h2></div>
+        <div class="ty-row"><span class="ty-class">&lt;p class="type-h1"&gt;</span><p class="type-h1 ink-primary">One relationship, every market.</p></div>
+        <p class="type-body-sm ink-mute">The homepage headline is an <span class="ty-class">&lt;h1&gt;</span>; the same visual headline anywhere else is an <span class="ty-class">&lt;h2&gt;</span> — one h1 per page, size set only by the class.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Typography ═════════════════════════════════════════════════════════ -->

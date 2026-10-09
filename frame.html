@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-no-smooth>
+<head>
+  <meta charset="UTF-8" />
+  <script src="assets/js/gate-config.js"></script>
+  <script src="assets/js/gate.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DS frame</title>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=261193" />
+  <link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+  <link rel="stylesheet" href="assets/css/themes.css?v=261193" />
+  <script src="assets/js/tailwind.cdn.js"></script>
+  <script src="assets/js/ds-tailwind-config.js?v=261193"></script>
+  <script src="assets/js/ds-palette.js?v=261193"></script>
+  <script src="assets/js/ar-preview.js?v=261193"></script>
+  <script defer src="assets/js/ds.js?v=261195"></script>
+  <style>html,body{margin:0}</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const P = new URLSearchParams(location.search);
+    const slug = P.get('c'), surface = P.get('surface'), overlay = P.get('overlay'), head = P.get('head'), rtl = P.get('rtl'), align = P.get('align'), place = P.get('place'), cols = P.get('cols'), cta = P.get('cta'), cardsurf = P.get('cardsurf'), cardov = P.get('cardov'), hover = P.get('hover'), cauto = P.get('cauto'), cnav = P.get('cnav'), malign = P.get('malign'), gutter = P.get('gutter'), wmink = P.get('wmink'), mcols = P.get('mcols'), mspeed = P.get('mspeed');
+    // Brand theme (?theme=ei) — themes.css repaints the token tier. The
+    // gallery can also switch a live frame via postMessage {type:'libTheme'}.
+    const theme = P.get('theme');
+    if (theme) document.documentElement.setAttribute('data-theme', theme);
+    // surface-image never gets its image from CSS: the section carries
+    // data-bg (real pages author it per brand). The harness supplies the
+    // preview asset for the ACTIVE theme when the option is picked.
+    const SURFACE_IMAGE_ASSET = { '': 'assets/images/bento-bg-placeholder.svg', ei: 'assets/images/bento-bg-ei.svg' };
+    const surfaceImageAsset = (t) => SURFACE_IMAGE_ASSET[t] || SURFACE_IMAGE_ASSET[''];
+    // header previews carry the ACTIVE brand's logotype (real pages author
+    // --brand-logo themselves; the harness mirrors that per theme)
+    const BRAND_LOGO_ASSET = { ei: '/assets/images/ei-logo.svg' };
+    function syncBrandLogos(t) {
+      document.querySelectorAll('.cmp-site-header').forEach((h) => {
+        if (BRAND_LOGO_ASSET[t]) h.style.setProperty('--brand-logo', "url('" + BRAND_LOGO_ASSET[t] + "')");
+        else h.style.removeProperty('--brand-logo');
+      });
+    }
+    function syncSurfaceImages(t) {
+      document.querySelectorAll('.surface-image[data-bg]').forEach((el) => {
+        el.setAttribute('data-bg', surfaceImageAsset(t));
+        el.style.backgroundImage = "url('" + surfaceImageAsset(t) + "')";
+      });
+    }
+    addEventListener('message', (e) => {
+      if (!e.data || e.data.type !== 'libTheme') return;
+      if (e.data.theme) document.documentElement.setAttribute('data-theme', e.data.theme);
+      else document.documentElement.removeAttribute('data-theme');
+      syncSurfaceImages(e.data.theme || '');
+      syncBrandLogos(e.data.theme || '');
+    });
+    // AR/RTL preview: flip the WHOLE document, exactly like a real Arabic page
+    // would (<html dir="rtl" lang="ar">). Component markup is untouched — RTL
+    // comes from CSS reacting to the direction, Tajawal from fonts.css.
+    if (rtl) {
+      document.documentElement.setAttribute('dir', 'rtl');
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.classList.add('lang-ar');
+    }
+    const OV_MAP = { tint:'ov-tint ov-60','grad-up':'ov-gradient-b ov-70','grad-down':'ov-gradient-t ov-70',scrim:'ov-scrim ov-50',vignette:'ov-vignette ov-70', 'grad-left': 'ov-gradient-l ov-70', 'grad-right': 'ov-gradient-r ov-70' };
+
+    function overlayHosts(scope){
+      // Each entry: { host, media }. media is set when the picture is an
+      // ELEMENT (video / scrubbed canvas) rather than a CSS background —
+      // the overlay must then slot after that sibling, not behind it.
+      const found=[]; const seen=new Set();
+      scope.querySelectorAll('*').forEach(el=>{
+        if(found.length>8) return;
+        if((el.tagName==='VIDEO'||el.tagName==='CANVAS') && el.parentElement){
+          if(!seen.has(el.parentElement)){ seen.add(el.parentElement); found.push({host:el.parentElement, media:el}); }
+          return;
+        }
+        try{ const bg=getComputedStyle(el).backgroundImage; if(bg && bg.indexOf('url(')!==-1 && !seen.has(el)){ seen.add(el); found.push({host:el, media:null}); } }catch(e){}
+      });
+      return found;
+    }
+    function applyOverlay(scope, key){
+      const cls = OV_MAP[key]; if(!cls) return;
+      overlayHosts(scope).forEach(({host, media})=>{
+        if(getComputedStyle(host).position==='static') host.style.position='relative';
+        const o=document.createElement('div'); o.className='ov '+cls;
+        if(media){
+          // Element media (video/canvas): insert as the media's NEXT SIBLING —
+          // DOM order paints the tint above the media but below the copy and
+          // authored scrims that follow it, with no z-index games. (z:-1 here
+          // would drop the tint BEHIND the media — the old invisible-overlay bug.)
+          media.insertAdjacentElement('afterend', o);
+        } else {
+          const copy = host.querySelector('h1,h2,h3,h4,h5,h6,p,a,button,li');
+          if(copy){
+            // Copy shares the host with the background. If the copy sits in a
+            // positive z-index layer (hero pattern: media z:0, content z:2+),
+            // slot the tint one level below it — above every media layer,
+            // incl. pseudo-element mirrors (e.g. Ken Burns ::before at z:0)
+            // that a z:-1 child would end up BEHIND. Only when the copy is
+            // unlayered fall back to isolate + z:-1 to stay under the text.
+            let zProtect = 0;
+            for(let n = copy; n && n !== host; n = n.parentElement){
+              const zs = getComputedStyle(n).zIndex;
+              if(zs !== 'auto' && parseInt(zs, 10) > 0){ zProtect = parseInt(zs, 10); break; }
+            }
+            if(zProtect > 0){ o.style.zIndex = String(zProtect - 1); }
+            else { host.style.isolation='isolate'; o.style.zIndex='-1'; }
+          }
+          host.appendChild(o);
+        }
+      });
+    }
+    // Scroll/pinned components set their root to many viewport-heights. The
+    // parent must give them a FIXED-height iframe (which scrolls its content
+    // natively) so position:sticky pins and scroll progress advances — instead
+    // of growing the iframe to full content (which kills the scroll). We just
+    // flag them here; the parent (library.js) sizes accordingly.
+    // MUST stay in sync with SCROLL_SLUGS in library.js: that list decides
+    // iframe-vs-inline, this one decides whether the iframe reports a FIXED
+    // height (so it scrolls its own tall content and the pin works) or its full
+    // content height. A behaviour missing here renders as one enormous card
+    // with no pinning — which is what happened to scroll-track.
+    const SCROLL_BEHAVIORS = ['scroll-cinema','scroll-text','scroll-stage','scroll-story','scroll-story-scrub','scroll-frames','sticky-scroll','zoom-parallax','ib-hero','scroll-track','scroll-tab','scroll-showcase','global-reach','markets-map','tabs-desk'];
+    let IS_SCROLL = false;
+    // Split needs TWO groups to put left and right. A header that is only an
+    // eyebrow + headline has nothing for the right column, so grouping yields a
+    // single child and "Split" renders identically to "Left" — the control must
+    // say so rather than offer a dead option.
+    function headCanSplit(){
+      var h = document.querySelector('.section-head, .section-head-sm');
+      if(!h) return false;
+      if(h.querySelector(':scope > .ds-stack')) return h.children.length > 1;
+      return !!h.querySelector(':scope > .sh-lead, :scope > .sh-action');
+    }
+    function postHeight(){ try{ parent.postMessage({type:'libFrameHeight', h: document.documentElement.scrollHeight, scroll: IS_SCROLL, hasHead: !!document.querySelector('.section-head, .section-head-sm'), canSplit: headCanSplit()}, '*'); }catch(e){} }
+
+    async function start(){
+      const root=document.getElementById('root');
+      try{ root.innerHTML = await (await fetch('blocks/'+slug+'.html', {cache:'no-store'})).text(); }
+      catch(e){ root.textContent='Could not load '+slug; postHeight(); return; }
+      // innerHTML never runs <script>: re-create any the block ships (e.g. the
+      // self-contained global-reach map) so they execute once the markup exists.
+      root.querySelectorAll('script').forEach(function(o){ var n=document.createElement('script'); [].forEach.call(o.attributes,function(a){ if(a.name!=='defer') n.setAttribute(a.name,a.value); }); if(o.src){ n.async=false; } else { n.textContent=o.textContent; } o.replaceWith(n); });
+      const cmp=root.querySelector('.cmp');
+      if(cmp && surface) DSPalette.recompose(cmp, surface);   /* markup swap, not a CSS flip — see assets/js/ds-palette.js */
+      if(cmp && /\bsurface-image\b/.test(surface||'')) cmp.setAttribute('data-bg', surfaceImageAsset(theme||''));
+      // Vertical placement of a full-bleed block's copy (Content control).
+      if(cmp && place){ cmp.classList.remove('is-top','is-middle','is-bottom'); cmp.classList.add(place); }
+      // Content-alignment variant (Align control — opt-in blocks like cta-band)
+      if(cmp && align){ cmp.classList.remove('is-left','is-center','is-right'); cmp.classList.add(align); }
+      if(cmp && malign){ cmp.classList.add(malign); }
+      if(cmp && gutter){ cmp.style.setProperty('--bn-gap', gutter); }
+      if(cmp && wmink){ cmp.classList.add(wmink); }
+      if(cmp && mcols){ cmp.classList.remove('is-m-cols-1','is-m-cols-2'); cmp.classList.add(mcols); }
+      if(mspeed){ root.querySelectorAll('.marquee').forEach(function(m){ m.style.setProperty('--marquee-dur', mspeed); }); }
+      // Desktop column count (Columns control — opt-in grid blocks like cards-thumb)
+      if(cmp && cols){ cmp.classList.remove('is-cols-5','is-cols-4','is-cols-3','is-cols-2','is-cols-1','is-cols-auto'); cmp.classList.add(cols); }
+      // CTA style (CTA control — opt-in card blocks like cards-thumb)
+      if(cmp && cta){ cmp.classList.remove('is-cta-text','is-cta-btn'); cmp.classList.add(cta); }
+      if(cardsurf){ document.querySelectorAll('.cd-card').forEach(el => {
+        ['card-panel','card-media','surface-clear','surface-glass','surface-glass-25','surface-glass-50','surface-glass-75','ds-card','is-tile','is-flat','is-grey','card-clear','is-fill-25','is-fill-50','is-fill-75','surface-white','surface-soft','surface-mute','surface-primary','surface-primary-soft','surface-accent','surface-accent-soft','surface-grey','surface-grey-2','surface-image','p-6'].forEach(c => el.classList.remove(c));
+        el.removeAttribute('data-bg'); el.style.backgroundImage = '';
+        if(cardsurf !== 'none') cardsurf.split(' ').forEach(c => el.classList.add(c));
+        if(cardsurf !== 'none' && el.querySelector(':scope > .media-cover, :scope > :not(.media-frame) > .media-cover')){ el.classList.remove('p-6'); el.style.setProperty('--card-pad', '0px'); }
+        if(cardsurf.indexOf('surface-image') > -1){ const a = surfaceImageAsset(theme||''); el.setAttribute('data-bg', a); el.style.backgroundImage = "url('" + a + "')"; }
+      }); }
+      if(hover && cmp){ cmp.classList.remove('is-hover-zoom','is-hover-lift','is-hover-fill','is-hover-spotlight','is-hover-none'); hover.split(' ').forEach(h=>cmp.classList.add(h));
+        if(hover === 'is-hover-spotlight'){ const g=cmp.querySelector('.bn-grid'); if(g && !g.hasAttribute('data-behavior')) g.setAttribute('data-behavior','spotlight'); cmp.querySelectorAll('.bn-tile').forEach(t=>t.setAttribute('data-spotlight-tile','')); if(window.DS && DS.refresh) DS.refresh(cmp); } }
+      if(cauto || cnav){ document.querySelectorAll('[data-carousel]').forEach(c => {
+        if(cauto === 'on') c.setAttribute('data-autoplay','7000');
+        if(cauto === 'off') c.removeAttribute('data-autoplay');
+        const tog = c.querySelector('[data-carousel-toggle]'); if(tog) tog.hidden = !c.hasAttribute('data-autoplay');
+        if(cnav){ c.querySelectorAll('[data-carousel-prev],[data-carousel-next]').forEach(b => { b.hidden = (cnav==='dots'||cnav==='none'); });
+          const d = c.querySelector('[data-carousel-dots]'); if(d) d.hidden = (cnav==='arrows'||cnav==='none'); }
+      }); }
+      if(cardov){ const OVM = {tint:'ov-tint', 'grad-up':'ov-gradient-t', 'grad-down':'ov-gradient-b', 'grad-left':'ov-gradient-l', 'grad-right':'ov-gradient-r', scrim:'ov-scrim', vignette:'ov-vignette'};
+        document.querySelectorAll('.cd-card').forEach(el => {
+          let ov = el.querySelector(':scope > .ov');
+          if(cardov === 'off'){ if(ov) ov.hidden = true; return; }
+          if(!ov){ const media = el.querySelector(':scope > .media-cover'); if(!media) return;
+            ov = document.createElement('span'); ov.className = 'ov'; ov.setAttribute('aria-hidden','true'); media.insertAdjacentElement('afterend', ov); }
+          ov.hidden = false;
+          ov.className = ov.className.replace(/\bov-(tint|scrim|gradient-[btlr]|vignette)\b/g,'').replace(/\s+/g,' ').trim();
+          const c = OVM[cardov]; if(c) ov.classList.add(c);
+      }); }
+      if(head){ root.querySelectorAll('.section-head, .section-head-sm').forEach(function(h){
+        h.classList.remove('is-left','is-center','is-right','is-split');
+        if(head==='left') return;
+        if(head==='is-split' && !h.querySelector(':scope > .ds-stack')){   // wrap loose eyebrow+heading so the flex row doesn't scatter them
+          var lead=h.querySelector(':scope > .sh-lead');
+          var loose=[].filter.call(h.children,function(c){return c!==lead;});
+          if(loose.length){ var grp=document.createElement('div'); grp.className='ds-stack'; h.insertBefore(grp, lead||null); loose.forEach(function(c){grp.appendChild(c);}); }
+        }
+        h.classList.add(head);
+      }); }
+      // Site header is position:fixed (no flow height). For preview, drop a dark
+      // hero backdrop + scroll room behind it so it's visible and the
+      // transparent→solid-on-scroll behaviour can be demonstrated.
+      syncBrandLogos(theme||'');
+      if(root.querySelector('.cmp-site-header')){
+        const demo=document.createElement('div');
+        demo.innerHTML='<div style="min-height:62vh;display:flex;align-items:flex-end;padding:190px clamp(20px,7vw,120px) 64px;background:radial-gradient(120% 120% at 80% 0%,var(--navy-strong) 0%,var(--navy-shade) 55%,var(--navy-deep) 100%);color:#fff"><div><div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:14px">Corporate &amp; Institutional</div><div style="font-size:clamp(34px,4.4vw,60px);font-weight:600;letter-spacing:-.02em;line-height:1.08;max-width:18ch">A dark hero to preview the header over.</div><div style="margin-top:18px;opacity:.75;max-width:46ch">Scroll down — the brand row fades from transparent to a solid white bar.</div></div></div><div style="height:120vh;background:#fff"></div>';
+        root.appendChild(demo);
+        IS_SCROLL=true;
+      }
+      IS_SCROLL = IS_SCROLL || SCROLL_BEHAVIORS.some(function(b){ return root.querySelector('[data-behavior="'+b+'"]'); });
+      // AR preview copy: translate BEFORE refresh (drawer/chip clones inherit
+      // Arabic) and again AFTER (catches strings the recipes inject).
+      if(rtl && window.ARP) ARP.translate(root);
+      if(window.DS) DS.refresh(root);            // sets data-bg backgrounds first
+      if(rtl && window.ARP) ARP.translate(root);
+      if(overlay) applyOverlay(root, overlay);   // then overlay finds media hosts
+      postHeight();
+      // Auto-grow only non-scroll components; scroll components keep the parent's fixed height.
+      if(!IS_SCROLL){ try{ new ResizeObserver(postHeight).observe(document.documentElement); }catch(e){ setTimeout(postHeight,600); } }
+    }
+    // ds.js is deferred — run once it (and the DOM) are ready
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', start); else start();
+
+    // copy-HTML bridge
+    window.addEventListener('message', e=>{
+      if(e.data && e.data.type==='requestHTML'){ fetch('blocks/'+slug+'.html').then(r=>r.text()).then(t=>parent.postMessage({type:'htmlResponse', html:t},'*')); }
+    });
+  </script>
+</body>
+</html>

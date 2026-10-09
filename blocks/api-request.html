@@ -1,0 +1,22 @@
+<!-- ═══ API Request card (mockup) ═════════════════════════════════════════════
+     A terminal/code window showing an API request + response. .eapi in ds.css. -->
+<section class="cmp api-request surface-soft section-y" data-animate>
+  <div class="container-ds flex justify-center" data-reveal="up">
+    <div class="eapi">
+      <div class="eapi-bar"><i></i><i></i><i></i><em>create-payment.sh</em></div>
+      <div class="eapi-code"><span class="m"># Create a payment link</span>
+<span class="k">POST</span> /v1/payment-links
+{
+  <span class="k">"amount"</span>: <span class="s">125000</span>,
+  <span class="k">"currency"</span>: <span class="s">"AED"</span>,
+  <span class="k">"channel"</span>: <span class="s">"whatsapp"</span>
+}
+
+<span class="m"># 201 Created</span>
+{
+  <span class="k">"url"</span>: <span class="s">"pay.enbd.com/r/8x2k4q"</span>,
+  <span class="k">"status"</span>: <span class="s">"active"</span>
+}</div>
+    </div>
+  </div>
+</section>

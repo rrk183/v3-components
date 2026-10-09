@@ -1,0 +1,209 @@
+<!-- ═══ Card Surfaces ═══════════════════════════════════════════════════════
+     THE CARD MODEL in one section. A card is three independent axes:
+
+       cd-card                   identity (inside the cards ENGINE only)
+         card-panel | card-media LOOK — bounded panel | image-as-background
+           surface-*             PAINT — the surface system does the colour
+         + .ov on media          the scrim
+         + engine axes on root   BEHAVIOUR (hover, cols) — never on the card
+
+     Absence of a look class = BOXLESS (content straight on the section).
+     The panels here sit OUTSIDE the cards engine, so they are card-panel
+     with NO cd-card — the same atom every calculator, modal and result
+     panel uses.
+
+     FINISHES vs PAINTS (2026-09-02, Hakan). The is-* modifiers are FINISH
+     only — border and elevation, never a fill: .is-tile (no rule, no
+     shadow), .is-flat (no shadow), .is-hover (lift, for link cards). ALL
+     colour comes from a surface-* class. So the soft grey tile is spelled
+     `card-panel surface-grey is-tile`, and the same finish over navy is
+     `card-panel surface-primary is-tile` — the first grid below is that
+     independence, three finishes × three paints.
+
+     PAINT IS NOT A CARD FEATURE — card-panel carries the light-ink tokens
+     at ZERO specificity (:where), so any surface-* class on the same
+     element wins. Unpainted, it is a LIGHT ISLAND: flip the gallery
+     Surface control to Navy and the ink inside stays light-mode. Painted
+     dark or clear, the island group lets it go.
+     .ds-card is the legacy alias of .card-panel — identical, do not author.
+     Nothing here is new CSS. Params: surface, data-animate. No IDs. -->
+<section class="cmp cmp-card-surfaces surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Atoms</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Card surfaces</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">One look class, one paint class, one finish — every card in the system. The finish modifiers carry no colour at all: surfaces own the fill and the ink, is-* owns the border and the shadow. An unpainted card-panel is a light island — put it on navy and its content keeps light-mode ink automatically.</p>
+    </div>
+
+    <p class="bt-label ink-mute" data-reveal="up">Finish &times; paint are independent &mdash; the same three finishes (raised &middot; tile &middot; flat) over three surfaces</p>
+    <div class="grid gap-5 md:grid-cols-3" data-reveal="up">
+
+      <div class="card-panel surface-white">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">White &middot; raised</h3>
+          <p class="type-caption ink-mute">Hairline border and the one canonical shadow. The everyday card.</p>
+          <code class="type-micro block mt-1 ink-mute">card-panel surface-white</code>
+        </div>
+      </div>
+      <div class="card-panel surface-soft">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">Grey &middot; raised</h3>
+          <p class="type-caption ink-mute">Only the fill changed &mdash; the finish is untouched.</p>
+          <code class="type-micro block mt-1 ink-mute">card-panel surface-grey</code>
+        </div>
+      </div>
+      <div class="card-panel surface-primary">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-white">Navy &middot; raised</h3>
+          <p class="type-caption ink-soft">The surface brings its own ink tokens &mdash; white on navy, on ANY section surface.</p>
+          <code class="type-micro block mt-1 ink-soft">card-panel surface-primary</code>
+        </div>
+      </div>
+
+      <div class="card-panel surface-white is-tile">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">White &middot; tile</h3>
+          <p class="type-caption ink-mute">is-tile removes the rule and the shadow. It adds no fill of its own.</p>
+          <code class="type-micro block mt-1 ink-mute">card-panel surface-white is-tile</code>
+        </div>
+      </div>
+      <div class="card-panel surface-soft is-tile">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">Grey &middot; tile</h3>
+          <p class="type-caption ink-mute">The quiet tile for dense grids &mdash; the estate's most-used card.</p>
+          <code class="type-micro block mt-1 ink-mute">card-panel surface-grey is-tile</code>
+        </div>
+      </div>
+      <div class="card-panel surface-primary is-tile">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-white">Navy &middot; tile</h3>
+          <p class="type-caption ink-soft">The same finish over a dark paint &mdash; impossible while is-tile still smuggled a grey fill.</p>
+          <code class="type-micro block mt-1 ink-soft">card-panel surface-primary is-tile</code>
+        </div>
+      </div>
+
+      <div class="card-panel surface-white is-flat">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">White &middot; flat</h3>
+          <p class="type-caption ink-mute">Border only, no shadow &mdash; for calm layouts where depth would be noise.</p>
+          <code class="type-micro block mt-1 ink-mute">card-panel surface-white is-flat</code>
+        </div>
+      </div>
+      <div class="card-panel surface-soft is-flat">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">Grey &middot; flat</h3>
+          <p class="type-caption ink-mute">Keeps the hairline, drops the lift.</p>
+          <code class="type-micro block mt-1 ink-mute">card-panel surface-grey is-flat</code>
+        </div>
+      </div>
+      <div class="card-panel surface-primary is-flat">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-white">Navy &middot; flat</h3>
+          <p class="type-caption ink-soft">Nine cells, two axes, no variants &mdash; that is the whole model.</p>
+          <code class="type-micro block mt-1 ink-soft">card-panel surface-primary is-flat</code>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="bt-label mt-8 ink-mute" data-reveal="up">The rest of the paint axis &mdash; a surface class on the SAME element (works on any bounded container, not just cards)</p>
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4" data-reveal="up">
+      <div class="card-panel surface-mute is-tile">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">Grey 2</h3>
+          <p class="type-caption ink-mute">The deeper app grey. Still a light island. Replaces the retired is-grey fill modifier.</p>
+          <code class="type-micro block mt-1 ink-mute">card-panel surface-grey-2 is-tile</code>
+        </div>
+      </div>
+      <div class="card-panel surface-accent">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-white">Blue</h3>
+          <p class="type-caption ink-soft">Brand-blue frame; on-surface ink flips to light.</p>
+          <code class="type-micro block mt-1 ink-soft">card-panel surface-accent</code>
+        </div>
+      </div>
+      <div class="card-panel surface-clear">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">Clear (null surface)</h3>
+          <p class="type-caption ink-mute">No paint and no ink of its own &mdash; the section themes right through it. Flip Surface to Navy to watch it adapt.</p>
+          <code class="type-micro block mt-1 ink-mute">card-panel surface-clear</code>
+        </div>
+      </div>
+      <a href="#" class="card-panel is-hover surface-white">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">Hover (link card)</h3>
+          <p class="type-caption ink-mute">The one interaction finish: adds the lift on hover, for cards that are one whole link.</p>
+          <span class="btn btn-text is-arrow">Explore</span>
+        </div>
+      </a>
+    </div>
+
+    <p class="bt-label mt-8 ink-mute" data-reveal="up">Glass &mdash; one frosted family in four strengths (dark or image ground only: the ink stays white)</p>
+    <div class="surface-primary p-6 rounded-2xl" data-reveal="up">
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div class="card-panel surface-glass">
+          <div class="ds-stack" style="--ds-stack-gap: 6px">
+            <h3 class="type-h6 ink-white">Glass</h3>
+            <p class="type-caption ink-soft">Translucent white, blurred, white ink. The frosted-panel-on-navy default.</p>
+            <code class="type-micro block mt-1 ink-soft">card-panel surface-glass</code>
+          </div>
+        </div>
+        <div class="card-panel surface-glass-25">
+          <div class="ds-stack" style="--ds-stack-gap: 6px">
+            <h3 class="type-h6 ink-white">Glass 25</h3>
+            <p class="type-caption ink-soft">Same recipe, a quarter-white fill. Strength is paint, so it is spelled as a surface.</p>
+            <code class="type-micro block mt-1 ink-soft">card-panel surface-glass-25</code>
+          </div>
+        </div>
+        <div class="card-panel surface-glass-50">
+          <div class="ds-stack" style="--ds-stack-gap: 6px">
+            <h3 class="type-h6 ink-white">Glass 50</h3>
+            <p class="type-caption ink-soft">Half-white glass fill.</p>
+            <code class="type-micro block mt-1 ink-soft">card-panel surface-glass-50</code>
+          </div>
+        </div>
+        <div class="card-panel surface-glass-75">
+          <div class="ds-stack" style="--ds-stack-gap: 6px">
+            <h3 class="type-h6 ink-white">Glass 75</h3>
+            <p class="type-caption ink-soft">Near-opaque. Reserve it for a busy photo ground and run /audit.html &mdash; white ink on a three-quarter white fill is tight.</p>
+            <code class="type-micro block mt-1 ink-soft">card-panel surface-glass-75</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="bt-label mt-8 ink-mute" data-reveal="up">The other look &mdash; card-media: the image IS the card (media-cover + an .ov scrim; ink is white by construction)</p>
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4" data-reveal="up">
+      <div class="card-media aspect-[4/3] flex flex-col justify-end surface-image">
+        <span class="media-cover" data-bg="assets/images/story-2.jpg" aria-hidden="true"></span>
+        <span class="ov ov-gradient-t ov-70" aria-hidden="true"></span>
+        <div class="ds-stack relative z-10 p-6" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-white">Media</h3>
+          <p class="type-caption ink-soft">Clipped, rounded, white ink.</p>
+          <code class="type-micro block mt-1 ink-white">card-media + .ov</code>
+        </div>
+      </div>
+      <div class="card-media aspect-[4/3] flex flex-col justify-end surface-image">
+        <span class="media-cover" data-bg="assets/images/story-4.jpg" aria-hidden="true"></span>
+        <span class="ov ov-scrim ov-50" aria-hidden="true"></span>
+        <div class="ds-stack relative z-10 p-6" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-white">Media &mdash; flat scrim</h3>
+          <p class="type-caption ink-soft">Same look, a different .ov tone and strength.</p>
+          <code class="type-micro block mt-1 ink-white">card-media + ov-scrim ov-50</code>
+        </div>
+      </div>
+      <div class="card-panel is-flat xl:col-span-2 surface-white">
+        <div class="ds-stack" style="--ds-stack-gap: 6px">
+          <h3 class="type-h6 ink-primary">Boxless &mdash; no look class at all</h3>
+          <p class="type-caption ink-mute">Content straight on the section is the model's null case, not an oversight: drop card-panel and card-media and the card is just its content. Cards — Plain, People, List and Testimonials ship that way.</p>
+          <code class="type-micro block mt-1 ink-mute">cd-card &nbsp;(nothing else)</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Card Surfaces ══════════════════════════════════════════════════════ -->

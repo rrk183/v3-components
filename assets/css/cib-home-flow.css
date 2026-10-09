@@ -1,0 +1,750 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   cib-home-flow.css · C&IB home "flow" (scoped, loads after ds-cib-v6-base.css)
+   Same content as V7A, re-presented so no two consecutive screens read as
+   slides: a hero whose phone gives way to a row of product tiles, a
+   scroll-scrubbed network film, a split with a real list, text + peeking card carousel, one
+   cinematic card, a sticky visual with a scrolling list, an
+   article carousel, and a network/research bento.
+   Layout, composition and motion states only. Every atom (buttons, chips,
+   badges, card panels, icon tiles, eyebrows, list-check, stat numbers,
+   article cards, carousels, the app-download block) comes from the DS.
+   Copied from cib-v7a.css where reused (never linked). Everything lives
+   under .hf-main, so the shared header and footer render as the DS ships.
+   Type: Plus Jakarta Sans at DS weights only (headlines 600 / -0.03em,
+   numbers 400-500, body 400). Nothing below 400.
+   Radii: DS --r-* tokens, every corner rounded.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── FOUNDATION ─────────────────────────────────────────────────────────── */
+.hf-main {
+  --hf-ink: #072447;
+  --hf-body: #4c515a;
+  --hf-grey: #80848f;         /* second clause of two-tone headlines (large text, 3:1+ on white and warm) */
+  --hf-meta: #676b76;         /* small meta (4.5:1+ on white and warm) */
+  --hf-line: #d9d9d6;
+  --hf-warm: #f6f4f1;
+  --hf-warm-2: #d7d2cb;
+  --hf-cobalt: #2765ff;
+  --hf-edge: max(var(--page-x), calc((100vw - var(--content-max)) / 2 + var(--page-x)));
+  --hf-hdr: 68px;             /* the solid brand row once the utility bar has scrolled away */
+  --hf-inset: 16px;
+  --hf-sec: clamp(88px, 9vw, 128px);
+  --hf-ease: cubic-bezier(.22, 1, .36, 1);
+  --hf-shadow-ui: 0 1px 1px rgba(7, 36, 71, .04), 0 4px 8px -2px rgba(7, 36, 71, .06), 0 16px 32px -12px rgba(7, 36, 71, .18);
+  display: block; overflow-x: clip; background: #fff; color: var(--hf-ink);
+}
+.hf-main img, .hf-main video { display: block; max-width: 100%; }
+.hf-wrap { width: 100%; max-width: var(--content-max); margin-inline: auto; padding-inline: var(--page-x); }
+.hf-main :where(a, button):focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+/* the DS cd-card link drops its outline on focus (lift only); restore a visible ring */
+.hf-main .cmp-cards a.cd-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.hf-main .art-c-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ── TYPE ───────────────────────────────────────────────────────────────── */
+.hf-eyebrow { margin-bottom: 20px; }
+.hf-h { font-weight: 600; font-size: clamp(30px, 3.1vw, 46px); line-height: 1.1; letter-spacing: -.03em; color: var(--hf-ink); text-wrap: balance; max-width: 22ch; margin: 0; }
+.hf-h__2 { color: var(--hf-grey); }
+.hf-h--light { color: #fff; }
+.hf-h--light .hf-h__2 { color: rgba(255, 255, 255, .76); }
+.hf-h--sm { font-size: clamp(24px, 2vw, 30px); line-height: 1.15; }
+.hf-h3 { font-size: 20px; line-height: 1.25; font-weight: 600; letter-spacing: -.02em; color: var(--hf-ink); margin: 0; }
+.hf-body { font-size: 17px; line-height: 1.55; color: var(--hf-body); max-width: 42ch; margin: 20px 0 0; }
+.hf-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+/* ══ 1. HERO · "The frame that becomes the row" ════════════════════════════
+   Default (no JS / reduced motion) = a static intro band + the composed row.
+   .is-live (cib-home-flow.js) pins a 100vh stage: the phone fills the
+   viewport, pulls back in front of the HQ, the app assembles and scrolls,
+   then the phone slides left and the tiles fan out; the world fades to the
+   white canvas and the row becomes a scroll-snap carousel.
+   The phone is a hardware illustration: its bezel and glass radii are the
+   device's own geometry, not UI radii (the only literal radii on the page). */
+.hf-hero { --pw: 273px; --ph: 564px; --tile-h: 500px; --ps: .886; --tile-w: calc((100vw - 2 * var(--hf-edge) - 64px) / 5); position: relative; background: #fff; }
+.hf-hero__stage { position: relative; }
+.hf-hero__intro { position: relative; min-height: 78vh; display: flex; flex-direction: column; justify-content: flex-end; gap: 28px; padding: 180px var(--hf-edge) 72px; background: var(--hf-ink); color: #fff; overflow: hidden; }
+.hf-hero__world { position: absolute; inset: 0; overflow: hidden; }
+.hf-hero__plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transform-origin: 50% 40%; }
+.hf-hero__sky { position: absolute; inset: 0; background:
+  linear-gradient(180deg, rgba(7, 36, 71, .45) 0%, rgba(7, 36, 71, .06) 30%, rgba(7, 36, 71, 0) 50%, rgba(7, 36, 71, .5) 100%),
+  linear-gradient(90deg, rgba(7, 36, 71, .42) 0%, rgba(7, 36, 71, 0) 55%); }
+.hf-hero__copy { position: relative; z-index: 3; }
+.hf-hero__copy .hf-eyebrow { margin-bottom: 20px; text-shadow: 0 1px 24px rgba(7, 36, 71, .45); max-width: none; white-space: nowrap; }
+.hf-hero__h1 { font-weight: 600; font-size: clamp(40px, 5.4vw, 82px); line-height: 1.03; letter-spacing: -.03em; color: #fff; max-width: 12ch; text-wrap: balance; margin: 0; text-shadow: 0 1px 28px rgba(7, 36, 71, .45); }
+.hf-hero__cue { display: none; }
+.hf-pause { position: absolute; z-index: 4; }
+.hf-pause[hidden] { display: none; }
+
+/* Glass captions (iOS liquid glass, alpha .4): copied from V7A */
+.hf-hero__cap {
+  --drift: 0px;
+  position: relative; z-index: 3; align-self: flex-end; margin: 0; max-width: 13.2em; font-size: 20px; line-height: 1.3; font-weight: 400; letter-spacing: -.01em; color: #fff;
+  padding: 16px 22px; border-radius: var(--r-xl); isolation: isolate;
+  background: rgba(18, 26, 40, .4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8); backdrop-filter: blur(24px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, .34);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(255, 255, 255, .1), 0 24px 48px -22px rgba(2, 10, 24, .6), 0 6px 14px -8px rgba(2, 10, 24, .35);
+  text-shadow: 0 1px 12px rgba(7, 36, 71, .45);
+}
+.hf-hero__cap::before { content: ''; position: absolute; inset: 1px 1px 45% 1px; z-index: -1; border-radius: inherit; pointer-events: none; background: linear-gradient(180deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, 0)); }
+/* static layout: the two captions sit bottom-right of the intro band */
+.hf-hero__cap--l { position: absolute; right: var(--hf-edge); bottom: 150px; }
+.hf-hero__cap--r { position: absolute; right: var(--hf-edge); bottom: 72px; }
+@keyframes hf-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+
+/* the row (overview: heading + lede + arrows, the tile track, the CTA pair) */
+.hf-row { padding: 72px 0 88px; }
+.hf-row__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 46ch) auto; align-items: end; gap: 24px clamp(32px, 4vw, 64px); padding-inline: var(--hf-edge); }
+.hf-row__h { font-size: clamp(28px, 2.6vw, 40px); max-width: 16ch; }
+.hf-row__lede { margin: 0; font-size: 15px; line-height: 1.55; color: var(--hf-body); }
+.hf-row__lede-k { display: block; margin-bottom: 4px; font-weight: 600; color: var(--hf-ink); }
+.hf-arrows { display: flex; gap: 10px; }
+.hf-track {
+  position: relative; display: flex; gap: 16px; margin-top: 28px;
+  overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; overscroll-behavior-x: contain; scrollbar-width: none;
+  padding: 8px var(--hf-edge) 16px; scroll-padding-inline: var(--hf-edge);
+}
+.hf-track::-webkit-scrollbar { display: none; }
+.hf-slot { position: relative; z-index: 1; flex: none; scroll-snap-align: start; }
+.hf-row .hf-slot .cd-card.hf-tile { width: var(--tile-w); height: var(--tile-h); min-height: 0; }
+.hf-tile__t { font-size: 34px; font-weight: 600; letter-spacing: -.03em; line-height: 1.05; margin: 0; }
+.hf-hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; padding-inline: var(--hf-edge); }
+
+.hf-phone-slot { position: relative; width: 100%; height: 100%; }
+.hf-phone {
+  position: absolute; left: 50%; top: 50%; width: var(--pw); height: var(--ph); margin: calc(var(--ph) / -2) 0 0 calc(var(--pw) / -2);
+  transform: scale(var(--ps)); box-sizing: border-box;
+  border-radius: 54px; padding: 12px; background: #0b0f17;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14), inset 2px 0 0 rgba(255, 255, 255, .06), 0 0 0 1.5px #2a2f3a, 0 40px 70px -36px rgba(2, 10, 24, .55), 0 18px 32px -22px rgba(2, 10, 24, .45);
+}
+.hf-phone::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(100deg, rgba(255, 255, 255, .18), transparent 12%, transparent 88%, rgba(255, 255, 255, .1)); mix-blend-mode: screen; }
+.hf-phone__btn { position: absolute; width: 3px; background: #1d222c; border-radius: var(--r-pill); }
+.hf-phone__btn--a { left: -3.5px; top: 110px; height: 28px; }
+.hf-phone__btn--b { left: -3.5px; top: 160px; height: 52px; }
+.hf-phone__btn--c { right: -3.5px; top: 180px; height: 80px; }
+.hf-phone__screen { position: relative; width: 100%; height: 100%; border-radius: 42px; overflow: hidden; background: #fff; isolation: isolate; }
+.hf-wall { position: absolute; left: 50%; top: 50%; width: var(--ww, 960px); height: var(--wh, 540px); margin-left: calc(var(--ww, 960px) / -2); margin-top: calc(var(--wh, 540px) / -2); z-index: 2; opacity: 0; }
+.hf-wall__poster, .hf-wall__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hf-wall__veil { position: absolute; inset: 0; background: #7a7068; mix-blend-mode: multiply; }
+/* real ENBD Business screen, 430 x 932 viewport drawn at the 249px screen width */
+.hf-app { position: absolute; inset: 0; z-index: 1; overflow: hidden; background: #fff; }
+.hf-band { display: block; width: 100%; height: auto; }
+.hf-band--top { position: absolute; left: 0; right: 0; top: 0; z-index: 3; }
+.hf-band--tab { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; }
+.hf-app__view { position: absolute; left: 0; right: 0; top: 68px; bottom: 0; overflow: hidden; }
+.hf-app__scroll { position: absolute; left: 0; top: 0; width: 100%; }
+.hf-app__island { position: absolute; z-index: 4; left: 50%; top: 11px; width: 86px; height: 25px; margin-left: -43px; border-radius: var(--r-pill); background: #0b0f17; }
+
+/* ── live (pinned) ── */
+.hf-hero.is-live { height: 400vh; }
+.hf-hero.is-live .hf-hero__stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: #fff; }
+.hf-hero.is-live .hf-hero__intro { position: absolute; inset: 0; min-height: 0; padding: 0; background: transparent; display: block; overflow: visible; }
+.hf-hero.is-live .hf-hero__world { z-index: 0; background: var(--hf-ink); }
+.hf-hero.is-live .hf-hero__plate { will-change: transform; }
+.hf-hero.is-live .hf-hero__copy { position: absolute; left: var(--hf-edge); bottom: clamp(56px, 9vh, 104px); }
+.hf-hero.is-live .hf-hero__cue { display: flex; align-items: center; gap: .85rem; position: absolute; z-index: 3; left: 50%; bottom: 40px; transform: translateX(-50%); margin: 0; white-space: nowrap; }
+.hf-hero__cue .scin-cue-line { width: 1px; height: 38px; background: rgba(255, 255, 255, .4); transform-origin: top; animation: hf-cue 1.6s ease-in-out 3; }
+.hf-hero__cue .scin-cue-label { font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255, 255, 255, .8); text-shadow: 0 1px 24px rgba(7, 36, 71, .45); }
+@keyframes hf-cue { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.4); } }
+/* captions hug the centred phone during the pull-back (vars set by JS) */
+.hf-hero.is-live .hf-hero__cap { position: absolute; bottom: auto; opacity: 0; transform: translate3d(0, calc(16px + var(--drift)), 0) scale(.96); transition: opacity .6s var(--hf-ease), transform .9s var(--hf-ease); pointer-events: none; }
+.hf-hero.is-live .hf-hero__cap--l { right: calc(50% + var(--phw, 140px) / 2 + 6px); top: calc(var(--pcy, 50vh) - 150px); }
+.hf-hero.is-live .hf-hero__cap--r { right: auto; left: calc(50% + var(--phw, 140px) / 2 + 6px); top: calc(var(--pcy, 50vh) + 70px); }
+.hf-hero.is-live .hf-hero__cap.is-in { opacity: 1; transform: translate3d(0, var(--drift), 0); animation: hf-float 2.4s ease-in-out .9s 2; }
+.hf-hero.is-live .hf-hero__cap--r.is-in { animation-delay: 1.3s; }
+.hf-hero.is-live .hf-hero__cap.is-out { opacity: 0; transform: translate3d(0, calc(var(--drift) - 12px), 0) scale(.97); }
+.hf-hero.is-live .hf-row { position: absolute; inset: 0; z-index: 2; margin: 0; padding: var(--row-top, 96px) 0 var(--row-bot, 28px); display: flex; flex-direction: column; justify-content: center; }
+.hf-hero.is-live .hf-row__head, .hf-hero.is-live .hf-hero__ctas { opacity: 0; transform: translateY(14px); transition: opacity .6s var(--hf-ease), transform .8s var(--hf-ease); pointer-events: none; }
+.hf-hero.is-live .hf-row.is-head .hf-row__head, .hf-hero.is-live .hf-row.is-ctas .hf-hero__ctas,
+.hf-hero.is-live .hf-row__head:focus-within, .hf-hero.is-live .hf-hero__ctas:focus-within { opacity: 1; transform: none; pointer-events: auto; }
+.hf-hero.is-live .hf-track { overflow: visible; }
+.hf-hero.is-live .hf-track.is-row { overflow-x: auto; overflow-y: hidden; }
+.hf-hero.is-live .hf-slot[data-hf-tile] { will-change: transform, opacity; }
+.hf-hero.is-live .hf-phone { will-change: transform; }
+.hf-hero.is-live .hf-wall { opacity: 1; }
+.hf-hero.is-live .hf-app__scroll { will-change: transform; }
+.hf-hero.is-live .hf-band { transition: opacity .55s var(--hf-ease), transform .8s var(--hf-ease); }
+.hf-hero.is-live .hf-band--top:not(.is-in) { transform: translateY(-100%); opacity: 0; }
+.hf-hero.is-live .hf-band--tab:not(.is-in) { transform: translateY(100%); opacity: 0; }
+.hf-hero.is-live .hf-band[data-band="0"]:not(.is-in),
+.hf-hero.is-live .hf-band[data-band="1"]:not(.is-in),
+.hf-hero.is-live .hf-band[data-band="2"]:not(.is-in),
+.hf-hero.is-live .hf-band[data-band="3"]:not(.is-in) { transform: translateY(12px); opacity: 0; }
+
+/* ══ FILM CARDS (relationship, investment banking, network) ═════════════ */
+.hf-film { position: relative; overflow: hidden; isolation: isolate; border-radius: var(--r-xl); background: #0d1a2e; }
+.hf-film__media { position: absolute; inset: -32px 0; }
+.hf-film__media > img, .hf-film__media > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hf-film__video { opacity: 0; transition: opacity .8s var(--hf-ease); }
+.hf-film__video.is-ready { opacity: 1; }
+.hf-film__scrim { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.hf-film .hf-pause { top: 16px; right: 16px; }
+
+/* ══ 3. RELATIONSHIP · split + list ══════════════════════════════════════ */
+.hf-rel { padding: var(--hf-sec) 0; background: #fff; }
+.hf-rel__grid { display: grid; grid-template-columns: 55fr 45fr; gap: clamp(40px, 5vw, 80px); align-items: center; max-width: var(--content-max); margin-inline: auto; padding-inline: var(--page-x); }
+.hf-film--rel { height: min(76vh, 720px); min-height: 540px; }
+.hf-film--rel .hf-film__media img, .hf-film--rel .hf-film__media video { object-position: 60% 50%; }
+.hf-film__scrim--chat { background: radial-gradient(60% 55% at 80% 88%, rgba(4, 18, 38, .6), rgba(4, 18, 38, 0) 75%), linear-gradient(0deg, rgba(4, 18, 38, .4) 0%, rgba(4, 18, 38, 0) 40%); }
+.hf-pillars { margin-top: 32px; gap: 16px; }
+.hf-pillars li { font-size: 17px; font-weight: 500; color: var(--hf-ink); }
+.hf-rel__text .hf-btns { margin-top: 40px; }
+/* Relationship chat thread (DS card-panel surface-glass), copied from V7A */
+.hf-chat { position: absolute; z-index: 2; right: 20px; bottom: 20px; width: min(340px, calc(100% - 40px)); display: flex; flex-direction: column; gap: 10px; }
+.hf-chat__who { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 12px; font-weight: 500; color: #fff; padding: 0 4px 2px; }
+.hf-chat__online { width: 8px; height: 8px; border-radius: var(--r-pill); background: #3fd08f; box-shadow: 0 0 0 3px rgba(63, 208, 143, .25); }
+.hf-chat__bubble { position: relative; align-self: flex-start; max-width: 92%; background: #fff; color: var(--hf-ink); border-radius: var(--r-xl); padding: 12px 16px; box-shadow: var(--hf-shadow-ui); min-height: 44px; }
+.hf-chat__msg { margin: 0; font-size: 14px; line-height: 1.45; }
+.hf-chat__typing { display: none; gap: 4px; align-items: center; height: 20px; }
+.hf-chat__typing i { width: 6px; height: 6px; border-radius: var(--r-pill); background: var(--hf-grey); animation: hf-type 1s ease-in-out 4; }
+.hf-chat__typing i:nth-child(2) { animation-delay: .15s; }
+.hf-chat__typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes hf-type { 0%, 80%, 100% { transform: translateY(0); opacity: .45; } 40% { transform: translateY(-3px); opacity: 1; } }
+.hf-chat__reply { align-self: flex-end; margin: 0; }
+.hf-chat__tag { align-self: flex-end; margin: 0; color: #fff; }
+
+/* ══ 4. MONEY IN MOTION · DS is-head-aside carousel ══════════════════════ */
+.hf-money { padding: var(--hf-sec) 0; background: var(--hf-warm); }
+.hf-money__head .hf-h { font-size: clamp(30px, 3vw, 44px); max-width: 12ch; }
+.hf-money .cd-track { padding-block: 8px 12px; }
+.hf-money .cd-track > .cd-card.hf-mc { height: clamp(460px, 62vh, 560px); }
+.hf-mc { background: #fff; padding: 10px; }
+.hf-mc__vis { position: relative; flex: 1; min-height: 0; overflow: hidden; border-radius: var(--r-lg); }
+.hf-mc__vis--fx { background: linear-gradient(160deg, var(--hf-warm) 0%, #e9ecf2 100%); }
+.hf-mc__vis--cool { background: linear-gradient(150deg, #eef2f9 0%, #dfe6f3 60%, #e9e6e1 100%); }
+.hf-mc__vis--warm { background: linear-gradient(160deg, #efe9e2 0%, var(--hf-warm) 55%, #e4e9f2 100%); }
+.hf-mc__foot { padding: 18px 12px 10px; }
+.hf-mc__body { margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--hf-body); }
+.hf-mc--port { padding: 0; background: #0d1a2e; }
+.hf-mc__photo { position: absolute; inset: 0; }
+.hf-mc__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+.hf-mc__scrim { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(4, 18, 38, .55) 0%, rgba(4, 18, 38, 0) 45%); pointer-events: none; }
+.hf-pay { position: absolute; z-index: 2; left: 16px; right: 16px; bottom: 16px; display: flex; align-items: center; gap: 12px; --card-pad: 12px 16px 12px 12px; }
+.hf-pay__ic svg { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.hf-pay__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.hf-pay__t { font-size: 14px; font-weight: 600; color: var(--hf-ink); }
+.hf-pay__s { font-size: 13px; color: var(--hf-body); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hf-pay__time { font-size: 12px; color: var(--hf-meta); align-self: flex-start; margin-top: 2px; }
+
+/* ══ 5. INVESTMENT BANKING · the cinematic beat ══════════════════════════ */
+.hf-ib { padding: 0 var(--hf-inset); background: #fff; }
+.hf-film--ib { height: 82vh; min-height: 600px; max-height: 880px; }
+.hf-film--ib .hf-film__media img, .hf-film--ib .hf-film__media video { object-position: 50% 40%; }
+.hf-film__scrim--ib { background: linear-gradient(0deg, rgba(4, 18, 38, .9) 0%, rgba(4, 18, 38, .72) 28%, rgba(4, 18, 38, .3) 52%, rgba(4, 18, 38, 0) 72%), linear-gradient(90deg, rgba(4, 18, 38, .4) 0%, rgba(4, 18, 38, 0) 50%); }
+.hf-ib__body { position: absolute; z-index: 2; left: clamp(28px, 4.4vw, 64px); right: clamp(28px, 4.4vw, 64px); bottom: clamp(28px, 4vw, 52px); }
+.hf-ib__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 40px; }
+.hf-ib__head .hf-h { max-width: 17ch; font-size: clamp(32px, 3.6vw, 54px); text-shadow: 0 1px 24px rgba(4, 18, 38, .4); }
+/* Editorial Story stats, copied from V7A (its port of ds-cib-261076.css) */
+.hf-film--ib { --on-surface: #ffffff; --on-surface-mid: rgba(255,255,255,0.65); --on-surface-border: rgba(255,255,255,0.12); }
+.hf-film--ib .on-surface        { color: var(--on-surface, var(--navy)); }
+.hf-film--ib .on-surface-mid    { color: var(--on-surface-mid, var(--mid)); }
+.hf-film--ib .on-surface-border { border-color: var(--on-surface-border, var(--border)); }
+.hf-film--ib .es-stats { gap: clamp(28px, 5vw, 72px); margin-top: clamp(28px, 3.4vw, 44px); border-top: 1px solid rgba(255, 255, 255, .22); padding-top: clamp(22px, 2.6vw, 32px); text-shadow: 0 1px 22px color-mix(in srgb, var(--navy-deep) 42%, transparent); }
+.hf-film--ib .es-stat-num { font-size: clamp(28px, 3.2vw, 46px); font-weight: 400; line-height: 1; letter-spacing: -0.03em; white-space: nowrap; }
+.hf-film--ib .es-stat-unit { font-size: .55em; }
+.hf-film--ib .es-stat-lbl { font-size: clamp(12px, 1.1vw, 14px); margin-top: .6rem; max-width: 200px; color: rgba(255, 255, 255, .88); }
+.hf-film--ib .es-stat { padding: 2px clamp(18px, 2vw, 32px) 0 clamp(22px, 2.4vw, 44px); border-left: 1px solid rgba(255,255,255,.2); }
+.hf-film--ib .es-stat:first-child { padding-left: 0; border-left: 0; }
+@media (min-width: 1024px) { .hf-film--ib .es-stats { flex-wrap: nowrap; } .hf-film--ib .es-stat { flex: 1 1 0; min-width: 0; } }
+@media (max-width: 1023px) { .hf-film--ib .es-stat { flex: 1 1 calc(50% - 36px); } .hf-film--ib .es-stat:nth-child(3) { border-left: 0; padding-left: 0; } }
+
+/* ══ 7. LANDMARK DEALS ═══════════════════════════════════════════════════ */
+.hf-deals { padding: var(--hf-sec) 0 clamp(72px, 8vw, 112px); background: var(--hf-warm); }
+.hf-deals__head .hf-h { max-width: none; }
+.hf-deals .cd-carousel { margin-top: clamp(28px, 3vw, 40px); }
+.hf-deals .cd-track { padding-block: 8px 28px; }
+.hf-deals .cd-card { overflow: visible; }
+
+/* ══ 8. NETWORK + RESEARCH · bento ═══════════════════════════════════════ */
+.hf-bento { padding: var(--hf-sec) 0; background: #fff; }
+.hf-bento__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; max-width: var(--content-max); margin-inline: auto; padding-inline: var(--page-x); }
+.hf-film--net { grid-column: span 8; min-height: min(80vh, 760px); }
+.hf-film__scrim--tb { background: linear-gradient(180deg, rgba(4, 18, 38, .72) 0%, rgba(4, 18, 38, .3) 26%, rgba(4, 18, 38, 0) 44%, rgba(4, 18, 38, 0) 56%, rgba(4, 18, 38, .78) 100%); }
+.hf-net__top { position: absolute; z-index: 2; top: clamp(28px, 3.4vw, 48px); left: clamp(28px, 3.4vw, 48px); right: clamp(28px, 3.4vw, 48px); }
+.hf-net__top .hf-h { max-width: 14ch; }
+.hf-net__bottom { position: absolute; z-index: 2; left: clamp(28px, 3.4vw, 48px); right: clamp(28px, 3.4vw, 48px); bottom: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.hf-glass { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.hf-glass li { gap: 10px; background: rgba(7, 36, 71, .72); cursor: default; }
+.hf-glass li:hover { transform: none; }
+.hf-glass b { font-size: 20px; font-weight: 500; letter-spacing: -.02em; }
+.hf-glass__k { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 255, 255, .86); }
+.hf-res { grid-column: span 4; display: flex; flex-direction: column; gap: 16px; }
+.hf-res .hf-h { margin: 4px 0 8px; }
+.hf-rc { flex: 1; display: flex; flex-direction: column; background: var(--hf-warm); border-radius: var(--r-xl); padding: 10px; }
+.hf-rc__media { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 21 / 9; background: var(--hf-ink); }
+.hf-rc__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--hf-ease); }
+.hf-rc:hover .hf-rc__media img { transform: scale(1.03); }
+.hf-rc__text { padding: 16px 12px 8px; display: flex; flex-direction: column; align-items: flex-start; flex: 1; }
+.hf-rc__t { font-size: 20px; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; margin: 0; color: var(--hf-ink); }
+.hf-rc__d { font-size: 15px; line-height: 1.5; color: var(--hf-body); margin: 6px 0 14px; }
+.hf-rc__text .btn { margin-top: auto; }
+
+/* ══ 9. CTA · ENBD Business app panel (V7A's approved design) ════════════ */
+.hf-cta { padding: clamp(128px, 11vw, 160px) var(--hf-inset) clamp(96px, 10vw, 144px); background: #fff; }
+.hf-cta__panel { position: relative; max-width: 1400px; margin-inline: auto; background: var(--hf-warm); border-radius: var(--r-xl); padding: clamp(56px, 6.6vw, 96px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
+.hf-cta__glow { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none; background:
+  radial-gradient(34% 58% at 76% 52%, rgba(39, 101, 255, .08), transparent 72%),
+  radial-gradient(40% 60% at 22% 40%, color-mix(in srgb, var(--hf-warm-2) 60%, transparent), transparent 72%); }
+.hf-cta__text { position: relative; z-index: 1; grid-column: 1 / span 6; }
+.hf-cta__text .hf-h { max-width: 18ch; }
+.hf-cta__btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+.hf-cta__get { display: flex; flex-wrap: wrap; align-items: stretch; gap: 16px 20px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--hf-line); }
+.hf-cta__get-h { flex-basis: 100%; margin: 0; font-size: 13px; font-weight: 600; color: var(--hf-ink); }
+.hf-cta__stores { display: flex; flex-direction: column; gap: 10px; }
+.hf-qrtile { display: flex; align-items: center; align-self: stretch; box-sizing: border-box; gap: 18px; margin: 0; --card-pad: 14px 22px 14px 14px; }
+.hf-qrtile img { width: auto; height: 100%; max-height: 116px; aspect-ratio: 1; flex: none; }
+.hf-qrtile figcaption { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+.hf-qrtile__t { font-size: 13px; font-weight: 600; color: var(--hf-ink); }
+.hf-qrtile__seg { display: inline-flex; gap: 6px; }
+.hf-cta__device { position: relative; z-index: 1; grid-column: 7 / span 6; justify-self: center; align-self: start; margin-top: calc(-1 * (clamp(56px, 6.6vw, 96px) + 72px)); }
+.hf-cta__img { display: block; width: auto; height: min(640px, 70vh); max-width: 100%; transform-origin: 50% 90%;
+  -webkit-mask-image: linear-gradient(to right, #000 86%, transparent 100%), linear-gradient(to bottom, #000 90%, transparent 100%); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, #000 86%, transparent 100%), linear-gradient(to bottom, #000 90%, transparent 100%); mask-composite: intersect; }
+.hf-cta__chip { position: absolute; left: -8%; top: 44%; display: inline-flex; align-items: center; gap: 10px; margin: 0; --card-pad: 12px 16px; font-size: 14px; font-weight: 500; color: var(--hf-ink); box-shadow: 0 20px 40px -18px rgba(7, 36, 71, .35); white-space: nowrap; }
+
+/* ── MOTION STATES (JS only; content is visible without) ───────────────── */
+.hf-js [data-seq] .hf-seq { opacity: 0; transform: translateY(10px); transition: opacity .6s var(--hf-ease), transform .8s var(--hf-ease); }
+.hf-js [data-seq] .hf-seq.is-in { opacity: 1; transform: none; }
+.hf-js .hf-chat [data-typing] .hf-chat__typing { display: inline-flex; }
+.hf-js .hf-chat [data-typing] .hf-chat__msg { display: none; }
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width: 1279px) {
+  .hf-row__head { grid-template-columns: minmax(0, 1fr) auto; }
+  .hf-row__lede { grid-column: 1; grid-row: 2; max-width: 56ch; }
+  .hf-arrows { grid-column: 2; grid-row: 1 / span 2; align-self: end; }
+}
+@media (max-width: 1023px) {
+  .hf-rel__grid { grid-template-columns: 1fr; }
+  .hf-film--rel { height: 64vh; }
+  .hf-film--net, .hf-res { grid-column: 1 / -1; }
+  .hf-res { display: grid; grid-template-columns: 1fr 1fr; }
+  .hf-res .hf-h { grid-column: 1 / -1; }
+  .hf-money .cd-track > .cd-card.hf-mc { height: 500px; }
+}
+@media (max-width: 900px) {
+  .hf-cta__panel { grid-template-columns: 1fr; row-gap: 40px; }
+  .hf-cta__text, .hf-cta__device { grid-column: 1; }
+  .hf-cta__device { order: -1; margin-top: 0; }
+  .hf-cta { padding-top: clamp(96px, 10vw, 144px); }
+}
+@media (max-width: 767px) {
+  .hf-main { --hf-inset: 8px; --hf-hdr: 64px; --hf-sec: 80px; }
+  .hf-body { font-size: 16px; }
+  /* hero: static */
+  .hf-hero__intro { min-height: 72vh; padding: 132px var(--hf-edge) 36px; gap: 12px; }
+  .hf-hero__cap { position: static; align-self: flex-start; font-size: 16px; padding: 10px 16px; }
+  .hf-hero__cap--r { align-self: flex-end; }
+  .hf-hero__cap--r br { display: none; }
+  .hf-row { padding: 48px 0 64px; }
+  .hf-row__head { grid-template-columns: 1fr; gap: 12px; }
+  .hf-row__lede { grid-column: 1; grid-row: auto; font-size: 14px; }
+  .hf-arrows { display: none; }
+  .hf-track { gap: 12px; margin-top: 20px; }
+  .hf-hero { --tile-w: calc(100vw - 2 * var(--hf-edge) - 48px); }
+  .hf-hero__ctas .btn { flex: 1 1 auto; }
+  /* hero: live */
+  .hf-hero.is-live { height: 340vh; }
+  .hf-hero.is-live .hf-hero__copy { bottom: 88px; }
+  .hf-hero.is-live .hf-hero__cap { font-size: 15px; padding: 9px 14px; max-width: 11em; }
+  .hf-hero.is-live .hf-hero__cap--l { right: auto; left: 16px; top: calc(var(--pcy, 50vh) - var(--phh, 400px) / 2 - 58px); }
+  .hf-hero.is-live .hf-hero__cap--r { left: auto; right: 16px; top: calc(var(--pcy, 50vh) + var(--phh, 400px) / 2 + 14px); }
+  .hf-hero.is-live .hf-row__head { gap: 8px; }
+  .hf-hero.is-live .hf-row__lede-k { margin-bottom: 0; }
+
+
+  .hf-film--rel { height: auto; min-height: 560px; }
+  .hf-chat { left: 12px; right: 12px; bottom: 12px; width: auto; }
+
+  .hf-money .cd-track > .cd-card.hf-mc { height: 470px; }
+
+  .hf-film--ib { height: auto; min-height: 88vh; max-height: none; display: flex; flex-direction: column; justify-content: flex-end; }
+  .hf-ib__body { position: relative; left: auto; right: auto; bottom: auto; padding: 45vh 22px 26px; }
+  .hf-film__scrim--ib { background: linear-gradient(0deg, rgba(4, 18, 38, .92) 0%, rgba(4, 18, 38, .8) 45%, rgba(4, 18, 38, .2) 70%, rgba(4, 18, 38, 0) 85%); }
+  .hf-film--ib .es-stats { row-gap: 24px; }
+  .hf-film--ib .es-stat { border-left: 0; padding-left: 0; }
+
+
+
+  .hf-film--net { min-height: 640px; }
+  .hf-res { display: flex; }
+
+  .hf-cta__panel { padding: 32px 20px 36px; }
+  .hf-cta__img { height: 360px; }
+  .hf-cta__chip { left: -4%; top: 52%; font-size: 13px; }
+  .hf-cta__btns .btn { flex: 1 1 100%; justify-content: center; }
+  .hf-cta__stores { flex-direction: row; flex-wrap: wrap; }
+}
+/* you cannot scan your own phone: no QR on mobile / touch */
+@media (max-width: 767px), (hover: none) { .hf-qrtile { display: none; } }
+@media (max-width: 380px) {
+  .hf-hero__h1 { font-size: 38px; }
+}
+
+/* ── REDUCED MOTION · final states, no pin, posters only ────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hf-main *, .hf-main *::before, .hf-main *::after { animation: none !important; transition: none !important; }
+  .hf-film__media, .hf-cta__device, [data-hf-drift] { transform: none !important; }
+  video.hf-film__video, video.hf-wall__video { display: none; }
+}
+
+/* ── CONTRAST over imagery (measured on the worst frame, 4.5:1 for small text) ── */
+/* glass panes carry a deeper smoke so white text holds 4.5:1 over bright sky */
+.hf-hero__cap { background: rgba(10, 20, 36, .7); }
+/* tile tags: the DS chip-glass is a 16% white film; over a bright photo top it
+   needs a navy smoke to stay legible (same treatment as the network pills) */
+.hf-row .hf-tile .chip.chip-glass { background: rgba(7, 36, 71, .88); border-color: rgba(255, 255, 255, .16); }
+/* chat thread: the glass panel sits on the brightest part of the film */
+.hf-chat.card-panel.surface-glass { background: rgba(10, 22, 40, .52); border-color: rgba(255, 255, 255, .24); -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4); }
+
+/* ── HERO H1 · Ram 2026-09-30: lighter (Medium 500) and centred in the viewport ── */
+.hf-hero__copy { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hf-hero__h1 { font-weight: 500; letter-spacing: -.025em; font-size: clamp(40px, 5.2vw, 80px); max-width: 16ch; text-wrap: balance; }
+.hf-hero__intro { align-items: center; justify-content: center; }
+.hf-hero.is-live .hf-hero__copy { left: var(--hf-edge); right: var(--hf-edge); top: 0; bottom: 0; justify-content: center; }
+
+/* ── Row: six tiles, five on the grid + Connect peeking (Ram 2026-09-30) ── */
+/* static intro: the captions sit side by side under the centred headline */
+@media (min-width: 768px) {
+  .hf-hero__cap--l { right: calc(50% + 8px); bottom: 40px; }
+  .hf-hero__cap--r { right: auto; left: calc(50% + 8px); bottom: 40px; }
+}
+
+/* ── API Banking card: HTML-built developer fragment (real text, page font,
+   tabular figures; the DS .mono stack is not used so every glyph stays Jakarta) ── */
+.hf-api { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 24px; }
+.hf-api__code { --card-pad: 16px 18px; display: flex; flex-direction: column; gap: 10px; border-color: transparent; font-variant-numeric: tabular-nums; }
+.hf-api__line { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 14px; font-weight: 500; letter-spacing: .01em; color: #fff; }
+.hf-api__line--res { color: rgba(255, 255, 255, .86); font-weight: 400; }
+.hf-api__m { font-size: 11px; font-weight: 600; letter-spacing: .06em; color: #fff; background: rgba(39, 101, 255, .55); border-radius: var(--r-xs); padding: 4px 8px; }
+.hf-api__feed { --card-pad: 6px 16px; list-style: none; margin: 0; border-color: transparent; }
+.hf-api__feed li { display: flex; align-items: center; gap: 10px; padding: 11px 0; font-size: 13px; font-weight: 500; color: var(--hf-ink); font-variant-numeric: tabular-nums; }
+.hf-api__feed li + li { border-top: 1px solid #eef0f4; }
+.hf-api__dot { flex: none; width: 8px; height: 8px; border-radius: var(--r-pill); background: #1f9d6b; box-shadow: 0 0 0 3px rgba(31, 157, 107, .16); }
+.hf-mc__cta { margin-top: 10px; }
+
+
+/* ── Payment Tracker + Instant Banking fragments (HTML, real text) ── */
+.hf-frag { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 24px; }
+.hf-frag__tag { margin: 0; align-self: flex-end; }
+.hf-frag__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.hf-trk { --card-pad: 18px 18px 16px; border-color: transparent; font-variant-numeric: tabular-nums; }
+.hf-trk__top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0; }
+.hf-trk__amt { font-size: 14px; font-weight: 600; color: var(--hf-ink); }
+.hf-trk__steps { list-style: none; margin: 16px 0 0; padding: 0; }
+.hf-trk__steps li { position: relative; padding: 0 0 12px 22px; font-size: 13px; font-weight: 500; line-height: 16px; color: var(--hf-meta); }
+.hf-trk__steps li:last-child { padding-bottom: 0; }
+.hf-trk__steps li::before { content: ''; position: absolute; left: 0; top: 3px; width: 10px; height: 10px; border-radius: var(--r-pill); background: #fff; box-shadow: inset 0 0 0 2px var(--hf-line); z-index: 1; }
+.hf-trk__steps li::after { content: ''; position: absolute; left: 4px; top: 13px; bottom: -3px; width: 2px; background: var(--hf-line); }
+.hf-trk__steps li:last-child::after { display: none; }
+.hf-trk__steps li.is-done { color: var(--hf-body); }
+.hf-trk__steps li.is-done::before { background: var(--hf-ink); box-shadow: none; }
+.hf-trk__steps li.is-done::after { background: var(--hf-ink); }
+.hf-trk__steps li.is-now { color: var(--hf-ink); font-weight: 600; }
+.hf-trk__steps li.is-now::before { background: var(--hf-cobalt); box-shadow: 0 0 0 4px rgba(39, 101, 255, .18); }
+.hf-trk__time { margin: 16px 0 0; font-size: 12px; color: var(--hf-meta); }
+.hf-req { --card-pad: 4px 16px; list-style: none; margin: 0; border-color: transparent; }
+.hf-req li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 0; }
+.hf-req li + li { border-top: 1px solid #eef0f4; }
+.hf-req__n { font-size: 13px; font-weight: 500; color: var(--hf-ink); }
+.hf-req__stat { margin: 0; gap: 8px; background: #fff; cursor: default; }
+.hf-req__stat:hover { transform: none; }
+.hf-req__stat b { font-size: 16px; font-weight: 600; }
+
+/* ══ 2. NETWORK FILM (DS scroll-frames) ═══════════════════════════════════
+   Full-bleed film surface. The canvas is sized to the frames' own 16:9 and
+   letterboxed on their edge navy, so the recipe's cover-fit never crops the
+   baked text (desktop: below the solid header; 390/360: full width). */
+.hf-netfilm { position: relative; background: #00193b; }
+.hf-netfilm .hf-netfilm__stage { display: flex; align-items: center; justify-content: center; padding-top: var(--hf-hdr); background: #00193b; }
+.hf-netfilm .hf-netfilm__canvas, .hf-netfilm .hf-netfilm__still { position: relative; inset: auto; width: min(100vw, calc((100vh - var(--hf-hdr)) * 16 / 9)); height: auto; aspect-ratio: 16 / 9; display: block; }
+.hf-netfilm__pic { display: contents; }
+.hf-netfilm .hf-netfilm__still { position: absolute; left: 50%; top: calc(var(--hf-hdr) + (100vh - var(--hf-hdr)) / 2); transform: translate(-50%, -50%); }
+.hf-netfilm .hf-netfilm__canvas { z-index: 1; }
+/* reduced motion / no JS: the last frame as a still, one screen tall */
+.hf-netfilm__scrub:not([data-behavior]) .hf-netfilm__canvas, .hf-netfilm__scrub:not([data-behavior-bound]) .hf-netfilm__canvas { display: none; }
+.hf-netfilm__scrub:not([data-behavior-bound]) .hf-netfilm__stage { position: relative; height: auto; min-height: 0; padding-block: calc(var(--hf-hdr) / 2 + 24px) 48px; }
+.hf-netfilm__scrub:not([data-behavior-bound]) .hf-netfilm__still { position: relative; left: auto; top: auto; transform: none; }
+@media (max-width: 767px) {
+  .hf-netfilm .hf-netfilm__stage { padding-top: 0; }
+  .hf-netfilm .hf-netfilm__still { top: 50%; }
+  .hf-netfilm__scrub:not([data-behavior-bound]) .hf-netfilm__stage { padding-block: 32px; }
+}
+
+/* ══ ACT 4 cards: one grid for all four (fixed panel, reserved lines, CTA on one baseline) ══ */
+.hf-money { --mc-h: 540px; --mc-vis: 300px; }
+.hf-money .cd-track > .cd-card.hf-mc { height: var(--mc-h); }
+.hf-mc { display: flex; flex-direction: column; }
+.hf-mc__vis { flex: 0 0 var(--mc-vis); height: var(--mc-vis); }
+.hf-mc__foot { flex: 1 1 auto; display: flex; flex-direction: column; align-items: flex-start; padding: 18px 12px 12px; }
+.hf-mc__foot .hf-h3 { min-height: calc(2 * 1.25em); }
+.hf-mc__foot .hf-mc__body { min-height: calc(3 * 1.5em); }
+.hf-mc__foot .hf-mc__cta { margin-top: auto; }
+.hf-frag { overflow: hidden; }
+.hf-frag__tag { position: absolute; left: 16px; bottom: 14px; margin: 0; }
+.hf-frag, .hf-api { padding: 20px 20px 44px; }
+@media (max-width: 767px) {
+  .hf-money { --mc-h: 590px; --mc-vis: 310px; }
+  .hf-mc__foot .hf-mc__body { min-height: calc(4 * 1.5em); }
+}
+
+/* ══ Hero row, first tile: Digital solutions (the hero phone becomes a tile) ══
+   Same frame as the photo tiles (cd-card, radius, tag, text block); a navy
+   surface with a cobalt glow; the phone sits in the upper part, sized by JS
+   to the space above the text block. While the pin runs, the chrome is
+   transparent and the frame does not clip, so the phone can fill the screen. */
+.hf-row .hf-slot--digital { z-index: 2; }
+.hf-tile--digital { background: transparent; }
+.hf-tile__bg { position: absolute; inset: 0; z-index: 0; border-radius: inherit; background:
+  radial-gradient(70% 45% at 50% 34%, rgba(39, 101, 255, .38), rgba(39, 101, 255, 0) 70%),
+  linear-gradient(180deg, #0b3266 0%, var(--hf-ink) 62%, #051a36 100%); }
+.hf-tile--digital .hf-phone-slot { position: absolute; left: 0; right: 0; top: 52px; bottom: var(--dig-body, 170px); width: auto; height: auto; z-index: 1; }
+.hf-hero.is-live .hf-track:not(.is-row) .hf-tile--digital { overflow: visible; }
+.hf-hero.is-live .hf-tile--digital .hf-tile__bg, .hf-hero.is-live .hf-tile--digital .hf-tile__chrome { opacity: var(--chrome, 1); }
+.hf-row .hf-slot .cd-card.hf-tile { box-shadow: 0 2px 4px rgba(7, 36, 71, .06), 0 18px 32px -20px rgba(7, 36, 71, .45); }
+
+/* hero captions: deeper smoke while live (worst frame 4.5:1) */
+.hf-hero.is-live .hf-hero__cap { background: rgba(10, 20, 36, .8); }
+
+/* hero background-video control: hidden until keyboard focus (WCAG 2.2.2 for
+   the looping clip), then shown top-left of the hero as the DS btn-icon */
+.hf-pause--hero { position: absolute; z-index: 5; left: var(--hf-edge); top: calc(var(--hf-hdr) + 56px); }
+.hf-pause--hero:not(:focus-visible) { width: 1px; height: 1px; min-height: 0; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); border: 0; white-space: nowrap; }
+.hf-pause--hero[aria-pressed="true"] { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E"); }
+.hf-pause--hero[hidden] { display: none; }
+
+/* ══ Badges and chips: always one line; the label beside them wraps ══════ */
+.hf-main .badge, .hf-main .chip { white-space: nowrap; flex-shrink: 0; }
+.hf-trk__top, .hf-req li { flex-wrap: wrap; }
+.hf-trk__amt, .hf-req__n { flex: 1 1 120px; min-width: 0; }
+@media (max-width: 767px) {
+  .hf-glass { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100%; padding-bottom: 2px; }
+  .hf-glass::-webkit-scrollbar { display: none; }
+}
+
+/* ══ Islamic finance tile (bento) ═══════════════════════════════════════ */
+.hf-film--if { grid-column: span 8; min-height: min(80vh, 760px); background: #1c2a3c; }
+.hf-film--if .hf-film__media img { object-position: 40% 50%; }
+.hf-film__scrim--if { background: linear-gradient(180deg, rgba(7, 36, 71, .72) 0%, rgba(7, 36, 71, .28) 24%, rgba(7, 36, 71, 0) 40%, rgba(7, 36, 71, 0) 46%, rgba(7, 36, 71, .72) 68%, rgba(7, 36, 71, .9) 100%); }
+.hf-if__line { margin: 0; max-width: 52ch; font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, .9); }
+@media (max-width: 1023px) { .hf-film--if { grid-column: 1 / -1; } }
+@media (max-width: 767px) { .hf-film--if { min-height: 680px; } }
+
+/* ══ Network film: full-bleed (Ram 2026-09-30) ══════════════════════════
+   Stage = 100vw x 100vh, no padding. The canvas keeps the full frame width
+   and is min(100vh, 56.25vw) tall, centred, so the baked text (London at the
+   top, Tokyo at the right, the rankings row) is never cropped; the frame
+   edges feather into the stage's own sampled navy, so no bar edge shows. */
+.hf-netfilm .hf-netfilm__stage { padding: 0; background: radial-gradient(60% 50% at 50% 50%, #00235a 0%, rgba(0, 35, 90, 0) 70%), linear-gradient(180deg, #001a41 0%, #00193e 50%, #00183c 100%); }
+.hf-netfilm .hf-netfilm__canvas, .hf-netfilm .hf-netfilm__still { width: 100vw; height: min(100vh, 56.25vw); aspect-ratio: auto; object-fit: cover;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%); }
+.hf-netfilm .hf-netfilm__still { top: 50%; }
+.hf-netfilm__scrub:not([data-behavior-bound]) .hf-netfilm__stage { padding: 0; }
+/* phones: Ram's PORTRAIT film (9:16). Full width, never side-cropped (the
+   London / Tokyo labels and the left-aligned text sit at the frame edges, so
+   a cover crop cut them at 390 and 430). Anchored to the bottom of the
+   100svh stage; the few px above it sit under the fixed header and are
+   filled with the frame's own top navy (#001437) through a feathered edge. */
+@media (max-width: 767px) {
+  .hf-netfilm .hf-netfilm__stage { height: 100vh; height: 100svh; background: #001437; }
+  .hf-netfilm .hf-netfilm__canvas, .hf-netfilm .hf-netfilm__still { position: absolute; left: 0; right: 0; bottom: 0; top: auto; transform: none; width: 100%; height: min(100svh, 177.78vw); object-fit: cover;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 40px); mask-image: linear-gradient(180deg, transparent 0, #000 40px); }
+  .hf-netfilm__scrub:not([data-behavior-bound]) .hf-netfilm__stage { padding: 0; }
+}
+/* Near-square / foldable (Galaxy Z Fold, iPhone duo, ~744x860): the 9:16
+   portrait film is far taller than the box, so a cover crop eats the bottom
+   stats row. Letterbox it instead so the whole composition (map + heading +
+   all four rankings) stays on screen; the side gutters fill with the frame's
+   own navy, so the pillarbox reads as part of the stage, not a bar. */
+@media (max-width: 767px) and (min-aspect-ratio: 2 / 3) {
+  .hf-netfilm .hf-netfilm__canvas,
+  .hf-netfilm .hf-netfilm__still { object-fit: contain; -webkit-mask-image: none; mask-image: none; }
+}
+/* ── Hero tiles = the act 4 card size (Ram 2026-09-30): 323 x 540 desktop,
+   380 x 590 mobile, --r-xl (16px), the act 4 carousel gap ── */
+.hf-hero { --tile-w: 323px; --tile-h: 540px; }
+.hf-track { gap: clamp(16px, 1.6vw, 24px); }
+.hf-row .hf-tile > .p-6 { padding: 22px 20px; }
+.hf-row .hf-tile .btn-text { white-space: nowrap; }
+.hf-row .hf-slot .cd-card.hf-tile { border-radius: var(--r-xl); }
+.hf-hero.is-live .hf-hero__stage { height: var(--stage-h, 100vh); }
+@media (max-width: 767px) {
+  .hf-hero { --tile-w: min(380px, calc(100vw - 10px)); --tile-h: 590px; }
+  .hf-track { padding-inline: calc((100vw - var(--tile-w)) / 2); scroll-padding-inline: calc((100vw - var(--tile-w)) / 2); scroll-snap-type: x mandatory; }
+  .hf-slot { scroll-snap-align: center; }
+  /* one tile fills the view, so the arrows stay visible to signal the row */
+  .hf-row__head { grid-template-columns: minmax(0, 1fr); }
+  .hf-row__lede { grid-column: 1; grid-row: 2; }
+  .hf-arrows { display: flex; grid-column: 1; grid-row: 3; justify-self: end; }
+}
+
+/* ── CTA float (Ram 2026-09-30): phone + chip drift independently, on the
+   independent translate / rotate properties so they compose with the
+   device parallax transform. Runs only while the panel is in view and the
+   tab is visible (cib-home-flow.js toggles .is-float); none under reduced motion. */
+.hf-cta { --bob-a: 10px; --bob-b: 8px; }
+@keyframes hf-bob-phone { 0%, 100% { translate: 0 0; rotate: -0.6deg; } 50% { translate: 0 calc(-1 * var(--bob-a)); rotate: 0.6deg; } }
+@keyframes hf-bob-chip {
+  0%, 100% { translate: 0 0; box-shadow: 0 20px 40px -18px rgba(7, 36, 71, .35); }
+  50% { translate: 0 calc(-1 * var(--bob-b)); box-shadow: 0 12px 24px -14px rgba(7, 36, 71, .4); }
+}
+.hf-cta__img { animation: hf-bob-phone 6s ease-in-out infinite; animation-play-state: paused; }
+.hf-cta__chip { animation: hf-bob-chip 4.8s ease-in-out -1.7s infinite; animation-play-state: paused; }
+.hf-cta.is-float .hf-cta__img, .hf-cta.is-float .hf-cta__chip { animation-play-state: running; }
+@media (max-width: 767px) { .hf-cta { --bob-a: 6px; --bob-b: 5px; } }
+@media (prefers-reduced-motion: reduce) { .hf-cta__img, .hf-cta__chip { animation: none !important; translate: none; rotate: none; } }
+
+/* ── Seamless pull-back (Ram 2026-09-30): no pale box, no halo ────────────
+   The skyline clip crossfades out as the pull-back starts; the screen is
+   then transparent, so the phone is a window onto the SAME plate (identical
+   pixels inside and out). One veil tints both layers alike. The bezel, rim
+   sheen, side buttons and shadows fade in only once the phone is within 1.6x
+   of its resting size (--pk, set by cib-home-flow.js); the app fades in after. */
+.hf-hero__veil { position: absolute; inset: 0; background: #7a7068; mix-blend-mode: multiply; opacity: 0; pointer-events: none; }
+.hf-hero.is-live .hf-phone { background: transparent; box-shadow: none; isolation: isolate; }
+.hf-hero.is-live .hf-phone::before { content: ''; position: absolute; inset: 0; z-index: -1; box-sizing: border-box; border-radius: inherit; background: transparent; border: 12px solid #0b0f17; opacity: var(--pk, 1);
+  /* the soft drop shadows come last (--pk2), so no halo band shows around the edge while it is still large */
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14), inset 2px 0 0 rgba(255, 255, 255, .06), 0 0 0 1.5px #2a2f3a, 0 40px 70px -36px rgb(2 10 24 / calc(.55 * var(--pk2, 1))), 0 18px 32px -22px rgb(2 10 24 / calc(.45 * var(--pk2, 1))); }
+.hf-hero.is-live .hf-phone__btn { opacity: var(--pk, 1); }
+.hf-hero.is-live .hf-phone::after { opacity: var(--pk2, 1); }   /* glass sheen: last, once the bezel reads */
+.hf-hero.is-live .hf-phone__screen { background: transparent; }
+.hf-hero.is-live .hf-app { opacity: var(--app, 1); }
+
+/* ══ 6. LENDING · "With a desk for ____." ═══════════════════════════════
+   Copied from personal-home-v3.css (.v3-ask, renamed hf-ask-*). Desktop
+   (1024+, motion on): a tall track holds a sticky stage; scroll rolls the
+   reel through six desks. Below 1024 or reduced motion: no pin, the chips
+   choose; phones stack sentence, chip rail, panel, then the photo card. */
+.hf-ask { background: #fff; }
+.hf-ask-track { position: relative; }
+.hf-ask-pin { padding-block: var(--hf-sec); }
+.hf-ask-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+.hf-ask-copy, .hf-ask-stage { min-width: 0; }
+.hf-ask-q { margin: 0 0 18px; }
+.hf-ask-sentence { margin: 0; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; }
+.hf-ask-sentence > span:not(.sr-only) { display: block; }
+.hf-ask-slot { height: 1.2em; overflow: hidden; }
+.hf-ask-reel { display: block; transform: translateY(calc(var(--i, 0) * -1.2em)); transition: transform .7s cubic-bezier(.2, .8, .2, 1); }
+.hf-ask-reel > span { display: block; height: 1.2em; line-height: 1.2em; white-space: nowrap; transition: opacity .5s ease; opacity: .18; }
+.hf-ask-reel > span.is-on { opacity: 1; }
+.hf-ask-intents { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.hf-ask-panel { margin-top: 24px; }
+.hf-ask-panel p { margin: 0 0 22px; max-width: 44ch; }
+.hf-ask-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.hf-ask-stage { position: relative; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3; background: var(--hf-warm); box-shadow: 0 30px 70px -34px rgba(7, 36, 71, .35); }
+.hf-ask-shot { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: scale(1.06); transition: opacity .8s ease, transform 1.6s cubic-bezier(.2, .8, .2, 1); }
+.hf-ask-shot.is-on { opacity: 1; transform: scale(1); }
+.hf-ask-fact { position: absolute; inset-inline-start: 20px; inset-block-end: 20px; max-width: min(340px, calc(100% - 40px)); --card-pad: 16px 20px; display: grid; }
+.hf-ask-fact > div { grid-area: 1 / 1; opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .5s cubic-bezier(.2, .8, .2, 1); }
+.hf-ask-fact > div.is-on { opacity: 1; transform: none; transition-delay: .25s; }
+.hf-ask-fact > div > span { display: block; }
+.hf-ask-fact .hf-ask-fact-num { margin: 2px 0; }
+@media (min-width: 1024px) {
+  .hf-ask-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 5vw, 80px); align-items: center; width: 100%; }
+  .hf-ask-fact { inset-inline-start: 28px; inset-block-end: 28px; }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .hf-ask-track { height: calc(100vh + 6 * 48vh); }
+  .hf-ask-pin { position: sticky; top: var(--hf-hdr); height: calc(100vh - var(--hf-hdr)); display: flex; align-items: center; padding-block: 24px; }
+  .hf-ask-stage { aspect-ratio: auto; height: min(calc(100vh - var(--hf-hdr) - 96px), 640px); }
+}
+@media (max-width: 1023px) {
+  .hf-ask-intents { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--page-x)); padding-inline: var(--page-x); }
+  .hf-ask-intents::-webkit-scrollbar { display: none; }
+  .hf-ask-intents .chip { flex: none; }
+}
+@media (max-width: 640px) {
+  .hf-ask-fact { inset-inline-start: 12px; inset-block-end: 12px; max-width: calc(100% - 24px); --card-pad: 12px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hf-ask-reel, .hf-ask-reel > span, .hf-ask-shot, .hf-ask-fact > div { transition: none !important; }
+  .hf-ask-shot { transform: none; }
+}
+@media (max-width: 640px) { .hf-ask-stage { aspect-ratio: 4 / 5; } }
+/* research imagery (markets library): crops keep the screen and the faces in frame */
+.hf-rc__media .hf-rc__img--portal { object-position: 50% 74%; }
+.hf-rc__media .hf-rc__img--people { object-position: 30% 40%; }
+
+/* hero cue: clear of browser / device bottom UI */
+/* measured from the viewport bottom even when the stage is taller than it (--stage-extra) */
+.hf-hero.is-live .hf-hero__cue { bottom: calc(var(--stage-extra, 0px) + var(--hero-top, 0px) + max(150px, calc(env(safe-area-inset-bottom) + 130px))); }
+@media (max-width: 767px) { .hf-hero.is-live .hf-hero__cue { bottom: calc(var(--stage-extra, 0px) + var(--hero-top, 0px) + max(140px, calc(env(safe-area-inset-bottom) + 120px))); } }
+/* short viewports: the cue sits 48px under the headline instead (JS sets --cue-top) */
+@media (max-height: 759px) { .hf-hero.is-live .hf-hero__cue { bottom: auto; top: var(--cue-top, auto); } }
+
+/* reduced motion / static hero: the same veil as the live first frame keeps
+   the centred headline and captions at 4.5:1 over the bright plate */
+.hf-hero:not(.is-live) .hf-hero__veil { opacity: 1; }
+.hf-row__h .hf-h__2 { display: block; }
+.hf-hero__cue { pointer-events: none; }
+
+.hf-hero.is-live .hf-hero__copy { bottom: var(--stage-extra, 0px); }
+
+@media (max-width: 767px) { .hf-hero:not(.is-live) .hf-hero__cap--l { margin-top: 16px; } }
+
+/* network film: one player per breakpoint (landscape >= 768px, portrait on phones) */
+@media (max-width: 767px) { .hf-netfilm__scrub--d { display: none !important; } }
+@media (min-width: 768px) { .hf-netfilm__scrub--m { display: none !important; } }
+
+/* ══ DEVICE FIT PASS (phones, foldable cover screens, unfolded foldables) ══
+   Nothing may run past the screen edge or get clipped mid-word. */
+/* carousels: one card plus a visible peek on every phone; never wider than the screen */
+@media (max-width: 767px) {
+  .hf-main .cmp-cards.is-cols-2 .cd-track > .cd-card { --cd-slide: min(clamp(380px, 84vw, 640px), calc(100vw - 2 * var(--page-x, 24px) - 24px)); }
+  .hf-main .cmp-cards.is-cols-3 .cd-track > .cd-card { --cd-slide: min(clamp(300px, 78vw, 420px), calc(100vw - 2 * var(--page-x, 24px) - 24px)); }
+  /* chip rows wrap instead of hiding chips past the edge */
+  .hf-glass { flex-wrap: wrap; overflow: visible; }
+  .hf-ask-intents { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; }
+}
+/* single-column grids may shrink below their longest unbroken line */
+.hf-rel__grid { grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); }
+@media (max-width: 1023px) { .hf-rel__grid { grid-template-columns: minmax(0, 1fr); } }
+/* narrow phones and foldable cover screens */
+@media (max-width: 374px) {
+  .hf-hero__copy .hf-eyebrow { white-space: normal; letter-spacing: .14em; padding-inline: 16px; }
+  .hf-btns .btn, .hf-ib__head .btn, .hf-ask-ctas .btn, .hf-cta__btns .btn { max-width: 100%; white-space: normal; text-align: center; line-height: 1.25; }
+  .hf-ib__body { padding-inline: 18px; }
+  .hf-main .hf-glass .chip { white-space: normal; flex-shrink: 1; max-width: 100%; text-align: start; }
+}
+@media (max-width: 330px) {
+  .hf-hero__h1 { font-size: 34px; }
+}
+/* Islamic finance tile on phones: heading and copy flow in the card, so the
+   copy can never ride up under the heading when it wraps longer */
+@media (max-width: 767px) {
+  .hf-film--if { display: flex; flex-direction: column; justify-content: space-between; gap: 160px; }
+  .hf-film--if .hf-net__top, .hf-film--if .hf-net__bottom { position: relative; inset: auto; padding: 28px 24px; }
+  .hf-film--if .hf-net__top { padding-bottom: 0; }
+}
+/* smallest cover screens: the Arabic toggle stays in the footer and drawer */
+@media (max-width: 330px) { .cmp-site-header .ish-lang-m { display: none; } }
+/* hero captions on phones and short screens: never under the header or past the bottom edge */
+@media (max-width: 767px) {
+  .hf-hero.is-live .hf-hero__cap--l { top: max(86px, calc(var(--pcy, 50vh) - var(--phh, 400px) / 2 - 58px)); }
+  .hf-hero.is-live .hf-hero__cap--r { top: min(calc(var(--pcy, 50vh) + var(--phh, 400px) / 2 + 14px), calc(100vh - 96px)); }
+}
+/* lending desks: wrap on tablets and unfolded foldables too, so every desk chip shows */
+@media (max-width: 1023px) { .hf-ask-intents { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; } }
+/* app download: one button on phones, under the two CTAs; badges and QR stay on larger screens */
+.hf-cta__app { display: none; }
+.hf-cta__app-ic { display: inline-flex; align-items: center; gap: 8px; }
+.hf-cta__app-ic svg { width: 16px; height: 16px; display: block; }
+@media (max-width: 767px) {
+  .hf-cta__app { display: inline-flex; align-items: center; gap: 12px; }
+  .hf-cta__get { display: none; }
+}
+/* ══ LENDING scrub on phones, foldables and tablets (same reel as desktop) ══
+   The pin holds sentence, chip rail and photo card; the copy and CTAs follow
+   in .hf-ask-after (moved there by cib-home-flow.js). */
+@media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
+  .hf-ask-track { height: calc(100svh + 6 * 45svh); }
+  .hf-ask-pin { position: sticky; top: var(--hf-hdr, 64px); height: calc(100svh - var(--hf-hdr, 64px)); display: flex; padding-block: 24px 20px; }
+  .hf-ask-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; height: 100%; }
+  .hf-ask-copy { flex: none; }
+  .hf-ask-q { margin-bottom: 10px; }
+  .hf-ask-intents { flex-wrap: nowrap; overflow-x: auto; margin-top: 18px; margin-inline: calc(-1 * var(--page-x)); padding-inline: var(--page-x);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--page-x), #000 calc(100% - 48px), transparent); mask-image: linear-gradient(90deg, transparent, #000 var(--page-x), #000 calc(100% - 48px), transparent); }
+  .hf-ask-stage { flex: 1 1 auto; min-height: 0; aspect-ratio: auto; }
+  .hf-ask-after { padding-bottom: var(--hf-sec); }
+  .hf-ask-after .hf-ask-panel { margin-top: 8px; }
+}

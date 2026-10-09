@@ -1,0 +1,60 @@
+<!-- ═══ Zoom Parallax — Scroll Scale ════════════════════════════════════════
+     Params: surface (DEFAULT surface-primary cinematic; surface-white for the light
+     look). Per-instance images via data-bg (runtime applies background-image).
+     Behaviour: data-behavior="zoom-parallax" — ds.js scales each [data-scale-max]
+     layer with scroll progress over the 300vh container. Pure markup, NO IDs,
+     NO inline styles. Styled by .cmp-zoom-parallax below. -->
+<section class="cmp cmp-zoom-parallax surface-primary" data-animate>
+  <div data-behavior="zoom-parallax">
+
+    <!-- Header (50vh) -->
+    <div class="zp-header relative flex items-center justify-center overflow-hidden">
+      <div aria-hidden="true" class="zp-glow pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-full"></div>
+      <div class="section-head zp-head-text is-center relative z-10 px-4 max-w-2xl mx-auto">
+        <div class="ds-stack">
+          <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Emirates NBD</span>
+          <h2 class="type-h2 type-semibold ink-white" data-reveal="up" data-reveal-delay=".06">Powering progress across<br>every horizon</h2>
+        </div>
+        <p class="type-body sh-lead ink-soft" data-reveal="up" data-reveal-delay=".12">From personal banking to global trade, we deliver world-class financial solutions that move with you — across 13 countries and 180+ markets.</p>
+      </div>
+    </div>
+
+    <!-- Zoom Parallax (300vh sticky) -->
+    <div class="zp-container relative">
+      <div class="zp-sticky sticky top-0 h-screen overflow-hidden">
+
+        <!-- Each .px-item is a full-viewport layer scaled from its centre. -->
+        <div class="px-item" data-scale-max="4">
+          <div class="px-card px-card-0"><span class="px-img" data-bg="/assets/images/image-4.jpg"></span></div>
+        </div>
+        <div class="px-item" data-scale-max="5">
+          <div class="px-card px-card-1"><span class="px-img" data-bg="/assets/images/image-2.jpg"></span></div>
+        </div>
+        <div class="px-item" data-scale-max="6">
+          <div class="px-card px-card-2"><span class="px-img" data-bg="/assets/images/feature-2.jpg"></span></div>
+        </div>
+        <div class="px-item" data-scale-max="5">
+          <div class="px-card px-card-3"><span class="px-img" data-bg="/assets/images/image-5.jpg"></span></div>
+        </div>
+        <div class="px-item" data-scale-max="6">
+          <div class="px-card px-card-4"><span class="px-img" data-bg="/assets/images/feature-1.jpg"></span></div>
+        </div>
+        <div class="px-item" data-scale-max="8">
+          <div class="px-card px-card-5"><span class="px-img" data-bg="/assets/images/sustainability.jpg"></span></div>
+        </div>
+        <div class="px-item" data-scale-max="9">
+          <div class="px-card px-card-6"><span class="px-img" data-bg="/assets/images/image-3.jpg"></span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer body text -->
+    <div class="relative flex items-center justify-center pb-24 pt-4">
+      <div class="text-center px-6 max-w-3xl mx-auto" data-reveal="up">
+        <p class="type-body pt-12 md:pt-16 ink-soft">Every transaction tells a story — of ambition met with precision, of capital moving where it's needed most. We don't just execute deals. We build the relationships, the structures, and the confidence that make them possible.</p>
+      </div>
+    </div>
+
+  </div>
+</section>

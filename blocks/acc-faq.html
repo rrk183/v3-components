@@ -1,0 +1,69 @@
+<!-- ═══ Accordion — FAQ Split (cmp-acc v4 composition) ═══════════════════════
+     The faq-split pattern rebuilt as a pure composition: sticky left rail
+     (section header + a card-panel help panel) beside the accordion rows.
+     Rows are boxed by hairlines (utility border, -mt-px collapses the
+     shared edges) with inset padding — the original faq look. Layout is
+     utilities; the panel is card-panel + icon-tile + btn atoms — the legacy
+     .cmp-faq-split zone has no v4 equivalent. -->
+<section class="cmp cmp-acc surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div class="grid md:grid-cols-[360px_1fr] gap-12">
+      <div class="flex flex-col gap-10 md:sticky md:top-10 md:self-start">
+        <div class="ds-stack">
+          <span class="ds-eyebrow ink-accent" data-reveal="up">Support</span>
+          <h2 class="type-h2 ink-primary" data-reveal="up">Questions?<br>We&rsquo;ve got answers.</h2>
+        </div>
+        <div class="card-panel surface-soft is-tile" data-reveal="up" data-reveal-delay=".12">
+          <div class="ds-stack">
+            <span class="icon-tile is-round"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 18 0"/><path d="M21 16.5a2 2 0 0 1-2 2h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h3zM3 16.5a2 2 0 0 0 2 2h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3z"/></svg></span>
+            <h3 class="type-h6 ink-primary">Need help?</h3>
+            <p class="type-body-sm ink-mute">Talk to your relationship manager and we&rsquo;ll point you to the right solution for your business.</p>
+            <a href="#" class="btn btn-filled mt-2">Get in touch</a>
+          </div>
+        </div>
+      </div>
+      <div data-accordion>
+      <div data-acc class="border -mt-px is-open">
+        <button data-acc-head class="px-7">
+          <span class="type-h6 ink-primary">How do I get access to businessONLINE?</span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div data-acc-body><div class="ac-inner px-7">
+          <p class="type-body ink-mute">Your relationship manager sets up the master user; you control every entitlement from the admin console.</p>
+        </div></div>
+      </div>
+
+      <div data-acc class="border -mt-px">
+        <button data-acc-head class="px-7">
+          <span class="type-h6 ink-primary">What are the cut-off times for international payments?</span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div data-acc-body><div class="ac-inner px-7">
+          <p class="type-body ink-mute">Same-day for major currencies when instructed before 2pm UAE time; local rails run around the clock.</p>
+        </div></div>
+      </div>
+
+      <div data-acc class="border -mt-px">
+        <button data-acc-head class="px-7">
+          <span class="type-h6 ink-primary">Can I connect my ERP directly to the bank?</span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div data-acc-body><div class="ac-inner px-7">
+          <p class="type-body ink-mute">Yes &mdash; host-to-host and APIs cover payments, statements and reconciliation.</p>
+        </div></div>
+      </div>
+
+      <div data-acc class="border -mt-px">
+        <button data-acc-head class="px-7">
+          <span class="type-h6 ink-primary">How is pricing structured?</span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div data-acc-body><div class="ac-inner px-7">
+          <p class="type-body ink-mute">One relationship-level schedule across cash, trade and FX &mdash; no per-module fees.</p>
+        </div></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Accordion — FAQ Split ══════════════════════════════════════════════ -->

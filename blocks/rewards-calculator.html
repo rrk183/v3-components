@@ -1,0 +1,117 @@
+<!-- Rewards Calculator — split: LEFT is a free content placeholder (an
+     "at a glance" summary here; swap in any content or another block's body),
+     RIGHT is a minimal slider-only calculator (label + value + slider per row,
+     one result figure). The maths is a weighted sum, not amortisation:
+     total = Σ(value × data-rate) ÷ data-divisor × data-multiplier — here
+     AED spends → USD (÷3.6725) → Skywards Miles per year (×12).
+     Currency glyphs come from CSS (.aed); no symbols in copy. -->
+<section class="cmp cmp-rewards-calculator surface-white section-y" data-behavior="rewards-calculator" data-divisor="3.6725" data-multiplier="12" data-animate>
+  <div class="container-ds">
+    <div class="rc-split">
+
+      <!-- ── LEFT: content placeholder ─────────────────────────────────── -->
+      <div class="rc-lead ds-stack" data-reveal="up">
+        <span class="ds-eyebrow ink-accent">At a glance</span>
+        <h2 class="type-h2 ink-primary">Turn your spends into your next travel ticket</h2>
+
+        <div class="rc-facts">
+          <div class="rc-fact">
+            <span class="rc-fact-ico ink-primary" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a2 2 0 0 0-2-2l-3 7v11h9.28a2 2 0 0 0 2-1.7l1.38-7a2 2 0 0 0-2-2.3H14z"/><path d="M9 21H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            </span>
+            <span class="rc-fact-body ink-mute">Joining fee <b class="aed">3,148.95</b> · annual fee <b class="aed">1,575</b></span>
+          </div>
+          <div class="rc-fact">
+            <span class="rc-fact-ico ink-primary" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            </span>
+            <span class="rc-fact-body ink-mute">Minimum salary <b class="aed">30,000</b></span>
+          </div>
+          <div class="rc-fact">
+            <span class="rc-fact-ico ink-primary" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+            </span>
+            <span class="rc-fact-body ink-mute">Up to <b>100,000</b> bonus Skywards Miles</span>
+          </div>
+        </div>
+
+        <h3 class="type-h4 ink-primary">Key benefits and highlights</h3>
+        <ul class="rc-points">
+          <li class="ink-mute"><b>Welcome offer:</b> up to 100,000 bonus Skywards Miles and complimentary Rotana Rewards membership for one year.</li>
+          <li class="ink-mute">Complimentary <b>Emirates Skywards Silver</b> membership upgrade with Business Class lounge access.</li>
+          <li class="ink-mute">Earn <b>2 Miles</b> per USD on Emirates and flydubai, <b>1.5 Miles</b> on international spends, <b>1 Mile</b> on domestic spends.</li>
+          <li class="ink-mute">Complimentary access to over <b>1,000 airport lounges</b> worldwide via the Visa Airport Companion app.</li>
+        </ul>
+      </div>
+
+      <!-- ── RIGHT: minimal slider calculator ──────────────────────────── -->
+      <aside class="rc-panel" data-reveal="up" data-reveal-delay=".08">
+        <h3 class="rc-title ink-primary">Calculate your rewards</h3>
+        <div class="rc-card surface-white">
+          <p class="rc-q">How much do you usually spend per month on…</p>
+
+          <div class="lc-field">
+            <div class="lc-head">
+              <span class="type-h5 lc-label-text ink-primary">Emirates and flydubai?</span>
+              <output class="lc-value aed ink-primary" data-rc-out>2,000</output>
+            </div>
+            <label><span class="sr-only">Monthly spend on Emirates and flydubai</span>
+              <input class="range" type="range" data-rc-spend data-rate="2" min="0" max="20000" step="100" value="2000"></label>
+          </div>
+
+          <div class="lc-field">
+            <div class="lc-head">
+              <span class="type-h5 lc-label-text ink-primary">International spends?</span>
+              <output class="lc-value aed ink-primary" data-rc-out>3,000</output>
+            </div>
+            <label><span class="sr-only">Monthly international spends</span>
+              <input class="range" type="range" data-rc-spend data-rate="1.5" min="0" max="20000" step="100" value="3000"></label>
+          </div>
+
+          <div class="lc-field">
+            <div class="lc-head">
+              <span class="type-h5 lc-label-text ink-primary">Dining?</span>
+              <output class="lc-value aed ink-primary" data-rc-out>1,500</output>
+            </div>
+            <label><span class="sr-only">Monthly spend on dining</span>
+              <input class="range" type="range" data-rc-spend data-rate="1" min="0" max="10000" step="100" value="1500"></label>
+          </div>
+
+          <div class="lc-field">
+            <div class="lc-head">
+              <span class="type-h5 lc-label-text ink-primary">Supermarkets and groceries?</span>
+              <output class="lc-value aed ink-primary" data-rc-out>2,500</output>
+            </div>
+            <label><span class="sr-only">Monthly spend on supermarkets and groceries</span>
+              <input class="range" type="range" data-rc-spend data-rate="1" min="0" max="10000" step="100" value="2500"></label>
+          </div>
+
+          <div class="lc-field">
+            <div class="lc-head">
+              <span class="type-h5 lc-label-text ink-primary">Fuel and utility payments?</span>
+              <output class="lc-value aed ink-primary" data-rc-out>1,200</output>
+            </div>
+            <label><span class="sr-only">Monthly spend on fuel and utilities</span>
+              <input class="range" type="range" data-rc-spend data-rate="1" min="0" max="10000" step="100" value="1200"></label>
+          </div>
+
+          <div class="lc-field">
+            <div class="lc-head">
+              <span class="type-h5 lc-label-text ink-primary">Retail and other expenses?</span>
+              <output class="lc-value aed ink-primary" data-rc-out>1,800</output>
+            </div>
+            <label><span class="sr-only">Monthly spend on retail and other expenses</span>
+              <input class="range" type="range" data-rc-spend data-rate="1" min="0" max="10000" step="100" value="1800"></label>
+          </div>
+        </div>
+
+        <div class="rc-result surface-primary">
+          <p class="type-body-sm rc-result-label ink-soft">With this card, you could earn</p>
+          <p class="rc-result-line"><output class="ds-num rc-total ink-white" data-rc-total aria-live="polite">50,645</output> <span class="rc-unit">Miles per year</span></p>
+          <p class="type-caption rc-result-note ink-soft">This is an indicative estimate based on the amounts above, not an offer. Miles are credited within two statement cycles; earn rates vary by category and can change with the programme terms.</p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>

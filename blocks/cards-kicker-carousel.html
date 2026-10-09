@@ -1,0 +1,95 @@
+<!-- ═══ Cards — Kicker Carousel (composition of cmp-cards) ═════════════════
+     The SAME cards as Cards — Kicker on the shared data-carousel recipe:
+     the track sits outside the container (full section width), --cd-edge
+     aligns slide 1 and the arrows with the contained header. Arrows are btn
+     atoms wired by data-carousel-prev/next (chevrons auto-mirror in RTL).
+     No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards cards-kicker surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Why Emirates NBD</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Built to move with you</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Three reasons corporates and institutions across the region choose us to fund their ambition.</p>
+    </div>
+  </div>
+
+  <div class="cd-carousel" data-carousel>
+    <div class="cd-track" data-carousel-track>
+
+      <div class="cd-card card-panel surface-white" data-carousel-slide>
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Scale</span>
+          <h3 class="type-h6 ink-primary">The region&rsquo;s balance sheet</h3>
+          <p class="type-body-sm ink-mute">The capacity to structure, underwrite and hold large facilities, and lead syndicated deals for the region&rsquo;s biggest borrowers.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" data-carousel-slide>
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Speed</span>
+          <h3 class="type-h6 ink-primary">Digital-first execution</h3>
+          <p class="type-body-sm ink-mute">Straight-through processing and API connectivity that move money, documents and decisions without the wait.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" data-carousel-slide>
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Service</span>
+          <h3 class="type-h6 ink-primary">Dedicated coverage</h3>
+          <p class="type-body-sm ink-mute">Relationship teams and sector specialists who know the rhythms, regulations and opportunities of your industry.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" data-carousel-slide>
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Scale</span>
+          <h3 class="type-h6 ink-primary">The region&rsquo;s balance sheet</h3>
+          <p class="type-body-sm ink-mute">The capacity to structure, underwrite and hold large facilities, and lead syndicated deals for the region&rsquo;s biggest borrowers.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" data-carousel-slide>
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Speed</span>
+          <h3 class="type-h6 ink-primary">Digital-first execution</h3>
+          <p class="type-body-sm ink-mute">Straight-through processing and API connectivity that move money, documents and decisions without the wait.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" data-carousel-slide>
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Service</span>
+          <h3 class="type-h6 ink-primary">Dedicated coverage</h3>
+          <p class="type-body-sm ink-mute">Relationship teams and sector specialists who know the rhythms, regulations and opportunities of your industry.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" data-carousel-slide>
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Scale</span>
+          <h3 class="type-h6 ink-primary">The region&rsquo;s balance sheet</h3>
+          <p class="type-body-sm ink-mute">The capacity to structure, underwrite and hold large facilities, and lead syndicated deals for the region&rsquo;s biggest borrowers.</p>
+        </div>
+      </div>
+
+      <div class="cd-card card-panel surface-white" data-carousel-slide>
+        <div class="ds-stack">
+          <span class="type-eyebrow ink-accent">Speed</span>
+          <h3 class="type-h6 ink-primary">Digital-first execution</h3>
+          <p class="type-body-sm ink-mute">Straight-through processing and API connectivity that move money, documents and decisions without the wait.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="cd-arrows">
+      <button class="crl-toggle" type="button" data-carousel-toggle hidden aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
+      <div class="cd-dots" data-carousel-dots></div>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous</span></button>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next</span></button>
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Cards — Kicker Carousel ═══════════════════════════════════════════ -->

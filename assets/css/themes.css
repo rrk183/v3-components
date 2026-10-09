@@ -1,0 +1,67 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BRAND THEMES — one block per brand, VARIABLE DECLARATIONS ONLY.
+   ─────────────────────────────────────────────────────────────────────────
+   ds.css is the single shared runtime for every brand; a theme repaints it
+   by overriding the THEMED token tier from :root. Activate on a page with
+   <html data-theme="ei"> (no attribute = Emirates NBD from :root).
+
+   CONTRACT (enforced by scripts/verify.mjs, flow 5):
+   - This file may contain ONLY custom-property declarations.
+   - Every [data-theme] block must define the SAME token set — no silent
+     inheritance of another brand's colour. The themed tier is:
+       base five  --navy --blue --mid --light --border
+       triplets   --navy-rgb --blue-rgb --mid-rgb --light-rgb
+       derived    --blue-strong -ink -deep -soft -pale -wash
+                  --navy-deep -shade -strong  --steel --steel-soft
+   - Derived values MAY be computed from the block's own base via
+     color-mix(), or declared literal — either way they must be declared.
+   - GLOBAL-tier tokens (status colours, greys, ink) stay brand-independent;
+     a theme may additionally override one only when the brand demands it
+     (e.g. EI's gold), and such extras must then appear in every block.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Emirates Islamic — deep purple, lighter-purple interactive, teal ────
+   Extracted from emiratesislamic.ae (computed styles, 2026-08): primary
+   #461E57, muted text #5E516A, warm light #F5F3F1, borders #DEDEDE, teal
+   #64BFB5, gold #86754D. The interactive tone (--blue role) is the lighter
+   brand purple #835A97 (per EI direction), and teal carries the accent
+   roles — deep-teal cards/CTAs, teal on-dark accents, pale-teal washes —
+   so the system doesn't read as one wall of purple. */
+[data-theme="ei"] {
+  --navy:   #461E57;
+  --blue:   #835A97;
+  --mid:    #5E516A;
+  --light:  #F5F3F1;
+  --border: #DEDEDE;
+  --navy-rgb:  70, 30, 87;
+  --blue-rgb:  131, 90, 151;
+  --mid-rgb:   94, 81, 106;
+  --light-rgb: 245, 243, 241;
+
+  --blue-strong: color-mix(in oklab, var(--blue) 78%, #000000);  /* hover */
+  --blue-ink:    #835A97;  /* blue-as-text on light (4.9:1 on white — AA) */
+  --blue-deep:   #2E6E67;  /* deep teal: accent cards, glows, avatar fills */
+  --blue-soft:   #64BFB5;  /* teal — on-dark accent */
+  --blue-pale:   #A9DDD6;
+  --blue-wash:   #EAF5F3;  /* pale teal fill: chips, checks, quiet panels */
+  --navy-deep:   color-mix(in oklab, var(--navy) 72%, #000000);
+  --navy-shade:  color-mix(in oklab, var(--navy) 84%, #ffffff);
+  --navy-strong: color-mix(in oklab, var(--navy) 55%, var(--blue));
+  --steel:       color-mix(in oklab, var(--navy) 30%, #ffffff);
+  --steel-soft:  color-mix(in oklab, var(--navy) 16%, #ffffff);
+  --header-cta:        var(--blue-soft);  /* the EI teal, #64BFB5 exactly */
+  --header-cta-strong: color-mix(in oklab, var(--blue-soft) 86%, #000000);
+  --header-cta-ink:    var(--navy);       /* purple ink — white on this teal fails AA */
+
+  /* type faces — EI ships Poppins (Latin) + Almarai (Arabic) */
+  --font-sans:   'Poppins', 'Plus Jakarta Sans', sans-serif;
+  --font-arabic: 'Almarai', 'Tajawal', sans-serif;
+
+  /* brand-demanded global overrides */
+  --gold:      #86754D;
+  --gold-soft: #B3A078;
+  --grey-2:    #EFEDEA;  /* warm app canvas to match --light */
+}
+/* Brand IMAGES never live in CSS (not even here): a section that wants a
+   background image carries data-bg="…" in markup, and each brand's page
+   references its own asset — e.g. assets/images/bento-bg-ei.svg. */

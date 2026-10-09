@@ -1,0 +1,50 @@
+<!-- ═══ Insight Split ═══════════════════════════════════════════════════════
+     Split section: copy on the left, a CSS-illustrative "insight" composition
+     on the right (ambient brand blob + icon tile + proactive message card +
+     animated metric bar). No photos — the visual is pure markup, so it themes
+     and animates with the runtime. Params: surface-white|grey, data-animate.
+     Add .isp-rev to flip the columns. Set --isp-pct on .isp-metric for the bar.
+     Reveal the .isp-metric to trigger the bar fill. ──────────────────────── -->
+<section class="cmp cmp-illustration-split surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div class="isp-grid">
+
+      <!-- Copy -->
+      <div class="isp-copy">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Smart insights</span>
+        <h2 class="type-h1 isp-h ink-primary" data-reveal="up" data-reveal-delay=".06">Insights that adjust to how your business moves.</h2>
+        <p class="type-body-lg isp-sub ink-primary" data-reveal="up" data-reveal-delay=".12">Every cycle is different. businessONLINE watches your cash flow and nudges you in time — whether you&rsquo;re running payroll, settling suppliers or managing a shortfall.</p>
+        <div class="isp-cta" data-reveal="up" data-reveal-delay=".18"><a href="#" class="btn btn-filled">Explore businessONLINE →</a></div>
+      </div>
+
+      <!-- Illustrative composition -->
+      <div class="isp-stage" data-reveal="up" data-reveal-delay=".1">
+        <span class="isp-blob" aria-hidden="true"></span>
+        <div class="isp-comp">
+
+          <!-- Icon tile (in place of a photo) -->
+          <div class="isp-tile" aria-hidden="true">
+            <svg class="isp-spark s1 ink-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
+            <svg class="isp-spark s2" viewBox="0 0 24 24" fill="none" stroke="#7fffd0" stroke-width="2" stroke-linecap="round"><path d="M12 5v3M12 16v3M5 12h3M16 12h3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 8-9"/><path d="M21 6h-5M21 6v5"/></svg>
+          </div>
+
+          <!-- Coaching message -->
+          <div class="isp-msg">
+            <span class="isp-eyebrow"><span class="isp-dot"></span>Live insight</span>
+            <p class="ink-primary">Your payroll run is set to clear <em>2 days earlier</em> than last cycle.</p>
+          </div>
+
+          <!-- Animated metric -->
+          <div class="isp-metric surface-white" data-reveal="fade" data-reveal-delay=".2" style="--isp-pct:86%">
+            <div class="isp-mhd"><span>Cleared on time</span><span>86%</span></div>
+            <div class="isp-track"><div class="isp-fill"></div></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Insight Split ══════════════════════════════════════════════════════ -->

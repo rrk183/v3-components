@@ -1,0 +1,113 @@
+<!-- ═══ Cards — Steps Scroll (composition of cmp-cards) ════════════════════
+     Layout mode 3: the SAME cards as Cards — Steps on the generalized
+     scroll-track recipe — the section pins and the row pans sideways as the
+     page scrolls (data-scroll-outer / data-scroll-wrap / data-track hooks;
+     300vh stage). No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards is-hover-fill cards-steps surface-soft" data-animate data-behavior="scroll-track">
+  <div class="cd-scroll-outer" data-scroll-outer>
+    <div class="cd-scroll-pin">
+      <div class="container-ds">
+        <div class="section-head is-split">
+          <div class="ds-stack">
+            <span class="ds-eyebrow ink-accent" data-reveal="up">Our process</span>
+            <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Get started in 4 simple steps.</h2>
+          </div>
+          <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">From first conversation to a live account, we make corporate onboarding quick, clear and fully guided by a dedicated team.</p>
+        </div>
+      </div>
+      <div class="cd-scroll-wrap" data-scroll-wrap>
+        <div class="cd-track" data-track>
+      <div class="cd-card card-panel is-flat border-2 border-[color:var(--blue)] surface-white">
+        <div class="flex items-center justify-between w-full">
+          <span class="chip">STEP 01</span>
+          <span class="text-[color:var(--blue)]" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+        </div>
+        <h3 class="type-h5 mt-16 mb-6 ink-primary">Tell us about your business</h3>
+        <div class="flex items-end justify-between w-full mt-auto">
+          <span class="ds-num is-lg ink-primary">01</span>
+          <span class="btn btn-text btn-sm">Discover</span>
+        </div>
+      </div>
+      <div class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-between w-full">
+          <span class="chip">STEP 02</span>
+          <span class="ink-mute" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <h3 class="type-h5 mt-16 mb-6 ink-primary">We tailor the right solutions</h3>
+        <div class="flex items-end justify-between w-full mt-auto">
+          <span class="ds-num is-lg ink-primary">02</span>
+          <span class="chip">Design</span>
+        </div>
+      </div>
+      <div class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-between w-full">
+          <span class="chip">STEP 03</span>
+          <span class="ink-mute" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <h3 class="type-h5 mt-16 mb-6 ink-primary">Complete quick documentation</h3>
+        <div class="flex items-end justify-between w-full mt-auto">
+          <span class="ds-num is-lg ink-primary">03</span>
+          <span class="chip">Onboard</span>
+        </div>
+      </div>
+      <div class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-between w-full">
+          <span class="chip">STEP 04</span>
+          <span class="ink-mute" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <h3 class="type-h5 mt-16 mb-6 ink-primary">Go live with dedicated support</h3>
+        <div class="flex items-end justify-between w-full mt-auto">
+          <span class="ds-num is-lg ink-primary">04</span>
+          <span class="chip">Launch</span>
+        </div>
+      </div>
+      <div class="cd-card card-panel is-flat border-2 border-[color:var(--blue)] surface-white">
+        <div class="flex items-center justify-between w-full">
+          <span class="chip">STEP 01</span>
+          <span class="text-[color:var(--blue)]" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+        </div>
+        <h3 class="type-h5 mt-16 mb-6 ink-primary">Tell us about your business</h3>
+        <div class="flex items-end justify-between w-full mt-auto">
+          <span class="ds-num is-lg ink-primary">01</span>
+          <span class="btn btn-text btn-sm">Discover</span>
+        </div>
+      </div>
+      <div class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-between w-full">
+          <span class="chip">STEP 02</span>
+          <span class="ink-mute" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <h3 class="type-h5 mt-16 mb-6 ink-primary">We tailor the right solutions</h3>
+        <div class="flex items-end justify-between w-full mt-auto">
+          <span class="ds-num is-lg ink-primary">02</span>
+          <span class="chip">Design</span>
+        </div>
+      </div>
+      <div class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-between w-full">
+          <span class="chip">STEP 03</span>
+          <span class="ink-mute" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <h3 class="type-h5 mt-16 mb-6 ink-primary">Complete quick documentation</h3>
+        <div class="flex items-end justify-between w-full mt-auto">
+          <span class="ds-num is-lg ink-primary">03</span>
+          <span class="chip">Onboard</span>
+        </div>
+      </div>
+      <div class="cd-card card-panel is-flat surface-white">
+        <div class="flex items-center justify-between w-full">
+          <span class="chip">STEP 04</span>
+          <span class="ink-mute" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <h3 class="type-h5 mt-16 mb-6 ink-primary">Go live with dedicated support</h3>
+        <div class="flex items-end justify-between w-full mt-auto">
+          <span class="ds-num is-lg ink-primary">04</span>
+          <span class="chip">Launch</span>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Cards — Steps Scroll ══════════════════════════════════════════════ -->

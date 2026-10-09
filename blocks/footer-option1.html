@@ -1,0 +1,136 @@
+<!-- ═══ Footer — Option 1 ═══════════════════════════════════════════════════
+     Three-band site footer: navy top bar (عربي language switch + social
+     icons), grey link body (4 link columns + apps column), deeper-grey
+     copyright bar. Band backgrounds + layout in .cmp-footer-option1.
+     No segment dropdown anywhere — it was tried in the bar and the body and
+     rejected both times; don't reintroduce it. ds.js wires the below-lg
+     column accordions (fo1Accordions) by class — no data-animate here, but
+     the block is not inert. -->
+<footer class="cmp cmp-footer-option1 surface-soft">
+
+  <!-- ── Top navy bar ─────────────────────────────────────────────── -->
+  <div class="fo1-topbar">
+    <div class="container-ds flex items-center justify-between gap-6">
+
+      <button type="button" class="fo1-lang" lang="ar" aria-label="عربي — switch to Arabic">
+        <span class="fo1-flag" aria-hidden="true"><svg viewBox="0 0 18 13" width="18" height="13"><rect width="18" height="13" fill="#fff"/><rect width="18" height="4.33" fill="#00843D"/><rect y="8.67" width="18" height="4.33" fill="#000"/><rect width="5" height="13" fill="#EF3340"/></svg></span>
+        <span>عربي</span>
+      </button>
+
+      <div class="flex items-center gap-3">
+        <a href="#" aria-label="Facebook" class="fo1-social ink-mute">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="X" class="fo1-social ink-mute">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="fo1-social ink-mute">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="fo1-social ink-mute">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="fo1-social ink-mute">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Main link body ───────────────────────────────────────────── -->
+  <div class="fo1-body surface-white">
+    <div class="container-ds grid grid-cols-2 lg:grid-cols-5 gap-6 md:gap-10">
+
+      <div>
+        <p class="fo1-col-head ink-mute">About us</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="fo1-link ink-mute">Careers with us</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Community Engagement</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Financial Results</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Investor Relations</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Modern Slavery Act</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="fo1-col-head ink-mute">Customer support</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="fo1-link ink-mute">How to reach us</a></li>
+          <li class="flex items-center gap-2">
+            <a href="#" class="fo1-link ink-mute">Debt Assist</a>
+            <span class="fo1-ai-badge">AI</span>
+          </li>
+          <li><a href="#" class="fo1-link ink-mute">Ways of banking</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Update your information</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Help and Support</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="fo1-col-head ink-mute">Product Documents</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="fo1-link ink-mute">Terms and Conditions</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Key Facts Statement (KFS)</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Application Forms</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Schedule of Charges</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="fo1-col-head ink-mute">Helpful links</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="fo1-link ink-mute">IBAN, Swift and Routing Codes</a></li>
+          <li><a href="#" class="fo1-link ink-mute">FATCA &amp; CRS</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Cookies Policy</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Data Privacy Notice</a></li>
+          <li><a href="#" class="fo1-link ink-mute">Fraud &amp; Security</a></li>
+        </ul>
+      </div>
+
+      <div class="fo1-apps">
+        <p class="fo1-col-head ink-mute">Download our Apps</p>
+        <a href="#" class="fo1-app">
+          <span class="fo1-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10 17.5h4"></path><rect x="9.2" y="9.4" width="5.6" height="4.6" rx="1"></rect><path d="M10.4 9.4V8.2a1.6 1.6 0 0 1 3.2 0v1.2"></path></svg></span>
+          <span class="fo1-app-body">
+            <span class="fo1-app-title">Download our Mobile App</span>
+            <span class="fo1-app-desc ink-mute">Bank securely anytime and from anywhere</span>
+          </span>
+        </a>
+        <a href="#" class="fo1-app">
+          <span class="fo1-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M9 17.5h4"></path><path d="M12.5 8.5h5A1.5 1.5 0 0 1 19 10v2.4a1.5 1.5 0 0 1-1.5 1.5h-1.6l-2 1.9v-1.9h-1.4a1.5 1.5 0 0 1-1.5-1.5V10a1.5 1.5 0 0 1 1.5-1.5z"></path></svg></span>
+          <span class="fo1-app-body">
+            <span class="fo1-app-title">Download our businessONLINE X Mobile App</span>
+            <span class="fo1-app-desc ink-mute">Manage your business finances on-the-go</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Copyright bar ────────────────────────────────────────────── -->
+  <div class="fo1-copyright surface-white">
+    <div class="container-ds fo1-copy-row">
+      <p class="fo1-copy-text ink-mute">
+        Copyright &copy; 2026<br />
+        Emirates NBD Bank (P.J.S.C.) is licensed by the Central Bank of the UAE, Baniyas Road, Deira, P.O. Box: 777, Dubai, UAE
+      </p>
+      <span class="fo1-copy-logo" role="img" aria-label="Emirates NBD"></span>
+    </div>
+  </div>
+
+</footer>
+<!-- ═══ /Footer — Option 1 ══════════════════════════════════════════════════ -->

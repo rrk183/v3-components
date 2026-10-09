@@ -1,0 +1,151 @@
+<!-- ═══ Buttons ═════════════════════════════════════════════════════════════
+     THE BUTTON MODEL (2026-09-01) — ONE system, now FIVE axes:
+     TYPE (btn-filled = primary / btn-accent = secondary / btn-outline =
+     tertiary / btn-text = quiet) × GLYPH (a modifier class, see below) ×
+     ICON MODE (no icon · with glyph · icon-only via .btn-icon + .sr-only
+     label) × SIZE (btn-xs…btn-xl) × RADIUS (per-size default · .btn-pill).
+     Types are ROLE-named, never color-named — paint rides brand tokens.
+
+     THE GLYPH AXIS (2026-09-03, Hakan) — a button's icon is a CLASS, not
+     markup. There is no inline <svg> anywhere in this block: each glyph lives
+     ONCE in ds.css as a data-URI mask painted with currentColor, so it
+     inherits the button's ink on every surface, in every brand and on hover.
+     Trailing is the default (::after); .is-ic-start moves it to ::before.
+     14 glyphs, named LOGICALLY — full table in CONVENTIONS.md § the glyph
+     axis. Adding a glyph is a ds.css edit on a deliberate cadence.
+
+     Nothing here is new CSS beyond the .bt-label/.btn-row showcase chrome.
+     Legacy paints (btn-primary, btn-navy, btn-ghost, btn-danger,
+     btn-outline-blue) stay valid until the estate sweep; btn-outline-light
+     remains THE outline for dark surfaces — check via the Surface control.
+     Params: surface, data-animate. No IDs — repeatable. -->
+<section class="cmp cmp-buttons surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Atoms</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Buttons</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">One button system: type, glyph, icon mode, size and corner radius. Types are named by role, never by colour — the paint comes from the brand tokens, and the glyph is a class, never markup.</p>
+    </div>
+
+    <div class="ds-stack" data-reveal="up" style="--ds-stack-gap:2.5rem">
+
+      <div>
+        <p class="bt-label ink-mute">Types — filled (primary), accent filled (secondary), outlined, text</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-filled">Open an account</a>
+          <a href="#" class="btn btn-accent">Talk to an advisor</a>
+          <a href="#" class="btn btn-outline">View details</a>
+          <a href="#" class="btn btn-text">Read the report</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">With a glyph — add the modifier, any type. Trailing by default</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-filled is-arrow">Open an account</a>
+          <a href="#" class="btn btn-accent is-next">Talk to an advisor</a>
+          <a href="#" class="btn btn-outline is-download">Download brochure</a>
+          <a href="#" class="btn btn-text is-arrow">Read the report</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Leading glyph — the same modifier plus .is-ic-start</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-outline is-arrow-back is-ic-start">All case studies</a>
+          <a href="#" class="btn btn-accent is-search is-ic-start">Search the site</a>
+          <a href="#" class="btn btn-text is-download is-ic-start">Annual report (PDF)</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">The vocabulary — 14 glyphs, named for what the control does</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-outline btn-sm is-arrow">is-arrow</a>
+          <a href="#" class="btn btn-outline btn-sm is-arrow-back">is-arrow-back</a>
+          <a href="#" class="btn btn-outline btn-sm is-next">is-next</a>
+          <a href="#" class="btn btn-outline btn-sm is-back">is-back</a>
+          <a href="#" class="btn btn-outline btn-sm is-up">is-up</a>
+          <a href="#" class="btn btn-outline btn-sm is-down">is-down</a>
+          <a href="#" class="btn btn-outline btn-sm is-up-right">is-up-right</a>
+          <a href="#" class="btn btn-outline btn-sm is-close">is-close</a>
+          <a href="#" class="btn btn-outline btn-sm is-plus">is-plus</a>
+          <a href="#" class="btn btn-outline btn-sm is-minus">is-minus</a>
+          <a href="#" class="btn btn-outline btn-sm is-download">is-download</a>
+          <a href="#" class="btn btn-outline btn-sm is-search">is-search</a>
+          <a href="#" class="btn btn-outline btn-sm is-play">is-play</a>
+          <a href="#" class="btn btn-outline btn-sm is-pause">is-pause</a>
+        </div>
+        <p class="type-body-sm ink-mute">Directional glyphs (<em>arrow, arrow-back, next, back, up-right</em>) mirror automatically under <em>dir="rtl"</em>; the rest never do. In forced-colours mode every glyph repaints with the system button ink.</p>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Icon only — .btn-icon, always a circle, the label stays for screen readers</p>
+        <div class="btn-row">
+          <button type="button" class="btn btn-filled btn-icon is-back"><span class="sr-only">Previous</span></button>
+          <button type="button" class="btn btn-filled btn-icon is-next"><span class="sr-only">Next</span></button>
+          <button type="button" class="btn btn-accent btn-icon is-plus"><span class="sr-only">Add</span></button>
+          <button type="button" class="btn btn-accent btn-icon is-minus"><span class="sr-only">Remove</span></button>
+          <button type="button" class="btn btn-outline btn-icon is-close"><span class="sr-only">Close</span></button>
+          <button type="button" class="btn btn-outline btn-icon is-search"><span class="sr-only">Search</span></button>
+          <button type="button" class="btn btn-filled btn-icon is-play"><span class="sr-only">Play</span></button>
+          <button type="button" class="btn btn-filled btn-icon is-pause"><span class="sr-only">Pause</span></button>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Sizes — the glyph scales with the button (--ic-size: 14 / 16 / 17 / 18 / 20px)</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-filled btn-xs is-arrow">Extra small</a>
+          <a href="#" class="btn btn-filled btn-sm is-arrow">Small</a>
+          <a href="#" class="btn btn-filled is-arrow">Default</a>
+          <a href="#" class="btn btn-filled btn-lg is-arrow">Large</a>
+          <a href="#" class="btn btn-filled btn-xl is-arrow">Extra large</a>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn btn-outline btn-icon btn-xs is-close"><span class="sr-only">Close</span></button>
+          <button type="button" class="btn btn-outline btn-icon btn-sm is-close"><span class="sr-only">Close</span></button>
+          <button type="button" class="btn btn-outline btn-icon is-close"><span class="sr-only">Close</span></button>
+          <button type="button" class="btn btn-outline btn-icon btn-lg is-close"><span class="sr-only">Close</span></button>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Corner radius — per-size default vs pill</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-filled">Default</a>
+          <a href="#" class="btn btn-filled btn-pill">Pill</a>
+          <a href="#" class="btn btn-accent btn-lg is-arrow">Default</a>
+          <a href="#" class="btn btn-accent btn-lg btn-pill is-arrow">Pill</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">States &amp; special</p>
+        <div class="btn-row">
+          <button type="button" class="btn btn-filled" disabled>Processing&hellip;</button>
+          <a href="#" class="btn btn-danger is-close">Close facility</a>
+          <a href="#" class="btn btn-outline-light is-arrow">Explore capabilities</a>
+        </div>
+        <p class="type-body-sm ink-mute">The disabled state comes from the attribute; <em>outline-light</em> is the explicit outline for dark surfaces — flip the Surface control to see it earn its place, and watch the glyph follow the ink.</p>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute">Legacy paints — valid until the sweep</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-primary">Open an account</a>
+          <a href="#" class="btn btn-navy">Talk to an advisor</a>
+          <a href="#" class="btn btn-ghost">Maybe later</a>
+          <a href="#" class="btn btn-outline-blue is-download">Download brochure</a>
+        </div>
+        <p class="type-body-sm ink-mute">Pre-model classes still on live pages. New work uses the role types above; the sweep migrates these.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Buttons ════════════════════════════════════════════════════════════ -->

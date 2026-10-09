@@ -1,0 +1,76 @@
+<!-- ═══ Cards — Quote Carousel (composition of cmp-cards) ═══════════════
+     The SAME cards on the shared data-carousel recipe (track outside the
+     container; arrows are btn atoms wired by data-carousel-prev/next). -->
+<section class="cmp cmp-cards cards-quote is-cols-3 surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div class="section-head">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">What clients say</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">In their words.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Navy quote cards &mdash; a display quote mark, the quote, and the attribution.</p>
+    </div>
+  </div>
+
+  <div class="cd-carousel" data-carousel>
+    <div class="cd-track" data-carousel-track>
+
+      <div class="cd-card card-panel surface-primary justify-center" data-carousel-slide>
+        <span class="type-display-lg bm-quote-mark ink-accent-soft" aria-hidden="true">&ldquo;</span>
+        <p class="type-body-sm mt-2 ink-white">Execution certainty is the difference between a mandate won and a mandate missed.</p>
+        <span class="type-caption mt-2 block ink-soft">Head of DCM, Emirates NBD Capital</span>
+      </div>
+
+      <div class="cd-card card-panel surface-primary justify-center" data-carousel-slide>
+        <span class="type-display-lg bm-quote-mark ink-accent-soft" aria-hidden="true">&ldquo;</span>
+        <p class="type-body-sm mt-2 ink-white">We stopped reconciling payments by hand the week we went live.</p>
+        <span class="type-caption mt-2 block ink-soft">Group Treasurer, regional retail group</span>
+      </div>
+
+      <div class="cd-card card-panel surface-primary justify-center" data-carousel-slide>
+        <span class="type-display-lg bm-quote-mark ink-accent-soft" aria-hidden="true">&ldquo;</span>
+        <p class="type-body-sm mt-2 ink-white">One relationship covers thirteen countries. That is the whole pitch.</p>
+        <span class="type-caption mt-2 block ink-soft">CFO, logistics multinational</span>
+      </div>
+
+      <div class="cd-card card-panel surface-primary justify-center" data-carousel-slide>
+        <span class="type-display-lg bm-quote-mark ink-accent-soft" aria-hidden="true">&ldquo;</span>
+        <p class="type-body-sm mt-2 ink-white">Execution certainty is the difference between a mandate won and a mandate missed.</p>
+        <span class="type-caption mt-2 block ink-soft">Head of DCM, Emirates NBD Capital</span>
+      </div>
+
+      <div class="cd-card card-panel surface-primary justify-center" data-carousel-slide>
+        <span class="type-display-lg bm-quote-mark ink-accent-soft" aria-hidden="true">&ldquo;</span>
+        <p class="type-body-sm mt-2 ink-white">We stopped reconciling payments by hand the week we went live.</p>
+        <span class="type-caption mt-2 block ink-soft">Group Treasurer, regional retail group</span>
+      </div>
+
+      <div class="cd-card card-panel surface-primary justify-center" data-carousel-slide>
+        <span class="type-display-lg bm-quote-mark ink-accent-soft" aria-hidden="true">&ldquo;</span>
+        <p class="type-body-sm mt-2 ink-white">One relationship covers thirteen countries. That is the whole pitch.</p>
+        <span class="type-caption mt-2 block ink-soft">CFO, logistics multinational</span>
+      </div>
+
+      <div class="cd-card card-panel surface-primary justify-center" data-carousel-slide>
+        <span class="type-display-lg bm-quote-mark ink-accent-soft" aria-hidden="true">&ldquo;</span>
+        <p class="type-body-sm mt-2 ink-white">Execution certainty is the difference between a mandate won and a mandate missed.</p>
+        <span class="type-caption mt-2 block ink-soft">Head of DCM, Emirates NBD Capital</span>
+      </div>
+
+      <div class="cd-card card-panel surface-primary justify-center" data-carousel-slide>
+        <span class="type-display-lg bm-quote-mark ink-accent-soft" aria-hidden="true">&ldquo;</span>
+        <p class="type-body-sm mt-2 ink-white">We stopped reconciling payments by hand the week we went live.</p>
+        <span class="type-caption mt-2 block ink-soft">Group Treasurer, regional retail group</span>
+      </div>
+
+    </div>
+    <div class="cd-arrows">
+      <button class="crl-toggle" type="button" data-carousel-toggle hidden aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
+      <div class="cd-dots" data-carousel-dots></div>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous</span></button>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next</span></button>
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Cards — Quote Carousel ═══════════════════════════════════════ -->

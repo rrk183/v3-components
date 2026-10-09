@@ -1,0 +1,41 @@
+<!-- ═══ Stats — Row (composition of cmp-cards) ═════════════════════════════
+     A row of big count-up figures with hairline dividers — cmp-cards in
+     is-divided mode, cells built from atoms (ds-num is-lg + type ramp).
+     Zero CSS of its own (Hakan 2026-09-01: "should this be card?" — yes).
+     Params: surface, data-animate; Columns axis works as on any cards. -->
+<section class="cmp cmp-cards stats-row is-cols-4 is-divided surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <span class="ds-eyebrow ink-accent" data-reveal="up">Our impact</span>
+
+    <div class="cd-grid mt-6" role="list">
+
+      <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay="0">
+        <span class="ds-num is-lg ink-primary"><span data-countup="95" data-suffix="bn+">95bn+</span></span>
+        <span class="type-h5 block mt-4 ink-accent">USD advised &amp; arranged</span>
+        <span class="type-body-sm block mt-2 measure ink-mute" style="--measure: 22ch">Across sovereign, FI and corporate mandates</span>
+      </div>
+
+      <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".08">
+        <span class="ds-num is-lg ink-primary"><span data-countup="76">76</span></span>
+        <span class="type-h5 block mt-4 ink-accent">DCM issuances</span>
+        <span class="type-body-sm block mt-2 measure ink-mute" style="--measure: 22ch">Public and private debt issuances priced</span>
+      </div>
+
+      <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <span class="ds-num is-lg ink-primary"><span data-countup="40" data-suffix="+">40+</span></span>
+        <span class="type-h5 block mt-4 ink-accent">Syndicated loans</span>
+        <span class="type-body-sm block mt-2 measure ink-mute" style="--measure: 22ch">Record loan transactions in a single year</span>
+      </div>
+
+      <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".24">
+        <span class="ds-num is-lg ink-primary"><span data-countup="13">13</span></span>
+        <span class="type-h5 block mt-4 ink-accent">Markets active</span>
+        <span class="type-body-sm block mt-2 measure ink-mute" style="--measure: 22ch">On-ground presence across MENA, Europe &amp; Asia</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Impact Stats ════════════════════════════════════════════════════════ -->

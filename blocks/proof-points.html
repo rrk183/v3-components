@@ -1,0 +1,54 @@
+<!-- ═══ Content Block — Numbers ═══════════════════════════════════════════════
+     Editorial statement block: a headline on the left, two or three headline
+     FIGURES on the right separated by hairline dividers, a full-width rule,
+     then the body copy underneath. The figures are the point — they carry the
+     proof for the claim the heading makes.
+     Promoted from page-local markup (it shipped on lending, smartSCF,
+     sustainable-finance and industry-specific-finance before it was a block);
+     the `.cbn-divider` / `.cbn-rule` hairlines now get their width from
+     ds.css — as page copies they had colour but no width, so they never drew.
+     Figures ride type-h1 (32-56 — the exact clamp the old override drew), never bold. Pure markup:
+     surface-* and data-animate are the only knobs. -->
+<section class="cmp cmp-proof-points surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <!-- Top row: heading left + figures right -->
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16 mb-10 md:mb-14">
+
+      <h2 class="type-h2 ink-primary" data-reveal="up">
+        The region&rsquo;s strongest balance sheet.
+      </h2>
+
+      <div class="flex items-stretch gap-8 md:gap-12 shrink-0" data-reveal="up" data-reveal-delay=".1">
+
+        <div class="flex flex-col gap-1">
+          <span class="cbn-figure type-h1 ink-primary">AED&nbsp;950bn+</span>
+          <span class="type-body-sm ink-mute">in Group total assets</span>
+        </div>
+
+        <div class="cbn-divider self-stretch border-ink"></div>
+
+        <div class="flex flex-col gap-1">
+          <span class="cbn-figure type-h1 ink-primary">60+</span>
+          <span class="type-body-sm ink-mute">years of Group banking heritage</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Full-width horizontal rule -->
+    <div class="cbn-rule border-ink mb-10 md:mb-14" data-reveal="fade" data-reveal-delay=".15"></div>
+
+    <!-- Body copy -->
+    <div class="flex flex-col gap-5 measure">
+      <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".2">
+        As the UAE&rsquo;s largest banking group, Emirates NBD has the balance sheet to underwrite and the network to syndicate, from bilateral facilities to multi-billion club and project financings.
+      </p>
+      <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".25">
+        Every facility is structured by sector specialists around your cash-conversion cycle, growth stage and security, with Shariah-compliant alternatives across the range.
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Content Block — Numbers ════════════════════════════════════════════ -->

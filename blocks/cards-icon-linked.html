@@ -1,0 +1,54 @@
+<!-- ═══ Cards — Icon Linked (composition of cmp-cards) ══════════════════════
+     Media-less, whole-card LINK: icon-tile + title + body + a btn-text link
+     on a CLEAR panel (card-panel + surface-clear: the null surface, so
+     the section themes right through the card) — THE
+     replacement for the ways-to-accept / pillar-grid linked-triad pattern.
+     No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Ways to accept</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Take payment however your customers want to pay.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">In store, online, or on the go — accept every method your customers reach for.</p>
+    </div>
+
+    <div class="cd-grid" role="list">
+
+      <a href="#" class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".04" aria-label="In store — POS solutions">
+        <div class="ds-stack">
+          <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v10a1 1 0 001 1h16a1 1 0 001-1V9M8 20v-6h4v6"/></svg></span>
+          <h3 class="type-h6 ink-primary">In store</h3>
+          <p class="type-body-sm ink-mute">Card, contactless and digital wallets on sleek POS terminals &mdash; or Tap to Pay on a phone.</p>
+          <span class="btn btn-text mt-1 is-arrow">POS solutions
+           </span>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".10" aria-label="Online — E-commerce solutions">
+        <div class="ds-stack">
+          <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></span>
+          <h3 class="type-h6 ink-primary">Online</h3>
+          <p class="type-body-sm ink-mute">A secure checkout and gateway for your website and app, with a simple API and plugins.</p>
+          <span class="btn btn-text mt-1 is-arrow">E-commerce solutions
+           </span>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".16" aria-label="On the go — Pay by Link">
+        <div class="ds-stack">
+          <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></span>
+          <h3 class="type-h6 ink-primary">On the go</h3>
+          <p class="type-body-sm ink-mute">Send a Pay by Link via WhatsApp, SMS or email and get paid in seconds.</p>
+          <span class="btn btn-text mt-1 is-arrow">Pay by Link
+           </span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Cards — Icon Linked ════════════════════════════════════════════════ -->

@@ -1,0 +1,61 @@
+<!-- ═══ Laptop Showcase — product hero with floating spec badges ════════════
+     Big headline + numbered steps on the left, a transparent laptop IMAGE with floating spec badges on the right. Mirrors the
+     "Extra bass for punchy sound" product layout. surface-primary, data-animate.
+     Pure markup — NO inline styles, NO IDs. Styling in .cmp-laptop-showcase. -->
+<section class="cmp cmp-laptop-showcase surface-primary section-y" data-animate>
+  <div class="ls-glow ls-glow-1" aria-hidden="true"></div>
+  <div class="ls-glow ls-glow-2" aria-hidden="true"></div>
+
+  <div class="container-ds ls-grid grid grid-cols-1 lg:grid-cols-2 items-center">
+
+    <!-- Copy + numbered steps -->
+    <div class="ds-stack ls-copy">
+      <span class="ds-eyebrow ink-accent-soft" data-reveal="up">businessONLINE X</span>
+      <h2 class="type-display-lg ink-white" data-reveal="up" data-reveal-delay=".06">Your treasury,<br>on one screen.</h2>
+      <p class="type-body-lg measure ls-sub ink-soft" data-reveal="up" data-reveal-delay=".12">The desktop banking platform built for finance teams — every account, approval and payment, consolidated and live.</p>
+
+      <ol class="ls-steps">
+        <li class="ls-step" data-reveal="up" data-reveal-delay=".06">
+          <span class="ls-step-num" aria-hidden="true">1</span>
+          <div class="ls-step-text">
+            <h3 class="type-h5 ls-step-title ink-white">See everything, instantly</h3>
+            <p class="type-body-sm ink-soft">Real-time balances and liquidity across every entity and currency — one consolidated dashboard.</p>
+          </div>
+        </li>
+        <li class="ls-step" data-reveal="up" data-reveal-delay=".12">
+          <span class="ls-step-num" aria-hidden="true">2</span>
+          <div class="ls-step-text">
+            <h3 class="type-h5 ls-step-title ink-white">Approve from anywhere</h3>
+            <p class="type-body-sm ink-soft">Multi-level approval workflows with full audit trails — release payments in a tap, from desktop or mobile.</p>
+          </div>
+        </li>
+        <li class="ls-step" data-reveal="up" data-reveal-delay=".18">
+          <span class="ls-step-num" aria-hidden="true">3</span>
+          <div class="ls-step-text">
+            <h3 class="type-h5 ls-step-title ink-white">Move money at scale</h3>
+            <p class="type-body-sm ink-soft">Bulk payments, host-to-host file transfers and APIs — straight-through processing for thousands of transactions.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- The laptop -->
+    <div class="ls-stage" data-reveal="up" data-reveal-delay=".06">
+      <!-- device = a transparent IMAGE, not rebuilt UI (Hakan 2026-09-01);
+           pages supply their own render — the badges stay live UI -->
+      <img class="ls-device-img" src="assets/images/device/laptop-showcase.png" alt="" />
+
+      <div class="ls-badge ls-badge-1">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <div class="ls-badge-text"><span class="type-h6 block ink-white">256-bit</span><span class="type-micro ls-badge-lbl ink-soft">encryption</span></div>
+      </div>
+
+      <div class="ls-badge ls-badge-2">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93C7.06 19.43 4 16.07 4 12c0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41C18.92 5.78 21 8.65 21 12c0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        <div class="ls-badge-text"><span class="type-h6 block ink-white">99.99%</span><span class="type-micro ls-badge-lbl ink-soft">uptime</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Laptop Showcase ═════════════════════════════════════════════════════ -->

@@ -1,0 +1,58 @@
+<!-- ═══ Logo Wall — Marquee ═══════════════════════════════════════════
+     Params: surface (surface-white|grey…), data-animate (on/off).
+     Pure markup — NO inline styles. Styled by .cmp-logo-wall-marquee.
+     Marquee is pure-CSS keyframe scroll (no JS), paused on hover.
+     Strip is duplicated 2× for a seamless loop (translateX -50%). -->
+<section class="cmp cmp-logo-wall-marquee surface-white section-y overflow-hidden" data-animate>
+
+  <div class="container-ds">
+    <div class="section-head is-split measure">
+      <div class="ds-stack"><span class="ds-eyebrow ink-accent" data-reveal="up">Trusted integrations &amp; partners</span><h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">Connected to the platforms that power global business.</h2></div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">We integrate with the technology and payment networks your operations already depend on, every day.</p>
+    </div>
+  </div>
+
+  <div class="tpm-outer marquee" data-reveal="up" data-reveal-delay=".12">
+    <div class="tpm-strip marquee-track">
+
+      <!-- Set 1 -->
+      <div class="tpm-item"><img class="tpm-logo tpm-w-80" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" /></div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-110" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" /></div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-90" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" /></div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-32" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" /></div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-90" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" /></div>
+      <div class="tpm-item">
+        <svg viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg" class="tpm-logo tpm-w-100">
+          <text x="110" y="36" font-family="Arial Black, sans-serif" font-size="34" font-weight="900" fill="#1428A0" text-anchor="middle" letter-spacing="1">SAMSUNG</text>
+        </svg>
+      </div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-70" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" /></div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-90" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle" /></div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-60" src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" alt="SAP" /></div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-70" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" /></div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-60" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" /></div>
+      <div class="tpm-item"><img class="tpm-logo tpm-w-70" src="https://upload.wikimedia.org/wikipedia/commons/d/d0/SWIFT_logo.svg" alt="Swift" /></div>
+
+      <!-- Set 2 — seamless duplicate (aria-hidden) -->
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-80" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-110" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-90" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-32" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-90" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true">
+        <svg viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg" class="tpm-logo tpm-w-100">
+          <text x="110" y="36" font-family="Arial Black, sans-serif" font-size="34" font-weight="900" fill="#1428A0" text-anchor="middle" letter-spacing="1">SAMSUNG</text>
+        </svg>
+      </div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-70" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-90" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-60" src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-70" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-60" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="" /></div>
+      <div class="tpm-item" aria-hidden="true"><img class="tpm-logo tpm-w-70" src="https://upload.wikimedia.org/wikipedia/commons/d/d0/SWIFT_logo.svg" alt="" /></div>
+
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Trusted Partners — Marquee ══════════════════════════════════════════ -->

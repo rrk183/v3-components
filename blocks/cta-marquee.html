@@ -1,0 +1,48 @@
+<!-- ═══ CTA — Horizontal Marquee ════════════════════════════════════════════
+     Params: surface — default surface-primary (dark, original #072447);
+             switch to surface-white (or surface-grey #F4F7FB) for the light variant.
+     Pure markup — NO inline styles, NO IDs. Styled by .cmp-cta-marquee,
+     animated by its own scoped CSS keyframe (pauses on hover). The original
+     JS scroll-based centre-opacity fade is dropped in favour of a simple
+     CSS marquee; edge dissolve = a transparent MASK on the clip (surface-agnostic). -->
+<section class="cmp cmp-cta-marquee surface-primary section-y" data-animate>
+  <div class="container-ds">
+    <div class="flex flex-col gap-12 lg:gap-16">
+
+      <!-- ── Header / CTAs ──────────────────────────────────────────── -->
+      <div class="ds-stack section-head is-center measure mx-auto">
+        <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Emirates NBD</span>
+        <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".06">Banking built for every ambition</h2>
+        <p class="type-body sh-lead ink-soft" data-reveal="up" data-reveal-delay=".12">From everyday personal banking to global corporate solutions, world-class financial services built around your ambitions.</p>
+        <div class="cm-actions flex flex-wrap gap-4 justify-center" data-reveal="up" data-reveal-delay=".18">
+          <a class="btn btn-lg btn-primary" href="#">Open an Account</a>
+          <a class="btn btn-lg btn-outline-light" href="#">Talk to an Expert</a>
+        </div>
+      </div>
+
+      <!-- ── Horizontal marquee ─────────────────────────────────────── -->
+      <div class="relative w-full" data-reveal="fade" data-reveal-delay=".24">
+        <div class="cm-clip marquee">
+          <div class="marquee-track">
+            <div class="cm-inner">
+              <div class="cm-item type-display-lg type-light ink-white">Corporate Banking</div>
+              <div class="cm-item type-display-lg type-light ink-white">Trade Finance</div>
+              <div class="cm-item type-display-lg type-light ink-white">Wealth Management</div>
+              <div class="cm-item type-display-lg type-light ink-white">Digital Solutions</div>
+              <div class="cm-item type-display-lg type-light ink-white">Treasury &amp; Markets</div>
+            </div>
+            <div class="cm-inner" aria-hidden="true">
+              <div class="cm-item type-display-lg type-light ink-white">Corporate Banking</div>
+              <div class="cm-item type-display-lg type-light ink-white">Trade Finance</div>
+              <div class="cm-item type-display-lg type-light ink-white">Wealth Management</div>
+              <div class="cm-item type-display-lg type-light ink-white">Digital Solutions</div>
+              <div class="cm-item type-display-lg type-light ink-white">Treasury &amp; Markets</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /CTA — Horizontal Marquee ═══════════════════════════════════════════ -->

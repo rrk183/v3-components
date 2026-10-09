@@ -1,0 +1,81 @@
+<!-- ═══ Features — Auto-Progress Tabs ═══════════════════════════════════════
+     Params: surface (surface-white default), data-animate (on/off).
+     Auto-advancing feature tabs (ds.js data-tabs + data-autoplay). Clicking a
+     card jumps to it and restarts the timer; pauses on hover. ONE root-level
+     [data-tabs-progress] bar fills 0→100% each cycle. Image panels swap via
+     data-panel + data-bg. Styled by .cmp-features-autoprogress; NO inline styles/IDs. -->
+<section class="cmp cmp-features-autoprogress surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Corporate Banking Redefined.</span>
+        <h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">Smart banking for every need</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Control, insight and payments unified in one platform — built around how your business actually runs.</p>
+    </div>
+
+    <div data-tabs data-autoplay="4000" class="fap-tabs grid lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
+
+      <!-- Left — stacked tab cards -->
+      <div class="order-2 lg:order-1 flex flex-col gap-4">
+
+        <button data-tab="f1" class="fap-card">
+          <span class="icon-tile is-sm is-round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          </span>
+          <span class="fap-body">
+            <span class="fap-title type-h5 block ink-mute">Full control from day one</span>
+            <span class="fap-desc type-body-sm block ink-mute">businessONLINE is configured around how your business operates — with role-based dashboards, real-time cash visibility, and customisable approval workflows ready from the moment you log in.</span>
+          </span>
+          <span class="fap-card-bar" data-tabs-progress aria-hidden="true"></span>
+        </button>
+
+        <button data-tab="f2" class="fap-card">
+          <span class="icon-tile is-sm is-round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.1h-15V5h15v14.1zm0-16.1h-15c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+          </span>
+          <span class="fap-body">
+            <span class="fap-title type-h5 block ink-mute">Insight when it matters</span>
+            <span class="fap-desc type-body-sm block ink-mute">Access real-time account data and cash flow analytics across every entity. Build, download, and share interactive reports — so your finance team always has a clear picture of where you stand.</span>
+          </span>
+          <span class="fap-card-bar" data-tabs-progress aria-hidden="true"></span>
+        </button>
+
+        <button data-tab="f3" class="fap-card">
+          <span class="icon-tile is-sm is-round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+          </span>
+          <span class="fap-body">
+            <span class="fap-title type-h5 block ink-mute">Every payment, handled</span>
+            <span class="fap-desc type-body-sm block ink-mute">Process domestic, international, bulk, and regulatory payments from a single hub. Full multi-currency support, real-time status tracking, and QuickPay for repeat transactions.</span>
+          </span>
+          <span class="fap-card-bar" data-tabs-progress aria-hidden="true"></span>
+        </button>
+
+        <button data-tab="f4" class="fap-card">
+          <span class="icon-tile is-sm is-round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+          </span>
+          <span class="fap-body">
+            <span class="fap-title type-h5 block ink-mute">Banking on the move</span>
+            <span class="fap-desc type-body-sm block ink-mute">Approve transactions, monitor balances, and access the full platform from any device. businessONLINE X gives you complete control from your phone — securely, wherever you are.</span>
+          </span>
+          <span class="fap-card-bar" data-tabs-progress aria-hidden="true"></span>
+        </button>
+
+
+      </div>
+
+      <!-- Right — swapping image panels -->
+      <div class="order-1 lg:order-2 fap-media">
+        <div data-panel="f1" class="fap-panel"><span class="fap-img" data-bg="/assets/images/business-online/bo-feature-1.jpg"></span></div>
+        <div data-panel="f2" class="fap-panel"><span class="fap-img" data-bg="/assets/images/business-online/bo-feature-2.jpg"></span></div>
+        <div data-panel="f3" class="fap-panel"><span class="fap-img" data-bg="/assets/images/business-online/bo-feature-3.jpg"></span></div>
+        <div data-panel="f4" class="fap-panel"><span class="fap-img" data-bg="/assets/images/business-online/bo-feature-4.jpg"></span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Features — Auto-Progress Tabs ═══════════════════════════════════════ -->

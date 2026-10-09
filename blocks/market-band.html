@@ -1,0 +1,31 @@
+<!-- ═══ Market Band (composition card) ══════════════════════════════════════
+     A COMPOSITION, not a component — pure atoms, zero CSS of its own. The
+     root still carries the MARKER class `market-band` (doctrine 2026-09-01:
+     every block is identifiable in markup, even when nothing styles it). Root is a plain navy band; everything inside is atoms:
+     section-head is-split + a badge-solid pill row. Live on five trading
+     pages (agency, online/margin/institutional-trading, securities-services).
+     Want the original map-textured look? Put this content on a
+     cmp-world-map is-bleed section (data-labels="none") instead — the map
+     system provides the backdrop. Params: surface, data-animate. No IDs. -->
+<section class="cmp market-band surface-primary section-y" data-animate aria-label="GCC markets access">
+  <div class="container-ds">
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent-soft" data-reveal="up">GCC markets access</span>
+        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Trade beyond borders.</h2>
+      </div>
+      <p class="type-body measure sh-lead ink-soft" data-reveal="up" data-reveal-delay=".1">Expand your investment reach across leading regional exchanges through a single platform that unifies reporting and settlement, so a richer set of opportunities sits within easy reach.</p>
+    </div>
+    <div class="flex flex-wrap gap-2.5 mt-6" data-reveal="up" data-reveal-delay=".14" aria-label="Markets accessible">
+      <span class="badge badge-solid">DFM</span>
+      <span class="badge badge-solid">Nasdaq Dubai</span>
+      <span class="badge badge-solid">ADX</span>
+      <span class="badge badge-solid">Tadawul (KSA)</span>
+      <span class="badge badge-solid">Oman</span>
+      <span class="badge badge-solid">Qatar</span>
+      <span class="badge badge-solid">Kuwait</span>
+      <span class="badge badge-solid">Bahrain</span>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Market Band ════════════════════════════════════════════════════════ -->

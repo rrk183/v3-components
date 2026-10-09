@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-no-smooth>
+<head>
+  <meta charset="UTF-8" />
+  <script src="assets/js/gate-config.js"></script>
+  <script src="assets/js/gate.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component Library — Category</title>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=261193" />
+  <link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+  <link rel="stylesheet" href="assets/css/themes.css?v=261193" />
+  <link rel="stylesheet" href="assets/css/library.css?v=261193" />
+  <script src="assets/js/tailwind.cdn.js"></script>
+  <script src="assets/js/ds-tailwind-config.js?v=261193"></script>
+  <script defer src="assets/js/ds.js?v=261195"></script>
+  <script src="assets/js/ds-palette.js?v=261193"></script>
+  <script src="assets/js/ar-preview.js?v=261193"></script>
+  <script defer src="assets/js/library.js?v=261193"></script>
+</head>
+<body>
+
+  <header class="lib-top">
+    <button class="lib-toggle" id="libToggle" aria-label="Toggle sidebar" title="Toggle sidebar (wider previews)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
+    </button>
+    <a class="lib-brand" href="index.html"><b></b> Emirates NBD · Component Library</a>
+    <a class="lib-back" href="index.html">← All categories</a>
+    <input type="search" class="lib-search" id="libSearch" placeholder="Search this category…" aria-label="Search" />
+    <span class="lib-count" id="libCount"></span>
+  </header>
+
+  <div class="lib-shell">
+    <nav class="lib-nav" id="libNav" aria-label="Categories"></nav>
+    <main class="lib-main" id="libMain"></main>
+  </div>
+
+  <div class="lib-toast" id="libToast"></div>
+
+  <script>
+    addEventListener('DOMContentLoaded', function () {
+      var catId = new URLSearchParams(location.search).get('cat') || LIB.slugId(LIB.CATALOG[0].cat);
+      LIB.buildSideNav(document.getElementById('libNav'), catId);
+      var main = document.getElementById('libMain');
+      var g = LIB.mountCategory(catId, main);
+      document.title = g.cat + ' — Component Library';
+      document.getElementById('libCount').textContent = g.items.length + ' components';
+      var search = document.getElementById('libSearch');
+      search.addEventListener('input', function () { LIB.filterCards(main, search.value); });
+
+      // collapsible sidebar (state persists across category pages)
+      var shell = document.querySelector('.lib-shell');
+      var toggle = document.getElementById('libToggle');
+      if (localStorage.getItem('libNavCollapsed') === '1') { shell.classList.add('is-collapsed'); toggle.classList.add('is-on'); }
+      toggle.addEventListener('click', function () {
+        var collapsed = shell.classList.toggle('is-collapsed');
+        toggle.classList.toggle('is-on', collapsed);
+        localStorage.setItem('libNavCollapsed', collapsed ? '1' : '0');
+      });
+    });
+  </script>
+</body>
+</html>

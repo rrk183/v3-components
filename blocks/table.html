@@ -1,0 +1,163 @@
+<!-- ═══ Table ═══════════════════════════════════════════════════════════════
+     Params: surface, data-animate. Two variants: standard (transactions) +
+     financial (market data). Pure markup — static tables; horizontal scroll
+     via .tbl-scroll. Badges reuse ds.css .badge*. No IDs, no inline styles. -->
+<section class="cmp cmp-table surface-white section-y" data-animate>
+  <div class="container-ds flex flex-col gap-16 md:gap-20">
+
+    <!-- ── Standard Table ── -->
+    <div>
+      <p class="bt-label ink-mute" data-reveal="up">Standard Table</p>
+      <div class="tbl-wrap surface-white" data-reveal="up">
+        <div class="tbl-header">
+          <h4 class="type-h5 ink-primary">Recent transactions</h4>
+          <button class="flex items-center gap-2 text-xs font-semibold hover:opacity-80 ink-accent">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L11 14.17V7h2v7.17l2.59-2.58L17 13l-5 5z"/></svg>
+            Export CSV
+          </button>
+        </div>
+        <div class="tbl-scroll">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th class="ink-primary">Reference</th>
+                <th class="ink-primary">Beneficiary</th>
+                <th class="ink-primary">Date</th>
+                <th class="ink-primary">Type</th>
+                <th class="text-right ink-primary">Amount (USD)</th>
+                <th class="ink-primary">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tbl-mono ink-primary">TXN-20250501-0041</td>
+                <td class="ink-primary"><div class="font-semibold">Al Futtaim LLC</div><div class="tbl-sub ink-mute">AE070331234567890</div></td>
+                <td class="tbl-muted ink-mute">01 May 2025</td>
+                <td class="ink-primary"><span class="badge badge-blue">Wire Transfer</span></td>
+                <td class="num ink-primary">2,450,000.00</td>
+                <td class="ink-primary"><span class="badge badge-green">Completed</span></td>
+              </tr>
+              <tr>
+                <td class="tbl-mono ink-primary">TXN-20250430-0089</td>
+                <td class="ink-primary"><div class="font-semibold">Dubai Ports World</div><div class="tbl-sub ink-mute">AE070331987654321</div></td>
+                <td class="tbl-muted ink-mute">30 Apr 2025</td>
+                <td class="ink-primary"><span class="badge badge-navy">SWIFT</span></td>
+                <td class="num ink-primary">18,750,000.00</td>
+                <td class="ink-primary"><span class="badge badge-green">Completed</span></td>
+              </tr>
+              <tr>
+                <td class="tbl-mono ink-primary">TXN-20250429-0012</td>
+                <td class="ink-primary"><div class="font-semibold">Emaar Properties PJSC</div><div class="tbl-sub ink-mute">AE070331112233445</div></td>
+                <td class="tbl-muted ink-mute">29 Apr 2025</td>
+                <td class="ink-primary"><span class="badge badge-blue">Wire Transfer</span></td>
+                <td class="num ink-primary">5,000,000.00</td>
+                <td class="ink-primary"><span class="badge badge-amber">Pending</span></td>
+              </tr>
+              <tr>
+                <td class="tbl-mono ink-primary">TXN-20250428-0067</td>
+                <td class="ink-primary"><div class="font-semibold">ADNOC Distribution</div><div class="tbl-sub ink-mute">AE070331556677889</div></td>
+                <td class="tbl-muted ink-mute">28 Apr 2025</td>
+                <td class="ink-primary"><span class="badge badge-navy">SWIFT</span></td>
+                <td class="num ink-primary">32,100,000.00</td>
+                <td class="ink-primary"><span class="badge badge-red">Failed</span></td>
+              </tr>
+              <tr>
+                <td class="tbl-mono ink-primary">TXN-20250427-0033</td>
+                <td class="ink-primary"><div class="font-semibold">Majid Al Futtaim</div><div class="tbl-sub ink-mute">AE070331998877665</div></td>
+                <td class="tbl-muted ink-mute">27 Apr 2025</td>
+                <td class="ink-primary"><span class="badge badge-blue">Wire Transfer</span></td>
+                <td class="num ink-primary">7,890,500.00</td>
+                <td class="ink-primary"><span class="badge badge-green">Completed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tbl-footer">
+          <span class="type-caption tbl-muted ink-mute">Showing 5 of 248 transactions</span>
+          <div class="flex items-center gap-2">
+            <button class="pgn-compact">← Prev</button>
+            <button class="pgn-btn is-active surface-primary ink-white" aria-current="page">1</button>
+            <button class="pgn-btn">2</button>
+            <button class="pgn-btn">3</button>
+            <button class="pgn-compact">Next →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Financial Table ── -->
+    <div>
+      <p class="bt-label ink-mute" data-reveal="up">Financial Table — market data</p>
+      <div class="tbl-wrap surface-white" data-reveal="up">
+        <div class="tbl-header">
+          <h4 class="type-h5 ink-primary">Market indices</h4>
+          <span class="flex items-center gap-1.5 text-xs font-semibold tbl-live"><span class="tbl-live-dot inline-block"></span>Live</span>
+        </div>
+        <div class="tbl-scroll">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th class="ink-primary">Index</th>
+                <th class="ink-primary">Code</th>
+                <th class="text-right ink-primary">Last</th>
+                <th class="text-right ink-primary">Change</th>
+                <th class="text-right ink-primary">Change %</th>
+                <th class="text-right ink-primary">Volume</th>
+                <th class="ink-primary">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="ink-primary"><div class="font-semibold">Dubai Financial Market</div></td>
+                <td class="tbl-mono ink-primary">DFM</td>
+                <td class="num ink-primary">4,312.48</td>
+                <td class="num positive">+42.16</td>
+                <td class="num positive">+0.99%</td>
+                <td class="num tbl-muted ink-mute">382,441,092</td>
+                <td class="ink-primary"><span class="badge badge-green">Open</span></td>
+              </tr>
+              <tr>
+                <td class="ink-primary"><div class="font-semibold">Abu Dhabi Securities Exchange</div></td>
+                <td class="tbl-mono ink-primary">ADX</td>
+                <td class="num ink-primary">9,847.21</td>
+                <td class="num negative">-18.44</td>
+                <td class="num negative">-0.19%</td>
+                <td class="num tbl-muted ink-mute">219,887,334</td>
+                <td class="ink-primary"><span class="badge badge-green">Open</span></td>
+              </tr>
+              <tr>
+                <td class="ink-primary"><div class="font-semibold">Tadawul — Saudi Exchange</div></td>
+                <td class="tbl-mono ink-primary">TASI</td>
+                <td class="num ink-primary">11,204.77</td>
+                <td class="num positive">+87.32</td>
+                <td class="num positive">+0.79%</td>
+                <td class="num tbl-muted ink-mute">648,112,000</td>
+                <td class="ink-primary"><span class="badge badge-green">Open</span></td>
+              </tr>
+              <tr>
+                <td class="ink-primary"><div class="font-semibold">S&amp;P 500</div></td>
+                <td class="tbl-mono ink-primary">SPX</td>
+                <td class="num ink-primary">5,241.03</td>
+                <td class="num negative">-12.88</td>
+                <td class="num negative">-0.24%</td>
+                <td class="num tbl-muted ink-mute">3,841,220,000</td>
+                <td class="ink-primary"><span class="badge badge-amber">Pre-market</span></td>
+              </tr>
+              <tr>
+                <td class="ink-primary"><div class="font-semibold">FTSE 100</div></td>
+                <td class="tbl-mono ink-primary">UKX</td>
+                <td class="num ink-primary">8,412.55</td>
+                <td class="num positive">+24.11</td>
+                <td class="num positive">+0.29%</td>
+                <td class="num tbl-muted ink-mute">1,042,883,000</td>
+                <td class="ink-primary"><span class="badge badge-amber">Closed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Table ═══════════════════════════════════════════════════════════════ -->

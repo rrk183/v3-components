@@ -1,0 +1,32 @@
+<!-- ═══ About + Stats ═══════════════════════════════════════════════════════
+     Two-column "about" section: eyebrow + image + supporting copy on the left,
+     a large statement heading and a row of count-up proof stats on the right.
+     The heading fills word-by-word from muted to full colour as the block
+     scrolls through the viewport (data-behavior="text-reveal", scrubbed). Stats
+     count up on enter (data-countup). Styled by .cmp-statement-stats in ds.css; reduced-motion
+     reveals the full heading. Params: surface (surface-white default). ──────── -->
+<section class="cmp cmp-statement-stats surface-white section-y" data-behavior="text-reveal" data-animate aria-label="About us">
+<div class="container-ds as-grid">
+
+    <div class="as-left">
+      <span class="as-eyebrow"><span class="as-dot" aria-hidden="true"></span>About us</span>
+      <div class="as-left-foot" data-reveal="up">
+        <span class="as-media"><video class="as-video" autoplay muted loop playsinline poster="assets/images/our-people/people-hero.jpg" aria-label="Our team at work"><source src="/assets/videos/hero-video.mp4" type="video/mp4" /></video></span>
+        <p class="type-body-sm as-para ink-mute">Creating, solving and collaborating is what we do best. We turn ambition into outcomes you can measure, and we stay close at every step of the journey.</p>
+      </div>
+    </div>
+
+    <div class="as-right">
+      <h2 class="type-h1 as-h ink-primary" aria-label="We turn bold ideas into work that performs. Strategy, design and data, brought together to help brands grow with confidence.">
+        <span data-tr-word>We</span> <span data-tr-word>turn</span> <span data-tr-word>bold</span> <span data-tr-word>ideas</span> <span data-tr-word>into</span> <span data-tr-word>work</span> <span data-tr-word>that</span> <span data-tr-word>performs.</span> <span data-tr-word>Strategy,</span> <span data-tr-word>design</span> <span data-tr-word>and</span> <span data-tr-word>data,</span> <span data-tr-word>brought</span> <span data-tr-word>together</span> <span data-tr-word>to</span> <span data-tr-word>help</span> <span data-tr-word>brands</span> <span data-tr-word>grow</span> <span data-tr-word>with</span> <span data-tr-word>confidence.</span>
+      </h2>
+      <div class="as-stats" data-reveal="up" data-reveal-delay=".1">
+        <div class="as-stat"><span class="ds-num as-num ink-primary"><span data-countup="12" data-suffix="+" data-duration="2">12+</span></span><span class="type-body-sm as-lbl block ink-mute">Years of Experience</span></div>
+        <div class="as-stat"><span class="ds-num as-num ink-primary"><span data-countup="240" data-suffix="+" data-duration="2">240+</span></span><span class="type-body-sm as-lbl block ink-mute">Projects Delivered</span></div>
+        <div class="as-stat"><span class="ds-num as-num ink-primary"><span data-countup="98" data-suffix="%" data-duration="2">98%</span></span><span class="type-body-sm as-lbl block ink-mute">Client Satisfaction</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /About + Stats ══════════════════════════════════════════════════════ -->

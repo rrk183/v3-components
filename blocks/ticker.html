@@ -1,0 +1,30 @@
+<!-- ═══ Ticker — Bloomberg-style tape (content-agnostic) ══════════════════════════════════
+     Thin full-bleed band scrolling ANY repeated content — the deals are demo
+     content; the ticker is the capability. Band paint rides surface tokens.
+     Pure CSS marquee (the strip carries the items TWICE so a -50% loop is
+     seamless); pauses on hover; edge-masked. No recipe, no IDs, no inline
+     styles. Reduced-motion → static. Styled by .cmp-ticker. -->
+<section class="cmp cmp-ticker" aria-label="Recent landmark transactions">
+  <div class="dt-outer marquee">
+    <div class="dt-strip marquee-track">
+      <span class="type-body-sm type-medium dt-item ink-primary">DEWA IPO — USD&nbsp;6.1bn</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary">Saudi Aramco Sukuk — USD&nbsp;6.0bn</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary">DP World Refinancing — USD&nbsp;9.0bn</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary">VakifBank AT1 — USD&nbsp;500m</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary">DEP Green Bond — USD&nbsp;650m</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary">Mubadala — USD&nbsp;500m</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary">Aldar Sukuk — USD&nbsp;500m</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary">ADQ Bonds — USD&nbsp;1.5bn</span><span class="dt-dot" aria-hidden="true"></span>
+      <!-- duplicate set for seamless loop -->
+      <span class="type-body-sm type-medium dt-item ink-primary" aria-hidden="true">DEWA IPO — USD&nbsp;6.1bn</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary" aria-hidden="true">Saudi Aramco Sukuk — USD&nbsp;6.0bn</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary" aria-hidden="true">DP World Refinancing — USD&nbsp;9.0bn</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary" aria-hidden="true">VakifBank AT1 — USD&nbsp;500m</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary" aria-hidden="true">DEP Green Bond — USD&nbsp;650m</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary" aria-hidden="true">Mubadala — USD&nbsp;500m</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary" aria-hidden="true">Aldar Sukuk — USD&nbsp;500m</span><span class="dt-dot" aria-hidden="true"></span>
+      <span class="type-body-sm type-medium dt-item ink-primary" aria-hidden="true">ADQ Bonds — USD&nbsp;1.5bn</span><span class="dt-dot" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Deal Ticker ═════════════════════════════════════════════════════════ -->

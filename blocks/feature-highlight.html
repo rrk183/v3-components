@@ -1,0 +1,53 @@
+<!-- ═══ Feature Highlight (composition of cmp-bento) ═════════════════════════
+     Hakan's insight: this IS a bento — tall media tile left (with the
+     designed floating glass pills, kept), a GHOST copy tile top-right
+     (no panel, no border — is-ghost), and three card-panel icon tiles below
+     it. Interiors are atoms (icon-tile, type ramp, btn); hover on the
+     cards is the card-panel is-hover atom, not a root axis.
+     Params: surface (surface-white default). ──────────────────────────────── -->
+<section class="cmp cmp-bento feature-highlight surface-white section-y" style="--bn-row: 100px; --bn-gap: 20px" data-animate aria-label="Our approach">
+  <div class="container-ds">
+
+    <div class="bn-grid" role="list">
+
+      <!-- Media tile: tall left, floating glass pills ride the image -->
+      <div class="bn-tile is-flush is-w6 is-h5 is-t-full" data-reveal="up">
+        <span class="media-cover" data-bg="assets/images/shared/common/agency-hero.jpg" role="img" aria-label="Our team working with a client"></span>
+        <span class="fh-float fh-float--1 surface-white"><span class="fh-float-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Senior expertise</span>
+        <span class="fh-float fh-float--2 surface-white"><span class="fh-float-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.6L21 9.3l-5 4.5 1.5 6.7L12 17l-5.5 3.5L8 13.8l-5-4.5 6.4-.7z"/></svg></span>Award-winning work</span>
+      </div>
+
+      <!-- Ghost copy tile: top-right, no panel -->
+      <div class="bn-tile is-ghost is-w6 is-h3 is-t-full justify-center">
+        <div class="ds-stack" style="--ds-stack-gap: 14px">
+          <span class="ds-eyebrow ink-accent" data-reveal="up">Our approach</span>
+          <h2 class="type-h2 measure ink-primary" style="--measure: 18ch" data-reveal="up" data-reveal-delay=".05">Expert teams, built for measurable results.</h2>
+          <p class="type-body-sm measure ink-mute" data-reveal="up" data-reveal-delay=".1">We bring strategy, design and engineering together under one roof, so every engagement moves faster and lands with real impact.</p>
+          <div data-reveal="up" data-reveal-delay=".15">
+            <a href="#" class="btn btn-navy">Book a consultation</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Three supporting icon cards -->
+      <article class="bn-tile card-panel is-hover is-w2 is-h2 is-t-half surface-white" style="--bn-pad: 20px" data-reveal="up" data-reveal-delay=".2">
+        <span class="icon-tile" style="--it-size: 44px; --it-fill: linear-gradient(135deg, var(--blue), var(--blue-deep)); --it-ink: #fff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></span>
+        <h3 class="type-h6 mt-3 ink-primary">Clear strategy</h3>
+        <p class="type-caption mt-1 ink-mute">Grounded in data and built around your goals.</p>
+      </article>
+      <article class="bn-tile card-panel is-hover is-w2 is-h2 is-t-half surface-white" style="--bn-pad: 20px" data-reveal="up" data-reveal-delay=".26">
+        <span class="icon-tile" style="--it-size: 44px; --it-fill: linear-gradient(135deg, var(--blue), var(--blue-deep)); --it-ink: #fff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l5-5 4 3 7-8"/><path d="M20 6v5M20 6h-5"/></svg></span>
+        <h3 class="type-h6 mt-3 ink-primary">Senior delivery</h3>
+        <p class="type-caption mt-1 ink-mute">Hands-on experts on every engagement, end to end.</p>
+      </article>
+      <article class="bn-tile card-panel is-hover is-w2 is-h2 is-t-full surface-white" style="--bn-pad: 20px" data-reveal="up" data-reveal-delay=".32">
+        <span class="icon-tile" style="--it-size: 44px; --it-fill: linear-gradient(135deg, var(--blue), var(--blue-deep)); --it-ink: #fff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <h3 class="type-h6 mt-3 ink-primary">Ongoing support</h3>
+        <p class="type-caption mt-1 ink-mute">We stay close long after launch.</p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Feature Highlight ══════════════════════════════════════════════════ -->

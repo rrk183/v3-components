@@ -1,0 +1,133 @@
+<!-- ═══ Logo Wall ═══════════════════════════════════════════
+     Params: surface (surface-white default), data-animate (on/off).
+     Pure markup — NO inline styles / IDs. Styled by .cmp-logo-wall in ds.css; columns via the is-cols-* axis
+     (mobile via is-m-cols-*), dividers column-agnostic (gap trick), animated by ds.js (data-reveal + staggered delays). Logos are
+     inline SVG, grayscale by default → colour + scale on hover. -->
+<section class="cmp cmp-logo-wall surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <!-- Section header: heading left + description right (switchable variant) -->
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <h2 class="type-h2 type-semibold ink-primary" data-reveal="up">
+          Trusted by leading innovators.
+        </h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">
+        We partner with forward-thinking enterprises, sovereign groups, and family offices shaping the future of business in the region and beyond.
+      </p>
+    </div>
+
+    <!-- Logo grid — internal dividers only · 2 cols mobile · 4 cols desktop -->
+    <div class="lw-grid mb-16 md:mb-24">
+
+      <!-- EMAAR -->
+      <div class="lw-cell tpg-cell flex items-center justify-center py-12 px-6" data-reveal="up" data-reveal-delay="0">
+        <div class="tpg-logo">
+          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <text x="100" y="32" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="#072447" text-anchor="middle" letter-spacing="6">EMAAR</text>
+            <text x="100" y="50" font-family="Arial, sans-serif" font-size="11" font-weight="400" fill="#666" text-anchor="middle" letter-spacing="2">Properties</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- DP World -->
+      <div class="lw-cell tpg-cell flex items-center justify-center py-12 px-6" data-reveal="up" data-reveal-delay=".05">
+        <div class="tpg-logo">
+          <svg viewBox="0 0 210 72" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <circle cx="36" cy="36" r="30" fill="#f8f8f8"/>
+            <path d="M 10 28 A 30 30 0 0 1 62 28 L 62 34 A 30 30 0 0 0 10 34 Z" fill="#00a19c"/>
+            <path d="M 10 42 A 30 30 0 0 0 62 42 L 62 48 A 30 30 0 0 1 10 48 Z" fill="#f47920"/>
+            <path d="M 10 34 L 62 34 L 62 42 L 10 42 Z" fill="white"/>
+            <rect x="34" y="8" width="4" height="56" rx="2" fill="#072447"/>
+            <rect x="22" y="30" width="28" height="3.5" rx="1.5" fill="#072447"/>
+            <circle cx="36" cy="10" r="5" fill="none" stroke="#072447" stroke-width="3"/>
+            <text x="80" y="30" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" fill="#072447" text-anchor="start">DP World</text>
+            <text x="80" y="50" font-family="Arial, sans-serif" font-size="10" fill="#555" text-anchor="start" letter-spacing="0.3">trade enables growth</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Aldar -->
+      <div class="lw-cell tpg-cell flex items-center justify-center py-12 px-6" data-reveal="up" data-reveal-delay=".1">
+        <div class="tpg-logo">
+          <svg viewBox="0 0 200 72" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <circle cx="36" cy="36" r="30" fill="#003087"/>
+            <ellipse cx="36" cy="26" rx="12" ry="18" fill="#C9A84C" transform="rotate(-20 36 26)"/>
+            <ellipse cx="36" cy="46" rx="12" ry="18" fill="#C9A84C" transform="rotate(20 36 46)" opacity="0.85"/>
+            <ellipse cx="36" cy="36" rx="7" ry="10" fill="#003087"/>
+            <text x="78" y="32" font-family="Arial Black, sans-serif" font-size="18" font-weight="900" fill="#003087" text-anchor="start" letter-spacing="0.5">Aldar</text>
+            <text x="78" y="50" font-family="Arial, sans-serif" font-size="10" fill="#888" text-anchor="start" letter-spacing="0.3">Properties</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Majid Al Futtaim -->
+      <div class="lw-cell tpg-cell flex items-center justify-center py-12 px-6" data-reveal="up" data-reveal-delay=".15">
+        <div class="tpg-logo">
+          <svg viewBox="0 0 230 72" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <path d="M 6 58 L 6 28 C 6 16 14 10 22 10 C 30 10 38 16 38 28 L 38 38 C 38 46 44 50 50 50 C 56 50 62 46 62 38 L 62 10" fill="none" stroke="#C9A84C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="80" y="28" font-family="Arial, sans-serif" font-size="9" font-weight="600" fill="#888" text-anchor="start" letter-spacing="1">MAJID AL FUTTAIM</text>
+            <text x="80" y="44" font-family="Arial Black, sans-serif" font-size="13" font-weight="900" fill="#1a1a1a" text-anchor="start" letter-spacing="0.2">Group</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- e& -->
+      <div class="lw-cell tpg-cell flex items-center justify-center py-12 px-6" data-reveal="up" data-reveal-delay=".2">
+        <div class="tpg-logo">
+          <svg viewBox="0 0 160 72" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <text x="80" y="50" font-family="Arial Black, Impact, sans-serif" font-size="52" font-weight="900" fill="#C8102E" text-anchor="middle" letter-spacing="-2">e&amp;</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- ENOC -->
+      <div class="lw-cell tpg-cell flex items-center justify-center py-12 px-6" data-reveal="up" data-reveal-delay=".25">
+        <div class="tpg-logo">
+          <svg viewBox="0 0 180 72" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <path d="M 36 8 A 28 28 0 0 0 36 64 Z" fill="#009b74"/>
+            <path d="M 36 8 A 28 28 0 0 1 36 64 Z" fill="#c8102e"/>
+            <path d="M 36 16 C 32 22 30 28 34 33 C 35 30 37 28 36 24 C 38 28 40 32 38 36 C 41 33 42 28 40 22 C 43 27 43 35 38 40 C 35 43 33 43 36 44 C 39 43 41 40 41 36 C 43 38 43 43 40 46 C 36 49 32 46 32 42 C 30 44 30 49 33 51 C 25 47 24 36 30 28 C 28 32 28 38 32 40 C 30 34 30 28 36 16 Z" fill="white" opacity="0.9"/>
+            <circle cx="36" cy="36" r="28" fill="none" stroke="#ddd" stroke-width="0.5"/>
+            <text x="80" y="42" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#1a1a1a" text-anchor="start" letter-spacing="2">ENOC</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- aramex -->
+      <div class="lw-cell tpg-cell flex items-center justify-center py-12 px-6" data-reveal="up" data-reveal-delay=".3">
+        <div class="tpg-logo">
+          <svg viewBox="0 0 200 64" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <text x="100" y="36" font-family="Arial Black, 'Arial Bold', sans-serif" font-size="32" font-weight="900" fill="#DC291E" text-anchor="middle" letter-spacing="-0.5">aramex</text>
+            <text x="100" y="54" font-family="Arial, sans-serif" font-size="9.5" fill="#999" text-anchor="middle" letter-spacing="1.8">delivery unlimited</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- flydubai -->
+      <div class="lw-cell tpg-cell flex items-center justify-center py-12 px-6" data-reveal="up" data-reveal-delay=".35">
+        <div class="tpg-logo">
+          <svg viewBox="0 0 210 60" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <text y="40" font-family="Arial Black, sans-serif" font-size="30" text-anchor="middle" x="100">
+              <tspan font-weight="400" fill="#FF8200">fly</tspan><tspan font-weight="900" fill="#006496">dubai</tspan><tspan fill="#FF8200" font-size="38" font-weight="900" dy="-4" dx="2">·</tspan>
+            </text>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom CTA row -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <h3 class="type-h3 type-semibold ink-primary" data-reveal="up">
+        Ready to bank smarter?
+      </h3>
+      <a href="#" class="btn btn-outline shrink-0 is-arrow" data-reveal="left" data-reveal-delay=".2">
+        Get in touch
+      </a>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Trusted Partners — Logo Grid ═══════════════════════════════════════════ -->

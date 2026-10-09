@@ -1,0 +1,100 @@
+<!-- ═══ History Timeline ════════════════════════════════════════════════════
+     Params: surface (surface-grey|white…), data-animate (heading reveal).
+     Swipeable horizontal timeline: a connecting line with a progress fill, a
+     dot per milestone (active / past / upcoming states), year + content, and
+     prev/next arrows. Swipe or drag to move; the centred node becomes active.
+     Pure scroll-snap + a tiny rAF read — data-behavior="timeline". No IDs, no
+     inline styles. Styled by .cmp-history-timeline. -->
+<section class="cmp cmp-history-timeline surface-soft section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head ht-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Our history</span>
+        <h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">Four decades shaping<br>banking in the region.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">From a single Dubai bank to a global group serving over fourteen million customers worldwide.</p>
+    </div>
+
+    <div class="ht" data-behavior="timeline">
+      <div class="ht-viewport" data-timeline-viewport>
+        <div class="ht-track" data-timeline-track>
+          <div class="ht-line" aria-hidden="true"><span class="ht-line-fill" data-timeline-fill></span></div>
+
+          <article class="ht-node" data-timeline-node tabindex="0">
+            <span class="type-h4 ht-year ink-primary">1997</span>
+            <div class="ht-content">
+              <p class="type-h6 ht-title ink-primary">Emirates Bank International founded</p>
+              <p class="type-body-sm ht-desc ink-mute">Emirates Bank International was established in Dubai, laying the foundation for what would become one of the region's most trusted banking institutions.</p>
+            </div>
+            <span class="ht-dot" aria-hidden="true"></span>
+          </article>
+
+          <article class="ht-node" data-timeline-node tabindex="0">
+            <span class="type-h4 ht-year ink-primary">2007</span>
+            <div class="ht-content">
+              <p class="type-h6 ht-title ink-primary">Historic merger creates Emirates NBD</p>
+              <p class="type-body-sm ht-desc ink-mute">Emirates Bank International and National Bank of Dubai merged to form Emirates NBD, creating the UAE's largest bank by assets and a regional powerhouse.</p>
+            </div>
+            <span class="ht-dot" aria-hidden="true"></span>
+          </article>
+
+          <article class="ht-node" data-timeline-node tabindex="0">
+            <span class="type-h4 ht-year ink-primary">2013</span>
+            <div class="ht-content">
+              <p class="type-h6 ht-title ink-primary">Launch of businessONLINE</p>
+              <p class="type-body-sm ht-desc ink-mute">Emirates NBD launched businessONLINE, its flagship corporate digital banking platform, enabling businesses to manage payments and liquidity across 180+ countries.</p>
+            </div>
+            <span class="ht-dot" aria-hidden="true"></span>
+          </article>
+
+          <article class="ht-node" data-timeline-node tabindex="0">
+            <span class="type-h4 ht-year ink-primary">2019</span>
+            <div class="ht-content">
+              <p class="type-h6 ht-title ink-primary">Acquisition of DenizBank</p>
+              <p class="type-body-sm ht-desc ink-mute">Emirates NBD completed the landmark acquisition of DenizBank in Turkey, significantly expanding its global presence and customer base to over 14 million.</p>
+            </div>
+            <span class="ht-dot" aria-hidden="true"></span>
+          </article>
+
+          <article class="ht-node" data-timeline-node tabindex="0">
+            <span class="type-h4 ht-year ink-primary">2022</span>
+            <div class="ht-content">
+              <p class="type-h6 ht-title ink-primary">Digital banking leadership</p>
+              <p class="type-body-sm ht-desc ink-mute">Emirates NBD was recognised as the Most Innovative Bank in the Middle East, with over 90% of transactions conducted digitally across its platforms.</p>
+            </div>
+            <span class="ht-dot" aria-hidden="true"></span>
+          </article>
+
+          <article class="ht-node" data-timeline-node tabindex="0">
+            <span class="type-h4 ht-year ink-primary">2024</span>
+            <div class="ht-content">
+              <p class="type-h6 ht-title ink-primary">AI-powered banking platform</p>
+              <p class="type-body-sm ht-desc ink-mute">Launched next-generation AI-driven financial tools including ENBD X and businessONLINE X, delivering personalised banking experiences for millions of customers.</p>
+            </div>
+            <span class="ht-dot" aria-hidden="true"></span>
+          </article>
+
+          <article class="ht-node" data-timeline-node tabindex="0">
+            <span class="type-h4 ht-year ink-primary">2025</span>
+            <div class="ht-content">
+              <p class="type-h6 ht-title ink-primary">Simpler. Better. Smarter.</p>
+              <p class="type-body-sm ht-desc ink-mute">Emirates NBD continues to lead digital transformation with its ecosystem of tools — businessONLINE, smartTRADE, Emirates NBD Pay and smartSCF — serving corporate clients across 13 countries.</p>
+            </div>
+            <span class="ht-dot" aria-hidden="true"></span>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="ht-nav">
+        <button class="btn btn-accent btn-icon btn-pill is-back" type="button" data-timeline-prev aria-label="Previous milestone">
+        </button>
+        <button class="btn btn-accent btn-icon btn-pill is-next" type="button" data-timeline-next aria-label="Next milestone">
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /History Timeline ═══════════════════════════════════════════════════ -->

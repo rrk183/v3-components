@@ -1,0 +1,75 @@
+<!-- ═══ Breadcrumb ══════════════════════════════════════════════════════════
+     Params: surface (surface-white|grey|navy…), data-animate (on/off).
+     Pure markup — styled by .cmp-breadcrumb in ds.css. No IDs.
+     THE PASTE UNIT IS THE <nav> ALONE: <nav aria-label="Breadcrumb">
+     <ol class="bc-trail"> with .bc-link / .bc-sep or .bc-chev / .bc-current.
+     Drop it into the page's existing top section or hero — no wrapper
+     component. Everything else in this block (mt-8 rows, captions, the navy
+     panel) is GALLERY SPECIMEN CHROME — do not copy it to pages.
+     The dark demo works via the normal surface flips — no bespoke skin. -->
+<section class="cmp cmp-breadcrumb surface-white section-y-tight" data-animate>
+  <div class="container-ds">
+
+    <span class="ds-eyebrow ink-accent" data-reveal="up">Examples</span>
+
+    <!-- 3-level breadcrumb -->
+    <div class="mt-8" data-reveal="up">
+      <p class="type-caption mb-3 ink-mute">3-level</p>
+      <nav aria-label="Breadcrumb">
+        <ol class="bc-trail">
+          <li><a href="#" class="bc-link">Home</a></li>
+          <li class="bc-sep">/</li>
+          <li><a href="#" class="bc-link">Corporate &amp; Institutional</a></li>
+          <li class="bc-sep">/</li>
+          <li><span class="bc-current ink-mute" aria-current="page">Digital Solutions</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- 4-level breadcrumb -->
+    <div class="mt-8" data-reveal="up">
+      <p class="type-caption mb-3 ink-mute">4-level</p>
+      <nav aria-label="Breadcrumb">
+        <ol class="bc-trail">
+          <li><a href="#" class="bc-link">Home</a></li>
+          <li class="bc-sep">/</li>
+          <li><a href="#" class="bc-link">Corporate &amp; Institutional</a></li>
+          <li class="bc-sep">/</li>
+          <li><a href="#" class="bc-link">Payments &amp; Trade Finance</a></li>
+          <li class="bc-sep">/</li>
+          <li><span class="bc-current ink-mute" aria-current="page">Digital Channels</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- With chevron separators -->
+    <div class="mt-8" data-reveal="up">
+      <p class="type-caption mb-3 ink-mute">With chevron separators</p>
+      <nav aria-label="Breadcrumb">
+        <ol class="bc-trail">
+          <li><a href="#" class="bc-link">Home</a></li>
+          <li class="bc-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></li>
+          <li><a href="#" class="bc-link">Corporate &amp; Institutional</a></li>
+          <li class="bc-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></li>
+          <li><span class="bc-current ink-mute" aria-current="page">businessONLINE</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- On dark background -->
+    <div class="surface-primary rounded-2xl px-8 py-10 mt-8" data-reveal="up">
+      <p class="type-caption mb-4 ink-soft">On dark background</p>
+      <nav aria-label="Breadcrumb">
+        <ol class="bc-trail">
+          <li><a href="#" class="bc-link ink-accent-soft">Home</a></li>
+          <li class="bc-sep ink-faint">/</li>
+          <li><a href="#" class="bc-link ink-accent-soft">Corporate &amp; Institutional</a></li>
+          <li class="bc-sep ink-faint">/</li>
+          <li><span class="bc-current ink-soft" aria-current="page">Digital Solutions</span></li>
+        </ol>
+      </nav>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Breadcrumb ═════════════════════════════════════════════════════════ -->

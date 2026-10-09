@@ -1,0 +1,124 @@
+<!-- ═══ Stories — Instagram-style story rail + fullscreen viewer ═════════════
+     A rail of gradient-ringed avatar chips; tapping one opens a runtime-built
+     viewer (ds.js recipe "stories"): segmented progress bars, auto-advance,
+     image AND muted-video slides (the bar follows the video's real duration),
+     tap left/right thirds for prev/next, HOLD to pause, swipe or the desktop
+     chevrons for the previous/next group, Escape or × to close. Desktop shows
+     a centred 9:16 stage on a dark scrim; ≤767px the stage is fullscreen.
+     A ring greys out once its LAST slide has been reached (per visit only —
+     nothing is stored).
+     AUTHORING: each .st-group is one chip + its slides. Slides live in the
+     [hidden] .st-slides list: data-media (path), data-video (flag for video
+     slides), data-dur (seconds, images only — videos time themselves),
+     data-overlay="tint|scrim" (legibility wash for busy imagery), and the
+     caption markup inside — <p>s plus optional a.st-cta (DS button) and
+     a.st-link; links are clickable and never trigger slide navigation.
+     Media paths must exist in assets/. -->
+<section class="cmp cmp-stories surface-white section-y" data-behavior="stories" data-animate>
+  <div class="container-ds">
+    <div class="section-head is-split measure">
+      <div class="ds-stack"><span class="ds-eyebrow ink-accent" data-reveal="up">Stories</span><h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">What's new, in thirty seconds.</h2></div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Quick visual updates on cards, offers and platforms — tap a story to watch, hold to pause.</p>
+    </div>
+
+    <div class="st-rail" data-reveal="up" data-reveal-delay=".12">
+
+      <div class="st-group">
+        <button class="st-chip" type="button">
+          <span class="st-ring" aria-hidden="true"><img class="st-face" src="assets/images/feature-1.jpg" alt="" loading="lazy"></span>
+          <span class="type-caption type-semibold st-name ink-primary">Cards</span>
+        </button>
+        <div class="st-slides" hidden>
+          <div class="st-slide" data-media="assets/images/feature-2.jpg" data-dur="5">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">Voyager Card</p>
+            <p class="type-h4 st-cap ink-primary">Earn Skywards Miles on every dirham you spend.</p>
+          </div>
+          <div class="st-slide" data-media="assets/videos/card-1.mp4" data-video>
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">Metal. Miles. More.</p>
+            <p class="type-h4 st-cap ink-primary">The card that turns spending into your next trip.</p>
+            <a class="st-link" href="#">Learn more</a>
+          </div>
+          <div class="st-slide" data-media="assets/images/feature-3.jpg" data-dur="6" data-overlay="scrim">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">Up to 100,000 bonus Miles</p>
+            <p class="type-h4 st-cap ink-primary">Welcome offer for new cardmembers this quarter.</p>
+            <a class="st-cta btn btn-filled" href="#">Apply now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="st-group">
+        <button class="st-chip" type="button">
+          <span class="st-ring" aria-hidden="true"><img class="st-face" src="assets/images/enbd-pay-t1.jpg" alt="" loading="lazy"></span>
+          <span class="type-caption type-semibold st-name ink-primary">ENBD Pay</span>
+        </button>
+        <div class="st-slides" hidden>
+          <div class="st-slide" data-media="assets/images/enbd-pay-t2.jpg" data-dur="5">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">Tap. Pay. Done.</p>
+            <p class="type-h4 st-cap ink-primary">Accept payments on any device — no terminal needed.</p>
+          </div>
+          <div class="st-slide" data-media="assets/videos/enbd-pay.mp4" data-video>
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">ENBD Pay in action</p>
+            <p class="type-h4 st-cap ink-primary">From checkout to settlement in seconds.</p>
+          </div>
+          <div class="st-slide" data-media="assets/images/enbd-pay-t4.jpg" data-dur="5">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">Built for business</p>
+            <p class="type-h4 st-cap ink-primary">Payment links, QR and soft-POS in one app.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="st-group">
+        <button class="st-chip" type="button">
+          <span class="st-ring" aria-hidden="true"><img class="st-face" src="assets/images/image-3.jpg" alt="" loading="lazy"></span>
+          <span class="type-caption type-semibold st-name ink-primary">Travel</span>
+        </button>
+        <div class="st-slides" hidden>
+          <div class="st-slide" data-media="assets/images/image-3.jpg" data-dur="5" data-overlay="tint">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">Zero FX markup</p>
+            <p class="type-h4 st-cap ink-primary">Spend abroad at the real rate, all summer.</p>
+          </div>
+          <div class="st-slide" data-media="assets/images/image-5.jpg" data-dur="5">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">Lounge access included</p>
+            <p class="type-h4 st-cap ink-primary">Over 1,000 airport lounges with your card.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="st-group">
+        <button class="st-chip" type="button">
+          <span class="st-ring" aria-hidden="true"><img class="st-face" src="assets/images/dc-hero-markets.jpg" alt="" loading="lazy"></span>
+          <span class="type-caption type-semibold st-name ink-primary">FX &amp; Markets</span>
+        </button>
+        <div class="st-slides" hidden>
+          <div class="st-slide" data-media="assets/images/dc-hero-markets.jpg" data-dur="5">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">Markets, live</p>
+            <p class="type-h4 st-cap ink-primary">Stream FX rates and execute from one screen.</p>
+          </div>
+          <div class="st-slide" data-media="assets/images/dc-hero-platform.jpg" data-dur="5">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">24/5 trading desk</p>
+            <p class="type-h4 st-cap ink-primary">Institutional pricing, now for every business.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="st-group">
+        <button class="st-chip" type="button">
+          <span class="st-ring" aria-hidden="true"><img class="st-face" src="assets/images/bo-feature-1.jpg" alt="" loading="lazy"></span>
+          <span class="type-caption type-semibold st-name ink-primary">businessONLINE</span>
+        </button>
+        <div class="st-slides" hidden>
+          <div class="st-slide" data-media="assets/images/bo-feature-1.jpg" data-dur="5">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">One platform</p>
+            <p class="type-h4 st-cap ink-primary">Every account, approval and payment in one place.</p>
+          </div>
+          <div class="st-slide" data-media="assets/images/bo-x-security-mfa.jpg" data-dur="6" data-overlay="scrim">
+            <p class="type-eyebrow st-cap-eyebrow ink-accent">Bank-grade security</p>
+            <p class="type-h4 st-cap ink-primary">MFA, encryption and fraud monitoring as standard.</p>
+            <a class="st-cta btn btn-filled" href="#">Explore businessONLINE</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

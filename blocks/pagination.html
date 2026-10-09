@@ -1,0 +1,65 @@
+<!-- ═══ Pagination ══════════════════════════════════════════════════════════
+     Params: surface, data-animate.
+     Static showcase of four pagination styles (default, with count, compact,
+     dark). Pure markup — styled by the global pgn-* classes in ds.css (the
+     dark row is a .surface-primary wrapper; the dark-surface flips style it).
+     No IDs, no inline styles, no interactivity (presentational demos). -->
+<section class="cmp cmp-pagination surface-white section-y" data-animate>
+  <div class="container-ds">
+    <div class="flex flex-col gap-12">
+
+      <div>
+        <p class="bt-label ink-mute" data-reveal="up">Pagination — default</p>
+        <div class="pgn-row flex items-center gap-1.5">
+          <button class="pgn-btn is-disabled ink-mute">← Prev</button>
+          <button class="pgn-btn is-active surface-primary ink-white" aria-current="page">1</button>
+          <button class="pgn-btn ink-mute">2</button>
+          <button class="pgn-btn ink-mute">3</button>
+          <span class="pgn-btn pgn-ellipsis">…</span>
+          <button class="pgn-btn ink-mute">12</button>
+          <button class="pgn-btn ink-mute">Next →</button>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute" data-reveal="up">Pagination — with count</p>
+        <div class="pgn-row flex items-center justify-between flex-wrap gap-3 max-w-[600px]">
+          <span class="pgn-count ink-mute">Showing <strong class="pgn-strong ink-primary">1–20</strong> of 248 results</span>
+          <div class="pgn-row flex items-center gap-1.5">
+            <button class="pgn-btn is-disabled is-back ink-mute" disabled aria-label="Previous page"></button>
+            <button class="pgn-btn is-active surface-primary ink-white" aria-current="page">1</button>
+            <button class="pgn-btn ink-mute">2</button>
+            <button class="pgn-btn ink-mute">3</button>
+            <span class="pgn-btn pgn-ellipsis">…</span>
+            <button class="pgn-btn ink-mute">13</button>
+            <button class="pgn-btn is-next ink-mute" aria-label="Next page"></button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="bt-label ink-mute" data-reveal="up">Pagination — compact</p>
+        <div class="pgn-row flex items-center gap-3">
+          <button class="pgn-compact">← Previous</button>
+          <span class="pgn-count ink-mute">Page <strong class="pgn-strong ink-primary">1</strong> of 13</span>
+          <button class="pgn-compact">Next →</button>
+        </div>
+      </div>
+
+      <div class="surface-primary p-8 rounded-2xl">
+        <p class="bt-label ink-soft" data-reveal="up">Pagination — dark</p>
+        <div class="pgn-row flex items-center gap-1.5">
+          <button class="pgn-btn surface-glass is-disabled" disabled aria-label="Previous page">←</button>
+          <button class="pgn-btn is-active surface-white ink-primary">1</button>
+          <button class="pgn-btn surface-glass">2</button>
+          <button class="pgn-btn surface-glass">3</button>
+          <span class="pgn-btn surface-glass pgn-ellipsis ink-soft">…</span>
+          <button class="pgn-btn surface-glass">12</button>
+          <button class="pgn-btn surface-glass">→</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Pagination ══════════════════════════════════════════════════════════ -->

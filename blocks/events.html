@@ -1,0 +1,83 @@
+<!-- ═══ Events — split list + featured panel ════════════════════════════════
+     Params: surface (surface-white default), data-animate.
+     Left: a list of events; clicking one expands its description, lights an
+     accent bar, and crossfades the featured visual on the right (image + tag +
+     details). Built on the data-tabs core (triggers = events, panels =
+     visuals). Per-instance images via data-bg. Styled by .cmp-events. -->
+<section class="cmp cmp-events surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head-sm ev-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Events</span>
+        <h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">Latest &amp; upcoming.</h2>
+      </div>
+      <div class="sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">
+        <p class="type-body ink-mute">Meet our bankers across the region's leading capital-markets forums, investor days and industry awards.</p>
+        <a href="#" class="btn btn-text mt-3 is-arrow">View all events
+         </a>
+      </div>
+    </div>
+
+    <div class="ev-split" data-tabs data-reveal="fade" data-reveal-delay=".1">
+
+      <!-- Left — event list (triggers) -->
+      <div class="ev-list">
+        <button class="ev-item active" data-tab="e1" type="button">
+          <span class="ev-bar" aria-hidden="true"></span>
+          <span class="ev-meta"><span class="chip rounded-full ev-tag">Conference</span><span class="type-caption ev-date ink-mute">18–19 March 2025</span></span>
+          <span class="type-h4 ev-title block ink-mute">MENA Debt Capital Markets Forum 2025</span>
+          <span class="type-caption ev-loc block ink-mute">Conrad Dubai, UAE</span>
+          <span class="ev-descwrap"><span class="type-body-sm ev-desc block ink-mute">EmCap senior leadership presents on MENA bond market outlook and sukuk structuring trends, joining panels on regional DCM activity and cross-border issuances.</span></span>
+        </button>
+        <button class="ev-item" data-tab="e2" type="button">
+          <span class="ev-bar" aria-hidden="true"></span>
+          <span class="ev-meta"><span class="chip rounded-full ev-tag">Investor Day</span><span class="type-caption ev-date ink-mute">5 May 2025</span></span>
+          <span class="type-h4 ev-title block ink-mute">Emirates NBD Capital Investor Day</span>
+          <span class="type-caption ev-loc block ink-mute">DIFC, Dubai</span>
+          <span class="ev-descwrap"><span class="type-body-sm ev-desc block ink-mute">Annual investor briefing covering our transaction pipeline, regional market outlook and new mandates — open to institutional clients and global partners by invitation.</span></span>
+        </button>
+        <button class="ev-item" data-tab="e3" type="button">
+          <span class="ev-bar" aria-hidden="true"></span>
+          <span class="ev-meta"><span class="chip rounded-full ev-tag">Sponsorship</span><span class="type-caption ev-date ink-mute">22–23 April 2025</span></span>
+          <span class="type-h4 ev-title block ink-mute">Bonds, Loans &amp; Sukuk Middle East 2025</span>
+          <span class="type-caption ev-loc block ink-mute">Conrad Dubai, UAE</span>
+          <span class="ev-descwrap"><span class="type-body-sm ev-desc block ink-mute">EmCap participates as headline sponsor and panellist across ECM and DCM sessions — bringing together global issuers, investors and intermediaries.</span></span>
+        </button>
+        <button class="ev-item" data-tab="e4" type="button">
+          <span class="ev-bar" aria-hidden="true"></span>
+          <span class="ev-meta"><span class="chip rounded-full ev-tag">Awards</span><span class="type-caption ev-date ink-mute">10 July 2025</span></span>
+          <span class="type-h4 ev-title block ink-mute">Annual Euromoney Awards Ceremony</span>
+          <span class="type-caption ev-loc block ink-mute">London, UK</span>
+          <span class="ev-descwrap"><span class="type-body-sm ev-desc block ink-mute">Emirates NBD Capital shortlisted for Best Investment Bank — UAE for the fifth consecutive year, recognising leadership in DCM, ECM and M&amp;A advisory.</span></span>
+        </button>
+      </div>
+
+      <!-- Right — featured visual (panels) -->
+      <div class="ev-featured">
+        <div class="ev-panel active surface-image" data-panel="e1">
+          <span class="ev-img" data-bg="/assets/images/image-2.jpg"></span>
+          <div class="ov ov-gradient-b ov-80"></div>
+          <div class="ev-panel-body"><span class="ev-panel-tag">Conference</span><h3 class="ev-panel-title">MENA Debt Capital Markets Forum 2025</h3><p class="ev-panel-meta">18–19 March 2025 · Conrad Dubai, UAE</p></div>
+        </div>
+        <div class="ev-panel surface-image" data-panel="e2">
+          <span class="ev-img" data-bg="/assets/images/image-4.jpg"></span>
+          <div class="ov ov-gradient-b ov-80"></div>
+          <div class="ev-panel-body"><span class="ev-panel-tag">Investor Day</span><h3 class="ev-panel-title">Emirates NBD Capital Investor Day</h3><p class="ev-panel-meta">5 May 2025 · DIFC, Dubai</p></div>
+        </div>
+        <div class="ev-panel surface-image" data-panel="e3">
+          <span class="ev-img" data-bg="/assets/images/image-6.jpg"></span>
+          <div class="ov ov-gradient-b ov-80"></div>
+          <div class="ev-panel-body"><span class="ev-panel-tag">Sponsorship</span><h3 class="ev-panel-title">Bonds, Loans &amp; Sukuk Middle East 2025</h3><p class="ev-panel-meta">22–23 April 2025 · Conrad Dubai, UAE</p></div>
+        </div>
+        <div class="ev-panel surface-image" data-panel="e4">
+          <span class="ev-img" data-bg="/assets/images/image-3.jpg"></span>
+          <div class="ov ov-gradient-b ov-80"></div>
+          <div class="ev-panel-body"><span class="ev-panel-tag">Awards</span><h3 class="ev-panel-title">Annual Euromoney Awards ceremony</h3><p class="ev-panel-meta">10 July 2025 · London, UK</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Events ══════════════════════════════════════════════════════════════ -->

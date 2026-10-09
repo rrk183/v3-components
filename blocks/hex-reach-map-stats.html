@@ -1,0 +1,35 @@
+<!-- ═══ Hex Reach Map — with Scale Stats ════════════════════════════════════════════════════════
+     Interactive hex-tile world map (base artwork supplied as an SVG with the
+     market node-clusters baked in). We overlay glass flag-chip markers aligned
+     to each cluster with short leader lines, a soft edge fade so the map melts
+     into the navy, ambient ripple rings on every market, and hover spotlight.
+     Registered as a SCROLL_SLUG so the library runs the script. Sample data. -->
+<section class="cmp cmp-hex-reach-map surface-primary section-y" data-behavior="hex-reach-map" data-animate aria-label="Global reach">
+<div class="container-ds hx-inner">
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Global reach</span>
+        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Supporting your ambition at every stage, in every market.</h2>
+      </div>
+      <p class="type-body sh-lead ink-soft" data-reveal="up" data-reveal-delay=".12">We support businesses through every growth milestone, across markets that span the Middle East, Europe and Asia.</p>
+    </div>
+
+    <div class="hx-map" data-hx-map>
+      <svg class="hx-svg" viewBox="0 250 1360 710" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <image class="hx-base" href="assets/images/shared/common/hex-map-user.svg" x="0" y="0" width="1705" height="984"></image>
+        <g class="hx-ripples" data-hx-ripples></g>
+        <g class="hx-leaders" data-hx-leaders></g>
+      </svg>
+      <div class="hx-chips" data-hx-chips></div>
+    </div>
+
+    <div class="wm-scale" data-reveal="up" data-reveal-delay=".3">
+      <div><span class="ds-num ink-white">AED&nbsp;1.2T</span><span class="type-body-sm block mt-1 ink-soft">in assets (FY2024)</span></div>
+      <div><span class="ds-num ink-white">13</span><span class="type-body-sm block mt-1 ink-soft">countries across MENAT, Europe &amp; Asia</span></div>
+      <div><span class="ds-num ink-white">10M+</span><span class="type-body-sm block mt-1 ink-soft">active customers</span></div>
+      <div><span class="ds-num ink-white">A1&nbsp;(Stable)</span><span class="type-body-sm block mt-1 ink-soft">Moody&rsquo;s rating</span></div>
+    </div>
+  </div>
+
+</section>
+<!-- ═══ /Hex Reach Map ═══════════════════════════════════════════════════════ -->

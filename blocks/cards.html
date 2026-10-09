@@ -1,0 +1,78 @@
+<!-- ═══ Cards — Thumbnail (composition of cmp-cards) ════════════════════════
+     THE card component, media composition: the whole card is a link; a
+     media-cover fills the frame, an .ov paints the scrim, type-* classes
+     carry the copy in white, a chip is the label, a btn is the CTA. The
+     component owns only the grid (Columns control → 3/2/auto) and the frame.
+     Video card: swap the data-bg span for
+       <video class="media-cover" autoplay muted loop playsinline>…</video>
+     No IDs, no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards is-hover-zoom cards-thumb surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Explore the full range of corporate solutions.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">One relationship across trade, cash, digital channels and institutional coverage — pick the thread that fits where your business is headed.</p>
+    </div>
+
+    <div class="cd-grid" role="list">
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" role="listitem" data-reveal="up" data-reveal-delay=".04" aria-label="Trade &amp; Supply Chain Finance">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/trade-supply-chain-finance.png" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Trade</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">Import &amp; export</span>
+          <h3 class="type-h5 ink-white">Trade &amp; supply chain finance</h3>
+          <p class="type-body-sm ink-soft">Power trade and keep supplier networks moving.</p>
+          <span class="btn btn-glass btn-sm btn-pill mt-2 is-arrow">Explore
+           </span>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" role="listitem" data-reveal="up" data-reveal-delay=".10" aria-label="Digital Channels">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/digital-channels.png" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Digital</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">APIs &amp; Host2Host</span>
+          <h3 class="type-h5 ink-white">Digital channels</h3>
+          <p class="type-body-sm ink-soft">Connect your own systems straight to the bank.</p>
+          <span class="btn btn-glass btn-sm btn-pill mt-2 is-arrow">Explore
+           </span>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" role="listitem" data-reveal="up" data-reveal-delay=".16" aria-label="businessONLINE">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/businessonline.jpg" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Platform</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">Payments &amp; liquidity</span>
+          <h3 class="type-h5 ink-white">businessONLINE</h3>
+          <p class="type-body-sm ink-soft">Run cash, trade and FX from one platform.</p>
+          <span class="btn btn-glass btn-sm btn-pill mt-2 is-arrow">Explore
+           </span>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-media justify-end surface-image" style="--cd-min: clamp(360px,30vw,420px)" role="listitem" data-reveal="up" data-reveal-delay=".22" aria-label="Global Markets">
+        <span class="media-cover" data-bg="/staging/corporate-solutions-cards/global-markets-treasury.jpg" aria-hidden="true"></span>
+        <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Markets</span>
+        <div class="relative z-10 p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-soft">FX &amp; hedging</span>
+          <h3 class="type-h5 ink-white">Global markets</h3>
+          <p class="type-body-sm ink-soft">Hedge exposure across rates, FX and commodities.</p>
+          <span class="btn btn-glass btn-sm btn-pill mt-2 is-arrow">Explore
+           </span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Cards — Thumbnail ══════════════════════════════════════════════════ -->

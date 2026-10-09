@@ -1,0 +1,73 @@
+<!-- ═══ Bento — Expand ══════════════════════════════════════════════════════
+     Params: surface (surface-white default), data-animate.
+     Horizontal image panels that expand on hover/focus — the active one grows
+     while neighbours shrink, revealing its title, copy and link; collapsed
+     panels show a vertical label. Pure CSS (flex-grow + :hover/:focus-within),
+     no recipe, no JS. The first panel is open by default. Images via data-bg.
+     Styled by .cmp-bento-expand. No IDs, no inline styles. -->
+<section class="cmp cmp-bento-expand surface-white section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Our capabilities</span>
+        <h2 class="type-h1 ink-primary" data-reveal="up" data-reveal-delay=".06">Everything a treasury<br>needs, in one place.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Trade, cash, investment banking and global markets — one partner across every mandate.</p>
+    </div>
+
+    <div class="be-row" data-reveal="up" data-reveal-delay=".12">
+
+      <a href="#" class="be-panel is-open surface-image" tabindex="0">
+        <span class="be-img" data-bg="/assets/images/image-4.jpg"></span>
+        <div class="ov ov-gradient-b ov-80"></div>
+        <span class="be-label">Trade Finance</span>
+        <div class="be-detail">
+          <span class="be-eyebrow">01 — Trade Finance</span>
+          <h3 class="be-title">Move goods across 180+ markets.</h3>
+          <p class="be-desc">Letters of credit, guarantees and supply-chain finance — fully digital, settled with certainty.</p>
+          <span class="be-link ink-white">Explore smartTRADE →</span>
+        </div>
+      </a>
+
+      <a href="#" class="be-panel surface-image" tabindex="0">
+        <span class="be-img" data-bg="/assets/images/feature-2.jpg"></span>
+        <div class="ov ov-gradient-b ov-80"></div>
+        <span class="be-label">Cash Management</span>
+        <div class="be-detail">
+          <span class="be-eyebrow">02 — Cash Management</span>
+          <h3 class="be-title">Liquidity, in real time.</h3>
+          <p class="be-desc">Real-time balances and multi-entity approvals across every account, on one dashboard.</p>
+          <span class="be-link ink-white">Explore businessONLINE →</span>
+        </div>
+      </a>
+
+      <a href="#" class="be-panel surface-image" tabindex="0">
+        <span class="be-img" data-bg="/assets/images/image-2.jpg"></span>
+        <div class="ov ov-gradient-b ov-80"></div>
+        <span class="be-label">Investment Banking</span>
+        <div class="be-detail">
+          <span class="be-eyebrow">03 — Investment Banking</span>
+          <h3 class="be-title">Landmark deals, regional depth.</h3>
+          <p class="be-desc">DCM, ECM, M&amp;A advisory and syndicated finance across the MENAT region and beyond.</p>
+          <span class="be-link ink-white">Explore EmCap →</span>
+        </div>
+      </a>
+
+      <a href="#" class="be-panel surface-image" tabindex="0">
+        <span class="be-img" data-bg="/assets/images/image-5.jpg"></span>
+        <div class="ov ov-gradient-b ov-80"></div>
+        <span class="be-label">Global Markets</span>
+        <div class="be-detail">
+          <span class="be-eyebrow">04 — Global Markets</span>
+          <h3 class="be-title">FX, rates &amp; commodities.</h3>
+          <p class="be-desc">Hedging and execution across currencies, rates and commodities — with regional liquidity.</p>
+          <span class="be-link ink-white">Explore smartTRADE FX →</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Bento — Expand ═════════════════════════════════════════════════════ -->

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <!-- Emirates Islamic PLACEHOLDER background for the Bento "Background Image"
+       surface. Same composition as bento-bg-placeholder.svg, EI palette
+       (deep purple base, lighter purple + teal + gold glows). Selected by
+       themes.css: the ei theme block points the bento background variable at
+       this file. Swap this file (or override that variable) for a real image.
+       NOTE: XML comments must not contain double hyphens. -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5E2775"/>
+      <stop offset=".5" stop-color="#8A46A6"/>
+      <stop offset="1" stop-color="#2A0F3A"/>
+    </linearGradient>
+    <radialGradient id="b1" cx=".2" cy=".25" r=".6">
+      <stop offset="0" stop-color="#BD8FD4" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#BD8FD4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b2" cx=".82" cy=".72" r=".65">
+      <stop offset="0" stop-color="#6FD4C8" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#6FD4C8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b3" cx=".62" cy=".1" r=".5">
+      <stop offset="0" stop-color="#C9AE7A" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#B3A078" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#E3CFEF" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <rect width="1600" height="900" fill="url(#b1)"/>
+  <rect width="1600" height="900" fill="url(#b2)"/>
+  <rect width="1600" height="900" fill="url(#b3)"/>
+  <polygon points="0,300 1600,0 1600,240 0,560" fill="url(#sweep)"/>
+  <g stroke="#D9C5E8" stroke-opacity=".22" fill="none" stroke-width="2">
+    <path d="M0 600 Q420 470 820 620 T1600 560"/>
+    <path d="M0 730 Q520 620 940 750 T1600 690"/>
+    <path d="M140 0 Q320 260 210 520 T380 900"/>
+  </g>
+  <g fill="#EBDDF5" fill-opacity=".7">
+    <circle cx="320" cy="290" r="5"/>
+    <circle cx="770" cy="200" r="4"/>
+    <circle cx="1180" cy="350" r="5"/>
+    <circle cx="1380" cy="540" r="4"/>
+    <circle cx="560" cy="630" r="4"/>
+    <circle cx="1030" cy="690" r="5"/>
+  </g>
+</svg>

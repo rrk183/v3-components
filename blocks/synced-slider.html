@@ -1,0 +1,114 @@
+<!-- ═══ Video Content — synced auto-cycling slider ══════════════════════════
+     Params: surface (surface-grey default), data-animate.
+     One active slide drives three synced regions: LEFT (heading + body + big
+     stat), CENTRE (cross-fading photo + a restacking deal-card deck + fixed
+     stat tiles), RIGHT (testimonial quote + attribution). Auto-advances every
+     data-interval ms, pauses on hover; progress pill + dots. Pure markup —
+     data-behavior="synced-slider". Per-instance photos via data-bg. Add/remove
+     a slide = add/remove one [data-vc-index] item in each region + one deck
+     card (keep indices aligned). Styled by .cmp-synced-slider. No IDs/inline. -->
+<section class="cmp cmp-synced-slider surface-soft section-y" data-animate>
+  <div class="vc-grid" data-behavior="synced-slider" data-interval="4000">
+
+    <!-- ── LEFT — text + stat (synced) ──────────────────────────────────── -->
+    <div class="vc-left">
+      <div class="vc-left-top">
+        <div class="vc-stack vc-headings">
+          <h2 class="vc-heading ink-primary" data-vc-swap data-vc-index="0">The region's most trusted capital markets partner</h2>
+          <h2 class="vc-heading ink-primary" data-vc-swap data-vc-index="1">Landmark deals across every asset class</h2>
+          <h2 class="vc-heading ink-primary" data-vc-swap data-vc-index="2">On-ground across 13 markets worldwide</h2>
+          <h2 class="vc-heading ink-primary" data-vc-swap data-vc-index="3">Trusted by sovereign and institutional leaders</h2>
+        </div>
+        <div class="vc-stack vc-bodies">
+          <p class="vc-body" data-vc-swap data-vc-index="0">Access to the deepest pools of regional and international capital — with a track record across sovereign, corporate and FI mandates.</p>
+          <p class="vc-body" data-vc-swap data-vc-index="1">From the region's largest-ever IPO to complex multi-tranche loan syndications — we bring execution certainty to the most demanding mandates.</p>
+          <p class="vc-body" data-vc-swap data-vc-index="2">Dedicated teams in Dubai, London, Singapore and beyond — local insight backed by a truly global distribution network.</p>
+          <p class="vc-body" data-vc-swap data-vc-index="3">From Abu Dhabi sovereign wealth to global financial institutions — advisory and capital solutions built for decisive mandates.</p>
+        </div>
+        <div class="vc-pill">
+          <div class="vc-pill-track"><span class="vc-pill-fill" data-vc-progress></span></div>
+          <div class="vc-dots" data-vc-dots></div>
+        </div>
+      </div>
+
+      <div class="vc-stack vc-stats">
+        <div data-vc-swap data-vc-index="0"><p class="ds-num is-lg vc-stat ink-primary">USD&nbsp;95bn+</p><p class="type-body-sm vc-stat-label ink-mute">Capital advised &amp; arranged</p></div>
+        <div data-vc-swap data-vc-index="1"><p class="ds-num is-lg vc-stat ink-primary">76</p><p class="type-body-sm vc-stat-label ink-mute">DCM issuances priced</p></div>
+        <div data-vc-swap data-vc-index="2"><p class="ds-num is-lg vc-stat ink-primary">13</p><p class="type-body-sm vc-stat-label ink-mute">Active markets</p></div>
+        <div data-vc-swap data-vc-index="3"><p class="ds-num is-lg vc-stat ink-primary">40+</p><p class="type-body-sm vc-stat-label ink-mute">Syndicated loans closed</p></div>
+      </div>
+    </div>
+
+    <!-- ── CENTRE — photo + restacking deck + stat tiles ────────────────── -->
+    <div class="vc-card">
+      <div class="vc-imgs">
+        <span class="vc-img" data-vc-swap data-vc-index="0" data-bg="/assets/images/image-1.jpg"></span>
+        <span class="vc-img" data-vc-swap data-vc-index="1" data-bg="/assets/images/image-2.jpg"></span>
+        <span class="vc-img" data-vc-swap data-vc-index="2" data-bg="/assets/images/image-3.jpg"></span>
+        <span class="vc-img" data-vc-swap data-vc-index="3" data-bg="/assets/images/image-4.jpg"></span>
+      </div>
+      <div class="vc-card-gradient"></div>
+
+      <div class="vc-deal-stack">
+        <div class="deal-card surface-white" data-vc-card data-vc-index="0">
+          <span class="dc-avatar"><span class="dc-initials">DE</span></span>
+          <span class="dc-main"><span class="dc-name">DEWA IPO</span><span class="dc-meta"><span class="dc-role">Joint Global Coordinator</span><span class="dc-sep">·</span><span class="dc-star">★</span><span class="dc-rating">4.9</span></span></span>
+          <span class="dc-badge">+4</span>
+        </div>
+        <div class="deal-card surface-white" data-vc-card data-vc-index="1">
+          <span class="dc-avatar"><span class="dc-initials">SA</span></span>
+          <span class="dc-main"><span class="dc-name">Saudi Aramco</span><span class="dc-meta"><span class="dc-role">Joint Lead Manager</span><span class="dc-sep">·</span><span class="dc-star">★</span><span class="dc-rating">4.8</span></span></span>
+          <span class="dc-badge">+7</span>
+        </div>
+        <div class="deal-card surface-white" data-vc-card data-vc-index="2">
+          <span class="dc-avatar"><span class="dc-initials">DP</span></span>
+          <span class="dc-main"><span class="dc-name">DP World</span><span class="dc-meta"><span class="dc-role">Mandated Lead Arranger</span><span class="dc-sep">·</span><span class="dc-star">★</span><span class="dc-rating">4.7</span></span></span>
+          <span class="dc-badge">+6</span>
+        </div>
+        <div class="deal-card surface-white" data-vc-card data-vc-index="3">
+          <span class="dc-avatar"><span class="dc-initials">MU</span></span>
+          <span class="dc-main"><span class="dc-name">Mubadala</span><span class="dc-meta"><span class="dc-role">Bookrunner</span><span class="dc-sep">·</span><span class="dc-star">★</span><span class="dc-rating">4.6</span></span></span>
+          <span class="dc-badge">+4</span>
+        </div>
+      </div>
+
+      <div class="vc-tiles">
+        <div class="vc-tiles-row">
+          <div class="vc-tile"><span class="vc-tile-num">76</span></div>
+          <div class="vc-tile"><span class="vc-tile-num">37×</span></div>
+        </div>
+        <p class="vc-tiles-cap">Deals priced · Avg. oversubscription</p>
+      </div>
+    </div>
+
+    <!-- ── RIGHT — testimonial (synced) ─────────────────────────────────── -->
+    <div class="vc-quote dot-grid surface-white">
+      <div class="vc-logo"><span class="vc-logo-mark"></span><span class="vc-logo-text">Emirates NBD Capital</span></div>
+      <div class="vc-quotezone vc-stack">
+
+        <div data-vc-swap data-vc-index="0">
+          <p class="type-h4 vc-quote-text ink-primary">&ldquo;EmCap brought unmatched depth of regional knowledge and global execution to our mandate.&rdquo;</p>
+          <div class="vc-attr"><span class="vc-attr-rule"></span><div><div class="vc-attr-head"><span class="type-caption vc-author ink-primary">Ahmed Al Rashidi</span><span class="type-caption vc-title ink-mute">CFO, DEWA</span></div><span class="type-caption vc-company ink-mute">Dubai Electricity &amp; Water Authority</span></div></div>
+        </div>
+
+        <div data-vc-swap data-vc-index="1">
+          <p class="type-h4 vc-quote-text ink-primary">&ldquo;From origination to distribution — they executed flawlessly in one of the most competitive markets globally.&rdquo;</p>
+          <div class="vc-attr"><span class="vc-attr-rule"></span><div><div class="vc-attr-head"><span class="type-caption vc-author ink-primary">Ziad Al Murshed</span><span class="type-caption vc-title ink-mute">CFO, Saudi Aramco</span></div><span class="type-caption vc-company ink-mute">Saudi Arabian Oil Company</span></div></div>
+        </div>
+
+        <div data-vc-swap data-vc-index="2">
+          <p class="type-h4 vc-quote-text ink-primary">&ldquo;Their ability to coordinate across markets and bring the right investors to the table was exceptional.&rdquo;</p>
+          <div class="vc-attr"><span class="vc-attr-rule"></span><div><div class="vc-attr-head"><span class="type-caption vc-author ink-primary">Yuvraj Narayan</span><span class="type-caption vc-title ink-mute">Group CFO, DP World</span></div><span class="type-caption vc-company ink-mute">DP World Group</span></div></div>
+        </div>
+
+        <div data-vc-swap data-vc-index="3">
+          <p class="type-h4 vc-quote-text ink-primary">&ldquo;A partner that truly understands both the regional landscape and the complexity of global capital markets.&rdquo;</p>
+          <div class="vc-attr"><span class="vc-attr-rule"></span><div><div class="vc-attr-head"><span class="type-caption vc-author ink-primary">Carlos Obeid</span><span class="type-caption vc-title ink-mute">Head of Capital Markets, Mubadala</span></div><span class="type-caption vc-company ink-mute">Mubadala Investment Company</span></div></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Video Content ═══════════════════════════════════════════════════════ -->

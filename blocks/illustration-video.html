@@ -1,0 +1,108 @@
+<!-- ═══ Illustration Video — the chromeless baked-background MP4 ════════════
+     Capability 2 of the ILLUSTRATION DOCTRINE (Hakan, 2026-09-03 — see
+     docs/audits/page-fix-map.md Addendum 3 and CONVENTIONS.md "Illustrations").
+     The other capability is Lottie (blocks/lottie.html); pick per use-case at
+     authoring time. Both ship illustrations as CONTENT — a media upload, never
+     per-piece code.
+
+     THE MARKUP CONTRACT (memorise this one line — it is the whole component):
+       <video class="media-cover" muted autoplay loop playsinline
+              preload="metadata" poster="…" src="…"></video>
+     No `controls`. No play/pause chrome. No <source> ladder. No overlay, no
+     DOM-built frame — whatever chrome the piece needs is BAKED INTO THE FILE.
+     The frame is a positioned box the media-cover fills:
+       <span class="media-frame surface-X relative block aspect-[2/1]">.
+     The surface class on the frame is not decoration: it declares which face
+     the bake targets, so the seam is checkable by reading the markup.
+
+     ENCODE RULES ("Mode 2" — a bake that is a hair off shows a ghost rectangle):
+       · COLOR TAGS ARE MANDATORY: BT.709 primaries + transfer + matrix, limited
+         range, yuv420p. Untagged or BT.601-tagged files (smpte170m) decode
+         through the wrong matrix and the flat ground lands a few values away
+         from the CSS surface — a visible rectangle on exactly the surfaces the
+         bake was made for. Encode:
+           ffmpeg -i in.mov -c:v libx264 -profile:v high -pix_fmt yuv420p -crf 24 \
+             -vf "scale=out_color_matrix=bt709:out_range=tv,setparams=\
+                  color_primaries=bt709:color_trc=bt709:colorspace=bt709:range=tv" \
+             -movflags +faststart -an out.mp4
+         Verify: decode a frame and sample a corner pixel — it must be the
+         surface hex EXACTLY (#ffffff / #072447 here, checked 2026-09-03).
+       · SEAMLESS BAKES CARRY THE TARGET SURFACE IN THE FILENAME —
+         illustration-signal-white.mp4 / illustration-signal-navy.mp4. One
+         motion, one file per face; never one file "reused" on both.
+       · FLAT FACES ONLY. Never bake against a gradient or an image surface —
+         those move under the video (parallax, brand theme, viewport) and no
+         bake can track them. Gradient/photo backdrops want a real media card.
+       · THE FRAME MAY BE BAKED IN (device bezel, browser chrome, card edge) —
+         same doctrine as the device-mock PNG: the baked pixel IS the UI, and
+         nothing is rebuilt in the DOM on top of it.
+       · MUTED + no controls means it is DECORATION, so it needs no captions;
+         anything that carries meaning by sound or narration is a real video
+         with `controls`, not an illustration.
+
+     REDUCED MOTION is handled by the engine, globally: ds.js pauses any
+     autoplay+loop video that HAS a poster and shows the poster instead. That
+     is why `poster` is part of the contract — a poster-less illustration video
+     would go blank for those readers. Nothing per-page.
+
+     RTL: the engine does not flip video. A directional animation needs a
+     mirrored export, exactly like a directional image.
+
+     Recreate: swap the src + poster per piece, keep the classes. Params:
+     surface, aspect-[…] on the frame, data-animate. No IDs, no CSS. ────── -->
+<section class="cmp cmp-illustration-video surface-soft section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Illustration</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Illustration video</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">A looping illustration with its background baked into the file &mdash; no player chrome, no controls, no overlay. The bake carries the surface it will sit on, so the video reads as drawn straight onto the page rather than pasted over it.</p>
+    </div>
+
+    <!-- 1 · FULL-WIDTH PANEL — light. White bake on a white face. -->
+    <p class="bt-label ink-mute" data-reveal="up">Full-width panel &middot; light &mdash; white bake, white face</p>
+    <span class="media-frame surface-white relative block aspect-[2/1]" data-reveal="up">
+      <video class="media-cover" src="assets/videos/illustration-signal-white.mp4" poster="assets/images/illustration-signal-white-poster.jpg" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>
+    </span>
+    <p class="type-caption mt-4 ink-mute" data-reveal="up">The section band under it is grey and the frame is white &mdash; the only edge you can see is the frame&rsquo;s own radius. Nothing in the markup knows what the animation is.</p>
+
+    <!-- 2 · FULL-WIDTH PANEL — navy. Same motion, second bake. -->
+    <p class="bt-label mt-14 ink-mute" data-reveal="up">Full-width panel &middot; navy &mdash; navy bake, navy face</p>
+    <span class="media-frame surface-primary relative block aspect-[2/1]" data-reveal="up">
+      <video class="media-cover" src="assets/videos/illustration-signal-navy.mp4" poster="assets/images/illustration-signal-navy-poster.jpg" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>
+    </span>
+    <p class="type-caption mt-4 ink-mute" data-reveal="up">One motion, two files. Putting the white bake here would paint a white rectangle over the navy &mdash; the failure this doctrine exists to prevent.</p>
+
+    <!-- 3 · INSET IN A GRID — the everyday composition, both faces. -->
+    <p class="bt-label mt-14 ink-mute" data-reveal="up">Inset in a grid &middot; the illustration is a card slot</p>
+    <div class="grid gap-6 md:grid-cols-2">
+
+      <div class="card-panel surface-white" data-reveal="up">
+        <span class="media-frame surface-white relative block aspect-[16/9]">
+          <video class="media-cover" src="assets/videos/illustration-signal-white.mp4" poster="assets/images/illustration-signal-white-poster.jpg" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>
+        </span>
+        <div class="ds-stack mt-6" style="--ds-stack-gap: 8px">
+          <h3 class="type-h5 ink-primary">Payments that settle while you watch</h3>
+          <p class="type-body-sm ink-mute">Inset in a light card, the bake matches the card face &mdash; not the section. The face is what the video sits on, so the face is what gets baked.</p>
+          <code class="type-micro block ink-mute">illustration-signal-white.mp4</code>
+        </div>
+      </div>
+
+      <div class="card-panel surface-primary" data-reveal="up" data-reveal-delay=".08">
+        <span class="media-frame surface-primary relative block aspect-[16/9]">
+          <video class="media-cover" src="assets/videos/illustration-signal-navy.mp4" poster="assets/images/illustration-signal-navy-poster.jpg" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>
+        </span>
+        <div class="ds-stack mt-6" style="--ds-stack-gap: 8px">
+          <h3 class="type-h5 ink-white">The same story on a dark card</h3>
+          <p class="type-body-sm ink-soft">The card carries its own paint and its own ink tokens; the illustration carries a bake made for that paint. Two assets, zero component code.</p>
+          <code class="type-micro block ink-soft">illustration-signal-navy.mp4</code>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Illustration Video ═════════════════════════════════════════════════ -->

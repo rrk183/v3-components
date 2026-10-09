@@ -1,0 +1,65 @@
+<!-- ═══ Cards — Boxed (composition of cmp-cards) ════════════════════════════
+     Media on top (ratio box + media-cover), copy in a card-panel panel below —
+     the card IS a card-panel (--card-pad:0 so the media runs flush; the body
+     carries its own padding). Type via .type-*, label = chip, CTA = btn-text.
+     No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-soft section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Explore the full range of corporate solutions.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">One relationship across trade, cash, digital channels and institutional coverage — pick the thread that fits where your business is headed.</p>
+    </div>
+
+    <div class="cd-grid" role="list">
+
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" role="listitem" data-reveal="up" data-reveal-delay=".04" aria-label="Trade &amp; Supply Chain Finance">
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="/staging/corporate-solutions-cards/trade-supply-chain-finance.png" aria-hidden="true"></span>
+          <span class="chip rounded-full absolute bottom-3 start-4 z-10">Trade</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-accent">Import &amp; export</span>
+          <h3 class="type-h5 ink-primary">Trade &amp; supply chain finance</h3>
+          <p class="type-body-sm ink-mute">Power trade and keep supplier networks moving.</p>
+          <span class="btn btn-text mt-1 is-arrow">Explore
+           </span>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" role="listitem" data-reveal="up" data-reveal-delay=".10" aria-label="Digital Channels">
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="/staging/corporate-solutions-cards/digital-channels.png" aria-hidden="true"></span>
+          <span class="chip rounded-full absolute bottom-3 start-4 z-10">Digital</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-accent">APIs &amp; Host2Host</span>
+          <h3 class="type-h5 ink-primary">Digital channels</h3>
+          <p class="type-body-sm ink-mute">Connect your own systems straight to the bank.</p>
+          <span class="btn btn-text mt-1 is-arrow">Explore
+           </span>
+        </div>
+      </a>
+
+      <a href="#" class="cd-card card-panel surface-white" style="--card-pad:0" role="listitem" data-reveal="up" data-reveal-delay=".16" aria-label="businessONLINE">
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="/staging/corporate-solutions-cards/businessonline.jpg" aria-hidden="true"></span>
+          <span class="chip rounded-full absolute bottom-3 start-4 z-10">Platform</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-2.5">
+          <span class="type-eyebrow ink-accent">Payments &amp; liquidity</span>
+          <h3 class="type-h5 ink-primary">businessONLINE</h3>
+          <p class="type-body-sm ink-mute">Run cash, trade and FX from one platform.</p>
+          <span class="btn btn-text mt-1 is-arrow">Explore
+           </span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Cards — Boxed ══════════════════════════════════════════════════════ -->

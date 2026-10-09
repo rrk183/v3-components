@@ -1,0 +1,187 @@
+<section class="cmp cmp-form-elements surface-white section-y" data-animate>
+  <div class="container-ds flex flex-col gap-16 md:gap-20">
+
+    <!-- ── Text Inputs ─────────────────────────────────────────────── -->
+    <div class="flex flex-col gap-6">
+      <p class="bt-label ink-mute" data-reveal="up">Text Inputs</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px]">
+
+        <!-- Default -->
+        <div class="field">
+          <input type="text" placeholder=" " aria-label="Full name" />
+          <label>Full name</label>
+        </div>
+
+        <!-- With value (always-up label) -->
+        <div class="field">
+          <input type="email" placeholder=" " aria-label="Email address" value="hakan@emiratesnbd.com" />
+          <label>Email address</label>
+          <p class="field-hint ink-mute">We'll never share your email.</p>
+        </div>
+
+        <!-- Error state -->
+        <div class="field error">
+          <input type="text" placeholder=" " aria-label="Company registration number" value="invalid input" />
+          <label>Company registration number</label>
+          <p class="field-error">Please enter a valid registration number.</p>
+        </div>
+
+        <!-- Disabled -->
+        <div class="field">
+          <input type="text" placeholder=" " aria-label="IBAN (read-only)" value="AE070331234567890" disabled />
+          <label>IBAN (read-only)</label>
+        </div>
+
+        <!-- Textarea -->
+        <div class="field md:col-span-2">
+          <textarea rows="4" placeholder=" " aria-label="Additional notes"></textarea>
+          <label>Additional notes</label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Select & Search ─────────────────────────────────────────── -->
+    <div class="flex flex-col gap-6">
+      <p class="bt-label ink-mute">Select &amp; Search</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px]">
+
+        <div class="field">
+          <select aria-label="Country of incorporation">
+            <option value="" disabled selected></option>
+            <option>UAE</option>
+            <option>Saudi Arabia</option>
+            <option>Egypt</option>
+            <option>United Kingdom</option>
+          </select>
+          <label>Country of incorporation</label>
+        </div>
+
+        <div class="field">
+          <select aria-label="Product area">
+            <option value="" disabled selected></option>
+            <option>Cash Management</option>
+            <option>Trade Finance</option>
+            <option>Investment Banking</option>
+            <option>Global Markets</option>
+          </select>
+          <label>Product area</label>
+        </div>
+
+        <div class="fe-search md:col-span-2">
+          <svg class="fe-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="search" placeholder="Search transactions, accounts, beneficiaries…" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Checkboxes, Radios, Toggles ─────────────────────────────── -->
+    <div class="flex flex-col gap-6">
+      <p class="bt-label ink-mute">Checkboxes, Radios &amp; Toggles</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-[900px]">
+
+        <!-- Checkboxes -->
+        <div class="flex flex-col gap-4">
+          <p class="type-h6 mb-1 ink-primary">Checkboxes</p>
+          <label class="check">
+            <input type="checkbox" checked />
+            <span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="type-body ink-primary">businessONLINE</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" checked />
+            <span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="type-body ink-primary">smartTRADE</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" />
+            <span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="type-body ink-primary">smartSCF</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" />
+            <span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="type-body fe-muted ink-mute">EmiratesNBD Pay (coming soon)</span>
+          </label>
+        </div>
+
+        <!-- Radios -->
+        <div class="flex flex-col gap-4">
+          <p class="type-h6 mb-1 ink-primary">Radio Buttons</p>
+          <label class="radio">
+            <input type="radio" name="fe-tier" checked />
+            <span class="box"></span>
+            <span class="type-body ink-primary">Standard</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="fe-tier" />
+            <span class="box"></span>
+            <span class="type-body ink-primary">Premium</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="fe-tier" />
+            <span class="box"></span>
+            <span class="type-body ink-primary">Enterprise</span>
+          </label>
+        </div>
+
+        <!-- Toggles -->
+        <div class="flex flex-col gap-5">
+          <p class="type-h6 mb-1 ink-primary">Toggles</p>
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="track"></span>
+            <span class="type-body ink-primary">Email notifications</span>
+          </label>
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="track"></span>
+            <span class="type-body ink-primary">SMS alerts</span>
+          </label>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="track"></span>
+            <span class="type-body ink-primary">Push notifications</span>
+          </label>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="track"></span>
+            <span class="type-body fe-muted ink-mute">Marketing updates</span>
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Range Sliders ───────────────────────────────────────────── -->
+    <div class="flex flex-col gap-6">
+      <p class="bt-label ink-mute">Range Sliders</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-[900px]">
+        <label class="block">
+          <span class="type-h5 block mb-4 ink-primary">Loan amount</span>
+          <input class="range" type="range" min="0" max="100" value="40" step="1" aria-label="Loan amount" style="--range-fill: 40%" />
+        </label>
+        <label class="block">
+          <span class="type-h5 block mb-4 ink-primary">Tenor</span>
+          <input class="range" type="range" min="0" max="100" value="70" step="1" aria-label="Tenor" style="--range-fill: 70%" />
+        </label>
+      </div>
+    </div>
+
+    <!-- ── File Upload ─────────────────────────────────────────────── -->
+    <div class="flex flex-col gap-6">
+      <p class="bt-label ink-mute">File Upload</p>
+      <div class="max-w-[600px]">
+        <label class="fe-drop block surface-white">
+          <input type="file" multiple />
+          <svg class="mx-auto mb-3 ink-accent" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+          <p class="type-h5 mb-1 ink-primary">Drop files here or click to upload</p>
+          <p class="type-body-sm fe-muted ink-mute">PDF, DOCX, XLSX up to 20 MB each</p>
+        </label>
+      </div>
+    </div>
+
+
+  </div>
+</section>

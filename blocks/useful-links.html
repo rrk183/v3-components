@@ -1,0 +1,43 @@
+<!-- ═══ Useful Links — resource-row grid ═══════════════════════════════════════
+     A categorized resources strip for the foot of a page: a ds-eyebrow head
+     over a columned grid of hairline link ROWS. Each row = title, optional
+     .ul-meta line, and a type glyph that says what clicking does:
+     arrow = page, download = PDF (meta carries "PDF · size"), up-right =
+     external (meta carries the domain). Optional leading .icon-tile is-sm
+     mark — icons ALL-OR-NONE per instance (mixed rows misalign titles).
+     Columns: default 3; is-cols-1 / is-cols-2 / is-cols-3 on the root
+     (--ul-cols). Pure markup — NO inline styles, NO IDs, NO inline script.
+     Styled by .cmp-useful-links in ds.css (surface-adaptive .ul-*),
+     reveal-animated by ds.js. -->
+<section class="cmp cmp-useful-links surface-soft" data-animate>
+  <div class="container-ds">
+    <div class="ul-head" data-reveal="up"><span class="ds-eyebrow ink-accent">Useful links</span></div>
+    <div class="ul-grid" data-reveal="up" data-reveal-delay=".06">
+      <a class="ul-item" href="api-banking.html">
+        <span class="ul-body"><span class="ul-title ink-primary">API documentation</span></span>
+        <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="ul-item" href="api-banking.html">
+        <span class="ul-body"><span class="ul-title ink-primary">Sandbox access</span></span>
+        <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="ul-item" href="api-banking.html">
+        <span class="ul-body"><span class="ul-title ink-primary">Get-started guide</span></span>
+        <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="ul-item" href="#" download>
+        <span class="ul-body"><span class="ul-title ink-primary">Service &amp; price guide</span><span class="ul-meta ink-mute">PDF &middot; 2.4 MB</span></span>
+        <svg class="ul-go is-dl ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+      </a>
+      <a class="ul-item" href="#" download>
+        <span class="ul-body"><span class="ul-title ink-primary">Terms of use</span><span class="ul-meta ink-mute">PDF &middot; 640 KB</span></span>
+        <svg class="ul-go is-dl ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+      </a>
+      <a class="ul-item" href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">
+        <span class="ul-body"><span class="ul-title ink-primary">Souq developer portal</span><span class="ul-meta ink-mute">apisouq.emiratesnbd.com</span></span>
+        <svg class="ul-go is-ext ink-mute" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Useful Links ══════════════════════════════════════════════════════ -->

@@ -1,0 +1,369 @@
+<!-- ═══ Site Header — top utility bar + brand nav ════════════════════════════
+     Sticky two-row header. The navy utility bar (segment switcher) stays solid;
+     the brand row is transparent over a dark hero and solidifies to a white bar
+     on scroll — data-behavior="site-header" toggles .is-solid past a small
+     scroll threshold. NO-HERO PAGES: add BOTH class="… is-solid" AND data-solid
+     to this root — the class avoids a transparent flash before JS runs, the
+     attribute makes the recipe keep it. That disables the transparent-over-hero
+     treatment; the bar is permanently solid navy.
+     Inner edges align to the container-ds page gutter. The logo recolours with
+     the header text colour (white over hero → navy when solid) via CSS mask. -->
+<header class="cmp cmp-site-header ish-v4" data-behavior="site-header">
+
+  <!-- Row 1, utility / segment bar (always solid navy) -->
+  <div class="ish-utility">
+    <div class="ish-bar container-ds">
+      <div class="ish-segwrap">
+        <nav class="ish-segments" aria-label="Customer segments">
+          <a href="../personal-home-v3a.html">Personal</a>
+          <a href="#">Priority</a>
+          <a href="#">Private</a>
+          <a href="#">Emirati</a>
+          <a href="#">Business</a>
+          <a href="../cib-home-final.html" class="is-active" aria-current="page">Corporate &amp; institutional</a>
+          <a href="#">Islamic</a>
+          <a href="#">International</a>
+          <a href="#">Premium</a>
+          <a href="#">Innovation</a>
+        </nav>
+        <div class="ish-more-wrap" data-dropdown>
+          <button class="ish-more-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">
+            Our Websites
+          </button>
+          <!-- Two lists, as on the live site: bank websites by COUNTRY (flag +
+               name + the languages that country publishes in) and group entity
+               websites (logo tile + name + languages). The icon slot takes an
+               inline <svg> flag or an <img> logo alike; the entity tiles in
+               assets/images/websites/ are PLACEHOLDERS, drop the real logo in at
+               the same filename and nothing else changes. The name is not a link:
+               the language links are the destinations, so each site offers only
+               the languages it actually has (UK, India and Research: English). -->
+          <div class="ish-more-panel" role="menu" aria-label="Our websites">
+            <div class="ish-col">
+              <h3 class="ish-col-h">Emirates NBD Bank Websites</h3>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#00843D"/><rect y="10.67" width="24" height="5.33" fill="#000"/><rect width="7" height="16" fill="#EF3340"/></svg></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">United Arab Emirates</span>
+                  <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#046A38"/><rect x="4" y="10.5" width="16" height="1.4" rx=".7" fill="#fff"/><path d="M5.5 6.2h13" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">Saudi Arabia</span>
+                  <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#CE1126"/><rect y="10.67" width="24" height="5.33" fill="#000"/><path d="M12 6.2l1.5 2.6h-3z" fill="#C09300"/></svg></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">Egypt</span>
+                  <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="8" fill="#ED2939"/><circle cx="6" cy="4" r="2.6" fill="#fff"/><circle cx="7.4" cy="4" r="2.6" fill="#ED2939"/><circle cx="9.4" cy="2.6" r=".6" fill="#fff"/><circle cx="9.4" cy="5.4" r=".6" fill="#fff"/><circle cx="11" cy="4" r=".6" fill="#fff"/></svg></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">Singapore</span>
+                  <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.3"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.2"/></svg></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">United Kingdom</span>
+                  <span class="ish-site-langs"><a href="#">English</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#FF9933"/><rect y="10.67" width="24" height="5.33" fill="#138808"/><circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width=".9"/></svg></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">India</span>
+                  <span class="ish-site-langs"><a href="#">English</a></span>
+                </span>
+              </div>
+            </div>
+            <div class="ish-col">
+              <h3 class="ish-col-h">Emirates NBD Group Websites</h3>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="../assets/images/websites/enbd-asset-management.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">Emirates NBD Asset Management</span>
+                  <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="../assets/images/websites/enbd-research.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">Emirates NBD Research</span>
+                  <span class="ish-site-langs"><a href="#">English</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="../assets/images/websites/enbd-securities.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">Emirates NBD Securities</span>
+                  <span class="ish-site-langs"><a href="https://www.emiratesnbdsecurities.com/en" target="_blank" rel="noopener">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="https://www.emiratesnbdsecurities.com/ar" target="_blank" rel="noopener" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="../assets/images/websites/enbd-reit.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">ENBD Reit</span>
+                  <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="../assets/images/websites/enbd-ksa-capital.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">KSA Capital</span>
+                  <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="../assets/images/websites/liv.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">Liv.</span>
+                  <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ish-utility-right">
+        <!-- Each utility link may carry an icon TEMPLATE (hidden on desktop; the
+             mobile drawer clones it into its icon bar). Swap icons by editing
+             the span's content, inline <svg>, <img> or an icon-font <i> all work. -->
+        <a class="ish-util-link" href="#"><span class="ish-util-icon" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>About us</a>
+        <a class="ish-util-link" href="#"><span class="ish-util-icon" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13a9 9 0 0 1 18 0"></path><path d="M21 17a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h3z"></path><path d="M3 17a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H3z"></path></svg></span>Customer Care</a>
+        <a class="ish-util-link" href="#"><span class="ish-util-icon" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>ATM &amp; Branches</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2, brand nav (transparent over hero, solidifies on scroll) -->
+  <div class="ish-brand">
+    <div class="ish-bar container-ds">
+      <div class="ish-brand-left">
+        <a class="ish-logo" href="../cib-home-final.html" aria-label="Emirates NBD, home"><span class="ish-logo-img" aria-hidden="true"></span></a>
+        <nav class="ish-menu" aria-label="Primary">
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">Products &amp; Services</button>
+            <div class="ish-panel" role="region" aria-label="Products &amp; Services">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="../assets/images/image-5.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Payments &amp; Trade Finance</h3>
+                  <a href="../payments-trade-finance-v1a.html">Overview</a>
+                  <a href="../payments-v1a.html">Payments</a>
+                  <a href="../trade-supply-chain-finance-v1a.html">Trade &amp; Supply Chain Finance</a>
+                  <a href="../emirates-nbd-pay-v1a.html">Emirates NBD Pay</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Lending</h3>
+                  <a href="../lending-v1a.html">Overview</a>
+                  <a href="../industry-specific-finance-v1a.html">Industry Specific Finance</a>
+                  <a href="../sustainable-finance-v1a.html">Sustainable Finance</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Digital Solutions</h3>
+                  <a href="../digital-solutions-v1a.html">Overview</a>
+                  <a href="../businessonline-x-v2.html">businessONLINE</a>
+                  <a href="../smarttrade-v1a.html">smartTRADE</a>
+                  <a href="../smartscf-v1a.html">smartSCF</a>
+                  <a href="../api-banking-v1a.html">API Banking</a>
+                  <a href="../fx-hub-v2.html">FX Hub</a>
+                  <a href="../payment-tracker-v1a.html">Payment Tracker</a>
+                  <a href="../instant-banking-services-v1a.html">Instant Banking Services</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">Investment Banking</button>
+            <div class="ish-panel" role="region" aria-label="Investment Banking">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="../assets/images/image-1.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Capabilities</h3>
+                  <a href="../investment-banking-v2.html">Investment Banking Overview</a>
+                  <a href="../equity-capital-markets-v1a.html">Equity Capital Markets</a>
+                  <a href="../debt-capital-markets-v1a.html">Debt Capital Markets</a>
+                  <a href="../global-loan-solutions-v1a.html">Global Loan Solutions</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Services</h3>
+                  <a href="../custody-v1a.html">Custody</a>
+                  <a href="../agency-v1a.html">Agency</a>
+                  <a href="../securities-services-v1a.html">Securities Services</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Who we are</h3>
+                  <a href="../our-people-v1a.html">Our People</a>
+                  <a href="../case-study-library-v1a.html">Success Stories</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">Markets</button>
+            <div class="ish-panel" role="region" aria-label="Markets">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="../assets/images/image-2.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Markets</h3>
+                  <a href="../markets-v2.html">Overview</a>
+                  <a href="../fx-hub-v2.html">FX Hub</a>
+                  <a href="../structured-solutions-v2.html">Structured Solutions</a>
+                  <a href="../execution-capabilities-v2.html">Execution Capabilities</a>
+                  <a href="../insights-research.html">Research</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Trading</h3>
+                  <a href="../online-trading-v1a.html">Online Trading</a>
+                  <a href="../margin-trading-v1a.html">Margin Trading</a>
+                  <a href="../institutional-trading-v1a.html">Institutional Trading</a>
+                  <a href="../gcc-market-access-v1a.html">GCC Market Access</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">Islamic Finance</button>
+            <div class="ish-panel" role="region" aria-label="Islamic Finance">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="../assets/images/image-3.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Islamic Finance</h3>
+                  <a href="../islamic-finance.html">Overview</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">Expertise &amp; Partnerships</button>
+            <div class="ish-panel" role="region" aria-label="Expertise &amp; Partnerships">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="../assets/images/image-4.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Our Expertise</h3>
+                  <a href="../our-expertise-partnerships.html">Overview</a>
+                  <a href="../initiatives-and-partners.html">Initiatives &amp; Partners</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Research</h3>
+                  <a href="../insights-research.html">Overview</a>
+                  <a href="#">Economics</a>
+                  <a href="#">Markets</a>
+                  <a href="#">ESG</a>
+                  <a href="#">Forecasts</a>
+                  <a href="../media-library.html">Media</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">Support</button>
+            <div class="ish-panel" role="region" aria-label="Support">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="../assets/images/lending-h1.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Support Centre</h3>
+                  <a href="../support-resources-v2.html">Overview</a>
+                  <a href="../faqs-v2.html">FAQs</a>
+                  <a href="../tutorials-platform-demos-v2.html">Tutorials &amp; Platform Demos</a>
+                  <a href="../fraud-awareness-hub-v2.html">Fraud Awareness</a>
+                  <a href="../support-form-corporate-banking-v2.html">Get Support</a>
+                  <a href="../start-application-corporate-banking-v2.html">Start an Application</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Rates &amp; Charges</h3>
+                  <a href="../form-centre-v2.html">Schedule of Charges</a>
+                  <a href="../form-centre-v2.html">Trade Finance Tariff</a>
+                  <a href="#">Fixed Deposit Rates</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">Useful Links</h3>
+                  <a href="../contact-us-v3.html">Contact Us</a>
+                  <a href="#">Standard Settlement Instructions</a>
+                  <a href="#">Fatwas</a>
+                  <a href="#">Our Capabilities</a>
+                  <a href="../form-centre-v2.html">Form Centre</a>
+                  <a href="../form-centre-v2.html">Key Facts Statement (KFS)</a>
+                  <a href="#">Our Locations</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+      <div class="ish-bar-tools">
+        <button class="ish-lang" type="button" lang="ar">عربي</button>
+        <div class="ish-search-wrap" data-search>
+          <button class="ish-search is-search" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Search">
+          </button>
+          <div class="ish-search-panel" role="region" aria-label="Search">
+            <div class="ish-search-inner container-ds">
+              <form class="ish-search-form" role="search">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input class="ish-search-input" type="search" placeholder="What are you looking for today?" aria-label="Search" />
+              </form>
+              <div class="ish-search-pop">
+                <span class="ish-search-pop-lbl">Popular</span>
+                <a href="../businessonline-x-v2.html">businessONLINE</a><a href="../smarttrade-v1a.html">smartTRADE</a><a href="../trade-supply-chain-finance-v1a.html">Trade Finance</a><a href="../contact-us-v3.html">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ish-login-wrap" data-dropdown>
+            <button class="ish-login is-down" type="button" aria-haspopup="true" aria-expanded="false">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path></svg>
+              <span>Login</span>
+            </button>
+            <div class="ish-dropdown" role="menu" aria-label="Login">
+              <a href="../businessonline-x-v2.html" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg>businessONLINE</a>
+              <a href="#" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Online Banking</a>
+              <a href="#" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>signONLINE</a>
+              <a href="#" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>Brokerage</a>
+            </div>
+          </div>
+      </div>
+      <!-- Mobile-only language toggle, sits in the bar next to search + burger
+           (≤860px) so it isn't hidden behind the menu. Hidden on desktop (the
+           utility-bar language takes over there). -->
+      <button class="ish-lang-m" type="button" lang="ar" aria-label="عربي, switch to Arabic">عربي</button>
+      <!-- Mobile-only hamburger (≤860px), opens the drawer below. ds.js wires
+           it off data-burger / data-drawer and fills the drawer from this nav.
+           Above 860px it is display:none and the search button takes over. -->
+      <button class="ish-burger" type="button" data-burger aria-haspopup="true" aria-expanded="false" aria-controls="ish-drawer-v4" aria-label="Open menu">
+        <span class="ish-burger-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav drawer (≤860px), opened by .ish-burger. The body is populated
+       by ds.js from the primary mega-menus + search above, so it always mirrors
+       this page's actual nav (no second copy of the links to keep in sync). -->
+  <div class="ish-drawer" id="ish-drawer-v4" data-drawer>
+    <div class="ish-drawer-backdrop" data-drawer-close></div>
+    <div class="ish-drawer-panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="ish-drawer-head">
+        <span class="ish-drawer-logo" aria-hidden="true"></span>
+        <button class="ish-drawer-close is-close" type="button" data-drawer-close aria-label="Close menu">
+        </button>
+      </div>
+      <div class="ish-drawer-body"><!-- ds.js fills: search + mega-menu link groups --></div>
+    </div>
+  </div>
+
+</header>
+<!-- ═══ /Site Header ═════════════════════════════════════════════════════════ -->

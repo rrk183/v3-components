@@ -1,0 +1,100 @@
+<!-- ═══ Filter Grid ═════════════════════════════════════════════════════════
+     A filterable card grid — a DEMO of the generic `data-filter` behaviour, not
+     a bespoke component. Filtering is a COMMON DS capability: ANY card grid in
+     ANY block becomes filterable by adding data-attributes — never a page-local
+     script. Here it wraps the cmp-cards KICKER composition; swap in any other
+     cards composition, article cards, a table — the wiring is identical.
+
+     Wiring (all in ds.js behavior "filter", styled by .filter-* utilities in ds.css):
+       • region root ......... data-filter
+       • pill controls ....... button.filter-chip data-filter-key="area"  data-filter-value="markets" aria-pressed
+       • select controls ..... select data-filter-key="region"
+       • reset ............... [data-filter-reset]
+       • live count .......... [data-filter-count]   (gets the visible number)
+       • empty state ......... [data-filter-empty]    (shown when 0 match)
+       • the grid ............ [data-filter-grid]
+       • each item ........... [data-filter-item] + one data-filter-<key> per key
+     Match logic: AND across keys, OR within a key (space/comma list = match-any-token).
+     No IDs, no inline styles, no inline scripting — ds.js owns the behaviour. -->
+<section class="cmp cmp-cards is-cols-3 cards-kicker surface-soft section-y" data-filter data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Explore</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Find the right solution</h2>
+      </div>
+      <p class="type-body measure sh-lead ink-mute" data-reveal="up" data-reveal-delay=".1">Filter by capability or region to narrow the coverage teams to the ones that fit your mandate.</p>
+    </div>
+
+    <div class="filter-bar" data-reveal="up" data-reveal-delay=".14">
+      <div class="filter-chips" role="group" aria-label="Filter by capability">
+        <button type="button" class="filter-chip" data-filter-key="area" data-filter-value="" aria-pressed="true">All</button>
+        <button type="button" class="filter-chip" data-filter-key="area" data-filter-value="markets" aria-pressed="false">Capital Markets</button>
+        <button type="button" class="filter-chip" data-filter-key="area" data-filter-value="lending" aria-pressed="false">Lending</button>
+        <button type="button" class="filter-chip" data-filter-key="area" data-filter-value="advisory" aria-pressed="false">Advisory</button>
+      </div>
+      <div class="filter-selects">
+        <label class="filter-select ink-mute"><span>Region</span>
+          <select data-filter-key="region" aria-label="Filter by region">
+            <option value="">All regions</option>
+            <option value="uae">UAE</option>
+            <option value="gcc">GCC</option>
+            <option value="global">Global</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <p class="filter-count ink-mute" aria-live="polite">Showing <span data-filter-count>6</span> capabilities</p>
+
+    <div class="cd-grid" data-filter-grid role="list">
+      <div class="cd-card card-panel surface-white" role="listitem" data-filter-item data-filter-area="markets" data-filter-region="uae" data-reveal="up">
+        <div class="ds-stack">
+        <span class="type-eyebrow ink-accent">Capital Markets</span>
+        <h3 class="type-h6 ink-primary">Equity capital markets</h3>
+        <p class="type-body-sm ink-mute">IPOs, rights issues and block trades — from readiness through pricing and allocation on regional and international exchanges.</p>
+        </div>
+      </div>
+      <div class="cd-card card-panel surface-white" role="listitem" data-filter-item data-filter-area="markets" data-filter-region="gcc" data-reveal="up">
+        <div class="ds-stack">
+        <span class="type-eyebrow ink-accent">Capital Markets</span>
+        <h3 class="type-h6 ink-primary">Debt capital markets</h3>
+        <p class="type-body-sm ink-mute">Conventional and sukuk issuance across tenors and currencies, with the distribution reach to place paper with the right investors.</p>
+        </div>
+      </div>
+      <div class="cd-card card-panel surface-white" role="listitem" data-filter-item data-filter-area="lending" data-filter-region="global" data-reveal="up">
+        <div class="ds-stack">
+        <span class="type-eyebrow ink-accent">Lending</span>
+        <h3 class="type-h6 ink-primary">Syndicated &amp; leveraged finance</h3>
+        <p class="type-body-sm ink-mute">Underwriting and structuring large facilities, and leading syndicates for the region&rsquo;s biggest borrowers and sponsors.</p>
+        </div>
+      </div>
+      <div class="cd-card card-panel surface-white" role="listitem" data-filter-item data-filter-area="lending" data-filter-region="gcc" data-reveal="up">
+        <div class="ds-stack">
+        <span class="type-eyebrow ink-accent">Lending</span>
+        <h3 class="type-h6 ink-primary">Structured trade finance</h3>
+        <p class="type-body-sm ink-mute">Working-capital and cross-border trade structures that keep goods, documents and cash moving through the supply chain.</p>
+        </div>
+      </div>
+      <div class="cd-card card-panel surface-white" role="listitem" data-filter-item data-filter-area="advisory" data-filter-region="global" data-reveal="up">
+        <div class="ds-stack">
+        <span class="type-eyebrow ink-accent">Advisory</span>
+        <h3 class="type-h6 ink-primary">M&amp;A advisory</h3>
+        <p class="type-body-sm ink-mute">Buy-side and sell-side mandates, valuations and deal execution, with sector specialists who know your market.</p>
+        </div>
+      </div>
+      <div class="cd-card card-panel surface-white" role="listitem" data-filter-item data-filter-area="advisory" data-filter-region="uae" data-reveal="up">
+        <div class="ds-stack">
+        <span class="type-eyebrow ink-accent">Advisory</span>
+        <h3 class="type-h6 ink-primary">Debt advisory &amp; ratings</h3>
+        <p class="type-body-sm ink-mute">Optimising capital structure, arranging financing and guiding first-time and repeat issuers through the rating process.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="filter-empty ink-mute" role="status" data-filter-empty hidden>No capabilities match these filters. <button type="button" class="btn btn-outline" data-filter-reset>Clear filters</button></p>
+
+  </div>
+</section>
+<!-- ═══ /Filter Grid ════════════════════════════════════════════════════════ -->

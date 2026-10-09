@@ -1,0 +1,59 @@
+<!-- ═══ Device Scroll — Desktop ═════════════════════════════════════════════
+     The laptop pins (sticky) and stays put while the feature copy scrolls past
+     it. The on-screen view crossfades as each step arrives — driven by the
+     declarative scroll-story engine (data-anim opacity on each .dvs-media,
+     timed to when its step is centred). Steps are plain flowing content.
+     Device renders are transparent PNGs. Laptop sits on the left. surface-white. -->
+<section class="cmp cmp-device-scroll cmp-device-desktop surface-white" data-animate>
+  <div class="container-ds dvs-head section-head">
+    <div class="ds-stack">
+      <span class="ds-eyebrow ink-accent" data-reveal="up">businessONLINE</span>
+      <h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">The whole group,<br>on one screen.</h2>
+    </div>
+    <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Every account, entity and approval across your group, consolidated into a single live view.</p>
+  </div>
+
+  <div class="dvs" data-behavior="scroll-story" data-scrub-vh="400">
+    <div class="container-ds dvs-grid">
+
+      <!-- Laptop — pinned on the left; screen crossfades as each step is centred -->
+      <div class="dvs-device">
+        <!-- the device — a stack of transparent PNG renders (chrome + screen)
+             that crossfade as each step is centred; pages swap the images.
+             Max width via .dvs-shots (CSS). -->
+        <div class="dvs-shots">
+          <img class="dvs-media" src="assets/images/device/desktop-1.png" alt="" data-anim='{"0-0.14":{"opacity":[1,1]},"0.14-0.19":{"opacity":[1,0]}}' />
+          <img class="dvs-media" src="assets/images/device/desktop-2.png" alt="" data-anim='{"0.14-0.19":{"opacity":[0,1]},"0.48-0.53":{"opacity":[1,0]}}' />
+          <img class="dvs-media" src="assets/images/device/desktop-3.png" alt="" data-anim='{"0.48-0.53":{"opacity":[0,1]},"0.81-0.86":{"opacity":[1,0]}}' />
+          <img class="dvs-media" src="assets/images/device/desktop-4.png" alt="" data-anim='{"0.81-0.86":{"opacity":[0,1]}}' />
+        </div>
+      </div>
+
+      <!-- Steps — plain flowing copy; each fills a viewport so it scrolls past the laptop -->
+      <div class="dvs-steps">
+        <div class="dvs-step">
+          <span class="type-eyebrow ink-accent">01</span>
+          <h3 class="type-h3 ink-primary">Consolidated dashboards</h3>
+          <p class="type-body measure ink-mute" style="--measure: 42ch">Role-based dashboards bring cash, trade and payments into a single configurable view.</p>
+        </div>
+        <div class="dvs-step">
+          <span class="type-eyebrow ink-accent">02</span>
+          <h3 class="type-h3 ink-primary">Build &amp; share reports</h3>
+          <p class="type-body measure ink-mute" style="--measure: 42ch">Interactive analytics across every entity — export, schedule and share with your finance team.</p>
+        </div>
+        <div class="dvs-step">
+          <span class="type-eyebrow ink-accent">03</span>
+          <h3 class="type-h3 ink-primary">Bulk &amp; regulatory payments</h3>
+          <p class="type-body measure ink-mute" style="--measure: 42ch">Process domestic, international and bulk files from one hub with full status tracking.</p>
+        </div>
+        <div class="dvs-step">
+          <span class="type-eyebrow ink-accent">04</span>
+          <h3 class="type-h3 ink-primary">Granular approvals</h3>
+          <p class="type-body measure ink-mute" style="--measure: 42ch">Configure multi-level approval workflows and entitlements down to the user and amount.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Device Scroll — Desktop ═════════════════════════════════════════════ -->

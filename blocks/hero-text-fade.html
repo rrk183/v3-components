@@ -1,0 +1,35 @@
+<!-- ═══ Hero — Scroll Text ══════════════════════════════════════════════════
+     Pinned full-bleed hero whose copy fades out/in across scroll while the
+     background crossfades beneath. Built on the DECLARATIVE scroll-story engine
+     — each caption + background carries its own data-anim keyframes (progress
+     0-1). No bespoke recipe. Per-instance images via data-bg. surface-primary. -->
+<section class="cmp cmp-hero-text-fade surface-primary" data-animate>
+  <div class="sth" data-behavior="scroll-story" data-scrub-vh="340">
+    <div class="sth-stage surface-image">
+      <!-- Crossfading backgrounds (Ken-Burns scale) -->
+      <span class="sth-bg" data-bg="/assets/images/image-2.jpg" data-anim='{"0-0.04":{"opacity":[0,1],"scale":[1.06,1]},"0.30-0.38":{"opacity":[1,0]}}'></span>
+      <span class="sth-bg" data-bg="/assets/images/image-4.jpg" data-anim='{"0.30-0.40":{"opacity":[0,1],"scale":[1.06,1]},"0.62-0.70":{"opacity":[1,0]}}'></span>
+      <span class="sth-bg" data-bg="/assets/images/image-6.jpg" data-anim='{"0.62-0.72":{"opacity":[0,1],"scale":[1.06,1]}}'></span>
+      <div class="ov ov-dark ov-gradient-b ov-70"></div>
+
+      <div class="sth-caps">
+        <div class="sth-cap" data-anim='{"0-0.05":{"opacity":[0,1],"y":[26,0],"blur":[6,0]},"0.28-0.36":{"opacity":[1,0],"y":[0,-26],"blur":[0,6]}}'>
+          <span class="ds-eyebrow ink-white">Trade Finance</span>
+          <h1 class="type-display-lg ink-white">Move capital across<br>180+ markets.</h1>
+          <p class="type-body-lg sth-sub ink-soft">Letters of credit, guarantees and supply-chain finance — fully digital, settled with certainty.</p>
+        </div>
+        <div class="sth-cap" data-anim='{"0.34-0.44":{"opacity":[0,1],"y":[26,0],"blur":[6,0]},"0.60-0.68":{"opacity":[1,0],"y":[0,-26],"blur":[0,6]}}'>
+          <span class="ds-eyebrow ink-white">Cash Management</span>
+          <h2 class="type-display-lg ink-white">See every dirham,<br>across every entity.</h2>
+          <p class="type-body-lg sth-sub ink-soft">Real-time balances and liquidity, consolidated from all your accounts — one source of truth.</p>
+        </div>
+        <div class="sth-cap" data-anim='{"0.66-0.78":{"opacity":[0,1],"y":[26,0],"blur":[6,0]}}'>
+          <span class="ds-eyebrow ink-white">Investment Banking</span>
+          <h2 class="type-display-lg ink-white">Landmark deals,<br>regional depth.</h2>
+          <p class="type-body-lg sth-sub ink-soft">Debt &amp; equity capital markets, M&amp;A advisory and syndicated finance across the MENAT region.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Hero — Scroll Text ══════════════════════════════════════════════════ -->

@@ -1,0 +1,49 @@
+<!-- ═══ Feature Spotlight — large media + tight copy (alternating) ═══════════
+     Params: surface (surface-white|grey|navy…), data-animate (on/off).
+     Pure markup — NO inline styles, NO IDs. Styled by .cmp-feature-spotlight
+     in ds.css, animated by ds.js. Per-instance images via data-bg.
+     Add .fsp-reverse on a row to flip media to the right. -->
+<section class="cmp cmp-feature-spotlight surface-white section-y" data-animate>
+  <div class="container-ds fsp-rows">
+
+    <!-- Media-left spotlight -->
+    <div class="fsp-row">
+      <div class="fsp-media" data-bg="/assets/images/feature-1.jpg" data-reveal="up">
+        <span class="chip rounded-full absolute top-4 start-4">businessONLINE</span>
+      </div>
+      <div class="fsp-body" data-reveal="up" data-reveal-delay=".06">
+        <span class="ds-eyebrow ink-accent">Cash Management</span>
+        <h2 class="type-h2 fsp-title ink-primary">See every dirham, across every entity.</h2>
+        <p class="type-body-lg measure fsp-lead ink-mute">Real-time balances and cash positions consolidated from all your accounts and subsidiaries — one source of truth for the whole group.</p>
+        <ul class="list-check fsp-points">
+          <li class="ink-mute">Multi-bank, multi-currency pooling</li>
+          <li class="ink-mute">Automated sweeping &amp; notional pooling</li>
+          <li class="ink-mute">Live liquidity dashboards</li>
+        </ul>
+        <a href="#" class="btn btn-text btn-lg is-arrow">Explore cash management
+         </a>
+      </div>
+    </div>
+
+    <!-- Media-right spotlight (alternated) -->
+    <div class="fsp-row fsp-reverse">
+      <div class="fsp-media" data-bg="/assets/images/feature-3.jpg" data-reveal="up">
+        <span class="chip rounded-full absolute top-4 start-4">smartTRADE</span>
+      </div>
+      <div class="fsp-body" data-reveal="up" data-reveal-delay=".06">
+        <span class="ds-eyebrow ink-accent">Trade Finance</span>
+        <h2 class="type-h2 fsp-title ink-primary">Letters of credit, without the paperwork.</h2>
+        <p class="type-body-lg measure fsp-lead ink-mute">Issue, amend and track LCs and guarantees end to end — connected to 11,000+ correspondent banks, settled with certainty.</p>
+        <ul class="list-check fsp-points">
+          <li class="ink-mute">Digital issuance &amp; discrepancy alerts</li>
+          <li class="ink-mute">Full lifecycle tracking</li>
+          <li class="ink-mute">ERP &amp; API integration</li>
+        </ul>
+        <a href="#" class="btn btn-text btn-lg is-arrow">Explore smartTRADE
+         </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Feature Spotlight ═══════════════════════════════════════════════════ -->

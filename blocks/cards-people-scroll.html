@@ -1,0 +1,113 @@
+<!-- ═══ Cards — People Scroll (composition of cmp-cards) ═══════════════════
+     Layout mode 3: the SAME cards as Cards — People on the generalized
+     scroll-track recipe — the section pins and the row pans sideways as the
+     page scrolls (data-scroll-outer / data-scroll-wrap / data-track hooks;
+     300vh stage). No IDs; no inline styles beyond --var passing. -->
+<section class="cmp cmp-cards is-hover-zoom cards-people surface-soft" data-animate data-behavior="scroll-track">
+  <div class="cd-scroll-outer" data-scroll-outer>
+    <div class="cd-scroll-pin">
+      <div class="container-ds">
+        <div class="section-head is-split">
+          <div class="ds-stack">
+            <span class="ds-eyebrow ink-accent" data-reveal="up">Leaders</span>
+            <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">The people who set the standard.</h2>
+          </div>
+          <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".1">The senior leaders shaping our equity, debt and advisory practices. Select a profile to read their background.</p>
+        </div>
+      </div>
+      <div class="cd-scroll-wrap" data-scroll-wrap>
+        <div class="cd-track" data-track>
+      <a href="#" class="cd-card" aria-label="Aisha Al Marri, Group Head, ECM and Advisory">
+        <span class="media-frame aspect-[3/4]">
+          <span class="media-cover" data-bg="assets/images/shared/common/ib-ppl-l1.jpg" aria-hidden="true"></span>
+        </span>
+        <div class="pt-4 flex flex-col items-start gap-1">
+          <h3 class="type-h6 ink-primary">Aisha Al Marri</h3>
+          <p class="type-caption ink-mute">Group Head, ECM &amp; Advisory</p>
+          <span class="btn btn-text mt-1 is-arrow">View profile
+           </span>
+        </div>
+      </a>
+      <a href="#" class="cd-card" aria-label="Omar Haddad, Head of Debt Capital Markets">
+        <span class="media-frame aspect-[3/4]">
+          <span class="media-cover" data-bg="assets/images/shared/common/ib-ppl-l2.jpg" aria-hidden="true"></span>
+        </span>
+        <div class="pt-4 flex flex-col items-start gap-1">
+          <h3 class="type-h6 ink-primary">Omar Haddad</h3>
+          <p class="type-caption ink-mute">Head of Debt Capital Markets</p>
+          <span class="btn btn-text mt-1 is-arrow">View profile
+           </span>
+        </div>
+      </a>
+      <a href="#" class="cd-card" aria-label="Sara Iqbal, Co-Head, Global Capital Markets">
+        <span class="media-frame aspect-[3/4]">
+          <span class="media-cover" data-bg="assets/images/shared/common/ib-ppl-l3.jpg" aria-hidden="true"></span>
+        </span>
+        <div class="pt-4 flex flex-col items-start gap-1">
+          <h3 class="type-h6 ink-primary">Sara Iqbal, CFA</h3>
+          <p class="type-caption ink-mute">Co-Head, Global Capital Markets</p>
+          <span class="btn btn-text mt-1 is-arrow">View profile
+           </span>
+        </div>
+      </a>
+      <a href="#" class="cd-card" aria-label="Daniel Cheng, Head of Loan Syndications">
+        <span class="media-frame aspect-[3/4]">
+          <span class="media-cover" data-bg="assets/images/shared/common/ib-ppl-l4.jpg" aria-hidden="true"></span>
+        </span>
+        <div class="pt-4 flex flex-col items-start gap-1">
+          <h3 class="type-h6 ink-primary">Daniel Cheng</h3>
+          <p class="type-caption ink-mute">Head of Loan Syndications</p>
+          <span class="btn btn-text mt-1 is-arrow">View profile
+           </span>
+        </div>
+      </a>
+      <a href="#" class="cd-card" aria-label="Aisha Al Marri, Group Head, ECM and Advisory">
+        <span class="media-frame aspect-[3/4]">
+          <span class="media-cover" data-bg="assets/images/shared/common/ib-ppl-l1.jpg" aria-hidden="true"></span>
+        </span>
+        <div class="pt-4 flex flex-col items-start gap-1">
+          <h3 class="type-h6 ink-primary">Aisha Al Marri</h3>
+          <p class="type-caption ink-mute">Group Head, ECM &amp; Advisory</p>
+          <span class="btn btn-text mt-1 is-arrow">View profile
+           </span>
+        </div>
+      </a>
+      <a href="#" class="cd-card" aria-label="Omar Haddad, Head of Debt Capital Markets">
+        <span class="media-frame aspect-[3/4]">
+          <span class="media-cover" data-bg="assets/images/shared/common/ib-ppl-l2.jpg" aria-hidden="true"></span>
+        </span>
+        <div class="pt-4 flex flex-col items-start gap-1">
+          <h3 class="type-h6 ink-primary">Omar Haddad</h3>
+          <p class="type-caption ink-mute">Head of Debt Capital Markets</p>
+          <span class="btn btn-text mt-1 is-arrow">View profile
+           </span>
+        </div>
+      </a>
+      <a href="#" class="cd-card" aria-label="Sara Iqbal, Co-Head, Global Capital Markets">
+        <span class="media-frame aspect-[3/4]">
+          <span class="media-cover" data-bg="assets/images/shared/common/ib-ppl-l3.jpg" aria-hidden="true"></span>
+        </span>
+        <div class="pt-4 flex flex-col items-start gap-1">
+          <h3 class="type-h6 ink-primary">Sara Iqbal, CFA</h3>
+          <p class="type-caption ink-mute">Co-Head, Global Capital Markets</p>
+          <span class="btn btn-text mt-1 is-arrow">View profile
+           </span>
+        </div>
+      </a>
+      <a href="#" class="cd-card" aria-label="Daniel Cheng, Head of Loan Syndications">
+        <span class="media-frame aspect-[3/4]">
+          <span class="media-cover" data-bg="assets/images/shared/common/ib-ppl-l4.jpg" aria-hidden="true"></span>
+        </span>
+        <div class="pt-4 flex flex-col items-start gap-1">
+          <h3 class="type-h6 ink-primary">Daniel Cheng</h3>
+          <p class="type-caption ink-mute">Head of Loan Syndications</p>
+          <span class="btn btn-text mt-1 is-arrow">View profile
+           </span>
+        </div>
+      </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Cards — People Scroll ═════════════════════════════════════════════ -->
