@@ -501,6 +501,9 @@
 .hf-hero.is-live .hf-track:not(.is-row) .hf-tile--digital { overflow: visible; }
 .hf-hero.is-live .hf-tile--digital .hf-tile__bg, .hf-hero.is-live .hf-tile--digital .hf-tile__chrome { opacity: var(--chrome, 1); }
 .hf-row .hf-slot .cd-card.hf-tile { box-shadow: 0 2px 4px rgba(7, 36, 71, .06), 0 18px 32px -20px rgba(7, 36, 71, .45); }
+/* the Digital solutions card waits invisibly (--chrome 0) while the phone flies in;
+   its shadow fades in with the card so no ghost outline shows on the plate */
+.hf-hero.is-live .hf-row .hf-slot .cd-card.hf-tile--digital { box-shadow: 0 2px 4px rgba(7, 36, 71, calc(.06 * var(--chrome, 1))), 0 18px 32px -20px rgba(7, 36, 71, calc(.45 * var(--chrome, 1))); }
 
 /* hero captions: deeper smoke while live (worst frame 4.5:1) */
 .hf-hero.is-live .hf-hero__cap { background: rgba(10, 20, 36, .8); }

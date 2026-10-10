@@ -1,0 +1,71 @@
+<!-- ═══ Expand Duo ═══════════════════════════════════════════════════════════
+     Two full-bleed photo panels side by side. Hover, focus or tap widens one
+     panel (1.7 : 1), sharpens its photo, fades in its illustrative UI card and
+     opens its paragraph and button; the other narrows to photo, chip and
+     headline. Harvested from the C&IB home trade and markets act
+     (cib-home-final, section 5).
+     Params: surface on the root; the first pane carries .is-active (the one
+     open on arrival); --focus on each photo sets its focal point. The
+     .exd-frag slot is optional: put any small card-panel composition in it,
+     or delete it. Behaviour: recipe expand-duo. From 768px up the panes sit
+     side by side (mirrored in RTL); under 768px they stack, fully open.
+     JS-off / reduced motion: both panes stay equal and fully open. -->
+<section class="cmp cmp-expand-duo surface-white section-y" data-animate data-behavior="expand-duo" aria-label="Trade finance and markets">
+  <div class="container-ds">
+    <div class="exd-row" data-reveal="up">
+
+      <article class="exd-pane media-frame surface-image is-active" data-exd-pane>
+        <img class="media-cover exd-img" src="/assets/images/expand-duo/trade.jpg" alt="" width="1449" height="1086" loading="lazy" decoding="async" style="--focus:50% 50%" />
+        <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass exd-chip">Trade &amp; Supply Chain Finance</span>
+        <div class="exd-frag" role="group" aria-label="Illustrative letter of credit tracking">
+          <div class="card-panel surface-white exd-card">
+            <p class="exd-card-top"><span class="exd-card-title ink-primary">USD 1,850,000 import LC</span><span class="badge badge-sm badge-info">Jebel Ali</span></p>
+            <ol class="exd-steps ink-mute">
+              <li class="is-done">LC issued</li>
+              <li class="is-done">Documents checked</li>
+              <li class="is-now" aria-current="step">Shipped</li>
+              <li>Settled</li>
+            </ol>
+          </div>
+          <p class="exd-tag"><span class="badge badge-sm badge-outline ink-white">Illustrative</span></p>
+        </div>
+        <div class="exd-body">
+          <h2 class="type-h2 exd-h ink-white">Integrated trade finance, end to end.</h2>
+          <div class="exd-more">
+            <div>
+              <p class="type-body exd-p ink-soft">Import, export, guarantees and supply chain finance, matched to how you trade and built to keep your business connected, agile and in control.</p>
+              <a href="#" class="btn btn-accent btn-pill is-arrow exd-cta">Explore Trade Finance</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="exd-pane media-frame surface-image" data-exd-pane>
+        <img class="media-cover exd-img" src="/assets/images/expand-duo/markets.jpg" alt="" width="1449" height="1086" loading="lazy" decoding="async" style="--focus:50% 50%" />
+        <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass exd-chip">Global Markets &amp; Treasury</span>
+        <div class="exd-frag" role="group" aria-label="Illustrative FX trade confirmation">
+          <div class="card-panel surface-white exd-card">
+            <p class="exd-card-top"><span class="exd-card-label ink-mute">EUR / USD</span><span class="badge badge-sm badge-ok">Filled</span></p>
+            <p class="exd-rate ink-primary">1.0842</p>
+            <svg class="exd-spark ink-accent" viewBox="0 0 120 32" aria-hidden="true"><path d="M2 24 L14 20 L24 22 L36 14 L48 17 L60 10 L72 13 L84 7 L96 9 L108 4 L118 6"/></svg>
+            <p class="exd-card-meta ink-mute">EUR 5,000,000 sold, 09:41 GST</p>
+          </div>
+          <p class="exd-tag"><span class="badge badge-sm badge-outline ink-white">Illustrative</span></p>
+        </div>
+        <div class="exd-body">
+          <h2 class="type-h2 exd-h ink-white">Navigate markets with precision and agility.</h2>
+          <div class="exd-more">
+            <div>
+              <p class="type-body exd-p ink-soft">Seamless trading and investing, powered by deep market insight and digital-first execution. Tailored risk management, financing and investment solutions across every major asset class.</p>
+              <a href="#" class="btn btn-accent btn-pill is-arrow exd-cta">Explore Markets &amp; Treasury</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Expand Duo ══════════════════════════════════════════════════════════ -->

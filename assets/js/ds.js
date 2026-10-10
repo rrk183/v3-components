@@ -3032,6 +3032,225 @@ DS.recipe('ib-hero', function (root) {
     try{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){assemble();io.disconnect();}});},{threshold:.2});io.observe(root);}catch(e){assemble();}
   });
 
+  /* inViewFilm — shared by the film recipes (media-chat, film-stats-band).
+     video[data-src] (data-src-m = phone cut, under 768px) loads only when its
+     host reaches the viewport, plays while a quarter of the host is in view
+     and pauses otherwise. The pause button (hidden in markup) appears once
+     the film plays and toggles it; a user pause sticks. Callers skip it under
+     reduced motion, so the poster stays. */
+  function inViewFilm(v, host, btn) {
+    if (!v || !('IntersectionObserver' in window)) return;
+    var userPaused = false, inView = false, label = btn && btn.querySelector('.sr-only');
+    var play = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    // a play() refused while the media was still loading, or while the tab was
+    // hidden, is retried once the film can play / the tab is visible again
+    var resume = function () { if (inView && !userPaused && v.paused && !document.hidden) play(); };
+    v.addEventListener('canplay', resume);
+    document.addEventListener('visibilitychange', resume);
+    var load = function () {
+      if (v.getAttribute('src')) return;
+      var m = v.getAttribute('data-src-m');
+      v.src = (m && window.matchMedia('(max-width: 767px)').matches) ? m : v.getAttribute('data-src');
+    };
+    v.addEventListener('playing', function () { v.classList.add('is-playing'); if (btn) btn.hidden = false; });
+    if (btn) btn.addEventListener('click', function () {
+      userPaused = !userPaused;
+      if (userPaused) v.pause(); else play();
+      btn.classList.toggle('is-pause', !userPaused); btn.classList.toggle('is-play', userPaused);
+      if (label) label.textContent = userPaused ? 'Play video' : 'Pause video';
+    });
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) load();
+        inView = e.intersectionRatio >= 0.25;
+        if (inView) { if (!userPaused) play(); }
+        else if (v.getAttribute('src')) v.pause();
+      });
+    }, { threshold: [0, 0.25] }).observe(host);
+  }
+
+  /* recipe: media-chat — the Media Split, Live Chat block (cmp-media-chat-split).
+     Film: see inViewFilm. Chat: [data-chat-step] items reveal in order on
+     first view; a step holding .mcs-typing shows the typing dots first. The
+     root is armed (steps hidden) only when it can animate, so JS-off /
+     reduced motion show the whole thread and the poster. */
+  DS.recipe('media-chat', function (root) {
+    var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var v = root.querySelector('video[data-src]');
+    if (v) inViewFilm(v, v.closest('.mcs-media') || root, root.querySelector('[data-mcs-pause]'));
+
+    var steps = [].slice.call(root.querySelectorAll('[data-chat-step]'));
+    if (!steps.length) return;
+    root.classList.add('mcs-armed');
+    steps.forEach(function (s) { if (s.querySelector('.mcs-typing')) s.setAttribute('data-typing', ''); });
+    var io = new IntersectionObserver(function (es) {
+      if (!es.some(function (e) { return e.isIntersecting; })) return;
+      io.disconnect();
+      var t = 0;
+      steps.forEach(function (s) {
+        setTimeout(function () { s.classList.add('is-in'); }, t);
+        if (s.hasAttribute('data-typing')) { t += 900; setTimeout(function () { s.removeAttribute('data-typing'); }, t); }
+        t += 800;
+      });
+    }, { threshold: 0.4 });
+    io.observe(root.querySelector('.mcs-chat') || root);
+  });
+
+  /* recipe: expand-duo — the Expand Duo block (cmp-expand-duo). Hover, focus
+     (keyboard users tabbing into a pane's link) or tap opens a pane: it gets
+     .is-active and widens; the other narrows. The root is armed (collapse
+     states on) only when motion is allowed; the CSS applies them from 768px
+     up, so phones, JS-off and reduced motion keep both panes fully open. */
+  DS.recipe('expand-duo', function (root) {
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var panes = [].slice.call(root.querySelectorAll('[data-exd-pane]'));
+    if (panes.length < 2) return;
+    if (!panes.some(function (p) { return p.classList.contains('is-active'); })) panes[0].classList.add('is-active');
+    var open = function (p) { panes.forEach(function (x) { x.classList.toggle('is-active', x === p); }); };
+    panes.forEach(function (p) {
+      p.addEventListener('mouseenter', function () { open(p); });
+      p.addEventListener('focusin', function () { open(p); });
+      p.addEventListener('click', function () { if (!p.classList.contains('is-active')) open(p); });
+    });
+    root.classList.add('exd-armed');
+  });
+
+  /* recipe: film-stats-band — the Film Stats Band block (cmp-film-stats-band).
+     Only the film moves here (see inViewFilm); the figures count up through
+     the runtime's [data-countup] tier. Reduced motion: poster only. */
+  DS.recipe('film-stats-band', function (root) {
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var v = root.querySelector('video[data-src]');
+    if (v) inViewFilm(v, v.closest('.fsb-film') || root, root.querySelector('[data-fsb-pause]'));
+  });
+
+  /* recipe: tabs-desk — the Tabs - Desk reel block (cmp-tabs-desk). Moved here
+     on 2026-10-10 from the block's inline <script> (port of the newer shared
+     assets/js/tabs-desk.js) so instances receive master changes. Chips pick a
+     desk at every size (aria-pressed); with motion on, the pinned track's
+     scroll rolls the reel, photo and desk card. Sets --td-n (desk count, pin
+     length) and --td-hdr (the sticky site header's height, so the pin starts
+     below it). Phones/tablets: the copy and CTAs move after the pinned track.
+     Optional per-desk CTA: chips may carry data-td-href (+ data-td-label,
+     + data-td-target) and the [data-td-cta] link follows the selected desk. Guarded by __td, so it
+     is safe on pages that still load tabs-desk.js. */
+  DS.recipe('tabs-desk', function (root) {
+    if (root.__td) return; root.__td = true;
+    var mqPin = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    var mqMob = window.matchMedia('(max-width: 1023px) and (prefers-reduced-motion: no-preference)');
+    var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+    var track = root.querySelector('.td-track'), reel = root.querySelector('.td-reel');
+    if (!track || !reel) return;
+    var words = [].slice.call(reel.children);
+    var chips = [].slice.call(root.querySelectorAll('[data-td-intent]'));
+    var shots = [].slice.call(root.querySelectorAll('.td-shot'));
+    var facts = [].slice.call(root.querySelectorAll('.td-fact > div'));
+    shots.forEach(function (el) { var u = el.getAttribute('data-bg'); if (u && !el.style.backgroundImage) el.style.backgroundImage = 'url("' + u + '")'; });
+    var n = words.length, cur = -1, cta = root.querySelector('[data-td-cta]');
+    root.style.setProperty('--td-n', n);
+    // the pin starts below whatever part of the site header stays on screen
+    // (the fixed / sticky bar, e.g. .ish-brand), not the whole header block
+    var header = document.querySelector('.cmp-site-header'), bar = null;
+    var setHdr = function () {
+      if (header && !bar) {
+        var els = [header].concat([].slice.call(header.querySelectorAll('*')));
+        for (var k = 0; k < els.length; k++) { if (/fixed|sticky/.test(getComputedStyle(els[k]).position)) { bar = els[k]; break; } }
+      }
+      root.style.setProperty('--td-hdr', (bar ? Math.round(bar.getBoundingClientRect().height) : 0) + 'px');
+    };
+    setHdr();
+    function show(i) {
+      i = clamp(i, 0, n - 1);
+      if (i === cur) return;
+      cur = i;
+      reel.style.setProperty('--i', i);
+      [words, shots, facts].forEach(function (set) { set.forEach(function (el, k) { el.classList.toggle('is-on', k === i); }); });
+      facts.forEach(function (f, k) { if (k === i) f.removeAttribute('aria-hidden'); else f.setAttribute('aria-hidden', 'true'); });
+      chips.forEach(function (c, k) { c.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+      if (cta && chips[i] && chips[i].getAttribute('data-td-href')) {
+        cta.setAttribute('href', chips[i].getAttribute('data-td-href'));
+        if (chips[i].getAttribute('data-td-label')) cta.textContent = chips[i].getAttribute('data-td-label');
+        // data-td-target="_blank" on a chip opens that desk's link in a new tab
+        var tg = chips[i].getAttribute('data-td-target');
+        if (tg) { cta.setAttribute('target', tg); cta.setAttribute('rel', 'noopener'); } else { cta.removeAttribute('target'); cta.removeAttribute('rel'); }
+      }
+    }
+    function progress() {
+      if (!mqPin.matches) return;
+      if (header && !bar) setHdr();
+      var r = track.getBoundingClientRect(), travel = track.offsetHeight - window.innerHeight;
+      if (travel <= 0) return;
+      show(Math.floor(clamp(-r.top / travel, 0, 0.9999) * n));
+    }
+    function jump(i) {
+      if (!mqPin.matches) { show(i); return; }
+      var travel = track.offsetHeight - window.innerHeight;
+      var y = window.pageYOffset + track.getBoundingClientRect().top + ((i + 0.5) / n) * travel;
+      if (window.DS && DS.lenis && DS.lenis.scrollTo) DS.lenis.scrollTo(y); else window.scrollTo({ top: y, behavior: 'smooth' });
+      show(i);
+    }
+    chips.forEach(function (c, k) { c.addEventListener('click', function () { jump(k); }); });
+    var panel = root.querySelector('.td-panel'), copy = root.querySelector('.td-copy');
+    var after = document.createElement('div'); after.className = 'container-ds td-after';
+    track.parentNode.insertBefore(after, track.nextSibling);
+    function place() {
+      if (!panel || !copy) return;
+      if (mqMob.matches) { if (panel.parentNode !== after) after.appendChild(panel); }
+      else if (panel.parentNode !== copy) copy.appendChild(panel);
+    }
+    place();
+    if (mqMob.addEventListener) mqMob.addEventListener('change', function () { place(); progress(); });
+    // the blank is one clipped line: shrink the sentence if the longest desk is wider than the column
+    var sentence = root.querySelector('.td-sentence'), slot = root.querySelector('.td-slot');
+    function fit() {
+      if (!sentence || !slot) return;
+      sentence.style.fontSize = '';
+      var avail = slot.clientWidth, widest = 0;
+      words.forEach(function (w) { widest = Math.max(widest, w.scrollWidth); });
+      if (avail > 0 && widest > avail) sentence.style.fontSize = Math.floor(parseFloat(getComputedStyle(sentence).fontSize) * (avail / widest) * 0.98) + 'px';
+    }
+    fit();
+    window.addEventListener('resize', function () { fit(); setHdr(); progress(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    window.addEventListener('scroll', progress, { passive: true });
+    show(0); progress();
+  });
+
+  /* recipe: app-download — the App Download Panel (cmp-app-download-panel).
+     QR: each [data-qr-os] chip carries data-qr-src / data-qr-alt; a click
+     swaps the [data-qr-img] and sets aria-pressed. Phones: [data-app-link]
+     points at the visitor's own store (data-ios / data-android). Float: the
+     phone and chip bob (.adp-float) while the panel is in view and the tab is
+     visible, never under reduced motion or on a static instance (.is-static).
+     QR and store link work regardless. */
+  DS.recipe('app-download', function (root) {
+    [].forEach.call(root.querySelectorAll('[data-qr]'), function (tile) {
+      var img = tile.querySelector('[data-qr-img]'), btns = [].slice.call(tile.querySelectorAll('[data-qr-os]'));
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          btns.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+          if (img && b.getAttribute('data-qr-src')) { img.src = b.getAttribute('data-qr-src'); img.alt = b.getAttribute('data-qr-alt') || img.alt; }
+        });
+      });
+    });
+    var android = /android/i.test(navigator.userAgent);
+    [].forEach.call(root.querySelectorAll('[data-app-link]'), function (a) {
+      var href = a.getAttribute(android ? 'data-android' : 'data-ios');
+      if (href) a.setAttribute('href', href);
+      a.setAttribute('aria-label', 'Download the app on ' + (android ? 'Google Play' : 'the App Store'));
+    });
+    if (root.classList.contains('is-static') || window.matchMedia('(prefers-reduced-motion:reduce)').matches || !('IntersectionObserver' in window)) return;
+    var inView = false, settled = false;
+    var sync = function () { root.classList.toggle('adp-float', settled && inView && !document.hidden); };
+    new IntersectionObserver(function (es) {
+      inView = es[0].isIntersecting;
+      if (inView && !settled) setTimeout(function () { settled = true; sync(); }, 700);
+      sync();
+    }, { threshold: 0.15 }).observe(root);
+    document.addEventListener('visibilitychange', sync);
+  });
+
   /* recipe: hex-reach-map — builds the reach map's live layer over the supplied
      hex-grid artwork: hexagonal ripple rings, leader lines and flag chips are
      drawn per market from the MARKERS table below. Colours come from CSS

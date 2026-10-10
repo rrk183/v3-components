@@ -269,6 +269,7 @@
     ] },
     { cat: 'Feature Sections', sub: 'Explaining capabilities — media, copy and lists.', items: [
       { name: 'Illustration Split', v4: true, impact: 'supporting', whenToUse: 'Split layout pairing an insight with an illustration.', variants: [{ label: 'Default', slug: 'illustration-split' }, { label: 'Reversed', slug: 'illustration-split-rev' }] },
+      { name: 'Media Split, Live Chat', v4: true, impact: 'statement', reviewed: false, whenToUse: 'A relationship or service promise told with a person: a photo or film card carrying a frosted chat panel that types out one short exchange on first view, beside an eyebrow, two-tone headline, lead, labelled check-list and two buttons. Harvested from the C&IB home relationship act. The film is optional (delete the video for a still); .is-rev flips the columns.', variants: [{ label: 'Default', slug: 'media-chat-split' }], overlays: [] },
       { name: 'Statement + Stats', v4: true, impact: 'statement', whenToUse: 'An about section whose headline fills word-by-word on scroll, with count-up proof stats.', variants: [{ label: 'Default', slug: 'statement-stats' }], overlays: [] },
       { name: 'Synced Slider', v4: true, impact: 'statement', whenToUse: 'Auto-cycling video slider synced to copy.', variants: [{ label: 'Default', slug: 'synced-slider' }] },
       { name: 'Events', v4: true, impact: 'supporting', whenToUse: 'List of events with a featured panel.', variants: [{ label: 'Default', slug: 'events' }] },
@@ -309,6 +310,8 @@
       { name: 'Bento — Spotlight', v4: true, comp: true, bentohover: true, gutter: true, impact: 'showpiece', whenToUse: 'Summarize while featuring one hero tile with a spotlight focus.', variants: [{ label: 'Default', slug: 'bento-spotlight' }] },
       { name: 'Bento — Magazine', v4: true, comp: true, bentohover: true, gutter: true, impact: 'statement', whenToUse: 'Editorial magazine-style mosaic to summarize a topic.', variants: [{ label: 'Default', slug: 'bento-magazine' }] },
       { name: 'Bento — Expand', impact: 'statement', whenToUse: 'Summarize capabilities in tiles that expand for detail.', variants: [{ label: 'Default', slug: 'bento-expand' }] },
+      { name: 'Expand Duo', v4: true, impact: 'statement', reviewed: false, whenToUse: 'Two lines of business side by side as full-bleed photo panels: hover, focus or tap widens one (1.7 : 1), sharpens its photo, fades in an optional illustrative UI card (e.g. an LC tracker, an FX fill) and opens its paragraph and button, while the other narrows to photo, chip and headline. Exactly two panes, no section header. For four or more capabilities use Bento Expand. Harvested from the C&IB home trade and markets act.', variants: [{ label: 'Default', slug: 'expand-duo' }], overlays: [] },
+      { name: 'Bento \u2014 Feature + Research', v4: true, comp: true, impact: 'statement', reviewed: false, whenToUse: 'An asymmetric bento: one large photo feature tile (headline at the top; lead, glass chips and a text link at the bottom) beside a research column with a headline, a claim line, topic badges and two research cards. Use it to pair one flagship line of business with the insight behind it. A cmp-bento composition (shared grid, spans in markup). Harvested from the C&IB home Islamic finance + research act.', variants: [{ label: 'Default', slug: 'bento-research' }], overlays: [] },
     ] },
     { cat: 'Product & Device Showcases', sub: 'Product surfaces shown on real devices.', items: [
       { name: 'Product Showcase', v4: true, reviewed: false, impact: 'statement', whenToUse: 'Highlight a product feature set around a central visual.', variants: [{ label: 'Default', slug: 'product-showcase' }] },
@@ -331,11 +334,13 @@
       { name: 'Stats \u2014 Row', v4: true, comp: true, reviewed: false, cols: true, impact: 'statement', whenToUse: 'Headline metrics with count-up — prove scale fast. A cmp-cards composition: is-divided hairline cells of ds-num figures; Columns axis works like any cards grid.', variants: [{ label: 'Default', slug: 'stats-row' }], overlays: [] },
       { name: 'Stats \u2014 Quad', v4: true, reviewed: false, impact: 'supporting', whenToUse: 'A 2\u00d72 divided grid of ds-num figures with labels \u2014 four proof points as one calm block.', variants: [{ label: 'Default', slug: 'stats-quad' }] },
       { name: 'Stats \u2014 Hero Figure', v4: true, reviewed: false, impact: 'statement', whenToUse: 'ONE giant figure (ds-num is-xl) beside supporting ds-num stats in a divided row \u2014 when a single number IS the story.', variants: [{ label: 'Default', slug: 'stats-hero-figure' }] },
+      { name: 'Film Stats Band', v4: true, reviewed: false, impact: 'showpiece', whenToUse: 'A mid-page proof beat: one tall rounded film card (looping film over a poster, optional) with a headline, lead and outline button at the bottom, then a hairline and 4 count-up figures with labels (4 across from 1024px, 2 x 2 below). Use it for a track record that deserves cinema, such as landmark deals; for plain figures on a ground use Stats Row. Harvested from the C&IB home investment banking act.', variants: [{ label: 'Default', slug: 'film-stats-band' }], overlays: [] },
       { name: 'Fact Grid', v4: true, reviewed: false, cols: true, colsOpts: 'wall', mcols: true, impact: 'supporting', whenToUse: 'A hairline grid of compact typographic fact cells (eyebrow \u00b7 title \u00b7 value \u00b7 meta) \u2014 the FACTS are content; deals are the demo. 5-up by default; Columns 3/4/5 + Mobile columns 1/2 axes. For the logo-card wall use Cards \u2014 Tombstones.', variants: [{ label: 'Deals', slug: 'fact-grid' }] },
     ] },
     { cat: 'CTA & Banners', sub: 'Conversion moments and promotional bands.', items: [
       { name: 'CTA Marquee', v4: true, mspeed: true, impact: 'statement', whenToUse: 'Bold scrolling marquee call-to-action band.', variants: [{ label: 'Default', slug: 'cta-marquee' }] },
       { name: 'Static Banner', impact: 'supporting', whenToUse: 'Simple promotional banner.', variants: [{ label: 'Default', slug: 'static-banner' }] },
+      { name: 'App Download Panel', v4: true, motion: true, btns: true, app: true, impact: 'statement', reviewed: false, whenToUse: 'The closing conversion panel of a page: eyebrow, headline, lead and two buttons, then a "Get the app" row with App Store and Google Play badges and a QR tile (iOS | Android chips swap the code), beside a phone render that overlaps the panel top with a floating status chip. On phones one store button replaces the badges and QR. Harvested from the C&IB home closing act.', variants: [{ label: 'Default', slug: 'app-download-panel' }], overlays: [] },
       { name: 'CTA Band', impact: 'supporting', whenToUse: 'Compact closing call-to-action band.', variants: [{ label: 'Default', slug: 'cta-band' }], overlays: [], align: true },
     ] },
     { cat: 'Tools & Calculators', sub: 'Interactive tools that compute a real answer — not mockups.', items: [
@@ -504,6 +509,8 @@
       if (wmink) { var wc = stage.querySelector('.cmp'); if (wc) wc.classList.add(wmink); }
       if (mcols) { var mc = stage.querySelector('.cmp'); if (mc) { mc.classList.remove('is-m-cols-1', 'is-m-cols-2'); mc.classList.add(mcols); } }
       if (mspeed) { stage.querySelectorAll('.marquee').forEach(function (m) { m.style.setProperty('--marquee-dur', mspeed); }); }
+      var oc = stage.closest('.lib-card');   // block-specific markup options (lib-options.js)
+      if (window.LibOptions && oc) LibOptions.apply(stage, { btns: oc.dataset.btns, motion: oc.dataset.motion, app: oc.dataset.app });
       applyCols(stage, cols);
       applyCta(stage, cta);
       applyCardSurf(stage, cardsurf);
@@ -553,6 +560,10 @@
     if (wmink) params.set('wmink', wmink);
     if (mcols) params.set('mcols', mcols);
     if (mspeed) params.set('mspeed', mspeed);
+    var ocard = stage.closest('.lib-card');
+    if (ocard && ocard.dataset.btns) params.set('btns', ocard.dataset.btns);
+    if (ocard && ocard.dataset.motion) params.set('motion', ocard.dataset.motion);
+    if (ocard && ocard.dataset.app) params.set('app', ocard.dataset.app);
     if (currentTheme()) params.set('theme', currentTheme());
     var vw = DEV_W[dev], devH = 0;
     if (dev === 'foldable') { var cardEl = stage.closest('.lib-card'), fwh = FOLD_WH[(cardEl && cardEl.dataset.fold) || ''] || FOLD_WH['']; vw = fwh[0]; devH = fwh[1]; }
@@ -685,6 +696,9 @@
     var wminkSel = item.wmink ? selectHTML('wmink', WMINKS) : '';
     var mcolsSel = item.mcols ? selectHTML('mcols', MCOLS) : '';
     var mspeedSel = item.mspeed ? selectHTML('mspeed', MSPEEDS) : '';
+    var motionSel = (item.motion && window.LibOptions) ? selectHTML('motion', LibOptions.MOTION) : '';
+    var btnsSel = (item.btns && window.LibOptions) ? selectHTML('btns', LibOptions.BTNS) : '';
+    var appSel = (item.app && window.LibOptions) ? selectHTML('app', LibOptions.APP) : '';
     var colsSel = item.cols ? selectHTML('cols', item.colsOpts === 'wall' ? WALLCOLS : item.colsOpts === 'dir' ? DIRCOLS : item.colsOpts === 'links' ? LINKCOLS : COLS) : '';
     var ctaSel = item.cta ? selectHTML('cta', CTAS) : '';
     var cardSel = item.cardsurf ? selectHTML('cardsurf', CARDSURFS) : '';
@@ -704,7 +718,7 @@
         (item.v4 ? '<span class="lib-tag-new" title="Rebuilt on the v4 atom/composition architecture in the standardization pass">New</span>' : '') +
         (item.legacy ? '<span class="lib-tag-legacy" title="Superseded by a v4 component — updated or retired at the sweep">Legacy</span>' : '') +
         (item.reviewed === false ? '<span class="lib-tag-unreviewed" title="New block — not yet reviewed by the front-end team">Unreviewed</span>' : '') +
-        '<div class="lib-ctrls">' + chips + seg + selectHTML('fold', FOLDS, true) + langSeg + selectHTML('head', HEADS, true) + alignSel + placeSel + malignSel + gutterSel + wminkSel + colsSel + mcolsSel + mspeedSel + ctaSel + hoverSel + cAutoSel + cNavSel + cardSel + cardOvSel + surfaceSel + overlaySel +
+        '<div class="lib-ctrls">' + chips + seg + selectHTML('fold', FOLDS, true) + langSeg + selectHTML('head', HEADS, true) + alignSel + placeSel + malignSel + gutterSel + wminkSel + colsSel + mcolsSel + mspeedSel + motionSel + btnsSel + appSel + ctaSel + hoverSel + cAutoSel + cNavSel + cardSel + cardOvSel + surfaceSel + overlaySel +
           '<button class="lib-btn lib-replay" title="Replay animations">↻</button>' +
           '<button class="lib-btn lib-copy">Copy HTML</button>' +
         '</div>' +

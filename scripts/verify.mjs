@@ -199,7 +199,7 @@ const ALIAS = {
   "acc-faq": "acc", "acc-boxed": "acc",
   "hex-reach-map-stats": "hex-reach-map",
   // cmp-bento compositions (2026-09-01)
-  "bento-photo": "bento", "bento-photo-small": "bento", "bento-spotlight": "bento", "bento-image-cards": "bento", "bento-magazine": "bento", "bento-grid": "bento", "feature-highlight": "bento",   // cmp-hero v4 compositions (2026-09-01)
+  "bento-photo": "bento", "bento-photo-small": "bento", "bento-spotlight": "bento", "bento-image-cards": "bento", "bento-magazine": "bento", "bento-research": "bento", "bento-grid": "bento", "feature-highlight": "bento",   // cmp-hero v4 compositions (2026-09-01)
   "hero-image": "hero", "hero-editorial": "hero", "hero-slides": "hero", "hero-image-slides": "hero", "hero-editorial-slides": "hero",
   "tabs-card": "tabs", "tabs-vertical": "tabs",
   // pattern-kit blocks: root is `cmp <pattern-class>` with no cmp- component class

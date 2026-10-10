@@ -28,11 +28,9 @@
   <script src="assets/js/gate.js"></script>
   <link rel="stylesheet" href="assets/css/fonts.css" />
   <link rel="stylesheet" href="assets/css/ds.css?v=261195" />
-<link rel="stylesheet" href="assets/css/tabs-desk.css" />
   <script src="assets/js/tailwind.cdn.js"></script>
   <script src="assets/js/ds-tailwind-config.js"></script>
   <script defer src="assets/js/ds.js?v=261195"></script>
-<script defer src="assets/js/tabs-desk.js"></script>
 <!-- Structured data: WebPage + publishing Organization. Built only from facts
        already on the page; no breadcrumb markup by design. URLs reuse the og:url
        origin; update the origin alongside og:url/canonical before shipping. -->
@@ -741,20 +739,23 @@
     </div>
   </section>
 
-  <!-- ═══ The full picture: Tabs - Desk reel (cmp-tabs-desk) ═══════════════════
-       Was the coverflow carousel; same four solutions, copy and images. Styles
-       and script are shared (assets/css/tabs-desk.css, assets/js/tabs-desk.js).
-       Each chip carries its own link, so the main CTA follows the chosen desk. -->
-  <section class="cmp cmp-tabs-desk surface-soft" data-tabs-desk aria-labelledby="td-full-h">
+  <!-- ═══ The full picture · INSTANCE of master tabs-desk ═══════════════════════
+       Master: blocks/tabs-desk.html (gallery: Tabs · "Tabs - Desk reel").
+       Styling and behaviour come from ds.css / ds.js (recipe tabs-desk), so
+       master changes to them reach this section. Page overrides (content and
+       options only): surface-soft, four solution desks with their copy and
+       staging/ photos, one CTA that follows the chosen desk (data-td-href /
+       data-td-label; Investment Banking opens in a new tab via data-td-target). -->
+  <section class="cmp cmp-tabs-desk surface-soft" data-animate data-behavior="tabs-desk" data-master="tabs-desk" aria-label="The full picture, beyond payments and trade">
   <div class="td-track">
     <div class="td-pin">
       <div class="container-ds td-grid">
         <div class="td-copy">
-          <h2 id="td-full-h" class="type-h5 td-q ink-mute">The full picture, beyond payments and trade.</h2>
-          <p class="type-h1 td-sentence"><span class="ink-primary">One relationship for</span> <span class="td-slot ink-accent" aria-hidden="true"><span class="td-reel"><span class="is-on">lending</span><span>investment banking</span><span>markets</span><span>Islamic finance</span></span></span><span class="sr-only">One relationship for lending, investment banking, markets and Islamic finance.</span></p>
+          <h2 class="type-h5 td-q ink-mute">The full picture, beyond payments and trade.</h2>
+          <p class="type-h1 td-sentence ink-primary"><span class="ink-primary">One relationship for</span> <span class="td-slot ink-accent" aria-hidden="true"><span class="td-reel"><span class="is-on">lending</span><span>investment banking</span><span>markets</span><span>Islamic finance</span></span></span><span class="sr-only">One relationship for lending, investment banking, markets and Islamic finance.</span></p>
           <div class="td-intents" role="group" aria-label="Choose a solution">
             <button type="button" class="chip chip-lg" data-td-intent aria-pressed="true" data-td-href="lending-v1a.html" data-td-label="Explore Lending">Lending</button>
-            <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false" data-td-href="investment-banking-v1a.html" data-td-label="Explore Investment Banking">Investment Banking</button>
+            <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false" data-td-href="investment-banking-v1a.html" data-td-label="Explore Investment Banking" data-td-target="_blank">Investment Banking</button>
             <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false" data-td-href="markets-v2.html" data-td-label="Explore Markets">Markets</button>
             <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false" data-td-href="islamic-finance.html" data-td-label="Explore Islamic Solutions">Islamic Solutions</button>
           </div>

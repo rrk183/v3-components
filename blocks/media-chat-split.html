@@ -1,0 +1,58 @@
+<!-- ═══ Media Split — Live Chat ═════════════════════════════════════════════
+     Split section: a media card on the start side (photo poster + optional
+     film) carrying a frosted chat panel that plays a short conversation when
+     it scrolls into view; copy on the end side (eyebrow, two-tone headline,
+     lead, labelled list-check, two buttons). Harvested from the C&IB home
+     relationship act (cib-home-final, section 3).
+     Params: surface on the root; .is-rev flips the columns; --focus on the
+     poster/film sets the focal point. The film is optional: delete the
+     <video> and the pause button for a still. data-src / data-src-m are the
+     desktop / phone cuts — the recipe loads one only when the card nears the
+     viewport, plays it in view, pauses it out of view, never under reduced
+     motion. Chat steps are [data-chat-step]; a step holding .mcs-typing shows
+     the typing dots first. JS-off / reduced motion: everything is visible. -->
+<section class="cmp cmp-media-chat-split surface-white section-y" data-animate data-behavior="media-chat">
+  <div class="container-ds">
+    <div class="mcs-grid">
+
+      <!-- Media card: poster + film + wash + chat panel -->
+      <div class="mcs-media media-frame" data-reveal="up">
+        <img class="media-cover" src="/assets/images/media-chat-split/relationship.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async" style="--focus:60% 50%" />
+        <video class="media-cover mcs-film" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" style="--focus:60% 50%" data-src="/assets/videos/media-chat-split-720.mp4" data-src-m="/assets/videos/media-chat-split-480.mp4"></video>
+        <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+        <button type="button" class="btn btn-glass btn-icon btn-sm is-pause mcs-pause" data-mcs-pause hidden><span class="sr-only">Pause video</span></button>
+
+        <div class="mcs-chat card-panel surface-glass" role="group" aria-label="Illustrative conversation with a Relationship Manager">
+          <p class="mcs-who type-caption ink-white"><span class="mcs-online" aria-hidden="true"></span>Relationship Manager</p>
+          <div class="mcs-bubble surface-white" data-chat-step>
+            <span class="mcs-typing" aria-hidden="true"><i></i><i></i><i></i></span>
+            <p class="mcs-msg type-body-sm ink-primary">Your <span class="aed"><span class="sr-only">AED </span>50m</span> facility is approved. Shall I walk you through the terms tomorrow at 10?</p>
+          </div>
+          <p class="mcs-reply" data-chat-step><span class="chip chip-glass">Yes, 10 works</span></p>
+          <p class="mcs-tag"><span class="badge badge-sm badge-outline ink-white">Illustrative</span></p>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="mcs-copy">
+        <p class="ds-eyebrow ink-accent" data-reveal="up">Your relationship</p>
+        <h2 class="type-h1 mcs-h ink-primary" data-reveal="up" data-reveal-delay=".06">One relationship. <span class="ink-mute">The whole bank.</span></h2>
+        <p class="type-body-lg mcs-lead ink-mute" data-reveal="up" data-reveal-delay=".12">A single, trusted Global Relationship Manager who understands you, your goals and your priorities, backed by specialists across every discipline.</p>
+        <p class="type-eyebrow mcs-label ink-mute" data-reveal="up" data-reveal-delay=".16">How the relationship works</p>
+        <ul class="list-check mcs-points ink-primary" data-reveal="up" data-reveal-delay=".2">
+          <li>Single point of contact</li>
+          <li>Tailored to your business</li>
+          <li>Backed by experts</li>
+          <li>Built on trust</li>
+          <li>Regionally connected</li>
+        </ul>
+        <div class="mcs-btns" data-reveal="up" data-reveal-delay=".24">
+          <a href="#" class="btn btn-filled btn-pill">Reach your Relationship Manager</a>
+          <a href="#" class="btn btn-outline btn-pill">Talk to us</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Media Split — Live Chat ════════════════════════════════════════════ -->

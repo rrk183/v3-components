@@ -16,3 +16,6 @@ Ported from the C&IB home lending section (`cib-home-final.html` section 6, `hf-
 ## Drift cautions
 - Keep word, chip, shot and fact counts equal.
 - Set `--td-hdr` on `.cmp-tabs-desk` to the page's sticky header height (0 in the library frame, 64 to 68px on C&IB pages).
+
+## Per-desk link (optional)
+Chips may carry `data-td-href` (and `data-td-label`, `data-td-target`); the link marked `data-td-cta` then follows the chosen desk: its href, its label, and whether it opens in a new tab (`data-td-target="_blank"` adds `target` + `rel="noopener"`). Used on payments-trade-finance-v1a, where the Investment Banking desk opens in a new tab.
