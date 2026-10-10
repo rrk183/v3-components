@@ -13,6 +13,7 @@
   <script src="assets/js/ds-tailwind-config.js?v=261193"></script>
   <script src="assets/js/ds-palette.js?v=261193"></script>
   <script src="assets/js/ar-preview.js?v=261193"></script>
+  <script src="assets/js/lib-options.js?v=261193"></script>
   <script defer src="assets/js/ds.js?v=261195"></script>
   <style>html,body{margin:0}</style>
 </head>
@@ -152,6 +153,8 @@
       if(cmp && wmink){ cmp.classList.add(wmink); }
       if(cmp && mcols){ cmp.classList.remove('is-m-cols-1','is-m-cols-2'); cmp.classList.add(mcols); }
       if(mspeed){ root.querySelectorAll('.marquee').forEach(function(m){ m.style.setProperty('--marquee-dur', mspeed); }); }
+      // block-specific markup options (lib-options.js): motion, buttons
+      if(window.LibOptions) LibOptions.apply(root, { btns: P.get('btns'), motion: P.get('motion'), app: P.get('app') });
       // Desktop column count (Columns control — opt-in grid blocks like cards-thumb)
       if(cmp && cols){ cmp.classList.remove('is-cols-5','is-cols-4','is-cols-3','is-cols-2','is-cols-1','is-cols-auto'); cmp.classList.add(cols); }
       // CTA style (CTA control — opt-in card blocks like cards-thumb)

@@ -1,78 +1,21 @@
 <!-- ═══ Tabs - Desk reel (cmp-tabs-desk) ═════════════════════════════════════
-     "With a desk for ____." Ported from cib-home-final.html section 6 (the
-     lending act, hf-ask-*), renamed td-* and made self-contained: scoped
-     <style> + inline <script> that frame.html re-executes; one or many per
-     page. Chips choose at every size (aria-pressed); with motion on, a tall
-     track pins the stage and scroll rolls the reel, photo and desk card.
-     Phones/tablets: the copy and CTAs follow the pin. Reduced motion: no pin,
-     first desk shown, chips still work. Atoms: chip chip-lg, card-panel,
-     type-*, btn. Registered as a SCROLL_SLUG so it renders in the iframe. -->
-<style>
-.cmp-tabs-desk { --td-hdr: 0px; --td-sec: clamp(88px, 9vw, 128px); --td-warm: #f6f4f1; background: #fff; }
-.cmp-tabs-desk .td-track { position: relative; }
-.cmp-tabs-desk .td-pin { padding-block: var(--td-sec); }
-.cmp-tabs-desk .td-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
-.cmp-tabs-desk .td-copy, .cmp-tabs-desk .td-stage { min-width: 0; }
-.cmp-tabs-desk .td-q { margin: 0 0 18px; }
-.cmp-tabs-desk .td-sentence { margin: 0; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; }
-.cmp-tabs-desk .td-sentence > span:not(.sr-only) { display: block; }
-.cmp-tabs-desk .td-slot { height: 1.2em; overflow: hidden; }
-.cmp-tabs-desk .td-reel { display: block; transform: translateY(calc(var(--i, 0) * -1.2em)); transition: transform .7s cubic-bezier(.2, .8, .2, 1); }
-.cmp-tabs-desk .td-reel > span { display: block; height: 1.2em; line-height: 1.2em; white-space: nowrap; transition: opacity .5s ease; opacity: .18; }
-.cmp-tabs-desk .td-reel > span.is-on { opacity: 1; }
-.cmp-tabs-desk .td-intents { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-.cmp-tabs-desk .td-panel { margin-top: 24px; }
-.cmp-tabs-desk .td-panel p { margin: 0 0 22px; max-width: 44ch; }
-.cmp-tabs-desk .td-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
-.cmp-tabs-desk .td-stage { position: relative; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3; background: var(--td-warm); box-shadow: 0 30px 70px -34px rgba(7, 36, 71, .35); }
-.cmp-tabs-desk .td-shot { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: scale(1.06); transition: opacity .8s ease, transform 1.6s cubic-bezier(.2, .8, .2, 1); }
-.cmp-tabs-desk .td-shot.is-on { opacity: 1; transform: scale(1); }
-.cmp-tabs-desk .td-fact { position: absolute; inset-inline-start: 20px; inset-block-end: 20px; max-width: min(340px, calc(100% - 40px)); --card-pad: 16px 20px; display: grid; }
-.cmp-tabs-desk .td-fact > div { grid-area: 1 / 1; opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .5s cubic-bezier(.2, .8, .2, 1); }
-.cmp-tabs-desk .td-fact > div.is-on { opacity: 1; transform: none; transition-delay: .25s; }
-.cmp-tabs-desk .td-fact > div > span { display: block; }
-.cmp-tabs-desk .td-fact-num { margin: 2px 0; }
-@media (min-width: 1024px) {
-  .cmp-tabs-desk .td-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 5vw, 80px); align-items: center; width: 100%; }
-  .cmp-tabs-desk .td-fact { inset-inline-start: 28px; inset-block-end: 28px; }
-}
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-  .cmp-tabs-desk .td-track { height: calc(100vh + 6 * 48vh); }
-  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100vh - var(--td-hdr)); display: flex; align-items: center; padding-block: 24px; }
-  .cmp-tabs-desk .td-stage { aspect-ratio: auto; height: min(calc(100vh - var(--td-hdr) - 96px), 640px); }
-}
-/* phones, foldables, tablets: same reel; the pin holds sentence, chips and photo,
-   the copy and CTAs follow in .td-after (moved there by the script) */
-@media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
-  .cmp-tabs-desk .td-track { height: calc(100svh + 6 * 45svh); }
-  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100svh - var(--td-hdr)); display: flex; padding-block: 24px 20px; }
-  .cmp-tabs-desk .td-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; height: 100%; }
-  .cmp-tabs-desk .td-copy { flex: none; }
-  .cmp-tabs-desk .td-q { margin-bottom: 10px; }
-  .cmp-tabs-desk .td-intents { margin-top: 18px; }
-  .cmp-tabs-desk .td-stage { flex: 1 1 auto; min-height: 0; aspect-ratio: auto; }
-  .cmp-tabs-desk .td-after { padding-bottom: var(--td-sec); }
-  .cmp-tabs-desk .td-after .td-panel { margin-top: 8px; }
-}
-@media (max-width: 640px) {
-  .cmp-tabs-desk .td-stage { aspect-ratio: 4 / 5; }
-  .cmp-tabs-desk .td-fact { inset-inline-start: 12px; inset-block-end: 12px; max-width: calc(100% - 24px); --card-pad: 12px 14px; }
-}
-@media (max-width: 374px) {
-  .cmp-tabs-desk .td-ctas .btn { max-width: 100%; white-space: normal; text-align: center; line-height: 1.25; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .cmp-tabs-desk .td-reel, .cmp-tabs-desk .td-reel > span, .cmp-tabs-desk .td-shot, .cmp-tabs-desk .td-fact > div { transition: none !important; }
-  .cmp-tabs-desk .td-shot { transform: none; }
-}
-</style>
-<section class="cmp cmp-tabs-desk" data-tabs-desk data-behavior="tabs-desk" aria-labelledby="td-h">
+     "With a desk for ____." Ported from cib-home-final.html (the lending act,
+     hf-ask-*), renamed td-*. Chips choose at every size (aria-pressed); with
+     motion on, a tall track pins the stage and scroll rolls the reel, photo
+     and desk card. Phones/tablets: the copy and CTAs follow the pin. Reduced
+     motion: no pin, first desk shown, chips still work. Atoms: chip chip-lg,
+     card-panel, type-*, btn. Styling lives in ds.css (.cmp-tabs-desk) and
+     behaviour in ds.js (recipe tabs-desk) since 2026-10-10, so instances
+     receive master changes. Optional per-desk CTA: data-td-href /
+     data-td-label on chips + data-td-cta on the link. Registered as a
+     SCROLL_SLUG so it renders in the iframe. -->
+<section class="cmp cmp-tabs-desk surface-white" data-animate data-behavior="tabs-desk" aria-label="Corporate lending desks">
   <div class="td-track">
     <div class="td-pin">
       <div class="container-ds td-grid">
         <div class="td-copy">
-          <h2 id="td-h" class="type-h5 td-q ink-mute">Corporate lending, built around your needs.</h2>
-          <p class="type-h1 td-sentence"><span class="ink-primary">With a desk for</span> <span class="td-slot ink-accent" aria-hidden="true"><span class="td-reel"><span class="is-on">aviation</span><span>real estate</span><span>infrastructure</span><span>technology</span><span>manufacturing</span><span>government</span></span></span><span class="sr-only">With 8 industry sector desks.</span></p>
+          <h2 class="type-h5 td-q ink-mute">Corporate lending, built around your needs.</h2>
+          <p class="type-h1 td-sentence ink-primary"><span class="ink-primary">With a desk for</span> <span class="td-slot ink-accent" aria-hidden="true"><span class="td-reel"><span class="is-on">aviation</span><span>real estate</span><span>infrastructure</span><span>technology</span><span>manufacturing</span><span>government</span></span></span><span class="sr-only">With 8 industry sector desks.</span></p>
           <div class="td-intents" role="group" aria-label="Choose a sector desk">
             <button type="button" class="chip chip-lg" data-td-intent aria-pressed="true">Aviation</button>
             <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false">Real estate</button>
@@ -109,75 +52,4 @@
     </div>
   </div>
 </section>
-<script>
-(function () {
-  'use strict';
-  var mqPin = window.matchMedia('(prefers-reduced-motion: no-preference)');
-  var mqMob = window.matchMedia('(max-width: 1023px) and (prefers-reduced-motion: no-preference)');
-  var REDUCED = !mqPin.matches;
-  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-  function bg(el) { var u = el.getAttribute('data-bg'); if (u && !el.style.backgroundImage) el.style.backgroundImage = 'url("' + u + '")'; }
-  function init(root) {
-    if (root.__td) return; root.__td = true;
-    var track = root.querySelector('.td-track');
-    var reel = root.querySelector('.td-reel');
-    var words = [].slice.call(reel.children);
-    var chips = [].slice.call(root.querySelectorAll('[data-td-intent]'));
-    var shots = [].slice.call(root.querySelectorAll('.td-shot'));
-    var facts = [].slice.call(root.querySelectorAll('.td-fact > div'));
-    shots.forEach(bg);
-    var n = words.length, cur = -1;
-    function show(i) {
-      i = clamp(i, 0, n - 1);
-      if (i === cur) return;
-      cur = i;
-      reel.style.setProperty('--i', i);
-      [words, shots, facts].forEach(function (set) { set.forEach(function (el, k) { el.classList.toggle('is-on', k === i); }); });
-      facts.forEach(function (f, k) { if (k === i) f.removeAttribute('aria-hidden'); else f.setAttribute('aria-hidden', 'true'); });
-      chips.forEach(function (c, k) { c.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
-    }
-    function progress() {
-      if (!mqPin.matches) return;
-      var r = track.getBoundingClientRect();
-      var travel = track.offsetHeight - window.innerHeight;
-      if (travel <= 0) return;
-      show(Math.floor(clamp(-r.top / travel, 0, 0.9999) * n));
-    }
-    function jump(i) {
-      if (!mqPin.matches) { show(i); return; }
-      var travel = track.offsetHeight - window.innerHeight;
-      var y = window.pageYOffset + track.getBoundingClientRect().top + ((i + 0.5) / n) * travel;
-      if (window.DS && DS.lenis && DS.lenis.scrollTo) DS.lenis.scrollTo(y); else window.scrollTo({ top: y, behavior: REDUCED ? 'auto' : 'smooth' });
-      show(i);
-    }
-    chips.forEach(function (c, k) { c.addEventListener('click', function () { jump(k); }); });
-    // phones / tablets: only sentence, chips and photo pin; the copy and CTAs follow the scrub
-    var panel = root.querySelector('.td-panel'), copy = root.querySelector('.td-copy');
-    var after = document.createElement('div'); after.className = 'container-ds td-after';
-    track.parentNode.insertBefore(after, track.nextSibling);
-    function place() {
-      if (mqMob.matches) { if (panel.parentNode !== after) after.appendChild(panel); }
-      else if (panel.parentNode !== copy) copy.appendChild(panel);
-    }
-    place();
-    if (mqMob.addEventListener) mqMob.addEventListener('change', function () { place(); progress(); });
-    // the blank is one clipped line: shrink the sentence if the longest desk is wider than the column
-    var sentence = root.querySelector('.td-sentence'), slot = root.querySelector('.td-slot');
-    function fit() {
-      sentence.style.fontSize = '';
-      var avail = slot.clientWidth, widest = 0;
-      words.forEach(function (w) { widest = Math.max(widest, w.scrollWidth); });
-      if (avail > 0 && widest > avail) sentence.style.fontSize = Math.floor(parseFloat(getComputedStyle(sentence).fontSize) * (avail / widest) * 0.98) + 'px';
-    }
-    fit();
-    window.addEventListener('resize', fit);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-    window.addEventListener('scroll', progress, { passive: true });
-    window.addEventListener('resize', progress);
-    show(0); progress();
-  }
-  function boot() { [].forEach.call(document.querySelectorAll('[data-tabs-desk]'), init); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
-})();
-</script>
 <!-- ═══ /Tabs - Desk reel ════════════════════════════════════════════════════ -->

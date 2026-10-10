@@ -1,0 +1,72 @@
+<!-- ═══ Bento — Feature + Research (composition of cmp-bento) ════════════════
+     An asymmetric two-column bento: an 8-wide, 6-tall photo feature tile
+     (headline at the top; lead, glass chips and a text link at the bottom)
+     beside a 4-wide ghost tile that stacks a headline, a claim line, topic
+     badges and two research cards (wide photo, title, line, text link).
+     Harvested from the C&IB home Islamic finance + research act
+     (cib-home-final, section 8).
+     Params: surface on the root. Spans are markup (is-w8 / is-w4,
+     is-t-full); rows size to the research column and the photo tile
+     stretches to match (at least min(80vh, 760px)). From 768 to 1023px the
+     photo tile goes full width and the two cards sit side by side under the
+     intro; under 768px everything stacks. Static: only a gentle zoom on a
+     research card's photo when the card is hovered. No IDs. -->
+<section class="cmp cmp-bento bento-research surface-white section-y" data-animate aria-label="Islamic finance and research">
+  <div class="container-ds">
+    <div class="bn-grid">
+
+      <!-- Feature tile -->
+      <div class="bn-tile is-w8 is-h6 is-t-full surface-image justify-between bnr-feature" data-reveal="up">
+        <img class="media-cover" src="/assets/images/bento-research/islamic-finance.jpg" alt="" width="2000" height="1125" loading="lazy" decoding="async" style="--focus:40% 50%" />
+        <span class="ov ov-primary ov-gradient-t ov-50" aria-hidden="true"></span>
+        <span class="ov ov-primary ov-gradient-b ov-70" aria-hidden="true"></span>
+        <h2 class="type-h1 bnr-feature-h ink-white">Principled finance. <span class="ink-soft">Designed for growth.</span></h2>
+        <div class="bnr-feature-foot">
+          <p class="type-body bnr-feature-p ink-white">Shariah-compliant solutions built for the needs of businesses of every size and ambition, from everyday accounts to trade finance, financing and investment banking, all overseen by our Internal Shariah Supervision Committee.</p>
+          <ul class="bnr-chips" role="list">
+            <li class="chip chip-lg chip-glass">Deposits</li>
+            <li class="chip chip-lg chip-glass">Trade finance</li>
+            <li class="chip chip-lg chip-glass">Financing</li>
+            <li class="chip chip-lg chip-glass">Sukuk &amp; investment banking</li>
+          </ul>
+          <a href="#" class="btn btn-text is-arrow ink-white">Explore Islamic Finance</a>
+        </div>
+      </div>
+
+      <!-- Research column (ghost tile) -->
+      <div class="bn-tile is-ghost is-w4 is-h6 is-t-full bnr-col" data-reveal="up" data-reveal-delay=".08">
+        <div class="bnr-intro">
+          <h2 class="type-h3 bnr-col-h ink-primary">Insight that informs. <span class="ink-mute">Published daily by our research team.</span></h2>
+          <p class="type-body-sm bnr-claim ink-mute"><b class="ink-primary">Widest</b> research coverage in MENA</p>
+          <ul class="bnr-tags" role="list" aria-label="What we cover">
+            <li class="badge badge-lg badge-neutral">Macro</li>
+            <li class="badge badge-lg badge-neutral">Foreign Exchange</li>
+            <li class="badge badge-lg badge-neutral">Rates</li>
+            <li class="badge badge-lg badge-neutral">Fixed Income &amp; Credit</li>
+            <li class="badge badge-lg badge-neutral">Commodities</li>
+            <li class="badge badge-lg badge-neutral">Equities</li>
+            <li class="badge badge-lg badge-neutral">Real Estate</li>
+          </ul>
+        </div>
+        <article class="card-panel surface-mute bnr-card">
+          <div class="media-frame bnr-media"><img class="media-cover" src="/assets/images/bento-research/research-portal.jpg" alt="A laptop showing market charts on a desk by a window overlooking the Burj Khalifa" width="1264" height="848" loading="lazy" decoding="async" style="--focus:50% 74%" /></div>
+          <div class="bnr-text">
+            <h3 class="type-h4 bnr-card-t ink-primary">Daily market briefings</h3>
+            <p class="type-body-sm bnr-card-d ink-mute">FX, rates and commodities commentary from our strategists.</p>
+            <a class="btn btn-text is-arrow ink-accent" href="#">Explore research<span class="sr-only">: daily market briefings</span></a>
+          </div>
+        </article>
+        <article class="card-panel surface-mute bnr-card">
+          <div class="media-frame bnr-media"><img class="media-cover" src="/assets/images/bento-research/specialists.jpg" alt="An Emirati client and a specialist reviewing data on a large curved screen" width="896" height="1200" loading="lazy" decoding="async" style="--focus:30% 40%" /></div>
+          <div class="bnr-text">
+            <h3 class="type-h4 bnr-card-t ink-primary">Economics &amp; forecasts</h3>
+            <p class="type-body-sm bnr-card-d ink-mute">Macro analysis and outlooks for the region and beyond.</p>
+            <a class="btn btn-text is-arrow ink-accent" href="#">Explore research<span class="sr-only">: economics and forecasts</span></a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Bento — Feature + Research ══════════════════════════════════════════ -->

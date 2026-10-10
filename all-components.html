@@ -1146,80 +1146,23 @@
 <!-- ═══ /Tabs — Vertical ════════════════════════════════════════════════════ -->
 
 <!-- ═══ Tabs - Desk reel (cmp-tabs-desk) ═════════════════════════════════════
-     "With a desk for ____." Ported from cib-home-final.html section 6 (the
-     lending act, hf-ask-*), renamed td-* and made self-contained: scoped
-     <style> + inline <script> that frame.html re-executes; one or many per
-     page. Chips choose at every size (aria-pressed); with motion on, a tall
-     track pins the stage and scroll rolls the reel, photo and desk card.
-     Phones/tablets: the copy and CTAs follow the pin. Reduced motion: no pin,
-     first desk shown, chips still work. Atoms: chip chip-lg, card-panel,
-     type-*, btn. Registered as a SCROLL_SLUG so it renders in the iframe. -->
-<style>
-.cmp-tabs-desk { --td-hdr: 0px; --td-sec: clamp(88px, 9vw, 128px); --td-warm: #f6f4f1; background: #fff; }
-.cmp-tabs-desk .td-track { position: relative; }
-.cmp-tabs-desk .td-pin { padding-block: var(--td-sec); }
-.cmp-tabs-desk .td-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
-.cmp-tabs-desk .td-copy, .cmp-tabs-desk .td-stage { min-width: 0; }
-.cmp-tabs-desk .td-q { margin: 0 0 18px; }
-.cmp-tabs-desk .td-sentence { margin: 0; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; }
-.cmp-tabs-desk .td-sentence > span:not(.sr-only) { display: block; }
-.cmp-tabs-desk .td-slot { height: 1.2em; overflow: hidden; }
-.cmp-tabs-desk .td-reel { display: block; transform: translateY(calc(var(--i, 0) * -1.2em)); transition: transform .7s cubic-bezier(.2, .8, .2, 1); }
-.cmp-tabs-desk .td-reel > span { display: block; height: 1.2em; line-height: 1.2em; white-space: nowrap; transition: opacity .5s ease; opacity: .18; }
-.cmp-tabs-desk .td-reel > span.is-on { opacity: 1; }
-.cmp-tabs-desk .td-intents { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-.cmp-tabs-desk .td-panel { margin-top: 24px; }
-.cmp-tabs-desk .td-panel p { margin: 0 0 22px; max-width: 44ch; }
-.cmp-tabs-desk .td-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
-.cmp-tabs-desk .td-stage { position: relative; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3; background: var(--td-warm); box-shadow: 0 30px 70px -34px rgba(7, 36, 71, .35); }
-.cmp-tabs-desk .td-shot { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: scale(1.06); transition: opacity .8s ease, transform 1.6s cubic-bezier(.2, .8, .2, 1); }
-.cmp-tabs-desk .td-shot.is-on { opacity: 1; transform: scale(1); }
-.cmp-tabs-desk .td-fact { position: absolute; inset-inline-start: 20px; inset-block-end: 20px; max-width: min(340px, calc(100% - 40px)); --card-pad: 16px 20px; display: grid; }
-.cmp-tabs-desk .td-fact > div { grid-area: 1 / 1; opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .5s cubic-bezier(.2, .8, .2, 1); }
-.cmp-tabs-desk .td-fact > div.is-on { opacity: 1; transform: none; transition-delay: .25s; }
-.cmp-tabs-desk .td-fact > div > span { display: block; }
-.cmp-tabs-desk .td-fact-num { margin: 2px 0; }
-@media (min-width: 1024px) {
-  .cmp-tabs-desk .td-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 5vw, 80px); align-items: center; width: 100%; }
-  .cmp-tabs-desk .td-fact { inset-inline-start: 28px; inset-block-end: 28px; }
-}
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-  .cmp-tabs-desk .td-track { height: calc(100vh + 6 * 48vh); }
-  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100vh - var(--td-hdr)); display: flex; align-items: center; padding-block: 24px; }
-  .cmp-tabs-desk .td-stage { aspect-ratio: auto; height: min(calc(100vh - var(--td-hdr) - 96px), 640px); }
-}
-/* phones, foldables, tablets: same reel; the pin holds sentence, chips and photo,
-   the copy and CTAs follow in .td-after (moved there by the script) */
-@media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
-  .cmp-tabs-desk .td-track { height: calc(100svh + 6 * 45svh); }
-  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100svh - var(--td-hdr)); display: flex; padding-block: 24px 20px; }
-  .cmp-tabs-desk .td-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; height: 100%; }
-  .cmp-tabs-desk .td-copy { flex: none; }
-  .cmp-tabs-desk .td-q { margin-bottom: 10px; }
-  .cmp-tabs-desk .td-intents { margin-top: 18px; }
-  .cmp-tabs-desk .td-stage { flex: 1 1 auto; min-height: 0; aspect-ratio: auto; }
-  .cmp-tabs-desk .td-after { padding-bottom: var(--td-sec); }
-  .cmp-tabs-desk .td-after .td-panel { margin-top: 8px; }
-}
-@media (max-width: 640px) {
-  .cmp-tabs-desk .td-stage { aspect-ratio: 4 / 5; }
-  .cmp-tabs-desk .td-fact { inset-inline-start: 12px; inset-block-end: 12px; max-width: calc(100% - 24px); --card-pad: 12px 14px; }
-}
-@media (max-width: 374px) {
-  .cmp-tabs-desk .td-ctas .btn { max-width: 100%; white-space: normal; text-align: center; line-height: 1.25; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .cmp-tabs-desk .td-reel, .cmp-tabs-desk .td-reel > span, .cmp-tabs-desk .td-shot, .cmp-tabs-desk .td-fact > div { transition: none !important; }
-  .cmp-tabs-desk .td-shot { transform: none; }
-}
-</style>
-<section class="cmp cmp-tabs-desk" data-tabs-desk data-behavior="tabs-desk" aria-labelledby="td-h">
+     "With a desk for ____." Ported from cib-home-final.html (the lending act,
+     hf-ask-*), renamed td-*. Chips choose at every size (aria-pressed); with
+     motion on, a tall track pins the stage and scroll rolls the reel, photo
+     and desk card. Phones/tablets: the copy and CTAs follow the pin. Reduced
+     motion: no pin, first desk shown, chips still work. Atoms: chip chip-lg,
+     card-panel, type-*, btn. Styling lives in ds.css (.cmp-tabs-desk) and
+     behaviour in ds.js (recipe tabs-desk) since 2026-10-10, so instances
+     receive master changes. Optional per-desk CTA: data-td-href /
+     data-td-label on chips + data-td-cta on the link. Registered as a
+     SCROLL_SLUG so it renders in the iframe. -->
+<section class="cmp cmp-tabs-desk surface-white" data-animate data-behavior="tabs-desk" aria-label="Corporate lending desks">
   <div class="td-track">
     <div class="td-pin">
       <div class="container-ds td-grid">
         <div class="td-copy">
-          <h2 id="td-h" class="type-h5 td-q ink-mute">Corporate lending, built around your needs.</h2>
-          <p class="type-h1 td-sentence"><span class="ink-primary">With a desk for</span> <span class="td-slot ink-accent" aria-hidden="true"><span class="td-reel"><span class="is-on">aviation</span><span>real estate</span><span>infrastructure</span><span>technology</span><span>manufacturing</span><span>government</span></span></span><span class="sr-only">With 8 industry sector desks.</span></p>
+          <h2 class="type-h5 td-q ink-mute">Corporate lending, built around your needs.</h2>
+          <p class="type-h1 td-sentence ink-primary"><span class="ink-primary">With a desk for</span> <span class="td-slot ink-accent" aria-hidden="true"><span class="td-reel"><span class="is-on">aviation</span><span>real estate</span><span>infrastructure</span><span>technology</span><span>manufacturing</span><span>government</span></span></span><span class="sr-only">With 8 industry sector desks.</span></p>
           <div class="td-intents" role="group" aria-label="Choose a sector desk">
             <button type="button" class="chip chip-lg" data-td-intent aria-pressed="true">Aviation</button>
             <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false">Real estate</button>
@@ -1256,77 +1199,6 @@
     </div>
   </div>
 </section>
-<script>
-(function () {
-  'use strict';
-  var mqPin = window.matchMedia('(prefers-reduced-motion: no-preference)');
-  var mqMob = window.matchMedia('(max-width: 1023px) and (prefers-reduced-motion: no-preference)');
-  var REDUCED = !mqPin.matches;
-  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-  function bg(el) { var u = el.getAttribute('data-bg'); if (u && !el.style.backgroundImage) el.style.backgroundImage = 'url("' + u + '")'; }
-  function init(root) {
-    if (root.__td) return; root.__td = true;
-    var track = root.querySelector('.td-track');
-    var reel = root.querySelector('.td-reel');
-    var words = [].slice.call(reel.children);
-    var chips = [].slice.call(root.querySelectorAll('[data-td-intent]'));
-    var shots = [].slice.call(root.querySelectorAll('.td-shot'));
-    var facts = [].slice.call(root.querySelectorAll('.td-fact > div'));
-    shots.forEach(bg);
-    var n = words.length, cur = -1;
-    function show(i) {
-      i = clamp(i, 0, n - 1);
-      if (i === cur) return;
-      cur = i;
-      reel.style.setProperty('--i', i);
-      [words, shots, facts].forEach(function (set) { set.forEach(function (el, k) { el.classList.toggle('is-on', k === i); }); });
-      facts.forEach(function (f, k) { if (k === i) f.removeAttribute('aria-hidden'); else f.setAttribute('aria-hidden', 'true'); });
-      chips.forEach(function (c, k) { c.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
-    }
-    function progress() {
-      if (!mqPin.matches) return;
-      var r = track.getBoundingClientRect();
-      var travel = track.offsetHeight - window.innerHeight;
-      if (travel <= 0) return;
-      show(Math.floor(clamp(-r.top / travel, 0, 0.9999) * n));
-    }
-    function jump(i) {
-      if (!mqPin.matches) { show(i); return; }
-      var travel = track.offsetHeight - window.innerHeight;
-      var y = window.pageYOffset + track.getBoundingClientRect().top + ((i + 0.5) / n) * travel;
-      if (window.DS && DS.lenis && DS.lenis.scrollTo) DS.lenis.scrollTo(y); else window.scrollTo({ top: y, behavior: REDUCED ? 'auto' : 'smooth' });
-      show(i);
-    }
-    chips.forEach(function (c, k) { c.addEventListener('click', function () { jump(k); }); });
-    // phones / tablets: only sentence, chips and photo pin; the copy and CTAs follow the scrub
-    var panel = root.querySelector('.td-panel'), copy = root.querySelector('.td-copy');
-    var after = document.createElement('div'); after.className = 'container-ds td-after';
-    track.parentNode.insertBefore(after, track.nextSibling);
-    function place() {
-      if (mqMob.matches) { if (panel.parentNode !== after) after.appendChild(panel); }
-      else if (panel.parentNode !== copy) copy.appendChild(panel);
-    }
-    place();
-    if (mqMob.addEventListener) mqMob.addEventListener('change', function () { place(); progress(); });
-    // the blank is one clipped line: shrink the sentence if the longest desk is wider than the column
-    var sentence = root.querySelector('.td-sentence'), slot = root.querySelector('.td-slot');
-    function fit() {
-      sentence.style.fontSize = '';
-      var avail = slot.clientWidth, widest = 0;
-      words.forEach(function (w) { widest = Math.max(widest, w.scrollWidth); });
-      if (avail > 0 && widest > avail) sentence.style.fontSize = Math.floor(parseFloat(getComputedStyle(sentence).fontSize) * (avail / widest) * 0.98) + 'px';
-    }
-    fit();
-    window.addEventListener('resize', fit);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-    window.addEventListener('scroll', progress, { passive: true });
-    window.addEventListener('resize', progress);
-    show(0); progress();
-  }
-  function boot() { [].forEach.call(document.querySelectorAll('[data-tabs-desk]'), init); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
-})();
-</script>
 <!-- ═══ /Tabs - Desk reel ════════════════════════════════════════════════════ -->
 
 <!-- ═══ Hero (cmp-hero v4) ═══════════════════════════════════════════════════
@@ -9013,6 +8885,65 @@
 </section>
 <!-- ═══ /Insight Split ══════════════════════════════════════════════════════ -->
 
+<!-- ═══ Media Split — Live Chat ═════════════════════════════════════════════
+     Split section: a media card on the start side (photo poster + optional
+     film) carrying a frosted chat panel that plays a short conversation when
+     it scrolls into view; copy on the end side (eyebrow, two-tone headline,
+     lead, labelled list-check, two buttons). Harvested from the C&IB home
+     relationship act (cib-home-final, section 3).
+     Params: surface on the root; .is-rev flips the columns; --focus on the
+     poster/film sets the focal point. The film is optional: delete the
+     <video> and the pause button for a still. data-src / data-src-m are the
+     desktop / phone cuts — the recipe loads one only when the card nears the
+     viewport, plays it in view, pauses it out of view, never under reduced
+     motion. Chat steps are [data-chat-step]; a step holding .mcs-typing shows
+     the typing dots first. JS-off / reduced motion: everything is visible. -->
+<section class="cmp cmp-media-chat-split surface-white section-y" data-animate data-behavior="media-chat">
+  <div class="container-ds">
+    <div class="mcs-grid">
+
+      <!-- Media card: poster + film + wash + chat panel -->
+      <div class="mcs-media media-frame" data-reveal="up">
+        <img class="media-cover" src="/assets/images/media-chat-split/relationship.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async" style="--focus:60% 50%" />
+        <video class="media-cover mcs-film" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" style="--focus:60% 50%" data-src="/assets/videos/media-chat-split-720.mp4" data-src-m="/assets/videos/media-chat-split-480.mp4"></video>
+        <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+        <button type="button" class="btn btn-glass btn-icon btn-sm is-pause mcs-pause" data-mcs-pause hidden><span class="sr-only">Pause video</span></button>
+
+        <div class="mcs-chat card-panel surface-glass" role="group" aria-label="Illustrative conversation with a Relationship Manager">
+          <p class="mcs-who type-caption ink-white"><span class="mcs-online" aria-hidden="true"></span>Relationship Manager</p>
+          <div class="mcs-bubble surface-white" data-chat-step>
+            <span class="mcs-typing" aria-hidden="true"><i></i><i></i><i></i></span>
+            <p class="mcs-msg type-body-sm ink-primary">Your <span class="aed"><span class="sr-only">AED </span>50m</span> facility is approved. Shall I walk you through the terms tomorrow at 10?</p>
+          </div>
+          <p class="mcs-reply" data-chat-step><span class="chip chip-glass">Yes, 10 works</span></p>
+          <p class="mcs-tag"><span class="badge badge-sm badge-outline ink-white">Illustrative</span></p>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="mcs-copy">
+        <p class="ds-eyebrow ink-accent" data-reveal="up">Your relationship</p>
+        <h2 class="type-h1 mcs-h ink-primary" data-reveal="up" data-reveal-delay=".06">One relationship. <span class="ink-mute">The whole bank.</span></h2>
+        <p class="type-body-lg mcs-lead ink-mute" data-reveal="up" data-reveal-delay=".12">A single, trusted Global Relationship Manager who understands you, your goals and your priorities, backed by specialists across every discipline.</p>
+        <p class="type-eyebrow mcs-label ink-mute" data-reveal="up" data-reveal-delay=".16">How the relationship works</p>
+        <ul class="list-check mcs-points ink-primary" data-reveal="up" data-reveal-delay=".2">
+          <li>Single point of contact</li>
+          <li>Tailored to your business</li>
+          <li>Backed by experts</li>
+          <li>Built on trust</li>
+          <li>Regionally connected</li>
+        </ul>
+        <div class="mcs-btns" data-reveal="up" data-reveal-delay=".24">
+          <a href="#" class="btn btn-filled btn-pill">Reach your Relationship Manager</a>
+          <a href="#" class="btn btn-outline btn-pill">Talk to us</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Media Split — Live Chat ════════════════════════════════════════════ -->
+
 <!-- ═══ About + Stats ═══════════════════════════════════════════════════════
      Two-column "about" section: eyebrow + image + supporting copy on the left,
      a large statement heading and a row of count-up proof stats on the right.
@@ -11528,6 +11459,151 @@
 </section>
 <!-- ═══ /Bento — Expand ═════════════════════════════════════════════════════ -->
 
+<!-- ═══ Expand Duo ═══════════════════════════════════════════════════════════
+     Two full-bleed photo panels side by side. Hover, focus or tap widens one
+     panel (1.7 : 1), sharpens its photo, fades in its illustrative UI card and
+     opens its paragraph and button; the other narrows to photo, chip and
+     headline. Harvested from the C&IB home trade and markets act
+     (cib-home-final, section 5).
+     Params: surface on the root; the first pane carries .is-active (the one
+     open on arrival); --focus on each photo sets its focal point. The
+     .exd-frag slot is optional: put any small card-panel composition in it,
+     or delete it. Behaviour: recipe expand-duo. From 768px up the panes sit
+     side by side (mirrored in RTL); under 768px they stack, fully open.
+     JS-off / reduced motion: both panes stay equal and fully open. -->
+<section class="cmp cmp-expand-duo surface-white section-y" data-animate data-behavior="expand-duo" aria-label="Trade finance and markets">
+  <div class="container-ds">
+    <div class="exd-row" data-reveal="up">
+
+      <article class="exd-pane media-frame surface-image is-active" data-exd-pane>
+        <img class="media-cover exd-img" src="/assets/images/expand-duo/trade.jpg" alt="" width="1449" height="1086" loading="lazy" decoding="async" style="--focus:50% 50%" />
+        <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass exd-chip">Trade &amp; Supply Chain Finance</span>
+        <div class="exd-frag" role="group" aria-label="Illustrative letter of credit tracking">
+          <div class="card-panel surface-white exd-card">
+            <p class="exd-card-top"><span class="exd-card-title ink-primary">USD 1,850,000 import LC</span><span class="badge badge-sm badge-info">Jebel Ali</span></p>
+            <ol class="exd-steps ink-mute">
+              <li class="is-done">LC issued</li>
+              <li class="is-done">Documents checked</li>
+              <li class="is-now" aria-current="step">Shipped</li>
+              <li>Settled</li>
+            </ol>
+          </div>
+          <p class="exd-tag"><span class="badge badge-sm badge-outline ink-white">Illustrative</span></p>
+        </div>
+        <div class="exd-body">
+          <h2 class="type-h2 exd-h ink-white">Integrated trade finance, end to end.</h2>
+          <div class="exd-more">
+            <div>
+              <p class="type-body exd-p ink-soft">Import, export, guarantees and supply chain finance, matched to how you trade and built to keep your business connected, agile and in control.</p>
+              <a href="#" class="btn btn-accent btn-pill is-arrow exd-cta">Explore Trade Finance</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="exd-pane media-frame surface-image" data-exd-pane>
+        <img class="media-cover exd-img" src="/assets/images/expand-duo/markets.jpg" alt="" width="1449" height="1086" loading="lazy" decoding="async" style="--focus:50% 50%" />
+        <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass exd-chip">Global Markets &amp; Treasury</span>
+        <div class="exd-frag" role="group" aria-label="Illustrative FX trade confirmation">
+          <div class="card-panel surface-white exd-card">
+            <p class="exd-card-top"><span class="exd-card-label ink-mute">EUR / USD</span><span class="badge badge-sm badge-ok">Filled</span></p>
+            <p class="exd-rate ink-primary">1.0842</p>
+            <svg class="exd-spark ink-accent" viewBox="0 0 120 32" aria-hidden="true"><path d="M2 24 L14 20 L24 22 L36 14 L48 17 L60 10 L72 13 L84 7 L96 9 L108 4 L118 6"/></svg>
+            <p class="exd-card-meta ink-mute">EUR 5,000,000 sold, 09:41 GST</p>
+          </div>
+          <p class="exd-tag"><span class="badge badge-sm badge-outline ink-white">Illustrative</span></p>
+        </div>
+        <div class="exd-body">
+          <h2 class="type-h2 exd-h ink-white">Navigate markets with precision and agility.</h2>
+          <div class="exd-more">
+            <div>
+              <p class="type-body exd-p ink-soft">Seamless trading and investing, powered by deep market insight and digital-first execution. Tailored risk management, financing and investment solutions across every major asset class.</p>
+              <a href="#" class="btn btn-accent btn-pill is-arrow exd-cta">Explore Markets &amp; Treasury</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Expand Duo ══════════════════════════════════════════════════════════ -->
+
+<!-- ═══ Bento — Feature + Research (composition of cmp-bento) ════════════════
+     An asymmetric two-column bento: an 8-wide, 6-tall photo feature tile
+     (headline at the top; lead, glass chips and a text link at the bottom)
+     beside a 4-wide ghost tile that stacks a headline, a claim line, topic
+     badges and two research cards (wide photo, title, line, text link).
+     Harvested from the C&IB home Islamic finance + research act
+     (cib-home-final, section 8).
+     Params: surface on the root. Spans are markup (is-w8 / is-w4,
+     is-t-full); rows size to the research column and the photo tile
+     stretches to match (at least min(80vh, 760px)). From 768 to 1023px the
+     photo tile goes full width and the two cards sit side by side under the
+     intro; under 768px everything stacks. Static: only a gentle zoom on a
+     research card's photo when the card is hovered. No IDs. -->
+<section class="cmp cmp-bento bento-research surface-white section-y" data-animate aria-label="Islamic finance and research">
+  <div class="container-ds">
+    <div class="bn-grid">
+
+      <!-- Feature tile -->
+      <div class="bn-tile is-w8 is-h6 is-t-full surface-image justify-between bnr-feature" data-reveal="up">
+        <img class="media-cover" src="/assets/images/bento-research/islamic-finance.jpg" alt="" width="2000" height="1125" loading="lazy" decoding="async" style="--focus:40% 50%" />
+        <span class="ov ov-primary ov-gradient-t ov-50" aria-hidden="true"></span>
+        <span class="ov ov-primary ov-gradient-b ov-70" aria-hidden="true"></span>
+        <h2 class="type-h1 bnr-feature-h ink-white">Principled finance. <span class="ink-soft">Designed for growth.</span></h2>
+        <div class="bnr-feature-foot">
+          <p class="type-body bnr-feature-p ink-white">Shariah-compliant solutions built for the needs of businesses of every size and ambition, from everyday accounts to trade finance, financing and investment banking, all overseen by our Internal Shariah Supervision Committee.</p>
+          <ul class="bnr-chips" role="list">
+            <li class="chip chip-lg chip-glass">Deposits</li>
+            <li class="chip chip-lg chip-glass">Trade finance</li>
+            <li class="chip chip-lg chip-glass">Financing</li>
+            <li class="chip chip-lg chip-glass">Sukuk &amp; investment banking</li>
+          </ul>
+          <a href="#" class="btn btn-text is-arrow ink-white">Explore Islamic Finance</a>
+        </div>
+      </div>
+
+      <!-- Research column (ghost tile) -->
+      <div class="bn-tile is-ghost is-w4 is-h6 is-t-full bnr-col" data-reveal="up" data-reveal-delay=".08">
+        <div class="bnr-intro">
+          <h2 class="type-h3 bnr-col-h ink-primary">Insight that informs. <span class="ink-mute">Published daily by our research team.</span></h2>
+          <p class="type-body-sm bnr-claim ink-mute"><b class="ink-primary">Widest</b> research coverage in MENA</p>
+          <ul class="bnr-tags" role="list" aria-label="What we cover">
+            <li class="badge badge-lg badge-neutral">Macro</li>
+            <li class="badge badge-lg badge-neutral">Foreign Exchange</li>
+            <li class="badge badge-lg badge-neutral">Rates</li>
+            <li class="badge badge-lg badge-neutral">Fixed Income &amp; Credit</li>
+            <li class="badge badge-lg badge-neutral">Commodities</li>
+            <li class="badge badge-lg badge-neutral">Equities</li>
+            <li class="badge badge-lg badge-neutral">Real Estate</li>
+          </ul>
+        </div>
+        <article class="card-panel surface-mute bnr-card">
+          <div class="media-frame bnr-media"><img class="media-cover" src="/assets/images/bento-research/research-portal.jpg" alt="A laptop showing market charts on a desk by a window overlooking the Burj Khalifa" width="1264" height="848" loading="lazy" decoding="async" style="--focus:50% 74%" /></div>
+          <div class="bnr-text">
+            <h3 class="type-h4 bnr-card-t ink-primary">Daily market briefings</h3>
+            <p class="type-body-sm bnr-card-d ink-mute">FX, rates and commodities commentary from our strategists.</p>
+            <a class="btn btn-text is-arrow ink-accent" href="#">Explore research<span class="sr-only">: daily market briefings</span></a>
+          </div>
+        </article>
+        <article class="card-panel surface-mute bnr-card">
+          <div class="media-frame bnr-media"><img class="media-cover" src="/assets/images/bento-research/specialists.jpg" alt="An Emirati client and a specialist reviewing data on a large curved screen" width="896" height="1200" loading="lazy" decoding="async" style="--focus:30% 40%" /></div>
+          <div class="bnr-text">
+            <h3 class="type-h4 bnr-card-t ink-primary">Economics &amp; forecasts</h3>
+            <p class="type-body-sm bnr-card-d ink-mute">Macro analysis and outlooks for the region and beyond.</p>
+            <a class="btn btn-text is-arrow ink-accent" href="#">Explore research<span class="sr-only">: economics and forecasts</span></a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /Bento — Feature + Research ══════════════════════════════════════════ -->
+
 <!-- ═══ Product Showcase — credit-card feature highlights ═══════════════════
      Params: surface (surface-primary in original), data-animate (on/off).
      Pure markup — NO inline styles, NO IDs. Glows / float frame live in
@@ -13336,6 +13412,63 @@ if(document.fonts&&document.fonts.ready) document.fonts.ready.then(init); else w
 </section>
 <!-- ═══ /Metrics — Type 2 ═══════════════════════════════════════════════════ -->
 
+<!-- ═══ Film Stats Band ══════════════════════════════════════════════════════
+     A mid-page proof beat: one tall rounded film card, inset from the page
+     edges, with a headline + lead and an outline button at the bottom, then a
+     hairline and a row of count-up figures with labels. Harvested from the
+     C&IB home investment banking act (cib-home-final, section 6).
+     Params: surface on the root (the band itself has no vertical padding, so
+     it sits tight between sections; add section-y-tight for air); --focus on
+     poster and film sets the focal point. The film is optional: delete the
+     <video> and the pause button for a still. data-src / data-src-m are the
+     desktop / phone cuts. Behaviour: recipe film-stats-band (film loads near
+     the viewport, plays in view, pauses out of view; never under reduced
+     motion). Figures count up via the runtime's data-countup; each figure has
+     an sr-only twin for screen readers. Stats: 4 across from 1024px, 2 x 2
+     below. -->
+<section class="cmp cmp-film-stats-band surface-white" data-animate data-behavior="film-stats-band" aria-label="Investment banking track record">
+  <div class="fsb-film media-frame surface-image" data-reveal="up">
+    <img class="media-cover" src="/assets/images/film-stats-band/bell.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" style="--focus:50% 40%" />
+    <video class="media-cover fsb-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" style="--focus:50% 40%" data-src="/assets/videos/film-stats-band-720.mp4" data-src-m="/assets/videos/film-stats-band-480.mp4"></video>
+    <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+    <button type="button" class="btn btn-glass btn-icon btn-sm is-pause fsb-pause" data-fsb-pause hidden><span class="sr-only">Pause video</span></button>
+
+    <div class="fsb-body">
+      <div class="fsb-head">
+        <div class="fsb-copy">
+          <h2 class="type-h1 fsb-h ink-white">Raise capital with the region&rsquo;s leading IPO house.</h2>
+          <p class="type-body fsb-lede ink-soft">From strategic advisory and capital raising to debt and equity capital markets, Emirates NBD Capital helps clients access capital, investors and growth opportunities across regional and international markets.</p>
+        </div>
+        <a href="#" class="btn btn-outline-light btn-pill is-arrow">Explore Emirates NBD Capital</a>
+      </div>
+
+      <ul class="fsb-stats" role="list">
+        <li class="fsb-stat">
+          <span class="sr-only">USD 6.1 billion</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="6.1" data-decimals="1">6.1</span><span class="ds-num-unit">bn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">DEWA IPO, DFM 2022, Joint Bookrunner</span>
+        </li>
+        <li class="fsb-stat">
+          <span class="sr-only">USD 1.0 billion</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="1.0" data-decimals="1">1.0</span><span class="ds-num-unit">bn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">Salik IPO, DFM 2022, Joint Global Coordinator</span>
+        </li>
+        <li class="fsb-stat">
+          <span class="sr-only">USD 2.0 billion</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="2.0" data-decimals="1">2.0</span><span class="ds-num-unit">bn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">talabat IPO, DFM 2024, Joint Global Coordinator</span>
+        </li>
+        <li class="fsb-stat">
+          <span class="sr-only">USD 429 million</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="429" data-decimals="0">429</span><span class="ds-num-unit">mn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">Parkin IPO, DFM 2024, Bookrunner</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Film Stats Band ═════════════════════════════════════════════════════ -->
+
 <!-- ═══ Fact Grid — hairline cells of typographic facts ══════════════════════════════════
      Params: surface (surface-white default), data-animate.
      A hairline grid of deal "tombstones" (type · client · amount · year), 2-up
@@ -13453,6 +13586,71 @@ if(document.fonts&&document.fonts.ready) document.fonts.ready.then(init); else w
   </div>
 </section>
 <!-- ═══ /Static Banner ═══════════════════════════════════════════════════════ -->
+
+<!-- ═══ App Download Panel ═══════════════════════════════════════════════════
+     A closing conversion panel: copy and two buttons on the start side, a
+     "Get the app" row under a hairline (App Store + Google Play badges and a
+     QR tile whose iOS | Android chips swap the code), and a phone render on
+     the end side that overlaps the panel top, with a floating status chip.
+     Harvested from the C&IB home closing act (cib-home-final, section 9).
+     Params: surface on the root (page) and on .adp-panel (the panel ground).
+     QR: each [data-qr-os] chip carries data-qr-src + data-qr-alt. Phones: the
+     badges and QR hide and one [data-app-link] button opens the visitor's own
+     store (data-ios / data-android). Behaviour: recipe app-download (QR swap,
+     store link, a gentle bob of phone and chip while in view; none under
+     reduced motion).
+     OPTIONS. Motion: add .is-static on the root to turn the float off.
+     Buttons: 1 to 3 in .adp-btns, in role order: primary btn-filled,
+     secondary btn-accent, tertiary btn-outline (as built: primary +
+     tertiary). App row: delete .adp-get (badges + QR) and the phone-only
+     .adp-app-btn for a panel without app promotion. Store badges are vendor brand marks: their SVGs keep
+     their own colours. No IDs. -->
+<section class="cmp cmp-app-download-panel surface-white section-y" data-animate data-behavior="app-download" aria-label="Talk to us and get the app">
+  <div class="adp-panel surface-mute" data-reveal="up">
+      <span class="adp-glow" aria-hidden="true"></span>
+
+      <div class="adp-text">
+        <p class="ds-eyebrow ink-accent">Talk to us</p>
+        <h2 class="type-h1 adp-h ink-primary">Banking built for every ambition.</h2>
+        <p class="type-body-lg adp-lead ink-mute">Let&rsquo;s build the right structure for your business, from your first account to your next landmark deal.</p>
+        <p class="type-body adp-line ink-mute">Approve payments, track trade and see every account from your phone.</p>
+        <div class="adp-btns">
+          <a href="#" class="btn btn-filled btn-lg">Contact us</a>
+          <a href="#" class="btn btn-outline btn-lg">Log in to ENBD Business</a>
+          <a href="#" class="btn btn-outline btn-lg is-download adp-app-btn" data-app-link data-ios="#" data-android="#">Download the app</a>
+        </div>
+        <div class="adp-get">
+          <p class="adp-get-h ink-primary">Get the app</p>
+          <div class="adp-stores">
+            <a href="#" class="adp-store is-dark" aria-label="Download ENBD Business on the App Store">
+              <svg class="adp-store-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.09l-.02-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              <span class="adp-store-tx"><span class="adp-store-k">Download on the</span><span class="adp-store-b">App Store</span></span>
+            </a>
+            <a href="#" class="adp-store surface-white" aria-label="Get ENBD Business on Google Play">
+              <svg class="adp-store-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#00A0FF" d="M3.6 2.3c-.3.3-.5.7-.5 1.3v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.1v-.2L3.7 2.2l-.1.1z"/><path fill="#FFCE00" d="M16.3 15.4 13 12.1v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2-.1.1z"/><path fill="#FF3A44" d="M16.4 15.3 13 12 3.6 21.7c.4.4 1 .4 1.7.1l11.1-6.5z"/><path fill="#00E676" d="M16.4 8.7 5.3 2.2c-.7-.4-1.3-.3-1.7.1L13 12l3.4-3.3z"/></svg>
+              <span class="adp-store-tx"><span class="adp-store-k">Get it on</span><span class="adp-store-b">Google Play</span></span>
+            </a>
+          </div>
+          <figure class="adp-qr card-panel surface-white" data-qr>
+            <img src="/assets/images/app-download-panel/qr-appstore.svg" alt="QR code to download ENBD Business from the App Store" width="96" height="96" loading="lazy" decoding="async" data-qr-img />
+            <figcaption>
+              <span class="adp-qr-t ink-primary">Scan to download</span>
+              <span class="adp-qr-seg" role="group" aria-label="Choose your phone">
+                <button type="button" class="chip" aria-pressed="true" data-qr-os data-qr-src="/assets/images/app-download-panel/qr-appstore.svg" data-qr-alt="QR code to download ENBD Business from the App Store">iOS</button>
+                <button type="button" class="chip" aria-pressed="false" data-qr-os data-qr-src="/assets/images/app-download-panel/qr-googleplay.svg" data-qr-alt="QR code to download ENBD Business from Google Play">Android</button>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="adp-device">
+        <img class="adp-phone" src="/assets/images/app-download-panel/phone.png" alt="ENBD Business app on a phone, showing the home screen with payment actions and portfolio summary" width="1100" height="1302" loading="lazy" decoding="async" />
+        <p class="adp-chip card-panel surface-white"><span class="ink-primary">Pending actions</span> <span class="badge badge-danger">6</span></p>
+      </div>
+    </div>
+</section>
+<!-- ═══ /App Download Panel ══════════════════════════════════════════════════ -->
 
 <!-- ═══ CTA Band ═══════════════════════════════════════════════════════════════
      Centred call-to-action band on a navy surface: eyebrow + big headline + lead

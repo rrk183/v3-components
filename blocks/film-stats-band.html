@@ -1,0 +1,56 @@
+<!-- ═══ Film Stats Band ══════════════════════════════════════════════════════
+     A mid-page proof beat: one tall rounded film card, inset from the page
+     edges, with a headline + lead and an outline button at the bottom, then a
+     hairline and a row of count-up figures with labels. Harvested from the
+     C&IB home investment banking act (cib-home-final, section 6).
+     Params: surface on the root (the band itself has no vertical padding, so
+     it sits tight between sections; add section-y-tight for air); --focus on
+     poster and film sets the focal point. The film is optional: delete the
+     <video> and the pause button for a still. data-src / data-src-m are the
+     desktop / phone cuts. Behaviour: recipe film-stats-band (film loads near
+     the viewport, plays in view, pauses out of view; never under reduced
+     motion). Figures count up via the runtime's data-countup; each figure has
+     an sr-only twin for screen readers. Stats: 4 across from 1024px, 2 x 2
+     below. -->
+<section class="cmp cmp-film-stats-band surface-white" data-animate data-behavior="film-stats-band" aria-label="Investment banking track record">
+  <div class="fsb-film media-frame surface-image" data-reveal="up">
+    <img class="media-cover" src="/assets/images/film-stats-band/bell.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" style="--focus:50% 40%" />
+    <video class="media-cover fsb-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" style="--focus:50% 40%" data-src="/assets/videos/film-stats-band-720.mp4" data-src-m="/assets/videos/film-stats-band-480.mp4"></video>
+    <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+    <button type="button" class="btn btn-glass btn-icon btn-sm is-pause fsb-pause" data-fsb-pause hidden><span class="sr-only">Pause video</span></button>
+
+    <div class="fsb-body">
+      <div class="fsb-head">
+        <div class="fsb-copy">
+          <h2 class="type-h1 fsb-h ink-white">Raise capital with the region&rsquo;s leading IPO house.</h2>
+          <p class="type-body fsb-lede ink-soft">From strategic advisory and capital raising to debt and equity capital markets, Emirates NBD Capital helps clients access capital, investors and growth opportunities across regional and international markets.</p>
+        </div>
+        <a href="#" class="btn btn-outline-light btn-pill is-arrow">Explore Emirates NBD Capital</a>
+      </div>
+
+      <ul class="fsb-stats" role="list">
+        <li class="fsb-stat">
+          <span class="sr-only">USD 6.1 billion</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="6.1" data-decimals="1">6.1</span><span class="ds-num-unit">bn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">DEWA IPO, DFM 2022, Joint Bookrunner</span>
+        </li>
+        <li class="fsb-stat">
+          <span class="sr-only">USD 1.0 billion</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="1.0" data-decimals="1">1.0</span><span class="ds-num-unit">bn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">Salik IPO, DFM 2022, Joint Global Coordinator</span>
+        </li>
+        <li class="fsb-stat">
+          <span class="sr-only">USD 2.0 billion</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="2.0" data-decimals="1">2.0</span><span class="ds-num-unit">bn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">talabat IPO, DFM 2024, Joint Global Coordinator</span>
+        </li>
+        <li class="fsb-stat">
+          <span class="sr-only">USD 429 million</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="429" data-decimals="0">429</span><span class="ds-num-unit">mn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">Parkin IPO, DFM 2024, Bookrunner</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Film Stats Band ═════════════════════════════════════════════════════ -->
