@@ -31,14 +31,14 @@
 <script defer src="assets/js/gate-config.js"></script>
 <script defer src="assets/js/gate.js"></script>
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds-cib-v6-base.css" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
 <link rel="stylesheet" href="assets/css/cib-home-flow.css" />
 <link rel="stylesheet" href="assets/css/global-reach.css" />
 <!-- final-v2: stakeholder content restored from cib-v4.html; new blocks styled here only -->
 <link rel="stylesheet" href="assets/css/cib-home-final-v2.css" />
 <script defer src="assets/js/tailwind.cdn.js"></script>
 <script defer src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds-cib-v6-base.js"></script>
+<script defer src="assets/js/ds.js?v=261195"></script>
 <script src="assets/js/cib-home-flow.js"></script>
 <script defer src="assets/js/global-reach.js"></script>
 <script type="application/ld+json">
@@ -551,7 +551,7 @@
           </a>
         </div>
         <div class="hf-slot" data-hf-tile>
-          <a href="investment-banking-v1a.html" class="cd-card card-media justify-end surface-image hf-tile">
+          <a href="investment-banking-v1a.html" class="cd-card card-media justify-end surface-image hf-tile" target="_blank" rel="noopener">
             <span class="media-cover" data-bg="staging/cib-home-final/ci-cap-investment.png" aria-hidden="true"></span>
             <span class="ov ov-gradient-b ov-90" aria-hidden="true"></span>
             <span class="chip chip-glass rounded-full absolute top-4 start-4 z-10">Investment banking</span>
@@ -599,7 +599,7 @@
 
 <!-- final-v2: Financial strength band removed (Ram, 2026-10-02) -->
 <!-- ═══ 2. NETWORK FILM · scroll-scrubbed image sequence ═══════════════════
-     DS scroll-frames recipe (ds-cib-v6-base.js), used as-is. The film's text
+     DS scroll-frames recipe (ds.js), used as-is. The film's text
      is baked into the frames, so the same words are real DOM in the sr-only
      block. cib-home-flow.js swaps data-path / data-scrub-vh to the mobile
      sequence before the recipe initialises, and removes data-behavior under
@@ -654,44 +654,52 @@
   <!-- final-v2: network coda removed (Ram, 2026-10-02) -->
 </section>
 
-<!-- ═══ 3. RELATIONSHIP · film card left + pillars list right ══════════════
-     Pillars: V2's five relationship pillars, used as list items. -->
-<section class="hf-rel" aria-labelledby="rel-h">
-  <div class="hf-rel__grid">
-    <div class="hf-film hf-film--rel" data-hf-band>
-      <div class="hf-film__media" data-parallax="20">
-        <img class="hf-film__poster" src="staging/cib-home-final/first-relationship.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async" />
-        <video class="hf-film__video" muted playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" data-hf-video data-once="0,9999" data-src="staging/cib-home-final/relationship-720.mp4" data-src-m="staging/cib-home-final/relationship-480.mp4"></video>
-      </div>
-      <span class="hf-film__scrim hf-film__scrim--chat" aria-hidden="true"></span>
-      <button type="button" class="btn btn-glass btn-icon btn-sm is-pause hf-pause" data-hf-pause hidden><span class="sr-only">Pause video</span></button>
-      <div class="hf-chat card-panel surface-glass" data-seq aria-label="Illustrative conversation with a Relationship Manager" role="group">
-        <p class="hf-chat__who"><span class="hf-chat__online" aria-hidden="true"></span>Relationship Manager</p>
-        <div class="hf-chat__bubble hf-seq">
-          <span class="hf-chat__typing" aria-hidden="true"><i></i><i></i><i></i></span>
-          <p class="hf-chat__msg">Your AED 50m facility is approved. Shall I walk you through the terms tomorrow at 10?</p>
+<!-- ═══ 3. RELATIONSHIP · INSTANCE of master media-chat-split ═════════════════
+     Master: blocks/media-chat-split.html (gallery: Feature Sections ·
+     "Media Split, Live Chat"). Styling and behaviour come from ds.css / ds.js,
+     so master changes to them reach this section. Page overrides (content
+     only): button links, staging/ media paths. Do not restyle it here. -->
+<section class="cmp cmp-media-chat-split surface-white section-y" data-animate data-behavior="media-chat" data-master="media-chat-split">
+  <div class="container-ds">
+    <div class="mcs-grid">
+
+      <!-- Media card: poster + film + wash + chat panel -->
+      <div class="mcs-media media-frame" data-reveal="up">
+        <img class="media-cover" src="staging/cib-home-final/first-relationship.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async" style="--focus:60% 50%" />
+        <video class="media-cover mcs-film" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" style="--focus:60% 50%" data-src="staging/cib-home-final/relationship-720.mp4" data-src-m="staging/cib-home-final/relationship-480.mp4"></video>
+        <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+        <button type="button" class="btn btn-glass btn-icon btn-sm is-pause mcs-pause" data-mcs-pause hidden><span class="sr-only">Pause video</span></button>
+
+        <div class="mcs-chat card-panel surface-glass" role="group" aria-label="Illustrative conversation with a Relationship Manager">
+          <p class="mcs-who type-caption ink-white"><span class="mcs-online" aria-hidden="true"></span>Relationship Manager</p>
+          <div class="mcs-bubble surface-white" data-chat-step>
+            <span class="mcs-typing" aria-hidden="true"><i></i><i></i><i></i></span>
+            <p class="mcs-msg type-body-sm ink-primary">Your <span class="aed"><span class="sr-only">AED </span>50m</span> facility is approved. Shall I walk you through the terms tomorrow at 10?</p>
+          </div>
+          <p class="mcs-reply" data-chat-step><span class="chip chip-glass">Yes, 10 works</span></p>
+          <p class="mcs-tag"><span class="badge badge-sm badge-outline ink-white">Illustrative</span></p>
         </div>
-        <p class="hf-chat__reply hf-seq"><span class="chip chip-glass">Yes, 10 works</span></p>
-        <p class="hf-chat__tag"><span class="badge badge-sm badge-outline">Illustrative</span></p>
       </div>
-    </div>
-    <div class="hf-rel__text">
-      <p class="ds-eyebrow ink-accent hf-eyebrow">Your relationship</p>
-      <!-- copy: V4 heading and lede (stakeholder content) -->
-      <h2 id="rel-h" class="hf-h">One relationship. <span class="hf-h__2">The whole bank.</span></h2>
-      <p class="hf-body">A single, trusted Global Relationship Manager who understands you, your goals and your priorities, backed by specialists across every discipline.</p>
-      <p class="fv-label">How the relationship works</p>
-      <ul class="list-check hf-pillars">
-        <li>Single point of contact</li>
-        <li>Tailored to your business</li>
-        <li>Backed by experts</li>
-        <li>Built on trust</li>
-        <li>Regionally connected</li>
-      </ul>
-      <div class="hf-btns">
-        <a href="contact-us-v3.html" class="btn btn-filled btn-pill">Reach your Relationship Manager</a>
-        <a href="contact-us-v3.html" class="btn btn-outline btn-pill">Talk to us</a>
+
+      <!-- Copy -->
+      <div class="mcs-copy">
+        <p class="ds-eyebrow ink-accent" data-reveal="up">Your relationship</p>
+        <h2 class="type-h1 mcs-h ink-primary" data-reveal="up" data-reveal-delay=".06">One relationship. <span class="ink-mute">The whole bank.</span></h2>
+        <p class="type-body-lg mcs-lead ink-mute" data-reveal="up" data-reveal-delay=".12">A single, trusted Global Relationship Manager who understands you, your goals and your priorities, backed by specialists across every discipline.</p>
+        <p class="type-eyebrow mcs-label ink-mute" data-reveal="up" data-reveal-delay=".16">How the relationship works</p>
+        <ul class="list-check mcs-points ink-primary" data-reveal="up" data-reveal-delay=".2">
+          <li>Single point of contact</li>
+          <li>Tailored to your business</li>
+          <li>Backed by experts</li>
+          <li>Built on trust</li>
+          <li>Regionally connected</li>
+        </ul>
+        <div class="mcs-btns" data-reveal="up" data-reveal-delay=".24">
+          <a href="contact-us-v3.html" class="btn btn-filled btn-pill">Reach your Relationship Manager</a>
+          <a href="contact-us-v3.html" class="btn btn-outline btn-pill">Talk to us</a>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -802,165 +810,161 @@
   </div>
 </section>
 
-<!-- ═══ 4b. TRADE + MARKETS · cinematic split (Ram, 2026-10-02: "needs to be a WOW component").
-     Two full-bleed film panels in the page's hf-film language. Desktop: hover / focus / tap
-     widens one panel and reveals its story, stats and CTA; the other narrows to photo,
-     label and title. <1024px and reduced motion: stacked, both fully open. Copy verbatim
-     from cib-v4; the UI fragments are illustrative, badged like the rest of the page. ═══ -->
-<section class="fv-duo" data-fv-duo aria-label="Trade finance and markets">
-  <div class="hf-wrap fv-duo__row">
-    <article class="hf-film fv-pane is-active" aria-labelledby="trade-h">
-      <div class="hf-film__media" data-parallax="18">
-        <img class="hf-film__poster fv-pane__img" src="staging/cib-home-final/bento-trade-port.png" alt="" width="1600" height="1067" loading="lazy" decoding="async" />
-      </div>
-      <span class="hf-film__scrim fv-pane__scrim" aria-hidden="true"></span>
-      <span class="chip chip-glass rounded-full fv-pane__chip">Trade &amp; Supply Chain Finance</span>
-      <div class="fv-pane__frag" role="group" aria-label="Illustrative letter of credit tracking">
-        <div class="hf-trk card-panel surface-white">
-          <p class="hf-trk__top"><span class="hf-trk__amt">USD 1,850,000 import LC</span><span class="badge badge-sm badge-info">Jebel Ali</span></p>
-          <ol class="hf-trk__steps">
-            <li class="is-done">LC issued</li>
-            <li class="is-done">Documents checked</li>
-            <li class="is-now" aria-current="step">Shipped</li>
-            <li>Settled</li>
-          </ol>
-        </div>
-        <p class="hf-frag__tag"><span class="badge badge-sm badge-outline fv-pane__tag">Illustrative</span></p>
-      </div>
-      <div class="fv-pane__body">
-        <h2 id="trade-h" class="hf-h hf-h--light fv-pane__h">Integrated trade finance, end to end.</h2>
-        <div class="fv-pane__more">
-          <p class="fv-pane__p">Import, export, guarantees and supply chain finance, matched to how you trade and built to keep your business connected, agile and in control.</p>
-          <a href="trade-supply-chain-finance-v2.html" class="btn btn-filled btn-pill is-arrow fv-pane__cta">Explore Trade Finance</a>
-        </div>
-      </div>
-    </article>
-    <article class="hf-film fv-pane" aria-labelledby="mkt-h">
-      <div class="hf-film__media" data-parallax="18">
-        <img class="hf-film__poster fv-pane__img" src="staging/cib-home-final/markets-hero.png" alt="" width="1600" height="1067" loading="lazy" decoding="async" />
-      </div>
-      <span class="hf-film__scrim fv-pane__scrim" aria-hidden="true"></span>
-      <span class="chip chip-glass rounded-full fv-pane__chip">Global Markets &amp; Treasury</span>
-      <div class="fv-pane__frag" role="group" aria-label="Illustrative FX trade confirmation">
-        <div class="card-panel surface-white fv-fill">
-          <p class="fv-fill__top"><span class="fv-fill__pair">EUR / USD</span><span class="badge badge-sm badge-ok">Filled</span></p>
-          <p class="fv-fill__rate">1.0842</p>
-          <svg class="fv-fill__spark" viewBox="0 0 120 32" aria-hidden="true"><path d="M2 24 L14 20 L24 22 L36 14 L48 17 L60 10 L72 13 L84 7 L96 9 L108 4 L118 6"/></svg>
-          <p class="fv-fill__meta">EUR 5,000,000 sold, 09:41 GST</p>
-        </div>
-        <p class="hf-frag__tag"><span class="badge badge-sm badge-outline fv-pane__tag">Illustrative</span></p>
-      </div>
-      <div class="fv-pane__body">
-        <h2 id="mkt-h" class="hf-h hf-h--light fv-pane__h">Navigate markets with precision and agility.</h2>
-        <div class="fv-pane__more">
-          <p class="fv-pane__p">Seamless trading and investing, powered by deep market insight and digital-first execution. Tailored risk management, financing and investment solutions across every major asset class.</p>
-          <a href="markets-v2.html" class="btn btn-filled btn-pill is-arrow fv-pane__cta">Explore Markets &amp; Treasury</a>
-        </div>
-      </div>
-    </article>
-  </div>
-  <script>
-  (function () {
-    var root = document.querySelector('[data-fv-duo]'); if (!root) return;
-    var panes = [].slice.call(root.querySelectorAll('.fv-pane'));
-    function open(p) { panes.forEach(function (x) { x.classList.toggle('is-active', x === p); }); }
-    panes.forEach(function (p) {
-      p.addEventListener('mouseenter', function () { open(p); });
-      p.addEventListener('focusin', function () { open(p); });
-      p.addEventListener('click', function () { if (!p.classList.contains('is-active')) open(p); });
-    });
-  })();
-  </script>
-</section>
+<!-- ═══ 4b. TRADE + MARKETS · INSTANCE of master expand-duo ═══════════════════
+     Master: blocks/expand-duo.html (gallery: Bento Grids · "Expand Duo").
+     Styling and behaviour come from ds.css / ds.js (recipe expand-duo), so
+     master changes to them reach this section. Page overrides (content
+     only): button links, staging/ photo paths. Do not restyle it here. -->
+<section class="cmp cmp-expand-duo surface-white section-y" data-animate data-behavior="expand-duo" data-master="expand-duo" aria-label="Trade finance and markets">
+  <div class="container-ds">
+    <div class="exd-row" data-reveal="up">
 
-<!-- ═══ 5. INVESTMENT BANKING · the one cinematic beat ═════════════════════
-     Deal values and roles exactly as each case-study page states (DEWA: Joint
-     Bookrunner, SALIK: Joint Global Coordinator, talabat: Joint Global
-     Coordinator, Parkin: Bookrunner). Real values are in the DOM before the
-     DS count-up runs; screen readers read the sr-only twin. -->
-<section class="hf-ib" data-animate aria-labelledby="ib-h">
-  <div class="hf-film hf-film--ib" data-hf-band>
-    <div class="hf-film__media" data-parallax="24">
-      <img class="hf-film__poster" src="staging/cib-home-final/first-bell.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
-      <video class="hf-film__video" muted playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" data-hf-video data-loop data-src="staging/cib-home-final/bell-720.mp4" data-src-m="staging/cib-home-final/bell-480.mp4"></video>
-    </div>
-    <span class="hf-film__scrim hf-film__scrim--ib" aria-hidden="true"></span>
-    <div class="hf-ib__body">
-      <div class="hf-ib__head">
-        <div class="fv-ib__copy">
-          <h2 id="ib-h" class="hf-h hf-h--light">Raise capital with the region&rsquo;s leading IPO house.</h2>
-          <!-- copy: V4 lede (stakeholder content) -->
-          <p class="fv-ib__lede">From strategic advisory and capital raising to debt and equity capital markets, Emirates NBD Capital helps clients access capital, investors and growth opportunities across regional and international markets.</p>
-        </div>
-        <a href="ibv2/index.html" class="btn btn-outline-light btn-pill is-arrow">Explore Emirates NBD Capital</a>
-      </div>
-      <div class="hf-ib-stats es-stats flex flex-wrap on-surface-border">
-        <div class="es-stat flex flex-col">
-          <span class="es-stat-num on-surface"><span class="sr-only">USD 6.1 billion</span><span aria-hidden="true">USD&nbsp;<span data-countup="6.1" data-decimals="1">6.1</span><span class="es-stat-unit">bn</span></span></span>
-          <span class="es-stat-lbl on-surface-mid">DEWA IPO, DFM 2022, Joint Bookrunner</span>
-        </div>
-        <div class="es-stat flex flex-col">
-          <span class="es-stat-num on-surface"><span class="sr-only">USD 1.0 billion</span><span aria-hidden="true">USD&nbsp;<span data-countup="1.0" data-decimals="1">1.0</span><span class="es-stat-unit">bn</span></span></span>
-          <span class="es-stat-lbl on-surface-mid">Salik IPO, DFM 2022, Joint Global Coordinator</span>
-        </div>
-        <div class="es-stat flex flex-col">
-          <span class="es-stat-num on-surface"><span class="sr-only">USD 2.0 billion</span><span aria-hidden="true">USD&nbsp;<span data-countup="2.0" data-decimals="1">2.0</span><span class="es-stat-unit">bn</span></span></span>
-          <span class="es-stat-lbl on-surface-mid">talabat IPO, DFM 2024, Joint Global Coordinator</span>
-        </div>
-        <div class="es-stat flex flex-col">
-          <span class="es-stat-num on-surface"><span class="sr-only">USD 429 million</span><span aria-hidden="true">USD&nbsp;<span data-countup="429" data-decimals="0">429</span><span class="es-stat-unit">mn</span></span></span>
-          <span class="es-stat-lbl on-surface-mid">Parkin IPO, DFM 2024, Bookrunner</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 6. LENDING · "With a desk for ____." ══════════════════════════════
-     Structure and behaviour copied from personal-home-v3's "I'd like to
-     ____." act (renamed hf-ask-*, nothing linked). Desktop (1024+) pins and
-     rolls the reel, photo and desk card as you scroll; the chips choose at
-     every size. Mobile stacks with no pin. Reduced motion: no pin, first
-     desk shown, chips still work. The panel copy is the same for every desk,
-     so there is one panel. Government uses the Dubai skyline film still (the
-     stock isf-gov.jpg shows a European parliament building, off-brand). -->
-<section class="hf-ask" data-hf-ask aria-labelledby="lend-h">
-  <div class="hf-ask-track">
-    <div class="hf-ask-pin">
-      <div class="container-ds hf-ask-grid">
-        <div class="hf-ask-copy">
-          <h2 id="lend-h" class="type-h5 hf-ask-q ink-mute">Corporate lending, built around your needs.</h2>
-          <p class="type-h1 hf-ask-sentence"><span class="ink-primary">With a desk for</span> <span class="hf-ask-slot ink-accent" aria-hidden="true"><span class="hf-ask-reel"><span class="is-on">aviation</span><span>real estate</span><span>infrastructure</span><span>technology</span><span>manufacturing</span><span>government</span></span></span><span class="sr-only">With 8 industry sector desks.</span></p>
-          <div class="hf-ask-intents" role="group" aria-label="Choose a sector desk">
-            <button type="button" class="chip chip-lg" data-hf-intent aria-pressed="true">Aviation</button>
-            <button type="button" class="chip chip-lg" data-hf-intent aria-pressed="false">Real estate</button>
-            <button type="button" class="chip chip-lg" data-hf-intent aria-pressed="false">Infrastructure</button>
-            <button type="button" class="chip chip-lg" data-hf-intent aria-pressed="false">Technology</button>
-            <button type="button" class="chip chip-lg" data-hf-intent aria-pressed="false">Manufacturing</button>
-            <button type="button" class="chip chip-lg" data-hf-intent aria-pressed="false">Government</button>
+      <article class="exd-pane media-frame surface-image is-active" data-exd-pane>
+        <img class="media-cover exd-img" src="staging/cib-home-final/bento-trade-port.png" alt="" width="1600" height="1067" loading="lazy" decoding="async" style="--focus:50% 50%" />
+        <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass exd-chip">Trade &amp; Supply Chain Finance</span>
+        <div class="exd-frag" role="group" aria-label="Illustrative letter of credit tracking">
+          <div class="card-panel surface-white exd-card">
+            <p class="exd-card-top"><span class="exd-card-title ink-primary">USD 1,850,000 import LC</span><span class="badge badge-sm badge-info">Jebel Ali</span></p>
+            <ol class="exd-steps ink-mute">
+              <li class="is-done">LC issued</li>
+              <li class="is-done">Documents checked</li>
+              <li class="is-now" aria-current="step">Shipped</li>
+              <li>Settled</li>
+            </ol>
           </div>
-          <div class="hf-ask-panel">
+          <p class="exd-tag"><span class="badge badge-sm badge-outline ink-white">Illustrative</span></p>
+        </div>
+        <div class="exd-body">
+          <h2 class="type-h2 exd-h ink-white">Integrated trade finance, end to end.</h2>
+          <div class="exd-more">
+            <div>
+              <p class="type-body exd-p ink-soft">Import, export, guarantees and supply chain finance, matched to how you trade and built to keep your business connected, agile and in control.</p>
+              <a href="trade-supply-chain-finance-v1a.html" class="btn btn-accent btn-pill is-arrow exd-cta">Explore Trade Finance</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="exd-pane media-frame surface-image" data-exd-pane>
+        <img class="media-cover exd-img" src="staging/cib-home-final/markets-hero.png" alt="" width="1600" height="1067" loading="lazy" decoding="async" style="--focus:50% 50%" />
+        <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+        <span class="chip chip-glass exd-chip">Global Markets &amp; Treasury</span>
+        <div class="exd-frag" role="group" aria-label="Illustrative FX trade confirmation">
+          <div class="card-panel surface-white exd-card">
+            <p class="exd-card-top"><span class="exd-card-label ink-mute">EUR / USD</span><span class="badge badge-sm badge-ok">Filled</span></p>
+            <p class="exd-rate ink-primary">1.0842</p>
+            <svg class="exd-spark ink-accent" viewBox="0 0 120 32" aria-hidden="true"><path d="M2 24 L14 20 L24 22 L36 14 L48 17 L60 10 L72 13 L84 7 L96 9 L108 4 L118 6"/></svg>
+            <p class="exd-card-meta ink-mute">EUR 5,000,000 sold, 09:41 GST</p>
+          </div>
+          <p class="exd-tag"><span class="badge badge-sm badge-outline ink-white">Illustrative</span></p>
+        </div>
+        <div class="exd-body">
+          <h2 class="type-h2 exd-h ink-white">Navigate markets with precision and agility.</h2>
+          <div class="exd-more">
+            <div>
+              <p class="type-body exd-p ink-soft">Seamless trading and investing, powered by deep market insight and digital-first execution. Tailored risk management, financing and investment solutions across every major asset class.</p>
+              <a href="markets-v2.html" class="btn btn-accent btn-pill is-arrow exd-cta">Explore Markets &amp; Treasury</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. INVESTMENT BANKING · INSTANCE of master film-stats-band ════════════
+     Master: blocks/film-stats-band.html (gallery: Stats · "Film Stats Band").
+     Styling and behaviour come from ds.css / ds.js (recipe film-stats-band +
+     data-countup), so master changes to them reach this section. Deal values
+     and roles exactly as each case-study page states. Page overrides (content
+     only): button link, staging/ poster and film paths. Do not restyle it here. -->
+<section class="cmp cmp-film-stats-band surface-white" data-animate data-behavior="film-stats-band" data-master="film-stats-band" aria-label="Investment banking track record">
+  <div class="fsb-film media-frame surface-image" data-reveal="up">
+    <img class="media-cover" src="staging/cib-home-final/first-bell.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" style="--focus:50% 40%" />
+    <video class="media-cover fsb-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" style="--focus:50% 40%" data-src="staging/cib-home-final/bell-720.mp4" data-src-m="staging/cib-home-final/bell-480.mp4"></video>
+    <span class="ov ov-primary ov-gradient-b ov-90" aria-hidden="true"></span>
+    <button type="button" class="btn btn-glass btn-icon btn-sm is-pause fsb-pause" data-fsb-pause hidden><span class="sr-only">Pause video</span></button>
+
+    <div class="fsb-body">
+      <div class="fsb-head">
+        <div class="fsb-copy">
+          <h2 class="type-h1 fsb-h ink-white">Raise capital with the region&rsquo;s leading IPO house.</h2>
+          <p class="type-body fsb-lede ink-soft">From strategic advisory and capital raising to debt and equity capital markets, Emirates NBD Capital helps clients access capital, investors and growth opportunities across regional and international markets.</p>
+        </div>
+        <a href="investment-banking-v1a.html" class="btn btn-outline-light btn-pill is-arrow" target="_blank" rel="noopener">Explore Emirates NBD Capital</a>
+      </div>
+
+      <ul class="fsb-stats" role="list">
+        <li class="fsb-stat">
+          <span class="sr-only">USD 6.1 billion</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="6.1" data-decimals="1">6.1</span><span class="ds-num-unit">bn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">DEWA IPO, DFM 2022, Joint Bookrunner</span>
+        </li>
+        <li class="fsb-stat">
+          <span class="sr-only">USD 1.0 billion</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="1.0" data-decimals="1">1.0</span><span class="ds-num-unit">bn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">Salik IPO, DFM 2022, Joint Global Coordinator</span>
+        </li>
+        <li class="fsb-stat">
+          <span class="sr-only">USD 2.0 billion</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="2.0" data-decimals="1">2.0</span><span class="ds-num-unit">bn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">talabat IPO, DFM 2024, Joint Global Coordinator</span>
+        </li>
+        <li class="fsb-stat">
+          <span class="sr-only">USD 429 million</span>
+          <span class="ds-num is-light fsb-num ink-white" aria-hidden="true">USD&nbsp;<span data-countup="429" data-decimals="0">429</span><span class="ds-num-unit">mn</span></span>
+          <span class="type-caption fsb-lbl ink-soft">Parkin IPO, DFM 2024, Bookrunner</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6. LENDING · INSTANCE of master tabs-desk ═════════════════════════════
+     Master: blocks/tabs-desk.html (gallery: Tabs · "Tabs - Desk reel").
+     Styling and behaviour come from ds.css / ds.js (recipe tabs-desk), so
+     master changes to them reach this section. Page overrides (content
+     only): staging/ desk photos (Government uses the Dubai skyline still).
+     Do not restyle it here. -->
+<section class="cmp cmp-tabs-desk surface-white" data-animate data-behavior="tabs-desk" data-master="tabs-desk" aria-label="Corporate lending desks">
+  <div class="td-track">
+    <div class="td-pin">
+      <div class="container-ds td-grid">
+        <div class="td-copy">
+          <h2 class="type-h5 td-q ink-mute">Corporate lending, built around your needs.</h2>
+          <p class="type-h1 td-sentence ink-primary"><span class="ink-primary">With a desk for</span> <span class="td-slot ink-accent" aria-hidden="true"><span class="td-reel"><span class="is-on">aviation</span><span>real estate</span><span>infrastructure</span><span>technology</span><span>manufacturing</span><span>government</span></span></span><span class="sr-only">With 8 industry sector desks.</span></p>
+          <div class="td-intents" role="group" aria-label="Choose a sector desk">
+            <button type="button" class="chip chip-lg" data-td-intent aria-pressed="true">Aviation</button>
+            <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false">Real estate</button>
+            <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false">Infrastructure</button>
+            <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false">Technology</button>
+            <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false">Manufacturing</button>
+            <button type="button" class="chip chip-lg" data-td-intent aria-pressed="false">Government</button>
+          </div>
+          <div class="td-panel">
             <p class="type-body-lg ink-mute">From working capital to project, aviation and real-estate finance, structured by specialists who know your sector.</p>
-            <div class="hf-ask-ctas">
+            <div class="td-ctas">
               <a href="lending-v1a.html" class="btn btn-filled btn-lg">Explore lending</a>
               <a href="industry-specific-finance-v1a.html" class="btn btn-text is-arrow ink-accent">Industry Specific Finance</a>
             </div>
           </div>
         </div>
-        <div class="hf-ask-stage">
-        <span class="hf-ask-shot is-on" data-bg="staging/cib-home-final/hangar-720.jpg"></span>
-        <span class="hf-ask-shot" data-bg="staging/cib-home-final/isf-realestate.jpg"></span>
-        <span class="hf-ask-shot" data-bg="staging/cib-home-final/isf-infra.jpg"></span>
-        <span class="hf-ask-shot" data-bg="staging/cib-home-final/isf-tech.png"></span>
-        <span class="hf-ask-shot" data-bg="staging/cib-home-final/isf-manufacturing.png"></span>
-        <span class="hf-ask-shot" data-bg="staging/cib-home-final/still-skyline-2.png"></span>
-          <div class="hf-ask-fact card-panel surface-white" aria-live="polite">
-          <div class="is-on"><span class="type-caption ink-mute">Lending</span><span class="type-h3 hf-ask-fact-num ink-primary">Aviation finance desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
-          <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 hf-ask-fact-num ink-primary">Real estate desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
-          <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 hf-ask-fact-num ink-primary">Project finance &amp; contracting desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
-          <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 hf-ask-fact-num ink-primary">Technology &amp; digital desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
-          <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 hf-ask-fact-num ink-primary">Manufacturing desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
-          <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 hf-ask-fact-num ink-primary">Government &amp; public sector desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
+        <div class="td-stage">
+          <span class="td-shot is-on" data-bg="staging/cib-home-final/hangar-720.jpg"></span>
+          <span class="td-shot" data-bg="staging/cib-home-final/isf-realestate.jpg"></span>
+          <span class="td-shot" data-bg="staging/cib-home-final/isf-infra.jpg"></span>
+          <span class="td-shot" data-bg="staging/cib-home-final/isf-tech.png"></span>
+          <span class="td-shot" data-bg="staging/cib-home-final/isf-manufacturing.png"></span>
+          <span class="td-shot" data-bg="staging/cib-home-final/still-skyline-2.png"></span>
+          <div class="td-fact card-panel surface-white" aria-live="polite">
+            <div class="is-on"><span class="type-caption ink-mute">Lending</span><span class="type-h3 td-fact-num ink-primary">Aviation finance desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
+            <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 td-fact-num ink-primary">Real estate desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
+            <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 td-fact-num ink-primary">Project finance &amp; contracting desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
+            <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 td-fact-num ink-primary">Technology &amp; digital desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
+            <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 td-fact-num ink-primary">Manufacturing desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
+            <div aria-hidden="true"><span class="type-caption ink-mute">Lending</span><span class="type-h3 td-fact-num ink-primary">Government &amp; public sector desk</span><span class="type-body-sm ink-mute">8 industry sector desks</span></div>
           </div>
         </div>
       </div>
@@ -1047,50 +1051,67 @@
   </div>
 </section>
 
-<!-- ═══ 8. ISLAMIC FINANCE + RESEARCH · one bento ══════════════════════════════════ -->
-<section class="hf-bento" aria-label="Islamic finance and research">
-  <div class="hf-bento__grid">
-    <!-- Islamic finance: copy from islamic-finance.html; bright still, scrim only behind the text -->
-    <div class="hf-film hf-film--if">
-      <div class="hf-film__media" data-parallax="24">
-        <img class="hf-film__poster" src="staging/cib-home-final/if-hero.jpg" alt="" width="2000" height="1125" loading="lazy" decoding="async" />
-      </div>
-      <span class="hf-film__scrim hf-film__scrim--if" aria-hidden="true"></span>
-      <div class="hf-net__top">
-        <h2 id="if-h" class="hf-h hf-h--light">Principled finance. <span class="hf-h__2">Designed for growth.</span></h2>
-      </div>
-      <div class="hf-net__bottom">
-        <p class="hf-if__line">Shariah-compliant solutions built for the needs of businesses of every size and ambition, from everyday accounts to trade finance, financing and investment banking, all overseen by our Internal Shariah Supervision Committee.</p>
-        <ul class="hf-glass">
-          <li class="chip chip-lg chip-glass">Deposits</li>
-          <li class="chip chip-lg chip-glass">Trade finance</li>
-          <li class="chip chip-lg chip-glass">Financing</li>
-          <li class="chip chip-lg chip-glass">Sukuk &amp; investment banking</li>
-        </ul>
-        <a href="islamic-finance.html" class="btn btn-text is-arrow ink-white">Explore Islamic Finance</a>
-      </div>
-    </div>
-    <div class="hf-res">
-      <h2 id="res-h" class="hf-h hf-h--sm">Insight that informs. <span class="hf-h__2">Published daily by our research team.</span></h2>
-      <!-- copy: V4 "Widest research coverage in MENA" + coverage areas -->
-      <p class="fv-res__claim"><b>Widest</b> research coverage in MENA</p>
-      <ul class="fv-tags" aria-label="What we cover"><li>Macro</li><li>Foreign Exchange</li><li>Rates</li><li>Fixed Income &amp; Credit</li><li>Commodities</li><li>Equities</li><li>Real Estate</li></ul>
-      <article class="hf-rc">
-        <div class="hf-rc__media"><img class="hf-rc__img--portal" src="staging/cib-home-final/em-research-portal.jpg" alt="A laptop showing market charts on a desk by a window overlooking the Burj Khalifa" width="1264" height="848" loading="lazy" decoding="async" /></div>
-        <div class="hf-rc__text">
-          <h3 class="hf-rc__t">Daily market briefings</h3>
-          <p class="hf-rc__d">FX, rates and commodities commentary from our strategists.</p>
-          <a class="btn btn-text is-arrow" href="insights-research.html">Explore research<span class="sr-only">: daily market briefings</span></a>
+<!-- ═══ 8. ISLAMIC FINANCE + RESEARCH · INSTANCE of master bento-research ══════
+     Master: blocks/bento-research.html (gallery: Bento Grids · "Bento, Feature
+     + Research"), a cmp-bento composition. Styling comes from ds.css, so master
+     changes reach this section. Page overrides (content only): links
+     (islamic-finance.html, insights-research.html), staging/ photos.
+     Do not restyle it here. -->
+<section class="cmp cmp-bento bento-research surface-white section-y" data-animate data-master="bento-research" aria-label="Islamic finance and research">
+  <div class="container-ds">
+    <div class="bn-grid">
+
+      <!-- Feature tile -->
+      <div class="bn-tile is-w8 is-h6 is-t-full surface-image justify-between bnr-feature" data-reveal="up">
+        <img class="media-cover" src="staging/cib-home-final/if-hero.jpg" alt="" width="2000" height="1125" loading="lazy" decoding="async" style="--focus:40% 50%" />
+        <span class="ov ov-primary ov-gradient-t ov-50" aria-hidden="true"></span>
+        <span class="ov ov-primary ov-gradient-b ov-70" aria-hidden="true"></span>
+        <h2 class="type-h1 bnr-feature-h ink-white">Principled finance. <span class="ink-soft">Designed for growth.</span></h2>
+        <div class="bnr-feature-foot">
+          <p class="type-body bnr-feature-p ink-white">Shariah-compliant solutions built for the needs of businesses of every size and ambition, from everyday accounts to trade finance, financing and investment banking, all overseen by our Internal Shariah Supervision Committee.</p>
+          <ul class="bnr-chips" role="list">
+            <li class="chip chip-lg chip-glass">Deposits</li>
+            <li class="chip chip-lg chip-glass">Trade finance</li>
+            <li class="chip chip-lg chip-glass">Financing</li>
+            <li class="chip chip-lg chip-glass">Sukuk &amp; investment banking</li>
+          </ul>
+          <a href="islamic-finance.html" class="btn btn-text is-arrow ink-white">Explore Islamic Finance</a>
         </div>
-      </article>
-      <article class="hf-rc">
-        <div class="hf-rc__media"><img class="hf-rc__img--people" src="staging/cib-home-final/em-people-specialists.jpg" alt="An Emirati client and a specialist reviewing data on a large curved screen" width="896" height="1200" loading="lazy" decoding="async" /></div>
-        <div class="hf-rc__text">
-          <h3 class="hf-rc__t">Economics &amp; forecasts</h3>
-          <p class="hf-rc__d">Macro analysis and outlooks for the region and beyond.</p>
-          <a class="btn btn-text is-arrow" href="insights-research.html">Explore research<span class="sr-only">: economics and forecasts</span></a>
+      </div>
+
+      <!-- Research column (ghost tile) -->
+      <div class="bn-tile is-ghost is-w4 is-h6 is-t-full bnr-col" data-reveal="up" data-reveal-delay=".08">
+        <div class="bnr-intro">
+          <h2 class="type-h3 bnr-col-h ink-primary">Insight that informs. <span class="ink-mute">Published daily by our research team.</span></h2>
+          <p class="type-body-sm bnr-claim ink-mute"><b class="ink-primary">Widest</b> research coverage in MENA</p>
+          <ul class="bnr-tags" role="list" aria-label="What we cover">
+            <li class="badge badge-lg badge-neutral">Macro</li>
+            <li class="badge badge-lg badge-neutral">Foreign Exchange</li>
+            <li class="badge badge-lg badge-neutral">Rates</li>
+            <li class="badge badge-lg badge-neutral">Fixed Income &amp; Credit</li>
+            <li class="badge badge-lg badge-neutral">Commodities</li>
+            <li class="badge badge-lg badge-neutral">Equities</li>
+            <li class="badge badge-lg badge-neutral">Real Estate</li>
+          </ul>
         </div>
-      </article>
+        <article class="card-panel surface-mute bnr-card">
+          <div class="media-frame bnr-media"><img class="media-cover" src="staging/cib-home-final/em-research-portal.jpg" alt="A laptop showing market charts on a desk by a window overlooking the Burj Khalifa" width="1264" height="848" loading="lazy" decoding="async" style="--focus:50% 74%" /></div>
+          <div class="bnr-text">
+            <h3 class="type-h4 bnr-card-t ink-primary">Daily market briefings</h3>
+            <p class="type-body-sm bnr-card-d ink-mute">FX, rates and commodities commentary from our strategists.</p>
+            <a class="btn btn-text is-arrow ink-accent" href="insights-research.html">Explore research<span class="sr-only">: daily market briefings</span></a>
+          </div>
+        </article>
+        <article class="card-panel surface-mute bnr-card">
+          <div class="media-frame bnr-media"><img class="media-cover" src="staging/cib-home-final/em-people-specialists.jpg" alt="An Emirati client and a specialist reviewing data on a large curved screen" width="896" height="1200" loading="lazy" decoding="async" style="--focus:30% 40%" /></div>
+          <div class="bnr-text">
+            <h3 class="type-h4 bnr-card-t ink-primary">Economics &amp; forecasts</h3>
+            <p class="type-body-sm bnr-card-d ink-mute">Macro analysis and outlooks for the region and beyond.</p>
+            <a class="btn btn-text is-arrow ink-accent" href="insights-research.html">Explore research<span class="sr-only">: economics and forecasts</span></a>
+          </div>
+        </article>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1141,60 +1162,57 @@
   </div>
 </section>
 
-<!-- ═══ 9. FINAL CTA · ENBD Business app (V7A's approved panel) ════════════
-     Login goes to the ENBD Business page (Ram, 2026-09-30). NEEDS SOURCE: the
-     store links are not in the repo; "#" until supplied. Store buttons reuse the DS app-download markup (aci-*),
-     scoped by .cmp-scroll-scenes only, without its dark card. -->
-<section class="hf-cta" aria-labelledby="cta-h">
-  <div class="hf-cta__panel">
-    <span class="hf-cta__glow" aria-hidden="true"></span>
-    <div class="hf-cta__text">
-      <!-- copy: V4 closing line (stakeholder content); the app panel stays as the secondary path -->
-      <p class="ds-eyebrow ink-accent hf-eyebrow">Talk to us</p>
-      <h2 id="cta-h" class="hf-h">Banking built for every ambition.</h2>
-      <p class="hf-body">Let&rsquo;s build the right structure for your business, from your first account to your next landmark deal.</p>
-      <p class="fv-cta__app">Approve payments, track trade and see every account from your phone.</p>
-      <div class="hf-cta__btns">
-        <a href="contact-us-v3.html" class="btn btn-filled btn-lg">Contact us</a>
-        <a href="businessonline-x-v2.html" class="btn btn-outline btn-lg">Log in to ENBD Business</a>
-        <!-- phones: one store button in place of the two badges; JS points it at the visitor's store -->
-        <a href="#" class="btn btn-outline btn-lg hf-cta__app" data-app-link data-ios="#" data-android="#">
-          <span class="hf-cta__app-ic" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.09l-.02-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-            <svg viewBox="0 0 24 24"><path fill="#00A0FF" d="M3.6 2.3c-.3.3-.5.7-.5 1.3v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.1v-.2L3.7 2.2l-.1.1z"/><path fill="#FFCE00" d="M16.3 15.4 13 12.1v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2-.1.1z"/><path fill="#FF3A44" d="M16.4 15.3 13 12 3.6 21.7c.4.4 1 .4 1.7.1l11.1-6.5z"/><path fill="#00E676" d="M16.4 8.7 5.3 2.2c-.7-.4-1.3-.3-1.7.1L13 12l3.4-3.3z"/></svg>
-          </span>
-          Download the app
-        </a>
-      </div>
-      <div class="hf-cta__get">
-        <p class="hf-cta__get-h">Get the app</p>
-        <div class="hf-cta__stores cmp-scroll-scenes">
-          <a href="#" class="aci-btn aci-btn-dark" aria-label="Download ENBD Business on the App Store">
-            <svg class="aci-btn-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.09l-.02-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-            <span class="aci-btn-tx"><span class="aci-btn-k">Download on the</span><span class="aci-btn-b">App Store</span></span>
-          </a>
-          <a href="#" class="aci-btn aci-btn-light" aria-label="Get ENBD Business on Google Play">
-            <svg class="aci-btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#00A0FF" d="M3.6 2.3c-.3.3-.5.7-.5 1.3v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.1v-.2L3.7 2.2l-.1.1z"/><path fill="#FFCE00" d="M16.3 15.4 13 12.1v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2-.1.1z"/><path fill="#FF3A44" d="M16.4 15.3 13 12 3.6 21.7c.4.4 1 .4 1.7.1l11.1-6.5z"/><path fill="#00E676" d="M16.4 8.7 5.3 2.2c-.7-.4-1.3-.3-1.7.1L13 12l3.4-3.3z"/></svg>
-            <span class="aci-btn-tx"><span class="aci-btn-k">Get it on</span><span class="aci-btn-b">Google Play</span></span>
-          </a>
+<!-- ═══ 9. FINAL CTA · INSTANCE of master app-download-panel ════════════════════
+     Master: blocks/app-download-panel.html (gallery: CTA & Banners · "App
+     Download Panel"). Styling and behaviour come from ds.css / ds.js (recipe
+     app-download), so master changes reach this section. Options: as built
+     (motion on, two buttons, app row on). Page overrides (content only):
+     Contact us + Log in links, staging/ phone render, the page's QR files.
+     NEEDS SOURCE: the App Store / Google Play links are "#" until supplied. -->
+<section class="cmp cmp-app-download-panel surface-white section-y" data-animate data-behavior="app-download" data-master="app-download-panel" aria-label="Talk to us and get the app">
+  <div class="adp-panel surface-mute" data-reveal="up">
+      <span class="adp-glow" aria-hidden="true"></span>
+
+      <div class="adp-text">
+        <p class="ds-eyebrow ink-accent">Talk to us</p>
+        <h2 class="type-h1 adp-h ink-primary">Banking built for every ambition.</h2>
+        <p class="type-body-lg adp-lead ink-mute">Let&rsquo;s build the right structure for your business, from your first account to your next landmark deal.</p>
+        <p class="type-body adp-line ink-mute">Approve payments, track trade and see every account from your phone.</p>
+        <div class="adp-btns">
+          <a href="contact-us-v3.html" class="btn btn-filled btn-lg">Contact us</a>
+          <a href="businessonline-x-v2.html" class="btn btn-outline btn-lg">Log in to ENBD Business</a>
+          <a href="#" class="btn btn-outline btn-lg is-download adp-app-btn" data-app-link data-ios="#" data-android="#">Download the app</a>
         </div>
-        <figure class="hf-qrtile card-panel surface-white" data-qr>
-          <img src="assets/images/cib-home-flow/qr-appstore.svg" alt="QR code to download ENBD Business from the App Store" width="96" height="96" loading="lazy" decoding="async" data-qr-img />
-          <figcaption>
-            <span class="hf-qrtile__t">Scan to download</span>
-            <span class="hf-qrtile__seg" role="group" aria-label="Choose your phone">
-              <button type="button" class="chip" aria-pressed="true" data-qr-os="ios">iOS</button>
-              <button type="button" class="chip" aria-pressed="false" data-qr-os="android">Android</button>
-            </span>
-          </figcaption>
-        </figure>
+        <div class="adp-get">
+          <p class="adp-get-h ink-primary">Get the app</p>
+          <div class="adp-stores">
+            <a href="#" class="adp-store is-dark" aria-label="Download ENBD Business on the App Store">
+              <svg class="adp-store-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.09l-.02-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              <span class="adp-store-tx"><span class="adp-store-k">Download on the</span><span class="adp-store-b">App Store</span></span>
+            </a>
+            <a href="#" class="adp-store surface-white" aria-label="Get ENBD Business on Google Play">
+              <svg class="adp-store-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#00A0FF" d="M3.6 2.3c-.3.3-.5.7-.5 1.3v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.1v-.2L3.7 2.2l-.1.1z"/><path fill="#FFCE00" d="M16.3 15.4 13 12.1v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2-.1.1z"/><path fill="#FF3A44" d="M16.4 15.3 13 12 3.6 21.7c.4.4 1 .4 1.7.1l11.1-6.5z"/><path fill="#00E676" d="M16.4 8.7 5.3 2.2c-.7-.4-1.3-.3-1.7.1L13 12l3.4-3.3z"/></svg>
+              <span class="adp-store-tx"><span class="adp-store-k">Get it on</span><span class="adp-store-b">Google Play</span></span>
+            </a>
+          </div>
+          <figure class="adp-qr card-panel surface-white" data-qr>
+            <img src="assets/images/cib-home-flow/qr-appstore.svg" alt="QR code to download ENBD Business from the App Store" width="96" height="96" loading="lazy" decoding="async" data-qr-img />
+            <figcaption>
+              <span class="adp-qr-t ink-primary">Scan to download</span>
+              <span class="adp-qr-seg" role="group" aria-label="Choose your phone">
+                <button type="button" class="chip" aria-pressed="true" data-qr-os data-qr-src="assets/images/cib-home-flow/qr-appstore.svg" data-qr-alt="QR code to download ENBD Business from the App Store">iOS</button>
+                <button type="button" class="chip" aria-pressed="false" data-qr-os data-qr-src="assets/images/cib-home-flow/qr-googleplay.svg" data-qr-alt="QR code to download ENBD Business from Google Play">Android</button>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="adp-device">
+        <img class="adp-phone" src="staging/cib-home-final/enbd-business-phone.png" alt="ENBD Business app on a phone, showing the home screen with payment actions and portfolio summary" width="1100" height="1302" loading="lazy" decoding="async" />
+        <p class="adp-chip card-panel surface-white"><span class="ink-primary">Pending actions</span> <span class="badge badge-danger">6</span></p>
       </div>
     </div>
-    <div class="hf-cta__device" data-parallax="24">
-      <img class="hf-cta__img" src="staging/cib-home-final/enbd-business-phone.png" alt="ENBD Business app on a phone, showing the home screen with payment actions and portfolio summary" width="1100" height="1302" loading="lazy" decoding="async" />
-      <p class="hf-cta__chip card-panel surface-white"><span>Pending actions</span> <span class="badge badge-danger">6</span></p>
-    </div>
-  </div>
 </section>
 
 </main>

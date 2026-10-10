@@ -599,6 +599,7 @@
       android: { src: 'assets/images/cib-home-flow/qr-googleplay.svg', alt: 'QR code to download ENBD Business from Google Play' }
     };
     $$('[data-qr]').forEach(function (tile) {
+      if (tile.closest('[data-master]')) return;   // master instances are wired by ds.js
       var img = tile.querySelector('[data-qr-img]'), btns = $$('[data-qr-os]', tile);
       btns.forEach(function (b) {
         b.addEventListener('click', function () {
@@ -611,6 +612,7 @@
     /* phones: the single store button opens the visitor's own store */
     var android = /android/i.test(navigator.userAgent);
     $$('[data-app-link]').forEach(function (a) {
+      if (a.closest('[data-master]')) return;   // master instances are wired by ds.js
       a.href = a.getAttribute(android ? 'data-android' : 'data-ios') || a.href;
       a.setAttribute('aria-label', 'Download ENBD Business on ' + (android ? 'Google Play' : 'the App Store'));
     });
