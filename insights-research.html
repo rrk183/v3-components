@@ -446,7 +446,8 @@
 <main id="main">
 
 <!-- ═══ 1. HERO - Video BG (Left) ═══════════════════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Insights and Research">
+<!-- INSTANCE of master "hero". Documented option: jump-link strip. -->
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Insights and Research" data-master="hero">
   <div class="hero-stage surface-image">
     <video class="media-cover" autoplay muted loop playsinline poster="assets/images/insights-research/insights-hero-poster.jpg" src="assets/videos/heroes/insights-hero.mp4"></video>
     <span class="ov ov-dark ov-gradient-l ov-80" aria-hidden="true"></span>
@@ -506,7 +507,8 @@
 <!-- ═══ /2. INTRO ══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. ARTICLES, surface-grey ══════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-soft section-y" data-animate id="articles">
+<!-- INSTANCE of master "cards-boxed". Documented options: see-all header, byline cards. Re-synced 12 Oct: styled see-all link. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-soft section-y" data-animate id="articles" data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head-sm is-split">
@@ -514,9 +516,7 @@
         <span class="ds-eyebrow ink-accent" data-reveal="up">Articles</span>
         <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">The latest from our economists.</h2>
       </div>
-      <a href="#" class="sh-action" data-reveal="up" data-reveal-delay=".1">See all articles
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <a href="#" class="btn btn-text sh-action is-arrow" data-reveal="up" data-reveal-delay=".1">See all articles</a>
     </div>
 
     <div class="cd-grid" role="list">
@@ -567,26 +567,31 @@
 <!-- ═══ /3. ARTICLES ═══════════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. FEATURED SUCCESS STORY, surface-primary ═══════════════════════════════ -->
-<section class="cmp surface-image section-y relative overflow-hidden" data-bg="assets/images/shared/common/insight-case.jpg" data-animate id="case-studies" aria-hidden="true">
-  <div class="ov ov-tint ov-60 ov-primary" aria-hidden="true"></div>
-  <div class="ov ov-gradient-l ov-70 ov-primary" aria-hidden="true"></div>
-  <div class="container-ds relative z-10 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-    <div class="ds-stack max-w-2xl">
-      <span class="ds-eyebrow ink-white" data-reveal="up">Success story</span>
-      <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Another landmark IPO for the DFM and UAE.</h2>
-      <p class="type-body ink-soft" data-reveal="up" data-reveal-delay=".1">We supported the listing of Dubai's largest residential REIT, raising over AED 2bn on the DFM. The IPO priced at the top of the range and achieved 26x oversubscription, driven by strong local momentum and strategic investor engagement.</p>
-      <div class="pt-2" data-reveal="up" data-reveal-delay=".14">
-        <a href="#" class="btn btn-filled btn-lg">Read success story <span aria-hidden="true">&rarr;</span></a>
+<!-- INSTANCE of master "cta-band" (converted 12 Oct from a custom photo band). Documented options:
+     is-left, photo ground with ov washes, h2 headline, filled button, stats column, #case-studies anchor.
+     Fixed 12 Oct: the section was aria-hidden (invisible to screen readers); amounts use the dirham atom. -->
+<section class="cmp ptf-ctaband is-left surface-image section-y relative overflow-hidden" data-bg="assets/images/shared/common/insight-case.jpg" data-animate id="case-studies" data-master="cta-band" aria-label="Success story">
+  <span class="ov ov-tint ov-60 ov-primary" aria-hidden="true"></span>
+  <span class="ov ov-gradient-l ov-70 ov-primary" aria-hidden="true"></span>
+  <div class="container-narrow">
+    <div class="ptf-band-grid">
+      <div class="ptf-band-copy">
+        <span class="ds-eyebrow ink-white" data-reveal="up">Success story</span>
+        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".05">Another landmark IPO for the DFM and UAE.</h2>
+        <p class="type-body ink-soft" data-reveal="up" data-reveal-delay=".1">We supported the listing of Dubai's largest residential REIT, raising over <span class="sr-only">AED </span><span class="aed">2bn</span> on the DFM. The IPO priced at the top of the range and achieved 26x oversubscription, driven by strong local momentum and strategic investor engagement.</p>
+        <div class="ptf-ctarow" data-reveal="up" data-reveal-delay=".15">
+          <a href="#" class="btn btn-filled btn-lg is-arrow">Read success story</a>
+        </div>
       </div>
-    </div>
-    <div class="grid gap-4 sm:grid-cols-2 shrink-0" data-reveal="up" data-reveal-delay=".12">
-      <div class="card-clear">
-        <span class="ds-num">AED 2bn+</span>
-        <span class="type-body-sm ink-soft block mt-2">Raised on the Dubai Financial Market</span>
-      </div>
-      <div class="card-clear">
-        <span class="ds-num">26x</span>
-        <span class="type-body-sm ink-soft block mt-2">Oversubscription across the order book</span>
+      <div class="ptf-band-stats" data-reveal="up" data-reveal-delay=".12">
+        <div class="card-clear">
+          <span class="ds-num ink-white"><span class="sr-only">AED </span><span class="aed">2bn+</span></span>
+          <p class="type-body-sm ink-soft">Raised on the Dubai Financial Market</p>
+        </div>
+        <div class="card-clear">
+          <span class="ds-num ink-white">26x</span>
+          <p class="type-body-sm ink-soft">Oversubscription across the order book</p>
+        </div>
       </div>
     </div>
   </div>
@@ -594,7 +599,8 @@
 <!-- ═══ /4. FEATURED SUCCESS STORY ════════════════════════════════════════════ -->
 
 <!-- ═══ 5. SUCCESS STORIES GRID, surface-grey ═════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-animate>
+<!-- INSTANCE of master "cards-boxed". Documented options: see-all header, description optional. Re-synced 12 Oct: styled see-all link. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-animate data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head-sm is-split">
@@ -602,9 +608,7 @@
         <span class="ds-eyebrow ink-accent" data-reveal="up">Success stories</span>
         <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Transactions that moved the market.</h2>
       </div>
-      <a href="#" class="sh-action" data-reveal="up" data-reveal-delay=".1">See all success stories
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <a href="#" class="btn btn-text sh-action is-arrow" data-reveal="up" data-reveal-delay=".1">See all success stories</a>
     </div>
 
     <div class="cd-grid" role="list">
@@ -668,7 +672,8 @@
 <!-- ═══ /5. SUCCESS STORIES GRID ══════════════════════════════════════════════ -->
 
 <!-- ═══ 6. NEWS & EVENTS, surface-white ════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-white section-y" data-animate id="events">
+<!-- INSTANCE of master "cards-boxed". Documented options: see-all header, event cards (date + city). Re-synced 12 Oct: styled see-all link. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-white section-y" data-animate id="events" data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head-sm is-split">
@@ -677,9 +682,7 @@
         <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Where our specialists take the stage.</h2>
         <p class="type-body ink-mute measure" data-reveal="up" data-reveal-delay=".08">Meet our economists and specialists at the summits, panels and industry events where the region's decisions get made.</p>
       </div>
-      <a href="#" class="sh-action" data-reveal="up" data-reveal-delay=".1">See all events
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <a href="#" class="btn btn-text sh-action is-arrow" data-reveal="up" data-reveal-delay=".1">See all events</a>
     </div>
 
     <div class="cd-grid" role="list">

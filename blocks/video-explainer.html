@@ -1,0 +1,34 @@
+<!-- ═══ Video Explainer ═════════════════════════════════════════════════════
+     A narrated product film behind a branded play pill: a centred header
+     (heading + lead) over a large rounded 16:9 frame. Before playing, the
+     poster shows with "Watch the video" and the running time; a click plays
+     the film WITH sound and hands over to the native controls; at the end it
+     returns to the poster. Styled by .cmp-video-explainer in ds.css, driven
+     by the videoExplainer behaviour in ds.js ([data-video-explainer]).
+     No-JS: the native controls stay, so the film still plays.
+     Params: surface on the root (soft default). Optional phone cut: add
+     data-vx-mq (a media query), data-vx-src-m and data-vx-poster-m to the
+     frame and it swaps to a portrait film on matching screens while idle.
+     Never add autoplay / muted / loop: this is a click-to-play film with
+     sound. Keep the running time in the button label and in aria-label.
+     No IDs (label the section with aria-label). -->
+<section class="cmp cmp-video-explainer surface-soft section-y" data-animate aria-label="How businessONLINE works">
+  <div class="container-ds">
+    <div class="section-head is-center">
+      <div class="ds-stack">
+        <h2 class="type-h2 ink-primary" data-reveal="up">Want to see how businessONLINE works?</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Watch a short tour of the platform, from paying a beneficiary to approving a transaction on the go.</p>
+    </div>
+    <div class="vx-frame" data-video-explainer data-reveal="up" data-reveal-delay=".18">
+      <video class="vx-video" controls playsinline preload="metadata" poster="/assets/images/video-explainer/poster.jpg" aria-label="How businessONLINE works, video, 24 seconds">
+        <source src="/assets/videos/businessONLINEX.mp4" type="video/mp4" />
+      </video>
+      <button class="vx-play" type="button" hidden aria-label="Play video: How businessONLINE works, 24 seconds">
+        <span class="vx-play-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+        <span class="vx-play-lbl">Watch the video<span class="vx-dur">0:24</span></span>
+      </button>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Video Explainer ════════════════════════════════════════════════════ -->

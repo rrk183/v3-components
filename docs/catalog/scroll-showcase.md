@@ -24,8 +24,13 @@ section.cmp.cmp-scroll-showcase.surface-*[data-behavior=scroll-showcase][data-an
 ```
 
 ## Options
+- **Status badge:** an item may carry one status `badge` (e.g. "Live", "Pilot").
+- **Pull quote:** an item may include a short quote with attribution.
+- **Stat pair:** an item may show a pair of key figures (number + label each).
+- **Products label:** a small label (e.g. "Sample products") may sit above the chip row.
 - **Index number:** each item may open with a large index number.
 - **Tick-list body:** an item may hold a `list-check` instead of its chip row.
+- **Per-step button optional:** an item may drop its call-to-action button.
 - **Chips optional:** the row of tag chips under each item may be dropped (all items or none).
 
 ## Content contract

@@ -51,6 +51,12 @@ section.cmp.cmp-useful-links.surface-*[data-animate]
 - External rows: meta = domain, glyph `.is-ext`, `target="_blank" rel="noopener"`.
 
 ## Options
+- **Groups side by side** (2026-10-12): two or more groups (`.ul-head` + `.ul-grid`) may sit in a `grid md:grid-cols-2` with `is-cols-1` on the root, so each group is a single column.
+- **Pop-up rows:** a row may open a modal (`data-modal-open`) instead of only linking.
+- **Single row:** one link is fine on a short support page.
+- **Footer button row:** one or two centred buttons under the list (e.g. "Visit the Form Centre").
+- **Filter bar:** a search box plus topic chips and a live result count (the shared ds.js filter); rows may be grouped under topic headings (each group a `.ul-head` + `.ul-grid`), and the eyebrow head may be dropped.
+- **Live search** (2026-10-12): add `data-filter` to the root and a search input that filters the rows (the shared ds.js filter), with a `[data-filter-empty]` empty state.
 - **Mid-page section.** Add `section-y` to the root for full section spacing,
   and a `.section-head` (any alignment, e.g. Split) may replace the eyebrow-only
   `.ul-head` above the grid. Grouped lists repeat `.ul-head` (eyebrow = group

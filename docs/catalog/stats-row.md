@@ -28,6 +28,7 @@ World Map (reach + proof), Ticker, Key Transactions.
 A hero figure moment (use Metrics — Type 2) or dense 2×2 quads (Type 1).
 
 ## Options
+- **Split header:** the header may be a full split `section-head` (eyebrow + heading left, lead right).
 - **Header above** (2026-10-12): an eyebrow + heading (`section-head`) may sit above the row.
 - **Static figures:** a figure may be plain text with no `data-countup` (ratings, ranges, values with units); the caption under each label is optional (all or none). Figure weight `is-light` or size `is-lg` are both fine.
 

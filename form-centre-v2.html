@@ -474,7 +474,8 @@
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. DOCUMENT LIBRARY + FILTERS, surface-soft ════════════════════════ -->
-<section class="cmp cmp-useful-links is-cols-2 surface-soft" data-filter data-animate>
+<!-- INSTANCE of master "useful-links". Documented options: filter bar (search, topic chips, live count), rows grouped by topic, no eyebrow head. Content only. -->
+<section class="cmp cmp-useful-links is-cols-2 surface-soft" data-filter data-animate data-master="useful-links">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
@@ -867,26 +868,33 @@
 <!-- ═══ /3. DOCUMENT LIBRARY + FILTERS ══════════════════════════════════════ -->
 
 <!-- ═══ 4. TO START TRADING, surface-white ═════════════════════════════════ -->
-<section class="cmp surface-white section-y" data-animate>
+<!-- INSTANCE of master "content-block-sidebyside" (converted 12 Oct from a custom checklist section).
+     Documented options: eyebrow, h2 size, checklist in the right column. Content only. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
   <div class="container-ds">
-    <div class="section-head is-split">
-      <div class="ds-stack">
+    <div class="flex flex-col md:flex-row md:gap-16 items-start">
+
+      <div class="ds-stack md:w-1/2 flex-shrink-0">
         <span class="ds-eyebrow ink-accent" data-reveal="up">Getting started</span>
-        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">What you need to start trading in the UAE.</h2>
+        <h2 class="cbs-head type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">What you need to start trading in the UAE.</h2>
       </div>
-      <p class="type-body ink-mute measure sh-lead" data-reveal="up" data-reveal-delay=".1">To open a Corporate and Institutional Banking or Brokerage account with Emirates NBD Securities, please have the following documents ready.</p>
+
+      <div class="md:w-1/2 md:pt-3">
+        <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".1">To open a Corporate and Institutional Banking or Brokerage account with Emirates NBD Securities, please have the following documents ready.</p>
+        <ul class="list-check mt-6" data-reveal="up" data-reveal-delay=".14">
+          <li class="ink-mute">Memorandum &amp; Article of Association and all amendments to it, if any</li>
+          <li class="ink-mute">Trade License</li>
+          <li class="ink-mute">Commercial Registration</li>
+          <li class="ink-mute">Registration with Chamber of Commerce</li>
+          <li class="ink-mute">List of current Board Members</li>
+          <li class="ink-mute">Authorized signatory letter issued by the company, to open and operate the account with ENBDS</li>
+          <li class="ink-mute">List of Shareholders, providing the break-up of shareholders holding more than 5% shares</li>
+          <li class="ink-mute">Passports or identity cards of authorized officials</li>
+          <li class="ink-mute">All documents executed outside the UAE, notarized and attested by the Ministry of Foreign Affairs of that country and the UAE embassy of that country, and also stamped by the Ministry of Foreign Affairs in the UAE</li>
+        </ul>
+      </div>
+
     </div>
-    <ul class="list-check mt-2" data-reveal="up" data-reveal-delay=".14">
-      <li>Memorandum &amp; Article of Association and all amendments to it, if any</li>
-      <li>Trade License</li>
-      <li>Commercial Registration</li>
-      <li>Registration with Chamber of Commerce</li>
-      <li>List of current Board Members</li>
-      <li>Authorized signatory letter issued by the company, to open and operate the account with ENBDS</li>
-      <li>List of Shareholders, providing the break-up of shareholders holding more than 5% shares</li>
-      <li>Passports or identity cards of authorized officials</li>
-      <li>All documents executed outside the UAE, notarized and attested by the Ministry of Foreign Affairs of that country and the UAE embassy of that country, and also stamped by the Ministry of Foreign Affairs in the UAE</li>
-    </ul>
   </div>
 </section>
 <!-- ═══ /4. TO START TRADING ════════════════════════════════════════════════ -->

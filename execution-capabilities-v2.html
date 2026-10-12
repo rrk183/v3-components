@@ -521,7 +521,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO, surface-white ════════════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate>
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size, stacked sub-heading. Content only. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
   <div class="container-ds">
     <div class="flex flex-col md:flex-row md:gap-16 items-start">
     <div class="md:w-1/2 flex-shrink-0">
@@ -539,7 +540,8 @@
 
 <!-- ═══ 3. ASSET-CLASS CAPABILITIES, vertical tabs, surface-grey ═══════════ -->
 <!-- ═══ capabilities — Scroll Tab (pinned image swaps per item) ═══ -->
-<section class="cmp cmp-scroll-showcase surface-soft section-y" data-behavior="scroll-showcase" data-scroll-pinned data-animate>
+<!-- INSTANCE of master "scroll-showcase". Documented options: stat pairs, products label, no per-step button. Content only. -->
+<section class="cmp cmp-scroll-showcase surface-soft section-y" data-behavior="scroll-showcase" data-scroll-pinned data-animate data-master="scroll-showcase">
 <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
@@ -610,7 +612,9 @@
 <!-- ═══ /3. ASSET-CLASS CAPABILITIES ════════════════════════════════════════ -->
 
 <!-- ═══ 4. PLATFORM / EXECUTE, surface-primary ════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-primary section-y" data-animate>
+<!-- INSTANCE of master "cards-kicker" (converted 12 Oct from a detached side-by-side block). Documented
+     options: navy ground, split header, kicker dropped, clear card surface, 3 columns. Content only. -->
+<section class="cmp cmp-cards cards-kicker is-cols-3 surface-primary section-y" data-animate data-master="cards-kicker">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
@@ -619,10 +623,26 @@
       </div>
       <p class="type-body ink-soft measure sh-lead" data-reveal="up" data-reveal-delay=".1">Price, trade and settle from one connected platform, with the same institutional standard behind every trade.</p>
     </div>
-    <ul class="grid sm:grid-cols-3 gap-8 mt-4 list-none" data-reveal="up" data-reveal-delay=".14">
-      <li><span class="type-body ink-white font-semibold block">One login</span><span class="type-body-sm ink-soft">Every asset class, price feed and hedge in a single workspace, on desk or on mobile.</span></li>
-      <li><span class="type-body ink-white font-semibold block">Always on</span><span class="type-body-sm ink-soft">Round-the-clock access, so you can act the moment a market moves rather than wait for the desk to open.</span></li>
-      <li><span class="type-body ink-white font-semibold block">Straight through</span><span class="type-body-sm ink-soft">A 98% straight-through processing rate means fewer breaks and faster, cleaner settlement.</span></li>
+
+    <div class="cd-grid" role="list">
+      <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="ds-stack">
+          <h3 class="type-h6 ink-white">One login</h3>
+          <p class="type-body-sm ink-soft">Every asset class, price feed and hedge in a single workspace, on desk or on mobile.</p>
+        </div>
+      </div>
+      <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="ds-stack">
+          <h3 class="type-h6 ink-white">Always on</h3>
+          <p class="type-body-sm ink-soft">Round-the-clock access, so you can act the moment a market moves rather than wait for the desk to open.</p>
+        </div>
+      </div>
+      <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="ds-stack">
+          <h3 class="type-h6 ink-white">Straight through</h3>
+          <p class="type-body-sm ink-soft">A 98% straight-through processing rate means fewer breaks and faster, cleaner settlement.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

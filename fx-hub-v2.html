@@ -474,7 +474,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO — self-service FX ═════════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate>
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size. Content only. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
   <div class="container-ds">
     <div class="flex flex-col md:flex-row md:gap-16 items-start">
       <div class="md:w-1/2 flex-shrink-0">
@@ -490,7 +491,8 @@
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. THE 24-HOUR ACCESS STORY — scrubbed beats on navy ═══════════════ -->
-<section class="cmp cmp-scroll-story surface-primary" data-animate id="always-on" aria-label="A 24-hour platform">
+<!-- INSTANCE of master "scroll-story". Documented option: all-text beats, #always-on anchor. Content only. -->
+<section class="cmp cmp-scroll-story surface-primary" data-animate id="always-on" aria-label="A 24-hour platform" data-master="scroll-story">
   <div class="sst" data-behavior="scroll-story" data-scrub-vh="520">
     <div class="sst-stage">
 
@@ -576,7 +578,8 @@
 <!-- ═══ /4. ANY DEVICE, ANY HOUR ════════════════════════════════════════════ -->
 
 <!-- ═══ 5. CAPABILITIES — pinned scroll showcase ═══════════════════════════ -->
-<section class="cmp cmp-scroll-showcase surface-soft section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="capabilities" aria-label="Trade, settle and manage from one platform.">
+<!-- INSTANCE of master "scroll-showcase". Documented options: tick-list steps, no per-step button, #capabilities anchor. Content only. -->
+<section class="cmp cmp-scroll-showcase surface-soft section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="capabilities" aria-label="Trade, settle and manage from one platform." data-master="scroll-showcase">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -710,7 +713,8 @@
 <!-- ═══ /7. WHO IT SERVES ═══════════════════════════════════════════════════ -->
 
 <!-- ═══ 8. HOW TO START ════════════════════════════════════════════════════ -->
-<section class="cmp cmp-how-it-works-steps surface-white section-y" data-animate id="getting-started">
+<!-- INSTANCE of master "how-it-works-steps". Documented options: lean steps, intro line, outline button, #getting-started anchor. Re-synced 12 Oct: step type and ink classes, built-in CTA slot. -->
+<section class="cmp cmp-how-it-works-steps surface-white section-y" data-animate id="getting-started" data-master="how-it-works-steps">
   <div class="container-ds">
 
     <div class="section-head">
@@ -725,27 +729,27 @@
       <li class="hiw-step">
         <div class="hiw-step-marker"><span class="hiw-step-n" aria-hidden="true">01</span></div>
         <div class="hiw-step-content">
-          <h3 class="hiw-step-h">Request access</h3>
-          <p class="hiw-step-p">Contact your Relationship Manager or Treasury Sales team to request FX Hub access.</p>
+          <h3 class="type-h3 hiw-step-h ink-primary">Request access</h3>
+          <p class="type-body hiw-step-p ink-mute">Contact your Relationship Manager or Treasury Sales team to request FX Hub access.</p>
         </div>
       </li>
       <li class="hiw-step">
         <div class="hiw-step-marker"><span class="hiw-step-n" aria-hidden="true">02</span></div>
         <div class="hiw-step-content">
-          <h3 class="hiw-step-h">Receive your credentials</h3>
-          <p class="hiw-step-p">You will receive your user ID by email. Set your password and log in at <a href="https://fxhub.emiratesnbd.com" target="_blank" rel="noopener">fxhub.emiratesnbd.com</a>.</p>
+          <h3 class="type-h3 hiw-step-h ink-primary">Receive your credentials</h3>
+          <p class="type-body hiw-step-p ink-mute">You will receive your user ID by email. Set your password and log in at <a href="https://fxhub.emiratesnbd.com" target="_blank" rel="noopener">fxhub.emiratesnbd.com</a>.</p>
         </div>
       </li>
       <li class="hiw-step">
         <div class="hiw-step-marker"><span class="hiw-step-n" aria-hidden="true">03</span></div>
         <div class="hiw-step-content">
-          <h3 class="hiw-step-h">Accept the disclaimer and start trading</h3>
-          <p class="hiw-step-p">On your first login, read and accept the platform disclaimer, then start booking FX deals directly from the dashboard.</p>
+          <h3 class="type-h3 hiw-step-h ink-primary">Accept the disclaimer and start trading</h3>
+          <p class="type-body hiw-step-p ink-mute">On your first login, read and accept the platform disclaimer, then start booking FX deals directly from the dashboard.</p>
         </div>
       </li>
     </ol>
 
-    <div class="flex justify-center mt-12" data-reveal="up" data-reveal-delay=".18">
+    <div class="hiw-cta">
       <a href="contact-us-v3.html" class="btn btn-outline is-arrow">Talk to the FX Hub team</a>
     </div>
 

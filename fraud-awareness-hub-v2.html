@@ -475,8 +475,10 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO, surface-white ═════════════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate>
-  <div class="container-ds flex flex-col md:flex-row md:gap-16 items-start">
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size. Re-synced 12 Oct: master wrapper structure. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
+  <div class="container-ds">
+    <div class="flex flex-col md:flex-row md:gap-16 items-start">
     <div class="md:w-1/2 flex-shrink-0">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Why it matters</span>
       <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Awareness is your strongest defence.</h2>
@@ -485,11 +487,13 @@
       <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".1">Fraud tactics grow more convincing every day, and businesses are a prime target. Recognising the warning signs early is what stops an attack before it lands. The guidance and tools on this page help your teams act with confidence and keep fraud from costing you.</p>
     </div>
   </div>
+  </div>
 </section>
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. COMMON FRAUD THREATS, surface-grey ══════════════════════════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-soft section-y" data-animate id="threats">
+<!-- INSTANCE of master "cards-number" (converted 12 Oct from Icon Linked: numbered tips). Documented options: clear card surface, #threats anchor. Content only. -->
+<section class="cmp cmp-cards cards-number is-cols-3 surface-soft section-y" data-animate id="threats" data-master="cards-number">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -504,7 +508,7 @@
 
       <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".04">
         <div class="ds-stack">
-          <span class="type-eyebrow ink-accent" aria-hidden="true">01</span>
+          <span class="ds-num is-sm" aria-hidden="true">01</span>
           <h3 class="type-h6 ink-primary">Urgent messaging</h3>
           <p class="type-body-sm ink-mute">Urgent calls, WhatsApp or SMS messages push you to act fast, demanding you click a link, add a beneficiary, or share details. Pause, verify the source through official channels, then act.</p>
         </div>
@@ -512,7 +516,7 @@
 
       <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".10">
         <div class="ds-stack">
-          <span class="type-eyebrow ink-accent" aria-hidden="true">02</span>
+          <span class="ds-num is-sm" aria-hidden="true">02</span>
           <h3 class="type-h6 ink-primary">Fake offers &amp; rewards</h3>
           <p class="type-body-sm ink-mute">Fraudsters use false offers, rebates, or reward programmes to compromise corporate data. Always verify the legitimacy of the offer before engaging.</p>
         </div>
@@ -520,7 +524,7 @@
 
       <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".16">
         <div class="ds-stack">
-          <span class="type-eyebrow ink-accent" aria-hidden="true">03</span>
+          <span class="ds-num is-sm" aria-hidden="true">03</span>
           <h3 class="type-h6 ink-primary">Phishing &amp; payment links</h3>
           <p class="type-body-sm ink-mute">Fraudulent sites and payment links convincingly imitate trusted vendors to harvest credentials. Always verify URLs, do not click on unknown links, and use official portals or approved channels for payments.</p>
         </div>
@@ -528,7 +532,7 @@
 
       <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".22">
         <div class="ds-stack">
-          <span class="type-eyebrow ink-accent" aria-hidden="true">04</span>
+          <span class="ds-num is-sm" aria-hidden="true">04</span>
           <h3 class="type-h6 ink-primary">Data manipulation</h3>
           <p class="type-body-sm ink-mute">Scammers alter payment details, such as mismatched IBANs or verification requests, to divert funds away from your intended destination. Always verify account name and IBAN via a known contact before making transfers.</p>
         </div>
@@ -536,7 +540,7 @@
 
       <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".28">
         <div class="ds-stack">
-          <span class="type-eyebrow ink-accent" aria-hidden="true">05</span>
+          <span class="ds-num is-sm" aria-hidden="true">05</span>
           <h3 class="type-h6 ink-primary">Access code traps</h3>
           <p class="type-body-sm ink-mute">Keep one-time codes private and never share them. Any request for an OTP, password, or SmartPass approval is a red flag. Emirates NBD will never ask you for them.</p>
         </div>
@@ -666,14 +670,20 @@
 <!-- ═══ /5. WORKING TOGETHER ════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. FRAUD FAQS LINK, surface-white ══════════════════════════════════ -->
-<section class="cmp surface-white section-y" data-animate>
-  <div class="container-narrow">
-    <span class="ds-eyebrow ink-accent" data-reveal="up">Good to know</span>
-    <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Frequently asked questions.</h2>
-    <p class="type-body ink-mute measure mx-auto mt-4" data-reveal="up" data-reveal-delay=".1">Answers on phishing, payment fraud and account security live with the rest of our FAQs.</p>
-    <div class="mt-8" data-reveal="up" data-reveal-delay=".15">
-      <a href="faqs-v2.html" class="btn btn-filled btn-lg">Read the fraud FAQs</a>
+<!-- INSTANCE of master "section-header" (converted 12 Oct from a custom FAQ signpost). Documented
+     options: centred, button action. Content only. -->
+<section class="cmp cmp-section-header surface-white section-y" data-animate data-master="section-header">
+  <div class="container-ds">
+
+    <div class="section-head is-center">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Good to know</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Frequently asked questions.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Answers on phishing, payment fraud and account security live with the rest of our FAQs.</p>
+      <a href="faqs-v2.html" class="btn btn-filled btn-lg sh-action" data-reveal="up" data-reveal-delay=".18">Read the fraud FAQs</a>
     </div>
+
   </div>
 </section>
 <!-- ═══ /6. FRAUD FAQS LINK ═════════════════════════════════════════════════ -->

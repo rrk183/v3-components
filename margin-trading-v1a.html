@@ -293,8 +293,10 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO, surface-white ════════════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate>
-  <div class="container-ds flex flex-col md:flex-row md:gap-16 items-start">
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size. Re-synced 12 Oct: master wrapper structure. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
+  <div class="container-ds">
+    <div class="flex flex-col md:flex-row md:gap-16 items-start">
     <div class="md:w-1/2 flex-shrink-0">
       <span class="ds-eyebrow ink-accent" data-reveal="up">What is Margin Trading</span>
       <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Borrow against your holdings, instead of selling them.</h2>
@@ -302,6 +304,7 @@
     <div class="md:w-1/2 md:pt-2">
       <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".1">Margin Trading lets you use eligible securities and cash in your portfolio as collateral for an investment credit line. That credit line multiplies your buying power, funds new or larger positions and frees up liquidity, all while you stay invested in the holdings you already own.</p>
     </div>
+  </div>
   </div>
 </section>
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->

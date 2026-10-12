@@ -13,3 +13,9 @@ A navy band: eyebrow + headline left, lead right (the split header), and a wrapp
 
 ## Authoring rule
 Copy `blocks/market-band.html` verbatim; change content (eyebrow, headline, lead, pills). Pills are the `.badge` atom — never invent a pill class.
+
+## Options
+- **Map texture:** a `span.gls-map[data-bg]` layer (the library map texture) behind the content.
+- **Outline pills:** `badge badge-outline` (or a border utility) instead of `badge-solid`.
+- **Support strip:** a closing row under a hairline, with a short heading and text on the left and up to two buttons on the right.
+- **Call-to-action button** (2026-10-12): one `btn btn-accent btn-lg` under the market pills (e.g. to a market-access page).

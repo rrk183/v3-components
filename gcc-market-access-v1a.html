@@ -297,7 +297,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO, surface-white ════════════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate>
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size. Content only. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
   <div class="container-ds">
     <div class="flex flex-col md:flex-row md:gap-16 items-start">
     <div class="md:w-1/2 flex-shrink-0">
@@ -313,7 +314,9 @@
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. WHAT SETS US APART, surface-grey ════════════════════════════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-4 surface-soft section-y" data-animate id="markets">
+<!-- INSTANCE of master "cards-kicker" (re-labelled 12 Oct from Icon Linked: plain text cards).
+     Documented options: kicker dropped, clear card surface, 4 columns, closing button, #markets anchor. -->
+<section class="cmp cmp-cards cards-kicker is-cols-4 surface-soft section-y" data-animate id="markets" data-master="cards-kicker">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -384,18 +387,20 @@
 <!-- ═══ /3. WHAT SETS US APART ══════════════════════════════════════════════ -->
 
 <!-- ═══ 4. GLOBAL REACH, surface-primary ══════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-primary section-y" data-animate>
+<!-- INSTANCE of master "section-header" (converted 12 Oct; was a stacked header labelled as a
+     side-by-side block). Documented options: navy ground, button action. Content only. -->
+<section class="cmp cmp-section-header surface-primary section-y" data-animate data-master="section-header">
   <div class="container-ds">
+
     <div class="section-head">
-      <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Built for every investor</span>
-      <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">One relationship, the whole region.</h2>
-      <p class="type-body ink-soft measure" data-reveal="up" data-reveal-delay=".1">From the individual investor to the institutional desk, the same trading infrastructure scales to your needs, through a single account and one point of contact.</p>
-      <div class="flex mt-10" data-reveal="up" data-reveal-delay=".16">
-        <a href="#capabilities" class="btn btn-outline-light inline-flex items-center justify-center gap-2 is-next">
-          See the ways to trade
-        </a>
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Built for every investor</span>
+        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">One relationship, the whole region.</h2>
       </div>
+      <p class="type-body sh-lead ink-soft" data-reveal="up" data-reveal-delay=".12">From the individual investor to the institutional desk, the same trading infrastructure scales to your needs, through a single account and one point of contact.</p>
+      <a href="#capabilities" class="btn btn-outline-light sh-action is-next" data-reveal="up" data-reveal-delay=".18">See the ways to trade</a>
     </div>
+
   </div>
 </section>
 <!-- ═══ /4. GLOBAL REACH ════════════════════════════════════════════════════ -->

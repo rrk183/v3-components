@@ -316,7 +316,8 @@
      Rows are boxed by hairlines (utility border, -mt-px collapses the
      shared edges) with inset padding — the original faq look. Layout is
      utilities; the panel is card-panel + icon-tile + btn atoms — the legacy
-     .cmp-faq-split zone has no v4 equivalent. -->
+     .cmp-faq-split zone has no v4 equivalent.
+     Option: search box + category chips that filter questions grouped under category headings. -->
 <section class="cmp cmp-acc surface-white section-y" data-animate>
   <div class="container-ds">
     <div class="grid md:grid-cols-[360px_1fr] gap-12">
@@ -442,7 +443,8 @@
        • the grid ............ [data-filter-grid]
        • each item ........... [data-filter-item] + one data-filter-<key> per key
      Match logic: AND across keys, OR within a key (space/comma list = match-any-token).
-     No IDs, no inline styles, no inline scripting — ds.js owns the behaviour. -->
+     No IDs, no inline styles, no inline scripting — ds.js owns the behaviour.
+     Option: pop-up boxed cards (modal) as the filtered items. -->
 <section class="cmp cmp-cards is-cols-3 cards-kicker surface-soft section-y" data-filter data-animate>
   <div class="container-ds">
 
@@ -1292,7 +1294,8 @@
 
 <!-- ═══ Hero — Image (cmp-hero v4 composition) ═══════════════════════════════
      Image media (media-cover span + data-bg; focal point via
-     style="--focus: 70% 40%"), copy anchored bottom-start (is-bottom). -->
+     style="--focus: 70% 40%"), copy anchored bottom-start (is-bottom).
+     Option: the hero-ctas button row is optional. -->
 <section class="cmp cmp-hero is-bottom surface-primary" data-animate>
   <div class="hero-stage surface-image">
     <span class="media-cover" data-bg="/assets/images/hero-bg.webp" aria-hidden="true"></span>
@@ -1534,7 +1537,8 @@
      A pinned 3-beat narrative authored ENTIRELY with data-anim keyframes — no
      bespoke JS. Each beat declares its own in/out animation over a progress
      range. data-behavior="scroll-story". This is the authoring contract for
-     future scroll stories: write markup + numbers, the recipe does the rest. -->
+     future scroll stories: write markup + numbers, the recipe does the rest.
+     Option: all-text beats (number-card beat and closing button optional). -->
 <section class="cmp cmp-scroll-story surface-primary" data-animate>
   <div class="sst" data-behavior="scroll-story" data-scrub-vh="460">
     <div class="sst-stage">
@@ -1678,7 +1682,7 @@
      Video card: swap the data-bg span for
        <video class="media-cover" autoplay muted loop playsinline>…</video>
      No IDs, no inline styles beyond --var passing.
-     Options: pop-up (data-modal-open) cards, label-only cards (chip + pill button). -->
+     Options: pop-up (data-modal-open) cards, label-only cards (chip + pill button), minimal title + text cards. -->
 <section class="cmp cmp-cards is-hover-zoom cards-thumb surface-white section-y" data-animate>
   <div class="container-ds">
 
@@ -3434,7 +3438,8 @@
      the section themes right through the card) — THE
      replacement for the ways-to-accept / pillar-grid linked-triad pattern.
      No IDs; no inline styles beyond --var passing.
-     Option: a badge-neutral label in place of the icon-tile (all cards or none). -->
+     Option: a badge-neutral label in place of the icon-tile (all cards or none).
+     More options: a caption line under the body, a status chip on a card. -->
 <section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-white section-y" data-animate>
   <div class="container-ds">
 
@@ -6702,7 +6707,8 @@
      Portrait people cards, text UNDER the image (the people-carousel /
      people-grid pattern): rounded portrait media tile, then name + role +
      View profile on the section surface. Whole card is a link.
-     No IDs; no inline styles beyond --var passing. -->
+     No IDs; no inline styles beyond --var passing.
+     Options: pop-up (modal) profiles, any column count via --cd-cols. -->
 <section class="cmp cmp-cards is-hover-zoom cards-people surface-white section-y" data-animate>
   <div class="container-ds">
 
@@ -7269,7 +7275,7 @@
      top corner. Text-only deals just omit the logo well — THE replacement
      for the tombstone-grid / key-transactions pattern. No IDs; no inline
      styles beyond --var passing.
-     Options: legend row optional, header see-all link, foot = place + date. -->
+     Options: legend row optional, header see-all link, foot = place + date, header optional on library pages. -->
 <section class="cmp cmp-cards cards-tombstones surface-soft section-y" data-animate>
   <div class="container-ds">
 
@@ -9376,7 +9382,7 @@
 <!-- ═══ Content Block — Side by Side ════════════════════════════════════════
      Editorial two-column block: headline left, supporting copy right.
      Params: surface, data-animate. Pure markup — reveal via ds.js. No IDs.
-     Options: eyebrow above the headline, a source line or a button row under the copy, h2 size. -->
+     Options: eyebrow above the headline, a source line, button row or stacked sub-heading under the copy, h2 size; stat figures + jump links, or a badge list + case-card row (discipline layout). -->
 <section class="cmp cmp-content-block-sidebyside surface-soft section-y" data-animate>
   <div class="container-ds">
     <div class="flex flex-col md:flex-row md:gap-16 items-start">
@@ -9422,7 +9428,7 @@
      shell verbatim and change CONTENT only — swap each pillar's SVG + copy.
      All styling lives in ds.css under .cmp-intro-side-by-side.
      Option: split header above the grid, media tile in the left column.
-     More options: badge row under the intro, trailing multi-column capability list. -->
+     More options: badge row under the intro, trailing multi-column capability list, pillars optional (lead, second paragraph or jump-link pills on the right). -->
 <section class="cmp cmp-intro-side-by-side surface-soft section-y" data-animate>
   <div class="container-ds">
     <div class="intro-grid">
@@ -10435,7 +10441,8 @@
      pages (agency, online/margin/institutional-trading, securities-services).
      Want the original map-textured look? Put this content on a
      cmp-world-map is-bleed section (data-labels="none") instead — the map
-     system provides the backdrop. Params: surface, data-animate. No IDs. -->
+     system provides the backdrop. Params: surface, data-animate. No IDs.
+     Option: one btn-accent call-to-action under the pills. -->
 <section class="cmp market-band surface-primary section-y" data-animate aria-label="GCC markets access">
   <div class="container-ds">
     <div class="section-head is-split">
@@ -10514,7 +10521,8 @@
      Columns: default 3; is-cols-1 / is-cols-2 / is-cols-3 on the root
      (--ul-cols). Pure markup — NO inline styles, NO IDs, NO inline script.
      Styled by .cmp-useful-links in ds.css (surface-adaptive .ul-*),
-     reveal-animated by ds.js. -->
+     reveal-animated by ds.js.
+     Options: live search, or a full filter bar (search + topic chips + count) over rows grouped by topic. -->
 <section class="cmp cmp-useful-links surface-soft" data-animate>
   <div class="container-ds">
     <div class="ul-head" data-reveal="up"><span class="ds-eyebrow ink-accent">Useful links</span></div>
@@ -11724,6 +11732,41 @@
 </section>
 <!-- ═══ /Bento — Feature + Research ══════════════════════════════════════════ -->
 
+<!-- ═══ Video Explainer ═════════════════════════════════════════════════════
+     A narrated product film behind a branded play pill: a centred header
+     (heading + lead) over a large rounded 16:9 frame. Before playing, the
+     poster shows with "Watch the video" and the running time; a click plays
+     the film WITH sound and hands over to the native controls; at the end it
+     returns to the poster. Styled by .cmp-video-explainer in ds.css, driven
+     by the videoExplainer behaviour in ds.js ([data-video-explainer]).
+     No-JS: the native controls stay, so the film still plays.
+     Params: surface on the root (soft default). Optional phone cut: add
+     data-vx-mq (a media query), data-vx-src-m and data-vx-poster-m to the
+     frame and it swaps to a portrait film on matching screens while idle.
+     Never add autoplay / muted / loop: this is a click-to-play film with
+     sound. Keep the running time in the button label and in aria-label.
+     No IDs (label the section with aria-label). -->
+<section class="cmp cmp-video-explainer surface-soft section-y" data-animate aria-label="How businessONLINE works">
+  <div class="container-ds">
+    <div class="section-head is-center">
+      <div class="ds-stack">
+        <h2 class="type-h2 ink-primary" data-reveal="up">Want to see how businessONLINE works?</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Watch a short tour of the platform, from paying a beneficiary to approving a transaction on the go.</p>
+    </div>
+    <div class="vx-frame" data-video-explainer data-reveal="up" data-reveal-delay=".18">
+      <video class="vx-video" controls playsinline preload="metadata" poster="/assets/images/video-explainer/poster.jpg" aria-label="How businessONLINE works, video, 24 seconds">
+        <source src="/assets/videos/businessONLINEX.mp4" type="video/mp4" />
+      </video>
+      <button class="vx-play" type="button" hidden aria-label="Play video: How businessONLINE works, 24 seconds">
+        <span class="vx-play-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+        <span class="vx-play-lbl">Watch the video<span class="vx-dur">0:24</span></span>
+      </button>
+    </div>
+  </div>
+</section>
+<!-- ═══ /Video Explainer ════════════════════════════════════════════════════ -->
+
 <!-- ═══ Product Showcase — credit-card feature highlights ═══════════════════
      Params: surface (surface-primary in original), data-animate (on/off).
      Pure markup — NO inline styles, NO IDs. Glows / float frame live in
@@ -12332,7 +12375,7 @@
      counter. Lenis-safe rAF (reads live rects each frame). Ideal for product /
      channel selectors where every item has its own image.
      Option: the per-item tag chip row is optional.
-     Options: large index number per item, tick-list body. -->
+     Options: large index number per item, tick-list body, per-step button optional, stat pair, label above the chips. -->
 <section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned aria-label="One platform for every trade.">
 <div class="container-ds">
     <div class="section-head is-split">
@@ -13311,7 +13354,10 @@
 
 <!-- ═══ CTA Band ═══════════════════════════════════════════════════════════════
      Centred call-to-action band on a navy surface: eyebrow + big headline + lead
-     + a single CTA. Styled by .ptf-ctaband / .ptf-ctarow in ds.css. -->
+     + a single CTA. Styled by .ptf-ctaband / .ptf-ctarow in ds.css.
+     Options: photo ground (surface-image + ov washes), fine-print line under the button.
+     Options: is-left / is-right (full content column), photo ground (surface-image +
+     data-bg + ov washes), stats column (.ptf-band-grid). See docs/catalog/cta-band.md. -->
 <section class="cmp ptf-ctaband surface-primary section-y" data-animate>
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Talk to us</span>
@@ -13905,7 +13951,9 @@
      Interactions auto-wired by ds.js: [data-aud]/[data-aud-panel] tabs and
      form[data-mock-form] validation + success reveal (prototype only).
      ID-free: fields label via aria-label + sibling label (no for/id).
-     Styled by .cmp-form-shell (structural rules only). -->
+     Styled by .cmp-form-shell (structural rules only).
+     Options: single form (no audience tabs), contact-card aside.
+     Options: in-shell header, flat field list, field hints, full-width fields (.sac-col-2). -->
 <section class="cmp cmp-form-shell surface-soft section-y" data-animate>
   <div class="container-ds">
     <div class="sac-shell">

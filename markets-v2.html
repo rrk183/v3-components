@@ -702,7 +702,8 @@
   </div>
 </section>
 <!-- ═══ 4b. OUR MARKETS, choose your market, surface-soft ══════════════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-soft section-y" data-animate id="our-markets">
+<!-- INSTANCE of master "cards-icon-linked". Documented options: caption line, status chip, centred header, #our-markets anchor. Content only. -->
+<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-soft section-y" data-animate id="our-markets" data-master="cards-icon-linked">
   <div class="container-ds">
 
     <div class="section-head is-center">
@@ -923,7 +924,8 @@
 <!-- ═══ /6. DIGITAL CAPABILITIES ════════════════════════════════════════════ -->
 
 <!-- ═══ 7. RESEARCH, surface-grey ══════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-soft section-y" data-animate id="research">
+<!-- INSTANCE of master "cards-boxed". Documented options: intro under the heading with a see-all action, article meta lines, #research anchor. Re-synced 12 Oct: styled see-all link. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-soft section-y" data-animate id="research" data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head-sm is-split">
@@ -932,8 +934,7 @@
         <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Stay ahead with global insights.</h2>
         <p class="type-body ink-mute measure" data-reveal="up" data-reveal-delay=".1">Our Global Markets team offers industry-leading insights and harnesses the strength of our research capabilities as well as the latest technology.</p>
       </div>
-      <a href="article-library.html" class="sh-action">See all Markets articles
-         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="article-library.html" class="btn btn-text sh-action is-arrow">See all Markets articles</a>
     </div>
 
     <div class="cd-grid" role="list">
@@ -984,16 +985,16 @@
 <!-- ═══ /7. RESEARCH ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7b. SECURITIES, reference band, surface-soft ════════════════════════ -->
-<section class="cmp surface-image section-y relative overflow-hidden mk-sec" data-bg="staging/markets-v2/em-securities-lounge.jpg" style="--focus: 100% 50%" data-animate aria-label="Emirates NBD Securities">
+<!-- INSTANCE of master "cta-band" (converted 12 Oct from a custom photo band). Documented options:
+     is-left, is-tall, is-photo-top (photo above the copy on small screens), photo ground with ov washes. Content only. -->
+<section class="cmp ptf-ctaband is-left is-tall is-photo-top surface-image section-y relative overflow-hidden" data-bg="staging/markets-v2/em-securities-lounge.jpg" style="--focus: 100% 50%" data-animate data-master="cta-band" aria-label="Emirates NBD Securities">
   <span class="ov ov-dark ov-gradient-l ov-50" aria-hidden="true"></span>
-  <div class="container-ds relative z-10 min-h-[440px] flex flex-col justify-center">
-    <div class="ds-stack max-w-2xl">
-      <span class="ds-eyebrow ink-white" data-reveal="up">Emirates NBD Securities</span>
-      <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Trading for yourself?</h2>
-      <p class="type-body-lg ink-soft measure" data-reveal="up" data-reveal-delay=".1">A single brokerage account that gives you convenience and flexibility with exceptional features and the support of a trained team.</p>
-      <div class="mt-2" data-reveal="up" data-reveal-delay=".14">
-        <a href="equity-brokerage.html" class="btn btn-filled btn-lg">Learn more</a>
-      </div>
+  <div class="container-narrow">
+    <span class="ds-eyebrow ink-white" data-reveal="up">Emirates NBD Securities</span>
+    <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".05">Trading for yourself?</h2>
+    <p class="type-body-lg ink-soft" data-reveal="up" data-reveal-delay=".1">A single brokerage account that gives you convenience and flexibility with exceptional features and the support of a trained team.</p>
+    <div class="ptf-ctarow" data-reveal="up" data-reveal-delay=".15">
+      <a href="equity-brokerage.html" class="btn btn-filled btn-lg">Learn more</a>
     </div>
   </div>
 </section>

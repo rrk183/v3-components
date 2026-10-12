@@ -464,7 +464,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. FEATURED, surface-white ═════════════════════════════════════════ -->
-<section class="cmp cmp-feature-spotlight surface-white section-y" data-animate>
+<!-- INSTANCE of master "feature-spotlight". Documented options: section header above, image chip, meta line. -->
+<section class="cmp cmp-feature-spotlight surface-white section-y" data-animate data-master="feature-spotlight">
   <div class="container-ds">
     <div class="section-head">
       <div class="ds-stack">
@@ -490,7 +491,8 @@
 <!-- ═══ /2. FEATURED ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. LIBRARY + FILTERS, surface-grey ═════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-filter data-animate id="library">
+<!-- INSTANCE of master "filter-grid". Documented option: boxed media cards. Re-synced 12 Oct: master empty state. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-filter data-animate id="library" data-master="filter-grid">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -643,7 +645,7 @@
 
     </div>
 
-    <p class="type-body ink-mute mt-8" data-filter-empty role="status" hidden>No updates match these filters. <button type="button" class="filter-chip" data-filter-reset>Clear filters</button></p>
+    <p class="filter-empty ink-mute" role="status" data-filter-empty hidden>No updates match these filters. <button type="button" class="btn btn-outline" data-filter-reset>Clear filters</button></p>
   </div>
 </section>
 <!-- ═══ /3. LIBRARY + FILTERS ═══════════════════════════════════════════════ -->

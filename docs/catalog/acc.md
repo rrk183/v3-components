@@ -8,6 +8,8 @@
 `section.cmp.cmp-acc` > `[data-accordion]` > `[data-acc]` rows, each `button[data-acc-head]` (any atoms + `.ac-icon` last) + `[data-acc-body] > .ac-inner` (ANY HTML). `.is-open` marks the open row (ds.js toggles it; add it in markup for open-by-default). `data-accordion="multi"` allows many open.
 
 ## Options
+- **Side intro + footer button:** the header may carry a lead on the side (split), and one centred button may follow the rows (e.g. "All FAQs").
+- **Larger row titles:** `type-h5` heads are the default; FAQ lists may use them as-is.
 - **Subtitled row head** (2026-10-12): a head may stack the title and a `type-body-sm ink-mute` subtitle in `span.flex.flex-col.gap-1`.
 - **Bullet-list body:** a body may hold a multi-column bullet list of short items.
 - **Header:** lead optional; left aligned when there is no split.

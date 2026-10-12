@@ -308,8 +308,10 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO, surface-white ════════════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate>
-  <div class="container-ds flex flex-col md:flex-row md:gap-16 items-start">
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size. Re-synced 12 Oct: master wrapper structure. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
+  <div class="container-ds">
+    <div class="flex flex-col md:flex-row md:gap-16 items-start">
     <div class="md:w-1/2 flex-shrink-0">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Overview</span>
       <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">A platform built around how you trade.</h2>
@@ -318,11 +320,15 @@
       <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".1">Manage your investments from the web platform or the Securities mobile app and stay close to every opportunity, wherever you are. A clean, customisable interface brings markets, orders and analytics into a single view, so you can read the picture quickly and act with confidence.</p>
     </div>
   </div>
+  </div>
 </section>
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. WHAT SETS US APART, surface-grey ════════════════════════════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-4 surface-soft section-y" data-animate>
+<!-- INSTANCE of master "cards-kicker-carousel" (re-labelled 12 Oct from Icon Linked: these are
+     plain text cards). Documented options: kicker dropped, clear card surface, 4 columns,
+     closing button row. -->
+<section class="cmp cmp-cards cards-kicker is-cols-4 surface-soft section-y" data-animate data-master="cards-kicker-carousel">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -387,6 +393,7 @@
 
     </div>
     <div class="cd-arrows">
+      <button class="crl-toggle" type="button" data-carousel-toggle hidden aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
       <div class="cd-dots" data-carousel-dots></div>
       <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous</span></button>
       <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next</span></button>

@@ -19,3 +19,6 @@
 - Never author alignment with page utilities (the six-spellings disease) — set the two `is-*` axes.
 - Washes are always `.ov` atoms — never bespoke gradient divs.
 - `surface-dark` stays banned; the default is `surface-primary` under the media.
+
+## Options
+- **Jump-link strip:** a four-column strip of jump links under the buttons, above a thin rule.

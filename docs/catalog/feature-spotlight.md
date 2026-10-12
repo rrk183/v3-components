@@ -29,6 +29,12 @@ section.cmp-feature-spotlight.surface-white.section-y[data-animate]
 ```
 
 ## Options
+- **Button instead of text link:** the row may end with one filled button (e.g. `btn btn-navy btn-lg`).
+- **Link optional:** a row may end without the text link.
+- **Section header above:** a `section-head` may introduce the rows.
+- **Meta line:** a date-style `meta-dot` line may replace the tick list; the title may step down one size.
+- **Paragraph instead of list:** a second body paragraph may replace the tick list.
+- **Single row:** one row is a normal use; the reversed second row is only for alternating pairs.
 - **Corner tag optional:** the `chip` on the media may be dropped.
 - **Tick list:** the `ul.list-check.fsp-points` is optional per row; delete it for a copy-only row.
 - **Rows:** any number; `.fsp-reverse` flips a row.

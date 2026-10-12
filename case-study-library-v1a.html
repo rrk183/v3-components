@@ -298,7 +298,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. FEATURED, surface-white ═════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cta-text is-cols-2 surface-white section-y" data-animate>
+<!-- INSTANCE of master "cards-boxed". Documented options: pop-up cards, no header lead, 2 columns. Content only. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cta-text is-cols-2 surface-white section-y" data-animate data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -346,13 +347,16 @@
 <!-- ═══ /2. FEATURED ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. LIBRARY + FILTERS, surface-grey ═════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cta-text is-cols-3 surface-soft section-y" data-filter data-animate id="library">
+<!-- INSTANCE of master "filter-grid". Documented option: pop-up boxed cards, #library anchor. Re-synced 12 Oct: split header. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cta-text is-cols-3 surface-soft section-y" data-filter data-animate id="library" data-master="filter-grid">
   <div class="container-ds">
 
-    <div class="section-head">
-      <span class="ds-eyebrow ink-accent" data-reveal="up">The library</span>
-      <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Browse the track record.</h2>
-      <p class="type-body ink-mute measure sh-lead" data-reveal="up" data-reveal-delay=".1">Filter by capability, region or year to explore the transactions our teams have originated, structured and executed.</p>
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">The library</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Browse the track record.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Filter by capability, region or year to explore the transactions our teams have originated, structured and executed.</p>
     </div>
 
     <div class="filter-bar" data-reveal="up" data-reveal-delay=".14">

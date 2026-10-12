@@ -21,6 +21,9 @@ as a calm "here is what this area does" opener rather than a hero.
 - `.ip-t` / `.ip-d` — pillar title and description.
 
 ## Options
+- **Dark ground:** `surface-primary` with `ink-white` heading and pillar titles, `ink-soft` copy and an `ink-accent-soft` eyebrow.
+- **Closing note:** an optional second paragraph under the lead (e.g. "In plain terms: ...").
+- **Pillars optional:** the icon pillars may be dropped; the right column then holds the lead, a second paragraph, or a row of jump-link pills.
 - **Badge row:** a wrap of `badge` labels (e.g. client names) under the intro copy.
 - **Trailing capability list:** a multi-column list of capabilities below the main grid.
 - **Header above, media left** (2026-10-12): the eyebrow, heading and lead may move into a `.section-head.is-split` above the grid; the left column then holds a media tile (a rounded `div[data-bg][role=img][aria-label]` that fills the column height).

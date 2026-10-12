@@ -707,7 +707,11 @@
 <!-- ═══ 4. MONEY IN MOTION · text left + product cards peeking right ═══════
      DS cmp-cards is-head-aside + data-carousel. Merges V7A's payments/FX
      bento and the trade split into one screen. -->
-<section class="cmp cmp-cards is-head-aside is-cols-2 hf-money" aria-labelledby="money-h">
+<!-- CUSTOM (accepted 12 Oct by Ram): a bespoke bento carousel. It borrows the
+     shared carousel track, arrows and dots from cmp-cards, but every slide is a
+     custom tile, so it is NOT an instance of Cards: Carousel and master changes
+     will not be re-applied to it. -->
+<section class="cmp cmp-cards is-head-aside is-cols-2 hf-money" data-custom="accepted" aria-labelledby="money-h">
   <div class="container-ds">
     <div class="section-head hf-money__head">
       <p class="ds-eyebrow ink-accent hf-eyebrow">Payments &amp; Transfers</p>

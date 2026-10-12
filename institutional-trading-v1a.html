@@ -298,8 +298,10 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO, surface-white ════════════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate>
-  <div class="container-ds flex flex-col md:flex-row md:gap-16 items-start">
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size. Re-synced 12 Oct: master wrapper structure. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
+  <div class="container-ds">
+    <div class="flex flex-col md:flex-row md:gap-16 items-start">
     <div class="md:w-1/2 flex-shrink-0">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Why Emirates NBD Securities</span>
       <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Structured to support you at every stage of execution.</h2>
@@ -307,6 +309,7 @@
     <div class="md:w-1/2 md:pt-2">
       <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".1">We understand the demands of institutional trading. Resilient infrastructure, experienced trading teams and reliable connectivity come together so you can execute with confidence across the UAE and the wider GCC, backed by a desk that knows these markets first-hand.</p>
     </div>
+  </div>
   </div>
 </section>
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->

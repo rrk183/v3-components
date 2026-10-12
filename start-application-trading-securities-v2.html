@@ -464,7 +464,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. APPLICATION FORM, surface-grey ══════════════════════════════════ -->
-<section class="cmp cmp-form-shell surface-soft section-y" data-animate id="form">
+<!-- INSTANCE of master "form-shell". Documented option: full-width fields. Re-synced 12 Oct: unused data-aud-name removed. -->
+<section class="cmp cmp-form-shell surface-soft section-y" data-animate id="form" data-master="form-shell">
   <div class="container-ds">
     <div class="sac-shell">
 
@@ -476,7 +477,7 @@
       </div>
 
       <div class="sac-card card-panel" style="--card-pad: clamp(26px,3vw,42px)" role="tabpanel" aria-label="Corporate &amp; Institutional Banking" data-aud-panel="corp" hidden>
-        <form class="sac-form" novalidate data-mock-form data-aud-name="Corporate &amp; Institutional Banking">
+        <form class="sac-form" novalidate data-mock-form>
 
           <fieldset class="sac-fieldset">
             <legend class="sac-legend type-h4 ink-primary">About you</legend>
@@ -596,7 +597,7 @@
       </div>
 
       <div class="sac-card card-panel" style="--card-pad: clamp(26px,3vw,42px)" role="tabpanel" aria-label="Trading &amp; Securities" data-aud-panel="trade">
-        <form class="sac-form" novalidate data-mock-form data-aud-name="Trading &amp; Securities">
+        <form class="sac-form" novalidate data-mock-form>
 
           <fieldset class="sac-fieldset">
             <legend class="sac-legend type-h4 ink-primary">About you</legend>
