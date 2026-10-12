@@ -458,7 +458,8 @@
 <!-- ═══ /1. HERO ═══════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. THE PROBLEM, big statement (surface-white) ══════════════════════════ -->
-<section class="cmp cmp-big-statement surface-white section-y" data-animate aria-labelledby="problem-title">
+<!-- INSTANCE of master "Big Statement". Documented options: compact headline, no closing link. -->
+<section class="cmp cmp-big-statement surface-white section-y" data-animate data-master="big-statement" aria-labelledby="problem-title">
   <div class="container-narrow">
 
     <div class="section-head is-center">
@@ -474,7 +475,9 @@
 <!-- ═══ /2. THE PROBLEM ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. THE FACTS, photographic bento (surface-grey) ════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-soft section-y" data-animate id="facts">
+<!-- INSTANCE of master "Cards: Boxed". Documented options: static cards, titled list bodies,
+     #facts anchor. Re-synced 12 Oct: surface-white on each card. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-soft section-y" data-animate id="facts" data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -487,7 +490,7 @@
 
     <div class="cd-grid" role="list">
 
-      <div class="cd-card card-panel" style="--card-pad:0" role="listitem" data-reveal="up" data-reveal-delay=".04">
+      <div class="cd-card card-panel surface-white" style="--card-pad:0" role="listitem" data-reveal="up" data-reveal-delay=".04">
         <span class="relative block aspect-[3/2]">
           <span class="media-cover" data-bg="staging/swift-corporates-v1a/sc-bento-2.jpg" aria-hidden="true"></span>
           <span class="chip rounded-full absolute bottom-3 start-4 z-10">01 &middot; The channel</span>
@@ -501,7 +504,7 @@
         </div>
       </div>
 
-      <div class="cd-card card-panel" style="--card-pad:0" role="listitem" data-reveal="up" data-reveal-delay=".10">
+      <div class="cd-card card-panel surface-white" style="--card-pad:0" role="listitem" data-reveal="up" data-reveal-delay=".10">
         <span class="relative block aspect-[3/2]">
           <span class="media-cover" data-bg="staging/swift-corporates-v1a/sc-bento-4.jpg" aria-hidden="true"></span>
           <span class="chip rounded-full absolute bottom-3 start-4 z-10">02 &middot; What runs on it</span>
@@ -515,7 +518,7 @@
         </div>
       </div>
 
-      <div class="cd-card card-panel" style="--card-pad:0" role="listitem" data-reveal="up" data-reveal-delay=".16">
+      <div class="cd-card card-panel surface-white" style="--card-pad:0" role="listitem" data-reveal="up" data-reveal-delay=".16">
         <span class="relative block aspect-[3/2]">
           <span class="media-cover" data-bg="staging/swift-corporates-v1a/sc-bento-1.jpg" aria-hidden="true"></span>
           <span class="chip rounded-full absolute bottom-3 start-4 z-10">03 &middot; Why it holds up</span>

@@ -327,7 +327,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. LEAGUE TABLES, Bento - Spotlight, surface-white ═══════════════ -->
-<section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-white section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate>
+<!-- INSTANCE of master "bento-spotlight". Documented options: static rankings, extra icon tiles, source footnote. Content only. -->
+<section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-white section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate data-master="bento-spotlight">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -415,7 +416,8 @@
 <!-- ═══ /2. LEAGUE TABLES ═══════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. WHO WE SERVE, Bento - Spotlight, surface-soft, id=clients ═══ -->
-<section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-soft section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate id="clients">
+<!-- INSTANCE of master "bento-spotlight". Documented options: text-only segment layout. Content only. -->
+<section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-soft section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate id="clients" data-master="bento-spotlight">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -469,7 +471,8 @@
 
 <!-- ═══ 4. CAPABILITIES, Vertical Tabs, surface-white, id=capabilities ═══ -->
   <!-- ═══ scroll-story (pinned image swaps per item) ═══ -->
-  <section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="capabilities" aria-labelledby="capabilities-heading">
+  <!-- INSTANCE of master "scroll-showcase". Documented options: no chip rows. Content only. -->
+<section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="capabilities" aria-labelledby="capabilities-heading" data-master="scroll-showcase">
 <div class="container-ds">
       <div class="section-head is-split">
         <div class="ds-stack">
@@ -545,7 +548,8 @@
 <!-- ═══ /4. CAPABILITIES ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 5. GLOBAL NETWORK, Editorial Story (bg video), surface-dark ══════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate>
+<!-- INSTANCE of master "hero-editorial". Documented options: mid-page band, video media, extra washes, static figures, button row. Content only. -->
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate data-master="hero-editorial">
   <div class="hero-stage surface-image">
     <video class="media-cover" muted loop playsinline preload="metadata" poster="staging/investment-banking-v1a/ib-network-poster-2.jpg" aria-hidden="true" autoplay>
       <source src="staging/investment-banking-v1a/ib-network.mp4" type="video/mp4">
@@ -693,7 +697,8 @@
 <!-- ═══ /7. TOMBSTONES ══════════════════════════════════════════════════════ -->
 
 <!-- ═══ 8. OUR PEOPLE, Leaders/Experts carousel, surface-grey ════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-people surface-soft section-y" data-animate>
+<!-- INSTANCE of master "cards-people-carousel". Documented options: tabbed groups (Leaders / Experts), static profiles, manual mode. Content only. -->
+<section class="cmp cmp-cards is-hover-zoom cards-people surface-soft section-y" data-animate data-master="cards-people-carousel">
   <div data-tabs>
 
     <div class="container-ds">
@@ -784,6 +789,7 @@
         </div>
         </div>
         <div class="cd-arrows">
+          <div class="cd-dots" data-carousel-dots></div>
           <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous leaders</span></button>
           <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next leaders</span></button>
         </div>
@@ -835,6 +841,7 @@
         </div>
         </div>
         <div class="cd-arrows">
+          <div class="cd-dots" data-carousel-dots></div>
           <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous experts</span></button>
           <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next experts</span></button>
         </div>

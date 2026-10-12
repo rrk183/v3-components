@@ -301,8 +301,10 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. WHY CHOOSE US, surface-white ════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate id="approach">
-  <div class="container-ds flex flex-col md:flex-row md:gap-16 items-start">
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size, #approach anchor. Re-synced 12 Oct: master wrapper structure. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate id="approach" data-master="content-block-sidebyside">
+  <div class="container-ds">
+    <div class="flex flex-col md:flex-row md:gap-16 items-start">
     <div class="md:w-1/2 flex-shrink-0">
       <span class="ds-eyebrow ink-accent">Our approach</span>
       <h2 class="type-h2 ink-primary">Integrity and independence, at every table.</h2>
@@ -311,16 +313,18 @@
       <p class="type-body ink-mute">As an independent agent, we keep borrowers and lenders aligned and give every party a fair hearing. Across sectors and borders, you gain a partner with regional leadership and global standards, ready to act the moment a decision is called for.</p>
     </div>
   </div>
+  </div>
 </section>
 <!-- ═══ /2. WHY CHOOSE US ═══════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. STATS BAND, Big Statement, surface-grey ═════════════════════════ -->
-<section class="cmp cmp-big-statement surface-soft section-y" data-animate>
+<!-- INSTANCE of master "big-statement". Documented options: figure strip with footnote, wide header column. Re-synced 12 Oct: headline ink. -->
+<section class="cmp cmp-big-statement surface-soft section-y" data-animate data-master="big-statement">
   <div class="container-ds">
     <div class="section-head is-center">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent" data-reveal="up">By the numbers</span>
-        <h2 class="bst-line type-display-xl" data-reveal><span class="bst-l"><span class="bst-w">Trusted with the most</span></span><span class="bst-l"><span class="bst-w"><em>complex</em> mandates.</span></span></h2>
+        <h2 class="bst-line type-display-xl ink-primary" data-reveal><span class="bst-l"><span class="bst-w">Trusted with the most</span></span><span class="bst-l"><span class="bst-w"><em>complex</em> mandates.</span></span></h2>
       </div>
       <p class="bst-sub type-body-lg ink-mute sh-lead" data-reveal="up" data-reveal-delay=".12">Consistently ranked among the top banks worldwide for syndicated loan and agency deals.</p>
     </div>
@@ -425,63 +429,56 @@
 <!-- ═══ /4. WHY BANK WITH US ════════════════════════════════════════════════ -->
 
 <!-- ═══ 5. GLOBAL REACH, surface-primary ══════════════════════════════════════ -->
-<section class="cmp cmp-world-map surface-primary section-y" data-animate aria-label="Global reach">
-<div class="container-ds">
-    <div class="section-head is-split">
-      <div class="ds-stack">
-        <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Global reach</span>
-        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Supporting your growth, in every market.</h2>
+<!-- INSTANCE of master "World Map - V2" (blocks/hex-reach-map.html, gallery:
+     Storytelling & Scroll > World Map - V2). Options: Eyebrow on, Stats row,
+     ground surface-primary. Overrides: content only (eyebrow, headline split into
+     its two lines, lead, stats, markets from this page's previous map, chapter
+     captions as region names). Styling and behaviour come from ds.css / ds.js,
+     so master changes reach this instance. -->
+<section class="cmp cmp-markets-map surface-primary is-figs" data-behavior="markets-map" data-master="hex-reach-map" aria-label="Global reach">
+  <div class="cm__stage">
+    <canvas class="cm__canvas" aria-hidden="true"></canvas>
+    <div class="cm__veil" aria-hidden="true"></div>
+    <div class="cm__frame" aria-hidden="true"></div>
+    <div class="cm__pins" aria-hidden="true"></div>
+
+    <span class="ds-eyebrow cm__eyebrow ink-accent-soft">Global reach</span>
+    <h2 class="cm__title">
+      <span class="cm__line cm__line--1">Supporting your growth,</span>
+      <span class="cm__line cm__line--2">in every market.</span>
+    </h2>
+
+    <p class="cm__lead">From your home market to your next one, our group footprint spans 12 markets across the Middle East, Europe and Asia, so your agent stays close wherever the deal travels.</p>
+
+    <div class="cm__stat">
+      <div class="cm__chapters">
+        <span class="cm__chapter" data-view="43,15,66,33">UAE</span>
+        <span class="cm__chapter" data-view="23,12,62,45">Middle East</span>
+        <span class="cm__chapter" data-view="-12,12,72,63">Europe</span>
+        <span class="cm__chapter" data-view="-16,-14,152,68">Asia</span>
       </div>
-      <p class="type-body ink-soft measure sh-lead" data-reveal="up" data-reveal-delay=".12">From your home market to your next one, our group footprint spans 12 markets across the Middle East, Europe and Asia, so your agent stays close wherever the deal travels.</p>
+      <div class="cm__rule"></div>
+      <ul class="cm__figs">
+        <li class="cm__fig"><span class="cm__fig-num">165+</span><span class="cm__fig-label">Bilateral and syndicated deals, YTD 2025</span></li>
+        <li class="cm__fig"><span class="cm__fig-num">USD 90bn+</span><span class="cm__fig-label">Primary deals across global markets in 2024</span></li>
+        <li class="cm__fig"><span class="cm__fig-num">110+</span><span class="cm__fig-label">Secondary trades placed, USD 4.3bn notional</span></li>
+      </ul>
     </div>
 
-    <div class="wm-map hidden md:block" data-behavior="world-map" data-map="dots" data-reveal="fade" data-reveal-delay=".1"
-      aria-label="Global markets served by Emirates NBD Global Loan Solutions, with routes linking Dubai to Riyadh, Cairo, Istanbul, London, Frankfurt, Moscow, Vienna, Mumbai and Singapore, and Singapore to Shanghai and Jakarta"
-      data-points='[
-        {"id":"dubai","label":"Dubai","side":"below","major":true,"hub":true},
-        {"id":"riyadh","label":"Riyadh","side":"above"},
-        {"id":"cairo","label":"Cairo","side":"below"},
-        {"id":"istanbul","label":"Istanbul","side":"above"},
-        {"id":"london","label":"London","side":"below","major":true},
-        {"id":"frankfurt","label":"Frankfurt","side":"above"},
-        {"id":"moscow","label":"Moscow","side":"above"},
-        {"id":"vienna","label":"Vienna","lat":48.2082,"lng":16.3738,"side":"below"},
-        {"id":"mumbai","label":"Mumbai","side":"below"},
-        {"id":"singapore","label":"Singapore","side":"above","major":true},
-        {"id":"shanghai","label":"Shanghai","side":"above","major":true},
-        {"id":"jakarta","label":"Jakarta","side":"below"}
-      ]'
-      data-routes='[["dubai","riyadh"],["dubai","cairo"],["dubai","istanbul"],["dubai","london"],["dubai","frankfurt"],["dubai","moscow"],["dubai","vienna"],["dubai","mumbai"],["dubai","singapore"],["singapore","shanghai"],["singapore","jakarta"]]'>
-    </div>
-
-    <!-- Mobile-only: hub grid + market pills (replaces the animated map on small screens; desktop keeps the map) -->
-    <div class="mt-10 md:hidden" data-reveal="up" data-reveal-delay=".1">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-        <div class="ink-white"><span class="type-h5 ink-white block">London</span><span class="type-body-sm ink-soft block">Europe</span></div>
-        <div class="ink-white"><span class="type-h5 ink-white block">Singapore</span><span class="type-body-sm ink-soft block">Southeast Asia</span></div>
-        <div class="ink-white"><span class="type-h5 ink-white block">Shanghai</span><span class="type-body-sm ink-soft block">East Asia</span></div>
-        <div class="ink-white"><span class="type-h5 ink-white block">Mumbai</span><span class="type-body-sm ink-soft block">South Asia</span></div>
-      </div>
-      <div class="flex flex-wrap gap-2.5 mt-6">
-        <span class="badge badge-solid">UAE</span>
-        <span class="badge badge-solid">KSA</span>
-        <span class="badge badge-solid">Egypt</span>
-        <span class="badge badge-solid">T&uuml;rkiye</span>
-        <span class="badge badge-solid">UK</span>
-        <span class="badge badge-solid">Germany</span>
-        <span class="badge badge-solid">Russia</span>
-        <span class="badge badge-solid">India</span>
-        <span class="badge badge-solid">China</span>
-        <span class="badge badge-solid">Singapore</span>
-        <span class="badge badge-solid">Indonesia</span>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 max-w-4xl mx-auto">
-      <div class="text-center" data-reveal="up" data-reveal-delay=".04"><span class="ds-num is-light ink-white" data-countup="165" data-suffix="+" data-duration="1.8" aria-hidden="true">165+</span><span class="sr-only">165+</span><span class="type-body-sm ink-soft block mt-1">Bilateral and syndicated deals, YTD 2025</span></div>
-      <div class="text-center" data-reveal="up" data-reveal-delay=".12"><span class="ds-num is-light ink-white" data-countup="90" data-prefix="USD " data-suffix="bn+" data-duration="1.8" aria-hidden="true">USD 90bn+</span><span class="sr-only">USD 90bn+</span><span class="type-body-sm ink-soft block mt-1">Primary deals across global markets in 2024</span></div>
-      <div class="text-center" data-reveal="up" data-reveal-delay=".2"><span class="ds-num is-light ink-white" data-countup="110" data-suffix="+" data-duration="1.8" aria-hidden="true">110+</span><span class="sr-only">110+</span><span class="type-body-sm ink-soft block mt-1">Secondary trades placed, USD 4.3bn notional</span></div>
-    </div>
+    <ol class="cm__markets sr-only">
+      <li data-chapter="0" data-country="United Arab Emirates" data-lon="55.3" data-lat="25.2" data-place="r" data-home>Dubai</li>
+      <li data-chapter="1" data-country="Saudi Arabia" data-lon="46.7" data-lat="24.7" data-place="b">Riyadh</li>
+      <li data-chapter="1" data-country="Egypt" data-lon="31.2" data-lat="30.0" data-place="l">Cairo</li>
+      <li data-chapter="1" data-country="Turkey" data-lon="29.0" data-lat="41.0" data-place="r">Istanbul</li>
+      <li data-chapter="2" data-country="United Kingdom" data-lon="-0.1" data-lat="51.5" data-place="l">London</li>
+      <li data-chapter="2" data-country="Germany" data-lon="8.7" data-lat="50.1" data-place="r">Frankfurt</li>
+      <li data-chapter="2" data-country="Austria" data-lon="16.4" data-lat="48.2" data-place="bl">Vienna</li>
+      <li data-chapter="2" data-country="Russia" data-lon="37.6" data-lat="55.8" data-place="t">Moscow</li>
+      <li data-chapter="3" data-country="India" data-lon="72.9" data-lat="19.1" data-place="b">Mumbai</li>
+      <li data-chapter="3" data-country="China" data-lon="121.5" data-lat="31.2" data-place="tl">Shanghai</li>
+      <li data-chapter="3" data-country="Singapore" data-lon="103.8" data-lat="1.35" data-place="bl">Singapore</li>
+      <li data-chapter="3" data-country="Indonesia" data-lon="106.8" data-lat="-6.2" data-place="b">Jakarta</li>
+    </ol>
   </div>
 </section>
 <!-- ═══ /5. GLOBAL REACH ════════════════════════════════════════════════════ -->
@@ -547,7 +544,8 @@
 
 <!-- ═══ 7. CTA, surface-primary ═══════════════════════════════════════════════ -->
 <!-- ═══ LATEST TRANSACTIONS, tombstone cards (4), surface-soft ═══════════════ -->
-<section class="cmp cmp-cards cards-tombstones is-cols-4 surface-soft section-y" data-animate aria-label="Latest transactions">
+<!-- INSTANCE of master "cards-tombstones". Documented options: header see-all link, no foot (no date or place on these deals), no legend row. Re-synced 12 Oct: header link is an sh-action. -->
+<section class="cmp cmp-cards cards-tombstones is-cols-4 surface-soft section-y" data-animate aria-label="Latest transactions" data-master="cards-tombstones">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -555,7 +553,7 @@
         <span class="ds-eyebrow ink-accent" data-reveal="up">Selected transactions</span>
         <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Latest transactions.</h2>
       </div>
-      <a class="btn btn-text btn-lg is-arrow" href="agency-division-tombstones-v1a.html" data-reveal="up" data-reveal-delay=".1">See all transactions</a>
+      <a class="btn btn-text sh-action is-arrow" href="agency-division-tombstones-v1a.html" data-reveal="up" data-reveal-delay=".1">See all transactions</a>
     </div>
 
     <div class="cd-grid" role="list">

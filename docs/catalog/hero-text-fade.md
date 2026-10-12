@@ -27,6 +27,19 @@ section.cmp-hero-text-fade.surface-dark[data-animate]
        └ .sth-cap[data-anim]  ×3            ← eyebrow + h1.sth-title + p.sth-sub
 ```
 
+## Options
+- **Alignment:** `is-left` or `is-right` on the root docks every caption to
+  that side (default centred). A single caption can take `is-right` to sit on
+  the opposite side.
+- **Phase scrim:** an extra side-gradient `ov` with `sth-ov-phase` and its own
+  `data-anim` window darkens one side only while a right-hand caption shows.
+- **Highlights row:** a caption may end with a short ticked list (2 to 4 items,
+  `ul.flex` of `li.type-body-sm.ink-soft` with an `ink-accent-soft` tick).
+- **Per-slide button:** a caption may end with one
+  `a.btn.btn-glass.btn-sm.btn-pill.is-arrow` link.
+- **Extra overlays:** add or swap `ov-gradient-*` washes for legibility.
+- **Anchor id (instances only):** a page may add `id="..."` to the root.
+
 ## Content contract
 - **3 captions** + **3 background images** (pairs are sequenced — keep counts
   matched; each added caption/bg needs its own `data-anim` range).

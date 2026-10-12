@@ -1,11 +1,11 @@
 # Tabs - Desk reel
 
-`tabs-desk` · Tabs · **statement** · white surface · _(self-contained, inline script)_
+`tabs-desk` · Tabs · **statement** · surface-white (or surface-soft) · behavior `tabs-desk` (ds.css + ds.js since 2026-10-10)
 
 Ported from the C&IB home lending section (`cib-home-final.html` section 6, `hf-ask-*`), renamed `td-*`. "With a desk for ____.": the chips rail picks a sector desk, the blank in the sentence rolls like a reel, the photo crossfades and a `card-panel` names the desk.
 
 ## Anatomy
-`section.cmp-tabs-desk[data-tabs-desk]` > `.td-track` > `.td-pin` > `.td-grid` of `.td-copy` (`.td-q` h2, `.td-sentence` with `.td-slot > .td-reel` words, `.td-intents` of `button.chip.chip-lg[data-td-intent][aria-pressed]`, `.td-panel` copy + CTAs) and `.td-stage` (`.td-shot[data-bg]` per desk + `.td-fact.card-panel` with one div per desk). Words, chips, shots and fact divs are matched by index.
+`section.cmp-tabs-desk[data-behavior=tabs-desk]` > `.td-track` > `.td-pin` > `.td-grid` of `.td-copy` (`.td-q` h2, `.td-sentence` with `.td-slot > .td-reel` words, `.td-intents` of `button.chip.chip-lg[data-td-intent][aria-pressed]`, `.td-panel` copy + CTAs) and `.td-stage` (`.td-shot[data-bg]` per desk + `.td-fact.card-panel` with one div per desk). Words, chips, shots and fact divs are matched by index.
 
 ## Behaviour
 - Motion on: the track is tall and the stage pins; scroll position picks the desk. Clicking a chip scrolls to that desk.
@@ -15,7 +15,12 @@ Ported from the C&IB home lending section (`cib-home-final.html` section 6, `hf-
 
 ## Drift cautions
 - Keep word, chip, shot and fact counts equal.
-- Set `--td-hdr` on `.cmp-tabs-desk` to the page's sticky header height (0 in the library frame, 64 to 68px on C&IB pages).
+- The pin offset (`--td-hdr`) is measured by the recipe from the site header's fixed bar; do not set it by hand.
+
+## Options
+- **Ground:** `surface-white` (default) or `surface-soft` on the root.
+- **Secondary link:** the `btn-text` link after the filled button in `.td-ctas` is optional. Delete it for a single CTA (as on payments-trade-finance-v1a).
+- **Desk count:** any number of desks, as long as word, chip, shot and fact counts match.
 
 ## Per-desk link (optional)
 Chips may carry `data-td-href` (and `data-td-label`, `data-td-target`); the link marked `data-td-cta` then follows the chosen desk: its href, its label, and whether it opens in a new tab (`data-td-target="_blank"` adds `target` + `rel="noopener"`). Used on payments-trade-finance-v1a, where the Investment Banking desk opens in a new tab.

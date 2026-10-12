@@ -41,6 +41,12 @@ cd-card                      ← IDENTITY: THE per-card class (universal, 354/35
 
 **Scroll layout: cards-scroll (generalized scroll-track recipe).** The pinned pan (scroll-track) recipe is hard-bound to `.cmp-feature-scroll-track`'s own `.cst-outer`/`.cst-pin`/`.cst-trackwrap` classes (the tall stage + sticky pin CSS is component-scoped), so a `cards-scroll` composition was deliberately NOT forced — it waits for the recipe to be generalized.
 
+## Options
+- **Pop-up cards** (2026-10-12): a card may open a modal instead of linking out: keep the `a.cd-card`, set `href="#"` and `data-modal-open="<modal id>"`, and place the matching `cmp-modal` on the page.
+- **Label-only cards:** the copy block may be just the corner `chip` plus one pill button (`btn btn-glass btn-sm btn-pill`), with no eyebrow, title or body (all cards or none).
+- **Overlay colour:** any `ov-*` colour on the card scrim (gallery Card overlay control), e.g. `ov-primary` for a navy tint.
+- **Anchor id (instances only):** a page may add `id="..."` to the root.
+
 ## Content contract
 - Slots are markup — add or remove any atom freely; the card stays intentional with any subset.
 - Titles are tag-agnostic (`h3` + `.type-*` normally). Whole-card links carry `aria-label`; decorative media/scrims are `aria-hidden`.

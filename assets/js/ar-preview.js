@@ -13,6 +13,31 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 (function () {
   var M = {
+// ── cards-awards (Cards: Awards · from rankings-and-awards section 2)
+// Awarding bodies keep their Latin brand names (GBM, Euromoney, IFR, EMEA Finance).
+"A track record the market keeps honouring.": "سجلٌّ حافل يواصل السوق تكريمه.",
+"All recognitions": "جميع الجوائز",
+"Islamic Finance": "التمويل الإسلامي",
+"Recent wins across investment banking, capital markets, Islamic and sustainable finance.": "أحدث الجوائز في الخدمات المصرفية الاستثمارية وأسواق رأس المال والتمويل الإسلامي والمستدام.",
+"GBM Awards Middle East": "جوائز GBM الشرق الأوسط",
+"Euromoney Awards for Excellence": "جوائز Euromoney للتميّز",
+"Euromoney Islamic Finance Awards": "جوائز Euromoney للتمويل الإسلامي",
+"EMEA Finance Achievement Awards": "جوائز EMEA Finance للإنجاز",
+"IFR Awards": "جوائز IFR",
+"Global Banking & Capital Markets Team of the Year": "فريق العام للخدمات المصرفية العالمية وأسواق رأس المال",
+"Loan House of the Year": "بيت القروض للعام",
+"Local Equity Capital Markets House of the Year": "بيت أسواق رأس المال المحلية للأسهم للعام",
+"Islamic Syndications House of the Year": "بيت التمويل الإسلامي المشترك للعام",
+"Middle East's Best Investment Bank for SSAs": "أفضل بنك استثماري في الشرق الأوسط للجهات السيادية وشبه السيادية والوكالات",
+"Middle East's Best Investment Bank for FIG": "أفضل بنك استثماري في الشرق الأوسط للمؤسسات المالية",
+"Best Investment Bank for ECM": "أفضل بنك استثماري لأسواق رأس المال للأسهم",
+"Middle East's Best Islamic Structured Finance House": "أفضل بيت للتمويل الإسلامي المهيكل في الشرق الأوسط",
+"UAE's Best Islamic Structured Finance House": "أفضل بيت للتمويل الإسلامي المهيكل في الإمارات",
+"Best Equity House in the Middle East": "أفضل بيت للأسهم في الشرق الأوسط",
+"Best Bond House in EMEA": "أفضل بيت للسندات في أوروبا والشرق الأوسط وأفريقيا",
+"Best Bond House in the Middle East": "أفضل بيت للسندات في الشرق الأوسط",
+"Middle East Equity House": "بيت الأسهم في الشرق الأوسط",
+"Middle East Equity Issue": "إصدار الأسهم في الشرق الأوسط",
 "Request a call back": "اطلب معاودة الاتصال",
 // ── app-download-panel (App Download Panel · from cib-home-final closing act)
 // Brand names (App Store, Google Play, iOS, Android, ENBD Business) stay Latin.

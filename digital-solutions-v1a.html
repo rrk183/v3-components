@@ -517,7 +517,10 @@
 <!-- ═══ /Smart solutions ═════════════════════════════════════════════════════ -->
 
 <!-- ═══ One connected platform, device scroll-story (ported from v2) ═════════ -->
-<section class="cmp cmp-hero-text-fade is-left surface-primary" data-animate aria-label="One connected platform">
+<!-- INSTANCE of master "Hero: Text Fade" (blocks/hero-text-fade.html). Documented
+     options: is-left, one is-right caption with a phase scrim, highlights rows
+     and a glass pill button per slide. Overrides: content only. -->
+<section class="cmp cmp-hero-text-fade is-left surface-primary" data-animate data-master="hero-text-fade" aria-label="One connected platform">
   <div class="sth" data-behavior="scroll-story" data-scrub-vh="520">
     <div class="sth-stage surface-image">
       <span class="sth-bg" data-bg="staging/digital-solutions-v1a/laptop-showcase-2026-08-04.png" data-anim='{"0.00-0.06":{"opacity":[0,1],"scale":[1.06,1]},"0.20-0.26":{"opacity":[1,0]}}'></span>
@@ -562,7 +565,9 @@
 </section>
 
 <!-- ═══ The Channels, Scroll Showcase (pinned image swaps per item) ═════════ -->
-<section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="channels">
+<!-- INSTANCE of master "Scroll Showcase" (media left, blocks/scroll-showcase.html).
+     Clean instance: nine channels, #channels anchor. Overrides: content only. -->
+<section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="channels" data-master="scroll-showcase">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">

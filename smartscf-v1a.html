@@ -778,12 +778,15 @@
 <!-- ═══ /Key features, scroll story ════════════════════════════════════════ -->
 
 <!-- ═══ Built to integrate, Bento Spotlight ════════════════════════════════ -->
-<section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-white section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate>
+<!-- INSTANCE of master "Bento: Spotlight" (blocks/bento-spotlight.html). Lead dropped
+       (optional). Re-synced 12 Oct: the call-to-action tile is navy with an
+       outline, as in the master. Content and tile spans only. -->
+  <section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-white section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate data-master="bento-spotlight">
     <div class="container-ds">
       <div class="section-head">
         <div class="ds-stack">
           <span class="ds-eyebrow ink-accent" data-reveal="up">Built to integrate</span>
-          <h2 class="type-h2 type-semibold ink-primary" data-reveal="up" data-reveal-delay=".06">Plugs into how you already work.</h2>
+          <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Plugs into how you already work.</h2>
         </div>
       </div>
       <div class="bn-grid" role="list" data-behavior="spotlight" data-reveal="up" data-reveal-delay=".12">
@@ -800,13 +803,13 @@
           <span class="ds-num ink-primary"><span data-countup="3" data-duration="2">3</span></span>
           <span class="type-caption ink-mute block mt-1">Ways to connect: API, host-to-host, upload</span>
         </div>
-        <a href="#contact" class="bn-tile is-w4 is-h1 is-t-full surface-accent" data-spotlight-tile data-reveal="up" data-reveal-delay=".20">
+        <a href="#contact" class="bn-tile is-w4 is-h1 is-t-full surface-primary border border-ink" data-spotlight-tile data-reveal="up" data-reveal-delay=".20">
           <div class="flex items-end justify-between gap-4 mt-auto w-full">
             <div class="ds-stack" style="--ds-stack-gap: 4px">
               <h3 class="type-h4 ink-white">Ready to connect your systems?</h3>
               <p class="type-body-sm ink-soft">Talk to us about the integration path that fits your stack, with no disruption to existing workflows.</p>
             </div>
-            <span class="btn btn-glass btn-icon is-up-right" aria-hidden="true"></span>
+            <span class="btn btn-glass btn-icon btn-pill is-up-right" aria-hidden="true"></span>
           </div>
         </a>
         <div class="bn-tile card-clear is-w6 is-h1" data-spotlight-tile data-reveal="up" data-reveal-delay=".24">

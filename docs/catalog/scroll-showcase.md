@@ -23,6 +23,11 @@ section.cmp.cmp-scroll-showcase.surface-*[data-behavior=scroll-showcase][data-an
     └ .ss-step-img › .ss-img[data-bg] ×N   (one per step, crossfaded)
 ```
 
+## Options
+- **Index number:** each item may open with a large index number.
+- **Tick-list body:** an item may hold a `list-check` instead of its chip row.
+- **Chips optional:** the row of tag chips under each item may be dropped (all items or none).
+
 ## Content contract
 - 3–5 steps; step name ≤4 words; one image per step (same aspect).
 - Chips optional per step; one CTA at most.
@@ -35,3 +40,6 @@ WARN in the gate). Steps and images pair by index — keep counts equal.
 ## Authoring rule
 Read `blocks/scroll-showcase.html` (or `scroll-showcase-rev.html`). Reuse
 structure/classes verbatim; change only content.
+
+## Instance notes
+- **Anchor id (instances only):** a page may add `id="..."` to the root when in-page links jump to the section. The master stays ID-free.

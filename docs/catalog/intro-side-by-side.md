@@ -20,6 +20,12 @@ as a calm "here is what this area does" opener rather than a hero.
 - `.ip-ic` — the 46px white rounded icon chip (holds a 24×24 stroke SVG).
 - `.ip-t` / `.ip-d` — pillar title and description.
 
+## Options
+- **Badge row:** a wrap of `badge` labels (e.g. client names) under the intro copy.
+- **Trailing capability list:** a multi-column list of capabilities below the main grid.
+- **Header above, media left** (2026-10-12): the eyebrow, heading and lead may move into a `.section-head.is-split` above the grid; the left column then holds a media tile (a rounded `div[data-bg][role=img][aria-label]` that fills the column height).
+- **Anchor id (instances only):** a page may add `id="..."` to the root.
+
 ## Content contract
 - Two or three pillars read best; each description is one line (~10–14 words).
 - Swap each pillar's inline `<svg>` for the matching concept; keep `stroke-width` ≈1.7.

@@ -7,6 +7,12 @@
 ## Anatomy
 `section.cmp.cmp-acc` > `[data-accordion]` > `[data-acc]` rows, each `button[data-acc-head]` (any atoms + `.ac-icon` last) + `[data-acc-body] > .ac-inner` (ANY HTML). `.is-open` marks the open row (ds.js toggles it; add it in markup for open-by-default). `data-accordion="multi"` allows many open.
 
+## Options
+- **Subtitled row head** (2026-10-12): a head may stack the title and a `type-body-sm ink-mute` subtitle in `span.flex.flex-col.gap-1`.
+- **Bullet-list body:** a body may hold a multi-column bullet list of short items.
+- **Header:** lead optional; left aligned when there is no split.
+- **Anchor id (instances only):** a page may add `id="..."` to the root.
+
 ## Content contract
 - Head slots are markup: a bare `type-*` title, or an icon-tile beside it. `.ac-icon` always sits last (margin-inline-start auto).
 - Bodies are content-agnostic: prose (`.measure` for line length), `list-check`, whole `cmp-cards` grids, `.tbl` tables.

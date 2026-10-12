@@ -461,21 +461,26 @@
 <!-- ═══ /1. HERO ═══════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. WHAT IT IS, positioning split (surface-white) ═══════════════════════ -->
-<section class="cmp cmp-big-statement surface-white section-y" data-animate aria-labelledby="whatis-title">
+<!-- INSTANCE of master "Section Header" (blocks/section-header.html, Header: Split).
+     Was labelled Big Statement but only ever held a header. Content only;
+     the demo card-panel is dropped. -->
+<section class="cmp cmp-section-header surface-white section-y" data-animate data-master="section-header">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent" data-reveal="up">What it is</span>
         <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">The digital home for your guarantees.</h2>
       </div>
-      <p class="type-body-lg ink-mute sh-lead" data-reveal="up" data-reveal-delay=".1">Enjoy the digital bank-guarantee capability inside smartTRADE, Emirates NBD's online trade-finance platform. Handle the full life of a guarantee, from request to closure, without paper.</p>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".1">Enjoy the digital bank-guarantee capability inside smartTRADE, Emirates NBD's online trade-finance platform. Handle the full life of a guarantee, from request to closure, without paper.</p>
     </div>
   </div>
 </section>
 <!-- ═══ /2. WHAT IT IS ═════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. WHAT YOU CAN DO, capability grid (surface-grey) ═════════════════════ -->
-<section class="cmp cmp-intro-side-by-side surface-soft section-y" data-animate id="how-it-works">
+<!-- INSTANCE of master "Intro: Side by Side". Documented option: split header above,
+     media tile on the left. #how-it-works anchor. Content only. -->
+<section class="cmp cmp-intro-side-by-side surface-soft section-y" data-animate id="how-it-works" data-master="intro-side-by-side">
 <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
@@ -503,7 +508,9 @@
 <!-- ═══ /3. WHAT YOU CAN DO ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. GUARANTEE COVERAGE, four items (surface-white) ══════════════════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-4 surface-white section-y" data-animate id="coverage">
+<!-- INSTANCE of master "Cards: Kicker" (converted 12 Oct from a text-only use of Cards:
+     Icon Linked). Documented options: kicker dropped, 4 columns, #coverage anchor. -->
+<section class="cmp cmp-cards cards-kicker is-cols-4 surface-white section-y" data-animate id="coverage" data-master="cards-kicker">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
@@ -515,28 +522,28 @@
 
     <div class="cd-grid" role="list">
 
-      <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".04">
+      <div class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
         <div class="ds-stack">
           <h3 class="type-h6 ink-primary">Outward guarantees</h3>
           <p class="type-body-sm ink-mute">Issued by Emirates NBD on your behalf, in favour of your beneficiary.</p>
         </div>
       </div>
 
-      <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".10">
+      <div class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
         <div class="ds-stack">
           <h3 class="type-h6 ink-primary">Inward guarantees</h3>
           <p class="type-body-sm ink-mute">Received in your favour and advised to you through the bank.</p>
         </div>
       </div>
 
-      <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".16">
+      <div class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
         <div class="ds-stack">
           <h3 class="type-h6 ink-primary">Shipping guarantee</h3>
           <p class="type-body-sm ink-mute">Take delivery of goods before the shipping documents arrive.</p>
         </div>
       </div>
 
-      <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".22">
+      <div class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".22">
         <div class="ds-stack">
           <h3 class="type-h6 ink-primary">Counter guarantees</h3>
           <p class="type-body-sm ink-mute">Issued to another bank so it can issue a guarantee to your beneficiary abroad.</p>
@@ -571,20 +578,32 @@
 <!-- ═══ /5. WHY IT MATTERS ═════════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. PROOF, RTA statement (surface-primary) ═════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-primary section-y" data-animate id="proof">
-<div class="container-narrow text-center">
-    <div class="ds-stack">
-      <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Proven at scale</span>
-      <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">A public-sector deployment.</h2>
-      <p class="type-body-lg ink-soft measure mx-auto" data-reveal="up" data-reveal-delay=".12">In 2021, Emirates NBD partnered with Dubai's Roads and Transport Authority to digitise its bank-guarantee process, removing paper from those transactions entirely.</p>
-      <p class="type-body-sm ink-soft mt-2" data-reveal="up" data-reveal-delay=".16">Emirates NBD and Dubai RTA, 2021.</p>
+<!-- INSTANCE of master "Proof Points (side by side)" (blocks/content-block-sidebyside.html).
+     Re-synced 12 Oct: headline left, copy right. Documented options: eyebrow,
+     source line, navy ground, #proof anchor. Content only. -->
+<section class="cmp cmp-content-block-sidebyside surface-primary section-y" data-animate id="proof" data-master="content-block-sidebyside">
+  <div class="container-ds">
+    <div class="flex flex-col md:flex-row md:gap-16 items-start">
+
+      <div class="ds-stack md:w-1/2 flex-shrink-0">
+        <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Proven at scale</span>
+        <h2 class="cbs-head type-h3 ink-white" data-reveal="up">A public-sector deployment.</h2>
+      </div>
+
+      <div class="md:w-1/2 md:pt-3">
+        <p class="type-body ink-soft" data-reveal="up" data-reveal-delay=".1">In 2021, Emirates NBD partnered with Dubai's Roads and Transport Authority to digitise its bank-guarantee process, removing paper from those transactions entirely.</p>
+        <p class="type-body-sm ink-soft mt-3" data-reveal="up" data-reveal-delay=".14">Emirates NBD and Dubai RTA, 2021.</p>
+      </div>
+
     </div>
   </div>
 </section>
 <!-- ═══ /6. PROOF ══════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. HOW IT FITS, ecosystem link cards (surface-white) ═══════════════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-white section-y" data-animate id="ecosystem">
+<!-- INSTANCE of master "Cards: Icon Linked". Documented option: badge instead of icon.
+     #ecosystem anchor. Content only. -->
+<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-white section-y" data-animate id="ecosystem" data-master="cards-icon-linked">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">

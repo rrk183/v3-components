@@ -412,43 +412,56 @@
 <!-- ═══ /3. WHAT SETS US APART ══════════════════════════════════════════════ -->
 
 <!-- ═══ 4. GLOBAL REACH, surface-primary ══════════════════════════════════════ -->
-<!-- ═══ Hex Reach Map ════════════════════════════════════════════════════════
-     Interactive hex-tile world map (base artwork supplied as an SVG with the
-     market node-clusters baked in). We overlay glass flag-chip markers aligned
-     to each cluster with short leader lines, a soft edge fade so the map melts
-     into the navy, ambient ripple rings on every market, and hover spotlight.
-     Registered as a SCROLL_SLUG so the library runs the script. Sample data. -->
-<section class="cmp cmp-world-map surface-primary section-y" data-animate aria-label="Global reach">
-<div class="container-ds hx-inner">
-    <div class="section-head is-split">
-      <div class="ds-stack">
-        <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Global reach</span>
-        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Supporting your ambition, in every market.</h2>
+<!-- INSTANCE of master "World Map - V2" (blocks/hex-reach-map.html, gallery:
+     Storytelling & Scroll > World Map - V2). Options: Eyebrow on, Stats counter
+     (the master's own unit line), ground surface-primary. Overrides: content only
+     (eyebrow, headline split into its two lines, lead, markets from this page's previous map, chapter
+     captions as region names). Styling and behaviour come from ds.css / ds.js,
+     so master changes reach this instance. -->
+<section class="cmp cmp-markets-map surface-primary" data-behavior="markets-map" data-master="hex-reach-map" aria-label="Global reach">
+  <div class="cm__stage">
+    <canvas class="cm__canvas" aria-hidden="true"></canvas>
+    <div class="cm__veil" aria-hidden="true"></div>
+    <div class="cm__frame" aria-hidden="true"></div>
+    <div class="cm__pins" aria-hidden="true"></div>
+
+    <span class="ds-eyebrow cm__eyebrow ink-accent-soft">Global reach</span>
+    <h2 class="cm__title">
+      <span class="cm__line cm__line--1">Supporting your ambition,</span>
+      <span class="cm__line cm__line--2">in every market.</span>
+    </h2>
+
+    <p class="cm__lead">We support institutions through every growth milestone, with custody coverage across the markets where you invest and raise capital.</p>
+
+    <div class="cm__stat">
+      <div class="cm__chapters">
+        <span class="cm__chapter" data-view="43,15,66,33">UAE</span>
+        <span class="cm__chapter" data-view="23,12,62,45">Middle East</span>
+        <span class="cm__chapter" data-view="-12,12,72,63">Europe</span>
+        <span class="cm__chapter" data-view="-16,-14,152,68">Asia</span>
       </div>
-      <div class="hx-desc type-body sh-lead ink-soft" data-reveal="up" data-reveal-delay=".12"><p>We support institutions through every growth milestone, with custody coverage across the markets where you invest and raise capital.</p></div>
+      <div class="cm__rule"></div>
+      <div class="cm__count">
+        <div class="cm__num" aria-hidden="true"><span class="cm__digit"><span class="cm__strip"></span></span><span class="cm__digit"><span class="cm__strip"></span></span></div>
+        <p class="cm__unit"><span class="sr-only cm__total">12 </span>markets with<br>custody coverage</p>
+      </div>
     </div>
 
-    <div class="wm-map w-full" data-reveal="fade" data-reveal-delay=".1"
-      data-behavior="world-map" data-map="hex"
-      aria-label="Emirates NBD custody coverage across global markets"
-      data-points='[
-        {"id":"uk","label":"UK","flag":"gb","side":"left","major":true},
-        {"id":"de","label":"Germany","flag":"de"},
-        {"id":"ru","label":"Russia","flag":"ru"},
-        {"id":"at","label":"Austria","flag":"at"},
-        {"id":"tr","label":"Turkey","flag":"tr"},
-        {"id":"eg","label":"Egypt","flag":"eg","side":"left"},
-        {"id":"ksa","label":"KSA","flag":"sa","side":"bottom","major":true},
-        {"id":"uae","label":"UAE","flag":"ae","major":true,"hub":true},
-        {"id":"in","label":"India","flag":"in","major":true},
-        {"id":"cn","label":"China","flag":"cn","side":"left","major":true},
-        {"id":"sg","label":"Singapore","flag":"sg","side":"left","major":true},
-        {"id":"id","label":"Indonesia","flag":"id","side":"left"}
-      ]'>
-    </div>
+    <ol class="cm__markets sr-only">
+      <li data-chapter="0" data-country="United Arab Emirates" data-lon="54.4" data-lat="24.6" data-place="r" data-home>UAE</li>
+      <li data-chapter="1" data-country="Saudi Arabia" data-lon="44.6" data-lat="24.4" data-place="b">KSA</li>
+      <li data-chapter="1" data-country="Egypt" data-lon="29.8" data-lat="27.0" data-place="l">Egypt</li>
+      <li data-chapter="1" data-country="Turkey" data-lon="33.4" data-lat="39.0" data-place="r">Turkey</li>
+      <li data-chapter="2" data-country="Austria" data-lon="13.6" data-lat="47.6" data-place="bl">Austria</li>
+      <li data-chapter="2" data-country="United Kingdom" data-lon="-1.0" data-lat="52.6" data-place="l">UK</li>
+      <li data-chapter="2" data-country="Germany" data-lon="9.8" data-lat="51.0" data-place="r">Germany</li>
+      <li data-chapter="2" data-country="Russia" data-lon="50.0" data-lat="58.0" data-place="t">Russia</li>
+      <li data-chapter="3" data-country="India" data-lon="78.4" data-lat="22.0" data-place="b">India</li>
+      <li data-chapter="3" data-country="China" data-lon="99.0" data-lat="34.0" data-place="tl">China</li>
+      <li data-chapter="3" data-country="Singapore" data-lon="104.0" data-lat="1.3" data-place="bl">Singapore</li>
+      <li data-chapter="3" data-country="Indonesia" data-lon="114.5" data-lat="-0.8" data-place="b">Indonesia</li>
+    </ol>
   </div>
-
-  
 </section>
 <!-- ═══ /Hex Reach Map ═══════════════════════════════════════════════════════ -->
 <!-- ═══ /4. GLOBAL REACH ════════════════════════════════════════════════════ -->

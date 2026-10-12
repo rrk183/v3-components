@@ -1,0 +1,85 @@
+<!-- ═══ Cards: Awards (composition of cmp-cards) ═══════════════════════════
+     Award recognition cards: a logo well with the year badge at the end, the
+     practice as a small eyebrow, the awarding body as the title, and the
+     titles won as a list-check. Plain white card-panels that lift on hover
+     (is-hover-lift on the root). Pure composition: no component CSS, the
+     card, grid, columns and hover axes are the shared cmp-cards ones.
+     Params: surface on the root (default surface-soft), is-cols-2/3/4,
+     hover mode, card surface. Logos are <img> with a real alt, never a
+     wordmark rebuilt in SVG. Harvested from rankings-and-awards.html
+     (section 2). No IDs; no inline styles. -->
+<section class="cmp cmp-cards cards-awards is-cols-3 is-hover-lift surface-soft section-y" data-animate>
+  <div class="container-ds">
+
+    <div class="section-head is-split">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">All recognitions</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">A track record the market keeps honouring.</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Recent wins across investment banking, capital markets, Islamic and sustainable finance.</p>
+    </div>
+
+    <div class="cd-grid" role="list">
+
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="/assets/images/cards-awards/emcap_01_gbm_me_2026.jpg" alt="GBM Awards Middle East" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2026</span></div>
+        <p class="ds-eyebrow ink-mute">Investment Banking</p>
+        <h3 class="type-h5 ink-primary mt-2">GBM Awards Middle East</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Global Banking &amp; Capital Markets Team of the Year</li>
+          <li>Loan House of the Year</li>
+          <li>Local Equity Capital Markets House of the Year</li>
+          <li>Islamic Syndications House of the Year</li>
+        </ul>
+      </article>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="/assets/images/cards-awards/emcap_02_euromoney_2026.jpg" alt="Euromoney Awards for Excellence" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2026</span></div>
+        <p class="ds-eyebrow ink-mute">Investment Banking</p>
+        <h3 class="type-h5 ink-primary mt-2">Euromoney Awards for Excellence</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Middle East's Best Investment Bank for SSAs</li>
+          <li>Middle East's Best Investment Bank for FIG</li>
+          <li>Best Investment Bank for ECM</li>
+        </ul>
+      </article>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="/assets/images/cards-awards/emcap_03_euromoney_islamic_2026.jpg" alt="Euromoney Islamic Finance Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2026</span></div>
+        <p class="ds-eyebrow ink-mute">Islamic Finance</p>
+        <h3 class="type-h5 ink-primary mt-2">Euromoney Islamic Finance Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Middle East's Best Islamic Structured Finance House</li>
+          <li>UAE's Best Islamic Structured Finance House</li>
+        </ul>
+      </article>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="/assets/images/cards-awards/awards_emea_01.png" alt="EMEA Finance Achievement Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Investment Banking</p>
+        <h3 class="type-h5 ink-primary mt-2">EMEA Finance Achievement Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Best Equity House in the Middle East</li>
+          <li>Best Bond House in EMEA</li>
+          <li>Best Bond House in the Middle East</li>
+        </ul>
+      </article>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="/assets/images/cards-awards/ifr_awards_2025.png" alt="IFR Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Equity Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">IFR Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Middle East Equity House</li>
+        </ul>
+      </article>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="/assets/images/cards-awards/ifr_du_awards.png" alt="IFR Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Equity Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">IFR Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Middle East Equity Issue</li>
+        </ul>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Cards: Awards ═════════════════════════════════════════════════════ -->

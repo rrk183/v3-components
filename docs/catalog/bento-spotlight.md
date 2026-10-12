@@ -30,6 +30,14 @@ section.cmp-bento-spotlight[data-animate]   (surface-white in markup)
      .bs-tile.bs-stat       stat — .bs-stat-num(data-countup 40 suffix=+) + label
 ```
 
+## Options
+- **Static figures:** stat tiles may show rankings or values without `data-countup`.
+- **Free tile mix:** any number of icon tiles alongside the stats.
+- **Source footnote:** an optional `type-caption ink-mute` line under the grid naming the source of the figures.
+- **Segment layout:** text-only tiles plus one or two image tiles (no stats, icons or call-to-action tile), for a segment overview.
+- **All-feature mix** (2026-10-12): the grid may hold only feature tiles (one image tile, not a link, plus icon tiles), with no stat tiles and no call-to-action tile.
+- **Eyebrow optional** in the header.
+
 ## Content contract
 - **7 tiles** in the fixed feature / stat×4 / cta / icon layout — spans are set
   in CSS per modifier class. Keep the roles.

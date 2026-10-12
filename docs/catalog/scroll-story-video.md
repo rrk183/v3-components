@@ -31,6 +31,20 @@ section.cmp-scroll-story-video.surface-dark[data-animate]
        └ .ssv-cap[data-anim='{…}']  ← eyebrow + .ssv-h + .btn CTA (.ssv-cta)
 ```
 
+## Options
+- **Image sequence instead of video:** set `data-source="images"` on `.ssv`
+  with `data-path` (frame template, `###` = zero-padded index), `data-count`,
+  `data-start`, optional phone frames (`data-path-sm`, `data-step-sm`) and
+  fitting (`data-fit`, `data-fit-band`, `data-fit-max`); replace the
+  `<video>` with `canvas.ssv-canvas[data-story-canvas]`.
+- **Light ground:** add `ssv-light` to the root (grey stage, navy headlines).
+- **Opener:** an optional full-screen `.ssv-opener` (eyebrow, `h1.ssv-op-h`,
+  `.ssv-op-sub` and the `scin-cue` scroll cue) that fades out first.
+- **Caption positions:** `cap-left`, `cap-right`, or a split headline across
+  `cap-split-l` + `cap-split-r` (add `ssv-split-in` to the root to pull the
+  halves inward). `is-app-cap` styles a caption over a device shot.
+- **Closing button:** the last caption may carry one `btn btn-filled btn-lg ssv-cta`.
+
 ## Content contract
 - **3 beats** (3–4 works; each added beat needs its own `data-anim` range).
 - Headlines (`.ssv-h`): short, ≤6 words — they fill the viewport over video

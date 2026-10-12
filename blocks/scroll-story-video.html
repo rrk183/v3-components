@@ -2,7 +2,10 @@
      scroll-story-scrub: a pinned VIDEO background that scrubs by scroll
      (currentTime ← progress) with declarative data-anim text beats over it.
      Same authoring contract as scroll-story (data-anim keyframes), plus
-     data-source="video" + a <video data-story-video>. surface-primary. -->
+     data-source="video" + a <video data-story-video>. surface-primary.
+     Options (docs/catalog/scroll-story-video.md): image-sequence source,
+     ssv-light ground, opener with scroll cue, left/right/split captions,
+     a closing button. -->
 <section class="cmp cmp-scroll-story-video surface-primary" data-animate>
   <div class="ssv" data-behavior="scroll-story-scrub" data-scrub-vh="520" data-source="video">
     <div class="ssv-stage surface-image">

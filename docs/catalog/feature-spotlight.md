@@ -28,6 +28,12 @@ section.cmp-feature-spotlight.surface-white.section-y[data-animate]
        └ a.fsp-link
 ```
 
+## Options
+- **Corner tag optional:** the `chip` on the media may be dropped.
+- **Tick list:** the `ul.list-check.fsp-points` is optional per row; delete it for a copy-only row.
+- **Rows:** any number; `.fsp-reverse` flips a row.
+- **Anchor id (instances only):** a page may add `id="..."` to the root.
+
 ## Content contract
 - **2 rows** (the canonical alternating pair). Add more by repeating `.fsp-row`
   and toggling `.fsp-reverse` to keep the zig-zag.

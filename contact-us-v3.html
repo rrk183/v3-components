@@ -601,31 +601,49 @@
 <!-- ═══ /3. THE THREE DOORS ═════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. OUR INTERNATIONAL PRESENCE — the map, surface-primary ════════════ -->
-<section class="cmp cmp-world-map surface-primary section-y" data-animate id="locations" aria-label="Our international presence">
-  <div class="container-ds hx-inner">
+<!-- INSTANCE of master "World Map - V2" (blocks/hex-reach-map.html, gallery:
+     Storytelling & Scroll > World Map - V2). Options: Eyebrow on, Stats counter,
+     ground surface-primary. Overrides: content only (eyebrow, headline split into
+     its two lines, lead, counter unit line from the headline's wording, the five
+     core markets only (to match the headline), markets from this page's previous map, chapter
+     captions as region names). Keeps the page's #locations anchor (sub-nav
+     and two links jump here). Styling and behaviour come from ds.css / ds.js,
+     so master changes reach this instance. -->
+<section class="cmp cmp-markets-map surface-primary" data-behavior="markets-map" data-master="hex-reach-map" aria-label="Our international presence" id="locations">
+  <div class="cm__stage">
+    <canvas class="cm__canvas" aria-hidden="true"></canvas>
+    <div class="cm__veil" aria-hidden="true"></div>
+    <div class="cm__frame" aria-hidden="true"></div>
+    <div class="cm__pins" aria-hidden="true"></div>
 
-    <div class="section-head is-split">
-      <div class="ds-stack">
-        <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Our international presence</span>
-        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Five core markets. One connected network.</h2>
+    <span class="ds-eyebrow cm__eyebrow ink-accent-soft">Our international presence</span>
+    <h2 class="cm__title">
+      <span class="cm__line cm__line--1">Five core markets.</span>
+      <span class="cm__line cm__line--2">One connected network.</span>
+    </h2>
+
+    <p class="cm__lead">We are on the ground in our five core markets &mdash; the UAE, Saudi Arabia, Egypt, India and T&uuml;rkiye &mdash; and connected through network markets such as London and Singapore. Emirates NBD operates across 13 countries covering the GCC, T&uuml;rkiye, Asia and Europe.</p>
+
+    <div class="cm__stat">
+      <div class="cm__chapters">
+        <span class="cm__chapter" data-view="43,15,66,33">UAE</span>
+        <span class="cm__chapter" data-view="23,12,62,45">Middle East</span>
+        <span class="cm__chapter" data-view="-16,-14,152,68">Asia</span>
       </div>
-      <div class="hx-desc type-body sh-lead ink-soft" data-reveal="up" data-reveal-delay=".12"><p>We are on the ground in our five core markets &mdash; the UAE, Saudi Arabia, Egypt, India and T&uuml;rkiye &mdash; and connected through network markets such as London and Singapore. Emirates NBD operates across 13 countries covering the GCC, T&uuml;rkiye, Asia and Europe.</p></div>
+      <div class="cm__rule"></div>
+      <div class="cm__count">
+        <div class="cm__num" aria-hidden="true"><span class="cm__digit"><span class="cm__strip"></span></span><span class="cm__digit"><span class="cm__strip"></span></span></div>
+        <p class="cm__unit"><span class="sr-only cm__total">5 </span>core markets in one<br>connected network</p>
+      </div>
     </div>
 
-    <div class="wm-map w-full" data-reveal="fade" data-reveal-delay=".1"
-      data-behavior="world-map" data-map="hex"
-      aria-label="Emirates NBD core markets and network markets"
-      data-points='[
-        {"id":"uae","label":"UAE","flag":"ae","major":true,"hub":true},
-        {"id":"ksa","label":"KSA","flag":"sa","side":"bottom","major":true},
-        {"id":"eg","label":"Egypt","flag":"eg","side":"left","major":true},
-        {"id":"tr","label":"T&uuml;rkiye","flag":"tr","major":true},
-        {"id":"in","label":"India","flag":"in","major":true},
-        {"id":"uk","label":"UK","flag":"gb","side":"left","major":true},
-        {"id":"sg","label":"Singapore","flag":"sg","side":"left","major":true}
-      ]'>
-    </div>
-
+    <ol class="cm__markets sr-only">
+      <li data-chapter="0" data-country="United Arab Emirates" data-lon="54.4" data-lat="24.6" data-place="r" data-home>UAE</li>
+      <li data-chapter="1" data-country="Saudi Arabia" data-lon="44.6" data-lat="24.4" data-place="b">KSA</li>
+      <li data-chapter="1" data-country="Egypt" data-lon="29.8" data-lat="27.0" data-place="l">Egypt</li>
+      <li data-chapter="1" data-country="Turkey" data-lon="33.4" data-lat="39.0" data-place="r">T&uuml;rkiye</li>
+      <li data-chapter="2" data-country="India" data-lon="78.4" data-lat="22.0" data-place="b">India</li>
+    </ol>
   </div>
 </section>
 <!-- ═══ /4. OUR INTERNATIONAL PRESENCE — the map ════════════════════════════ -->

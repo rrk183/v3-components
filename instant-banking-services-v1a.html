@@ -462,7 +462,9 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. VALUE PROPS, Digital Tools Showcase ═════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb surface-soft section-y" data-animate id="value">
+<!-- INSTANCE of master "Cards: Thumbnail (Carousel)" (blocks/cards-carousel.html). Documented
+     options: manual mode, static cards without chips, header side link, #value anchor. -->
+<section class="cmp cmp-cards is-hover-zoom cards-thumb surface-soft section-y" data-animate id="value" data-master="cards-carousel">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
@@ -537,7 +539,8 @@
 <!-- ═══ /2. VALUE PROPS ═════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. PAYMENT TRACKER, Feature Spotlight ══════════════════════════════ -->
-<section class="cmp cmp-feature-spotlight surface-white section-y" data-animate id="payment-tracker">
+<!-- INSTANCE of master "Feature Spotlight". Re-synced 12 Oct: styled arrow link, list inks. -->
+<section class="cmp cmp-feature-spotlight surface-white section-y" data-animate id="payment-tracker" data-master="feature-spotlight">
   <div class="container-ds fsp-rows">
 
     <div class="fsp-row">
@@ -549,11 +552,11 @@
         <h2 class="type-h2 ink-primary fsp-title">Track your payments on businessONLINE</h2>
         <p class="type-body-lg ink-mute measure fsp-lead">Follow every payment across your portfolio in real time, from release to receipt, with full history and Swift gpi status on cross-border payments.</p>
         <ul class="list-check fsp-points">
-          <li>Your whole portfolio on one dashboard</li>
-          <li>Full per-payment history, end to end</li>
-          <li>Swift gpi status on cross-border payments</li>
+          <li class="ink-mute">Your whole portfolio on one dashboard</li>
+          <li class="ink-mute">Full per-payment history, end to end</li>
+          <li class="ink-mute">Swift gpi status on cross-border payments</li>
         </ul>
-        <a href="payment-tracker-v1a.html" class="btn btn-text btn-lg">Know more &rarr;</a>
+        <a href="payment-tracker-v1a.html" class="btn btn-text btn-lg is-arrow">Know more</a>
       </div>
     </div>
 
@@ -562,13 +565,17 @@
 <!-- ═══ /3. PAYMENT TRACKER ═════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. SERVICE CATALOGUE, Accordion ════════════════════════════════════ -->
-<section class="cmp cmp-acc surface-soft section-y" data-animate id="services">
+<!-- INSTANCE of master "Accordion" (blocks/acc.html). Documented options: subtitled row heads,
+     bullet-list bodies, #services anchor. Re-synced 12 Oct: master header structure, icon ink. -->
+<section class="cmp cmp-acc surface-soft section-y" data-animate id="services" data-master="acc">
   <div class="container-ds">
 
-    <div class="ds-stack section-head-sm">
-      <span class="ds-eyebrow ink-accent" data-reveal="up">Service catalogue</span>
-      <h2 class="type-h2 ink-primary" data-reveal="up">Everything you can do</h2>
-      <p class="type-body-lg ink-mute" data-reveal="up" data-reveal-delay=".06">Raise and track any of these on businessONLINE.</p>
+    <div class="section-head section-head-sm">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Service catalogue</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Everything you can do</h2>
+      </div>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Raise and track any of these on businessONLINE.</p>
     </div>
 
     <div data-accordion>
@@ -579,7 +586,7 @@
             <span class="type-h5 ink-primary">Services</span>
             <span class="type-body-sm ink-mute">Request letters, statements and account changes</span>
           </span>
-          <span class="ac-icon">
+          <span class="ac-icon ink-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
         </button>
@@ -611,7 +618,7 @@
             <span class="type-h5 ink-primary">Debit Card Management</span>
             <span class="type-body-sm ink-mute">Issue, block, activate and reissue debit cards</span>
           </span>
-          <span class="ac-icon">
+          <span class="ac-icon ink-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
         </button>
@@ -633,7 +640,7 @@
             <span class="type-h5 ink-primary">Credit Card Management</span>
             <span class="type-body-sm ink-mute">Statements, card replacement, limits and blocks</span>
           </span>
-          <span class="ac-icon">
+          <span class="ac-icon ink-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
         </button>
@@ -654,7 +661,7 @@
             <span class="type-h5 ink-primary">Inquiry</span>
             <span class="type-body-sm ink-mute">Look up invoices, IBAN validation and statements</span>
           </span>
-          <span class="ac-icon">
+          <span class="ac-icon ink-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
         </button>
@@ -676,7 +683,7 @@
             <span class="type-h5 ink-primary">businessONLINE Maintenance</span>
             <span class="type-body-sm ink-mute">Manage administrators, roles, packages and profiles</span>
           </span>
-          <span class="ac-icon">
+          <span class="ac-icon ink-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
         </button>
