@@ -582,14 +582,21 @@
 
 
   <!-- ═══ Video Explainer: how API Banking works (click to play, with sound) ═══ -->
-  <section class="cmp cmp-video-explainer surface-soft section-y" data-animate aria-labelledby="api-video-h">
+  <!-- INSTANCE of master "video-explainer" (blocks/video-explainer.html, gallery: Product &amp; Device
+       Showcases > Video Explainer). Overrides: content only (heading, lead, 1:15 film, poster, labels,
+       staging/ media paths). Documented option: phone cut (data-vx-mq / -src-m / -poster-m).
+       Re-synced 12 Oct: no autoplay / muted / loop (click-to-play film with sound), aria-label
+       instead of an id-based label, master centred header. -->
+  <section class="cmp cmp-video-explainer surface-soft section-y" data-animate data-master="video-explainer" aria-label="How API Banking works">
     <div class="container-ds">
-      <div class="ds-stack section-head measure">
-        <h2 id="api-video-h" class="type-h2 ink-primary type-semibold" data-reveal="up" data-reveal-delay=".06">Want to understand how API Banking works?</h2>
-        <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".12">Watch this video where we&rsquo;ve demonstrated how APIs help you deal with real-life scenarios in your day-to-day business.</p>
+      <div class="section-head is-center">
+        <div class="ds-stack">
+          <h2 class="type-h2 ink-primary" data-reveal="up">Want to understand how API Banking works?</h2>
+        </div>
+        <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Watch this video where we&rsquo;ve demonstrated how APIs help you deal with real-life scenarios in your day-to-day business.</p>
       </div>
       <div class="vx-frame" data-video-explainer data-vx-mq="(max-width: 599px) and (max-aspect-ratio: 2/3)" data-vx-src-m="staging/api-banking-v1a/api-banking-explainer-mobile.mp4" data-vx-poster-m="staging/api-banking-v1a/api-banking-explainer-poster-mobile.jpg" data-reveal="up" data-reveal-delay=".18">
-        <video class="vx-video" controls playsinline preload="metadata" poster="staging/api-banking-v1a/api-banking-explainer-1080-poster.jpg" aria-label="How API Banking works, video, 1 minute 15 seconds" autoplay muted loop>
+        <video class="vx-video" controls playsinline preload="metadata" poster="staging/api-banking-v1a/api-banking-explainer-1080-poster.jpg" aria-label="How API Banking works, video, 1 minute 15 seconds">
           <source src="staging/api-banking-v1a/api-banking-explainer-1080.mp4" type="video/mp4" />
         </video>
         <button class="vx-play" type="button" hidden aria-label="Play video: How API Banking works, 1 minute 15 seconds">

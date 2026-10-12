@@ -464,7 +464,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. LIBRARY + FILTERS, surface-white ════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-white section-y" data-filter data-animate id="library">
+<!-- INSTANCE of master "filter-grid". Documented options: boxed media cards with date / read-time, source footnote. Re-synced 12 Oct: master empty state. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-white section-y" data-filter data-animate id="library" data-master="filter-grid">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -619,7 +620,7 @@
 
     </div>
 
-    <p class="type-body ink-mute mt-8" data-filter-empty role="status" hidden>No articles match these filters. <button type="button" class="filter-chip" data-filter-reset>Clear filters</button></p>
+    <p class="filter-empty ink-mute" role="status" data-filter-empty hidden>No articles match these filters. <button type="button" class="btn btn-outline" data-filter-reset>Clear filters</button></p>
 
     <p class="type-caption ink-mute mt-8">Articles are published by Emirates NBD Research. Author names, dates and read times are drawn from the source content. Individual article links to follow.</p>
   </div>

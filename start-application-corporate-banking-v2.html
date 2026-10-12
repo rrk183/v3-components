@@ -465,7 +465,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. APPLICATION FORM, surface-grey ══════════════════════════════════ -->
-<section class="cmp cmp-form-shell surface-soft section-y" data-animate id="form" aria-label="Start your application">
+<!-- INSTANCE of master "form-shell". Documented options: full-width fields, screen-reader heading. Re-synced 12 Oct: unused data-aud-name removed. -->
+<section class="cmp cmp-form-shell surface-soft section-y" data-animate id="form" aria-label="Start your application" data-master="form-shell">
   <div class="container-ds">
     <h2 class="sr-only">Start your application</h2>
     <div class="sac-shell">
@@ -478,7 +479,7 @@
       </div>
 
       <div class="sac-card card-panel" style="--card-pad: clamp(26px,3vw,42px)" role="tabpanel" aria-label="Corporate &amp; Institutional Banking" data-aud-panel="corp">
-        <form class="sac-form" novalidate data-mock-form data-aud-name="Corporate &amp; Institutional Banking">
+        <form class="sac-form" novalidate data-mock-form>
 
           <fieldset class="sac-fieldset">
             <legend class="sac-legend type-h4 ink-primary">About you</legend>
@@ -598,7 +599,7 @@
       </div>
 
       <div class="sac-card card-panel" style="--card-pad: clamp(26px,3vw,42px)" role="tabpanel" aria-label="Trading &amp; Securities" data-aud-panel="trade" hidden>
-        <form class="sac-form" novalidate data-mock-form data-aud-name="Trading &amp; Securities">
+        <form class="sac-form" novalidate data-mock-form>
 
           <fieldset class="sac-fieldset">
             <legend class="sac-legend type-h4 ink-primary">About you</legend>

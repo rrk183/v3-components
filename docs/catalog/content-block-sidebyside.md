@@ -22,6 +22,12 @@ section.cmp.cmp-content-block-sidebyside.surface-grey.section-y[data-animate]
 ```
 
 ## Options
+- **Checklist right column:** the right column may hold the copy followed by a `list-check` (e.g. documents required).
+- **Figure + logos right column:** the right column may hold one large count-up figure with a caption, then an eyebrow and a greyscale logo row (e.g. group companies); the left column may end with a button.
+- **Stat figures + jump links:** the right column may hold up to two large stat figures and a numbered row of jump-link pills to sections on the page.
+- **Discipline layout:** the right column may be a key-products `badge` list, followed by a full-width row of challenge / solution / impact cards below the two columns. Used five times on structured-solutions-v2.
+- **Label id (instances only):** the headline may carry an id used by `aria-labelledby` on the root.
+- **Stacked sub-heading:** the right column may add a second sub-heading (`type-h5`) and paragraph under the main copy.
 - **Button row:** up to two buttons under the copy in the right column (primary + outline).
 - **Section-opening size:** the headline may use `type-h2` instead of `type-h3` when the block opens a major section.
 - **Eyebrow** (2026-10-12): an optional `ds-eyebrow` above the headline; the left column becomes a `ds-stack` of eyebrow + headline.

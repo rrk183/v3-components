@@ -461,7 +461,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. FEATURED, surface-white ═════════════════════════════════════════ -->
-<section class="cmp cmp-feature-spotlight surface-white section-y" data-animate>
+<!-- INSTANCE of master "feature-spotlight". Documented options: section header above, image chip, meta line. -->
+<section class="cmp cmp-feature-spotlight surface-white section-y" data-animate data-master="feature-spotlight">
   <div class="container-ds">
     <div class="section-head">
       <div class="ds-stack">
@@ -488,7 +489,8 @@
 <!-- ═══ /2. FEATURED ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. UPCOMING EVENTS + FILTERS, surface-grey ═════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-filter data-animate id="upcoming">
+<!-- INSTANCE of master "filter-grid". Documented options: boxed media cards, footer button, #upcoming anchor. Re-synced 12 Oct: master empty state. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-filter data-animate id="upcoming" data-master="filter-grid">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -588,7 +590,7 @@
 
     </div>
 
-    <p class="type-body ink-mute mt-8" data-filter-empty role="status" hidden>No upcoming events match these filters. <button type="button" class="filter-chip" data-filter-reset>Clear filters</button></p>
+    <p class="filter-empty ink-mute" role="status" data-filter-empty hidden>No upcoming events match these filters. <button type="button" class="btn btn-outline" data-filter-reset>Clear filters</button></p>
 
     <div class="flex justify-center mt-10" data-reveal="up">
       <a href="#latest" class="btn btn-outline">Browse past events</a>
@@ -598,7 +600,8 @@
 <!-- ═══ /3. UPCOMING EVENTS ═════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. LATEST EVENTS, surface-white ════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-white section-y" data-animate id="latest">
+<!-- INSTANCE of master "cards-boxed". Documented options: 4 columns, date chips, pagination, #latest anchor. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-white section-y" data-animate id="latest" data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head is-split">

@@ -4009,6 +4009,31 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
        As built = centered; is-center is the explicit synonym. Fully logical
        (start/end + flex axis), so "Left" means start — it mirrors to the
        right edge on Arabic/RTL pages, like every other start-aligned block. */
+    /* CTA Band options (2026-10-12, Ram):
+       - Left / Right use the full content column (copy hugs the page margin
+         like every start-aligned block) with copy kept to a readable measure.
+       - Photo ground: surface-image + data-bg on the root, ov washes as the
+         first children; the content sits above them.
+       - Stats column (.ptf-band-grid): copy left, up to two stat tiles right. */
+    .ptf-ctaband > .ov{z-index:0}
+    .ptf-ctaband > .container-narrow{position:relative;z-index:1}
+    .ptf-ctaband:is(.is-left, .is-right) .container-narrow{max-width:var(--content-max)}
+    .ptf-ctaband.is-left .container-narrow > :not(.ptf-band-grid), .ptf-ctaband.is-left .ptf-band-copy > *{max-width:46rem}
+    .ptf-ctaband.is-right .container-narrow > :not(.ptf-band-grid){max-width:46rem;margin-inline-start:auto}
+    .ptf-ctaband .ptf-band-grid{display:grid;gap:40px;align-items:end}
+    @media (min-width: 1024px){ .ptf-ctaband .ptf-band-grid{grid-template-columns:minmax(0,1fr) auto;gap:clamp(40px,6vw,96px)} }
+    .ptf-ctaband .ptf-band-stats{display:grid;gap:16px}
+    @media (min-width: 640px){ .ptf-ctaband .ptf-band-stats{grid-template-columns:repeat(2,minmax(0,1fr))} }
+    .ptf-ctaband .ptf-band-stats p{margin:8px 0 0}
+    /* Band height (is-tall, --band-min) and photo-top on small screens (is-photo-top):
+       below 1024px the photo sits above the copy and fades into the ground, so a
+       subject on the right of a wide plate is never cropped or covered. */
+    .ptf-ctaband.is-tall .container-narrow{min-height:var(--band-min,440px);display:flex;flex-direction:column;justify-content:center}
+    @media (max-width: 1023px){
+      .ptf-ctaband.is-photo-top{--band-photo-h:clamp(260px, 62vw, 420px);background-color:var(--navy-deep);background-size:auto var(--band-photo-h);background-position:100% 0;padding-top:calc(var(--band-photo-h) - 40px)}
+      .ptf-ctaband.is-photo-top > .ov{background:linear-gradient(to bottom, transparent 0, transparent calc(var(--band-photo-h) * .55), var(--navy-deep) calc(var(--band-photo-h) - 2px))}
+      .ptf-ctaband.is-photo-top.is-tall .container-narrow{min-height:0}
+    }
     .ptf-ctaband.is-left .container-narrow{text-align:start}
     .ptf-ctaband.is-left p{margin-inline:0 auto}
     .ptf-ctaband.is-left .ptf-ctarow{justify-content:flex-start}

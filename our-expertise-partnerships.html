@@ -472,7 +472,8 @@
 <!-- ═══ /1. HERO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO / PURPOSE, surface-white ══════════════════════════════════ -->
-<section class="cmp cmp-intro-side-by-side surface-white section-y" data-animate>
+<!-- INSTANCE of master "intro-side-by-side". Documented options: pillars dropped, second paragraph on the right. -->
+<section class="cmp cmp-intro-side-by-side surface-white section-y" data-animate data-master="intro-side-by-side">
   <div class="container-ds">
     <div class="intro-grid">
       <div>
@@ -544,7 +545,8 @@
 <!-- ═══ /3. RELATIONSHIP MODEL ═════════════════════════════════════════════ -->
 
 <!-- ═══ 4. TRACK RECORD / TOMBSTONES, surface-white ════════════════════════ -->
-<section class="cmp cmp-cards cards-tombstones is-cols-3 surface-white section-y" data-animate id="track-record">
+<!-- INSTANCE of master "cards-tombstones". Documented options: text-only tombstones, footer see-all button, no legend row, no header lead, #track-record anchor. -->
+<section class="cmp cmp-cards cards-tombstones is-cols-3 surface-white section-y" data-animate id="track-record" data-master="cards-tombstones">
   <div class="container-ds">
 
     <div class="section-head-sm">
@@ -670,7 +672,8 @@
 <!-- ═══ /5. SUCCESS STORIES ═══════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. PARTNERS, surface-primary ══════════════════════════════════════════ -->
-<section class="cmp surface-primary section-y relative overflow-hidden" data-animate aria-label="Partnering with industry leaders">
+<!-- INSTANCE of master "market-band". Documented options: map texture, outline pills, support strip. Re-synced 12 Oct: market-band marker class, btn-accent (was legacy btn-primary). -->
+<section class="cmp market-band surface-primary section-y relative overflow-hidden" data-animate aria-label="Partnering with industry leaders" data-master="market-band">
   <span class="gls-map" data-bg="assets/images/shared/common/dotted-map-clear.svg" aria-hidden="true"></span>
   <div class="container-ds relative">
     <div class="section-head is-split">
@@ -695,7 +698,7 @@
         <p class="ink-soft">Explore our support resources, or connect with a specialist for guidance tailored to your mandate.</p>
       </div>
       <div class="flex flex-wrap gap-3 shrink-0">
-        <a href="#support" class="btn btn-primary">Support &amp; resources</a>
+        <a href="#support" class="btn btn-accent">Support &amp; resources</a>
         <a href="#contact" class="btn btn-outline-light">Contact us</a>
       </div>
     </div>

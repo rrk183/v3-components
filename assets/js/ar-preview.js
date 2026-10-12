@@ -13,6 +13,10 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 (function () {
   var M = {
+// ── video-explainer (Video Explainer · from api-banking-v1a section 6)
+"Want to see how businessONLINE works?": "هل تريد أن ترى كيف يعمل businessONLINE؟",
+"Watch a short tour of the platform, from paying a beneficiary to approving a transaction on the go.": "شاهد جولة قصيرة في المنصة، من الدفع لمستفيد إلى اعتماد معاملة أثناء التنقل.",
+"Watch the video": "شاهد الفيديو",
 // ── cards-awards (Cards: Awards · from rankings-and-awards section 2)
 // Awarding bodies keep their Latin brand names (GBM, Euromoney, IFR, EMEA Finance).
 "A track record the market keeps honouring.": "سجلٌّ حافل يواصل السوق تكريمه.",

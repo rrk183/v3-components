@@ -27,6 +27,15 @@ section.cmp.cmp-form-shell.surface-grey.section-y[data-animate]
     aside.sac-aside > .sac-aside-card (.sac-aside-list | .sac-aside-contact)
 ```
 
+## Options
+- **Header inside the shell:** a `section-head` may sit at the top of the form column.
+- **Flat field list:** fields may run without grouped fieldset headings for short forms.
+- **Field hints:** a `p.field-hint` under a field for helper text.
+- **Full-width fields:** `.field.sac-col-2` spans both columns (e.g. a message box).
+- **Screen-reader heading:** an `sr-only` heading may label the form for assistive tech.
+- **Single form** (2026-10-12): one enquiry form without audience tabs or field groups.
+- **Contact-card aside:** the side panel may be a stack of contact cards (phone, email, hours) instead of the guidance panel.
+
 ## Content contract
 Text, field labels and options only. Success sits OUTSIDE the form (the
 driver hides the form and reveals the sibling `.sac-success`). Pages that

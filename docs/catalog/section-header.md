@@ -15,6 +15,11 @@ The standard section opener: `.section-head` (or `.section-head-sm`) carrying a 
 
 Use the gallery's **Header control** on this card to flip all four live.
 
+## Options
+- **Intro under the heading, action right:** in a split header the lead may sit inside the left `ds-stack` under the heading, with only the `sh-action` link on the right (e.g. "See all articles").
+- **Button action** (2026-10-12): the `sh-action` may be a button (e.g. `btn btn-outline-light` on a dark ground) instead of a text link.
+- **Dark ground:** `surface-primary` with `ink-white` heading, `ink-accent-soft` eyebrow and `ink-soft` lead.
+
 ## Content contract
 - Title is **tag-agnostic**: `<h2 class="type-h2">` normally; the page's single `<h1>` only when this section is the page headline.
 - `.sh-lead` ≤ ~60ch; `.sh-action` is a **child of the header**, never a sibling in a wrapper row (a wrapper makes Centered/Split silent no-ops — the events/markets-articles bug).

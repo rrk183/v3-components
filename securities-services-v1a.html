@@ -306,8 +306,10 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO, surface-white ════════════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate>
-  <div class="container-ds flex flex-col md:flex-row md:gap-16 items-start">
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size. Re-synced 12 Oct: master wrapper structure. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
+  <div class="container-ds">
+    <div class="flex flex-col md:flex-row md:gap-16 items-start">
     <div class="md:w-1/2 flex-shrink-0">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Why Emirates NBD</span>
       <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Built for the modern trader.</h2>
@@ -315,6 +317,7 @@
     <div class="md:w-1/2 md:pt-2">
       <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".1">Our team brings knowledge shaped by decades across GCC and MENAT markets, paired with an intuitive digital platform that makes every action effortless. Whether you trade online, on margin or at institutional scale, you get execution tools engineered for accuracy, agility and consistent performance, with expert support behind every step.</p>
     </div>
+  </div>
   </div>
 </section>
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
@@ -474,7 +477,8 @@
 <!-- ═══ /4. HOW CAN WE HELP ═════════════════════════════════════════════════ -->
 
 <!-- ═══ 5. GLOBAL REACH, surface-primary ══════════════════════════════════════ -->
-<section class="cmp surface-primary section-y" data-animate aria-label="GCC markets access">
+<!-- INSTANCE of master "market-band". Documented option: call-to-action button. Re-synced 12 Oct: market-band marker class. -->
+<section class="cmp market-band surface-primary section-y" data-animate data-master="market-band" aria-label="GCC markets access">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">

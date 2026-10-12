@@ -25,6 +25,9 @@ section.cmp-scroll-story.surface-dark[data-animate]
     └ .sst-beat[data-anim='{…}']   ← eyebrow + .sst-h + .btn.btn-primary CTA
 ```
 
+## Options
+- **All-text beats** (2026-10-12): every beat may be a headline-and-text slide; the big-number card beat and the closing button are optional.
+
 ## Content contract
 - **3 beats** (3–4 works; each added beat needs its own `data-anim` range).
 - Headlines (`.sst-h`): short, ≤6 words — they fill the viewport.

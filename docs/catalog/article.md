@@ -26,6 +26,9 @@ section.cmp.cmp-article.surface-white.section-y
     .art-actions > a.btn.btn-navy
 ```
 
+## Options
+- **Split article:** the hero half and the body half may be separated by other sections (e.g. a takeaways block between them).
+
 ## Content contract
 Text + one hero image + inline figures. Avatar holds the author's initials.
 A full article page composes: article hero + article body + **kicker-cards**

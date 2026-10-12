@@ -458,7 +458,8 @@
 <main id="main">
 
 <!-- ═══ 1. ARTICLE HERO, surface-primary ══════════════════════════════════════ -->
-<section class="cmp cmp-article surface-primary art-hero" data-animate aria-label="Article header">
+<!-- INSTANCE of master "article". Documented option: split article (hero here, body after the takeaways). -->
+<section class="cmp cmp-article surface-primary art-hero" data-animate aria-label="Article header" data-master="article">
   <span class="art-hero-bg" data-bg="assets/images/shared/caps/cap-markets.jpg" role="img" aria-label="Financial markets data and charts"></span>
   <div class="container-narrow art-hero-inner">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Markets · Emirates NBD Research</span>
@@ -479,7 +480,8 @@
 <!-- ═══ /1. ARTICLE HERO ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. KEY TAKEAWAYS, surface-grey ═════════════════════════════════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-soft section-y" data-animate>
+<!-- INSTANCE of master "cards-number". Converted 12 Oct from Icon Linked (numbered takeaways). Documented option: narrow container. -->
+<section class="cmp cmp-cards cards-number is-cols-3 surface-soft section-y" data-animate data-master="cards-number">
   <div class="container-narrow">
 
     <div class="section-head">
@@ -493,7 +495,7 @@
 
       <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".04">
         <div class="ds-stack">
-          <span class="type-eyebrow ink-accent">01</span>
+          <span class="ds-num is-sm">01</span>
           <h3 class="type-h6 ink-primary">Output frozen through Q1 2026</h3>
           <p class="type-body-sm ink-mute">A modest December increase aside, OPEC+ will hold production targets steady for four months, its first multi-month guidance this year.</p>
         </div>
@@ -501,7 +503,7 @@
 
       <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".10">
         <div class="ds-stack">
-          <span class="type-eyebrow ink-accent">02</span>
+          <span class="ds-num is-sm">02</span>
           <h3 class="type-h6 ink-primary">Markets welcome the pause, but risks remain</h3>
           <p class="type-body-sm ink-mute">The freeze steadied prices, yet a widening surplus and fresh US sanctions on Russian producers cloud the 2026 outlook.</p>
         </div>
@@ -509,7 +511,7 @@
 
       <div class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".16">
         <div class="ds-stack">
-          <span class="type-eyebrow ink-accent">03</span>
+          <span class="ds-num is-sm">03</span>
           <h3 class="type-h6 ink-primary">Gulf producers keep the flexibility to respond</h3>
           <p class="type-body-sm ink-mute">With spare capacity in hand, Saudi Arabia and the UAE are positioned to offset any disruption to Russian supply.</p>
         </div>
@@ -555,7 +557,8 @@
 <!-- ═══ /3. ARTICLE BODY ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. RELATED ARTICLES, surface-grey ══════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-animate aria-label="Related articles">
+<!-- INSTANCE of master "cards-boxed". Documented options: date / read-time meta line, no header lead. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-animate aria-label="Related articles" data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head">

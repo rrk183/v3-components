@@ -515,7 +515,11 @@
        an office facing the sea, the camera leaves through the window, crosses
        the water, passes through cloud and comes out above the ship. Copy sits
        on a soft navy reading scrim, bottom left, in three beats. -->
-  <section class="cmp cmp-hero-cinematic-pinned surface-primary hf" data-animate>
+  <!-- CUSTOM (accepted 12 Oct by Ram): the page's bespoke cinematic opener (video film
+     with cloud and white-flash layers, its own phase and line-reveal behaviour).
+     Started from Hero: Cinematic (Pinned) but is NOT an instance; master changes
+     will not be re-applied to it. -->
+<section class="cmp cmp-hero-cinematic-pinned surface-primary hf" data-animate data-custom="accepted">
     <div class="hf-track" data-hf-track>
       <div class="hf-stage">
         <video class="hf-film" data-hf-film data-cut="10.4" muted playsinline preload="auto" poster="staging/payments-trade-finance/hs-film-m-poster.jpg" aria-hidden="true">
@@ -707,33 +711,70 @@
 
 
   <!-- ═══ 6 · Everything your treasury runs on, index rows ══════════════════ -->
-  <section class="cmp cmp-link-directory is-cols-2 surface-white section-y ptf2-dir" data-animate id="directory" aria-labelledby="dir-heading">
-    <div class="container-ds pd-grid">
+  <!-- INSTANCE of master "useful-links" (converted 12 Oct from a detached Link Directory). Documented
+       options: split header, section spacing, grouped lists side by side, pop-up rows (data-modal-open),
+       #directory anchor. Content only. -->
+  <section class="cmp cmp-useful-links is-cols-1 surface-white section-y" data-animate id="directory" data-master="useful-links" aria-label="Everything your treasury runs on">
+    <div class="container-ds">
 
-      <div class="ds-stack section-head measure pd-head">
+      <div class="section-head is-split">
         <div class="ds-stack">
-          <h2 class="type-h2 ink-primary type-semibold" id="dir-heading" data-rise>Everything your<br>treasury runs on.</h2>
+          <h2 class="type-h2 ink-primary" data-reveal="up">Everything your<br>treasury runs on.</h2>
         </div>
-        <p class="type-body ink-mute" data-rise style="--d:.08s">Outbound payments, trade finance and collections, under a single login and one set of controls.</p>
+        <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Outbound payments, trade finance and collections, under a single login and one set of controls.</p>
       </div>
 
-      <div class="pd-cols">
-        <div class="pd-col">
-          <h3 class="pd-col-h" data-rise>Trade &amp; Supply Chain</h3>
-          <a class="pd-row" data-row href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-lc"><span>Letters of credit</span><i aria-hidden="true"></i></a>
-          <a class="pd-row" data-row href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-bg"><span>Bank guarantees</span><i aria-hidden="true"></i></a>
-          <a class="pd-row" data-row href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-collections"><span>Import &amp; export collections</span><i aria-hidden="true"></i></a>
-          <a class="pd-row" data-row href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-loans"><span>Trade loans</span><i aria-hidden="true"></i></a>
-          <a class="pd-row" data-row href="smartscf-v1a.html"><span>Supply chain finance</span><i aria-hidden="true"></i></a>
-          <a class="pd-row" data-row href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-shipping"><span>Shipping guarantees</span><i aria-hidden="true"></i></a>
+      <div class="grid md:grid-cols-2 gap-x-16 gap-y-10">
+      <div>
+        <div class="ul-head" data-reveal="up"><span class="ds-eyebrow ink-accent">Trade &amp; Supply Chain</span></div>
+        <div class="ul-grid" data-reveal="up" data-reveal-delay=".06">
+          <a class="ul-item" href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-lc">
+            <span class="ul-body"><span class="ul-title ink-primary">Letters of credit</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ul-item" href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-bg">
+            <span class="ul-body"><span class="ul-title ink-primary">Bank guarantees</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ul-item" href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-collections">
+            <span class="ul-body"><span class="ul-title ink-primary">Import &amp; export collections</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ul-item" href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-loans">
+            <span class="ul-body"><span class="ul-title ink-primary">Trade loans</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ul-item" href="smartscf-v1a.html">
+            <span class="ul-body"><span class="ul-title ink-primary">Supply chain finance</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ul-item" href="trade-supply-chain-finance-v1a.html" data-modal-open="tf-shipping">
+            <span class="ul-body"><span class="ul-title ink-primary">Shipping guarantees</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
-        <div class="pd-col">
-          <h3 class="pd-col-h" data-rise>Digital</h3>
-          <a class="pd-row" data-row href="businessonline-x-v2.html"><span>businessONLINE</span><i aria-hidden="true"></i></a>
-          <a class="pd-row" data-row href="smarttrade-v1a.html"><span>smartTRADE</span><i aria-hidden="true"></i></a>
-          <a class="pd-row" data-row href="smartscf-v1a.html"><span>smartSCF</span><i aria-hidden="true"></i></a>
-          <a class="pd-row" data-row href="api-banking-v1a.html"><span>API Banking</span><i aria-hidden="true"></i></a>
+      </div>
+      <div>
+        <div class="ul-head" data-reveal="up"><span class="ds-eyebrow ink-accent">Digital</span></div>
+        <div class="ul-grid" data-reveal="up" data-reveal-delay=".06">
+          <a class="ul-item" href="businessonline-x-v2.html">
+            <span class="ul-body"><span class="ul-title ink-primary">businessONLINE</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ul-item" href="smarttrade-v1a.html">
+            <span class="ul-body"><span class="ul-title ink-primary">smartTRADE</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ul-item" href="smartscf-v1a.html">
+            <span class="ul-body"><span class="ul-title ink-primary">smartSCF</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ul-item" href="api-banking-v1a.html">
+            <span class="ul-body"><span class="ul-title ink-primary">API Banking</span></span>
+            <svg class="ul-go ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
+      </div>
       </div>
 
     </div>
