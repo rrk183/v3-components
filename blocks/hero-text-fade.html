@@ -2,7 +2,10 @@
      Pinned full-bleed hero whose copy fades out/in across scroll while the
      background crossfades beneath. Built on the DECLARATIVE scroll-story engine
      — each caption + background carries its own data-anim keyframes (progress
-     0-1). No bespoke recipe. Per-instance images via data-bg. surface-primary. -->
+     0-1). No bespoke recipe. Per-instance images via data-bg. surface-primary.
+     Options: is-left / is-right on the root (or is-right on one caption), a
+     phase scrim (.sth-ov-phase), a ticked highlights row and one glass pill
+     button per caption. See docs/catalog/hero-text-fade.md. -->
 <section class="cmp cmp-hero-text-fade surface-primary" data-animate>
   <div class="sth" data-behavior="scroll-story" data-scrub-vh="340">
     <div class="sth-stage surface-image">

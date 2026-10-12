@@ -164,7 +164,7 @@ const ALIAS = {
   "stats-row": "cards",
   "cards-icon-linked": "cards", "cards-steps": "cards",
   "cards-case-study": "cards", "cards-people": "cards",
-  "cards-partners": "cards", "cards-tombstones": "cards",
+  "cards-partners": "cards", "cards-tombstones": "cards", "cards-awards": "cards",
   "cards-boxed-carousel": "cards", "cards-icon-carousel": "cards",
   // every composition gets the SAME Grid/Carousel/Scroll option set (2026-08-31)
   "cards-icon-linked-carousel": "cards", "cards-number-carousel": "cards",
@@ -197,7 +197,7 @@ const ALIAS = {
   "tabs-underline": "tabs", "tabs-pill": "tabs", "tabs-toggle": "tabs", "tabs-directory": "tabs", "tabs-experience": "tabs",
   // cmp-acc v4 compositions (2026-09-01)
   "acc-faq": "acc", "acc-boxed": "acc",
-  "hex-reach-map-stats": "hex-reach-map",
+  "hex-reach-map-stats": "hex-reach-map", "hex-reach-map": "markets-map",
   // cmp-bento compositions (2026-09-01)
   "bento-photo": "bento", "bento-photo-small": "bento", "bento-spotlight": "bento", "bento-image-cards": "bento", "bento-magazine": "bento", "bento-research": "bento", "bento-grid": "bento", "feature-highlight": "bento",   // cmp-hero v4 compositions (2026-09-01)
   "hero-image": "hero", "hero-editorial": "hero", "hero-slides": "hero", "hero-image-slides": "hero", "hero-editorial-slides": "hero",

@@ -27,6 +27,10 @@ World Map (reach + proof), Ticker, Key Transactions.
 ### Not for
 A hero figure moment (use Metrics — Type 2) or dense 2×2 quads (Type 1).
 
+## Options
+- **Header above** (2026-10-12): an eyebrow + heading (`section-head`) may sit above the row.
+- **Static figures:** a figure may be plain text with no `data-countup` (ratings, ranges, values with units); the caption under each label is optional (all or none). Figure weight `is-light` or size `is-lg` are both fine.
+
 ## Content contract
 3–4 cells; figure ≤6 chars + suffix; label ≤4 words; description one line.
 

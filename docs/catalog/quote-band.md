@@ -20,6 +20,9 @@ section.cmp.cmp-quote-band.surface-primary[data-animate]
 Carousel: .qb-carousel[data-carousel] › .qb-track[data-carousel-track] › .qb-slide ×N + .qb-ctrls
 ```
 
+## Options
+- **Specialist spotlight** (2026-10-12): the quote may be replaced by a section heading (`h2.type-h2`), followed by the person's name (`type-h5`), role (`type-body-sm ink-mute`) and one text link (e.g. "Meet the whole team"). Use it to introduce a team through one named specialist.
+
 ## Content contract
 - Quote ≤ 3 lines at display size; citation = name + role in ONE
   figcaption (no `.qb-name`/`.qb-role` children — that anatomy is gone).

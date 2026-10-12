@@ -462,7 +462,9 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. STRENGTH, stats band, surface-grey ════════════════════════════ -->
-<section class="cmp cmp-cards stats-row is-cols-4 is-divided surface-soft section-y" data-animate>
+<!-- INSTANCE of master "Stats: Row". Documented options: header above, static figures, no captions.
+     Re-synced 12 Oct: ink-primary on the figures. -->
+<section class="cmp cmp-cards stats-row is-cols-4 is-divided surface-soft section-y" data-animate data-master="stats-row">
   <div class="container-ds">
 
     <div class="ds-stack section-head measure">
@@ -473,22 +475,22 @@
     <div class="cd-grid mt-6" role="list">
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay="0">
-        <span class="ds-num is-light">AED&nbsp;1tn+</span>
+        <span class="ds-num is-light ink-primary"><span class="sr-only">AED </span><span class="aed">1tn+</span></span>
         <span class="type-h5 ink-accent block mt-4">Total assets</span>
       </div>
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".08">
-        <span class="ds-num is-light">AED&nbsp;187bn</span>
+        <span class="ds-num is-light ink-primary"><span class="sr-only">AED </span><span class="aed">187bn</span></span>
         <span class="type-h5 ink-accent block mt-4">Market cap</span>
       </div>
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".16">
-        <span class="ds-num is-light">A1&nbsp;/&nbsp;A+</span>
+        <span class="ds-num is-light ink-primary">A1&nbsp;/&nbsp;A+</span>
         <span class="type-h5 ink-accent block mt-4">Moody&rsquo;s &amp; Fitch, stable</span>
       </div>
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".24">
-        <span class="ds-num is-light">5,000+</span>
+        <span class="ds-num is-light ink-primary">5,000+</span>
         <span class="type-h5 ink-accent block mt-4">Client groups</span>
       </div>
 
@@ -650,7 +652,9 @@
 </section>
 
 <!-- ═══ 6. WHY ENBD, numbered reasons (5), surface-grey ══════════════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-soft section-y" data-animate>
+<!-- INSTANCE of master "Cards: Icon Linked (Carousel)". Documented options: static cards,
+     manual mode, closing button row. Content only. -->
+<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-soft section-y" data-animate data-master="cards-icon-linked-carousel">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -723,7 +727,9 @@
 <!-- ═══ /6. WHY ENBD ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. SUCCESS STORY, Content Block Side by Side, surface-primary ══════════ -->
-<section class="cmp cmp-feature-spotlight surface-primary section-y" data-animate>
+<!-- INSTANCE of master "Feature Spotlight". Documented options: navy ground, no corner tags,
+     no tick lists. Re-synced 12 Oct: styled arrow links. -->
+<section class="cmp cmp-feature-spotlight surface-primary section-y" data-animate data-master="feature-spotlight">
   <div class="container-ds fsp-rows">
 
     <div class="fsp-row">
@@ -732,7 +738,7 @@
         <span class="ds-eyebrow ink-accent-soft">Success story</span>
         <h2 class="type-h2 ink-white fsp-title">Our first aircraft finance lease.</h2>
         <p class="type-body-lg ink-soft measure fsp-lead">Emirates NBD completed a finance lease facility for two Airbus A321neo aircraft for IndiGo, India&rsquo;s preferred carrier. The transaction marks the bank&rsquo;s first aircraft finance lease, and a milestone for our Aviation Finance desk as global interest in India&rsquo;s fast-expanding aviation sector grows.</p>
-        <a href="https://www.emiratesnbd.com/en/media-center/emirates-nbd-completes-finance-lease-facility-of-two-a321neo-aircraft-for-indigo" target="_blank" rel="noopener" class="btn btn-text btn-lg">Read more &rarr;</a>
+        <a href="https://www.emiratesnbd.com/en/media-center/emirates-nbd-completes-finance-lease-facility-of-two-a321neo-aircraft-for-indigo" target="_blank" rel="noopener" class="btn btn-text btn-lg is-arrow">Read more</a>
       </div>
     </div>
 
@@ -742,7 +748,7 @@
         <span class="ds-eyebrow ink-accent-soft">Success story</span>
         <h2 class="type-h2 ink-white fsp-title">Powering real estate growth across the UAE.</h2>
         <p class="type-body-lg ink-soft measure fsp-lead">Emirates NBD partners with leading developers, landlords and asset managers across every stage of the real estate lifecycle. From land acquisition and development financing to project escrow, sales collections and treasury solutions, we provide integrated banking support that helps clients execute projects efficiently and optimise cash flows. As the UAE&rsquo;s leading escrow bank, we continue to support some of the region&rsquo;s most prominent developments with innovative and scalable financial solutions.</p>
-        <a href="#contact" class="btn btn-text btn-lg">Read more &rarr;</a>
+        <a href="#contact" class="btn btn-text btn-lg is-arrow">Read more</a>
       </div>
     </div>
 
@@ -777,7 +783,7 @@
         </span>
         <div class="p-6 flex flex-col items-start gap-2.5">
           <span class="type-eyebrow ink-accent">News &middot; 23 Oct 2025</span>
-          <h3 class="type-h5 ink-primary">Record performance: AED 36.7bn income and AED 23.4bn profit before tax, up 12% YoY.</h3>
+          <h3 class="type-h5 ink-primary">Record performance: <span class="sr-only">AED </span><span class="aed">36.7bn</span> income and <span class="sr-only">AED </span><span class="aed">23.4bn</span> profit before tax, up 12% YoY.</h3>
         </div>
       </a>
 

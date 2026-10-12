@@ -473,10 +473,14 @@
     </div>
   </section>
 
-  <section class="cmp cmp-feature-scroll-story api-dark api-bg surface-primary" data-animate style="--api-bg-img:url('/staging/api-banking-v1a/images-api-bg.jpg')">
+  <!-- INSTANCE of master "Feature Scroll Story" (mockup right). Documented options (12 Oct):
+       image ground (photo + navy scrim, title-scene overlay), lean chapters with
+       number-only kickers. Was the page-only api-dark / api-bg styling. Content only. -->
+  <section class="cmp cmp-feature-scroll-story surface-primary" data-animate data-master="feature-scroll-story">
     <div class="ess surface-primary" data-behavior="scroll-story" data-scrub-vh="520">
       <div class="ess-stage">
-        <div class="ess-opener" data-anim='{"0-0.06":{"opacity":[1,1],"y":[0,0]},"0.12-0.2":{"opacity":[1,0],"y":[0,-44],"blur":[0,6]}}'><div class="ess-opener-in"><h2 class="ess-opener-h ink-white">What is API Banking</h2><p class="ess-opener-lead ink-white">API banking refers to a set of protocols that makes a bank&rsquo;s services available to other third-party companies via APIs. APIs provide better means to share data, integrate with systems, personalise services and make financial services quick and efficient.</p></div></div>
+        <span class="media-cover" data-bg="staging/api-banking-v1a/images-api-bg.jpg" aria-hidden="true"></span>
+        <div class="ess-opener" data-anim='{"0-0.06":{"opacity":[1,1],"y":[0,0]},"0.12-0.2":{"opacity":[1,0],"y":[0,-44],"blur":[0,6]}}'><span class="ov ov-dark ov-tint ov-75" aria-hidden="true"></span><span class="ov ov-primary ov-tint ov-30" aria-hidden="true"></span><div class="ess-opener-in"><h2 class="ess-opener-h ink-white">What is API Banking</h2><p class="ess-opener-lead ink-white">API banking refers to a set of protocols that makes a bank&rsquo;s services available to other third-party companies via APIs. APIs provide better means to share data, integrate with systems, personalise services and make financial services quick and efficient.</p></div></div>
         <div class="ess-beats" data-anim='{"0-0.12":{"opacity":[0,0]},"0.15-0.22":{"opacity":[0,1]}}'>
         <div class="container-ds ess-grid">
           <div class="ess-col"><div class="ess-chapters">
@@ -497,7 +501,8 @@
     </div>
   </section>
 
-  <section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-white section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate>
+  <!-- INSTANCE of master "Bento: Spotlight". Documented options: all-feature tile mix, no eyebrow. Content only. -->
+  <section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-white section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate data-master="bento-spotlight">
     <div class="container-ds">
 
       <div class="section-head is-split">

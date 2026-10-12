@@ -28,6 +28,11 @@ section.cmp.cmp-bento-expand.surface-white.section-y[data-animate]
         └ .be-detail  ← .be-eyebrow + h3.be-title + p.be-desc + span.be-link
 ```
 
+## Options
+- **Partner strip** (2026-10-12): a small centred caption plus a row of greyscale partner logos under the panels (up to about six; for more, use a Logo Wall section).
+- **Closing button:** one centred button under the section.
+- **Header:** the lead is optional.
+
 ## Content contract
 - **4 panels** in the shipped layout (3–5 works; each is one `a.be-panel`).
 - Mark exactly **one panel `.is-open`** (the first) so the row doesn't open flat.

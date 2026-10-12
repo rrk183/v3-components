@@ -45,6 +45,19 @@ HTML so they remain translatable and theme-aware.
   stories on one page (e.g. Online then Point-of-sale) for visual rhythm. No new
   CSS; the flip is one existing modifier class.
 
+## Options
+- **Image ground** (2026-10-12): `surface-primary` root, then `span.media-cover[data-bg]` (the photo) as the first child of `.ess-stage`; optionally a `ov` washes (e.g. `ov-dark ov-tint ov-75` + `ov-primary ov-tint ov-30` for deep navy) inside `.ess-opener` (before `.ess-opener-in`) darkens only the title scene and fades out with it. Replaces the page-only api-dark / api-bg styling.
+- **Number-only kicker:** a chapter kicker may be just the `span.ix` number.
+- **Lean chapters** (2026-10-12): each chapter may be just the numbered kicker
+  and the headline line. Three parts are optional and can be deleted together
+  or one by one: the `.ess-desc` description under each headline, the floating
+  `.mcard` callout cards over the mockups, and the closing button in the last
+  chapter. Keep the chapter, shot and dot counts equal and the `data-anim`
+  windows sequential. Used on emirates-nbd-pay-v1a (E-commerce and POS stories).
+- **Chapter count:** 3 to 5 chapters; re-space the `data-anim` windows evenly.
+- **Anchor id (instances only):** a page may add `id="..."` to the root when
+  in-page links jump to the section.
+
 ## Content contract
 - 3–4 chapters read best; keep each `.ess-desc` to ~1–2 lines.
 - Keep the per-element `data-anim` windows **sequential** (chapter N out ≈ chapter

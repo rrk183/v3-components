@@ -57,6 +57,9 @@ section.cmp.cmp-useful-links.surface-*[data-animate]
   title) + `.ul-grid` per group. Used by media-library and
   tutorials-platform-demos-v2.
 
+## Instance notes
+- **Anchor id (instances only):** a page may add `id="..."` to the root when in-page links jump to the section (sub-nav, "scroll to" buttons). The master block itself stays ID-free.
+
 ## Drift cautions
 - Dividers are `border-block-start` with per-column-mode first-row
   suppression — adding rows never needs CSS; changing columns is the

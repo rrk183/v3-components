@@ -310,7 +310,8 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. PLATFORM INTRO, surface-white ═══════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate>
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size, button row. Content only. -->
+<section class="cmp cmp-content-block-sidebyside surface-white section-y" data-animate data-master="content-block-sidebyside">
   <div class="container-ds">
     <div class="flex flex-col md:flex-row md:gap-16 items-start">
       <div class="md:w-1/2 flex-shrink-0">
@@ -327,12 +328,13 @@
 <!-- ═══ /2. PLATFORM INTRO ══════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. RANKINGS, surface-grey ══════════════════════════════════════════ -->
-<section class="cmp cmp-big-statement surface-soft section-y" data-animate>
+<!-- INSTANCE of master "big-statement". Documented options: rank strip, sources note. Re-synced 12 Oct: ink-primary on the headline. -->
+<section class="cmp cmp-big-statement surface-soft section-y" data-animate data-master="big-statement">
   <div class="container-narrow">
     <div class="section-head is-center">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent" data-reveal="up">Market leadership</span>
-        <h2 class="bst-line type-display-xxl" data-reveal><span class="bst-l"><span class="bst-w">Ranked <em>#1</em></span></span><span class="bst-l"><span class="bst-w">where it matters most.</span></span></h2>
+        <h2 class="bst-line type-display-xxl ink-primary" data-reveal><span class="bst-l"><span class="bst-w">Ranked <em>#1</em></span></span><span class="bst-l"><span class="bst-w">where it matters most.</span></span></h2>
       </div>
       <p class="bst-sub type-body-lg ink-mute sh-lead" data-reveal="up" data-reveal-delay=".12">Independent league tables place Emirates NBD at the top of the markets our clients care about, from the GCC to T&uuml;rkiye.</p>
     </div>
@@ -351,58 +353,55 @@
 <!-- ═══ /3. RANKINGS ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. GLOBAL REACH, surface-primary (immersive) ══════════════════════════ -->
-<section class="cmp cmp-world-map surface-primary is-bleed section-y" data-animate aria-label="Global reach">
-  <div class="container-ds">
-    <div class="section-head is-split">
-      <div class="ds-stack">
-        <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Global reach</span>
-        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Capital and coverage, wherever your ambition takes you.</h2>
+<!-- INSTANCE of master "World Map - V2" (blocks/hex-reach-map.html, gallery:
+     Storytelling & Scroll > World Map - V2). Options: Eyebrow on, Stats row,
+     ground surface-primary. Overrides: content only (eyebrow, headline split into
+     its two lines, lead, stats, markets from this page's previous map, chapter
+     captions as region names). Styling and behaviour come from ds.css / ds.js,
+     so master changes reach this instance. -->
+<section class="cmp cmp-markets-map surface-primary is-figs" data-behavior="markets-map" data-master="hex-reach-map" aria-label="Global reach">
+  <div class="cm__stage">
+    <canvas class="cm__canvas" aria-hidden="true"></canvas>
+    <div class="cm__veil" aria-hidden="true"></div>
+    <div class="cm__frame" aria-hidden="true"></div>
+    <div class="cm__pins" aria-hidden="true"></div>
+
+    <span class="ds-eyebrow cm__eyebrow ink-accent-soft">Global reach</span>
+    <h2 class="cm__title">
+      <span class="cm__line cm__line--1">Capital and coverage,</span>
+      <span class="cm__line cm__line--2">wherever your ambition takes you.</span>
+    </h2>
+
+    <p class="cm__lead">From the GCC to Europe and across Asia, our on-the-ground teams pair global capital with local market knowledge in every country we cover.</p>
+
+    <div class="cm__stat">
+      <div class="cm__chapters">
+        <span class="cm__chapter" data-view="43,15,66,33">UAE</span>
+        <span class="cm__chapter" data-view="23,12,62,45">Middle East</span>
+        <span class="cm__chapter" data-view="-12,12,72,63">Europe</span>
+        <span class="cm__chapter" data-view="-16,-14,152,68">Asia</span>
       </div>
-      <p class="type-body ink-soft measure sh-lead" data-reveal="up" data-reveal-delay=".12">From the GCC to Europe and across Asia, our on-the-ground teams pair global capital with local market knowledge in every country we cover.</p>
+      <div class="cm__rule"></div>
+      <ul class="cm__figs">
+        <li class="cm__fig"><span class="cm__fig-num">165+</span><span class="cm__fig-label">Bilateral and syndicated deals, YTD 2025</span></li>
+        <li class="cm__fig"><span class="cm__fig-num">USD 90bn+</span><span class="cm__fig-label">Primary deals across global markets in 2024</span></li>
+        <li class="cm__fig"><span class="cm__fig-num">110+</span><span class="cm__fig-label">Secondary trades placed, USD 4.3bn notional</span></li>
+      </ul>
     </div>
 
-    <div class="wm-map w-full rounded-lg" data-reveal="fade" data-reveal-delay=".1"
-      data-behavior="world-map" data-map="dots"
-      role="img" aria-label="Global markets served by Emirates NBD Global Loan Solutions"
-      data-points='[
-        {"id":"dubai","label":"Dubai","side":"below","major":true,"hub":true},
-        {"id":"riyadh","label":"Riyadh"},
-        {"id":"cairo","label":"Cairo","side":"below"},
-        {"id":"istanbul","label":"Istanbul"},
-        {"id":"london","label":"London","side":"below","major":true},
-        {"id":"frankfurt","label":"Frankfurt"},
-        {"id":"moscow","label":"Moscow"},
-        {"id":"mumbai","label":"Mumbai"},
-        {"id":"singapore","label":"Singapore","side":"below","major":true},
-        {"id":"shanghai","label":"Shanghai","major":true},
-        {"id":"jakarta","label":"Jakarta","side":"below"}
-      ]'
-      data-routes='[
-        ["dubai","riyadh"],["dubai","cairo"],["dubai","istanbul"],["dubai","london"],
-        ["dubai","frankfurt"],["dubai","moscow"],["dubai","mumbai"],["dubai","singapore"],
-        ["singapore","shanghai"],["singapore","jakarta"]
-      ]'>
-    </div>
-    <div class="wm-space" aria-hidden="true"></div>
-
-    <!-- hub list = the map's small-screen fallback (chips carry it on desktop) -->
-    <div class="flex flex-col items-center gap-7 mt-12 md:hidden">
-      <div class="flex flex-col items-center gap-4" data-reveal="up" data-reveal-delay=".08">
-        <span class="ds-eyebrow ink-soft">International hubs</span>
-        <div class="flex flex-wrap justify-center gap-x-10 gap-y-4">
-          <div class="text-center"><span class="type-body ink-white font-semibold block">London</span><span class="type-body-sm ink-soft">Europe</span></div>
-          <div class="text-center"><span class="type-body ink-white font-semibold block">Singapore</span><span class="type-body-sm ink-soft">Southeast Asia</span></div>
-          <div class="text-center"><span class="type-body ink-white font-semibold block">Shanghai</span><span class="type-body-sm ink-soft">East Asia</span></div>
-          <div class="text-center"><span class="type-body ink-white font-semibold block">Mumbai</span><span class="type-body-sm ink-soft">South Asia</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="wm-scale is-centered" data-reveal="up" data-reveal-delay=".16">
-      <div><span class="n" data-countup="165" data-suffix="+" data-duration="1.8">165+</span><span class="l">Bilateral and syndicated deals, YTD 2025</span></div>
-      <div><span class="n" data-countup="90" data-prefix="USD " data-suffix="bn+" data-duration="1.8">USD 90bn+</span><span class="l">Primary deals across global markets in 2024</span></div>
-      <div><span class="n" data-countup="110" data-suffix="+" data-duration="1.8">110+</span><span class="l">Secondary trades placed, USD 4.3bn notional</span></div>
-    </div>
+    <ol class="cm__markets sr-only">
+      <li data-chapter="0" data-country="United Arab Emirates" data-lon="55.3" data-lat="25.2" data-place="r" data-home>Dubai</li>
+      <li data-chapter="1" data-country="Saudi Arabia" data-lon="46.7" data-lat="24.7" data-place="b">Riyadh</li>
+      <li data-chapter="1" data-country="Egypt" data-lon="31.2" data-lat="30.0" data-place="l">Cairo</li>
+      <li data-chapter="1" data-country="Turkey" data-lon="29.0" data-lat="41.0" data-place="r">Istanbul</li>
+      <li data-chapter="2" data-country="United Kingdom" data-lon="-0.1" data-lat="51.5" data-place="l">London</li>
+      <li data-chapter="2" data-country="Germany" data-lon="8.7" data-lat="50.1" data-place="r">Frankfurt</li>
+      <li data-chapter="2" data-country="Russia" data-lon="37.6" data-lat="55.8" data-place="t">Moscow</li>
+      <li data-chapter="3" data-country="India" data-lon="72.9" data-lat="19.1" data-place="b">Mumbai</li>
+      <li data-chapter="3" data-country="China" data-lon="121.5" data-lat="31.2" data-place="tl">Shanghai</li>
+      <li data-chapter="3" data-country="Singapore" data-lon="103.8" data-lat="1.35" data-place="bl">Singapore</li>
+      <li data-chapter="3" data-country="Indonesia" data-lon="106.8" data-lat="-6.2" data-place="b">Jakarta</li>
+    </ol>
   </div>
 </section>
 <!-- ═══ /4. GLOBAL REACH ════════════════════════════════════════════════════ -->
@@ -510,7 +509,8 @@
 <!-- ═══ /6. DISTRIBUTION ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. LOAN SOLUTIONS, media scroll-track (15), surface-grey ═══════════ -->
-<section class="cmp cmp-cards cards-boxed is-cols-2 surface-soft" data-animate data-behavior="scroll-track" id="solutions" tabindex="-1">
+<!-- INSTANCE of master "cards-plain-scroll". Converted 12 Oct from Cards: Boxed (these are plain tiles). Documented options: static cards, 2 columns, #solutions anchor. -->
+<section class="cmp cmp-cards cards-plain is-cols-2 surface-soft" data-animate data-behavior="scroll-track" id="solutions" tabindex="-1" data-master="cards-plain-scroll">
   <div class="cd-scroll-outer" data-scroll-outer>
     <div class="cd-scroll-pin">
       <div class="container-ds">
@@ -667,11 +667,14 @@
 <!-- ═══ /7. LOAN SOLUTIONS ══════════════════════════════════════════════════ -->
 
 <!-- ═══ 8. TRUSTED PARTNERS, surface-white ═════════════════════════════════ -->
-<section class="cmp cmp-bento-expand surface-white section-y" data-animate>
+<!-- INSTANCE of master "bento-expand". Documented options: partner logo strip, closing button, no lead. Re-synced 12 Oct: master header structure. -->
+<section class="cmp cmp-bento-expand surface-white section-y" data-animate data-master="bento-expand">
   <div class="container-ds">
     <div class="section-head">
-      <span class="ds-eyebrow ink-accent" data-reveal="up">Why Emirates NBD</span>
-      <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Trusted partners, proven results.</h2>
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Why Emirates NBD</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Trusted partners, proven results.</h2>
+      </div>
     </div>
     <div class="be-row" data-reveal="up" data-reveal-delay=".1">
 
@@ -883,7 +886,8 @@
 
 <!-- ═══ 11. CTA, surface-primary ══════════════════════════════════════════════ -->
 <!-- ═══ LATEST TRANSACTIONS, tombstone cards (4), surface-soft ═══════════════ -->
-<section class="cmp cmp-cards cards-tombstones is-cols-4 surface-soft section-y" data-animate aria-label="Latest transactions">
+<!-- INSTANCE of master "cards-tombstones". Re-synced 12 Oct: date moved into the master meta-dot foot. Documented options: two header links, date-only foot, no legend row. -->
+<section class="cmp cmp-cards cards-tombstones is-cols-4 surface-soft section-y" data-animate aria-label="Latest transactions" data-master="cards-tombstones">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -902,44 +906,44 @@
         <h3 class="sr-only">Ziraat Bankası</h3>
         <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="staging/global-loan-solutions-v1a/ziraat_banksi_logo.webp" alt="Ziraat Bankası" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
         <p class="type-h5 ink-primary">USD 849m &amp; EUR 767m</p>
-        <ul class="type-body-sm ink-mute mt-2 flex flex-col gap-1">
+        <ul class="type-body-sm mt-2 mb-4 flex flex-col gap-1 ink-mute">
           <li>Joint Coordinator, Bookrunner and Mandated Lead Arranger</li>
           <li>Dual Currency Syndicated Term Loan Facility</li>
-          <li>April 2026</li>
         </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Apr 2026</span></p>
       </article>
 
       <article class="cd-card card-panel is-flat surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
         <h3 class="sr-only">du</h3>
         <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="staging/global-loan-solutions-v1a/deal_02_du.jpg" alt="du" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
         <p class="type-h5 ink-primary"> 1,500m &amp; USD 136.2m</p>
-        <ul class="type-body-sm ink-mute mt-2 flex flex-col gap-1">
+        <ul class="type-body-sm mt-2 mb-4 flex flex-col gap-1 ink-mute">
           <li>Sole Coordinator and Initial Mandated Lead Arranger and Bookrunner and Facility Agent</li>
           <li>Syndicated Term and Revolving Credit Facility</li>
-          <li>April 2026</li>
         </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Apr 2026</span></p>
       </article>
 
       <article class="cd-card card-panel is-flat surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
         <h3 class="sr-only">Turkcell</h3>
         <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="staging/global-loan-solutions-v1a/deal_03_turkcell.jpg" alt="Turkcell" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
         <p class="type-h5 ink-primary">USD 1,000m</p>
-        <ul class="type-body-sm ink-mute mt-2 flex flex-col gap-1">
+        <ul class="type-body-sm mt-2 mb-4 flex flex-col gap-1 ink-mute">
           <li>Coordinator, IMLAB, Documentation Agent and Facility Agent</li>
           <li>Commodity Murabaha Term Financing Facility</li>
-          <li>March 2026</li>
         </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Mar 2026</span></p>
       </article>
 
       <article class="cd-card card-panel is-flat surface-white" role="listitem" data-reveal="up" data-reveal-delay=".22">
         <h3 class="sr-only">Government of Sharjah</h3>
         <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="staging/global-loan-solutions-v1a/deal_04_sharjah.jpg" alt="Government of Sharjah" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
         <p class="type-h5 ink-primary"> 1,000m</p>
-        <ul class="type-body-sm ink-mute mt-2 flex flex-col gap-1">
+        <ul class="type-body-sm mt-2 mb-4 flex flex-col gap-1 ink-mute">
           <li>Coordinator, IMLAB, Documentation Agent and Facility Agent</li>
           <li>Commodity Murabaha Term Financing Facility</li>
-          <li>March 2026</li>
         </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Mar 2026</span></p>
       </article>
     </div>
 

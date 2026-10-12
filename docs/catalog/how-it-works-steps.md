@@ -8,6 +8,12 @@ styling lives in `ds.css` under that class — the block itself is pure markup.
 ## Look
 A numbered 'how it works' sequence; each step carries a title, a line of copy and a short bulleted list.
 
+## Options
+- **Lean steps** (2026-10-12): each step may be just number, heading and text; the per-step tick list is optional (all steps or none).
+- **Closing button optional:** the CTA under the steps may be dropped.
+- **Intro line optional:** the header may be eyebrow + heading only.
+- **Anchor / label id (instances only):** a page may give the heading an id used by `aria-labelledby`.
+
 ## Content contract
 - Steps are a simple ordered structure — add or remove without touching CSS.
 - The heading is wired to the section via `aria-labelledby`.

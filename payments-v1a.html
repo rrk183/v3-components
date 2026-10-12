@@ -518,7 +518,11 @@
 <!-- ═══ /Four pillars, scroll story ════════════════════════════════════════ -->
 
 <!-- ═══ Emirates NBD Pay, Feature Spotlight ════════════════════════════════ -->
-<section class="cmp cmp-feature-spotlight surface-soft section-y" data-animate>
+<!-- INSTANCE of master "Feature Spotlight" (blocks/feature-spotlight.html, gallery:
+     Feature Sections > Feature Spotlight). One row (rows are repeatable).
+     Overrides: content only (copy, link, staging/ image and its description).
+     Re-synced 2026-10-12: styled is-arrow link and ink-mute list items. -->
+<section class="cmp cmp-feature-spotlight surface-soft section-y" data-animate data-master="feature-spotlight">
   <div class="container-ds fsp-rows">
 
     <div class="fsp-row">
@@ -530,11 +534,11 @@
         <h2 class="type-h2 ink-primary fsp-title">Payments, reimagined.</h2>
         <p class="type-body-lg ink-mute measure fsp-lead">Experience a smarter way to collect with our Emirates NBD Pay POS and e-commerce solutions.</p>
         <ul class="list-check fsp-points">
-          <li>Secure card acceptance across all channels</li>
-          <li>Latest payment acceptance technologies</li>
-          <li>Integrated solutions that are easy to use and quick to set up</li>
+          <li class="ink-mute">Secure card acceptance across all channels</li>
+          <li class="ink-mute">Latest payment acceptance technologies</li>
+          <li class="ink-mute">Integrated solutions that are easy to use and quick to set up</li>
         </ul>
-        <a href="emirates-nbd-pay-v1a.html" class="btn btn-text btn-lg">Learn more &rarr;</a>
+        <a href="emirates-nbd-pay-v1a.html" class="btn btn-text btn-lg is-arrow">Learn more</a>
       </div>
     </div>
 

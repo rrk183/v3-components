@@ -305,12 +305,13 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. RANKINGS, Big Statement, surface-grey ═══════════════════════════ -->
-<section class="cmp cmp-big-statement surface-soft section-y" data-animate>
+<!-- INSTANCE of master "big-statement". Documented option: rank strip. Re-synced 12 Oct: ink-primary on the headline. -->
+<section class="cmp cmp-big-statement surface-soft section-y" data-animate data-master="big-statement">
   <div class="container-narrow">
     <div class="section-head is-center">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent" data-reveal="up">Market leadership</span>
-        <h2 class="bst-line type-display-xxl" data-reveal><span class="bst-l"><span class="bst-w">Ranked <em>first</em>,</span></span><span class="bst-l"><span class="bst-w">by the market.</span></span></h2>
+        <h2 class="bst-line type-display-xxl ink-primary" data-reveal><span class="bst-l"><span class="bst-w">Ranked <em>first</em>,</span></span><span class="bst-l"><span class="bst-w">by the market.</span></span></h2>
       </div>
       <p class="bst-sub type-body-lg ink-mute sh-lead" data-reveal="up" data-reveal-delay=".12">Independent league tables put Emirates NBD Capital at the top of the region's equity capital markets, deal after deal.</p>
     </div>
@@ -328,7 +329,8 @@
 
 <!-- ═══ 3. CAPABILITIES, vertical tabs, surface-white ══════════════════════ -->
 <!-- ═══ capabilities — Scroll Tab (pinned image swaps per item) ═══ -->
-<section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-scroll-pinned data-animate id="capabilities">
+<!-- INSTANCE of master "scroll-showcase". Documented options: index numbers, tick-list bodies. Content only. -->
+<section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-scroll-pinned data-animate id="capabilities" data-master="scroll-showcase">
 <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
@@ -490,7 +492,8 @@
 <!-- ═══ /7. SELECTED TRANSACTIONS ═══════════════════════════════════════════ -->
 
 <!-- ═══ 8. SUCCESS STORIES, surface-white ═════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cta-text is-cols-4 surface-white section-y" data-animate>
+<!-- INSTANCE of master "cards-boxed". Documented options: pop-up cards, see-all link. Content only. -->
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cta-text is-cols-4 surface-white section-y" data-animate data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -704,7 +707,8 @@
 <!-- ═══ /8. SUCCESS STORIES ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. CAPITAL ACCESS, surface-primary ════════════════════════════════════ -->
-<section class="cmp cmp-content-block-sidebyside surface-primary section-y" data-animate aria-label="Capital access">
+<!-- INSTANCE of master "content-block-sidebyside". Documented options: eyebrow, h2 size, button row, navy ground. Re-synced 12 Oct: btn-accent with a styled arrow (was legacy btn-primary). -->
+<section class="cmp cmp-content-block-sidebyside surface-primary section-y" data-animate aria-label="Capital access" data-master="content-block-sidebyside">
   <div class="container-ds">
     <div class="flex flex-col md:flex-row md:gap-16 items-start">
       <div class="md:w-1/2 flex-shrink-0">
@@ -713,7 +717,7 @@
       </div>
       <div class="md:w-1/2 md:pt-3" data-reveal="up" data-reveal-delay=".12">
         <p class="type-body ink-soft">GCC and emerging markets today hold over USD 1.5 trillion of private liquidity beyond sovereign wealth funds and asset managers. Our relationships with Royal Families, Family Offices and UHNW investors give your offering direct access to this capital &mdash; a pool few banks can reach.</p>
-        <a href="#contact" class="btn btn-primary mt-6">Put this capital behind your offering &rarr;</a>
+        <a href="#contact" class="btn btn-accent mt-6 is-arrow">Put this capital behind your offering</a>
       </div>
     </div>
   </div>
@@ -750,7 +754,8 @@
 <!-- ═══ /5. HISTORY TIMELINE ════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. PEOPLE, surface-white ═══════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-people surface-white section-y" data-animate>
+<!-- INSTANCE of master "cards-people-carousel". Documented options: tabbed groups, static profiles, manual mode. Content only. -->
+<section class="cmp cmp-cards is-hover-zoom cards-people surface-white section-y" data-animate data-master="cards-people-carousel">
   <div data-tabs>
 
     <div class="container-ds">
@@ -877,7 +882,8 @@
 <!-- ═══ /6. PEOPLE ══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ LATEST TRANSACTIONS, tombstone cards (4), surface-soft ═══════════════ -->
-<section class="cmp cmp-cards cards-tombstones is-cols-4 surface-soft section-y" data-animate aria-label="Latest transactions">
+<!-- INSTANCE of master "cards-tombstones". Re-synced 12 Oct: venue and date moved into the master meta-dot foot; header link is an sh-action. Documented option: no legend row. -->
+<section class="cmp cmp-cards cards-tombstones is-cols-4 surface-soft section-y" data-animate aria-label="Latest transactions" data-master="cards-tombstones">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -885,7 +891,7 @@
         <span class="ds-eyebrow ink-accent" data-reveal="up">Selected transactions</span>
         <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Latest transactions.</h2>
       </div>
-      <a class="btn btn-text btn-lg is-arrow" href="equity-capital-markets-tombstones-v1a.html" data-reveal="up" data-reveal-delay=".1">See all transactions</a>
+      <a class="btn btn-text sh-action is-arrow" href="equity-capital-markets-tombstones-v1a.html" data-reveal="up" data-reveal-delay=".1">See all transactions</a>
     </div>
 
     <div class="cd-grid" role="list">
@@ -893,48 +899,44 @@
         <h3 class="sr-only">Anan Investment Holding</h3>
         <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/equity-capital-markets/deal_01.png" alt="Anan Investment Holding" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
         <p class="type-h5 ink-primary">USD 48mn</p>
-        <ul class="type-body-sm ink-mute mt-2 flex flex-col gap-1">
+        <ul class="type-body-sm mt-2 mb-4 flex flex-col gap-1 ink-mute">
           <li>Lead Manager and Lead Receiving Bank</li>
           <li>Capital Raise</li>
-          <li>July 2026</li>
-          <li>Listed on ADX</li>
         </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Listed on ADX</span><span>Jul 2026</span></p>
       </article>
 
       <article class="cd-card card-panel is-flat surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
         <h3 class="sr-only">Sharjah Islamic Bank</h3>
         <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/equity-capital-markets/deal_02.png" alt="Sharjah Islamic Bank" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
         <p class="type-h5 ink-primary">USD 705mn</p>
-        <ul class="type-body-sm ink-mute mt-2 flex flex-col gap-1">
+        <ul class="type-body-sm mt-2 mb-4 flex flex-col gap-1 ink-mute">
           <li>Lead Manager and Lead Receiving Bank</li>
           <li>Rights Issue</li>
-          <li>April 2026</li>
-          <li>Listed on ADX</li>
         </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Listed on ADX</span><span>Apr 2026</span></p>
       </article>
 
       <article class="cd-card card-panel is-flat surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
         <h3 class="sr-only">ALEC Holdings</h3>
         <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/equity-capital-markets/deal_03.png" alt="ALEC Holdings" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
         <p class="type-h5 ink-primary">USD 381mn</p>
-        <ul class="type-body-sm ink-mute mt-2 flex flex-col gap-1">
+        <ul class="type-body-sm mt-2 mb-4 flex flex-col gap-1 ink-mute">
           <li>Joint Global Coordinator and Lead Receiving Bank</li>
           <li>IPO</li>
-          <li>September 2025</li>
-          <li>Listed on DFM</li>
         </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Listed on DFM</span><span>Sep 2025</span></p>
       </article>
 
       <article class="cd-card card-panel is-flat surface-white" role="listitem" data-reveal="up" data-reveal-delay=".22">
         <h3 class="sr-only">Mubadala / du</h3>
         <div class="flex items-center justify-center min-h-[104px] mb-4"><img src="assets/images/tombstones/equity-capital-markets/deal_04_01.png" alt="Mubadala / du" loading="lazy" width="180" height="104" class="max-h-[72px] w-auto"></div>
         <p class="type-h5 ink-primary">USD 868mn</p>
-        <ul class="type-body-sm ink-mute mt-2 flex flex-col gap-1">
+        <ul class="type-body-sm mt-2 mb-4 flex flex-col gap-1 ink-mute">
           <li>Joint Global Coordinator and Lead Receiving Bank</li>
           <li>Fully Marketed Offering</li>
-          <li>September 2025</li>
-          <li>Listed on DFM</li>
         </ul>
+        <p class="meta-dot border-t pt-3 mt-auto ink-mute"><span>Listed on DFM</span><span>Sep 2025</span></p>
       </article>
     </div>
 

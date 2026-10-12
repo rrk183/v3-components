@@ -974,81 +974,96 @@
 
 <!-- ═══ 7. LANDMARK DEALS · DS article cards ══════════════
      Facts on each card are taken only from the linked case-study page. -->
-<section class="cmp cmp-cards cmp-article-card is-cols-3 hf-deals" aria-labelledby="deals-h">
+<!-- INSTANCE of master "Cards: Case Study, Carousel" (blocks/cards-case-study-carousel.html,
+     gallery: Cards > Cards: Case Study, Carousel). Replaces the retired
+     article-card deals carousel. Overrides: content only (heading, the 6 case
+     study cards with their links, staging/ images, practice chip, "Emirates
+     NBD Capital" and date as the meta line). The optional eyebrow and lead are
+     dropped, so the header is a single title. Styling and behaviour come from
+     ds.css / ds.js, so master changes reach this instance. -->
+<section class="cmp cmp-cards is-hover-zoom cards-case-study is-cols-3 surface-soft section-y" data-animate data-master="cards-case-study-carousel">
   <div class="container-ds">
-    <div class="hf-deals__head">
-      <h2 id="deals-h" class="hf-h">Landmark deals. <span class="hf-h__2">And the clients behind them.</span></h2>
+    <div class="section-head">
+      <div class="ds-stack">
+        <h2 class="type-h2 ink-primary" data-reveal="up">Landmark deals. And the clients behind them.</h2>
+      </div>
     </div>
   </div>
+
   <div class="cd-carousel" data-carousel>
-    <div class="cd-track" data-carousel-track data-hf-drift>
-      <article class="art-c cd-card" data-carousel-slide>
-        <a class="art-c-link surface-white" href="case-study-dewa-ipo.html">
-          <span class="art-c-media" data-bg="staging/cib-home-final/csl-dewa.jpg" aria-hidden="true"><span class="art-c-tag">Equity Capital Markets</span></span>
-          <span class="art-c-body">
-            <h3 class="art-c-title">DEWA&rsquo;s USD 6.1bn IPO, the largest in the UAE&rsquo;s history.</h3>
-            <span class="art-c-foot"><span class="art-c-who"><span class="art-c-by">Emirates NBD Capital</span><span class="art-c-date">March 2022</span></span></span>
-            <span class="art-c-read">Read more <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </a>
-      </article>
-      <article class="art-c cd-card" data-carousel-slide>
-        <a class="art-c-link surface-white" href="case-study-talabat-ipo.html">
-          <span class="art-c-media" data-bg="staging/cib-home-final/ib-case-talabat.jpg" aria-hidden="true"><span class="art-c-tag">Equity Capital Markets</span></span>
-          <span class="art-c-body">
-            <h3 class="art-c-title">talabat&rsquo;s USD 2.0bn listing, the largest tech IPO globally in 2024.</h3>
-            <span class="art-c-foot"><span class="art-c-who"><span class="art-c-by">Emirates NBD Capital</span><span class="art-c-date">December 2024</span></span></span>
-            <span class="art-c-read">Read more <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </a>
-      </article>
-      <article class="art-c cd-card" data-carousel-slide>
-        <a class="art-c-link surface-white" href="case-study-salik-ipo.html">
-          <span class="art-c-media" data-bg="staging/cib-home-final/csl-salik.jpg" aria-hidden="true"><span class="art-c-tag">Equity Capital Markets</span></span>
-          <span class="art-c-body">
-            <h3 class="art-c-title">SALIK, Dubai&rsquo;s road-toll operator, lists on the DFM.</h3>
-            <span class="art-c-foot"><span class="art-c-who"><span class="art-c-by">Emirates NBD Capital</span><span class="art-c-date">September 2022</span></span></span>
-            <span class="art-c-read">Read more <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </a>
-      </article>
-      <article class="art-c cd-card" data-carousel-slide>
-        <a class="art-c-link surface-white" href="case-study-lulu-retail-ipo.html">
-          <span class="art-c-media" data-bg="staging/cib-home-final/csl-lulu.jpg" aria-hidden="true"><span class="art-c-tag">Equity Capital Markets</span></span>
-          <span class="art-c-body">
-            <h3 class="art-c-title">LuLu Retail&rsquo;s flagship consumer listing on the ADX.</h3>
-            <span class="art-c-foot"><span class="art-c-who"><span class="art-c-by">Emirates NBD Capital</span><span class="art-c-date">November 2024</span></span></span>
-            <span class="art-c-read">Read more <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </a>
-      </article>
-      <article class="art-c cd-card" data-carousel-slide>
-        <a class="art-c-link surface-white" href="case-study-parkin-ipo.html">
-          <span class="art-c-media" data-bg="staging/cib-home-final/ib-case-parkin.jpg" aria-hidden="true"><span class="art-c-tag">Equity Capital Markets</span></span>
-          <span class="art-c-body">
-            <h3 class="art-c-title">Parkin&rsquo;s landmark Dubai parking-infrastructure IPO.</h3>
-            <span class="art-c-foot"><span class="art-c-who"><span class="art-c-by">Emirates NBD Capital</span><span class="art-c-date">March 2024</span></span></span>
-            <span class="art-c-read">Read more <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </a>
-      </article>
-      <article class="art-c cd-card" data-carousel-slide>
-        <a class="art-c-link surface-white" href="case-study-du-pay-partnership.html">
-          <span class="art-c-media" data-bg="staging/cib-home-final/csl-dupay.jpg" aria-hidden="true"><span class="art-c-tag">Partnerships</span></span>
-          <span class="art-c-body">
-            <h3 class="art-c-title">du Pay partners with Emirates NBD to power its digital wallet.</h3>
-            <span class="art-c-foot"><span class="art-c-who"><span class="art-c-by">Emirates NBD Capital</span><span class="art-c-date">2024</span></span></span>
-            <span class="art-c-read">Read more <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </a>
-      </article>
+    <div class="cd-track" data-carousel-track>
+
+
+      <a href="case-study-dewa-ipo.html" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="DEWA&rsquo;s USD 6.1bn IPO, the largest in the UAE&rsquo;s history." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="staging/cib-home-final/csl-dewa.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">DEWA&rsquo;s USD 6.1bn IPO, the largest in the UAE&rsquo;s history.</h3>
+          <p class="meta-dot ink-mute"><span>Emirates NBD Capital</span><span>March 2022</span></p>
+        </div>
+      </a>
+      <a href="case-study-talabat-ipo.html" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="talabat&rsquo;s USD 2.0bn listing, the largest tech IPO globally in 2024." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="staging/cib-home-final/ib-case-talabat.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">talabat&rsquo;s USD 2.0bn listing, the largest tech IPO globally in 2024.</h3>
+          <p class="meta-dot ink-mute"><span>Emirates NBD Capital</span><span>December 2024</span></p>
+        </div>
+      </a>
+      <a href="case-study-salik-ipo.html" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="SALIK, Dubai&rsquo;s road-toll operator, lists on the DFM." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="staging/cib-home-final/csl-salik.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">SALIK, Dubai&rsquo;s road-toll operator, lists on the DFM.</h3>
+          <p class="meta-dot ink-mute"><span>Emirates NBD Capital</span><span>September 2022</span></p>
+        </div>
+      </a>
+      <a href="case-study-lulu-retail-ipo.html" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="LuLu Retail&rsquo;s flagship consumer listing on the ADX." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="staging/cib-home-final/csl-lulu.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">LuLu Retail&rsquo;s flagship consumer listing on the ADX.</h3>
+          <p class="meta-dot ink-mute"><span>Emirates NBD Capital</span><span>November 2024</span></p>
+        </div>
+      </a>
+      <a href="case-study-parkin-ipo.html" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="Parkin&rsquo;s landmark Dubai parking-infrastructure IPO." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="staging/cib-home-final/ib-case-parkin.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Equity Capital Markets</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">Parkin&rsquo;s landmark Dubai parking-infrastructure IPO.</h3>
+          <p class="meta-dot ink-mute"><span>Emirates NBD Capital</span><span>March 2024</span></p>
+        </div>
+      </a>
+      <a href="case-study-du-pay-partnership.html" class="cd-card card-panel surface-white" style="--card-pad:0" aria-label="du Pay partners with Emirates NBD to power its digital wallet." data-carousel-slide>
+        <span class="relative block aspect-[3/2]">
+          <span class="media-cover" data-bg="staging/cib-home-final/csl-dupay.jpg" aria-hidden="true"></span>
+          <span class="chip absolute bottom-3 start-4 z-10">Partnerships</span>
+        </span>
+        <div class="p-6 flex flex-col items-start gap-3">
+          <h3 class="type-h6 ink-primary">du Pay partners with Emirates NBD to power its digital wallet.</h3>
+          <p class="meta-dot ink-mute"><span>Emirates NBD Capital</span><span>2024</span></p>
+        </div>
+      </a>
+
     </div>
     <div class="cd-arrows">
+      <button class="crl-toggle" type="button" data-carousel-toggle hidden aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
       <div class="cd-dots" data-carousel-dots></div>
-      <button type="button" class="btn btn-outline btn-icon is-back" data-carousel-prev><span class="sr-only">Previous case studies</span></button>
-      <button type="button" class="btn btn-outline btn-icon is-next" data-carousel-next><span class="sr-only">Next case studies</span></button>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-back" data-carousel-prev><span class="sr-only">Previous</span></button>
+      <button type="button" class="btn btn-accent btn-icon btn-pill is-next" data-carousel-next><span class="sr-only">Next</span></button>
     </div>
   </div>
+
 </section>
 
 <!-- ═══ 8. ISLAMIC FINANCE + RESEARCH · INSTANCE of master bento-research ══════

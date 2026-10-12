@@ -528,7 +528,9 @@
 <!-- ═══ /Three core features ════════════════════════════════════════════════ -->
 
 <!-- ═══ Payment lifecycle, How It Works Steps ═══════════════════ -->
-<section class="cmp cmp-how-it-works-steps surface-soft section-y" data-animate aria-labelledby="lifecycle-heading">
+<!-- INSTANCE of master "How It Works: Steps". Documented options: lean steps, no closing
+     button, no intro line. Content only. -->
+<section class="cmp cmp-how-it-works-steps surface-soft section-y" data-animate data-master="how-it-works-steps" aria-labelledby="lifecycle-heading">
 <div class="container-ds">
     <div class="section-head">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Payment lifecycle</span>
@@ -572,7 +574,9 @@
 <!-- ═══ Swift gpi at scale, Statement + Stats ═══════════════════
      Numbers describe the SWIFT gpi NETWORK, not Payment Tracker. Each figure is
      SME-verified with a cited source; see _work/payment-tracker-facts.md (D). -->
-<section class="cmp cmp-statement-stats surface-white section-y" data-behavior="text-reveal" data-animate aria-label="Swift gpi network scale">
+<!-- INSTANCE of master "Statement + Stats". Documented options: live tracker card, source
+     footnote. Re-synced 12 Oct: ink-primary on the figures. Content only. -->
+<section class="cmp cmp-statement-stats surface-white section-y" data-behavior="text-reveal" data-animate data-master="statement-stats" aria-label="Swift gpi network scale">
 <div class="container-ds as-grid">
 
     <div class="as-left">
@@ -602,9 +606,9 @@
       </h2>
       <div>
         <div class="as-stats" data-reveal="up" data-reveal-delay=".1">
-          <div class="as-stat"><span class="ds-num as-num"><span data-countup="4000" data-suffix="+" data-duration="2">4000+</span></span><span class="type-body-sm ink-mute as-lbl block">Banks live on Swift gpi</span></div>
-          <div class="as-stat"><span class="ds-num as-num"><span data-countup="200" data-suffix="+" data-duration="2">200+</span></span><span class="type-body-sm ink-mute as-lbl block">Countries and territories reached</span></div>
-          <div class="as-stat"><span class="ds-num as-num">~<span data-countup="100" data-suffix="%" data-duration="2">100%</span></span><span class="type-body-sm ink-mute as-lbl block">Credited within 24 hours</span></div>
+          <div class="as-stat"><span class="ds-num as-num ink-primary"><span data-countup="4000" data-suffix="+" data-duration="2">4000+</span></span><span class="type-body-sm ink-mute as-lbl block">Banks live on Swift gpi</span></div>
+          <div class="as-stat"><span class="ds-num as-num ink-primary"><span data-countup="200" data-suffix="+" data-duration="2">200+</span></span><span class="type-body-sm ink-mute as-lbl block">Countries and territories reached</span></div>
+          <div class="as-stat"><span class="ds-num as-num ink-primary">~<span data-countup="100" data-suffix="%" data-duration="2">100%</span></span><span class="type-body-sm ink-mute as-lbl block">Credited within 24 hours</span></div>
         </div>
         <p class="as-src">Swift gpi network figures, not Emirates NBD metrics. Sources: Swift, via ACI Worldwide and Thunes.</p>
       </div>

@@ -21,6 +21,14 @@ section.cmp.cmp-content-block-sidebyside.surface-grey.section-y[data-animate]
      └ p.type-body.on-surface-mid.md:w-1/2.md:pt-3            ← supporting copy
 ```
 
+## Options
+- **Button row:** up to two buttons under the copy in the right column (primary + outline).
+- **Section-opening size:** the headline may use `type-h2` instead of `type-h3` when the block opens a major section.
+- **Eyebrow** (2026-10-12): an optional `ds-eyebrow` above the headline; the left column becomes a `ds-stack` of eyebrow + headline.
+- **Source line:** an optional `type-body-sm` caption after the copy in the right column (a citation or date).
+- **Ground:** any surface; on a dark ground use `ink-white` / `ink-soft` / `ink-accent-soft`.
+- **Anchor id (instances only):** a page may add `id="..."` to the root.
+
 ## Content contract
 - **One headline + one paragraph**, side by side. Single block, no list.
 - Headline uses `type-h3` (smaller than the other content-block variants) and

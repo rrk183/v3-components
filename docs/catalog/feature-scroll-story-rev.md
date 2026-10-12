@@ -25,6 +25,9 @@ Reach for it to **alternate mockup sides** across two scroll stories on one page
 mockup left) so the page reads with rhythm instead of two identical layouts. For a
 single story, use the default.
 
+## Options
+Same options as Feature Scroll Story (see feature-scroll-story.md, Options): lean chapters (description, callout cards and closing button each optional), 3 to 5 chapters, and an anchor id on instances.
+
 ## Everything else
 Anatomy, content contract, image-baking flow and drift cautions are the same as the
 default — see [[feature-scroll-story]]. Authoring: read

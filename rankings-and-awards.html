@@ -27,10 +27,10 @@
   <script src="assets/js/gate-config.js"></script>
   <script src="assets/js/gate.js"></script>
   <link rel="stylesheet" href="assets/css/fonts.css" />
-  <link rel="stylesheet" href="assets/css/ds-cib-261076.css" />
+  <link rel="stylesheet" href="assets/css/ds.css?v=261195" />
   <script src="assets/js/tailwind.cdn.js"></script>
   <script src="assets/js/ds-tailwind-config.js"></script>
-  <script defer src="assets/js/ds-cib-261076.js"></script>
+  <script defer src="assets/js/ds.js?v=261195"></script>
 <!-- Structured data: WebPage + publishing Organization. Built only from facts
        already on the page; no breadcrumb markup by design. URLs reuse the og:url
        origin; update the origin alongside og:url/canonical before shipping. -->
@@ -277,155 +277,225 @@
 
 <main id="main">
 
-  <!-- ═══ 1 · Hero — image-covered opener (video-left block, centred content) ══
-       .rk-hero styles moved to assets/css/ds-cib-261076.css (no inline CSS) ══ -->
-<section class="cmp rk-hero" data-animate aria-label="Rankings and Awards">
-  <img class="rk-hero__img" src="assets/images/investment-banking/rankings-hero.jpg" alt="" aria-hidden="true" />
-  <div class="rk-hero__ov" aria-hidden="true"></div>
-  <div class="container-ds rk-hero__inner">
-    <div class="rk-hero__copy">
-      <span class="ds-eyebrow" data-reveal="up">Emirates NBD Capital</span>
-      <h1 class="type-h1 type-semibold" data-reveal="up" data-reveal-delay=".08">Our Rankings &amp; Awards</h1>
-      <p class="type-body measure" data-reveal="up" data-reveal-delay=".16">From transaction banking to capital markets, our corporate and institutional franchise is consistently honoured by the awards that matter.</p>
+  <!-- ═══ 1 · Hero: INSTANCE of master "Hero: Image" (blocks/hero-image.html,
+       gallery: Heroes > Hero: Image, Single). Overrides: content only
+       (eyebrow, title, lead, background image); the hero-ctas row is dropped,
+       as this page hero has no CTAs. Styling comes from ds.css, so master
+       changes reach this instance. ══ -->
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate data-master="hero-image" aria-label="Rankings and Awards">
+  <div class="hero-stage surface-image">
+    <span class="media-cover" data-bg="assets/images/investment-banking/rankings-hero.jpg" aria-hidden="true"></span>
+    <span class="ov ov-dark ov-gradient-l ov-80" aria-hidden="true"></span>
+    <span class="ov ov-dark ov-gradient-t ov-40" aria-hidden="true"></span>
+    <div class="container-ds hero-frame">
+      <div class="hero-copy ds-stack">
+          <span class="ds-eyebrow ink-white" data-reveal="up">Emirates NBD Capital</span>
+          <h1 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".08">Our Rankings &amp; Awards</h1>
+          <p class="type-body-lg measure ink-soft" data-reveal="up" data-reveal-delay=".16">From transaction banking to capital markets, our corporate and institutional franchise is consistently honoured by the awards that matter.</p>
+        </div>
     </div>
   </div>
 </section>
   <!-- ═══ /1 · Hero ══════════════════════════════════════════════════════════ -->
 
   <!-- ═══ 2 · Awards Grid — every recognition, grouped by awarding body ═══════ -->
-<section class="cmp cmp-awards-grid surface-grey section-y" data-animate aria-label="Rankings and awards">
+<!-- INSTANCE of master "Cards: Awards" (blocks/cards-awards.html, gallery:
+     Cards > Cards: Awards). Overrides: content only (header copy, all 18
+     award cards). Styling comes from ds.css, so master changes reach this
+     instance. -->
+<section class="cmp cmp-cards cards-awards is-cols-3 is-hover-lift surface-soft section-y" data-animate data-master="cards-awards" aria-label="Rankings and awards">
   <div class="container-ds">
+
     <div class="section-head is-split">
       <div class="ds-stack">
-        <span class="ds-eyebrow" data-reveal="up">All recognitions</span>
-        <h2 class="type-h2 type-navy" data-reveal="up" data-reveal-delay=".06">A track record the market keeps&nbsp;honouring.</h2>
+        <span class="ds-eyebrow ink-accent" data-reveal="up">All recognitions</span>
+        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">A track record the market keeps&nbsp;honouring.</h2>
       </div>
-      <p class="type-body on-surface-mid sh-lead" data-reveal="up" data-reveal-delay=".1">Eighteen recent wins across investment banking, capital markets, Islamic and sustainable finance.</p>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Eighteen recent wins across investment banking, capital markets, Islamic and sustainable finance.</p>
     </div>
-    <div class="ag-grid">
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_01_gbm_me_2026.jpg" alt="GBM Awards Middle East" loading="lazy" width="160" height="58"><span class="badge badge-blue">2026</span></div>
-        <p class="ag-cat">Investment Banking</p>
-        <h3 class="ag-org">GBM Awards Middle East</h3>
-        <ul class="ag-titles"><li>Global Banking &amp; Capital Markets Team of the Year</li><li>Loan House of the Year</li><li>Local Equity Capital Markets House of the Year</li><li>Islamic Syndications House of the Year</li></ul>
+
+    <div class="cd-grid" role="list">
+
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_01_gbm_me_2026.jpg" alt="GBM Awards Middle East" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2026</span></div>
+        <p class="ds-eyebrow ink-mute">Investment Banking</p>
+        <h3 class="type-h5 ink-primary mt-2">GBM Awards Middle East</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Global Banking &amp; Capital Markets Team of the Year</li>
+          <li>Loan House of the Year</li>
+          <li>Local Equity Capital Markets House of the Year</li>
+          <li>Islamic Syndications House of the Year</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_02_euromoney_2026.jpg" alt="Euromoney Awards for Excellence" loading="lazy" width="160" height="58"><span class="badge badge-blue">2026</span></div>
-        <p class="ag-cat">Investment Banking</p>
-        <h3 class="ag-org">Euromoney Awards for Excellence</h3>
-        <ul class="ag-titles"><li>Middle East's Best Investment Bank for SSAs</li><li>Middle East's Best Investment Bank for FIG</li><li>Best Investment Bank for ECM</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_02_euromoney_2026.jpg" alt="Euromoney Awards for Excellence" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2026</span></div>
+        <p class="ds-eyebrow ink-mute">Investment Banking</p>
+        <h3 class="type-h5 ink-primary mt-2">Euromoney Awards for Excellence</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Middle East's Best Investment Bank for SSAs</li>
+          <li>Middle East's Best Investment Bank for FIG</li>
+          <li>Best Investment Bank for ECM</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_03_euromoney_islamic_2026.jpg" alt="Euromoney Islamic Finance Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2026</span></div>
-        <p class="ag-cat">Islamic Finance</p>
-        <h3 class="ag-org">Euromoney Islamic Finance Awards</h3>
-        <ul class="ag-titles"><li>Middle East's Best Islamic Structured Finance House</li><li>UAE's Best Islamic Structured Finance House</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_03_euromoney_islamic_2026.jpg" alt="Euromoney Islamic Finance Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2026</span></div>
+        <p class="ds-eyebrow ink-mute">Islamic Finance</p>
+        <h3 class="type-h5 ink-primary mt-2">Euromoney Islamic Finance Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Middle East's Best Islamic Structured Finance House</li>
+          <li>UAE's Best Islamic Structured Finance House</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/awards_emea_01.png" alt="EMEA Finance Achievement Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Investment Banking</p>
-        <h3 class="ag-org">EMEA Finance Achievement Awards</h3>
-        <ul class="ag-titles"><li>Best Equity House in the Middle East</li><li>Best Bond House in EMEA</li><li>Best Bond House in the Middle East</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/awards_emea_01.png" alt="EMEA Finance Achievement Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Investment Banking</p>
+        <h3 class="type-h5 ink-primary mt-2">EMEA Finance Achievement Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Best Equity House in the Middle East</li>
+          <li>Best Bond House in EMEA</li>
+          <li>Best Bond House in the Middle East</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/ifr_awards_2025.png" alt="IFR Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Equity Capital Markets</p>
-        <h3 class="ag-org">IFR Awards</h3>
-        <ul class="ag-titles"><li>Middle East Equity House</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/ifr_awards_2025.png" alt="IFR Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Equity Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">IFR Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Middle East Equity House</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/ifr_du_awards.png" alt="IFR Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Equity Capital Markets</p>
-        <h3 class="ag-org">IFR Awards</h3>
-        <ul class="ag-titles"><li>Middle East Equity Issue</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/ifr_du_awards.png" alt="IFR Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Equity Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">IFR Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Middle East Equity Issue</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_04_emeafinance_2025.jpg" alt="emeafinance Middle East Banking Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Investment Banking</p>
-        <h3 class="ag-org">emeafinance Middle East Banking Awards</h3>
-        <ul class="ag-titles"><li>Best Investment Bank (Middle East)</li><li>Best Local Investment Bank (UAE)</li><li>Best Debt House (UAE)</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_04_emeafinance_2025.jpg" alt="emeafinance Middle East Banking Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Investment Banking</p>
+        <h3 class="type-h5 ink-primary mt-2">emeafinance Middle East Banking Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Best Investment Bank (Middle East)</li>
+          <li>Best Local Investment Bank (UAE)</li>
+          <li>Best Debt House (UAE)</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_05_globalcapital_synd_2025.jpg" alt="GlobalCapital Syndicated Loan Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Debt Capital Markets</p>
-        <h3 class="ag-org">GlobalCapital Syndicated Loan Awards</h3>
-        <ul class="ag-titles"><li>Best Arranger of Turkish Loans</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_05_globalcapital_synd_2025.jpg" alt="GlobalCapital Syndicated Loan Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Debt Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">GlobalCapital Syndicated Loan Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Best Arranger of Turkish Loans</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_06_gbm_africa_2025.jpg" alt="GBM Bonds, Loans &amp; ESG Africa Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Islamic Finance</p>
-        <h3 class="ag-org">GBM Bonds, Loans &amp; ESG Africa Awards</h3>
-        <ul class="ag-titles"><li>Islamic Finance House of the Year</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_06_gbm_africa_2025.jpg" alt="GBM Bonds, Loans &amp; ESG Africa Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Islamic Finance</p>
+        <h3 class="type-h5 ink-primary mt-2">GBM Bonds, Loans &amp; ESG Africa Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Islamic Finance House of the Year</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_07_gbm_cee_2025.jpg" alt="GBM Awards, CEE, Central Asia &amp; Türkiye" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Debt Capital Markets</p>
-        <h3 class="ag-org">GBM Awards, CEE, Central Asia &amp; Türkiye</h3>
-        <ul class="ag-titles"><li>Debt (Bonds &amp;amp; Loans) House of the Year</li><li>Loan House of the Year</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_07_gbm_cee_2025.jpg" alt="GBM Awards, CEE, Central Asia &amp; Türkiye" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Debt Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">GBM Awards, CEE, Central Asia &amp; Türkiye</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Debt (Bonds &amp;amp; Loans) House of the Year</li>
+          <li>Loan House of the Year</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_08_gbm_me_2025.jpg" alt="GBM Awards, Middle East" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Debt Capital Markets</p>
-        <h3 class="ag-org">GBM Awards, Middle East</h3>
-        <ul class="ag-titles"><li>Debt (Bonds &amp;amp; Loans) House of the Year</li><li>Loan House of the Year</li><li>Islamic Syndications House of the Year</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_08_gbm_me_2025.jpg" alt="GBM Awards, Middle East" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Debt Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">GBM Awards, Middle East</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Debt (Bonds &amp;amp; Loans) House of the Year</li>
+          <li>Loan House of the Year</li>
+          <li>Islamic Syndications House of the Year</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_09_globalfinance_ib_2025.jpg" alt="Global Finance Best Investment Bank Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Investment Banking</p>
-        <h3 class="ag-org">Global Finance Best Investment Bank Awards</h3>
-        <ul class="ag-titles"><li>Best Investment Bank in the UAE</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_09_globalfinance_ib_2025.jpg" alt="Global Finance Best Investment Bank Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Investment Banking</p>
+        <h3 class="type-h5 ink-primary mt-2">Global Finance Best Investment Bank Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Best Investment Bank in the UAE</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_10_globalfinance_sustain_2025.jpg" alt="Global Finance Sustainable Finance Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Sustainable Finance</p>
-        <h3 class="ag-org">Global Finance Sustainable Finance Awards</h3>
-        <ul class="ag-titles"><li>Best Bank for Sustainable Finance – UAE</li><li>Best Bank for Sustainable Bonds in the Middle East</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_10_globalfinance_sustain_2025.jpg" alt="Global Finance Sustainable Finance Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Sustainable Finance</p>
+        <h3 class="type-h5 ink-primary mt-2">Global Finance Sustainable Finance Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Best Bank for Sustainable Finance – UAE</li>
+          <li>Best Bank for Sustainable Bonds in the Middle East</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_11_globalcapital_bond_2025.jpg" alt="GlobalCapital Bond Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Debt Capital Markets</p>
-        <h3 class="ag-org">GlobalCapital Bond Awards</h3>
-        <ul class="ag-titles"><li>Most Impressive Local Bank for Middle Eastern Bonds</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_11_globalcapital_bond_2025.jpg" alt="GlobalCapital Bond Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Debt Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">GlobalCapital Bond Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Most Impressive Local Bank for Middle Eastern Bonds</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_12_gbm_ksa_2025.jpg" alt="GBM Awards, Saudi Arabia" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Debt Capital Markets</p>
-        <h3 class="ag-org">GBM Awards, Saudi Arabia</h3>
-        <ul class="ag-titles"><li>High Yield Bond House of the Year</li><li>Regional Bank of the Year</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_12_gbm_ksa_2025.jpg" alt="GBM Awards, Saudi Arabia" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Debt Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">GBM Awards, Saudi Arabia</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>High Yield Bond House of the Year</li>
+          <li>Regional Bank of the Year</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_13_euromoney_2025.jpg" alt="Euromoney Awards for Excellence" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Equity Capital Markets</p>
-        <h3 class="ag-org">Euromoney Awards for Excellence</h3>
-        <ul class="ag-titles"><li>The UAE's Best Investment Bank for Equity Capital Markets</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".04">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_13_euromoney_2025.jpg" alt="Euromoney Awards for Excellence" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Equity Capital Markets</p>
+        <h3 class="type-h5 ink-primary mt-2">Euromoney Awards for Excellence</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>The UAE's Best Investment Bank for Equity Capital Markets</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_14_mena_banking_2025.jpg" alt="MENA Banking Excellence Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Investment Banking</p>
-        <h3 class="ag-org">MENA Banking Excellence Awards</h3>
-        <ul class="ag-titles"><li>Best Investment Bank in the UAE</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".10">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_14_mena_banking_2025.jpg" alt="MENA Banking Excellence Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Investment Banking</p>
+        <h3 class="type-h5 ink-primary mt-2">MENA Banking Excellence Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Best Investment Bank in the UAE</li>
+        </ul>
       </article>
-      <article class="ag-card" data-reveal="up">
-        <div class="ag-logo"><img src="assets/images/investment-banking/awards-lib/emcap_15_euromoney_islamic_2025.jpg" alt="Euromoney Islamic Finance Awards" loading="lazy" width="160" height="58"><span class="badge badge-blue">2025</span></div>
-        <p class="ag-cat">Sustainable Finance</p>
-        <h3 class="ag-org">Euromoney Islamic Finance Awards</h3>
-        <ul class="ag-titles"><li>Sustainability Coordinator for the 'World's Best Islamic ESG Deal'</li></ul>
+      <article class="cd-card card-panel surface-white" role="listitem" data-reveal="up" data-reveal-delay=".16">
+        <div class="flex items-center justify-between gap-3 min-h-[60px] mb-5"><img src="assets/images/investment-banking/awards-lib/emcap_15_euromoney_islamic_2025.jpg" alt="Euromoney Islamic Finance Awards" loading="lazy" width="160" height="58" class="max-h-[58px] max-w-[160px] w-auto object-contain"><span class="badge badge-blue">2025</span></div>
+        <p class="ds-eyebrow ink-mute">Sustainable Finance</p>
+        <h3 class="type-h5 ink-primary mt-2">Euromoney Islamic Finance Awards</h3>
+        <ul class="list-check type-body-sm ink-mute mt-5">
+          <li>Sustainability Coordinator for the 'World's Best Islamic ESG Deal'</li>
+        </ul>
       </article>
+
     </div>
+
   </div>
 </section>
   <!-- ═══ /2 · Awards Grid ═══════════════════════════════════════════════════ -->
 
   <!-- ═══ 3 · CTA Band — closing conversion moment ════════════════════════════ -->
-<section class="cmp ptf-ctaband surface-navy section-y" data-animate>
+<!-- INSTANCE of master "CTA Band" (blocks/cta-band.html, gallery: CTA &
+     Banners > CTA Band). Overrides: content only (eyebrow, headline, lead,
+     button label and link). The old "Prefer to reach a specific desk?" line is
+     dropped: the master has one action and both went to the contact page.
+     Styling comes from ds.css, so master changes reach this instance. -->
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate data-master="cta-band">
   <div class="container-narrow">
-    <span class="ds-eyebrow" data-reveal="up">Start the conversation</span>
-    <h2 class="type-h2 on-surface" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward, together.</h2>
-    <p class="type-body on-surface-mid" data-reveal="up" data-reveal-delay=".1">Tell us where you&rsquo;re headed, and we&rsquo;ll bring the right corporate and institutional specialists and structures to the table.</p>
+    <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Start the conversation</span>
+    <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward, together.</h2>
+    <p class="type-body-lg measure mx-auto ink-soft" data-reveal="up" data-reveal-delay=".1">Tell us where you&rsquo;re headed, and we&rsquo;ll bring the right corporate and institutional specialists and structures to the table.</p>
     <div class="ptf-ctarow" data-reveal="up" data-reveal-delay=".15">
-      <a class="btn btn-primary" href="contact-us-v3.html">Talk to our team <span class="btn-arw">&rarr;</span></a>
+      <a class="btn btn-primary" href="contact-us-v3.html">Talk to our team &rarr;</a>
     </div>
-    <p class="ptf-ctadesk" data-reveal="up" data-reveal-delay=".2">Prefer to reach a specific desk? <a href="contact-us-v3.html">Find the right team on our contact page</a>.</p>
   </div>
 </section>
   <!-- ═══ /3 · CTA Band ══════════════════════════════════════════════════════ -->

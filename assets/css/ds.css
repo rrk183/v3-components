@@ -2351,6 +2351,154 @@ html.st-lock { overflow: hidden; }
 /* ── History-Timeline (recipe: timeline) ── */
 
 
+/* ── World Map - V2 (cmp-markets-map, recipe: markets-map) ─────────────────
+   Scroll-scrubbed dot-matrix world map, moved out of the block's inline
+   <style> on 2026-10-12 so instances receive master changes. Tokens are
+   component-local (--cm-*) and point at brand tokens; the WebGL dots read
+   them live, so the ground (surface-*) recolours the map. Breakpoints:
+   phone < 768, foldable/tablet 768-1023 (copy top/bottom, map between),
+   desktop 1024+ (copy docks start-side, map fills the rest).
+   Options: .cm__eyebrow (optional eyebrow above the docked headline);
+   .cm__count (rolling market counter) OR ul.cm__figs (static stats row of
+   1-3 items, add .is-figs to the root) OR neither (chapters + rule only). */
+.cmp-markets-map {
+  --cm-ink: var(--navy); --cm-ink-2: var(--mid); --cm-grey: var(--grey-400); --cm-muted: var(--mid-soft);
+  --cm-line: var(--border); --cm-surface: #fff; --cm-dot: var(--blue); --cm-dot-soft: var(--blue-soft);
+  --cm-land: var(--soft); --land-a: 1; --cm-veil: var(--cm-surface); --cm-label-bg: rgba(255, 255, 255, .88);
+  --cm-pin-core: var(--cm-dot);
+  position: relative; height: 640vh; background: var(--cm-surface); color: var(--cm-ink); -webkit-font-smoothing: antialiased;
+}
+.cmp-markets-map .cm__stage { position: sticky; top: var(--cm-top, 0px); height: calc(100vh - var(--cm-top, 0px)); height: calc(100svh - var(--cm-top, 0px)); overflow: hidden; }
+.cmp-markets-map .cm__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cmp-markets-map .cm__veil { position: absolute; inset: 0; pointer-events: none; opacity: 0; background: linear-gradient(90deg, var(--cm-veil) 0%, var(--cm-veil) 30%, transparent 46%); }
+.cmp-markets-map .cm__frame { position: absolute; left: 39%; right: 2%; top: 10%; bottom: 12%; pointer-events: none; }
+.cmp-markets-map .cm__eyebrow { position: absolute; left: 6%; top: calc(13% - 34px); margin: 0; z-index: 3; }
+.cmp-markets-map.cm-armed .cm__eyebrow { opacity: 0; }
+.cmp-markets-map .cm__title { position: absolute; left: 6%; top: 13%; margin: 0; z-index: 3; font-size: clamp(30px, 3.25vw, 58px); font-weight: 700; line-height: 1.06; letter-spacing: -.035em; color: var(--cm-ink); }
+.cmp-markets-map .cm__line { display: block; width: max-content; transform-origin: 50% 50%; will-change: transform; }
+.cmp-markets-map .cm__line--2 { color: var(--cm-grey); font-weight: 600; }
+.cmp-markets-map .cm__lead { position: absolute; left: 6%; top: 29%; width: min(29vw, 440px); margin: 0; z-index: 3; font-size: clamp(15px, 1.2vw, 19px); line-height: 1.6; color: var(--cm-ink-2); opacity: 0; will-change: transform, opacity; }
+.cmp-markets-map .cm__stat { position: absolute; left: 6%; bottom: 11%; width: min(28vw, 420px); z-index: 3; opacity: 0; will-change: opacity; }
+.cmp-markets-map.is-figs .cm__stat { width: min(42vw, 600px); }
+.cmp-markets-map .cm__chapters { position: relative; height: 1.4em; margin: 0 0 12px; font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: .18em; text-transform: uppercase; color: var(--cm-muted); }
+.cmp-markets-map .cm__chapter { position: absolute; left: 0; top: 0; white-space: nowrap; opacity: 0; will-change: transform, opacity; }
+.cmp-markets-map .cm__rule { height: 1px; background: var(--cm-line); margin-bottom: 24px; }
+.cmp-markets-map .cm__count { display: flex; align-items: center; gap: 32px; }
+.cmp-markets-map .cm__num { display: flex; direction: ltr; font-size: clamp(64px, 6.6vw, 112px); font-weight: 400; line-height: 1; letter-spacing: -.04em; color: var(--cm-ink); font-variant-numeric: tabular-nums; }
+.cmp-markets-map .cm__digit { display: block; height: 1em; overflow: hidden; }
+.cmp-markets-map .cm__strip { display: flex; flex-direction: column; will-change: transform; }
+.cmp-markets-map .cm__strip span { display: block; height: 1em; }
+.cmp-markets-map .cm__unit { margin: 0; font-size: clamp(14px, 1.15vw, 18px); font-weight: 500; line-height: 1.3; color: var(--cm-ink-2); }
+/* stats row option */
+.cmp-markets-map .cm__figs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin: 0; padding: 0; list-style: none; }
+.cmp-markets-map .cm__fig { margin: 0; min-width: 0; }
+.cmp-markets-map .cm__fig-num { display: block; direction: ltr; unicode-bidi: isolate; font-size: clamp(24px, 1.9vw, 32px); font-weight: 400; line-height: 1.05; letter-spacing: -.03em; color: var(--cm-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cmp-markets-map .cm__fig-label { display: block; margin: 8px 0 0; font-size: 13px; line-height: 1.4; color: var(--cm-ink-2); }
+/* pins */
+.cmp-markets-map .cm__pins { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.cmp-markets-map .cm-pin { position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; will-change: transform, opacity; }
+.cmp-markets-map .cm-pin__dot { position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3.5px var(--cm-dot), 0 2px 6px rgba(var(--navy-rgb), .18); }
+.cmp-markets-map .cm-pin__dot::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--cm-pin-core); }
+.cmp-markets-map .cm-pin__halo { position: absolute; left: -26px; top: -26px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(var(--blue-rgb), .35); background: radial-gradient(circle, rgba(var(--blue-rgb), .14), rgba(var(--blue-rgb), 0) 70%); opacity: 0; }
+.cmp-markets-map .cm-pin__label { position: absolute; white-space: nowrap; font-size: 15px; font-weight: 600; line-height: 1; letter-spacing: -.01em; color: var(--cm-ink); padding: 6px 10px; border-radius: 999px; background: var(--cm-label-bg); }
+.cmp-markets-map .cm-pin--home .cm-pin__label { font-size: 19px; background: transparent; }
+.cmp-markets-map .cm-pin[data-place="r"] .cm-pin__label { left: 12px; top: -13px; }
+.cmp-markets-map .cm-pin[data-place="l"] .cm-pin__label { right: 12px; top: -13px; }
+.cmp-markets-map .cm-pin[data-place="t"] .cm-pin__label { left: 0; bottom: 12px; transform: translateX(-50%); }
+.cmp-markets-map .cm-pin[data-place="b"] .cm-pin__label { left: 0; top: 12px; transform: translateX(-50%); }
+.cmp-markets-map .cm-pin[data-place="tl"] .cm-pin__label { right: 6px; bottom: 12px; }
+.cmp-markets-map .cm-pin[data-place="bl"] .cm-pin__label { right: 6px; top: 12px; }
+.cmp-markets-map .cm-pin[data-place="br"] .cm-pin__label { left: 6px; top: 12px; }
+.cmp-markets-map .cm-pin--home[data-place="r"] .cm-pin__label { left: 18px; top: -11px; padding: 2px 4px; }
+/* foldable / tablet: copy top and bottom, map between */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cmp-markets-map .cm__eyebrow { left: 5%; top: calc(9% - 30px); }
+  .cmp-markets-map .cm__title { left: 5%; top: 9%; font-size: clamp(28px, 3.4vw, 44px); }
+  .cmp-markets-map .cm__frame { left: 3%; right: 3%; top: 21%; bottom: 21%; }
+  .cmp-markets-map .cm__veil { background: linear-gradient(180deg, var(--cm-veil) 0%, var(--cm-veil) 15%, transparent 26%, transparent 78%, var(--cm-veil) 88%); }
+  .cmp-markets-map .cm__lead { top: auto; bottom: 8%; width: min(46%, 480px); font-size: 15px; }
+  .cmp-markets-map .cm__stat, .cmp-markets-map.is-figs .cm__stat { left: auto; right: 5%; bottom: 8%; width: min(44%, 420px); }
+  .cmp-markets-map .cm__num { font-size: clamp(56px, 6.4vw, 84px); }
+  .cmp-markets-map .cm__count { gap: 16px; }
+  .cmp-markets-map .cm__unit { font-size: 14px; }
+  .cmp-markets-map .cm__fig-num { font-size: 24px; }
+  .cmp-markets-map .cm__fig-label { font-size: 12px; }
+  .cmp-markets-map .cm-pin__label { font-size: 13px; padding: 5px 8px; }
+  .cmp-markets-map .cm-pin--home .cm-pin__label { font-size: 16px; }
+}
+/* phone */
+@media (max-width: 767px) {
+  .cmp-markets-map { height: 560vh; }
+  .cmp-markets-map .cm__eyebrow { left: 16px; right: 16px; top: calc(7% - 26px); }
+  .cmp-markets-map .cm__title { left: 16px; right: 16px; top: 7%; font-size: clamp(22px, 6.4vw, 30px); }
+  .cmp-markets-map .cm__frame { left: 8px; right: 8px; top: 20%; bottom: 40%; }
+  .cmp-markets-map .cm__veil { background: linear-gradient(180deg, var(--cm-veil) 0%, var(--cm-veil) 13%, transparent 21%, transparent 64%, var(--cm-veil) 74%); }
+  .cmp-markets-map .cm__lead { left: 16px; right: 16px; top: auto; bottom: calc(6% + 132px); width: auto; font-size: 14px; }
+  .cmp-markets-map.is-figs .cm__lead { bottom: calc(5% + 150px); }
+  .cmp-markets-map .cm__stat, .cmp-markets-map.is-figs .cm__stat { left: 16px; right: 16px; bottom: 5%; width: auto; }
+  .cmp-markets-map .cm__chapters { font-size: 10px; }
+  .cmp-markets-map .cm__rule { margin-bottom: 16px; }
+  .cmp-markets-map .cm__num { font-size: 56px; }
+  .cmp-markets-map .cm__count { gap: 16px; }
+  .cmp-markets-map .cm__unit { font-size: 13px; }
+  .cmp-markets-map .cm__figs { gap: 12px; }
+  .cmp-markets-map .cm__fig-num { font-size: 20px; }
+  .cmp-markets-map .cm__fig-label { margin-top: 4px; font-size: 11px; }
+  .cmp-markets-map .cm-pin__dot { left: -5px; top: -5px; width: 10px; height: 10px; box-shadow: 0 0 0 2.5px var(--cm-dot); }
+  .cmp-markets-map .cm-pin__dot::after { inset: 3px; }
+  .cmp-markets-map .cm-pin__label { font-size: 10px; padding: 3px 5px; }
+  .cmp-markets-map .cm-pin--home .cm-pin__label { font-size: 12px; }
+  .cmp-markets-map .cm-pin[data-place="r"] .cm-pin__label { left: 8px; top: -8px; }
+  .cmp-markets-map .cm-pin[data-place="l"] .cm-pin__label { right: 8px; top: -8px; }
+  .cmp-markets-map .cm-pin[data-place="t"] .cm-pin__label { bottom: 8px; }
+  .cmp-markets-map .cm-pin[data-place="b"] .cm-pin__label { top: 8px; }
+  .cmp-markets-map .cm-pin[data-place="tl"] .cm-pin__label { bottom: 8px; }
+  .cmp-markets-map .cm-pin[data-place="bl"] .cm-pin__label, .cmp-markets-map .cm-pin[data-place="br"] .cm-pin__label { top: 8px; }
+  .cmp-markets-map .cm-pin--home[data-place="r"] .cm-pin__label { left: 13px; top: -8px; }
+}
+/* grounds: a ground paints itself and sets the map's own tokens (no combinator) */
+.cmp-markets-map.surface-soft { --cm-surface: var(--light); }
+.cmp-markets-map.surface-mute { --cm-surface: var(--grey-2); }
+.cmp-markets-map.surface-primary-soft { --cm-surface: var(--navy-wash); }
+.cmp-markets-map.surface-accent-soft { --cm-surface: var(--blue-wash); }
+.cmp-markets-map.surface-clear { background: transparent; }
+.cmp-markets-map.surface-primary { --cm-surface: var(--navy); }
+.cmp-markets-map.surface-dark { --cm-surface: #030303; }
+.cmp-markets-map.surface-accent { --cm-surface: var(--blue); }
+.cmp-markets-map.surface-image { --cm-surface: var(--navy); --cm-veil: rgba(var(--navy-rgb), .78); background-image: none; }
+.cmp-markets-map.surface-image .cm__stage { background-position: center; background-size: cover; background-repeat: no-repeat; }
+.cmp-markets-map:is(.surface-primary, .surface-dark, .surface-accent, .surface-image) {
+  --cm-ink: #fff; --cm-ink-2: var(--soft); --cm-grey: var(--grey-400); --cm-muted: var(--soft);
+  --cm-line: rgba(255, 255, 255, .22); --cm-land: #fff; --land-a: .2; --cm-dot: var(--blue-soft); --cm-dot-soft: var(--blue-pale);
+  --cm-label-bg: rgba(255, 255, 255, .14);
+}
+.cmp-markets-map.surface-accent { --cm-dot: #fff; --cm-dot-soft: var(--blue-wash); --cm-pin-core: var(--navy); --land-a: .24; }
+/* RTL / Arabic: copy docks right, map frame moves left; geography and the
+   counter digits never mirror */
+.lang-ar .cmp-markets-map, .lang-ar .cmp-markets-map * { font-family: var(--font-arabic, 'Tajawal'), sans-serif; letter-spacing: 0; }
+.lang-ar .cmp-markets-map :is(.cm__num, .cm__num *, .cm__fig-num) { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -.04em; }
+[dir="rtl"] .cmp-markets-map :is(.cm__eyebrow, .cm__title, .cm__lead, .cm__stat) { left: auto; right: 6%; }
+[dir="rtl"] .cmp-markets-map .cm__frame { left: 8%; right: 39%; }
+[dir="rtl"] .cmp-markets-map .cm__veil { background: linear-gradient(270deg, var(--cm-veil) 0%, var(--cm-veil) 30%, transparent 46%); }
+[dir="rtl"] .cmp-markets-map .cm__chapter { left: auto; right: 0; }
+[dir="rtl"] .cmp-markets-map .cm__title { line-height: 1.25; }
+@media (min-width: 768px) and (max-width: 1023px) {
+  [dir="rtl"] .cmp-markets-map :is(.cm__eyebrow, .cm__title, .cm__lead) { left: auto; right: 5%; }
+  [dir="rtl"] .cmp-markets-map .cm__stat, [dir="rtl"] .cmp-markets-map.is-figs .cm__stat { right: auto; left: 5%; }
+  [dir="rtl"] .cmp-markets-map .cm__frame { left: 3%; right: 3%; }
+  [dir="rtl"] .cmp-markets-map .cm__veil { background: linear-gradient(180deg, var(--cm-veil) 0%, var(--cm-veil) 15%, transparent 26%, transparent 78%, var(--cm-veil) 88%); }
+}
+@media (max-width: 767px) {
+  [dir="rtl"] .cmp-markets-map :is(.cm__eyebrow, .cm__title, .cm__lead, .cm__stat) { left: 16px; right: 16px; }
+  [dir="rtl"] .cmp-markets-map .cm__frame { left: 8px; right: 8px; }
+  [dir="rtl"] .cmp-markets-map .cm__veil { background: linear-gradient(180deg, var(--cm-veil) 0%, var(--cm-veil) 13%, transparent 21%, transparent 64%, var(--cm-veil) 74%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmp-markets-map, .cmp-markets-map * { transition: none !important; animation: none !important; }
+  .cmp-markets-map { height: auto; }
+  .cmp-markets-map .cm__stage { position: relative; }
+}
+
 /* ── World-Map (recipe: world-map builds animated SVG overlay) ── */
 /* v2 contract tokens: arc/dot ink + artwork recolor, surface-aware.
    The artwork COLOR follows surface/brand tokens; its INTENSITY is an
@@ -4557,6 +4705,16 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
   .cmp-tabs-desk .td-reel, .cmp-tabs-desk .td-reel > span, .cmp-tabs-desk .td-shot, .cmp-tabs-desk .td-fact > div { transition: none !important; }
   .cmp-tabs-desk .td-shot { transform: none; }
 }
+
+/* Feature Scroll Story — IMAGE GROUND option (2026-10-12, replaces the page-only
+   api-dark / api-bg treatment). Markup: span.media-cover[data-bg] + span.ov
+   as the first children of .ess-stage; an optional span.ov inside .ess-opener
+   darkens only the title scene and fades out with it. */
+.cmp-feature-scroll-story .ess-stage > .media-cover { z-index: 0; }
+.cmp-feature-scroll-story .ess-stage > .ov { z-index: 1; }
+.cmp-feature-scroll-story .ess-stage > .media-cover ~ .ess-beats { z-index: 2; }
+.cmp-feature-scroll-story .ess-opener > .ov { z-index: 0; }
+.cmp-feature-scroll-story .ess-opener > .ov ~ .ess-opener-in { position: relative; z-index: 1; }
 
 /* ═══ API scroll-story — ambient bg + offset cards on the mockups ═══════════ */
 /* Abstract image background behind the pinned API story (api-bg on the section).
