@@ -50,6 +50,13 @@ section.cmp.cmp-useful-links.surface-*[data-animate]
 - PDF rows: meta = `PDF · size`, glyph `.is-dl`, `download` attribute.
 - External rows: meta = domain, glyph `.is-ext`, `target="_blank" rel="noopener"`.
 
+## Options
+- **Mid-page section.** Add `section-y` to the root for full section spacing,
+  and a `.section-head` (any alignment, e.g. Split) may replace the eyebrow-only
+  `.ul-head` above the grid. Grouped lists repeat `.ul-head` (eyebrow = group
+  title) + `.ul-grid` per group. Used by media-library and
+  tutorials-platform-demos-v2.
+
 ## Drift cautions
 - Dividers are `border-block-start` with per-column-mode first-row
   suppression — adding rows never needs CSS; changing columns is the

@@ -1,7 +1,8 @@
 <!-- ═══ Section Header ══════════════════════════════════════════════════════
      COMPOSITION CARD — the standard section header, pure atoms: .section-head
      (or -sm) carrying a .ds-stack (eyebrow + tag-agnostic title) + optional
-     .sh-lead + optional .sh-action. EVERY header carries the alignment axis:
+     .sh-lead + optional .sh-action (with BOTH, wrap them in .sh-aside so
+     .is-split puts the action under the lead). EVERY header carries the alignment axis:
      left (default) / .is-center / .is-right / .is-split — use the gallery's
      Header control to flip this very block through all four. No component
      class is minted; .cmp-section-header is showcase chrome only.
@@ -14,8 +15,10 @@
         <span class="ds-eyebrow ink-accent" data-reveal="up">Corporate solutions</span>
         <h2 class="type-h2 ink-primary" data-reveal="up">One relationship across every market.</h2>
       </div>
-      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Trade, cash, digital channels and institutional coverage — pick the thread that fits where your business is headed.</p>
-      <a href="#" class="btn btn-text sh-action is-arrow" data-reveal="up" data-reveal-delay=".18">View all solutions</a>
+      <div class="sh-aside">
+        <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Trade, cash, digital channels and institutional coverage — pick the thread that fits where your business is headed.</p>
+        <a href="#" class="btn btn-text sh-action is-arrow" data-reveal="up" data-reveal-delay=".18">View all solutions</a>
+      </div>
     </div>
 
     <div class="card-panel surface-soft is-tile">

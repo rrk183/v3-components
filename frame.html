@@ -12,8 +12,8 @@
   <script src="assets/js/tailwind.cdn.js"></script>
   <script src="assets/js/ds-tailwind-config.js?v=261193"></script>
   <script src="assets/js/ds-palette.js?v=261193"></script>
-  <script src="assets/js/ar-preview.js?v=261193"></script>
-  <script src="assets/js/lib-options.js?v=261193"></script>
+  <script src="assets/js/ar-preview.js?v=261200"></script>
+  <script src="assets/js/lib-options.js?v=261200"></script>
   <script defer src="assets/js/ds.js?v=261195"></script>
   <style>html,body{margin:0}</style>
 </head>
@@ -189,7 +189,7 @@
         h.classList.remove('is-left','is-center','is-right','is-split');
         if(head==='left') return;
         if(head==='is-split' && !h.querySelector(':scope > .ds-stack')){   // wrap loose eyebrow+heading so the flex row doesn't scatter them
-          var lead=h.querySelector(':scope > .sh-lead');
+          var lead=h.querySelector(':scope > .sh-aside, :scope > .sh-lead');
           var loose=[].filter.call(h.children,function(c){return c!==lead;});
           if(loose.length){ var grp=document.createElement('div'); grp.className='ds-stack'; h.insertBefore(grp, lead||null); loose.forEach(function(c){grp.appendChild(c);}); }
         }

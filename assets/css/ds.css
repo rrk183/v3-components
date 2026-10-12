@@ -5231,6 +5231,22 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 @media (min-width: 768px) {
   :is(.section-head,.section-head-sm).is-split { flex-direction: row; align-items: center; justify-content: space-between; gap: clamp(40px, 6vw, 96px); }
   :is(.section-head,.section-head-sm).is-split .sh-lead { flex: 0 1 42ch; max-width: 42ch; text-align: end; }
+}
+/* .sh-aside (2026-10-10, Ram): a header that has BOTH a lead and an action
+   groups them, lead first:  <div class="sh-aside"><p class="sh-lead">…</p>
+   <a class="sh-action">…</a></div>.  In .is-split the group takes the lead's
+   place in the row and the action sits UNDER the lead, end-aligned (without
+   the group the action became a third column). Every other alignment just
+   stacks it: lead, then the action 16px below. Lead-only and action-only
+   headers do not use it and are unchanged. */
+:is(.section-head,.section-head-sm) .sh-aside { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+:is(.section-head,.section-head-sm) .sh-aside > .sh-lead, :is(.section-head,.section-head-sm) .sh-aside > .sh-action { margin-top: 0; }
+:is(.section-head,.section-head-sm):not(.is-split) .sh-aside { margin-top: 14px; }
+:is(.section-head,.section-head-sm).is-center .sh-aside { align-items: center; }
+:is(.section-head,.section-head-sm).is-right .sh-aside { align-items: flex-end; }
+@media (min-width: 768px) {
+  :is(.section-head,.section-head-sm).is-split .sh-aside { flex: 0 1 42ch; max-width: 42ch; align-items: flex-end; }
+  :is(.section-head,.section-head-sm).is-split .sh-aside > .sh-lead { flex: none; max-width: none; }
 }/* ════════════════════════════════════════════════════════════════════════════
    Imported from Ram's branch (promoted from staging) — people-carousel,
    markets-articles, pillar-grid, hero-fullbleed (.hfb-btn). 2026-06.
@@ -6437,6 +6453,9 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    Sets its own compact padding + hairline top rule (no section-y). Surface-
    adaptive; scoped .ul-* (resource-row grid, 2026-09-02). */
 .cmp-useful-links { padding-block: clamp(36px, 4.5vw, 56px); }
+/* Option (2026-10-11): add .section-y to the root for full section rhythm when the
+   grid sits mid-page under a .section-head, not as a foot-of-page strip. */
+.cmp-useful-links.section-y { padding-block: clamp(48px, 7vw, 96px); }
 .cmp-useful-links .ul-head { margin-bottom: clamp(18px, 2.5vw, 28px); }
 .cmp-useful-links .ul-grid { display: grid; grid-template-columns: repeat(var(--ul-cols, 3), 1fr); column-gap: clamp(32px, 5vw, 72px); }
 .cmp-useful-links.is-cols-1 { --ul-cols: 1; }

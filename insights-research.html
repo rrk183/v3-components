@@ -486,15 +486,21 @@
 <!-- ═══ /1. HERO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO, surface-white ════════════════════════════════════════════ -->
-<section class="cmp surface-white section-y" data-animate>
+<!-- INSTANCE of master "Section Header" (blocks/section-header.html, gallery:
+     UI Elements > Section Header, Header: Split). Overrides: content only
+     (eyebrow, title, lead); the demo card-panel is dropped. Styling comes from
+     ds.css, so master changes reach this instance. -->
+<section class="cmp cmp-section-header surface-white section-y" data-animate data-master="section-header">
   <div class="container-ds">
+
     <div class="section-head is-split">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent" data-reveal="up">Emirates NBD Research</span>
-        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Sector-specific expertise and analysis.</h2>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Sector-specific expertise and analysis.</h2>
       </div>
-      <p class="type-body ink-mute measure sh-lead" data-reveal="up" data-reveal-delay=".1">We pair deep regional expertise with a global perspective, so you can anticipate change and act with confidence across every sector you operate in.</p>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">We pair deep regional expertise with a global perspective, so you can anticipate change and act with confidence across every sector you operate in.</p>
     </div>
+
   </div>
 </section>
 <!-- ═══ /2. INTRO ══════════════════════════════════════════════════════════ -->

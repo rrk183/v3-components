@@ -649,23 +649,28 @@
 <!-- ═══ /3. LIBRARY + FILTERS ═══════════════════════════════════════════════ -->
 
 <!-- ═══ 4. REPORTS & FACTSHEETS, surface-white ═════════════════════════════ -->
-<section class="cmp surface-white section-y" data-animate id="reports">
+<!-- INSTANCE of master "Useful Links" (blocks/useful-links.html, gallery:
+     Feature Sections > Useful Links, 2 columns) under a Section Header (Split).
+     Overrides: content only (header copy, row titles and links, meta "PDF");
+     the eyebrow-only .ul-head gives way to the full split header; the section keeps its in-page anchor id. Styling comes from ds.css,
+     so master changes reach this instance. -->
+<section class="cmp cmp-useful-links is-cols-2 surface-white section-y" data-animate data-master="useful-links" id="reports">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent" data-reveal="up">Reports &amp; factsheets</span>
-        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Trusted data. Transparent reporting.</h2>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Trusted data. Transparent reporting.</h2>
       </div>
-      <p class="type-body ink-mute measure sh-lead" data-reveal="up" data-reveal-delay=".1">Download the numbers behind the headlines, from at-a-glance factsheets to full financial reports.</p>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Download the numbers behind the headlines, from at-a-glance factsheets to full financial reports.</p>
     </div>
-    <div class="dl-grid" data-reveal="up" data-reveal-delay=".14">
-      <a class="dl-row" href="#" download aria-label="Download the Emirates NBD at a glance factsheet PDF">
-        <span class="dl-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg></span>
-        <span class="dl-txt"><span class="dl-name">Factsheet — Emirates NBD at a glance</span><span class="dl-meta">Download PDF <span aria-hidden="true">&darr;</span></span></span>
+    <div class="ul-grid" data-reveal="up" data-reveal-delay=".06">
+      <a class="ul-item" href="#" download aria-label="Download the Emirates NBD at a glance factsheet PDF">
+        <span class="ul-body"><span class="ul-title ink-primary">Factsheet — Emirates NBD at a glance</span><span class="ul-meta ink-mute">PDF</span></span>
+        <svg class="ul-go is-dl ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
       </a>
-      <a class="dl-row" href="#" download aria-label="Download the Annual Report 2024 PDF">
-        <span class="dl-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg></span>
-        <span class="dl-txt"><span class="dl-name">Report — Annual Report 2024</span><span class="dl-meta">Download PDF <span aria-hidden="true">&darr;</span></span></span>
+      <a class="ul-item" href="#" download aria-label="Download the Annual Report 2024 PDF">
+        <span class="ul-body"><span class="ul-title ink-primary">Report — Annual Report 2024</span><span class="ul-meta ink-mute">PDF</span></span>
+        <svg class="ul-go is-dl ink-mute" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
       </a>
     </div>
   </div>

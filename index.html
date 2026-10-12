@@ -9,16 +9,17 @@
   <link rel="stylesheet" href="assets/css/fonts.css?v=261193" />
   <link rel="stylesheet" href="assets/css/ds.css?v=261195" />
   <link rel="stylesheet" href="assets/css/themes.css?v=261193" />
-  <link rel="stylesheet" href="assets/css/library.css?v=261193" />
+  <link rel="stylesheet" href="assets/css/library.css?v=261200" />
   <script src="assets/js/ds-palette.js?v=261193"></script>
-  <script src="assets/js/ar-preview.js?v=261193"></script>
-  <script src="assets/js/lib-options.js?v=261193"></script>
-  <script defer src="assets/js/library.js?v=261193"></script>
+  <script src="assets/js/ar-preview.js?v=261200"></script>
+  <script src="assets/js/lib-options.js?v=261200"></script>
+  <script defer src="assets/js/library.js?v=261200"></script>
 </head>
 <body>
 
   <header class="lib-top">
     <a class="lib-brand" href="index.html"><b></b> Emirates NBD · Component Library</a>
+    <input type="search" class="lib-search" id="libSearch" placeholder="Search all components…" aria-label="Search all components" />
     <span class="lib-count" id="libCount"></span>
   </header>
 
@@ -32,6 +33,7 @@
   <script>
     addEventListener('DOMContentLoaded', function () {
       LIB.buildHome(document.getElementById('libDir'));
+      LIB.mountGlobalSearch(document.getElementById('libSearch'));
       document.getElementById('libCount').textContent = LIB.itemTotal() + ' components · ' + LIB.variantTotal() + ' variants · ' + LIB.CATALOG.length + ' categories';
     });
   </script>

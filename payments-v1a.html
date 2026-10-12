@@ -542,22 +542,25 @@
 </section>
 <!-- ═══ /Emirates NBD Pay ═══════════════════════════════════════════════════ -->
 
-<!-- ═══ A connected ecosystem (Bento Spotlight) — restored section ══════════
-     Page accent rule moved to assets/css/ds.css, scoped to body.pg-payments-v1a
-     (no inline CSS) ══ -->
-<!-- ═══ A connected ecosystem, Bento Spotlight ════════════════════════════ -->
-<section class="cmp surface-white section-y" data-animate id="ecosystem">
+<!-- ═══ A connected ecosystem: INSTANCE of master "Section Header"
+     (blocks/section-header.html, gallery: UI Elements > Section Header,
+     Header: Split). Overrides: content only (eyebrow, title, lead, link text and
+     href); the demo card-panel is dropped as the dossier allows. Styling
+     comes from ds.css, so master changes reach this instance. ══ -->
+<section class="cmp cmp-section-header surface-white section-y" data-animate data-master="section-header">
   <div class="container-ds">
+
     <div class="section-head is-split">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent" data-reveal="up">A connected ecosystem</span>
-        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Tools that work together, so your business works smarter.</h2>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Tools that work together, so your business works smarter.</h2>
       </div>
-      <div class="ds-stack sh-lead">
-        <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".12">Connect your ERP and back-office systems straight to the bank and automate payments with API Banking.</p>
-        <a class="btn btn-text btn-lg is-arrow" href="api-banking-v1a.html" data-reveal="up" data-reveal-delay=".18">Explore API Banking</a>
+      <div class="sh-aside">
+        <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Connect your ERP and back-office systems straight to the bank and automate payments with API Banking.</p>
+        <a href="api-banking-v1a.html" class="btn btn-text sh-action is-arrow" data-reveal="up" data-reveal-delay=".18">Explore API Banking</a>
       </div>
     </div>
+
   </div>
 </section>
 <!-- ═══ /A connected ecosystem ══════════════════════════════════════════════ -->
