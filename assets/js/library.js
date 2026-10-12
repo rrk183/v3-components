@@ -444,7 +444,7 @@
   // [group] [lead]. No-op when the block already groups them (most do).
   function groupSplit(h) {
     if (h.querySelector(':scope > .ds-stack')) return;
-    var lead = h.querySelector(':scope > .sh-lead');
+    var lead = h.querySelector(':scope > .sh-aside, :scope > .sh-lead');
     var loose = [].filter.call(h.children, function (c) { return c !== lead; });
     if (!loose.length) return;
     var grp = document.createElement('div'); grp.className = 'ds-stack';
@@ -820,9 +820,144 @@
     var empty = document.getElementById('libEmpty'); if (empty) empty.style.display = any ? 'none' : 'block';
   }
 
+  /* ── GLOBAL SEARCH (2026-10-10, Ram) ─────────────────────────────────────
+     One search across every category: type a component name (or a variant,
+     slug, category or a word from its "when to use"), pick a result, land on
+     that card in its category page with the right variant selected. ARIA
+     combobox + listbox; arrows / Enter / Esc; "/" or Cmd/Ctrl+K focuses it.
+     Superseded (hidden) items are left out. */
+  var norm = function (t) { return (t || '').toLowerCase().replace(/[—–\-_/·&,.()]+/g, ' ').replace(/\s+/g, ' ').trim(); };
+  var SEARCH_INDEX = null;
+  function searchIndex() {
+    if (SEARCH_INDEX) return SEARCH_INDEX;
+    SEARCH_INDEX = [];
+    CATALOG.forEach(function (g) {
+      shown(g).forEach(function (it) {
+        SEARCH_INDEX.push({
+          item: it, cat: g.cat, catId: slugId(g.cat),
+          name: norm(it.name), cats: norm(g.cat), when: norm(it.whenToUse),
+          vars: it.variants.map(function (v) { return { v: v, t: norm(v.label + ' ' + v.slug) }; })
+        });
+      });
+    });
+    return SEARCH_INDEX;
+  }
+  function wordStart(hay, w) { return (' ' + hay).indexOf(' ' + w) !== -1; }
+  function searchComponents(q, limit) {
+    var words = norm(q).split(' ').filter(Boolean);
+    if (!words.length) return [];
+    var out = [];
+    searchIndex().forEach(function (e) {
+      var score = 0, variant = null;
+      var all = words.every(function (w) {
+        var best = 0;
+        if (e.name.indexOf(w) === 0) best = 100;
+        else if (wordStart(e.name, w)) best = 70;
+        else if (e.name.indexOf(w) !== -1) best = 45;
+        e.vars.forEach(function (x) {
+          var vs = wordStart(x.t, w) ? 35 : (x.t.indexOf(w) !== -1 ? 25 : 0);
+          if (vs > best) { best = vs; variant = x.v; } else if (vs && !variant && e.vars.length > 1 && best < 70) variant = x.v;
+        });
+        if (!best && wordStart(e.cats, w)) best = 20;
+        if (!best && e.when.indexOf(w) !== -1) best = 6;
+        score += best;
+        return best > 0;
+      });
+      if (all) out.push({ e: e, score: score + (e.name === norm(q) ? 50 : 0), variant: variant });
+    });
+    out.sort(function (a, b) { return b.score - a.score || a.e.item.name.localeCompare(b.e.item.name); });
+    return out.slice(0, limit || 8);
+  }
+  function escHtml(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function mark(label, q) {
+    var safe = escHtml(label), words = norm(q).split(' ').filter(function (w) { return w.length > 1; });
+    words.forEach(function (w) {
+      var re = new RegExp('(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+      safe = safe.replace(re, '<mark>$1</mark>');
+    });
+    return safe;
+  }
+  function resultHref(r) { return 'category.html?cat=' + r.e.catId + '#' + (r.variant ? r.variant.slug : r.e.item.variants[0].slug); }
+  function mountGlobalSearch(input) {
+    if (!input) return;
+    var wrap = document.createElement('div'); wrap.className = 'lib-gs';
+    input.parentNode.insertBefore(wrap, input); wrap.appendChild(input);
+    var list = document.createElement('ul'); list.className = 'lib-gs-list'; list.id = 'libSearchList'; list.setAttribute('role', 'listbox'); list.hidden = true;
+    wrap.appendChild(list);
+    input.setAttribute('role', 'combobox'); input.setAttribute('aria-autocomplete', 'list');
+    input.setAttribute('aria-controls', list.id); input.setAttribute('aria-expanded', 'false');
+    input.setAttribute('aria-label', 'Search all components');
+    input.placeholder = 'Search all components…';
+    input.autocomplete = 'off';
+    var kbd = document.createElement('kbd'); kbd.className = 'lib-gs-kbd'; kbd.textContent = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K'; kbd.setAttribute('aria-hidden', 'true');
+    wrap.appendChild(kbd);
+    var results = [], active = -1;
+    function close() { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; }
+    function setActive(i) {
+      var opts = list.querySelectorAll('[role="option"]'); if (!opts.length) return;
+      active = (i + opts.length) % opts.length;
+      opts.forEach(function (o, k) { o.setAttribute('aria-selected', k === active ? 'true' : 'false'); });
+      input.setAttribute('aria-activedescendant', opts[active].id); opts[active].scrollIntoView({ block: 'nearest' });
+    }
+    function go(r) { close(); location.href = resultHref(r); }
+    function render() {
+      var q = input.value, all = searchComponents(q, 999); results = all.slice(0, 8);
+      wrap.classList.toggle('has-q', !!q.trim());
+      if (!q.trim()) { close(); list.innerHTML = ''; return; }
+      if (!results.length) {
+        list.innerHTML = '<li class="lib-gs-empty" role="presentation">No components match “' + escHtml(q.trim()) + '”</li>';
+      } else {
+        list.innerHTML = results.map(function (r, i) {
+          var meta = escHtml(r.e.cat) + (r.variant && r.e.item.variants.length > 1 ? ' · ' + escHtml(r.variant.label) : '') + ' · ' + escHtml(IMPACT_LABEL[r.e.item.impact] || r.e.item.impact || '');
+          return '<li role="option" id="libgs-' + i + '" aria-selected="false" data-i="' + i + '"><span class="lib-gs-name">' + mark(r.e.item.name, q) + '</span><span class="lib-gs-meta">' + meta + '</span></li>';
+        }).join('');
+        if (all.length > results.length) list.innerHTML += '<li class="lib-gs-more" role="presentation">' + (all.length - results.length) + ' more match \u201c' + escHtml(q.trim()) + '\u201d. Keep typing to narrow it down.</li>';
+      }
+      list.hidden = false; input.setAttribute('aria-expanded', 'true'); active = -1;
+      if (results.length) setActive(0);
+    }
+    input.addEventListener('input', render);
+    input.addEventListener('focus', function () { if (input.value.trim()) render(); });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); if (list.hidden) render(); else setActive(active + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
+      else if (e.key === 'Enter') { if (results[active]) { e.preventDefault(); go(results[active]); } }
+      else if (e.key === 'Escape') { if (!list.hidden) { e.preventDefault(); close(); } else { input.value = ''; render(); } }
+    });
+    list.addEventListener('mousedown', function (e) { var o = e.target.closest('[role="option"]'); if (o) { e.preventDefault(); go(results[+o.dataset.i]); } });
+    list.addEventListener('mousemove', function (e) { var o = e.target.closest('[role="option"]'); if (o && +o.dataset.i !== active) setActive(+o.dataset.i); });
+    input.addEventListener('blur', function () { setTimeout(close, 120); });
+    document.addEventListener('keydown', function (e) {
+      var t = e.target, typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable);
+      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) { e.preventDefault(); input.focus(); input.select(); }
+    });
+  }
+  /* Category page: a #<slug> hash (from a search result) selects that variant,
+     scrolls its card into view and flashes it. Also runs on hashchange, so a
+     result in the same category just jumps there. */
+  function focusCardFromHash(main) {
+    var slug = decodeURIComponent((location.hash || '').slice(1)); if (!slug || !main) return;
+    var card = null, chip = null;
+    main.querySelectorAll('.lib-card').forEach(function (c) {
+      if (card) return;
+      var ch = c.querySelector('.lib-chip[data-slug="' + slug + '"]');
+      if (c.dataset.slug0 === slug || ch) { card = c; chip = ch; }
+    });
+    if (!card) return;
+    if (chip && !chip.classList.contains('active')) chip.click();
+    // previews above the card load lazily and grow, pushing it down: keep it
+    // aligned while the layout settles, and stop as soon as the user scrolls
+    var stopped = false, stop = function () { stopped = true; };
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { addEventListener(ev, stop, { once: true, passive: true }); });
+    var align = function () { if (!stopped) card.scrollIntoView({ block: 'start' }); };
+    [0, 300, 800, 1600, 2800].forEach(function (ms) { setTimeout(align, ms); });
+    card.classList.remove('is-found'); void card.offsetWidth; card.classList.add('is-found');
+    setTimeout(function () { card.classList.remove('is-found'); }, 3000);
+  }
+
   // Theme switch mounts on any page with a .lib-top bar (index + category).
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountThemeSwitch);
   else mountThemeSwitch();
 
-  window.LIB = { CATALOG: CATALOG, IMPACT_TIERS: IMPACT_TIERS, IMPACT_LABEL: IMPACT_LABEL, slugId: slugId, itemTotal: itemTotal, variantTotal: variantTotal, mountCategory: mountCategory, buildSideNav: buildSideNav, buildHome: buildHome, filterCards: filterCards };
+  window.LIB = { CATALOG: CATALOG, IMPACT_TIERS: IMPACT_TIERS, IMPACT_LABEL: IMPACT_LABEL, slugId: slugId, itemTotal: itemTotal, variantTotal: variantTotal, mountCategory: mountCategory, buildSideNav: buildSideNav, buildHome: buildHome, filterCards: filterCards, searchComponents: searchComponents, mountGlobalSearch: mountGlobalSearch, focusCardFromHash: focusCardFromHash };
 })();

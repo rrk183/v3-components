@@ -27,6 +27,25 @@ a { color:inherit; }
 .lib-search { flex:1; max-width:340px; height:38px; border:1px solid var(--lib-line); border-radius:10px; padding:0 14px; font:inherit; font-size:14px; color:var(--lib-navy); outline:none; transition:border-color .2s, box-shadow .2s; }
 .lib-search:focus { border-color:var(--lib-blue); box-shadow:0 0 0 3px rgba(var(--blue-rgb, 39,101,255),.12); }
 .lib-count { margin-left:auto; font-size:13px; color:var(--lib-ink); white-space:nowrap; }
+/* global search (combobox + results list) */
+.lib-gs { position:relative; flex:1; max-width:420px; }
+.lib-gs .lib-search { width:100%; max-width:none; padding-right:62px; }
+.lib-gs-kbd { position:absolute; right:10px; top:50%; transform:translateY(-50%); font:600 11px/1 inherit; color:var(--lib-ink); border:1px solid var(--lib-line); border-radius:6px; padding:4px 6px; background:#fff; pointer-events:none; }
+.lib-gs.has-q .lib-gs-kbd { display:none; }
+.lib-gs-list { position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:60; margin:0; padding:6px; list-style:none; background:#fff; border:1px solid var(--lib-line); border-radius:12px; box-shadow:0 18px 40px -18px rgba(7,36,71,.35); max-height:min(70vh,440px); overflow:auto; }
+.lib-gs-list[hidden] { display:none; }
+.lib-gs-list [role="option"] { display:flex; flex-direction:column; gap:2px; padding:9px 12px; border-radius:8px; cursor:pointer; }
+.lib-gs-list [role="option"][aria-selected="true"] { background:rgba(39,101,255,.08); }
+.lib-gs-name { font-size:14px; font-weight:600; color:var(--lib-navy); }
+.lib-gs-name mark { background:none; color:var(--lib-blue); }
+.lib-gs-meta { font-size:12px; color:var(--lib-ink); }
+.lib-gs-empty { padding:12px; font-size:13px; color:var(--lib-ink); }
+.lib-gs-more { padding:8px 12px 6px; margin-top:4px; border-top:1px solid var(--lib-line); font-size:12px; color:var(--lib-ink); }
+/* a card reached from a search result flashes once */
+.lib-card { scroll-margin-top:84px; }   /* clear the sticky top bar when jumped to */
+.lib-card.is-found { animation:lib-found 3s ease-out 1; }
+@keyframes lib-found { 0%,60% { box-shadow:0 0 0 3px var(--lib-blue); } 100% { box-shadow:0 0 0 3px transparent; } }
+@media (prefers-reduced-motion: reduce) { .lib-card.is-found { animation:none; outline:3px solid var(--lib-blue); } }
 
 /* home directory */
 .lib-home { padding:clamp(40px,6vw,72px) clamp(20px,5vw,80px) 120px; max-width:1180px; margin:0 auto; }

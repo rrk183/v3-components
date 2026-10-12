@@ -454,15 +454,21 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. INTRO, surface-white ════════════════════════════════════════════ -->
-<section class="cmp surface-white section-y" data-animate>
+<!-- INSTANCE of master "Section Header" (blocks/section-header.html, gallery:
+     UI Elements > Section Header, Header: Split). Overrides: content only
+     (eyebrow, title, lead); the demo card-panel is dropped. Styling comes from
+     ds.css, so master changes reach this instance. -->
+<section class="cmp cmp-section-header surface-white section-y" data-animate data-master="section-header">
   <div class="container-ds">
+
     <div class="section-head is-split">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent" data-reveal="up">Before you start</span>
-        <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">Review the terms, then complete the form.</h2>
+        <h2 class="type-h2 ink-primary" data-reveal="up">Review the terms, then complete the form.</h2>
       </div>
-      <p class="type-body ink-mute measure sh-lead" data-reveal="up" data-reveal-delay=".1">Every item below is an official Corporate and Institutional Banking document. Before you sign, read the terms that apply to your account and the service you are opening.</p>
+      <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Every item below is an official Corporate and Institutional Banking document. Before you sign, read the terms that apply to your account and the service you are opening.</p>
     </div>
+
   </div>
 </section>
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
