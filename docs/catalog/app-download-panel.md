@@ -10,7 +10,7 @@ Store badge and a light Google Play badge stacked, beside a white QR tile with
 "Scan to download" and an iOS | Android chip pair. On the end side, a tall
 phone render that rises above the top edge of the panel, with a white
 "Pending actions" status chip floating against its side. Harvested from the
-C&IB home closing act (`cib-home-final.html`, section 9).
+Wholesale Banking home closing act (`cib-home-final.html`, section 9).
 
 ## Motion
 - The panel reveals up on first view.

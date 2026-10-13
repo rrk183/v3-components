@@ -2,7 +2,7 @@
 
 `tabs-desk` · Tabs · **statement** · surface-white (or surface-soft) · behavior `tabs-desk` (ds.css + ds.js since 2026-10-10)
 
-Ported from the C&IB home lending section (`cib-home-final.html` section 6, `hf-ask-*`), renamed `td-*`. "With a desk for ____.": the chips rail picks a sector desk, the blank in the sentence rolls like a reel, the photo crossfades and a `card-panel` names the desk.
+Ported from the Wholesale Banking home lending section (`cib-home-final.html` section 6, `hf-ask-*`), renamed `td-*`. "With a desk for ____.": the chips rail picks a sector desk, the blank in the sentence rolls like a reel, the photo crossfades and a `card-panel` names the desk.
 
 ## Anatomy
 `section.cmp-tabs-desk[data-behavior=tabs-desk]` > `.td-track` > `.td-pin` > `.td-grid` of `.td-copy` (`.td-q` h2, `.td-sentence` with `.td-slot > .td-reel` words, `.td-intents` of `button.chip.chip-lg[data-td-intent][aria-pressed]`, `.td-panel` copy + CTAs) and `.td-stage` (`.td-shot[data-bg]` per desk + `.td-fact.card-panel` with one div per desk). Words, chips, shots and fact divs are matched by index.

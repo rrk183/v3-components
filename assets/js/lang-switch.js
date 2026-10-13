@@ -1,4 +1,4 @@
-/* Language switch (C&IB Arabic editions, 2026-10-07).
+/* Language switch (Wholesale Banking Arabic editions, 2026-10-07).
    The DS language buttons (.ish-lang, .ish-lang-m in the header, .fo1-lang in the
    footer) have no destination of their own. Each page names its other edition on
    <html data-lang-alt="...">: English pages point at <page>-ar.html, Arabic pages

@@ -7,6 +7,16 @@
 ## Anatomy
 `section.cmp.cmp-tabs` > `.container-ds` > `[data-tabs]` > `.tb-rail.is-underline[role=tablist]` of `button.tb-tab[data-tab]` + `.tb-panel[data-panel]` siblings. Active state = `.active` (ds.js toggles it). Rail scrolls horizontally on overflow.
 
+## Options
+- **Deep links** (off by default): add `data-tabs-hash` to the `[data-tabs]`
+  root. `page.html#key` then opens the tab whose `data-tab` is `key`, and the
+  hash follows the reader's clicks so a tab can be shared. Keep keys distinct
+  from element ids on the page. Used by `tombstones-v1a.html` (#dcm, #ecm,
+  #loan-syndications, #agency, #corporate-finance).
+- **Tab inks** follow the state: declare the "on" ink on the active trigger
+  (`ink-primary`) and the "off" ink on the others (`ink-mute`); ds.js moves
+  the pair as tabs change (fixed 13 Oct: the first tab used to stay dark).
+
 ## Content contract
 - Panels are content-agnostic: this demo holds prose + btn-text, a whole `cmp-cards` grid, and a `.tbl` table. Anything that works on the page surface works in a panel.
 - Keys (`data-tab`/`data-panel`) are scoped per `[data-tabs]` wrapper — no page-unique names needed.

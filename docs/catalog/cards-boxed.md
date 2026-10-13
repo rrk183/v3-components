@@ -21,3 +21,7 @@ Boxed composition of [[cards]] — media on top, copy in a card-panel (`--card-p
 - **Titled list body** (2026-10-12): instead of a paragraph and link, a card body may hold a `list-check` of titled points (`span.type-body.ink-primary.font-semibold.block` title + `span.type-body-sm.ink-mute` line).
 - **Static cards:** cards may be `div`s instead of links (no arrow link then); the kicker is optional.
 - **Anchor id (instances only):** a page may add `id="..."` to the root.
+
+## Title line height
+Card titles (`h3`/`h4` with `type-h4|h5|h6`) use line-height 1.3 (ds.css, 2026-10-13) so multi-line headlines read as headlines. Prefer 3 columns for long headlines (press releases); 4 columns suits short titles.
+- **Option: 3-line titles.** Add `is-title-clamp` to the `.cmp-cards` root to stop titles at three lines with an ellipsis (used on Media Library). The full title stays in the markup.

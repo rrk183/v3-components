@@ -222,6 +222,16 @@
   letter-spacing: 0;
 }
 
+/* ── Line breaking (Ram, 2026-10-13): no orphan words, site-wide ────────
+   Headings balance their lines ("Cash deposits, on your / own floor."), and
+   running text avoids leaving one word alone on its last line. Browsers
+   without support simply wrap as before. */
+.type-display-xxl, .type-display-xl, .type-display-lg,
+.type-h1, .type-h2, .type-h3, .type-h4, .type-h5, .type-h6,
+:where(.cmp) :is(h1, h2, h3, h4, h5, h6) { text-wrap: balance; }
+.type-body-lg, .type-body, .type-body-sm, .type-caption,
+:where(.cmp) :is(p, li, dd, figcaption, blockquote) { text-wrap: pretty; }
+
 /* ── Body ─────────────────────────────────────────────────────────────── */
 .type-body-lg {
   font-size: var(--type-body-lg-size);
@@ -3007,7 +3017,7 @@ html.lenis, html.lenis body { height: auto; }
 .cmp-bento.bento-research .bnr-chips,.cmp-bento.bento-research .bnr-tags{display:flex;flex-wrap:wrap;margin:0;padding:0;list-style:none}
 .cmp-bento.bento-research .bnr-chips{gap:10px}
 .cmp-bento.bento-research .bnr-chips .chip:hover{transform:none}
-.cmp-bento.bento-research .bnr-col{gap:16px}
+.cmp-bento.bento-research .bnr-col{gap:16px;padding-block-end:0} /* last card sits flush with the feature tile's bottom edge (Ram, 2026-10-13) */
 .cmp-bento.bento-research .bnr-intro{display:flex;flex-direction:column;gap:14px}
 .cmp-bento.bento-research .bnr-col-h{margin:4px 0 0;line-height:1.15}
 .cmp-bento.bento-research .bnr-claim{margin:0}
@@ -5692,7 +5702,13 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 .filter-search:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(var(--blue-rgb), .12); }
 .filter-search input { appearance: none; border: 0; background: transparent; outline: none; font: inherit; font-size: 14px; color: var(--navy); width: 100%; }
 .filter-select { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
-.filter-select select { font: inherit; color: var(--navy); background: #fff; border: 1px solid var(--border); border-radius: var(--r-sm); padding: 8px 12px; cursor: pointer; }
+.filter-select select { font: inherit; color: var(--navy); background: #fff; border: 1px solid var(--border); border-radius: var(--r-sm); padding: 8px 12px; cursor: pointer;
+  /* Own chevron with breathing room (Ram, 2026-10-13): the native arrow sat
+     flush against the right border. Same glyph as .field > select. */
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%233A4B5C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; padding-inline-end: 40px; }
+.filter-select select:focus-visible { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(var(--blue-rgb), .12); outline: none; }
 .filter-count { font-size: 14px; margin-top: 20px; }
 .filter-empty { font-size: 15px; margin-top: 24px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }/* ── kicker-cards ── a grid of bordered cards, each: a small kicker (a number
    OR a short label) + title + body. Self-contained light cards (white bg, navy
@@ -6149,6 +6165,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    the select's chevron sits at the inline-end, and the switch knob parks at
    the inline-start and travels toward the inline-end when checked. */
 [dir="rtl"] .field > select { background-position: left 14px center; padding-right: 16px; padding-left: 40px; }
+[dir="rtl"] .filter-select select { background-position: left 14px center; }
 [dir="rtl"] .switch > .track::after { left: auto; right: 3px; }
 [dir="rtl"] .switch > input:checked + .track::after { transform: translateX(-20px); }
 
@@ -6373,9 +6390,22 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 .cmp-cards.is-cols-3 .cd-track > .cd-card { --cd-slide: clamp(300px, 78vw, 420px); }
 .cmp-cards.is-cols-2 .cd-track > .cd-card { --cd-slide: clamp(380px, 84vw, 640px); }
 .cmp-cards.is-cols-auto .cd-track > .cd-card { --cd-slide: min(88vw, 900px); }
+/* Cards: Boxed titles (Ram, 2026-10-13): long headlines wrap to several
+   lines in a card, so they take a headline line height, not the 1.5 rhythm
+   of the type scale. Size stays on the type token. */
+.cmp-cards.cards-boxed .cd-card :is(h3, h4):is(.type-h4, .type-h5, .type-h6) { line-height: 1.3; }
+/* Option .is-title-clamp on the .cmp-cards root: boxed card titles stop at
+   three lines with an ellipsis, so rows of long headlines stay even. The full
+   title stays in the DOM for screen readers and search. */
+.cmp-cards.cards-boxed.is-title-clamp .cd-card :is(h3, h4) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
 /* CENTER-PEEK carousel mode: active slide centered (to() honours the snap
    alignment), neighbors peek dimmed via the recipe's .is-current */
-.cmp-cards.is-center-peek .cd-track { margin-inline-start: 0; padding-inline: max(var(--page-x), calc((100% - var(--cd-slide, 70vw)) / 2)); scroll-snap-type: x mandatory; }
+/* The side padding must match the slide width (set per card above), or the
+   first and last slides can never reach the centre: mirror it on the track. */
+.cmp-cards.is-center-peek .cd-track { --cd-peek: clamp(258px, 72vw, 300px); margin-inline-start: 0; padding-inline: max(var(--page-x), calc((100% - var(--cd-peek)) / 2)); scroll-snap-type: x mandatory; }
+.cmp-cards.is-center-peek.is-cols-3 .cd-track { --cd-peek: clamp(300px, 78vw, 420px); }
+.cmp-cards.is-center-peek.is-cols-2 .cd-track { --cd-peek: clamp(380px, 84vw, 640px); }
+.cmp-cards.is-center-peek.is-cols-auto .cd-track { --cd-peek: min(88vw, 900px); }
 .cmp-cards.is-center-peek .cd-track > .cd-card { scroll-snap-align: center; opacity: .35; transition: opacity .45s ease, transform .35s ease, box-shadow .35s ease; }
 .cmp-cards.is-center-peek .cd-track > .cd-card.is-current { opacity: 1; }
 .cmp-cards .cd-arrows { display: flex; gap: 12px; justify-content: flex-end; align-items: center; margin-top: 22px; padding-inline: var(--cd-edge); }

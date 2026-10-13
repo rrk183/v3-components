@@ -22,6 +22,17 @@ A light section with a section-head, a **filter bar** (a row of capability pills
 - **Pop-up boxed cards** (2026-10-12): the grid may hold Cards: Boxed cards that open a case-study modal (`data-modal-open`), filtered by topic and year.
 - **Anchor id (instances only):** a page may add `id="..."` to the root.
 
+- **Show more** (off by default, 2026-10-13): put `data-filter-step="9"` on the
+  `[data-filter]` root and a centred `button.btn.btn-outline[data-filter-more]`
+  ("Show more") inside a `[data-filter-more-wrap]` row after the grid. Only the
+  first 9 matching items show; each click reveals 9 more and moves focus to the
+  first new card; the row hides when everything is shown. Write the count as
+  "Showing `[data-filter-count]` of `[data-filter-total]` updates". Any filter
+  change starts again from 9. Used on Media Library (59 stories).
+- **Date windows are cumulative tokens:** an item from the past month carries
+  `data-filter-date="month quarter year"`, past quarter `"quarter year"`, past
+  year `"year"`, so "Past quarter" also lists last month's items.
+
 ## Content contract
 - Every key used by a control must exist as a `data-filter-<key>` on every item (an item missing the attribute never matches that key's non-empty values).
 - **Match logic: AND across keys, OR within a key.** A space/comma list in an item's attribute (`data-filter-area="markets lending"`) matches *any* of those tokens.

@@ -32,11 +32,23 @@ section.cmp-history-timeline.surface-grey.section-y[data-animate]
      └ .ht-nav  ← button.ht-arrow[data-timeline-prev] + [data-timeline-next]
 ```
 
+## Options
+- **See-all link** (off by default): a `btn btn-text is-arrow me-auto` link
+  placed first in `.ht-nav`, so it aligns to the start edge of the content
+  column while the prev/next arrows stay at the end (e.g. "See all
+  tombstones" on the home page deals timeline). Gallery control: See-all
+  link · Off / On.
+- **Header:** the eyebrow and the split lead are optional; a title-only header
+  drops `is-split`.
+
 ## Content contract
 - **7 milestone nodes** as shipped (a flexible count — 4–8 read well; each is a
   self-contained `.ht-node`).
 - Per node: a year (`.ht-year`, short label like "2007"), a title
   (`.ht-title`, ≤6 words) and a 1–2 sentence description (`.ht-desc`).
+- **Order: newest first** (Ram, 2026-10-13). Dated nodes run from the latest
+  on the start side to the oldest; numbered process steps (01, 02...) keep
+  their step order.
 - No images — it is year/text driven.
 - No live countup numbers.
 
