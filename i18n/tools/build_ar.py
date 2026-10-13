@@ -125,7 +125,7 @@ def chrome(html, rel):
     html = re.sub(r'<button class="ish-lang-m" type="button" lang="ar"[^>]*>عربي</button>',
                   '<button class="ish-lang-m" type="button" lang="en" aria-label="English، التبديل إلى الإنجليزية">English</button>', html)
     if 'assets/css/rtl.css' not in html:
-        html = html.replace('</head>', '<link rel="stylesheet" href="assets/css/rtl.css?v=261200" />\n</head>', 1)
+        html = html.replace('</head>', '<link rel="stylesheet" href="assets/css/rtl.css?v=261201" />\n</head>', 1)
     # physical Tailwind utilities -> logical ones (Arabic edition only)
     LOGICAL = {'text-left': 'text-start', 'text-right': 'text-end', 'ml-0': 'ms-0', 'mr-0': 'me-0'}
     def cls(m):
@@ -205,7 +205,17 @@ if __name__ == '__main__':
     if len(table) < 1000:
         sys.exit('ar.json missing or tiny next to build_ar.py: run merge.py first (refusing to write English pages)')
     tr = T(table)
+    # fixes_pages.json: {"<page>.html": {"<en key>": "<arabic>"}}, applied to that page only
+    # (approved agency translations that must not change the shared string on other pages).
+    pf_path = os.path.join(HERE, 'fixes_pages.json')
+    page_fixes = json.load(open(pf_path, encoding='utf-8')) if os.path.exists(pf_path) else {}
     for rel in (args or PAGES):
-        build(rel, tr, dry)
+        if rel in page_fixes:
+            pt = T({**table, **page_fixes[rel]})
+            build(rel, pt, dry)
+            tr.missing.update(pt.missing)
+            tr.bad.update(pt.bad)
+        else:
+            build(rel, tr, dry)
     print('missing keys:', len(tr.missing), ' bad placeholders:', len(tr.bad))
     json.dump({'missing': tr.missing, 'bad': tr.bad}, open(os.path.join(HERE, 'report.json'), 'w'), ensure_ascii=False, indent=1)

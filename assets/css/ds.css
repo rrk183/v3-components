@@ -1598,6 +1598,9 @@ html, body { background: #fff; }
 .cmp-film-stats-band .fsb-stat:first-child{padding-inline-start:0;border-inline-start:0}
 .cmp-film-stats-band .fsb-num{font-size:clamp(28px,3.2vw,46px);white-space:nowrap}
 .cmp-film-stats-band .fsb-num .ds-num-unit{font-size:.55em}
+/* Arabic: the unit carries the currency words ("مليار دولار أمريكي"), so the figure steps down a size to keep each stat inside its column */
+[lang="ar"] .cmp-film-stats-band .fsb-num{font-size:clamp(24px,2.5vw,38px)}
+[lang="ar"] .cmp-film-stats-band .fsb-num .ds-num-unit{font-size:.5em}
 .cmp-film-stats-band .fsb-lbl{display:block;margin-top:.6rem;max-width:200px}
 
 /* Foldables open + tablets: stats 2 x 2, one type size down. */
