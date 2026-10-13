@@ -28,6 +28,7 @@ as a calm "here is what this area does" opener rather than a hero.
 - **Trailing capability list:** a multi-column list of capabilities below the main grid.
 - **Header above, media left** (2026-10-12): the eyebrow, heading and lead may move into a `.section-head.is-split` above the grid; the left column then holds a media tile (a rounded `div[data-bg][role=img][aria-label]` that fills the column height).
 - **Anchor id (instances only):** a page may add `id="..."` to the root.
+- **Text-only pillars** (2026-10-13): pillars may drop their `icon-tile` (all pillars or none). The lead stays `type-body-lg`.
 
 ## Content contract
 - Two or three pillars read best; each description is one line (~10–14 words).

@@ -1,0 +1,20 @@
+/* Page-level RTL fixes for the Arabic editions (<page>-ar.html). Component
+   RTL lives in ds.css (shared with the library's RTL preview); this file only
+   patches legacy page-specific markup that is not a library component.
+   Linked from Arabic pages only. */
+
+/* Skip link parked at left:-9999px stretches an RTL page sideways. */
+[dir="rtl"] .ds-skip-link:not(:focus) { left: auto; right: 0; clip-path: inset(50%); }
+[dir="rtl"] .ds-skip-link:focus { left: auto; right: 1rem; }
+
+/* Page-drawn arrows outside the DS icon axis. */
+[dir="rtl"] .ptf2-dir .pd-row i { transform: scaleX(-1); }
+[dir="rtl"] .cd-card .ink-mute > svg:has(path[d="M13 6l6 6-6 6"]) { transform: scaleX(-1); }
+
+/* Home payment-tracker card (legacy page markup): dots pinned left. */
+[dir="rtl"] .hf-trk__steps li { padding-left: 0; padding-right: 22px; }
+[dir="rtl"] .hf-trk__steps li::before { left: auto; right: 0; }
+[dir="rtl"] .hf-trk__steps li::after { left: auto; right: 4px; }
+/* Rankings & awards award-title bullets (legacy page markup). */
+[dir="rtl"] .cmp-awards-grid .ag-titles li { padding-left: 0; padding-right: 22px; }
+[dir="rtl"] .cmp-awards-grid .ag-titles li::before { left: auto; right: 0; }

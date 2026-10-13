@@ -91,10 +91,10 @@
 <script src="assets/js/gate-config.js"></script>
 <script src="assets/js/gate.js"></script>
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script src="assets/js/tailwind.cdn.js"></script>
 <script src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script defer src="assets/js/lang-switch.js"></script>
 </head>
 <body>
@@ -481,7 +481,7 @@
      .cmp-hero-image-left in ds.css, animated by ds.js. Per-instance image via
      data-bg. Surface is dark (white text over image). -->
 <!-- ═══ Hero, Video BG (Left) · Overlay: Tint ══════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate>
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate data-master="hero-image">
   <div class="hero-stage surface-image">
     <span class="media-cover" data-bg="staging/smartscf/hero-warehouse-aisle.jpg" aria-hidden="true"></span>
     <!-- Overlay: Tint, flat uniform dark tint (replaces the default left/top gradients) -->
@@ -507,7 +507,7 @@
      Pure markup, NO inline styles. Heading left + two big stats right with a
      vertical divider, a full-width rule, then body copy. Big figures are
      regular weight (type-display). Reveal animation via ds.js. -->
-<section class="cmp cmp-proof-points surface-white section-y" data-animate>
+<section class="cmp cmp-proof-points surface-white section-y" data-animate data-master="proof-points">
   <div class="container-ds">
 
     <!-- Top row: heading left + stats right -->
@@ -555,7 +555,7 @@
      Pinned section: the viewport sticks while the benefit cards scrub
      horizontally on scroll. Self-contained (scoped styles + scroll script),
      flagged pinned via data-scroll-pinned. Per-instance images via <img src>. -->
-<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track">
+<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track" data-master="cards-plain-scroll">
   <div class="cd-scroll-outer" data-scroll-outer>
     <div class="cd-scroll-pin">
       <div class="container-ds">
@@ -571,7 +571,7 @@
         <div class="cd-track" data-track>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <span class="media-cover" data-bg="/assets/images/smartscf/smartscf-b1.jpg?v=1" role="img" aria-label="Extend terms, strengthen working capital"></span>
+              <span class="media-cover" data-bg="assets/images/smartscf/smartscf-b1.jpg?v=1" role="img" aria-label="Extend terms, strengthen working capital"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Extend terms, strengthen working capital</h3>
@@ -580,7 +580,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <span class="media-cover" data-bg="/assets/images/smartscf/smartscf-b2.jpg?v=1" role="img" aria-label="Get paid early, at preferential rates"></span>
+              <span class="media-cover" data-bg="assets/images/smartscf/smartscf-b2.jpg?v=1" role="img" aria-label="Get paid early, at preferential rates"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Get paid early, at preferential rates</h3>
@@ -589,7 +589,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <span class="media-cover" data-bg="/assets/images/smartscf/smartscf-b3.jpg?v=1" role="img" aria-label="Self-onboard in minutes"></span>
+              <span class="media-cover" data-bg="assets/images/smartscf/smartscf-b3.jpg?v=1" role="img" aria-label="Self-onboard in minutes"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Self-onboard in minutes</h3>
@@ -598,7 +598,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <span class="media-cover" data-bg="/assets/images/smartscf/smartscf-b4.jpg?v=1" role="img" aria-label="Finance without collateral"></span>
+              <span class="media-cover" data-bg="assets/images/smartscf/smartscf-b4.jpg?v=1" role="img" aria-label="Finance without collateral"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Finance without collateral</h3>
@@ -607,7 +607,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <span class="media-cover" data-bg="/assets/images/smartscf/smartscf-b5.jpg?v=1" role="img" aria-label="Full visibility, onboarding to reconciliation"></span>
+              <span class="media-cover" data-bg="assets/images/smartscf/smartscf-b5.jpg?v=1" role="img" aria-label="Full visibility, onboarding to reconciliation"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Full visibility, onboarding to reconciliation</h3>
@@ -628,7 +628,7 @@
      prev/next arrows. Swipe or drag to move; the centred node becomes active.
      Pure scroll-snap + a tiny rAF read, data-behavior="timeline". No IDs, no
      inline styles. Styled by .cmp-history-timeline. -->
-<section class="cmp cmp-history-timeline surface-white section-y" data-animate id="how">
+<section class="cmp cmp-history-timeline surface-white section-y" data-animate id="how" data-master="history-timeline">
   <div class="container-ds">
 
     <div class="ds-stack section-head ht-head">
@@ -727,7 +727,7 @@
 <!-- ═══ /History Timeline ═══════════════════════════════════════════════════ -->
 
 <!-- ═══ Key features, scroll story (Built to run the whole programme) ══════ -->
-  <section class="cmp cmp-feature-scroll-story surface-soft" data-animate>
+  <section class="cmp cmp-feature-scroll-story surface-soft" data-animate data-master="feature-scroll-story">
     <div class="ess" data-behavior="scroll-story" data-scrub-vh="520">
       <div class="ess-stage">
         <div class="ess-opener" data-anim='{"0-0.06":{"opacity":[1,1],"y":[0,0]},"0.12-0.2":{"opacity":[1,0],"y":[0,-44],"blur":[0,6]}}'><div class="ess-opener-in"><span class="ds-eyebrow ink-accent">Key features</span><h2 class="ess-opener-h">Built to run the whole programme.</h2><p class="ess-opener-lead">A digital solution designed to elevate performance across your entire supply chain, faster, safer and more efficient.</p></div></div>
@@ -833,7 +833,7 @@
      data-autoplay (ms; drop to disable). Pure markup, slide images via data-bg.
      ds.js wires scroll-snap nav / dots / autoplay. Centered-peek layout via
      scroll-snap-align:center + side padding (see NOTES). -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-center-peek is-cols-3 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-center-peek is-cols-3 surface-soft section-y" data-animate data-master="cards-carousel">
   <div class="container-ds">
     <div class="section-head is-center">
       <div class="ds-stack">
@@ -907,7 +907,7 @@
      Pure markup, NO inline styles / IDs. Styled by .cmp-trusted-partners-grid
      in ds.css, animated by ds.js (data-reveal + staggered delays). Logos are
      inline SVG, grayscale by default → colour + scale on hover. -->
-<section class="cmp cmp-logo-wall is-cols-4 surface-white section-y" data-animate>
+<section class="cmp cmp-logo-wall is-cols-4 surface-white section-y" data-animate data-master="logo-wall">
   <div class="container-ds">
 
     <!-- Heading left + description far right -->
@@ -1034,7 +1034,7 @@
 <!-- ═══ /Trusted Partners, Logo Grid ═══════════════════════════════════════════ -->
 
 <!-- ═══ FAQ ═══ -->
-<section class="cmp cmp-acc surface-white section-y" data-animate>
+<section class="cmp cmp-acc surface-white section-y" data-animate data-master="acc-faq">
   <div class="container-ds">
     <div class="section-head section-head-sm measure">
       <div class="ds-stack">
@@ -1094,7 +1094,7 @@
 <!-- ═══ /FAQ ═══ -->
 
 <!-- ═══ CTA Band ═══ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Talk to us</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Free up working capital across your supply chain.</h2>

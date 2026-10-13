@@ -105,6 +105,9 @@
   --navy-strong: #0A3060;  /* navy hover states + saturated navy tiles */
   --steel:       #9FB3CC;  /* muted blue-grey text/icons on navy */
   --steel-soft:  #C3D0E0;  /* faint blue-grey rules and quiet chrome */
+  /* Global Reach film grounds (cmp-global-reach), exact values from the shipped film */
+  --gr-film-1: #0C3576;  --gr-film-2: #08285E;  --gr-film-3: #051C49;  --gr-film-4: #03143A;  --gr-film-floor: #030F2B;
+  --gr-film-lite-0: #FFFFFF;  --gr-film-lite-1: #F7F9FD;  --gr-film-lite-2: #EEF3FA;  --gr-film-lite-3: #E8EEF8;
   --header-cta:        var(--blue);         /* header Login pill */
   --header-cta-strong: var(--blue-strong);  /* its hover / open state */
   --header-cta-ink:    #ffffff;             /* the pill's text/icon colour */
@@ -1165,6 +1168,22 @@ body * { font-family: inherit; }
 .ds-skip-link:focus { position: fixed; left: 1rem; top: 1rem; width: auto; height: auto; overflow: visible; padding: .75rem 1.5rem; background: var(--blue); color: #fff; border-radius: 8px; font-weight: 600; text-decoration: none; }
 /* Arabic components opt into Tajawal via this class on their section. */
 .lang-ar, .lang-ar * { font-family: var(--font-arabic); }
+/* Arabic (RTL) variants of the components, 2026-10-13. One source for both
+   the library's RTL preview (frame.html?rtl=1) and the <page>-ar.html editions,
+   so a component looks the same in its master RTL view and on a page.
+   Arabic is a connected script: DS tracking pulls joined letters apart. */
+[lang="ar"] body, [lang="ar"] body *:not(svg):not(svg *) { letter-spacing: normal !important; }
+/* Section-head "see all" links that carry an inline right-arrow SVG. */
+[dir="rtl"] .sh-action > svg { transform: scaleX(-1); }
+/* Longer Arabic labels: keep a wrapped button label centred in its pill. */
+[lang="ar"] .btn { text-align: center; }
+@media (max-width: 767px) {
+  /* Small type is sized for tracked Latin capitals; Tajawal sets smaller. */
+  [lang="ar"] :is(.ds-eyebrow, .type-eyebrow, .be-eyebrow, .isp-eyebrow, .op-modal-eyebrow, .scin-cue-label) { font-size: 13px; }
+  [lang="ar"] :is(.type-caption, .badge, .art-c-tag, .dc-role, .dc-rating) { font-size: 12px; }
+  [lang="ar"] .type-micro { font-size: 11px; }
+  [lang="ar"] .sh-action { white-space: normal; }
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DS FOUNDATION — additive tokens & layout primitives  (re-architecture v4)
@@ -2557,6 +2576,104 @@ html.st-lock { overflow: hidden; }
    HTML chip layer; aspect follows the computed frame (--wm-ar). Higher specificity
    than the legacy per-breakpoint aspect rules below, so v2 wins at every width. */
 .cmp-world-map .wm-map.wm-v2 { position: relative; overflow: hidden; aspect-ratio: var(--wm-ar, 2 / 1); }
+
+/* ── Global Reach network film (master: world-map, "World Map - V1") ─────────
+   Moved into the runtime 2026-10-13 from global-reach.css and its light fork
+   global-reach-light.css; recipe: global-reach (ds.js). Root class
+   cmp-global-reach (cmp-world-map is the separate SVG map system above).
+   Ground is markup: surface-primary (navy film, the default) or a light surface
+   such as surface-soft (pale film, navy map, brand-blue routes); surface-accent
+   draws the network in white. Text inks are markup too (ink-white / ink-soft on
+   navy, ink-primary on light); gr-tier-2 / gr-tier-3 dim a line one or two steps.
+   Option is-long-copy: longer stats and body copy (stat figures stay on one line,
+   phone type set up a step). The canvas palette is RGB triplets in --gr-* tokens
+   set by the ground on the root, read by the recipe. */
+.cmp-global-reach{position:relative;
+  --gr-film:radial-gradient(60% 70% at var(--gx,62%) var(--gy,45%),var(--gr-film-1) 0%,var(--gr-film-2) 38%,var(--gr-film-3) 70%,var(--gr-film-4) 100%),var(--gr-film-floor);
+  --gr-o2:.62;--gr-o3:.78;--gr-rule-o:.22}
+.cmp-global-reach:is(.surface-white,.surface-soft,.surface-grey,.surface-mute,.surface-grey-2,.surface-primary-soft,.surface-accent-soft,.surface-clear){
+  --gr-film:radial-gradient(60% 70% at var(--gx,62%) var(--gy,45%),var(--gr-film-lite-0) 0%,var(--gr-film-lite-1) 40%,var(--gr-film-lite-2) 75%,var(--gr-film-lite-3) 100%),var(--light);
+  --gr-o2:.55;--gr-o3:.74;--gr-rule-o:.16;
+  --gr-ocean:var(--navy-rgb);--gr-ocean-a:.9;--gr-land:var(--navy-rgb);--gr-land-a:.68;
+  --gr-arc:var(--blue-rgb);--gr-glow:var(--blue-rgb);--gr-glow-edge:var(--blue-rgb);--gr-glow-lite:var(--blue-rgb);--gr-glow-a:.55;--gr-shadow-a:.35;
+  --gr-ring:var(--blue-rgb);--gr-node:var(--blue-rgb);--gr-core:255,255,255;--gr-label:var(--navy-rgb);--gr-head:var(--blue-rgb)}
+.cmp-global-reach.surface-accent{
+  --gr-film:radial-gradient(60% 70% at var(--gx,62%) var(--gy,45%),rgba(255,255,255,.10) 0%,transparent 70%);
+  --gr-o2:.72;--gr-o3:.86;--gr-rule-o:.3;
+  --gr-ocean:255,255,255;--gr-land:255,255,255;--gr-land-a:.8;
+  --gr-arc:255,255,255;--gr-glow:255,255,255;--gr-glow-edge:255,255,255;--gr-glow-lite:255,255,255;
+  --gr-ring:255,255,255;--gr-node:255,255,255;--gr-core:var(--blue-rgb);--gr-label:255,255,255;--gr-head:255,255,255}
+.cmp-global-reach.surface-image{--gr-film:transparent;background-attachment:fixed}
+.cmp-global-reach .gr-tier-2{opacity:var(--gr-o2);--gr-o:var(--gr-o2)}
+.cmp-global-reach .gr-tier-3{opacity:var(--gr-o3);--gr-o:var(--gr-o3)}
+
+/* scroll scrub: tall track, pinned viewport */
+.cmp-global-reach .gr-reach{position:relative;width:100%;overflow:hidden;z-index:2}
+.cmp-global-reach .gr-scrub{position:relative;height:600vh}
+.cmp-global-reach .gr-scrub__pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--gr-film)}
+.cmp-global-reach .gr-map{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.cmp-global-reach .gr-scrub__hint{position:absolute;inset-inline-start:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font:600 12px/1 var(--font-sans);letter-spacing:.2em;text-transform:uppercase;pointer-events:none;transition:opacity .3s}
+.cmp-global-reach .gr-scrub__hint svg{width:16px;height:16px;animation:gr-nudge 1.6s ease-in-out infinite}
+@keyframes gr-nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.cmp-global-reach .gr-reach__frame{position:relative;width:min(100%,calc(100vh*16/9));aspect-ratio:16/9;margin:0 auto}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-reach__frame{width:100%;height:100vh;height:100svh;aspect-ratio:auto}
+/* fixed-size stage, scaled to fit the frame by the recipe */
+.cmp-global-reach .gr-stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;z-index:1}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-stage{width:1080px}
+
+/* copy */
+.cmp-global-reach .gr-intro{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;margin:0;font:700 72px/1.08 var(--font-sans);letter-spacing:-.035em}
+.cmp-global-reach .gr-intro span{display:block}
+.cmp-global-reach .gr-intro span+span{font-weight:600}
+.cmp-global-reach .gr-copy{position:absolute;left:112px;top:236px;width:700px}
+.cmp-global-reach .gr-copy__eyebrow{margin:0 0 30px;font:600 17px/1 var(--font-sans);letter-spacing:.2em;text-transform:uppercase}
+.cmp-global-reach .gr-copy__title{margin:0;font:700 82px/.98 var(--font-sans);letter-spacing:-.045em}
+.cmp-global-reach .gr-copy__title span{display:block}
+.cmp-global-reach .gr-copy__body{margin:40px 0 0;font:400 24px/1.42 var(--font-sans)}
+.cmp-global-reach .gr-stats{position:absolute;left:112px;right:112px;top:858px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin:0;padding:0;list-style:none}
+.cmp-global-reach .gr-stat{position:relative;padding-top:28px}
+.cmp-global-reach .gr-stat__rule{position:absolute;left:0;right:0;top:0;height:1px;background:currentColor;opacity:var(--gr-rule-o);transform-origin:0 50%}
+.cmp-global-reach .gr-stat__num{display:block;font:400 72px/1 var(--font-sans);letter-spacing:-.03em}
+.cmp-global-reach .gr-stat__label{display:block;margin-top:20px;font:400 20px/1.3 var(--font-sans)}
+
+/* portrait composition (phones). The recipe sets --gr-top (copy start, clear
+   of the header), --gr-pad (space outside the composed band) and --gr-t (a type
+   step for short screens). */
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-intro{font-size:calc(80px * var(--gr-t,1));padding:0 60px}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-copy{left:72px;top:var(--gr-top,110px);width:936px}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-copy__eyebrow{font-size:calc(22px * var(--gr-t,1));margin-bottom:calc(24px * var(--gr-t,1))}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-copy__title{font-size:calc(84px * var(--gr-t,1))}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-copy__body{font-size:calc(28px * var(--gr-t,1));margin-top:calc(24px * var(--gr-t,1))}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-stats{left:72px;right:72px;top:auto;bottom:calc(120px + var(--gr-pad,0px));grid-template-columns:1fr 1fr;gap:calc(36px * var(--gr-t,1)) 48px}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-stat{padding-top:calc(20px * var(--gr-t,1))}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-stat__num{font-size:calc(68px * var(--gr-t,1))}
+.cmp-global-reach .gr-reach.gr-is-portrait .gr-stat__label{font-size:calc(26px * var(--gr-t,1));margin-top:calc(12px * var(--gr-t,1))}
+
+/* option is-long-copy (from the Payments & Trade Finance instance) */
+.cmp-global-reach.is-long-copy .gr-copy__title{max-width:12ch}
+.cmp-global-reach.is-long-copy .gr-stat__num{white-space:nowrap;font-size:60px}
+.cmp-global-reach.is-long-copy .gr-reach.gr-is-portrait .gr-copy__body{font-size:calc(40px * var(--gr-t,1));line-height:1.45}
+.cmp-global-reach.is-long-copy .gr-reach.gr-is-portrait .gr-stat__label{font-size:calc(34px * var(--gr-t,1))}
+.cmp-global-reach.is-long-copy .gr-reach.gr-is-portrait .gr-stat__num{font-size:calc(64px * var(--gr-t,1))}
+
+/* animated elements start hidden only once the recipe has armed the section */
+.cmp-global-reach.gr-armed [data-anim]{opacity:0;will-change:opacity,transform}
+@media (prefers-reduced-motion:reduce){.cmp-global-reach *{transition:none!important;animation:none!important}}
+
+/* overlays tint the ground only, under the map and copy */
+.cmp-global-reach .gr-scrub__pin > .ov{z-index:0}
+.cmp-global-reach > .ov{display:none}
+
+/* Arabic: Tajawal, no tracking or caps spacing, copy and stats read from the
+   right. The map stays geographic, never mirrored. */
+[dir="rtl"] .cmp-global-reach :is(.gr-intro,.gr-copy__eyebrow,.gr-copy__title,.gr-copy__body,.gr-stat__num,.gr-stat__label){font-family:var(--font-arabic),var(--font-sans);letter-spacing:0;text-transform:none}
+[dir="rtl"] .cmp-global-reach :is(.gr-copy,.gr-stat){text-align:right}
+[dir="rtl"] .cmp-global-reach .gr-copy__title{line-height:1.12}
+[dir="rtl"] .cmp-global-reach .gr-intro{line-height:1.25}
+[dir="rtl"] .cmp-global-reach .gr-reach .gr-stat__num{font-weight:500;font-size:56px;line-height:1.1}
+[dir="rtl"] .cmp-global-reach .gr-stat__rule{transform-origin:100% 50%}
+[dir="rtl"] .cmp-global-reach .gr-reach:not(.gr-is-portrait) .gr-copy{width:auto;max-width:540px;top:290px}
+[dir="rtl"] .cmp-global-reach:not(.is-long-copy) .gr-reach:not(.gr-is-portrait) .gr-copy__body{white-space:nowrap}
 .cmp-world-map .wm-v2 .wm-art { position: absolute; inset: 0; background: var(--wm-map-ink); }
 .cmp-world-map .wm-v2 .wm-svg { position: absolute; inset: 0; width: 100%; height: 100%; user-select: none; pointer-events: none; }
 .cmp-world-map .wm-v2 .wm-labels { position: absolute; inset: 0; pointer-events: none; }

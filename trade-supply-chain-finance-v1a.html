@@ -86,11 +86,11 @@
 <script src="assets/js/gate-config.js"></script>
 <script src="assets/js/gate.js"></script>
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <link rel="preload" as="image" href="assets/images/frames/tscf-hero/frame-001.jpg?v=2" fetchpriority="high" />
 <script src="assets/js/tailwind.cdn.js"></script>
 <script src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script defer src="assets/js/lang-switch.js"></script>
 </head>
 <body>
@@ -476,7 +476,7 @@
      Declarative scroll-story-scrub: a 257-frame container-ship sequence scrubs
      by scroll progress behind three text phases; the overlay darkens as the
      camera closes in. Self-contained (ds.js scroll-story-scrub recipe). -->
-<section class="cmp cmp-hero-cinematic-pinned surface-primary" data-animate>
+<section class="cmp cmp-hero-cinematic-pinned surface-primary" data-animate data-master="hero-cinematic-pinned">
   <div class="scin" data-behavior="scroll-story-scrub"
        data-scrub-vh="340" data-source="images"
        data-count="299" data-path="assets/images/frames/tscf-hero/frame-###.jpg?v=2" data-start="1">
@@ -524,7 +524,7 @@
 <!-- ═══ /1. Hero ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 2. Three value pillars, capability tiles (lg:grid-cols-3) ══════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-white section-y" data-animate>
+<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-white section-y" data-animate data-master="cards-kicker">
   <div class="container-ds">
 
     <div class="section-head">
@@ -568,7 +568,7 @@
 <!-- ═══ /2. Three value pillars ═════════════════════════════════════════════ -->
 
 <!-- ═══ 3. How can we help you, Tabbed solutions directory ═════════════════ -->
-<section class="cmp cmp-tabs tabs-directory surface-soft section-y" data-animate>
+<section class="cmp cmp-tabs tabs-directory surface-soft section-y" data-animate data-master="tabs-directory">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -581,20 +581,20 @@
 
     <div data-tabs data-tabs-swipe data-reveal="up" data-reveal-delay=".1">
       <div class="tb-rail is-underline mb-8" role="tablist">
-        <button type="button" class="tb-tab active" data-tab="sol-impexp">Import &amp; Export Finance</button>
-        <button type="button" class="tb-tab" data-tab="sol-guarantees">Guarantees &amp; Shipping</button>
-        <button type="button" class="tb-tab" data-tab="sol-scf">Supply Chain Finance</button>
-        <button type="button" class="tb-tab" data-tab="sol-wc">Working Capital &amp; Embedded Financing</button>
+        <button type="button" class="tb-tab active ink-primary" data-tab="sol-impexp">Import &amp; Export Finance</button>
+        <button type="button" class="tb-tab ink-mute" data-tab="sol-guarantees">Guarantees &amp; Shipping</button>
+        <button type="button" class="tb-tab ink-mute" data-tab="sol-scf">Supply Chain Finance</button>
+        <button type="button" class="tb-tab ink-mute" data-tab="sol-wc">Working Capital &amp; Embedded Financing</button>
       </div>
 
       <div data-panel="sol-impexp" class="tb-panel active">
         <p class="type-body-lg ink-mute measure mb-6">Trade with confidence. We simplify complex cross-border transactions with flexible financing and digital tools.</p>
         <div class="cmp-cards is-cols-auto is-hover-lift">
           <div class="cd-grid" role="list">
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Documentary Credits</h3><p class="type-body-sm ink-mute mt-1">Letters of Credit that secure your import purchases end to end.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Export Documentary Credits</h3><p class="type-body-sm ink-mute mt-1">Get paid with certainty on your export sales across markets.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import &amp; Export Documentary Collections</h3><p class="type-body-sm ink-mute mt-1">Document exchange that balances trust and control.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Loans / Open-Account Import Financing</h3><p class="type-body-sm ink-mute mt-1">Flexible funding to bridge the gap between purchase and payment.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Documentary Credits</h3><p class="type-body-sm ink-mute mt-1">Letters of Credit that secure your import purchases end to end.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Export Documentary Credits</h3><p class="type-body-sm ink-mute mt-1">Get paid with certainty on your export sales across markets.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import &amp; Export Documentary Collections</h3><p class="type-body-sm ink-mute mt-1">Document exchange that balances trust and control.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Loans / Open-Account Import Financing</h3><p class="type-body-sm ink-mute mt-1">Flexible funding to bridge the gap between purchase and payment.</p></div>
           </div>
         </div>
       </div>
@@ -603,10 +603,10 @@
         <p class="type-body-lg ink-mute measure mb-6">Trust built into every transaction. Our guarantees give your business the assurance to trade, invest and deliver, all managed on a seamless digital platform.</p>
         <div class="cmp-cards is-cols-auto is-hover-lift">
           <div class="cd-grid" role="list">
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Bank Guarantees</h3><p class="type-body-sm ink-mute mt-1">Bid Bond, Payment, Financial, Standby and Advance Payment guarantees.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Cross-border &amp; Counter Guarantees</h3><p class="type-body-sm ink-mute mt-1">Issue and receive guarantees across markets with confidence.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Shipping Guarantees</h3><p class="type-body-sm ink-mute mt-1">Take delivery of goods before documents arrive, without delay.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Delivery Orders</h3><p class="type-body-sm ink-mute mt-1">Release cargo smoothly while documentation is finalised.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Bank Guarantees</h3><p class="type-body-sm ink-mute mt-1">Bid Bond, Payment, Financial, Standby and Advance Payment guarantees.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Cross-border &amp; Counter Guarantees</h3><p class="type-body-sm ink-mute mt-1">Issue and receive guarantees across markets with confidence.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Shipping Guarantees</h3><p class="type-body-sm ink-mute mt-1">Take delivery of goods before documents arrive, without delay.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Delivery Orders</h3><p class="type-body-sm ink-mute mt-1">Release cargo smoothly while documentation is finalised.</p></div>
           </div>
         </div>
       </div>
@@ -615,8 +615,8 @@
         <p class="type-body-lg ink-mute measure mb-6">Stronger links between buyers and suppliers. We bring together technology, finance and insight so your whole chain can adapt, collaborate and thrive.</p>
         <div class="cmp-cards is-cols-auto is-hover-lift">
           <div class="cd-grid" role="list">
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Payables Finance</h3><p class="type-body-sm ink-mute mt-1">Extend payment terms while suppliers get paid early, strengthening the whole chain.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Receivables Finance</h3><p class="type-body-sm ink-mute mt-1">Unlock cash tied up in invoices to accelerate your working capital.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Payables Finance</h3><p class="type-body-sm ink-mute mt-1">Extend payment terms while suppliers get paid early, strengthening the whole chain.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Receivables Finance</h3><p class="type-body-sm ink-mute mt-1">Unlock cash tied up in invoices to accelerate your working capital.</p></div>
           </div>
         </div>
       </div>
@@ -625,10 +625,10 @@
         <p class="type-body-lg ink-mute measure mb-6">Powering the flow of capital across your business, with intelligent financing and embedded tools that give you the liquidity, control and confidence to act on every opportunity.</p>
         <div class="cmp-cards is-cols-auto is-hover-lift">
           <div class="cd-grid" role="list">
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Discounting of LCs</h3><p class="type-body-sm ink-mute mt-1">Convert accepted letters of credit into immediate liquidity.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Documentary Collections</h3><p class="type-body-sm ink-mute mt-1">Secure, bank-managed exchange of trade documents and payment.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Bills of Exchange (&ldquo;Avalisation&rdquo;)</h3><p class="type-body-sm ink-mute mt-1">Bank-backed bills that add certainty to deferred-payment trade.</p></div>
-            <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Trust Receipt Loans</h3><p class="type-body-sm ink-mute mt-1">Finance imported goods through to sale and final settlement.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Discounting of LCs</h3><p class="type-body-sm ink-mute mt-1">Convert accepted letters of credit into immediate liquidity.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Documentary Collections</h3><p class="type-body-sm ink-mute mt-1">Secure, bank-managed exchange of trade documents and payment.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Bills of Exchange (&ldquo;Avalisation&rdquo;)</h3><p class="type-body-sm ink-mute mt-1">Bank-backed bills that add certainty to deferred-payment trade.</p></div>
+            <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Trust Receipt Loans</h3><p class="type-body-sm ink-mute mt-1">Finance imported goods through to sale and final settlement.</p></div>
           </div>
         </div>
       </div>
@@ -643,7 +643,7 @@
 <!-- ═══ /3. How can we help you ═════════════════════════════════════════════ -->
 
 <!-- ═══ 4. Testimonial, quote band (navy, topic image) ════════════════════ -->
-<section class="cmp cmp-quote-band surface-primary section-y" data-animate>
+<section class="cmp cmp-quote-band surface-primary section-y" data-animate data-master="quote-band-rev">
   <div class="container-ds">
     <div class="qb-inner">
       <div class="qb-media" data-reveal="up">
@@ -664,7 +664,7 @@
 
 <!-- ═══ 5. Digital channels showcase, Tabbed (underline) ═══════════════════ -->
   <!-- ═══ Channels, scroll-story (pinned image, swaps per channel) ═══════════ -->
-  <section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned aria-labelledby="channels-heading">
+  <section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned aria-labelledby="channels-heading" data-master="scroll-showcase">
 <div class="container-ds">
       <div class="section-head is-split">
         <div class="ds-stack">
@@ -731,7 +731,7 @@
 <!-- ═══ /5. Digital channels showcase ═══════════════════════════════════════ -->
 
 <!-- ═══ 6. News, card grid ═════════════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-soft section-y" data-animate data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -809,7 +809,7 @@
 <!-- ═══ /6. News ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. Tutorials & Demos, card grid ═══════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-white section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-3 surface-white section-y" data-animate data-master="cards-boxed">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -871,7 +871,7 @@
 <!-- ═══ /7. Tutorials & Demos ═══════════════════════════════════════════════ -->
 
 <!-- ═══ 8. Unlock new possibilities, cross-link 4-card grid ════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
 
     <div class="section-head">
@@ -933,7 +933,7 @@
 <!-- ═══ /8. Unlock new possibilities ════════════════════════════════════════ -->
 
 <!-- ═══ 9. CTA Band ════════════════════════════════════════════════════════ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Talk to us</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward, together.</h2>

@@ -1,0 +1,892 @@
+[
+{
+"id": "010000",
+"page": "cib-home-final.html",
+"en": "<1>Personal</1> <3>Priority</3> <5>Private</5> <7>Emirati</7> <9>Business</9> <11>Wholesale Banking</11> <13>Islamic</13> <15>International</15> <17>Premium</17> <19>Innovation</19>"
+},
+{
+"id": "010001",
+"page": "cib-home-final.html",
+"en": "Your <1><2>AED </2>50m</1> facility is approved. Shall I walk you through the terms tomorrow at 10?"
+},
+{
+"id": "010002",
+"page": "cib-home-final.html",
+"en": "Investment banking track record"
+},
+{
+"id": "010003",
+"page": "cib-home-final.html",
+"en": "<1>USD 6.1 billion</1> <3>USD <4>6.1</4><6>bn</6></3> <9>DEWA IPO, DFM 2022, Joint Bookrunner</9>"
+},
+{
+"id": "010004",
+"page": "cib-home-final.html",
+"en": "<1>USD 1.0 billion</1> <3>USD <4>1.0</4><6>bn</6></3> <9>Salik IPO, DFM 2022, Joint Global Coordinator</9>"
+},
+{
+"id": "010005",
+"page": "cib-home-final.html",
+"en": "<1>USD 2.0 billion</1> <3>USD <4>2.0</4><6>bn</6></3> <9>talabat IPO, DFM 2024, Joint Global Coordinator</9>"
+},
+{
+"id": "010006",
+"page": "cib-home-final.html",
+"en": "<1>USD 429 million</1> <3>USD <4>429</4><6>mn</6></3> <9>Parkin IPO, DFM 2024, Bookrunner</9>"
+},
+{
+"id": "010007",
+"page": "cib-home-final.html",
+"en": "Corporate lending desks"
+},
+{
+"id": "010008",
+"page": "cib-home-final.html",
+"en": "Landmark deals. And the clients behind them."
+},
+{
+"id": "010009",
+"page": "cib-home-final.html",
+"en": "Equity Capital Markets · Emirates NBD Capital"
+},
+{
+"id": "010010",
+"page": "cib-home-final.html",
+"en": "Partnerships · Emirates NBD Capital"
+},
+{
+"id": "010011",
+"page": "cib-home-final.html",
+"en": "September 2022"
+},
+{
+"id": "010012",
+"page": "cib-home-final.html",
+"en": "March 2022"
+},
+{
+"id": "010013",
+"page": "cib-home-final.html",
+"en": "See all tombstones"
+},
+{
+"id": "010014",
+"page": "cib-home-final.html",
+"en": "The Arc de Triomphe in Paris under a blue sky"
+},
+{
+"id": "010015",
+"page": "cib-home-final.html",
+"en": "French sovereign stress risks tighter Gulf financial conditions"
+},
+{
+"id": "010016",
+"page": "cib-home-final.html",
+"en": "Nick Stadtmiller · 9 October 2026 · 1 min read"
+},
+{
+"id": "010017",
+"page": "cib-home-final.html",
+"en": "Read article<1>: French sovereign stress risks tighter Gulf financial conditions</1>"
+},
+{
+"id": "010018",
+"page": "cib-home-final.html",
+"en": "The US Federal Reserve building in Washington"
+},
+{
+"id": "010019",
+"page": "cib-home-final.html",
+"en": "Fed signals higher for longer, but late-2027 cut still likely"
+},
+{
+"id": "010020",
+"page": "cib-home-final.html",
+"en": "Nick Stadtmiller · 17 September 2026 · 1 min read"
+},
+{
+"id": "010021",
+"page": "cib-home-final.html",
+"en": "Read article<1>: Fed signals higher for longer, but late-2027 cut still likely</1>"
+},
+{
+"id": "010022",
+"page": "cib-home-final.html",
+"en": "Media Center"
+},
+{
+"id": "010023",
+"page": "cib-home-final.html",
+"en": "View all news"
+},
+{
+"id": "010024",
+"page": "cib-home-final.html",
+"en": "<1>News</1>"
+},
+{
+"id": "010025",
+"page": "cib-home-final.html",
+"en": "Emirates NBD Business Banking launches VIP Privilege Program for SMEs."
+},
+{
+"id": "010026",
+"page": "cib-home-final.html",
+"en": "<1><2>Emirates NBD Media Center</2><4>7 Oct 2026</4></1>"
+},
+{
+"id": "010027",
+"page": "cib-home-final.html",
+"en": "<1>Awards</1>"
+},
+{
+"id": "010028",
+"page": "cib-home-final.html",
+"en": "Emirates NBD recognised for Governance Excellence with ‘Best Corporate Governance, United Arab Emirates 2026’ Award."
+},
+{
+"id": "010029",
+"page": "cib-home-final.html",
+"en": "<1><2>Emirates NBD Media Center</2><4>6 Oct 2026</4></1>"
+},
+{
+"id": "010030",
+"page": "cib-home-final.html",
+"en": "Emirates NBD elevates customer travel experience with launch of UAE’s first bank-led AI Travel Assistant in collaboration with Visa and Tripadvisor."
+},
+{
+"id": "010031",
+"page": "cib-home-final.html",
+"en": "<1><2>Emirates NBD Media Center</2><4>5 Oct 2026</4></1>"
+},
+{
+"id": "010032",
+"page": "cib-home-final.html",
+"en": "Talk to us and get the app"
+},
+{
+"id": "010033",
+"page": "cib-home-final.html",
+"en": "<1>Contact us</1> <3>Log in to ENBD Business</3> <5>Download the app</5>"
+},
+{
+"id": "010034",
+"page": "payments-trade-finance-v1a.html",
+"en": "Everything your treasury runs on"
+},
+{
+"id": "010035",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1>Trade & Supply Chain</1>"
+},
+{
+"id": "010036",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>Letters of credit</2></1> <5/>"
+},
+{
+"id": "010037",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>Bank guarantees</2></1> <5/>"
+},
+{
+"id": "010038",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>Import & export collections</2></1> <5/>"
+},
+{
+"id": "010039",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>Trade loans</2></1> <5/>"
+},
+{
+"id": "010040",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>Supply chain finance</2></1> <5/>"
+},
+{
+"id": "010041",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>Shipping guarantees</2></1> <5/>"
+},
+{
+"id": "010042",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1>Digital</1>"
+},
+{
+"id": "010043",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>businessONLINE</2></1> <5/>"
+},
+{
+"id": "010044",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>smartTRADE</2></1> <5/>"
+},
+{
+"id": "010045",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>smartSCF</2></1> <5/>"
+},
+{
+"id": "010046",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1><2>API Banking</2></1> <5/>"
+},
+{
+"id": "010047",
+"page": "payments-trade-finance-v1a.html",
+"en": "The full picture, beyond payments and trade"
+},
+{
+"id": "010048",
+"page": "payments-trade-finance-v1a.html",
+"en": "The full picture, beyond payments and trade."
+},
+{
+"id": "010049",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1>One relationship for</1> <3><4><5>lending</5><7>investment banking</7><9>markets</9><11>Islamic finance</11></4></3><15>One relationship for lending, investment banking, markets and Islamic finance.</15>"
+},
+{
+"id": "010050",
+"page": "payments-trade-finance-v1a.html",
+"en": "Choose a solution"
+},
+{
+"id": "010051",
+"page": "payments-trade-finance-v1a.html",
+"en": "Lending, investment banking, Islamic finance and markets, all backed by the same banking relationship."
+},
+{
+"id": "010052",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1>Explore Lending</1>"
+},
+{
+"id": "010053",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1>Financing</1><3>Lending</3><5>Structured credit facilities, working capital and term loans, sized to your business.</5>"
+},
+{
+"id": "010054",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1>Advisory</1><3>Investment Banking</3><5>Capital markets, M&A advisory and syndication, for organisations making decisive moves.</5>"
+},
+{
+"id": "010055",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1>Treasury</1><3>Markets</3><5>FX, rates and commodities solutions to hedge risk and act on market conditions.</5>"
+},
+{
+"id": "010056",
+"page": "payments-trade-finance-v1a.html",
+"en": "<1>Islamic Banking</1><3>Islamic Solutions</3><5>Shari’ah-compliant products across banking, trade and investment, fully integrated.</5>"
+},
+{
+"id": "010057",
+"page": "payments-v1a.html",
+"en": "Wholesale Banking · Payments"
+},
+{
+"id": "010058",
+"page": "payments-v1a.html",
+"en": "A comprehensive suite of channels means we’re right where you need us: in your office, on your ERP and across every platform your business runs on."
+},
+{
+"id": "010059",
+"page": "payments-v1a.html",
+"en": "Technology that grows with your business and adapts to your changing needs."
+},
+{
+"id": "010060",
+"page": "payments-v1a.html",
+"en": "Learn more"
+},
+{
+"id": "010061",
+"page": "trade-supply-chain-finance-v1a.html",
+"en": "Trade & Supply Chain Finance · Wholesale Banking"
+},
+{
+"id": "010062",
+"page": "businessonline-x-v2.html",
+"en": "Robust security with a personalised MPIN or fingerprint/face ID that unlocks access to your accounts."
+},
+{
+"id": "010063",
+"page": "smarttrade-v1a.html",
+"en": "Letters of credit, guarantees and collections we power across the region"
+},
+{
+"id": "010064",
+"page": "smartscf-v1a.html",
+"en": "Built for every supply chain."
+},
+{
+"id": "010065",
+"page": "api-banking-v1a.html",
+"en": "How API Banking works"
+},
+{
+"id": "010066",
+"page": "api-banking-v1a.html",
+"en": "How API Banking works, video, 1 minute 15 seconds"
+},
+{
+"id": "010067",
+"page": "api-banking-v1a.html",
+"en": "Play video: How API Banking works, 1 minute 15 seconds"
+},
+{
+"id": "010068",
+"page": "api-banking-v1a.html",
+"en": "<1><2/></1> <4>Watch the video<5>1:15</5></4>"
+},
+{
+"id": "010069",
+"page": "api-banking-v1a.html",
+"en": "Our API implementation and product team will work with you and your development team throughout the entire process - from setup to launch - for a seamless API onboarding experience. You can also explore and sign up to the world of APIs with our Emirates NBD API Souq."
+},
+{
+"id": "010070",
+"page": "lending-v1a.html",
+"en": "<1><2>AED </2><4>1tn+</4></1> <7>Total assets</7>"
+},
+{
+"id": "010071",
+"page": "lending-v1a.html",
+"en": "<1><2>AED </2><4>187bn</4></1> <7>Market cap</7>"
+},
+{
+"id": "010072",
+"page": "lending-v1a.html",
+"en": "Record performance: <1>AED </1><3>36.7bn</3> income and <5>AED </5><7>23.4bn</7> profit before tax, up 12% YoY."
+},
+{
+"id": "010073",
+"page": "industry-specific-finance-v1a.html",
+"en": "Financing economic growth with precision, scale, and innovation."
+},
+{
+"id": "010074",
+"page": "equity-capital-markets-v1a.html",
+"en": "Across the corporate lifecycle."
+},
+{
+"id": "010075",
+"page": "equity-capital-markets-v1a.html",
+"en": "Put this capital behind your offering"
+},
+{
+"id": "010076",
+"page": "equity-capital-markets-v1a.html",
+"en": "<1>Listed on ADX</1><3>Jul 2026</3>"
+},
+{
+"id": "010077",
+"page": "equity-capital-markets-v1a.html",
+"en": "<1>Listed on ADX</1><3>Apr 2026</3>"
+},
+{
+"id": "010078",
+"page": "equity-capital-markets-v1a.html",
+"en": "<1>Listed on DFM</1><3>Sep 2025</3>"
+},
+{
+"id": "010079",
+"page": "debt-capital-markets-v1a.html",
+"en": "<1>Anchored in the region.</1> <3>Connected to the world.</3>"
+},
+{
+"id": "010080",
+"page": "debt-capital-markets-v1a.html",
+"en": "<1>UAE</1> <3>Middle East</3> <5>Europe</5> <7>Asia</7>"
+},
+{
+"id": "010081",
+"page": "debt-capital-markets-v1a.html",
+"en": "<1>12 </1>markets with an<3/>on-the-ground presence"
+},
+{
+"id": "010082",
+"page": "debt-capital-markets-v1a.html",
+"en": "Egypt"
+},
+{
+"id": "010083",
+"page": "debt-capital-markets-v1a.html",
+"en": "Turkey"
+},
+{
+"id": "010084",
+"page": "debt-capital-markets-v1a.html",
+"en": "Austria"
+},
+{
+"id": "010085",
+"page": "debt-capital-markets-v1a.html",
+"en": "UK"
+},
+{
+"id": "010086",
+"page": "debt-capital-markets-v1a.html",
+"en": "Germany"
+},
+{
+"id": "010087",
+"page": "debt-capital-markets-v1a.html",
+"en": "Russia"
+},
+{
+"id": "010088",
+"page": "debt-capital-markets-v1a.html",
+"en": "India"
+},
+{
+"id": "010089",
+"page": "debt-capital-markets-v1a.html",
+"en": "China"
+},
+{
+"id": "010090",
+"page": "debt-capital-markets-v1a.html",
+"en": "Indonesia"
+},
+{
+"id": "010091",
+"page": "global-loan-solutions-v1a.html",
+"en": "<1>Capital and coverage,</1> <3>wherever your ambition takes you.</3>"
+},
+{
+"id": "010092",
+"page": "global-loan-solutions-v1a.html",
+"en": "Frankfurt"
+},
+{
+"id": "010093",
+"page": "global-loan-solutions-v1a.html",
+"en": "Moscow"
+},
+{
+"id": "010094",
+"page": "global-loan-solutions-v1a.html",
+"en": "Shanghai"
+},
+{
+"id": "010095",
+"page": "global-loan-solutions-v1a.html",
+"en": "Jakarta"
+},
+{
+"id": "010096",
+"page": "global-loan-solutions-v1a.html",
+"en": "See all awards"
+},
+{
+"id": "010097",
+"page": "global-loan-solutions-v1a.html",
+"en": "<1>Apr 2026</1>"
+},
+{
+"id": "010098",
+"page": "global-loan-solutions-v1a.html",
+"en": "<1>Mar 2026</1>"
+},
+{
+"id": "010099",
+"page": "agency-v1a.html",
+"en": "<1>Supporting your growth,</1> <3>in every market.</3>"
+},
+{
+"id": "010100",
+"page": "agency-v1a.html",
+"en": "Vienna"
+},
+{
+"id": "010101",
+"page": "custody-v1a.html",
+"en": "<1>Supporting your ambition,</1> <3>in every market.</3>"
+},
+{
+"id": "010102",
+"page": "custody-v1a.html",
+"en": "<1>12 </1>markets with<3/>custody coverage"
+},
+{
+"id": "010103",
+"page": "gcc-market-access-v1a.html",
+"en": "A long sea bridge crossing calm Gulf water at blue hour, its line of warm lamps reflected below"
+},
+{
+"id": "010104",
+"page": "gcc-market-access-v1a.html",
+"en": "See the ways to trade"
+},
+{
+"id": "010105",
+"page": "markets-v2.html",
+"en": "Global Markets & Treasury | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010106",
+"page": "markets-v2.html",
+"en": "Wholesale Banking · Global Markets & Treasury"
+},
+{
+"id": "010107",
+"page": "markets-v2.html",
+"en": "See all Markets articles"
+},
+{
+"id": "010108",
+"page": "execution-capabilities-v2.html",
+"en": "One login"
+},
+{
+"id": "010109",
+"page": "execution-capabilities-v2.html",
+"en": "Every asset class, price feed and hedge in a single workspace, on desk or on mobile."
+},
+{
+"id": "010110",
+"page": "execution-capabilities-v2.html",
+"en": "Round-the-clock access, so you can act the moment a market moves rather than wait for the desk to open."
+},
+{
+"id": "010111",
+"page": "execution-capabilities-v2.html",
+"en": "Straight through"
+},
+{
+"id": "010112",
+"page": "execution-capabilities-v2.html",
+"en": "A 98% straight-through processing rate means fewer breaks and faster, cleaner settlement."
+},
+{
+"id": "010113",
+"page": "structured-solutions-v2.html",
+"en": "Structured Solutions | Global Markets & Treasury | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010114",
+"page": "fx-hub-v2.html",
+"en": "FX Hub | Global Markets & Treasury | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010115",
+"page": "fx-hub-v2.html",
+"en": "Sales coverage for Retail and Wholesale Banking clients for regional and international products."
+},
+{
+"id": "010116",
+"page": "treasury-v2.html",
+"en": "Treasury | Global Markets & Treasury | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010117",
+"page": "treasury-v2.html",
+"en": "A 24-hour online electronic platform — FX Hub. Sales coverage for Retail and Wholesale Banking clients for regional and international products."
+},
+{
+"id": "010118",
+"page": "fx-v2.html",
+"en": "Foreign Exchange | Global Markets & Treasury | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010119",
+"page": "rates-v2.html",
+"en": "Rates & IR Derivatives | Global Markets & Treasury | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010120",
+"page": "fixed-income-v2.html",
+"en": "Fixed Income & Credit | Global Markets & Treasury | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010121",
+"page": "equities-v2.html",
+"en": "Equities | Global Markets & Treasury | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010122",
+"page": "money-markets-v2.html",
+"en": "Money Markets, Repo & Financing | Global Markets & Treasury | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010123",
+"page": "equity-brokerage.html",
+"en": "Equity Brokerage | Emirates NBD Securities | Wholesale Banking | Emirates NBD"
+},
+{
+"id": "010124",
+"page": "insights-research.html",
+"en": "Emirates NBD Research, MENAT market insights, economic research, corporate banking research, DFM IPO, GCC economics"
+},
+{
+"id": "010125",
+"page": "insights-research.html",
+"en": "Intelligence that powers smarter decisions. Daily insights and in-depth research for the MENAT region from Emirates NBD Research."
+},
+{
+"id": "010126",
+"page": "insights-research.html",
+"en": "Daily insights and in-depth research for the MENAT region from Emirates NBD Research."
+},
+{
+"id": "010127",
+"page": "insights-research.html",
+"en": "See all articles"
+},
+{
+"id": "010128",
+"page": "insights-research.html",
+"en": "<1>Nick Stadtmiller</1><3/>9 October 2026 · 1 min read"
+},
+{
+"id": "010129",
+"page": "insights-research.html",
+"en": "<1>Nick Stadtmiller</1><3/>17 September 2026 · 1 min read"
+},
+{
+"id": "010130",
+"page": "insights-research.html",
+"en": "Not all yield rises are equal: Market Pulse | Monthly View"
+},
+{
+"id": "010131",
+"page": "insights-research.html",
+"en": "<1>Nick Stadtmiller</1><3/>14 September 2026 · 1 min read"
+},
+{
+"id": "010132",
+"page": "insights-research.html",
+"en": "Nothing compares to USD"
+},
+{
+"id": "010133",
+"page": "insights-research.html",
+"en": "<1>Nick Stadtmiller</1><3/>26 August 2026 · 1 min read"
+},
+{
+"id": "010134",
+"page": "insights-research.html",
+"en": "Easing inflation, strong growth to keep Fed on hold, dollar bid: Market Pulse | Monthly View"
+},
+{
+"id": "010135",
+"page": "insights-research.html",
+"en": "<1>Nick Stadtmiller</1><3/>14 August 2026 · 1 min read"
+},
+{
+"id": "010136",
+"page": "insights-research.html",
+"en": "CBUAE sells <1>AED </1><3>11.6bn</3> of M-bills as liquidity conditions stabilise"
+},
+{
+"id": "010137",
+"page": "insights-research.html",
+"en": "<1>Nick Stadtmiller</1><3/>21 July 2026 · 1 min read"
+},
+{
+"id": "010138",
+"page": "insights-research.html",
+"en": "Hawkish take on Fed overdone; rates to stay on hold through year-end"
+},
+{
+"id": "010139",
+"page": "insights-research.html",
+"en": "<1>Nick Stadtmiller</1><3/>18 June 2026 · 1 min read"
+},
+{
+"id": "010140",
+"page": "insights-research.html",
+"en": "Fed Chair Warsh to push back against calls for rate hikes: Markets"
+},
+{
+"id": "010141",
+"page": "insights-research.html",
+"en": "<1>Nick Stadtmiller</1><3/>12 June 2026 · 1 min read"
+},
+{
+"id": "010142",
+"page": "insights-research.html",
+"en": "Gold's safe-haven paradox"
+},
+{
+"id": "010143",
+"page": "insights-research.html",
+"en": "<1>Mayed Alrashdi</1><3/>10 June 2026 · 1 min read"
+},
+{
+"id": "010144",
+"page": "media-library.html",
+"en": "A relationship manager welcomes a business owner into a private banking lounge"
+},
+{
+"id": "010145",
+"page": "media-library.html",
+"en": "A premier programme for Business Banking clients, with access based on their relationship with the bank."
+},
+{
+"id": "010146",
+"page": "media-library.html",
+"en": "<1>7 October 2026</1><3>2 min read</3>"
+},
+{
+"id": "010147",
+"page": "media-library.html",
+"en": "Awards"
+},
+{
+"id": "010148",
+"page": "media-library.html",
+"en": "Showing <1>9</1> of <3>396</3> updates"
+},
+{
+"id": "010149",
+"page": "media-library.html",
+"en": "<1></1> <3>Awards</3>"
+},
+{
+"id": "010150",
+"page": "media-library.html",
+"en": "Emirates NBD recognised for Governance Excellence with ‘Best Corporate Governance, United Arab Emirates 2026’ Award"
+},
+{
+"id": "010151",
+"page": "media-library.html",
+"en": "6 October 2026 · 2 min read"
+},
+{
+"id": "010152",
+"page": "media-library.html",
+"en": "Emirates NBD elevates customer travel experience with launch of UAE’s first bank-led AI Travel Assistant in collaboration with Visa and Tripadvisor"
+},
+{
+"id": "010153",
+"page": "media-library.html",
+"en": "5 October 2026 · 3 min read"
+},
+{
+"id": "010154",
+"page": "media-library.html",
+"en": "Emirates NBD and H&H partner to offer integrated home financing solutions for Dubai’s off-plan residential sector"
+},
+{
+"id": "010155",
+"page": "media-library.html",
+"en": "1 October 2026 · 2 min read"
+},
+{
+"id": "010156",
+"page": "media-library.html",
+"en": "Emirates NBD finances landmark TIM Aerospace facility to strengthen Dubai's aviation infrastructure"
+},
+{
+"id": "010157",
+"page": "media-library.html",
+"en": "30 September 2026 · 2 min read"
+},
+{
+"id": "010158",
+"page": "media-library.html",
+"en": "Emirates NBD wins second Gold Impact Seal in recognition of its sustained contributions to community impact and sustainability leadership"
+},
+{
+"id": "010159",
+"page": "media-library.html",
+"en": "28 September 2026 · 2 min read"
+},
+{
+"id": "010160",
+"page": "media-library.html",
+"en": "Emirates NBD claims 12 top honours at Euromoney Awards for Excellence and Euromoney Islamic Finance Awards 2026"
+},
+{
+"id": "010161",
+"page": "media-library.html",
+"en": "18 September 2026 · 5 min read"
+},
+{
+"id": "010162",
+"page": "media-library.html",
+"en": "Emirates NBD successfully launches Digital Revolving Short-Term Loan facility to Cars24"
+},
+{
+"id": "010163",
+"page": "media-library.html",
+"en": "16 September 2026 · 2 min read"
+},
+{
+"id": "010164",
+"page": "media-library.html",
+"en": "Emirates NBD returns with third edition of Millionaire programme offering record  10 million Grand Prize"
+},
+{
+"id": "010165",
+"page": "media-library.html",
+"en": "15 September 2026 · 2 min read"
+},
+{
+"id": "010166",
+"page": "media-library.html",
+"en": "Emirates NBD and Shamal Holding partner to offer integrated home financing solutions for Dubai’s off-plan residential units under construction in Dubai"
+},
+{
+"id": "010167",
+"page": "media-library.html",
+"en": "10 September 2026 · 2 min read"
+},
+{
+"id": "010168",
+"page": "media-library.html",
+"en": "Emirates NBD marks Emirati Women’s Day through ‘Banat Zayed’ campaign, celebrating the legacy and future of Emirati women"
+},
+{
+"id": "010169",
+"page": "media-library.html",
+"en": "3 September 2026 · 2 min read"
+},
+{
+"id": "010170",
+"page": "media-library.html",
+"en": "Emirates NBD signs MoU with American Hospital Dubai and Mohamed & Obaid Almulla Group to enhance employee engagement and benefits"
+},
+{
+"id": "010171",
+"page": "media-library.html",
+"en": "18 August 2026 · 1 min read"
+},
+{
+"id": "010172",
+"page": "media-library.html",
+"en": "Emirates NBD drives UAE's decarbonisation shift by pioneering the UAE’s first dedicated Transition Finance Framework"
+},
+{
+"id": "010173",
+"page": "media-library.html",
+"en": "17 August 2026 · 2 min read"
+},
+{
+"id": "010174",
+"page": "media-library.html",
+"en": "Emirates NBD collaborates with Dubai Future District Fund to accelerate FinTech and AI innovation and enhance customer experiences"
+},
+{
+"id": "010175",
+"page": "media-library.html",
+"en": "10 August 2026 · 3 min read"
+},
+{
+"id": "010176",
+"page": "media-library.html",
+"en": "Emirates NBD wins global recognition at Sustainable Investment Awards 2026 for pioneering ESG reporting by Environmental Finance"
+},
+{
+"id": "010177",
+"page": "media-library.html",
+"en": "5 August 2026 · 2 min read"
+}
+]

@@ -9,3 +9,4 @@ Carousel layout of [[cards]] — same cards on the shared data-carousel recipe; 
 - **Static cards:** cards may be `div`s instead of links, and the corner `chip` tags are optional (all cards or none).
 - **Header side link:** any Section Header option applies, including a lead + action pair in `.sh-aside`.
 - **Anchor id (instances only):** a page may add `id="..."` to the root.
+- **Center peek** (2026-10-13): `is-center-peek` on the root centres the active card with its neighbours peeking either side (`--cd-peek` sets the reveal). Cards may be static `div.cd-card`.

@@ -22,10 +22,10 @@
 <script src="assets/js/gate.js"></script>
 <link rel="preload" as="image" href="assets/images/lending/lending-h1.jpg?v=2" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script src="assets/js/tailwind.cdn.js"></script>
 <script src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -426,7 +426,7 @@
 <main id="main">
 
 <!-- ═══ 1. HERO, Scroll Text Fade, surface-dark ═══════════════════════════ -->
-<section class="cmp cmp-hero-text-fade surface-primary" data-animate aria-label="Lending and financing">
+<section class="cmp cmp-hero-text-fade surface-primary" data-animate aria-label="Lending and financing" data-master="hero-text-fade">
   <div class="sth" data-behavior="scroll-story" data-scrub-vh="340">
     <div class="sth-stage surface-image">
       <!-- Crossfading backgrounds (Ken-Burns scale) -->
@@ -501,7 +501,7 @@
 <!-- ═══ /2. STRENGTH ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. OUR CLIENTS, Highlights Tiles (4-up), surface-white, id=clients ═══ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-4 surface-white section-y" data-animate>
+<section class="cmp cmp-cards cards-icon-linked is-cols-4 surface-white section-y" data-animate data-master="cards-icon">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -553,7 +553,7 @@
 <!-- ═══ /3. OUR CLIENTS ═════════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. INDUSTRIES, image scroll-track (12, no text), surface-grey, id=industries ═══════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft" data-animate data-behavior="scroll-track" id="industries">
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft" data-animate data-behavior="scroll-track" id="industries" data-master="cards-scroll">
   <div class="cd-scroll-outer" data-scroll-outer>
     <div class="cd-scroll-pin">
       <div class="container-ds">
@@ -727,7 +727,7 @@
 <!-- ═══ /6. WHY ENBD ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 8. INSIGHTS & NEWS, image cards (4), surface-white, id=insights ═══ -->
-<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-white section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-boxed is-cols-4 surface-white section-y" data-animate data-master="cards-people">
   <div class="container-ds">
 
     <div class="ds-stack section-head measure">
@@ -788,7 +788,7 @@
 <!-- ═══ /8. INSIGHTS & NEWS ═════════════════════════════════════════════════ -->
 
 <!-- ═══ 9. UNLOCK, cross-links (4-up), surface-grey ══════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
 
     <div class="section-head">
@@ -851,7 +851,7 @@
 <!-- ═══ /9. UNLOCK ══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 10. CTA Band, surface-primary, id=contact ══════════════════════════ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Let&rsquo;s move forward</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward, together.</h2>

@@ -28,10 +28,10 @@
 <script defer src="assets/js/gate.js"></script>
 <link rel="preload" as="image" href="assets/images/shared/common/oep-hero-network.jpg" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script defer src="assets/js/tailwind.cdn.js"></script>
 <script defer src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -450,7 +450,7 @@
 <main id="main">
 
 <!-- ═══ 1. HERO, surface-primary ══════════════════════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Our Expertise and Partnerships">
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Our Expertise and Partnerships" data-master="hero">
   <div class="hero-stage surface-image">
     <video class="media-cover" autoplay muted loop playsinline poster="assets/images/shared/common/oep-hero-network.jpg?v=2" src="assets/videos/heroes/investment-banking-v2-2026-08-10-hero.mp4?v=2"></video>
     <span class="ov ov-dark ov-gradient-l ov-80" aria-hidden="true"></span>
@@ -491,11 +491,13 @@
 
 <!-- ═══ 3. RELATIONSHIP MODEL, vertical tabs, surface-grey ═════════════════ -->
 <!-- ═══ support — Scroll Tab (pinned image swaps per item) ═══ -->
-<section class="cmp cmp-scroll-showcase surface-soft section-y" data-behavior="scroll-showcase" data-scroll-pinned data-animate id="support">
+<section class="cmp cmp-scroll-showcase surface-soft section-y" data-behavior="scroll-showcase" data-scroll-pinned data-animate id="support" data-master="scroll-showcase">
 <div class="container-ds">
-    <div class="ds-stack section-head">
-      <span class="ds-eyebrow ink-accent" data-reveal="up">Our clients &amp; support</span>
-      <h2 class="type-h2 ink-primary measure" data-reveal="up" data-reveal-delay=".06">Your relationship with us is personal, led by one trusted contact and supported by a team of specialists.</h2>
+    <div class="section-head">
+      <div class="ds-stack">
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Our clients &amp; support</span>
+        <h2 class="type-h2 ink-primary measure" data-reveal="up" data-reveal-delay=".06">Your relationship with us is personal, led by one trusted contact and supported by a team of specialists.</h2>
+      </div>
     </div>
     <div class="ss-wrap">
       <div class="ss-sticky" aria-hidden="true">
@@ -631,7 +633,7 @@
 <!-- ═══ /6. PARTNERS ═══════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. OUR PEOPLE, surface-white ═══════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-people is-portrait is-cols-4 surface-white section-y" data-animate id="people">
+<section class="cmp cmp-cards is-hover-zoom cards-people is-portrait is-cols-4 surface-white section-y" data-animate id="people" data-master="cards-people">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -695,7 +697,7 @@
 <!-- ═══ /7. OUR PEOPLE ═════════════════════════════════════════════════════ -->
 
 <!-- ═══ 8. SOLUTIONS CROSS-SELL, surface-grey ══════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate id="solutions">
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate id="solutions" data-master="cards">
   <div class="container-ds">
 
     <div class="section-head">
@@ -758,7 +760,7 @@
 <!-- ═══ /8. SOLUTIONS CROSS-SELL ═══════════════════════════════════════════ -->
 
 <!-- ═══ 9. CTA, surface-primary ═══════════════════════════════════════════════ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Get in touch</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let's move forward, together.</h2>

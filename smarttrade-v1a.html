@@ -23,10 +23,10 @@
 <script src="assets/js/gate-config.js"></script>
 <script src="assets/js/gate.js"></script>
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script src="assets/js/tailwind.cdn.js"></script>
 <script src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <!-- Structured data. Built only from on-page facts (product name, provider, and the
      verbatim FAQ Q&As below). No breadcrumb structured data. Update origin if production path differs. -->
 <script type="application/ld+json">
@@ -491,7 +491,7 @@
 
 <main id="main">
 <!-- ═══ Hero, Video BG (Center) ═══ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate>
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate data-master="hero">
   <div class="hero-stage surface-image">
     <video class="media-cover" autoplay muted loop playsinline aria-hidden="true" tabindex="-1" preload="metadata" poster="staging/smarttrade-v1a/smarttrade-hero-poster.jpg" src="staging/smarttrade-v1a/smarttrade-hero-optimized.mp4"></video>
     <span class="ov ov-dark ov-gradient-l ov-80" aria-hidden="true"></span>
@@ -513,7 +513,7 @@
 <!-- ═══ /Hero ═══ -->
 
 <!-- ═══ Insight Split ═══ -->
-<section class="cmp cmp-illustration-split surface-white section-y" data-animate>
+<section class="cmp cmp-illustration-split surface-white section-y" data-animate data-master="illustration-split">
   <div class="container-ds">
     <div class="isp-grid">
       <div class="isp-copy">
@@ -546,7 +546,7 @@
 <!-- ═══ /Insight Split ═══ -->
 
 <!-- ═══ Everything trade, Bento Spotlight ══════════════════════════════════ -->
-<section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-primary section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate>
+<section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-primary section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate data-master="bento-spotlight">
     <div class="container-ds">
       <div class="section-head">
         <div class="ds-stack">
@@ -610,7 +610,7 @@
 <!-- ═══ /Everything trade, Bento Spotlight ══════════════════════════════════ -->
 
 <!-- ═══ Ease & speed, scroll story (Trade finance in a few clicks) ══════════ -->
-  <section class="cmp cmp-feature-scroll-story surface-white" id="story1" data-animate>
+  <section class="cmp cmp-feature-scroll-story surface-white" id="story1" data-animate data-master="feature-scroll-story">
     <div class="ess" data-behavior="scroll-story" data-scrub-vh="520">
       <div class="ess-stage">
         <div class="ess-opener" data-anim='{"0-0.06":{"opacity":[1,1],"y":[0,0]},"0.12-0.2":{"opacity":[1,0],"y":[0,-44],"blur":[0,6]}}'>
@@ -670,7 +670,7 @@
 <!-- ═══ /Ease & speed, scroll story ═════════════════════════════════════════ -->
 
 <!-- ═══ Visibility & control, scroll story (Real-time visibility, end to end) ═ -->
-  <section class="cmp cmp-feature-scroll-story surface-soft" data-animate>
+  <section class="cmp cmp-feature-scroll-story surface-soft" data-animate data-master="feature-scroll-story">
     <div class="ess" data-behavior="scroll-story" data-scrub-vh="520">
       <div class="ess-stage">
         <div class="ess-opener" data-anim='{"0-0.06":{"opacity":[1,1],"y":[0,0]},"0.12-0.2":{"opacity":[1,0],"y":[0,-44],"blur":[0,6]}}'>
@@ -731,7 +731,7 @@
 <!-- ═══ All features, product directory ════════════════════════════════════
      Moved up into the former Capabilities slot. Surface flipped grey→white so it does
      not sit adjacent to the surface-grey story2 (above) or Metrics (below). -->
-  <section class="cmp cmp-tabs tabs-directory surface-white section-y" id="all-features" data-animate>
+  <section class="cmp cmp-tabs tabs-directory surface-white section-y" id="all-features" data-animate data-master="tabs-directory">
     <div class="container-ds">
 
       <div class="section-head is-split">
@@ -744,19 +744,19 @@
 
       <div data-tabs data-tabs-swipe data-reveal="up" data-reveal-delay=".12">
         <div class="tb-rail is-underline mb-8" role="tablist">
-          <button type="button" class="tb-tab active" data-tab="imports">Imports</button>
-          <button type="button" class="tb-tab" data-tab="exports">Exports</button>
-          <button type="button" class="tb-tab" data-tab="guarantees">Guarantees &amp; Islamic</button>
+          <button type="button" class="tb-tab active ink-primary" data-tab="imports">Imports</button>
+          <button type="button" class="tb-tab ink-mute" data-tab="exports">Exports</button>
+          <button type="button" class="tb-tab ink-mute" data-tab="guarantees">Guarantees &amp; Islamic</button>
         </div>
 
         <div data-panel="imports" class="tb-panel active">
           <p class="type-body-lg ink-mute measure mb-6">Fund and manage everything you import, from letters of credit to trust receipt financing.</p>
           <div class="cmp-cards is-cols-auto is-hover-lift">
             <div class="cd-grid" role="list">
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Letter of Credit</h3></div>
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Collection</h3></div>
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Loan</h3></div>
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Trust Receipt Loans</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Letter of Credit</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Collection</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Import Loan</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Trust Receipt Loans</h3></div>
             </div>
           </div>
         </div>
@@ -765,10 +765,10 @@
           <p class="type-body-lg ink-mute measure mb-6">Raise, transfer and finance your export instruments online, end to end.</p>
           <div class="cmp-cards is-cols-auto is-hover-lift">
             <div class="cd-grid" role="list">
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Export Letter of Credit</h3></div>
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Export Collection</h3></div>
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Export Loan</h3></div>
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">LC Transfer &amp; Assignment</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Export Letter of Credit</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Export Collection</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Export Loan</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">LC Transfer &amp; Assignment</h3></div>
             </div>
           </div>
         </div>
@@ -777,10 +777,10 @@
           <p class="type-body-lg ink-mute measure mb-6">Issue guarantees and Shari&rsquo;ah-compliant trade instruments, all through smartTRADE.</p>
           <div class="cmp-cards is-cols-auto is-hover-lift">
             <div class="cd-grid" role="list">
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Outward Guarantees</h3></div>
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Inward Guarantees</h3></div>
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Shipping Guarantee</h3></div>
-      <div class="cd-card card-panel is-flat" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Islamic Letter of Credit</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Outward Guarantees</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Inward Guarantees</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Shipping Guarantee</h3></div>
+      <div class="cd-card card-panel is-flat surface-white" role="listitem" style="--card-pad: 1.25rem 1.35rem"><h3 class="type-body font-semibold ink-primary">Islamic Letter of Credit</h3></div>
             </div>
           </div>
         </div>
@@ -799,7 +799,7 @@
      Pure markup, NO inline styles. Styled by .cmp-metrics-type1 in ds.css,
      animated by ds.js. All four figures animate via data-countup.
      2×2 grid with hairline dividers between quadrants. -->
-<section class="cmp cmp-stats-quad surface-soft section-y" data-animate>
+<section class="cmp cmp-stats-quad surface-soft section-y" data-animate data-master="stats-quad">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -852,7 +852,7 @@
      A hairline grid of deal "tombstones" (type · client · amount · year), 2-up
      on mobile → 5-up on desktop, each a clickable cell (data-href). Reveals
      stagger in. Pure markup, our atoms/type. Styled by .cmp-key-transactions. -->
-<section class="cmp cmp-fact-grid is-cols-5 surface-white section-y" data-animate>
+<section class="cmp cmp-fact-grid is-cols-5 surface-white section-y" data-animate data-master="fact-grid">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -952,7 +952,7 @@
 <!-- ═══ Unlock new possibilities, cross-sell cards ═════════════════════════
      Surface flipped white→grey (snippet ships surface-white) so it does not sit
      adjacent to the surface-white FAQ above it. Below it the CTA band is surface-primary. -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
 
     <div class="section-head">
@@ -1014,7 +1014,7 @@
 <!-- ═══ /Unlock new possibilities ══════════════════════════════════════════ -->
 
 <!-- ═══ CTA Band ═══ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Talk to us</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let's get your trade moving.</h2>

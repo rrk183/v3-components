@@ -26,10 +26,10 @@
 <script defer src="assets/js/gate-config.js"></script>
 <script defer src="assets/js/gate.js"></script>
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script defer src="assets/js/tailwind.cdn.js"></script>
 <script defer src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -281,7 +281,7 @@
 <main id="main">
 
 <!-- ═══ 1. HERO ════════════════════════════════════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Agency">
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Agency" data-master="hero-image">
   <div class="hero-stage surface-image">
     <img class="media-cover" src="staging/agency-v1a/agency-v2-2026-07-05-hero.jpg" alt="" aria-hidden="true" style="object-fit:cover">
     <span class="ov ov-dark ov-tint ov-70" aria-hidden="true"></span>
@@ -341,7 +341,7 @@
 <!-- ═══ /3. STATS BAND ══════════════════════════════════════════════════════ -->
 
 <!-- ═══ 4. WHY BANK WITH US, surface-white ═════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-plain surface-white" data-animate data-behavior="scroll-track" id="why">
+<section class="cmp cmp-cards is-hover-zoom cards-plain surface-white" data-animate data-behavior="scroll-track" id="why" data-master="cards-plain-scroll">
   <div class="cd-scroll-outer" data-scroll-outer>
     <div class="cd-scroll-pin">
       <div class="container-ds">
@@ -357,7 +357,7 @@
         <div class="cd-track" data-track>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/agency-v1a/agency-solutions.jpg" alt="Comprehensive agency solutions" loading="lazy">
+              <span class="media-cover" data-bg="staging/agency-v1a/agency-solutions.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Comprehensive agency solutions</h3>
@@ -366,7 +366,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/agency-v1a/agency-expertise.jpg" alt="Market-leading expertise" loading="lazy">
+              <span class="media-cover" data-bg="staging/agency-v1a/agency-expertise.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Market-leading expertise</h3>
@@ -375,7 +375,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/agency-v1a/agency-team.jpg" alt="Independent, experienced team" loading="lazy">
+              <span class="media-cover" data-bg="staging/agency-v1a/agency-team.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Independent, experienced team</h3>
@@ -384,7 +384,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/agency-v1a/agency-execution.jpg" alt="Best-in-class execution" loading="lazy">
+              <span class="media-cover" data-bg="staging/agency-v1a/agency-execution.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Best-in-class execution</h3>
@@ -393,7 +393,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/agency-v1a/agency-innovation.jpg" alt="Innovative &amp; flexible approach" loading="lazy">
+              <span class="media-cover" data-bg="staging/agency-v1a/agency-innovation.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Innovative &amp; flexible approach</h3>
@@ -402,7 +402,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/agency-v1a/agency-legal.jpg" alt="Robust legal &amp; operational framework" loading="lazy">
+              <span class="media-cover" data-bg="staging/agency-v1a/agency-legal.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Robust legal &amp; operational framework</h3>
@@ -411,7 +411,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/agency-v1a/agency-relationship.jpg" alt="Relationship-driven service" loading="lazy">
+              <span class="media-cover" data-bg="staging/agency-v1a/agency-relationship.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Relationship-driven service</h3>
@@ -484,7 +484,7 @@
 <!-- ═══ /5. GLOBAL REACH ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. CROSS-SELL, surface-grey ════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
     <div class="ds-stack section-head">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
@@ -602,7 +602,7 @@
 </section>
 <!-- ═══ /LATEST TRANSACTIONS ════════════════════════════════════════════════ -->
 
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Partner with us</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward,&nbsp;together.</h2>

@@ -3648,6 +3648,265 @@ DS.recipe('ib-hero', function (root) {
     if(document.fonts&&document.fonts.ready) document.fonts.ready.then(init); else window.addEventListener('load',init);
   });
 
+  /* recipe: global-reach — the Global Reach network film (master world-map,
+     moved here 2026-10-13 from global-reach.js and its light fork). A
+     scroll-scrubbed canvas map pins full-screen: intro line, flight from Dubai
+     along the routes, then the copy and four stats. Instance-scoped (no IDs),
+     so any number per page. Options on the root:
+       data-routes="dubai-london dubai-cairo …"  route set (default: the home
+         film's seven); cities and timings come from the tables below.
+       data-end-camera="k x y"  end-frame camera (default "1 1190 462").
+     Canvas colours read from the --gr-* tokens the ground sets in ds.css.
+     ?t=<seconds> in the URL freezes the timeline (QA). */
+  DS.recipe('global-reach', function (root) {
+    var reach = root.querySelector('.gr-reach'), frame = root.querySelector('.gr-reach__frame'),
+        stage = root.querySelector('.gr-stage'), cv = root.querySelector('.gr-map'),
+        track = root.querySelector('.gr-scrub'), hint = root.querySelector('.gr-scrub__hint');
+    if (!reach || !frame || !stage || !cv || !track || !cv.getContext) return;
+    root.classList.add('gr-armed');
+    var ctx = cv.getContext('2d'), pin = reach.parentElement;
+    /* land dots (hex grid, pre-baked from Natural Earth 50m) */
+    var GRID = { x0: 465.72, y0: -67.2, s: 11, dy: 9.526 };
+    var ROWS=["00000000000000000000000000000000000000000","ffe00000000000000000000000000000000000000","ffec0000000000000000000000000000000000000","ffffc0000000000a6380200e00000000000000000","fffd0000057e00000000000f80000000000000000","fff800000fc000000000000070000000000000000","fffe0000039800000000000008000000000000000","fff2000000000000006000007b800000000000000","fffe0000000000000e00003fffc0001d800000000","fff4000000000000300000ffff400000000000000","ffe800000000000030000ffffcdc6802000000000","fff0000000000000c01c2ffffffff80f800000000","ffd8000000000000e03d3bfffffffdeff80000c00","ffa00000003f8000083dffffffffffffffc000000","ffe00000007ff802039d7fffffffffffffffbf000","f800000003fffe33fffdffffffffffffffffffc00","f800000003ffdf97fffdfffffffffffffffffff80","a01a800007fff0ffffffffffffffffffffffff7e4","000fe0000fe3f4ffffffffffffffffffffffff1c2","000f00003fcffbfffffffffffffffffffffffe000","000000007f1fffffffffffffffffffffffffff000","00000001ff3fffffffffffffffffffffff37f0000","00000010ff1fffffffffffffffffffffff07e0000","00000001ff81fffffffffffffffffffffc1000000","00000000cf0ffffffffffffffffffffc003000000","000000c02e8ffffffffffffffffffff000f000000","000000c0371ffffffffffffffffffff000f800000","000000e0303fffffffffffffffffffc001e000000","0000033025ffffffffffffffffffffe000e000000","000006f0fffffffffffffffffffffffa01c000008","00000779fffffffffffffffffffffffe00c000080","0000007bfffffffffffffffffffffffa000000000","00000087fffffffffffffffffffffffb010000000","0000001ffffffffffffffffffffffff8000000000","0000007ffffffffffffffffffffffffa000000000","0000003ffffff9ffffffffffffffffe2000000000","0000001fffff93fc7fffffffffffffe0000000000","0000001ff3ff17f1ffffffffffffffc0400000000","0000001f99ff01f9ffffffffffffffc3400000000","000007fc18fe00f8fffffffffffffc0e000000000","000003fc263f387cfffffffffffffc00000000000","000003f04370fffcfffffffffffef808000000000","000003f02133fffc7ffffffffffe9004000000000","000003e00033fff87ffffffffff83008000000000","000003e00611fffe7ffffffffffd880c000000000","0000010fe010affffffffffffffe1838000000000","0000009ff00c17fffffffffffffe18f8000000000","000001ffe0000ffffffffffffffe0240000000000","000003fff0000fffffffffffffff0200000000000","000007fffc700fffffffffffffff0200000000000","000007ffff3f7fffffffffffffff0200000000000","000007fffffffffbffffffffffff0000000000000","000007fffffffff9ffffffffffff0000000000000","00001fffffffeff9fffffffffffe0000000000000","00001ffffffff7fe6ffffffffffe0000000000000","00003fffffffe7fc3ffffffffffc0000000000000","00003ffffffff3ff201ffffffffc0000000000000","00007ffffffff3fff01ffffffff90000000000000","00007ffffffff9fff807ffffffe10000000000000","0000fffffffff9fff80fff1ffd800000000000000","00007ffffffffcfff803ff0ffc000000000000000","0000fffffffff8fff003fc0ff9000000000000000","00007ffffffffc7fe001fc07f9018000000000000","0000fffffffffe7fc003f807f8010000000000000","00007ffffffffe3f0001f000fe018000000000000","0000fffffffffe7e0001e001fe010000000000000","00007fffffffffbc0000e000ff010000000000000","0000ffffffffffa00001e000fe010000000000000","00007fffffffffc00000e0009f002000000000000","00007fffffffffce0000e0001c000000000000000","00001ffffffffffe0000600084004000000000000","00001ffffffffffc0000500080002000000000000","00001ffffffffffe0000180000003000000000000","00000ffffffffffc0000100040084000000000000","000007f0fffffffc00000000600c0000000000000","00000200bffffff80000000260180000000000000","000000001ffffff800000001b0380000000000000","000000003fffffe000000001a0780800000000000","000000001fffffe000000000e1fc2800000000000","000000003fffffc000000000e1fa0800000000000","000000003fffff800000000070f80100000000000","000000003fffff000000000078f30160000000000","000000001fffff00000000003efa81bc080000000","800000001ffffe0000000000380301fe000000000","c00000000ffffe00000000000800001f800000000","e000000007fffc00000000000000009f900000000","f000000007fffe000000000003e0000fc08000000","f000000007fffe000000000000e0001e408000000","f000000007fffe000000000000002002201000000","e000000007fffe000000000000000000300000000","c000000003ffff000000000000000102000000000","8000000007ffff0000000000000003c2000000000","8000000007ffff0600000000000003c2000000000","800000000fffff040000000000001787000000000","800000000fffff0c0000000000003fc3800100000","800000000ffffe3c0000000000007fe7000001000","800000000ffffc1c0000000000007fff800080000","000000000ffff83c000000000000ffff800080000","8000000007fff01c000000000000ffffc00000000","0000000007fff03800000000000fffffc00400000","0000000003fff83800000000001fffffe00000000","0000000003fff03800000000003ffffff00000000","0000000003fff83800000000001ffffff80000000","0000000003ffe03000000000003ffffffc0000000","0000000003ffe00000000000001ffffffc0000000","0000000003ffc00000000000003ffffff80000000","0000000001ffe00000000000001ffffffc0000000","0000000001ff800000000000001ffffffc0000000","0000000000ff800000000000000ffffffc0000000","0000000000ff000000000000001ffffff80000000","00000000007f000000000000000fe07ff80000000","0000000000fc000000000000001f807ff00000000","000000000040000000000000000c004ff00000000","0000000000000000000000000000002ff00010000","00000000000000000000000000000007f00000000","00000000000000000000000000000007e0000e000","00000000000000000000000000000000000006000","0000000000000000000000000000000000000c000","00000000000000000000000000000000a00014000","00000000000000000000000000000000c00030000","00000000000000000000000000000000400030000","000000000000000000000000000000000000c0000","000000000000000000000000000000000000c0000","00000000000000000000000000000000000180000","00000000000000000000000000000000000000000","00000000000000000000000000000000000000000","00000000000000000000000000000000000000000","00000000000000000000000000000000000000000","00000000000000000000000000000000000000000","00000000000000000000000000000000000080000","00000000000000000000000000000000000000000","00000000000000000000000000000000000000000","00000000000000000000000000000000000000000","00000000000000000000000000000000000000000","00000000000000000000000000000000000000000"];
+    var DOTS = [], GALL = [];
+    ROWS.forEach(function (row, r) {
+      var off = r % 2 ? GRID.s / 2 : 0;
+      for (var i = 0; i < row.length; i++) {
+        var n = parseInt(row[i], 16);
+        for (var b = 0; b < 4; b++) {
+          var x = GRID.x0 + off + (i * 4 + b) * GRID.s, y = GRID.y0 + r * GRID.dy;
+          GALL.push(x, y);
+          if (n & (8 >> b)) DOTS.push(x, y);
+        }
+      }
+    });
+    /* projection (world space = the 1920x1080 end frame) */
+    function P(lon, lat) { return [1190 + (lon - 55.3) * 7.6, 462 - (lat - 25.2) * 9]; }
+    var CITY = {
+      dubai:     { n: 'Dubai',     ar: 'دبي',      p: P(55.27, 25.20),  lab: [22, -20, 'left'], labTall: [0, -24, 'center'], hub: 1 },
+      london:    { n: 'London',    ar: 'لندن',     p: P(-0.13, 51.51),  lab: [-18, -2, 'right'], labTall: [0, -22, 'center'] },
+      cairo:     { n: 'Cairo',     ar: 'القاهرة',  p: P(31.24, 30.04),  lab: [-16, 6, 'right'] },
+      riyadh:    { n: 'Riyadh',    ar: 'الرياض',   p: P(46.68, 24.71),  lab: [-44, 26, 'center'] },
+      mumbai:    { n: 'Mumbai',    ar: 'مومباي',   p: P(72.88, 19.08),  lab: [46, 26, 'center'] },
+      singapore: { n: 'Singapore', ar: 'سنغافورة', p: P(103.82, 1.35),  lab: [0, 28, 'center'] },
+      shanghai:  { n: 'Shanghai',  ar: 'شنغهاي',   p: P(121.47, 31.23), lab: [-16, -2, 'right'] },
+      tokyo:     { n: 'Tokyo',     ar: 'طوكيو',    p: P(139.69, 35.69), lab: [4, -22, 'center'] },
+      moscow:    { n: 'Moscow',    ar: 'موسكو',    p: P(37.62, 55.76),  lab: [0, -20, 'center'] },
+      bahrain:   { n: 'Bahrain',   ar: 'البحرين',  p: P(50.59, 26.23),  lab: [-14, -9, 'right'], labTall: [0, 24, 'center'] },
+      istanbul:  { n: 'Istanbul',  ar: 'إسطنبول',  p: P(28.98, 41.01),  lab: [-16, -2, 'right'] },
+      berlin:    { n: 'Berlin',    ar: 'برلين',    p: P(13.40, 52.52),  lab: [0, -20, 'center'] },
+      vienna:    { n: 'Vienna',    ar: 'فيينا',    p: P(16.37, 48.21),  lab: [-16, 2, 'right'] },
+      beijing:   { n: 'Beijing',   ar: 'بكين',     p: P(116.40, 39.90), lab: [-16, -2, 'right'] },
+      jakarta:   { n: 'Jakarta',   ar: 'جاكرتا',   p: P(106.85, -6.21), lab: [0, 26, 'center'] }
+    };
+    /* route timings: start (s), duration (s), bow, bow side */
+    var ROUTE = {
+      'dubai-london': [3.7, 1.5, .30, 'n'], 'dubai-cairo': [4.0, 1.1, .26, 'n'], 'dubai-riyadh': [4.25, .8, .30, 'n'],
+      'dubai-mumbai': [4.5, 1.0, .24, 'n'], 'dubai-singapore': [4.8, 1.7, .22, 'n'],
+      'dubai-moscow': [3.85, 1.3, .12, 'n'], 'dubai-berlin': [3.9, 1.4, .16, 'n'], 'dubai-vienna': [4.05, 1.3, .07, 'n'],
+      'dubai-istanbul': [4.15, 1.1, .10, 'n'], 'dubai-bahrain': [4.35, .6, .45, 'n'],
+      'singapore-shanghai': [7.0, 1.3, .14, 'w'], 'singapore-tokyo': [7.3, 1.5, .20, 'w'],
+      'singapore-beijing': [7.15, 1.4, .16, 'w'], 'singapore-jakarta': [7.0, .9, .25, 'w']
+    };
+    var routes = (root.getAttribute('data-routes') || 'dubai-london dubai-cairo dubai-riyadh dubai-mumbai dubai-singapore singapore-shanghai singapore-tokyo').trim().split(/\s+/).filter(function (k) { return ROUTE[k]; });
+    var C = { dubai: CITY.dubai };
+    var ARCS = routes.map(function (k) {
+      var ab = k.split('-'), a = ab[0], b = ab[1], t = ROUTE[k];
+      C[a] = CITY[a]; C[b] = CITY[b];
+      var A = CITY[a].p, B = CITY[b].p, mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2;
+      var dx = B[0] - A[0], dy = B[1] - A[1], Ln = Math.hypot(dx, dy), nx = -dy / Ln, ny = dx / Ln, side = t[3];
+      if ((side === 'n' && ny > 0) || (side === 'w' && nx > 0) || (side === 'e' && nx < 0)) { nx = -nx; ny = -ny; }
+      return { a: a, b: b, t0: t[0], d: t[1], A: A, B: B, Q: [mx + nx * Ln * t[2], my + ny * Ln * t[2]] };
+    });
+    /* Singapore's label moves aside when Jakarta sits below it */
+    var LAB = {}; Object.keys(C).forEach(function (k) { LAB[k] = { lab: C[k].lab, labTall: C[k].labTall }; });
+    if (C.jakarta) LAB.singapore = { lab: [16, 10, 'left'], labTall: [0, 28, 'center'] };
+    var ARRIVE = { dubai: 3.0 }; ARCS.forEach(function (r) { ARRIVE[r.b] = r.t0 + r.d; });
+    /* layouts: each camera pins Dubai at screen (x,y) with zoom k */
+    var endCam = (root.getAttribute('data-end-camera') || '1 1190 462').trim().split(/\s+/).map(parseFloat);
+    var LAYOUT = {
+      wide: { W: 1920, H: 1080, label: 20, hubLabel: 25, cam: { k: 1.75, x: 960, y: 560 },
+        moves: [[3.3, 5.2, { k: 1.37, x: 832, y: 557 }], [9.4, 11.2, { k: endCam[0], x: endCam[1], y: endCam[2] }]] },
+      tall: { W: 1080, H: 1500, label: 24, hubLabel: 30, cam: { k: 1.4, x: 540, y: 760 },
+        moves: [[3.3, 5.2, { k: .9, x: 445, y: 800 }], [9.4, 11.2, { k: .84, x: 430, y: 800 }]] }
+    };
+    var T = { introIn: [0, .9], introOut: [2.6, 3.3], mapUp: [2.4, 3.4], eyebrow: 10.3, title: 10.5, body: 10.8, stats: [11.6, 11.9, 12.2, 12.5], END: 13.6 };
+    function clamp(v, a, b) { a = a === undefined ? 0 : a; b = b === undefined ? 1 : b; return Math.min(b, Math.max(a, v)); }
+    function prog(t, a, b) { return clamp((t - a) / (b - a)); }
+    function eOut(x) { return 1 - Math.pow(1 - x, 3); }
+    function eIO(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+    function lerp(a, b, x) { return a + (b - a) * x; }
+    var anim = {}; Array.prototype.slice.call(root.querySelectorAll('[data-anim]')).forEach(function (el) { anim[el.getAttribute('data-anim')] = el; });
+    /* lite = touch / small screens: drop the costly per-frame effects and idle the loop when settled */
+    var lite = matchMedia('(pointer:coarse)').matches || Math.min(innerWidth, innerHeight) < 820;
+    var L = LAYOUT.wide, scale = 1, dpr = 1, mscale = 1, mox = 0, moy = 0, pw = 0, ph = 0;
+    function layout() {
+      var portrait = frame.parentElement.clientWidth < 760 && window.innerHeight > window.innerWidth;
+      reach.classList.toggle('gr-is-portrait', portrait);
+      L = portrait ? LAYOUT.tall : LAYOUT.wide;
+      scale = frame.clientWidth / L.W;
+      if (portrait) {
+        /* stage height tracks the frame; copy, map and stats compose in a band capped at 1900 units */
+        L.H = Math.max(1180, Math.round(L.W * frame.clientHeight / frame.clientWidth));
+        var HC = Math.min(L.H, 1900);
+        stage.style.setProperty('--gr-pad', Math.round((L.H - HC) / 2) + 'px');
+        stage.style.setProperty('--gr-t', Math.max(.74, Math.min(1, HC / 1900)).toFixed(3));
+        L.kScale = Math.max(.5, Math.min(1, HC / 2100));
+        var hdr = (document.querySelector('.cmp-site-header') || {}).offsetHeight || 64;
+        var topU = Math.max(110 + Math.round((L.H - HC) / 2), Math.round((hdr + 28) / scale));
+        stage.style.setProperty('--gr-top', topU + 'px');
+        L.dy = Math.round(L.H / 2 - 805 + Math.max(0, topU - 110 - (L.H - HC) / 2) / 2);
+        stage.style.height = L.H + 'px';
+      } else { L.kScale = 1; stage.style.height = ''; }
+      stage.style.transform = 'scale(' + scale + ')';
+      dpr = Math.min(window.devicePixelRatio || 1, lite ? 1.5 : 2);
+      pw = pin.clientWidth; ph = pin.clientHeight;
+      /* landscape scales by width so the end frame always shows every city; portrait covers */
+      mscale = L === LAYOUT.tall ? Math.max(pw / L.W, ph / L.H) : pw / L.W;
+      mox = (pw - L.W * mscale) / 2; moy = (ph - L.H * mscale) / 2;
+      cv.width = Math.round(pw * dpr); cv.height = Math.round(ph * dpr);
+      draw(now());
+    }
+    function mix(a, b, x) { return { k: lerp(a.k, b.k, x), x: lerp(a.x, b.x, x), y: lerp(a.y, b.y, x) }; }
+    function camera(t) {
+      var c = L.cam, from = L.cam;
+      L.moves.forEach(function (m) { if (t >= m[0]) c = mix(from, m[2], eIO(prog(t, m[0], m[1]))); from = m[2]; });
+      var D = C.dubai.p, k = c.k * (L.kScale || 1);
+      return { k: k, tx: c.x - D[0] * k, ty: c.y + (L.dy || 0) - D[1] * k };
+    }
+    function qpt(r, u) { var v = 1 - u; return [v * v * r.A[0] + 2 * v * u * r.Q[0] + u * u * r.B[0], v * v * r.A[1] + 2 * v * u * r.Q[1] + u * u * r.B[1]]; }
+    /* canvas palette: RGB triplets from the --gr-* tokens on the root; unset = the navy film */
+    var PAL_DEF = { ocean: '130,160,220', oceanA: '1', land: '150,180,228', landA: '1', arc: '58,118,255', glow: '120,165,255', glowA: '1', glowEdge: '47,109,255', glowLite: '96,150,240', shadowA: '.9', ring: '110,160,255', node: '58,118,255', core: '255,255,255', label: '255,255,255', head: '207,224,255' };
+    var pal = PAL_DEF;
+    function readPal() {
+      var cs = getComputedStyle(root), o = {};
+      Object.keys(PAL_DEF).forEach(function (k) { o[k] = cs.getPropertyValue('--gr-' + k.replace(/[A-Z]/g, function (m) { return '-' + m.toLowerCase(); })).trim().replace(/\s+/g, '') || PAL_DEF[k]; });
+      ['oceanA', 'landA', 'glowA', 'shadowA'].forEach(function (k) { o[k] = parseFloat(o[k]); if (isNaN(o[k])) o[k] = parseFloat(PAL_DEF[k]); });
+      pal = o;
+    }
+    readPal();
+    /* Arabic (lang="ar" on the section or <html>): city labels in Arabic, Tajawal */
+    var AR = /^ar\b/i.test(((root.closest('[lang]') || document.documentElement).getAttribute('lang') || ''));
+    var FONT = AR ? "'Tajawal','Plus Jakarta Sans',sans-serif" : "'Plus Jakarta Sans',sans-serif";
+    new MutationObserver(function () { readPal(); draw(now()); }).observe(root, { attributes: true, attributeFilter: ['class', 'data-theme'] });
+    function glowDot(x, y, rad, alpha) {
+      alpha *= pal.glowA;
+      if (lite) { ctx.fillStyle = 'rgba(' + pal.glowLite + ',' + (alpha * .5).toFixed(3) + ')'; ctx.beginPath(); ctx.arc(x, y, rad * .7, 0, 7); ctx.fill(); return; }
+      var g = ctx.createRadialGradient(x, y, 0, x, y, rad);
+      g.addColorStop(0, 'rgba(' + pal.glow + ',' + alpha + ')'); g.addColorStop(1, 'rgba(' + pal.glowEdge + ',0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, rad, 0, 7); ctx.fill();
+    }
+    function draw(t) {
+      var cam = camera(t), S = function (p) { return [p[0] * cam.k + cam.tx, p[1] * cam.k + cam.ty]; };
+      ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
+      ctx.setTransform(mscale * dpr, 0, 0, mscale * dpr, mox * dpr, moy * dpr);
+      var cx0 = -mox / mscale - 4, cx1 = (pw - mox) / mscale + 4, cy0 = -moy / mscale - 4, cy1 = (ph - moy) / mscale + 4;
+      /* soft light that follows Dubai */
+      var hub = S(C.dubai.p);
+      pin.style.setProperty('--gx', ((hub[0] * mscale + mox) / pw * 100).toFixed(1) + '%');
+      pin.style.setProperty('--gy', ((hub[1] * mscale + moy) / ph * 100).toFixed(1) + '%');
+      /* land dots, bucketed by alpha to keep fillStyle changes low */
+      var mapA = lerp(.28, 1, eIO(prog(t, T.mapUp[0], T.mapUp[1])));
+      var r = 1.55 * Math.pow(cam.k, .75), sig2 = 2 * Math.pow((L.W < L.H ? 1000 : 620) * Math.max(1, cam.k * .8), 2), B = 10, paths = [], i, x, y;
+      for (i = 0; i < B; i++) paths.push(new Path2D());
+      /* faint full-grid underlay (ocean + land) so the dotted map reaches both margins */
+      var bg = new Path2D(), bgStep = lite ? 4 : 2;
+      for (i = 0; i < GALL.length; i += bgStep) {
+        x = GALL[i] * cam.k + cam.tx; y = GALL[i + 1] * cam.k + cam.ty;
+        if (x < cx0 || y < cy0 || x > cx1 || y > cy1) continue;
+        bg.moveTo(x + r, y); bg.arc(x, y, r, 0, 6.2832);
+      }
+      ctx.fillStyle = 'rgba(' + pal.ocean + ',' + (.05 * mapA * pal.oceanA).toFixed(3) + ')'; ctx.fill(bg);
+      for (i = 0; i < DOTS.length; i += 2) {
+        x = DOTS[i] * cam.k + cam.tx; y = DOTS[i + 1] * cam.k + cam.ty;
+        if (x < cx0 || y < cy0 || x > cx1 || y > cy1) continue;
+        var d2 = (x - hub[0]) * (x - hub[0]) + (y - hub[1]) * (y - hub[1]);
+        var a = .12 + .88 * Math.exp(-d2 / sig2), bi = Math.min(B - 1, Math.floor(a * B));
+        paths[bi].moveTo(x + r, y); paths[bi].arc(x, y, r, 0, 6.2832);
+      }
+      for (i = 0; i < B; i++) { ctx.fillStyle = 'rgba(' + pal.land + ',' + ((i + .5) / B * .5 * mapA * pal.landA).toFixed(3) + ')'; ctx.fill(paths[i]); }
+      /* arcs */
+      ctx.lineCap = 'round';
+      ARCS.forEach(function (rc, ri) {
+        var u = eOut(prog(t, rc.t0, rc.t0 + rc.d)); if (u <= 0) return;
+        var N = 64, n = Math.max(2, Math.ceil(N * u)), j, q;
+        ctx.beginPath();
+        for (j = 0; j <= n; j++) { q = S(qpt(rc, Math.min(u, j / N))); if (j) ctx.lineTo(q[0], q[1]); else ctx.moveTo(q[0], q[1]); }
+        if (!lite) { ctx.shadowColor = 'rgba(' + pal.glowEdge + ',' + pal.shadowA + ')'; ctx.shadowBlur = 10; }
+        ctx.strokeStyle = 'rgba(' + pal.arc + ',.95)'; ctx.lineWidth = 2.2; ctx.stroke();
+        ctx.shadowBlur = 0;
+        if (u < 1) { var h = S(qpt(rc, u)); glowDot(h[0], h[1], 18, .85); ctx.fillStyle = 'rgb(' + pal.head + ')'; ctx.beginPath(); ctx.arc(h[0], h[1], 2.6, 0, 7); ctx.fill(); }
+        /* travelling light packets once the story has finished */
+        if (t > T.END) {
+          var per = 5.5, ph2 = ((t - T.END + ri * .8) % per) / per;
+          if (ph2 < .45) { var w = ph2 / .45; q = S(qpt(rc, eIO(w))); glowDot(q[0], q[1], 10, .7 * Math.sin(w * Math.PI)); }
+        }
+      });
+      /* city nodes + labels */
+      ctx.textBaseline = 'middle';
+      Object.keys(C).forEach(function (key) {
+        var c = C[key], ta = ARRIVE[key]; if (ta === undefined || t < ta) return;
+        var a = eOut(prog(t, ta, ta + .5)), pt = S(c.p), x = pt[0], y = pt[1];
+        var rp = prog(t, ta, ta + 1.1);
+        if (rp > 0 && rp < 1) { ctx.strokeStyle = 'rgba(' + pal.ring + ',' + (.7 * (1 - rp)) + ')'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x, y, 4 + rp * (c.hub ? 34 : 22), 0, 7); ctx.stroke(); }
+        if (c.hub && t > T.END) { var ip = ((t - T.END) % 3) / 3; ctx.strokeStyle = 'rgba(' + pal.ring + ',' + (.45 * (1 - ip)) + ')'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(x, y, 5 + ip * 26, 0, 7); ctx.stroke(); }
+        glowDot(x, y, c.hub ? 20 : 12, .6 * a);
+        ctx.fillStyle = 'rgba(' + pal.node + ',' + a + ')'; ctx.beginPath(); ctx.arc(x, y, c.hub ? 5.5 : 4, 0, 7); ctx.fill();
+        ctx.fillStyle = 'rgba(' + pal.core + ',' + a + ')'; ctx.beginPath(); ctx.arc(x, y, c.hub ? 2.6 : 1.9, 0, 7); ctx.fill();
+        var fs = c.hub ? L.hubLabel : L.label, k = L === LAYOUT.tall ? 1.5 : 1;
+        ctx.font = (c.hub ? 600 : 500) + ' ' + fs + 'px ' + FONT;
+        var lb = (L === LAYOUT.tall && LAB[key].labTall) || LAB[key].lab;
+        ctx.textAlign = lb[2];
+        ctx.fillStyle = 'rgba(' + pal.label + ',' + (.94 * a) + ')';
+        ctx.fillText(AR ? c.ar : c.n, x + lb[0] * k, y + lb[1] * k + (1 - a) * 6);
+      });
+      /* HTML copy, driven by the same clock */
+      var inA = eOut(prog(t, T.introIn[0], T.introIn[1])), outA = eIO(prog(t, T.introOut[0], T.introOut[1]));
+      set('intro', inA * (1 - outA), (1 - inA) * 18 - outA * 10, outA * 6);
+      [['eyebrow', T.eyebrow], ['title', T.title], ['body', T.body]].forEach(function (e) { var x = eOut(prog(t, e[1], e[1] + .9)); set(e[0], x, (1 - x) * 22); });
+      T.stats.forEach(function (t0, i) {
+        var x = eOut(prog(t, t0, t0 + .9)); set('stat' + i, Math.min(1, x * 1.4), (1 - x) * 18);
+        var st = anim['stat' + i]; if (st && st.firstElementChild) st.firstElementChild.style.transform = 'scaleX(' + eIO(prog(t, t0 - .2, t0 + .8)) + ')';
+      });
+    }
+    /* opacity honours the line's tier (--gr-o from gr-tier-2/3) */
+    var base = {};
+    Object.keys(anim).forEach(function (k) { base[k] = parseFloat(getComputedStyle(anim[k]).getPropertyValue('--gr-o')) || 1; });
+    function set(k, o, y, blur) {
+      var el = anim[k]; if (!el) return;
+      el.style.opacity = (o * base[k]).toFixed(3);
+      el.style.transform = (k === 'intro' ? 'translateY(-50%) ' : '') + 'translateY(' + y.toFixed(1) + 'px)';
+      el.style.filter = blur ? 'blur(' + blur.toFixed(1) + 'px)' : '';
+    }
+    /* clock: scroll position drives the timeline */
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var qs = new URLSearchParams(location.search), fixedT = qs.has('t') ? parseFloat(qs.get('t')) : null, T0 = 1.0;
+    var shown = T0, endAt = 0, raf = 0, visible = false;
+    function target() { var r = track.getBoundingClientRect(), run = r.height - innerHeight; return lerp(T0, T.END, clamp(-r.top / run)); }
+    function now() { return fixedT !== null ? fixedT : reduce ? T.END : shown; }
+    function step() {
+      raf = 0;
+      var goal = target(), moving = Math.abs(goal - shown) >= .002;
+      shown = moving ? shown + (goal - shown) * .14 : goal;
+      var t = shown, ambient = !lite && shown >= T.END;
+      if (ambient) { if (!endAt) endAt = performance.now(); t = T.END + .001 + (performance.now() - endAt) / 1000; } else endAt = 0;
+      draw(t);
+      if (hint) hint.style.opacity = clamp(1 - (shown - T0) / .6).toFixed(2);
+      if (visible && !reduce && fixedT === null && (moving || ambient)) raf = requestAnimationFrame(step);
+    }
+    function kick() { if (visible && !raf && !reduce && fixedT === null) raf = requestAnimationFrame(step); }
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) {
+      es.forEach(function (e) { visible = e.isIntersecting; if (visible) kick(); else if (raf) { cancelAnimationFrame(raf); raf = 0; } });
+    }).observe(track);
+    addEventListener('scroll', kick, { passive: true });
+    if (window.DS && DS.lenis && DS.lenis.on) DS.lenis.on('scroll', kick);
+    if (hint && (reduce || fixedT !== null)) hint.style.display = 'none';
+    addEventListener('resize', function () { layout(); kick(); });
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { layout(); draw(now()); });
+    layout();
+  });
+
+
   /* recipe: hex-reach-map — builds the reach map's live layer over the supplied
      hex-grid artwork: hexagonal ripple rings, leader lines and flag chips are
      drawn per market from the MARKERS table below. Colours come from CSS

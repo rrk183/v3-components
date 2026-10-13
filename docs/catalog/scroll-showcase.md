@@ -32,6 +32,8 @@ section.cmp.cmp-scroll-showcase.surface-*[data-behavior=scroll-showcase][data-an
 - **Tick-list body:** an item may hold a `list-check` instead of its chip row.
 - **Per-step button optional:** an item may drop its call-to-action button.
 - **Chips optional:** the row of tag chips under each item may be dropped (all items or none).
+- **Step eyebrow** (2026-10-13): an item may open with a `ds-eyebrow ink-accent` kicker above its name (all items or none).
+- **Title-only header** (2026-10-13): with no lead, the header is a plain `div.section-head > div.ds-stack` (no `is-split`).
 
 ## Content contract
 - 3–5 steps; step name ≤4 words; one image per step (same aspect).

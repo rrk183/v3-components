@@ -31,10 +31,10 @@
 <script defer src="assets/js/gate.js"></script>
 <link rel="preload" as="image" href="assets/images/shared/common/online-hero.jpg" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script defer src="assets/js/tailwind.cdn.js"></script>
 <script defer src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -288,7 +288,7 @@
 <main id="main">
 
 <!-- ═══ 1. HERO ════════════════════════════════════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-labelledby="hero-heading">
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-labelledby="hero-heading" data-master="hero">
   <div class="hero-stage surface-image">
     <video class="media-cover" autoplay muted loop playsinline aria-hidden="true" tabindex="-1" preload="metadata" src="staging/online-trading-v1a/online-trading-2026-07-05-hero.mp4"></video>
     <span class="ov ov-dark ov-tint ov-70" aria-hidden="true"></span>
@@ -411,12 +411,12 @@
 <!-- ═══ /3. WHAT SETS US APART ══════════════════════════════════════════════ -->
 
 <!-- ═══ 4. GLOBAL REACH, surface-primary ══════════════════════════════════════ -->
-<section class="cmp surface-primary section-y" data-animate aria-labelledby="markets-heading">
+<section class="cmp market-band surface-primary section-y" data-animate aria-label="Market access" data-master="market-band">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Market access</span>
-        <h2 id="markets-heading" class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Integrated access across UAE and GCC markets.</h2>
+        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Integrated access across UAE and GCC markets.</h2>
       </div>
       <p class="type-body ink-soft measure sh-lead" data-reveal="up" data-reveal-delay=".1">Buy and sell across the region&rsquo;s leading exchanges from a single login, with real-time quotes and depth screens keeping you close to every move.</p>
     </div>
@@ -435,7 +435,7 @@
 <!-- ═══ /4. GLOBAL REACH ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 5. HOW CAN WE HELP, vertical tabs, surface-white ═══════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-plain surface-white" data-animate data-behavior="scroll-track" id="capabilities">
+<section class="cmp cmp-cards is-hover-zoom cards-plain surface-white" data-animate data-behavior="scroll-track" id="capabilities" data-master="cards-plain-scroll">
   <div class="cd-scroll-outer" data-scroll-outer>
     <div class="cd-scroll-pin">
       <div class="container-ds">
@@ -451,7 +451,7 @@
         <div class="cd-track" data-track>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/online-trading-v1a/ot-feat-1.jpg" alt="Real-time market insight" loading="lazy">
+              <span class="media-cover" data-bg="staging/online-trading-v1a/ot-feat-1.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Real-time market insight</h3>
@@ -460,7 +460,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/online-trading-v1a/ot-feat-2.jpg" alt="Consolidated portfolio view" loading="lazy">
+              <span class="media-cover" data-bg="staging/online-trading-v1a/ot-feat-2.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Consolidated portfolio view</h3>
@@ -469,7 +469,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/online-trading-v1a/ot-feat-3.jpg" alt="Powerful order management" loading="lazy">
+              <span class="media-cover" data-bg="staging/online-trading-v1a/ot-feat-3.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Powerful order management</h3>
@@ -478,7 +478,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/online-trading-v1a/ot-feat-4.jpg" alt="Personalised workspaces" loading="lazy">
+              <span class="media-cover" data-bg="staging/online-trading-v1a/ot-feat-4.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Personalised workspaces</h3>
@@ -487,7 +487,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/online-trading-v1a/ot-feat-5.jpg" alt="One view across every market" loading="lazy">
+              <span class="media-cover" data-bg="staging/online-trading-v1a/ot-feat-5.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">One view across every market</h3>
@@ -505,7 +505,7 @@
 <!-- ═══ /5. HOW CAN WE HELP ═════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. CROSS-SELL, surface-grey ════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
     <div class="ds-stack section-head">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
@@ -564,7 +564,7 @@
 <!-- ═══ /6. CROSS-SELL ══════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. CTA, surface-primary ═══════════════════════════════════════════════ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Partner with us</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward,&nbsp;together.</h2>
