@@ -154,6 +154,9 @@ const ALIAS = {
   // world-map-scale is the map + an under-map data strip: same recipe + root
   // class (.cmp-world-map), only the folded-in .wm-scale strip is added.
   "world-map-stats": "world-map",
+  // world-map (World Map - V1) is the Global Reach network film: root class
+  // cmp-global-reach, recipe global-reach (cmp-world-map is the SVG map system).
+  "world-map": "global-reach",
   // cards-thumb carousel is the same component + .is-carousel layout modifier
   "cards-thumb-carousel": "cards-thumb",
   // cmp-cards COMPOSITIONS (2026-09-01): one component, many gallery cards

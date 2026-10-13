@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang-alt="api-banking-v1a.html">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="description" content="واكبوا تطورات العصر واختبروا مستويات جديدة من الراحة والسهولة والربحية مع الخدمات المصرفية عبر API من الإمارات دبي الوطني." />
+<link rel="canonical" href="api-banking-v1a-ar.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="الخدمات المصرفية عبر API | الخدمات المصرفية عبر واجهات برمجة التطبيقات | الإمارات دبي الوطني" />
+<meta property="og:description" content="واكبوا تطورات العصر واختبروا مستويات جديدة من الراحة والسهولة والربحية مع الخدمات المصرفية عبر API من الإمارات دبي الوطني." />
+<meta property="og:url" content="api-banking-v1a-ar.html" />
+<meta property="og:image" content="https://www.emiratesnbd.com/assets/images/shared/common/api-bg.jpg" />
+<meta property="og:image:alt" content="الخدمات المصرفية عبر API من الإمارات دبي الوطني" />
+<meta property="og:site_name" content="Emirates NBD" />
+<meta property="og:locale" content="ar_AE" />
+<meta property="og:locale:alternate" content="ar_AE" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="الخدمات المصرفية عبر API | الخدمات المصرفية عبر واجهات برمجة التطبيقات | الإمارات دبي الوطني" />
+<meta name="twitter:description" content="واكبوا تطورات العصر واختبروا مستويات جديدة من الراحة والسهولة والربحية مع الخدمات المصرفية عبر API من الإمارات دبي الوطني." />
+<meta name="twitter:image" content="https://www.emiratesnbd.com/assets/images/shared/common/api-bg.jpg" />
+<meta name="twitter:image:alt" content="الخدمات المصرفية عبر API من الإمارات دبي الوطني" />
+<title>الخدمات المصرفية عبر API | الخدمات المصرفية عبر واجهات برمجة التطبيقات | الإمارات دبي الوطني</title>
+<script src="assets/js/gate-config.js"></script>
+<script src="assets/js/gate.js"></script>
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
+<script defer src="assets/js/tailwind.cdn.js"></script>
+<script defer src="assets/js/ds-tailwind-config.js"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
+<script defer src="assets/js/lang-switch.js"></script>
+<link rel="stylesheet" href="assets/css/rtl.css?v=261200" />
+</head>
+<body class="lang-ar">
+<a class="ds-skip-link" href="#main">انتقل إلى المحتوى الرئيسي</a>
+
+<!-- ═══ Site Header — top utility bar + brand nav ════════════════════════════
+     Sticky two-row header. The navy utility bar (segment switcher) stays solid;
+     the brand row is transparent over a dark hero and solidifies to a white bar
+     on scroll — data-behavior="site-header" toggles .is-solid past a small
+     scroll threshold. NO-HERO PAGES: add BOTH class="… is-solid" AND data-solid
+     to this root — the class avoids a transparent flash before JS runs, the
+     attribute makes the recipe keep it. That disables the transparent-over-hero
+     treatment; the bar is permanently solid navy.
+     Inner edges align to the container-ds page gutter. The logo recolours with
+     the header text colour (white over hero → navy when solid) via CSS mask. -->
+<header class="cmp cmp-site-header ish-v4" data-behavior="site-header">
+
+  <!-- Row 1, utility / segment bar (always solid navy) -->
+  <div class="ish-utility">
+    <div class="ish-bar container-ds">
+      <div class="ish-segwrap">
+        <nav class="ish-segments" aria-label="فئات العملاء">
+          <a href="personal-home-v3a.html">الأفراد</a> <a href="#">بريوريتي</a> <a href="#">الخدمات المصرفية الخاصة</a> <a href="#">الإماراتيون</a> <a href="#">الأعمال</a> <a href="cib-home-final-ar.html" class="is-active" aria-current="page">الخدمات المصرفية بالجملة</a> <a href="#">الإسلامي</a> <a href="#">الدولي</a> <a href="#">بريميوم</a> <a href="#">الابتكار</a>
+        </nav>
+        <div class="ish-more-wrap" data-dropdown>
+          <button class="ish-more-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">
+            مواقعنا الإلكترونية
+          </button>
+          <!-- Two lists, as on the live site: bank websites by COUNTRY (flag +
+               name + the languages that country publishes in) and group entity
+               websites (logo tile + name + languages). The icon slot takes an
+               inline <svg> flag or an <img> logo alike; the entity tiles in
+               assets/images/websites/ are PLACEHOLDERS, drop the real logo in at
+               the same filename and nothing else changes. The name is not a link:
+               the language links are the destinations, so each site offers only
+               the languages it actually has (UK, India and Research: English). -->
+          <div class="ish-more-panel" role="menu" aria-label="مواقعنا الإلكترونية">
+            <div class="ish-col">
+              <h3 class="ish-col-h">مواقع بنك الإمارات دبي الوطني</h3>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#00843D"/><rect y="10.67" width="24" height="5.33" fill="#000"/><rect width="7" height="16" fill="#EF3340"/></svg></span> <span class="ish-site-body"> <span class="ish-site-name">الإمارات العربية المتحدة</span> <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span> </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#046A38"/><rect x="4" y="10.5" width="16" height="1.4" rx=".7" fill="#fff"/><path d="M5.5 6.2h13" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg></span> <span class="ish-site-body"> <span class="ish-site-name">المملكة العربية السعودية</span> <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span> </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#CE1126"/><rect y="10.67" width="24" height="5.33" fill="#000"/><path d="M12 6.2l1.5 2.6h-3z" fill="#C09300"/></svg></span> <span class="ish-site-body"> <span class="ish-site-name">مصر</span> <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span> </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="8" fill="#ED2939"/><circle cx="6" cy="4" r="2.6" fill="#fff"/><circle cx="7.4" cy="4" r="2.6" fill="#ED2939"/><circle cx="9.4" cy="2.6" r=".6" fill="#fff"/><circle cx="9.4" cy="5.4" r=".6" fill="#fff"/><circle cx="11" cy="4" r=".6" fill="#fff"/></svg></span> <span class="ish-site-body"> <span class="ish-site-name">سنغافورة</span> <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span> </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.9"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.3"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.2"/></svg></span> <span class="ish-site-body"> <span class="ish-site-name">المملكة المتحدة</span> <span class="ish-site-langs"><a href="#">English</a></span> </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-flag"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#FF9933"/><rect y="10.67" width="24" height="5.33" fill="#138808"/><circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width=".9"/></svg></span> <span class="ish-site-body"> <span class="ish-site-name">الهند</span> <span class="ish-site-langs"><a href="#">English</a></span> </span>
+              </div>
+            </div>
+            <div class="ish-col">
+              <h3 class="ish-col-h">مواقع مجموعة الإمارات دبي الوطني</h3>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="assets/images/websites/enbd-asset-management.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">الإمارات دبي الوطني لإدارة الأصول</span> <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="assets/images/websites/enbd-research.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">أبحاث الإمارات دبي الوطني</span> <span class="ish-site-langs"><a href="#">English</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="assets/images/websites/enbd-securities.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">الإمارات دبي الوطني للأوراق المالية</span> <span class="ish-site-langs"><a href="https://www.emiratesnbdsecurities.com/en" target="_blank" rel="noopener">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="https://www.emiratesnbdsecurities.com/ar" target="_blank" rel="noopener" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="assets/images/websites/enbd-reit.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">ENBD REIT</span> <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="assets/images/websites/enbd-ksa-capital.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">KSA Capital</span> <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+              <div class="ish-site">
+                <span class="ish-more-ico ish-site-logo"><img src="assets/images/websites/liv.svg" alt="" loading="lazy"></span>
+                <span class="ish-site-body">
+                  <span class="ish-site-name">Liv.</span> <span class="ish-site-langs"><a href="#">English</a><span class="ish-site-sep" aria-hidden="true">|</span><a href="#" lang="ar">عربي</a></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ish-utility-right">
+        <!-- Each utility link may carry an icon TEMPLATE (hidden on desktop; the
+             mobile drawer clones it into its icon bar). Swap icons by editing
+             the span's content, inline <svg>, <img> or an icon-font <i> all work. -->
+        <a class="ish-util-link" href="#"><span class="ish-util-icon" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>من نحن</a>
+        <a class="ish-util-link" href="#"><span class="ish-util-icon" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13a9 9 0 0 1 18 0"></path><path d="M21 17a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h3z"></path><path d="M3 17a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H3z"></path></svg></span>خدمة العملاء</a>
+        <a class="ish-util-link" href="#"><span class="ish-util-icon" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>أجهزة الصراف الآلي والفروع</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2, brand nav (transparent over hero, solidifies on scroll) -->
+  <div class="ish-brand">
+    <div class="ish-bar container-ds">
+      <div class="ish-brand-left">
+        <a class="ish-logo" href="cib-home-final-ar.html" aria-label="الإمارات دبي الوطني، الصفحة الرئيسية"><span class="ish-logo-img" aria-hidden="true"></span></a>
+        <nav class="ish-menu" aria-label="الرئيسية">
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">المنتجات والخدمات</button>
+            <div class="ish-panel" role="region" aria-label="المنتجات والخدمات">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="assets/images/image-5.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">المدفوعات وتمويل التجارة</h3>
+                  <a href="payments-trade-finance-v1a-ar.html">نظرة عامة</a>
+                  <a href="payments-v1a-ar.html">المدفوعات</a>
+                  <a href="trade-supply-chain-finance-v1a-ar.html">تمويل التجارة وسلاسل التوريد</a>
+                  <a href="emirates-nbd-pay-v1a-ar.html">Emirates NBD Pay</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">التمويل</h3>
+                  <a href="lending-v1a-ar.html">نظرة عامة</a>
+                  <a href="industry-specific-finance-v1a-ar.html">التمويل المتخصص حسب القطاع</a>
+                  <a href="sustainable-finance-v1a-ar.html">التمويل المستدام</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">الحلول الرقمية</h3>
+                  <a href="digital-solutions-v1a-ar.html">نظرة عامة</a>
+                  <a href="businessonline-x-v2-ar.html">businessONLINE</a>
+                  <a href="smarttrade-v1a-ar.html">smartTRADE</a>
+                  <a href="smartscf-v1a-ar.html">smartSCF</a>
+                  <a href="api-banking-v1a-ar.html">الخدمات المصرفية عبر API</a>
+                  <a href="fx-hub-v2-ar.html">FX Hub</a>
+                  <a href="payment-tracker-v1a-ar.html">Payment Tracker</a>
+                  <a href="instant-banking-services-v1a-ar.html">الخدمات المصرفية الفورية</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">الخدمات المصرفية الاستثمارية</button>
+            <div class="ish-panel" role="region" aria-label="الخدمات المصرفية الاستثمارية">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="assets/images/image-1.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">القدرات</h3>
+                  <a href="investment-banking-v2-ar.html">نظرة عامة على الخدمات المصرفية الاستثمارية</a>
+                  <a href="equity-capital-markets-v1a-ar.html">أسواق رأس المال للأسهم</a>
+                  <a href="debt-capital-markets-v1a-ar.html">أسواق الدين</a>
+                  <a href="global-loan-solutions-v1a-ar.html">حلول القروض العالمية</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">الخدمات</h3>
+                  <a href="custody-v1a-ar.html">الحفظ الأمين</a>
+                  <a href="agency-v1a-ar.html">الوكالة</a>
+                  <a href="securities-services-v1a-ar.html">خدمات الأوراق المالية</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">من نحن</h3>
+                  <a href="our-people-v1a-ar.html">فريقنا</a>
+                  <a href="case-study-library-v1a-ar.html">قصص النجاح</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">الأسواق</button>
+            <div class="ish-panel" role="region" aria-label="الأسواق">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="assets/images/image-2.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">الأسواق</h3>
+                  <a href="markets-v2-ar.html">نظرة عامة</a>
+                  <a href="fx-hub-v2-ar.html">FX Hub</a>
+                  <a href="structured-solutions-v2-ar.html">الحلول المهيكلة</a>
+                  <a href="execution-capabilities-v2-ar.html">قدرات التنفيذ</a>
+                  <a href="insights-research-ar.html">الأبحاث</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">التجارة</h3>
+                  <a href="online-trading-v1a-ar.html">التداول الإلكتروني</a>
+                  <a href="margin-trading-v1a-ar.html">التداول بالهامش</a>
+                  <a href="institutional-trading-v1a-ar.html">التداول المؤسسي</a>
+                  <a href="gcc-market-access-v1a-ar.html">الوصول إلى أسواق دول مجلس التعاون الخليجي</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">التمويل الإسلامي</button>
+            <div class="ish-panel" role="region" aria-label="التمويل الإسلامي">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="assets/images/image-3.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">التمويل الإسلامي</h3>
+                  <a href="islamic-finance-ar.html">نظرة عامة</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">الخبرات والشراكات</button>
+            <div class="ish-panel" role="region" aria-label="الخبرات والشراكات">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="assets/images/image-4.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">خبراتنا</h3>
+                  <a href="our-expertise-partnerships-ar.html">نظرة عامة</a>
+                  <a href="initiatives-and-partners-ar.html">المبادرات والشركاء</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">الأبحاث</h3>
+                  <a href="insights-research-ar.html">نظرة عامة</a>
+                  <a href="#">الاقتصاد</a>
+                  <a href="#">الأسواق</a>
+                  <a href="#">ESG</a>
+                  <a href="#">التوقعات</a>
+                  <a href="media-library-ar.html">الإعلام</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ish-mega" data-mega>
+            <button class="ish-menu-trigger is-down" type="button" aria-haspopup="true" aria-expanded="false">الدعم</button>
+            <div class="ish-panel" role="region" aria-label="الدعم">
+              <div class="ish-panel-inner container-ds">
+                <figure class="ish-mega-media" aria-hidden="true"><img src="assets/images/lending-h1.jpg" alt="" loading="lazy"></figure>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">مركز الدعم</h3>
+                  <a href="support-resources-v2-ar.html">نظرة عامة</a>
+                  <a href="faqs-v2-ar.html">الأسئلة الشائعة</a>
+                  <a href="tutorials-platform-demos-v2-ar.html">الدروس التعليمية والعروض التوضيحية للمنصات</a>
+                  <a href="fraud-awareness-hub-v2-ar.html">التوعية بالاحتيال</a>
+                  <a href="support-form-corporate-banking-v2-ar.html">احصلوا على الدعم</a>
+                  <a href="start-application-corporate-banking-v2-ar.html">ابدأوا الطلب</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">الأسعار والرسوم</h3>
+                  <a href="form-centre-v2-ar.html">جدول الرسوم</a>
+                  <a href="form-centre-v2-ar.html">تعرفة تمويل التجارة</a>
+                  <a href="#">أسعار الودائع الثابتة</a>
+                </div>
+                <div class="ish-col">
+                  <h3 class="ish-col-h">روابط مفيدة</h3>
+                  <a href="contact-us-v3-ar.html">اتصل بنا</a>
+                  <a href="#">تعليمات التسوية القياسية</a>
+                  <a href="#">الفتاوى</a>
+                  <a href="#">قدراتنا</a>
+                  <a href="form-centre-v2-ar.html">مركز النماذج</a>
+                  <a href="form-centre-v2-ar.html">بيان الحقائق الأساسية (KFS)</a>
+                  <a href="#">مواقعنا</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+      <div class="ish-bar-tools">
+        <button class="ish-lang" type="button" lang="en" aria-label="English، التبديل إلى الإنجليزية">English</button>
+        <div class="ish-search-wrap" data-search>
+          <button class="ish-search is-search" type="button" aria-haspopup="true" aria-expanded="false" aria-label="بحث">
+          </button>
+          <div class="ish-search-panel" role="region" aria-label="بحث">
+            <div class="ish-search-inner container-ds">
+              <form class="ish-search-form" role="search">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input class="ish-search-input" type="search" placeholder="عمّ تبحثون اليوم؟" aria-label="بحث" />
+              </form>
+              <div class="ish-search-pop">
+                <span class="ish-search-pop-lbl">الأكثر بحثًا</span> <a href="businessonline-x-v2-ar.html">businessONLINE</a><a href="smarttrade-v1a-ar.html">smartTRADE</a><a href="trade-supply-chain-finance-v1a-ar.html">تمويل التجارة</a><a href="contact-us-v3-ar.html">اتصل بنا</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ish-login-wrap" data-dropdown>
+            <button class="ish-login is-down" type="button" aria-haspopup="true" aria-expanded="false">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path></svg> <span>تسجيل الدخول</span>
+            </button>
+            <div class="ish-dropdown" role="menu" aria-label="تسجيل الدخول">
+              <a href="businessonline-x-v2-ar.html" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg>businessONLINE</a> <a href="#" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>الخدمات المصرفية عبر الإنترنت</a> <a href="#" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>signONLINE</a> <a href="#" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>الوساطة</a>
+            </div>
+          </div>
+      </div>
+      <!-- Mobile-only language toggle, sits in the bar next to search + burger
+           (≤860px) so it isn't hidden behind the menu. Hidden on desktop (the
+           utility-bar language takes over there). -->
+      <button class="ish-lang-m" type="button" lang="en" aria-label="English، التبديل إلى الإنجليزية">English</button>
+      <!-- Mobile-only hamburger (≤860px), opens the drawer below. ds.js wires
+           it off data-burger / data-drawer and fills the drawer from this nav.
+           Above 860px it is display:none and the search button takes over. -->
+      <button class="ish-burger" type="button" data-burger aria-haspopup="true" aria-expanded="false" aria-controls="ish-drawer-v4" aria-label="فتح القائمة">
+        <span class="ish-burger-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav drawer (≤860px), opened by .ish-burger. The body is populated
+       by ds.js from the primary mega-menus + search above, so it always mirrors
+       this page's actual nav (no second copy of the links to keep in sync). -->
+  <div class="ish-drawer" id="ish-drawer-v4" data-drawer>
+    <div class="ish-drawer-backdrop" data-drawer-close></div>
+    <div class="ish-drawer-panel" role="dialog" aria-modal="true" aria-label="القائمة">
+      <div class="ish-drawer-head">
+        <span class="ish-drawer-logo" aria-hidden="true"></span>
+        <button class="ish-drawer-close is-close" type="button" data-drawer-close aria-label="إغلاق القائمة">
+        </button>
+      </div>
+      <div class="ish-drawer-body"><!-- ds.js fills: search + mega-menu link groups --></div>
+    </div>
+  </div>
+
+</header>
+<!-- ═══ /Site Header — retail v4 ═════════════════════════════════════════════ -->
+<!-- ═══ /Site Header — retail v4 ═════════════════════════════════════════════ -->
+<!-- ═══ /Site Header — retail v4 ═════════════════════════════════════════════ -->
+<!-- ═══ /Site Header — retail v4 ═════════════════════════════════════════════ -->
+<!-- ═══ /Site Header — retail v4 ═════════════════════════════════════════════ -->
+<!-- ═══ /Site Header ═════════════════════════════════════════════════════════ -->
+
+  <main id="main">
+  <section class="cmp cmp-hero is-bottom surface-primary" data-animate data-master="hero">
+    <div class="hero-stage surface-image">
+      <video class="media-cover" autoplay muted loop playsinline aria-hidden="true" preload="none" poster="staging/api-banking-v1a/api-poster.jpg" data-bg="staging/api-banking-v1a/api-bg.jpg" src="staging/api-banking-v1a/api.mp4"></video>
+      <span class="ov ov-dark ov-gradient-l ov-80" aria-hidden="true"></span>
+      <span class="ov ov-dark ov-gradient-t ov-50" aria-hidden="true"></span>
+      <div class="container-ds hero-frame">
+        <div class="hero-copy ds-stack">
+          <span class="ds-eyebrow ink-white" data-reveal="up">المستقبل الآن</span>
+          <h1 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".08">حوّلوا أعمالكم<br>مع الخدمات المصرفية عبر API</h1>
+          <p class="type-body-lg ink-soft measure" data-reveal="up" data-reveal-delay=".16">واكبوا تطورات العصر واختبروا مستويات جديدة من الراحة والسهولة والربحية مع الخدمات المصرفية عبر API من الإمارات دبي الوطني.</p>
+          <div class="hero-ctas flex flex-wrap items-center gap-4 mt-2" data-reveal="up" data-reveal-delay=".24">
+            <a class="btn btn-filled btn-lg" href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">زوروا بوابة المطورين ←</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-white section-y" data-animate data-master="cards-icon-linked">
+    <div class="container-ds">
+
+      <div class="section-head">
+        <div class="ds-stack">
+          <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">كيف يمكن لواجهات API لدينا أن تُحدث تحولاً في أعمالكم؟</h2>
+        </div>
+        <p class="type-body ink-mute sh-lead" data-reveal="up" data-reveal-delay=".12">في الإمارات دبي الوطني، نتيح للمنصات الخارجية وصولاً آمناً إلى خدماتنا المالية، لنساعد الشركات على بناء منتجات حول الخدمات المصرفية. فجوهر عملياتنا المصرفية يبقى كما هو، لكن التجربة ترتقي إلى مستوى أعلى.</p>
+      </div>
+
+      <div class="cd-grid" role="list">
+
+        <a href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener" class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".04" aria-label="سهولة في إدارة الشؤون المالية">
+          <div class="ds-stack">
+            <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></span>
+            <h3 class="type-h6 ink-primary">سهولة في إدارة الشؤون المالية</h3>
+            <p class="type-body-sm ink-mute">في العلاقات المصرفية التقليدية للأعمال، قد تجدون أنفسكم مضطرين لتسجيل الدخول والخروج من مواقع البنوك وأنظمة الدفع المصرفية لإدارة أموال أعمالكم.</p>
+            <span class="btn btn-text mt-1 is-arrow">اعرفوا المزيد
+             </span>
+          </div>
+        </a>
+
+        <a href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener" class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".10" aria-label="حفّزوا الابتكار">
+          <div class="ds-stack">
+            <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1L12 16.6 5.7 21l2.3-7.1-6-4.5h7.6z"/></svg></span>
+            <h3 class="type-h6 ink-primary">حفّزوا الابتكار</h3>
+            <p class="type-body-sm ink-mute">بصفتكم أصحاب أعمال، تحتاجون إلى التركيز على بناء أعمالكم وتوسيعها، لا على معاملاتكم المصرفية.</p>
+            <span class="btn btn-text mt-1 is-arrow">اعرفوا المزيد
+             </span>
+          </div>
+        </a>
+
+        <a href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener" class="cd-card card-panel surface-clear" role="listitem" data-reveal="up" data-reveal-delay=".16" aria-label="خدمات مصرفية فورية">
+          <div class="ds-stack">
+            <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></span>
+            <h3 class="type-h6 ink-primary">خدمات مصرفية فورية</h3>
+            <p class="type-body-sm ink-mute">إذا كان هدفكم إدارة أعمال متقدمة تقنياً، فستحتاجون إلى شريك مصرفي يواكب سرعتكم.</p>
+            <span class="btn btn-text mt-1 is-arrow">اعرفوا المزيد
+             </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTANCE of master "Feature Scroll Story" (mockup right). Documented options (12 Oct):
+       image ground (photo + navy scrim, title-scene overlay), lean chapters with
+       number-only kickers. Was the page-only api-dark / api-bg styling. Content only. -->
+  <section class="cmp cmp-feature-scroll-story surface-primary" data-animate data-master="feature-scroll-story">
+    <div class="ess surface-primary" data-behavior="scroll-story" data-scrub-vh="520">
+      <div class="ess-stage">
+        <span class="media-cover" data-bg="staging/api-banking-v1a/images-api-bg.jpg" aria-hidden="true"></span>
+        <div class="ess-opener" data-anim='{"0-0.06":{"opacity":[1,1],"y":[0,0]},"0.12-0.2":{"opacity":[1,0],"y":[0,-44],"blur":[0,6]}}'><span class="ov ov-dark ov-tint ov-75" aria-hidden="true"></span><span class="ov ov-primary ov-tint ov-30" aria-hidden="true"></span><div class="ess-opener-in"><h2 class="ess-opener-h ink-white">ما هي الخدمات المصرفية عبر API</h2><p class="ess-opener-lead ink-white">تشير الخدمات المصرفية عبر API إلى مجموعة من البروتوكولات التي تتيح خدمات البنك لشركات خارجية أخرى عبر واجهات API. وتوفر هذه الواجهات وسائل أفضل لمشاركة البيانات، والتكامل مع الأنظمة، وتخصيص الخدمات، وجعل الخدمات المالية سريعة وفعّالة.</p></div></div>
+        <div class="ess-beats" data-anim='{"0-0.12":{"opacity":[0,0]},"0.15-0.22":{"opacity":[0,1]}}'>
+        <div class="container-ds ess-grid">
+          <div class="ess-col"><div class="ess-chapters">
+              <div class="ess-ch" data-anim='{"0.2-0.26":{"opacity":[1,1],"y":[0,0]},"0.40-0.46":{"opacity":[1,0],"y":[0,-24]}}'><div class="ess-kick"><span class="ix">01</span></div><div class="type-h3 ink-white ess-line">استثمروا فرصاً جديدة</div></div>
+              <div class="ess-ch" data-anim='{"0.40-0.46":{"opacity":[0,1],"y":[24,0]},"0.60-0.66":{"opacity":[1,0],"y":[0,-24]}}'><div class="ess-kick"><span class="ix">02</span></div><div class="type-h3 ink-white ess-line">فعّلوا مزيداً من الأتمتة</div></div>
+              <div class="ess-ch" data-anim='{"0.60-0.66":{"opacity":[0,1],"y":[24,0]},"0.80-0.86":{"opacity":[1,0],"y":[0,-24]}}'><div class="ess-kick"><span class="ix">03</span></div><div class="type-h3 ink-white ess-line">استمتعوا بكفاءة أعلى</div></div>
+              <div class="ess-ch" data-anim='{"0.80-0.86":{"opacity":[0,1],"y":[24,0]}}'><div class="ess-kick"><span class="ix">04</span></div><div class="type-h3 ink-white ess-line">ابنوا منتجات بتجربة مستخدم واتصال أفضل</div></div>
+          </div></div>
+          <div class="ess-vis">
+            <div class="ess-shot" data-anim='{"0.2-0.26":{"opacity":[1,1],"scale":[1,1]},"0.40-0.46":{"opacity":[1,0]}}' data-anim-delay="0.025"><div class="mkw mkw-img"><img class="ess-shot-img" src="staging/api-banking-v1a/s1a-balance.png" width="432" height="323" alt="وحدة تحكم API تعرض رصيد حساب." loading="lazy" decoding="async" /></div></div>
+            <div class="ess-shot" data-anim='{"0.40-0.46":{"opacity":[0,1],"scale":[0.97,1]},"0.60-0.66":{"opacity":[1,0]}}' data-anim-delay="0.025"><div class="mkw mkw-img"><img class="ess-shot-img" src="staging/api-banking-v1a/s1b-payments.png" width="404" height="388" alt="بدء عملية دفع عبر API." loading="lazy" decoding="async" /></div></div>
+            <div class="ess-shot" data-anim='{"0.60-0.66":{"opacity":[0,1],"scale":[0.97,1]},"0.80-0.86":{"opacity":[1,0]}}' data-anim-delay="0.025"><div class="mkw mkw-img"><img class="ess-shot-img" src="staging/api-banking-v1a/s1c-reconcile.png" width="432" height="313" alt="مطابقة التحصيلات عبر API." loading="lazy" decoding="async" /></div></div>
+            <div class="ess-shot" data-anim='{"0.80-0.86":{"opacity":[0,1],"scale":[0.97,1]}}' data-anim-delay="0.025"><div class="mkw mkw-img"><img class="ess-shot-img" src="staging/api-banking-v1a/s1d-webhooks.png" width="418" height="269" alt="موجز لأحداث الإشعارات الفورية." loading="lazy" decoding="async" /></div></div>
+          </div>
+        </div>
+        <div class="ess-dotswrap container-ds" aria-hidden="true"><div class="ess-dots"><i></i><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTANCE of master "Bento: Spotlight". Documented options: all-feature tile mix, no eyebrow. Content only. -->
+  <section class="cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight surface-white section-y" style="--bn-row: 188px; --bn-gap: 14px" data-animate data-master="bento-spotlight">
+    <div class="container-ds">
+
+      <div class="section-head is-split">
+        <div class="ds-stack">
+          <h2 class="type-h2 ink-primary" data-reveal="up" data-reveal-delay=".06">ضوابط أمان API</h2>
+        </div>
+        <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">كما هو الحال مع جميع خدماتنا الأخرى، تستوفي بروتوكولات الخدمات المصرفية عبر API أعلى معايير الأمان لتمنحكم راحة بال تامة. وتشمل:</p>
+      </div>
+
+      <div class="bn-grid" role="list" data-behavior="spotlight" data-reveal="up" data-reveal-delay=".12">
+        <div class="bn-tile is-flush is-w6 is-h2 is-t-full justify-end surface-image" role="listitem" data-spotlight-tile data-reveal="up" data-reveal-delay=".12">
+          <span class="media-cover" data-bg="staging/api-banking-v1a/dc-hero-api.jpg" aria-hidden="true"></span>
+          <span class="ov ov-dark ov-gradient-b ov-80" aria-hidden="true"></span>
+          <div class="ds-stack p-6" style="--ds-stack-gap: 6px">
+            <h3 class="type-h3 ink-white">أمان طبقة النقل</h3>
+            <p class="type-caption ink-soft measure">تُجرى استدعاءات API عبر HTTPS باستخدام أمان طبقة النقل (mTLS 1.2).</p>
+          </div>
+        </div>
+        <div class="bn-tile card-clear is-w6 is-h1 is-t-full justify-center" role="listitem" data-spotlight-tile data-reveal="up" data-reveal-delay=".16">
+          <span class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6.5L5 19a1 1 0 0 0 .9 1.5h12.2A1 1 0 0 0 19 19l-5-9.5V3"/><path d="M7.5 15h9"/></svg></span>
+          <h3 class="type-h5 ink-primary mt-2">المصادقة</h3>
+          <p class="type-caption ink-mute mt-1">بصفتكم عميل API، يجب أن تقدموا مفتاحاً وكلمة سر وشهادة خاصة بكم وفقاً لبروتوكول OAuth 2.0 المعتمد في القطاع.</p>
+        </div>
+        <div class="bn-tile card-clear is-w6 is-h1 is-t-full justify-center" role="listitem" data-spotlight-tile data-reveal="up" data-reveal-delay=".20">
+          <span class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+          <h3 class="type-h5 ink-primary mt-2">رمز JWT</h3>
+          <p class="type-caption ink-mute mt-1">تحمل استدعاءات API رمز JWT صالحاً (JSON Web Token) موقّعاً رقمياً من جهة إصدار رموز معروفة. ويجب أن يكون رمز JWT صالحاً وأن يحدد هوية المستخدم أو النظام الذي يستخدم API.</p>
+        </div>
+        <div class="bn-tile card-clear is-w6 is-h1 is-t-full justify-center" role="listitem" data-spotlight-tile data-reveal="up" data-reveal-delay=".24">
+          <span class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <h3 class="type-h5 ink-primary mt-2">التفويض</h3>
+          <p class="type-caption ink-mute mt-1">يجب تسجيل عملاء API في محرك الخدمات المصرفية عبر API لاستخدام الواجهات بصلاحيات وصول مناسبة إلى البنك والموارد الأخرى.</p>
+        </div>
+        <div class="bn-tile card-clear is-w6 is-h1 is-t-full justify-center" role="listitem" data-spotlight-tile data-reveal="up" data-reveal-delay=".28">
+          <span class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
+          <h3 class="type-h5 ink-primary mt-2">أمان طبقة الرسائل</h3>
+          <p class="type-caption ink-mute mt-1">يجب توقيع معاملات طلب API وحمولته رقمياً باستخدام مفتاح خاص آمن ومخصص للعميل.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="cmp cmp-link-directory surface-white section-y" data-animate data-master="link-directory">
+    <div class="container-ds">
+
+      <div class="ds-stack section-head measure">
+        <div class="ds-stack">
+          <h2 class="type-h2 ink-primary type-semibold" data-reveal="up" data-reveal-delay=".06">واجهات API التي نقدمها</h2>
+        </div>
+        <p class="type-body ink-mute" data-reveal="up" data-reveal-delay=".12">هدفنا من جميع واجهات API التي نقدمها هو تسهيل مشاركة البيانات وجعل عمليات التكامل سلسة، مع الحفاظ على مستويات عالية من الأمان والتطوير المستمر للمنتجات المالية. ونقدم واجهات API في المجالات التالية:</p>
+      </div>
+
+      <div class="ld-grid" data-reveal="up" data-reveal-delay=".16">
+        <div class="ld-col">
+          <h3 class="ld-col-h">الحسابات والمعلومات</h3>
+          <a href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">خدمات الحسابات</a>
+          <a href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">خدمات المعلومات</a>
+        </div>
+        <div class="ld-col">
+          <h3 class="ld-col-h">المدفوعات والتحصيلات</h3>
+          <a href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">خدمات الدفع</a>
+          <a href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">التحصيلات - الحسابات الافتراضية</a>
+        </div>
+        <div class="ld-col">
+          <h3 class="ld-col-h">التجارة والإشعارات</h3>
+          <a href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">خدمات التجارة</a>
+          <a href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">الإشعارات الفورية</a>
+        </div>
+      </div>
+
+      <div class="ld-cta" data-reveal="up" data-reveal-delay=".2"><a class="btn btn-navy btn-lg" href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">زوروا بوابة Souq ←</a></div>
+    </div>
+  </section>
+
+
+
+  <!-- ═══ Video Explainer: how API Banking works (click to play, with sound) ═══ -->
+  <!-- INSTANCE of master "video-explainer" (blocks/video-explainer.html, gallery: Product &amp; Device
+       Showcases > Video Explainer). Overrides: content only (heading, lead, 1:15 film, poster, labels,
+       staging/ media paths). Documented option: phone cut (data-vx-mq / -src-m / -poster-m).
+       Re-synced 12 Oct: no autoplay / muted / loop (click-to-play film with sound), aria-label
+       instead of an id-based label, master centred header. -->
+  <section class="cmp cmp-video-explainer surface-soft section-y" data-animate data-master="video-explainer" aria-label="كيف تعمل الخدمات المصرفية عبر API">
+    <div class="container-ds">
+      <div class="section-head is-center">
+        <div class="ds-stack">
+          <h2 class="type-h2 ink-primary" data-reveal="up">هل تريدون فهم آلية عمل الخدمات المصرفية عبر API؟</h2>
+        </div>
+        <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">شاهدوا هذا الفيديو الذي نوضّح فيه كيف تساعدكم واجهات API في التعامل مع سيناريوهات واقعية في أعمالكم اليومية.</p>
+      </div>
+      <div class="vx-frame" data-video-explainer data-vx-mq="(max-width: 599px) and (max-aspect-ratio: 2/3)" data-vx-src-m="staging/api-banking-v1a/api-banking-explainer-mobile.mp4" data-vx-poster-m="staging/api-banking-v1a/api-banking-explainer-poster-mobile.jpg" data-reveal="up" data-reveal-delay=".18">
+        <video class="vx-video" controls playsinline preload="metadata" poster="staging/api-banking-v1a/api-banking-explainer-1080-poster.jpg" aria-label="كيف تعمل الخدمات المصرفية عبر API، فيديو، دقيقة واحدة و15 ثانية">
+          <source src="staging/api-banking-v1a/api-banking-explainer-1080.mp4" type="video/mp4" />
+        </video>
+        <button class="vx-play" type="button" hidden aria-label="تشغيل الفيديو: كيف تعمل الخدمات المصرفية عبر API، دقيقة واحدة و15 ثانية">
+          <span class="vx-play-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span> <span class="vx-play-lbl">شاهدوا الفيديو<span class="vx-dur">1:15</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="cmp ptf-ctaband surface-primary section-y" data-animate data-master="cta-band">
+    <div class="container-narrow">
+      <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">ابدأوا اليوم</h2>
+      <p class="type-body-lg measure mx-auto ink-soft" data-reveal="up" data-reveal-delay=".1">سيعمل فريق تطبيق API وفريق المنتجات لدينا معكم ومع فريق التطوير لديكم طوال العملية بأكملها، من الإعداد حتى الإطلاق، لتجربة سلسة في الانضمام إلى خدمات API. ويمكنكم أيضًا استكشاف عالم API والتسجيل فيه عبر Emirates NBD API Souq.</p>
+      <div class="ptf-ctarow" data-reveal="up" data-reveal-delay=".15">
+        <a class="btn btn-primary btn-lg" href="https://apisouq.emiratesnbd.com/" target="_blank" rel="noopener">زوروا بوابة المطورين ←</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+<!-- ═══ Footer — Option 1 ═══════════════════════════════════════════════════
+     Three-band site footer: navy top bar (عربي language switch + social
+     icons), grey link body (4 link columns + apps column), deeper-grey
+     copyright bar. Band backgrounds + layout in .cmp-footer-option1.
+     No segment dropdown anywhere — it was tried in the bar and the body and
+     rejected both times; don't reintroduce it. ds.js wires the below-lg
+     column accordions (fo1Accordions) by class — no data-animate here, but
+     the block is not inert. -->
+<footer class="cmp cmp-footer-option1 surface-soft">
+
+  <!-- ── Top navy bar ─────────────────────────────────────────────── -->
+  <div class="fo1-topbar">
+    <div class="container-ds flex items-center justify-between gap-6">
+
+      <button type="button" class="fo1-lang" lang="en" aria-label="English، التبديل إلى الإنجليزية">
+        <span class="fo1-flag" aria-hidden="true"><svg viewBox="0 0 18 13" width="18" height="13"><rect width="18" height="13" fill="#fff"/><rect width="18" height="4.33" fill="#00843D"/><rect y="8.67" width="18" height="4.33" fill="#000"/><rect width="5" height="13" fill="#EF3340"/></svg></span>
+        <span>English</span>
+      </button>
+
+      <div class="flex items-center gap-3">
+        <a href="#" aria-label="Facebook" class="fo1-social">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="X" class="fo1-social">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="fo1-social">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="fo1-social">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="fo1-social">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Main link body ───────────────────────────────────────────── -->
+  <div class="fo1-body">
+    <div class="container-ds grid grid-cols-2 lg:grid-cols-5 gap-6 md:gap-10">
+
+      <div>
+        <p class="fo1-col-head">من نحن</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="fo1-link">الوظائف لدينا</a></li>
+          <li><a href="#" class="fo1-link">المشاركة المجتمعية</a></li>
+          <li><a href="#" class="fo1-link">النتائج المالية</a></li>
+          <li><a href="#" class="fo1-link">علاقات المستثمرين</a></li>
+          <li><a href="#" class="fo1-link">قانون مكافحة العبودية الحديثة</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="fo1-col-head">خدمة العملاء</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="fo1-link">كيفية التواصل معنا</a></li>
+          <li class="flex items-center gap-2">
+            <a href="#" class="fo1-link">Debt Assist</a> <span class="fo1-ai-badge">AI</span>
+          </li>
+          <li><a href="#" class="fo1-link">طرق التعامل المصرفي</a></li>
+          <li><a href="#" class="fo1-link">حدّثوا بياناتكم</a></li>
+          <li><a href="#" class="fo1-link">المساعدة والدعم</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="fo1-col-head">مستندات المنتجات</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="fo1-link">الشروط والأحكام</a></li>
+          <li><a href="#" class="fo1-link">بيان الحقائق الأساسية (KFS)</a></li>
+          <li><a href="#" class="fo1-link">نماذج الطلبات</a></li>
+          <li><a href="#" class="fo1-link">جدول الرسوم</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="fo1-col-head">روابط مفيدة</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="fo1-link">رموز IBAN وSwift والتوجيه</a></li>
+          <li><a href="#" class="fo1-link">FATCA وCRS</a></li>
+          <li><a href="#" class="fo1-link">سياسة ملفات تعريف الارتباط</a></li>
+          <li><a href="#" class="fo1-link">إشعار خصوصية البيانات</a></li>
+          <li><a href="#" class="fo1-link">الاحتيال والأمان</a></li>
+        </ul>
+      </div>
+
+      <div class="fo1-apps">
+        <p class="fo1-col-head">حمّلوا تطبيقاتنا</p>
+        <a href="#" class="fo1-app">
+          <span class="fo1-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10 17.5h4"></path><rect x="9.2" y="9.4" width="5.6" height="4.6" rx="1"></rect><path d="M10.4 9.4V8.2a1.6 1.6 0 0 1 3.2 0v1.2"></path></svg></span> <span class="fo1-app-body"> <span class="fo1-app-title">حمّلوا تطبيقنا للهاتف المتحرك</span> <span class="fo1-app-desc">خدمات مصرفية آمنة في أي وقت ومن أي مكان</span> </span>
+        </a>
+        <a href="#" class="fo1-app">
+          <span class="fo1-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M9 17.5h4"></path><path d="M12.5 8.5h5A1.5 1.5 0 0 1 19 10v2.4a1.5 1.5 0 0 1-1.5 1.5h-1.6l-2 1.9v-1.9h-1.4a1.5 1.5 0 0 1-1.5-1.5V10a1.5 1.5 0 0 1 1.5-1.5z"></path></svg></span> <span class="fo1-app-body"> <span class="fo1-app-title">حمّلوا تطبيق businessONLINE X للهاتف المتحرك</span> <span class="fo1-app-desc">أديروا الشؤون المالية لأعمالكم أينما كنتم</span> </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Copyright bar ────────────────────────────────────────────── -->
+  <div class="fo1-copyright">
+    <div class="container-ds fo1-copy-row">
+      <p class="fo1-copy-text">
+        حقوق النشر © 2026<br /> بنك الإمارات دبي الوطني (ش.م.ع) مرخص من مصرف الإمارات العربية المتحدة المركزي، شارع بني ياس، ديرة، ص.ب: 777، دبي، الإمارات العربية المتحدة
+      </p>
+      <span class="fo1-copy-logo" role="img" aria-label="الإمارات دبي الوطني"></span>
+    </div>
+  </div>
+
+</footer>
+<!-- ═══ /Footer — Option 1 ══════════════════════════════════════════════════ -->
+
+<!-- Scroll-story progress dots: ds.js animates the chapters but never updates the
+     .ess-dots indicators. This page-scoped controller lights the dot matching the
+     most-visible chapter in each story; active-dot styling for dark surfaces. -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "API Banking",
+      "serviceType": "API Banking",
+      "description": "Stay ahead of the evolving times and experience new heights of convenience, ease and profits with Emirates NBD API Banking.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Emirates NBD",
+        "url": "https://www.emiratesnbd.com/"
+      },
+      "areaServed": "AE",
+      "url": "api-banking-v1a.html",
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

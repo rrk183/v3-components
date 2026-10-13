@@ -27,10 +27,10 @@
   <script src="assets/js/gate-config.js"></script>
   <script src="assets/js/gate.js"></script>
   <link rel="stylesheet" href="assets/css/fonts.css" />
-  <link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+  <link rel="stylesheet" href="assets/css/ds.css?v=261200" />
   <script src="assets/js/tailwind.cdn.js"></script>
   <script src="assets/js/ds-tailwind-config.js"></script>
-  <script defer src="assets/js/ds.js?v=261195"></script>
+  <script defer src="assets/js/ds.js?v=261200"></script>
 <!-- Structured data: WebPage + publishing Organization. Built only from facts
        already on the page; no breadcrumb markup by design. URLs reuse the og:url
        origin; update the origin alongside og:url/canonical before shipping. -->
@@ -126,8 +126,6 @@
     @media (max-width: 767px) { .ptf2-dir .pd-cols { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: reduce) { .ptf2-dir *, .ptf2-dir *::before, .ptf2-dir *::after { transition: none !important; } }
   </style>
-  <link rel="stylesheet" href="assets/css/global-reach-light.css" />
-  <script defer src="assets/js/global-reach-light.js"></script>
 <script defer src="assets/js/lang-switch.js"></script>
 </head>
 <body>
@@ -572,7 +570,7 @@
   <!-- ═══ /1 · Hero ═══════════════════════════════════════════════════════════ -->
 
   <!-- ═══ 2 · Intro, side-by-side ════════════════════════════════════════════ -->
-  <section class="cmp cmp-intro-side-by-side surface-soft section-y" data-animate>
+  <section class="cmp cmp-intro-side-by-side surface-soft section-y" data-animate data-master="intro-side-by-side">
 <div class="container-ds">
       <div class="intro-grid">
         <div>
@@ -601,7 +599,7 @@
 
   <!-- ═══ 4 · Bento — Expand (What we do) ═════════════════════════════════════ -->
   <span id="what-we-do" aria-hidden="true" style="display:block;position:relative;top:-40px;height:0"></span>
-   <section class="cmp cmp-bento-expand surface-white section-y" data-animate>
+   <section class="cmp cmp-bento-expand surface-white section-y" data-animate data-master="bento-expand">
     <div class="container-ds">
 
       <div class="section-head">
@@ -656,7 +654,7 @@
   <!-- ═══ /4 · Bento — Expand ═════════════════════════════════════════════════ -->
 
   <!-- ═══ 6 · Big statement, Transaction Banking ════════════════════════════ -->
-  <section class="cmp cmp-big-statement surface-white section-y" data-animate>
+  <section class="cmp cmp-big-statement surface-white section-y" data-animate data-master="big-statement">
     <div class="container-narrow">
       <div class="section-head is-center">
         <div class="ds-stack">
@@ -670,12 +668,12 @@
   <!-- ═══ /6 · Big statement ═════════════════════════════════════════════════ -->
 
   <!-- ═══ 7 · World Map, Animated Routes ═════════════════════════════════════ -->
-  <!-- Global reach, light: scroll-driven canvas network map, ported from
-       cib-home-final.html (global-reach-light.css / .js are light copies of the
-       shared global-reach files). Copy and stats are this page's own. -->
-  <section class="gr-wrap" aria-labelledby="gr-h">
+  <!-- INSTANCE of master world-map (gallery: World Map - V1). Documented options:
+       light ground (surface-soft, ink-primary), is-long-copy, data-routes (15-city
+       network), data-end-camera. Copy and stats are this page's own. -->
+  <section class="cmp cmp-global-reach surface-soft is-long-copy" data-animate data-behavior="global-reach" data-routes="dubai-london dubai-cairo dubai-riyadh dubai-mumbai dubai-singapore dubai-moscow dubai-berlin dubai-vienna dubai-istanbul dubai-bahrain singapore-beijing singapore-jakarta" data-end-camera="0.94 1150 470" aria-label="From Dubai to the world" data-master="world-map">
     <div class="sr-only">
-      <h2 id="gr-h">From Dubai to the world.</h2>
+      <h2>From Dubai to the world.</h2>
       <p>A presence in 13 countries means local teams on the ground in the corridors you trade, settling in the time zone where your business takes you.</p>
       <ul>
         <li>AED 1.2T in assets (FY2024)</li>
@@ -684,22 +682,22 @@
         <li>A1 (Stable) Moody&rsquo;s rating</li>
       </ul>
     </div>
-    <div class="gr-scrub" id="gr-scrub">
+    <div class="gr-scrub">
       <div class="gr-scrub__pin">
-        <canvas id="gr-map" class="gr-map" aria-hidden="true"></canvas>
-        <div class="gr-reach" id="gr-reach" aria-hidden="true">
-          <div class="gr-reach__frame" id="gr-frame">
-            <div class="gr-stage" id="gr-stage">
-              <p class="gr-intro" data-anim="intro"><span>From Dubai</span><span>to the world.</span></p>
+        <canvas class="gr-map" aria-hidden="true"></canvas>
+        <div class="gr-reach" aria-hidden="true">
+          <div class="gr-reach__frame">
+            <div class="gr-stage">
+              <p class="gr-intro ink-primary" data-anim="intro"><span>From Dubai</span><span class="gr-tier-2">to the world.</span></p>
               <div class="gr-copy">
-                <p class="gr-copy__title" data-anim="title"><span>From Dubai to<br>the world.</span></p>
-                <p class="gr-copy__body" data-anim="body">A presence in 13 countries means local teams on the ground in the corridors you trade, settling in the time zone where your business takes you.</p>
+                <p class="gr-copy__title ink-primary" data-anim="title"><span>From Dubai to<br>the world.</span></p>
+                <p class="gr-copy__body ink-primary gr-tier-3" data-anim="body">A presence in 13 countries means local teams on the ground in the corridors you trade, settling in the time zone where your business takes you.</p>
               </div>
               <ul class="gr-stats">
-                <li class="gr-stat" data-anim="stat0"><i class="gr-stat__rule"></i><span class="gr-stat__num">AED&nbsp;1.2T</span><span class="gr-stat__label">in assets (FY2024)</span></li>
-                <li class="gr-stat" data-anim="stat1"><i class="gr-stat__rule"></i><span class="gr-stat__num">13</span><span class="gr-stat__label">countries across MENAT, Europe &amp; Asia</span></li>
-                <li class="gr-stat" data-anim="stat2"><i class="gr-stat__rule"></i><span class="gr-stat__num">30&ndash;35%</span><span class="gr-stat__label">of total AED clearing volume</span></li>
-                <li class="gr-stat" data-anim="stat3"><i class="gr-stat__rule"></i><span class="gr-stat__num">A1&nbsp;(Stable)</span><span class="gr-stat__label">Moody&rsquo;s rating</span></li>
+                <li class="gr-stat ink-primary" data-anim="stat0"><i class="gr-stat__rule"></i><span class="gr-stat__num">AED&nbsp;1.2T</span><span class="gr-stat__label gr-tier-3">in assets (FY2024)</span></li>
+                <li class="gr-stat ink-primary" data-anim="stat1"><i class="gr-stat__rule"></i><span class="gr-stat__num">13</span><span class="gr-stat__label gr-tier-3">countries across MENAT, Europe &amp; Asia</span></li>
+                <li class="gr-stat ink-primary" data-anim="stat2"><i class="gr-stat__rule"></i><span class="gr-stat__num">30&ndash;35%</span><span class="gr-stat__label gr-tier-3">of total AED clearing volume</span></li>
+                <li class="gr-stat ink-primary" data-anim="stat3"><i class="gr-stat__rule"></i><span class="gr-stat__num">A1&nbsp;(Stable)</span><span class="gr-stat__label gr-tier-3">Moody&rsquo;s rating</span></li>
               </ul>
             </div>
           </div>
@@ -826,7 +824,7 @@
 
 
   <!-- ═══ 9 · Unlock new possibilities (cards-thumb cross-sell) ═══════════════ -->
-  <section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-white section-y" data-animate>
+  <section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-white section-y" data-animate data-master="cards">
     <div class="container-ds">
 
       <div class="section-head">
@@ -889,7 +887,7 @@
   <!-- ═══ /9 · Unlock new possibilities ══════════════════════════════════════ -->
 
   <!-- ═══ 11 · CTA, Horizontal Marquee ═══════════════════════════════════════ -->
-  <section class="cmp cmp-cta-marquee surface-primary section-y" data-animate>
+  <section class="cmp cmp-cta-marquee surface-primary section-y" data-animate data-master="cta-marquee">
     <div class="container-ds">
       <div class="flex flex-col gap-12 lg:gap-16">
 

@@ -31,10 +31,10 @@
 <script defer src="assets/js/gate.js"></script>
 <link rel="preload" as="image" href="assets/images/institutional-trading/it-hero.jpg" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script defer src="assets/js/tailwind.cdn.js"></script>
 <script defer src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -278,7 +278,7 @@
 <main id="main">
 
 <!-- ═══ 1. HERO ════════════════════════════════════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Institutional Trading">
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Institutional Trading" data-master="hero">
   <div class="hero-stage surface-image">
     <video class="media-cover" autoplay muted loop playsinline aria-hidden="true" tabindex="-1" preload="metadata" poster="assets/images/institutional-trading/it-hero.jpg" src="assets/videos/heroes/institutional-trading-2026-07-05-hero.mp4"></video>
     <span class="ov ov-dark ov-tint ov-70" aria-hidden="true"></span>
@@ -315,7 +315,7 @@
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. WHAT SETS US APART, surface-grey ════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track" id="capabilities">
+<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track" id="capabilities" data-master="cards-plain-scroll">
   <div class="cd-scroll-outer" data-scroll-outer>
     <div class="cd-scroll-pin">
       <div class="container-ds">
@@ -331,7 +331,7 @@
         <div class="cd-track" data-track>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/it-dma.jpg" alt="Direct Market Access (DMA)" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/it-dma.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Direct Market Access (DMA)</h3>
@@ -340,7 +340,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/it-api.jpg" alt="FIX-enabled API connectivity" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/it-api.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">FIX-enabled API connectivity</h3>
@@ -349,7 +349,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/it-oms.jpg" alt="OMS &amp; straight-through processing" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/it-oms.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">OMS &amp; straight-through processing</h3>
@@ -358,7 +358,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/it-block.jpg" alt="Block &amp; cross-trade facilitation" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/it-block.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Block &amp; cross-trade facilitation</h3>
@@ -367,7 +367,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/it-order.jpg" alt="Specialised order handling" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/it-order.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Specialised order handling</h3>
@@ -376,7 +376,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/it-posttrade.jpg" alt="Operational &amp; post-trade support" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/it-posttrade.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Operational &amp; post-trade support</h3>
@@ -385,7 +385,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/it-relationship.jpg" alt="Dedicated relationship coverage" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/it-relationship.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Dedicated relationship coverage</h3>
@@ -403,7 +403,7 @@
 <!-- ═══ /3. WHAT SETS US APART ══════════════════════════════════════════════ -->
 
 <!-- ═══ 4. GLOBAL REACH, surface-primary ══════════════════════════════════════ -->
-<section class="cmp surface-primary section-y" data-animate aria-label="Market access">
+<section class="cmp market-band surface-primary section-y" data-animate aria-label="Market access" data-master="market-band">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
@@ -428,7 +428,7 @@
 
 <!-- ═══ 5. HOW CAN WE HELP, vertical tabs, surface-white ═══════════════════ -->
   <!-- ═══ scroll-story (pinned image swaps per item) ═══ -->
-  <section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="channels" aria-labelledby="channels-heading">
+  <section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="channels" aria-labelledby="channels-heading" data-master="scroll-showcase">
 <div class="container-ds">
       <div class="section-head is-split">
       <div class="ds-stack">
@@ -490,7 +490,7 @@
 <!-- ═══ /5. HOW CAN WE HELP ═════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. CROSS-SELL, surface-grey ════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
     <div class="ds-stack section-head">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
@@ -549,7 +549,7 @@
 <!-- ═══ /6. CROSS-SELL ══════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. CTA, surface-primary ═══════════════════════════════════════════════ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Partner with us</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward,&nbsp;together.</h2>

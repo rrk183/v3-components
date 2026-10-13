@@ -23,10 +23,10 @@
 <script src="assets/js/gate-config.js"></script>
 <script src="assets/js/gate.js"></script>
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script src="assets/js/tailwind.cdn.js"></script>
 <script src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script defer src="assets/js/lang-switch.js"></script>
 </head>
 <body>
@@ -409,7 +409,7 @@
 <main id="main">
 
 <!-- ═══ Hero, Video BG (Left) · Overlay: Tint ══════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Digital Solutions">
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Digital Solutions" data-master="hero-image">
   <div class="hero-stage surface-image">
     <video class="media-cover" autoplay muted loop playsinline aria-hidden="true" tabindex="-1" preload="metadata" poster="staging/digital-solutions-v1a/digital-channels-v2-2026-07-29-hero-poster.jpg" src="staging/digital-solutions-v1a/digital-channels-v2-2026-07-29-hero.mp4"></video>
     <!-- Overlay: Tint, flat uniform dark tint (the section's own wash) -->
@@ -433,7 +433,7 @@
 <!-- ═══ /Hero, Video BG (Left) ══════════════════════════════════════════════ -->
 
 <!-- ═══ Big Statement ════════════════════════════════════════════════════════ -->
-<section class="cmp cmp-big-statement surface-white section-y" data-animate>
+<section class="cmp cmp-big-statement surface-white section-y" data-animate data-master="big-statement">
   <div class="container-narrow">
 
     <div class="section-head is-center">
@@ -449,7 +449,7 @@
 <!-- ═══ /Big Statement ═══════════════════════════════════════════════════════ -->
 
 <!-- ═══ Smart solutions, capability tiles ═══════════════════════════════════ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-white section-y" data-animate>
+<section class="cmp cmp-cards cards-icon-linked is-cols-3 surface-white section-y" data-animate data-master="cards-icon-linked">
   <div class="container-ds">
 
     <div class="section-head is-center">
@@ -661,7 +661,7 @@
 <!-- ═══ /The Channels ════════════════════════════════════════════════════════ -->
 
 <!-- ═══ Feature Spotlight, flagship channels ════════════════════════════════ -->
-<section class="cmp cmp-feature-spotlight surface-white section-y" data-animate>
+<section class="cmp cmp-feature-spotlight surface-white section-y" data-animate data-master="feature-spotlight">
   <div class="container-ds fsp-rows">
 
     <div class="fsp-row fsp-reverse">
@@ -673,8 +673,8 @@
         <h2 class="type-h2 ink-primary fsp-title">Markets, in real time.</h2>
         <p class="type-body-lg ink-mute measure fsp-lead">Stream executable FX rates and lock a forward in seconds, booked straight from businessONLINE with spreads sharpened by deep regional liquidity.</p>
         <ul class="list-check fsp-points">
-          <li>Major and regional currency pairs covered</li>
-          <li>Spot, forwards, swaps &amp; options</li>
+          <li class="ink-mute">Major and regional currency pairs covered</li>
+          <li class="ink-mute">Spot, forwards, swaps &amp; options</li>
         </ul>
         <a href="markets-v2.html" class="btn btn-text btn-lg is-arrow">Explore FX Hub
          </a>
@@ -686,7 +686,7 @@
 <!-- ═══ /Feature Spotlight ═══════════════════════════════════════════════════ -->
 
 <!-- ═══ FAQ, Accordion ══════════════════════════════════════════════════════ -->
-<section class="cmp cmp-acc surface-soft section-y" data-animate>
+<section class="cmp cmp-acc surface-soft section-y" data-animate data-master="acc">
   <div class="container-ds">
     <div class="section-head section-head-sm">
       <div class="ds-stack">
@@ -699,7 +699,7 @@
       <div data-acc class="is-open">
         <button data-acc-head>
           <span class="type-h5 ink-primary">How do I get access to these channels?</span>
-          <span class="ac-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </button>
         <div data-acc-body><div class="ac-inner">
           <p class="type-body ink-mute">Speak to your Relationship Manager or contact us. We'll enable the right channels for your business, from API onboarding to SWIFT setup and CDM access.</p>
@@ -709,7 +709,7 @@
       <div data-acc>
         <button data-acc-head>
           <span class="type-h5 ink-primary">Which channels integrate with my ERP?</span>
-          <span class="ac-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="ac-icon ink-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </button>
         <div data-acc-body><div class="ac-inner">
           <p class="type-body ink-mute">API Banking, SWIFT for Corporates and host-to-host connectivity all integrate directly with your ERP and treasury systems for straight-through processing.</p>
@@ -722,7 +722,7 @@
 <!-- ═══ /FAQ ═════════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ Unlock new possibilities, related solutions ═════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-white section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-white section-y" data-animate data-master="cards">
   <div class="container-ds">
 
     <div class="section-head">
@@ -785,7 +785,7 @@
 <!-- ═══ /Unlock new possibilities ═══════════════════════════════════════════ -->
 
 <!-- ═══ CTA, Horizontal Marquee ═════════════════════════════════════════════ -->
-<section class="cmp cmp-cta-marquee surface-primary section-y" data-animate id="talk-to-a-specialist">
+<section class="cmp cmp-cta-marquee surface-primary section-y" data-animate id="talk-to-a-specialist" data-master="cta-marquee">
   <div class="container-ds">
     <div class="flex flex-col gap-12 lg:gap-16">
 

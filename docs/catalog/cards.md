@@ -48,6 +48,7 @@ cd-card                      ← IDENTITY: THE per-card class (universal, 354/35
 - **Label-only cards:** the copy block may be just the corner `chip` plus one pill button (`btn btn-glass btn-sm btn-pill`), with no eyebrow, title or body (all cards or none).
 - **Overlay colour:** any `ov-*` colour on the card scrim (gallery Card overlay control), e.g. `ov-primary` for a navy tint.
 - **Anchor id (instances only):** a page may add `id="..."` to the root.
+- **Closing button row** (2026-10-13): one centred `btn-outline` in a `.container-ds.text-center` row under the grid or scroll track (cards-plain, cards-plain-scroll). Card media is `span.media-cover[data-bg]`, never an `<img>`.
 
 ## Content contract
 - Slots are markup — add or remove any atom freely; the card stays intentional with any subset.

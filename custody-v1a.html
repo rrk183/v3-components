@@ -34,10 +34,10 @@
 <script defer src="assets/js/gate.js"></script>
 <link rel="preload" as="image" href="assets/images/investment-banking/topic-custody.jpg" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script defer src="assets/js/tailwind.cdn.js"></script>
 <script defer src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -290,7 +290,7 @@
 <main id="main">
 
 <!-- ═══ 1. HERO ════════════════════════════════════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Custody">
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Custody" data-master="hero">
   <div class="hero-stage surface-image">
     <video class="media-cover" autoplay muted loop playsinline aria-hidden="true" tabindex="-1" preload="metadata" poster="assets/images/shared/common/custody-hero.jpg" src="assets/videos/heroes/custody-v2-2026-07-04-hero.mp4?v=2"></video>
     <span class="ov ov-dark ov-tint ov-70" aria-hidden="true"></span>
@@ -325,7 +325,7 @@
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. WHAT WE OFFER - Feature Tab Cards, surface-grey ══════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track" id="offering">
+<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track" id="offering" data-master="cards-plain-scroll">
   <div class="cd-scroll-outer" data-scroll-outer>
     <div class="cd-scroll-pin">
       <div class="container-ds">
@@ -341,7 +341,7 @@
         <div class="cd-track" data-track>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/custody-global.jpg" alt="Global custody" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/custody-global.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Global custody &amp; sub-custody</h3>
@@ -350,7 +350,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/custody-safekeeping.jpg" alt="Safekeeping" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/custody-safekeeping.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Safekeeping &amp; settlement</h3>
@@ -359,7 +359,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/custody-corporate-actions.jpg" alt="Corporate actions" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/custody-corporate-actions.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Corporate actions &amp; income</h3>
@@ -368,7 +368,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/custody-reporting.jpg" alt="Compliance" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/custody-reporting.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Regulatory reporting &amp; compliance</h3>
@@ -377,7 +377,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/custody-digital.jpg" alt="Digital access" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/custody-digital.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Digital access &amp; transparency</h3>
@@ -386,7 +386,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/custody-shariah.jpg" alt="Shariah" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/custody-shariah.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Shariah-compliant solutions</h3>
@@ -395,7 +395,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/custody-relationship.jpg" alt="Relationship" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/custody-relationship.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Dedicated relationship management</h3>
@@ -527,7 +527,7 @@
 <!-- ═══ /5. HOW CAN WE HELP ═════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. CROSS-SELL, surface-grey ════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
     <div class="ds-stack section-head">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
@@ -578,7 +578,7 @@
 <!-- ═══ /6. CROSS-SELL ══════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. CTA, surface-primary ═══════════════════════════════════════════════ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Partner with us</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward,&nbsp;together.</h2>

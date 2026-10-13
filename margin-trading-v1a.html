@@ -29,10 +29,10 @@
 <script defer src="assets/js/gate.js"></script>
 <link rel="preload" as="image" href="assets/images/margin-trading/margin-trading-hero.jpg?v=20260701" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script defer src="assets/js/tailwind.cdn.js"></script>
 <script defer src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -273,7 +273,7 @@
 <main id="main">
 
 <!-- ═══ 1. HERO ════════════════════════════════════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-labelledby="hero-heading">
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-labelledby="hero-heading" data-master="hero">
   <div class="hero-stage surface-image">
     <video class="media-cover" autoplay muted loop playsinline aria-hidden="true" tabindex="-1" preload="metadata" src="assets/videos/heroes/margin-trading-2026-07-05-hero.mp4"></video>
     <span class="ov ov-dark ov-tint ov-70" aria-hidden="true"></span>
@@ -310,7 +310,7 @@
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. WHAT SETS US APART, surface-grey ════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track">
+<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track" data-master="cards-plain-scroll">
   <div class="cd-scroll-outer" data-scroll-outer>
     <div class="cd-scroll-pin">
       <div class="container-ds">
@@ -326,7 +326,7 @@
         <div class="cd-track" data-track>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/mt-buying-power.jpg" alt="Greater buying power" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/mt-buying-power.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Greater buying power</h3>
@@ -335,7 +335,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/mt-digital.jpg" alt="Fully digital application" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/mt-digital.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Fully digital application</h3>
@@ -344,7 +344,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/mt-rates.jpg" alt="Competitive interest rates" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/mt-rates.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Competitive interest rates</h3>
@@ -353,7 +353,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/mt-universe.jpg" alt="Broad approved universe" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/mt-universe.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Broad approved universe</h3>
@@ -362,7 +362,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/mt-nopledge.jpg" alt="No share pledge required" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/mt-nopledge.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">No share pledge required</h3>
@@ -371,7 +371,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/mt-cashout.jpg" alt="Cash-out flexibility" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/mt-cashout.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Cash-out flexibility</h3>
@@ -380,7 +380,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="assets/images/investment-banking/mt-desk.jpg" alt="Dedicated desk support" loading="lazy">
+              <span class="media-cover" data-bg="assets/images/investment-banking/mt-desk.jpg" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Dedicated desk support</h3>
@@ -398,12 +398,12 @@
 <!-- ═══ /3. WHAT SETS US APART ══════════════════════════════════════════════ -->
 
 <!-- ═══ 4. WHERE YOU CAN TRADE, surface-primary ═══════════════════════════════ -->
-<section class="cmp surface-primary section-y" data-animate aria-labelledby="markets-heading">
+<section class="cmp market-band surface-primary section-y" data-animate aria-label="Where you can trade" data-master="market-band">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
         <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Where you can trade</span>
-        <h2 id="markets-heading" class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Buying power across the region&rsquo;s leading markets.</h2>
+        <h2 class="type-h2 ink-white" data-reveal="up" data-reveal-delay=".06">Buying power across the region&rsquo;s leading markets.</h2>
       </div>
       <p class="type-body ink-soft measure sh-lead" data-reveal="up" data-reveal-delay=".1">Put your margin line to work on an approved universe of marginable shares listed across the UAE and Saudi exchanges. Eligibility is set against this defined list, so you always know which shares count toward your limit.</p>
     </div>
@@ -420,7 +420,7 @@
 <!-- ═══ /4. WHERE YOU CAN TRADE ═════════════════════════════════════════════ -->
 
 <!-- ═══ 5. HOW IT WORKS, vertical tabs, surface-white ══════════════════════ -->
-<section class="cmp cmp-how-it-works-steps surface-white section-y" data-animate id="capabilities">
+<section class="cmp cmp-how-it-works-steps surface-white section-y" data-animate id="capabilities" data-master="how-it-works-steps">
   <div class="container-ds">
     <div class="section-head is-split">
       <div class="ds-stack">
@@ -499,7 +499,7 @@
 <!-- ═══ /5. HOW IT WORKS ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. CROSS-SELL, surface-grey ════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
     <div class="ds-stack section-head">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
@@ -558,7 +558,7 @@
 <!-- ═══ /6. CROSS-SELL ══════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. CTA, surface-primary ═══════════════════════════════════════════════ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Partner with us</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward,&nbsp;together.</h2>

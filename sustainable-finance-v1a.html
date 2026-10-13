@@ -26,10 +26,10 @@
 <script src="assets/js/gate.js"></script>
 <link rel="preload" as="image" href="assets/images/shared/common/sf-hero.jpg" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script src="assets/js/tailwind.cdn.js"></script>
 <script src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -493,7 +493,7 @@
 <main id="main">
 
 <!-- ═══ 1. HERO, Image Left, surface-dark ═════════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Sustainable finance">
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Sustainable finance" data-master="hero-image">
   <div class="hero-stage surface-image">
     <span class="media-cover" data-bg="/assets/images/shared/common/sf-hero.jpg" aria-hidden="true"></span>
     <span class="ov ov-dark ov-gradient-l ov-70" aria-hidden="true"></span>
@@ -514,7 +514,7 @@
 <!-- ═══ /1. HERO ════════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. WHAT WE OFFER, Highlights Tiles (4-up), surface-grey, id=solutions ═══ -->
-<section class="cmp cmp-cards cards-icon-linked is-cols-4 surface-soft section-y" data-animate id="solutions">
+<section class="cmp cmp-cards cards-icon-linked is-cols-4 surface-soft section-y" data-animate id="solutions" data-master="cards-icon">
   <div class="container-ds">
 
     <div class="section-head is-split">
@@ -640,7 +640,7 @@
 <!-- ═══ /4. WORKING TOGETHER ════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. SECTORS & USE CASES, 6 image cards, surface-grey, id=sectors ═══ -->
-<section class="cmp cmp-cards is-hover-zoom cards-plain is-cols-3 surface-soft section-y" data-animate id="sectors">
+<section class="cmp cmp-cards is-hover-zoom cards-plain is-cols-3 surface-soft section-y" data-animate id="sectors" data-master="cards-plain">
   <div class="container-ds">
 
     <div class="section-head measure">
@@ -655,7 +655,7 @@
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".06">
         <span class="media-frame aspect-[3/2]">
-          <span class="media-cover" data-bg="/assets/images/sustainable-finance/sf-sector-energy.jpg" aria-hidden="true"></span>
+          <span class="media-cover" data-bg="assets/images/sustainable-finance/sf-sector-energy.jpg" aria-hidden="true"></span>
         </span>
         <div class="pt-5 flex flex-col items-start gap-2.5">
           <h3 class="type-h5 ink-primary">Energy &amp; Utilities</h3>
@@ -665,7 +665,7 @@
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".12">
         <span class="media-frame aspect-[3/2]">
-          <span class="media-cover" data-bg="/assets/images/sustainable-finance/sf-sector-mobility.jpg" aria-hidden="true"></span>
+          <span class="media-cover" data-bg="assets/images/sustainable-finance/sf-sector-mobility.jpg" aria-hidden="true"></span>
         </span>
         <div class="pt-5 flex flex-col items-start gap-2.5">
           <h3 class="type-h5 ink-primary">Mobility</h3>
@@ -675,7 +675,7 @@
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".18">
         <span class="media-frame aspect-[3/2]">
-          <span class="media-cover" data-bg="/assets/images/sustainable-finance/sf-sector-realestate.jpg" aria-hidden="true"></span>
+          <span class="media-cover" data-bg="assets/images/sustainable-finance/sf-sector-realestate.jpg" aria-hidden="true"></span>
         </span>
         <div class="pt-5 flex flex-col items-start gap-2.5">
           <h3 class="type-h5 ink-primary">Green Real Estate</h3>
@@ -685,7 +685,7 @@
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".06">
         <span class="media-frame aspect-[3/2]">
-          <span class="media-cover" data-bg="/assets/images/sustainable-finance/sf-sector-industrial.jpg" aria-hidden="true"></span>
+          <span class="media-cover" data-bg="assets/images/sustainable-finance/sf-sector-industrial.jpg" aria-hidden="true"></span>
         </span>
         <div class="pt-5 flex flex-col items-start gap-2.5">
           <h3 class="type-h5 ink-primary">Industrial &amp; Manufacturing</h3>
@@ -695,7 +695,7 @@
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".12">
         <span class="media-frame aspect-[3/2]">
-          <span class="media-cover" data-bg="/assets/images/sustainable-finance/sf-sector-social.jpg" aria-hidden="true"></span>
+          <span class="media-cover" data-bg="assets/images/sustainable-finance/sf-sector-social.jpg" aria-hidden="true"></span>
         </span>
         <div class="pt-5 flex flex-col items-start gap-2.5">
           <h3 class="type-h5 ink-primary">Social Infrastructure</h3>
@@ -705,7 +705,7 @@
 
       <div class="cd-card" role="listitem" data-reveal="up" data-reveal-delay=".18">
         <span class="media-frame aspect-[3/2]">
-          <span class="media-cover" data-bg="/assets/images/sustainable-finance/sf-sector-food.jpg" aria-hidden="true"></span>
+          <span class="media-cover" data-bg="assets/images/sustainable-finance/sf-sector-food.jpg" aria-hidden="true"></span>
         </span>
         <div class="pt-5 flex flex-col items-start gap-2.5">
           <h3 class="type-h5 ink-primary">Food &amp; Agribusiness</h3>
@@ -727,7 +727,7 @@
 <!-- ═══ /7. SECTORS & USE CASES ═════════════════════════════════════════════ -->
 
 <!-- ═══ 8. MAKING CHANGE HAPPEN, Content section, surface-white ═══════════ -->
-<section class="cmp cmp-intro-side-by-side surface-white section-y" data-animate>
+<section class="cmp cmp-intro-side-by-side surface-white section-y" data-animate data-master="intro-side-by-side">
   <div class="container-ds">
     <div class="intro-grid">
       <div>
@@ -779,7 +779,7 @@
 <!-- ═══ /9. FRAMEWORKS & POLICIES ═══════════════════════════════════════════ -->
 
 <!-- ═══ 10. FAQ, Accordion Offerings, surface-white, id=faq ══════════════ -->
-<section class="cmp cmp-acc surface-white section-y" data-animate id="faq">
+<section class="cmp cmp-acc surface-white section-y" data-animate id="faq" data-master="acc-faq">
   <div class="container-ds">
 
     <div class="section-head section-head-sm measure">
@@ -840,7 +840,7 @@
   </div>
 </section>
 <!-- ═══ 11. UNLOCK, pay-cross image cards, surface-grey ═══ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
 
     <div class="section-head">
@@ -900,7 +900,7 @@
   </div>
 </section>
 <!-- ═══ 12. CTA Band, surface-primary, id=contact ═══════════════════════════ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Get started</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward, together.</h2>

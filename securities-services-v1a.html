@@ -30,10 +30,10 @@
 <script defer src="assets/js/gate.js"></script>
 <link rel="preload" as="image" href="assets/images/shared/common/securities-hero.jpg?v=20260701" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css?v=261195" />
+<link rel="stylesheet" href="assets/css/ds.css?v=261200" />
 <script defer src="assets/js/tailwind.cdn.js"></script>
 <script defer src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js?v=261195"></script>
+<script defer src="assets/js/ds.js?v=261200"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -286,7 +286,7 @@
 <main id="main">
 
 <!-- ═══ 1. HERO ════════════════════════════════════════════════════════════ -->
-<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Securities Services">
+<section class="cmp cmp-hero is-bottom surface-primary" data-animate aria-label="Securities Services" data-master="hero-image">
   <div class="hero-stage surface-image">
     <img class="media-cover" src="staging/securities-services-v1a/securities-services-2026-07-05-hero.png" alt="" aria-hidden="true" style="object-fit:cover">
     <span class="ov ov-dark ov-tint ov-70" aria-hidden="true"></span>
@@ -323,7 +323,7 @@
 <!-- ═══ /2. INTRO ═══════════════════════════════════════════════════════════ -->
 
 <!-- ═══ 3. WHAT WE OFFER, surface-grey ═════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track">
+<section class="cmp cmp-cards is-hover-zoom cards-plain surface-soft" data-animate data-behavior="scroll-track" data-master="cards-plain-scroll">
   <div class="cd-scroll-outer" data-scroll-outer>
     <div class="cd-scroll-pin">
       <div class="container-ds">
@@ -339,7 +339,7 @@
         <div class="cd-track" data-track>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/securities-services-v1a/sec-expertise.png" alt="Deep regional expertise" loading="lazy">
+              <span class="media-cover" data-bg="staging/securities-services-v1a/sec-expertise.png" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Deep regional expertise</h3>
@@ -348,7 +348,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/securities-services-v1a/sec-platform.png" alt="Intuitive digital platform" loading="lazy">
+              <span class="media-cover" data-bg="staging/securities-services-v1a/sec-platform.png" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Intuitive digital platform</h3>
@@ -357,7 +357,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/securities-services-v1a/sec-execution.png" alt="Institutional-grade execution" loading="lazy">
+              <span class="media-cover" data-bg="staging/securities-services-v1a/sec-execution.png" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Institutional-grade execution</h3>
@@ -366,7 +366,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/securities-services-v1a/sec-service.png" alt="Dedicated service team" loading="lazy">
+              <span class="media-cover" data-bg="staging/securities-services-v1a/sec-service.png" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Dedicated service team</h3>
@@ -375,7 +375,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/securities-services-v1a/sec-research-2.png" alt="Research-led insight" loading="lazy">
+              <span class="media-cover" data-bg="staging/securities-services-v1a/sec-research-2.png" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Research-led insight</h3>
@@ -384,7 +384,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/securities-services-v1a/sec-margin.png" alt="Margin flexibility" loading="lazy">
+              <span class="media-cover" data-bg="staging/securities-services-v1a/sec-margin.png" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Margin flexibility</h3>
@@ -393,7 +393,7 @@
           </div>
           <div class="cd-card">
             <span class="media-frame aspect-[3/2]">
-              <img class="media-cover" src="staging/securities-services-v1a/sec-tracking.png" alt="Transparent tracking" loading="lazy">
+              <span class="media-cover" data-bg="staging/securities-services-v1a/sec-tracking.png" aria-hidden="true"></span>
             </span>
             <div class="pt-5 flex flex-col items-start gap-2.5">
               <h3 class="type-h5 ink-primary">Transparent tracking</h3>
@@ -412,7 +412,7 @@
 
 <!-- ═══ 4. HOW CAN WE HELP, vertical tabs, surface-white ═══════════════════ -->
   <!-- ═══ scroll-story (pinned image swaps per item) ═══ -->
-  <section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="capabilities" aria-labelledby="capabilities-heading">
+  <section class="cmp cmp-scroll-showcase surface-white section-y" data-behavior="scroll-showcase" data-animate data-scroll-pinned id="capabilities" aria-labelledby="capabilities-heading" data-master="scroll-showcase-rev">
 <div class="container-ds">
       <div class="section-head is-split">
       <div class="ds-stack">
@@ -505,7 +505,7 @@
 <!-- ═══ /5. GLOBAL REACH ════════════════════════════════════════════════════ -->
 
 <!-- ═══ 6. CROSS-SELL, surface-grey ════════════════════════════════════════ -->
-<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate>
+<section class="cmp cmp-cards is-hover-zoom cards-thumb is-cols-4 surface-soft section-y" data-animate data-master="cards">
   <div class="container-ds">
     <div class="ds-stack section-head">
       <span class="ds-eyebrow ink-accent" data-reveal="up">Unlock new possibilities</span>
@@ -564,7 +564,7 @@
 <!-- ═══ /6. CROSS-SELL ══════════════════════════════════════════════════════ -->
 
 <!-- ═══ 7. CTA, surface-primary ═══════════════════════════════════════════════ -->
-<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact">
+<section class="cmp ptf-ctaband surface-primary section-y" data-animate id="contact" data-master="cta-band">
   <div class="container-narrow">
     <span class="ds-eyebrow ink-accent-soft" data-reveal="up">Partner with us</span>
     <h2 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".05">Let&rsquo;s move forward,&nbsp;together.</h2>

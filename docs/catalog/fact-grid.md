@@ -26,6 +26,9 @@ section.cmp-fact-grid.surface-white.section-y[data-animate]
   └ a.kt-link  ← "View all transactions" + arrow SVG
 ```
 
+## Options
+- **Static cells** (2026-10-13): cells may be `div.kt-cell` instead of links, and the View-all link may be dropped. A header eyebrow is allowed. `is-cols-4` sets four columns (8 cells reads as two rows).
+
 ## Content contract
 - **10 tombstone cells** as shipped (the 2-up → 5-up grid reads best in
   multiples of 5; 10 fills two clean desktop rows).

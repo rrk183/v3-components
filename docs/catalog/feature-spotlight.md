@@ -39,6 +39,7 @@ section.cmp-feature-spotlight.surface-white.section-y[data-animate]
 - **Tick list:** the `ul.list-check.fsp-points` is optional per row; delete it for a copy-only row.
 - **Rows:** any number; `.fsp-reverse` flips a row.
 - **Anchor id (instances only):** a page may add `id="..."` to the root.
+- **Navy ground** (2026-10-13): on `surface-primary` the eyebrow takes `ink-accent-soft`, the copy `ink-white` / `ink-soft` and the checklist `ink-soft`; the FX, rates, equities, fixed-income and money-markets pages use it.
 
 ## Content contract
 - **2 rows** (the canonical alternating pair). Add more by repeating `.fsp-row`
