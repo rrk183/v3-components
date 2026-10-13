@@ -9,7 +9,7 @@ a large white two-tone headline at the top; at the bottom a lead, a row of
 glass chips and a white text link. On the end side, a ghost (transparent)
 4-wide column: a two-tone headline, a claim line with one bold word, a wrap of
 neutral topic badges, then two research cards on the mute ground, each with a
-wide photo, a title, one line and a text link. Harvested from the C&IB home
+wide photo, a title, one line and a text link. Harvested from the Wholesale Banking home
 Islamic finance + research act (`cib-home-final.html`, section 8).
 
 ## Motion

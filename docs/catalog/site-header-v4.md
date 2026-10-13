@@ -9,7 +9,7 @@
 ## Look
 Work-in-progress variant. A verbatim copy of `site-header` (v1) with two
 changes: the utility-bar segment strip carries the retail lineup —
-**Personal** is the active segment, "Corporate & institutional" uses the
+**Personal** is the active segment, "Wholesale Banking" uses the
 lowercase-i spelling, and **About us**, **Premium** and **Innovation** are
 appended after International (11 segment links total) — and the strip ends
 with an **"Our Websites"** dropdown — a white **2-column** panel matching the

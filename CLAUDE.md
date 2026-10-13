@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Emirates NBD Design System v4 (Corporate & Institutional Banking): a **pure-markup** design system plus ~80 static pages built from it. No build step, no bundler, no npm dependencies. Pages are plain HTML that load one shared runtime; components are HTML blocks pasted into pages with only their content changed.
+Emirates NBD Design System v4 (Wholesale Banking): a **pure-markup** design system plus ~80 static pages built from it. No build step, no bundler, no npm dependencies. Pages are plain HTML that load one shared runtime; components are HTML blocks pasted into pages with only their content changed.
 
 `CONVENTIONS.md` (authoring law) and `TESTING.md` (what the gate enforces and what needs a human eye) are authoritative. Read the relevant section before changing CSS, blocks, or page markup.
 
@@ -21,7 +21,7 @@ node scripts/build-all-components.mjs --check     # exit 1 if all-components.htm
 - `server.js` is a zero-dependency static server. Setting `SITE_PASSWORD` turns on HTTP Basic Auth. `assets/js/gate.js` + `gate-config.js` add a separate client-side prompt() gate for static deploys.
 - `all-components.html` is **not in this checkout**, so `verify.mjs` currently crashes with ENOENT. Run `build-all-components.mjs --write` first.
 - There are no unit tests. Rendered-layout checks live under `scripts/browser-checks/`, which is also absent here. You run them in the browser console against a served page; see TESTING.md.
-- Entry pages: `start-here.html` (index of all pages), `index.html` (component gallery), `cib-home-final.html` (C&IB home).
+- Entry pages: `start-here.html` (index of all pages), `index.html` (component gallery), `cib-home-final.html` (Wholesale Banking home).
 
 ## Architecture
 

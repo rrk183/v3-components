@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   cib-home-flow.js · C&IB home "flow" motion system (vanilla, no dependencies)
+   cib-home-flow.js · Wholesale Banking home "flow" motion system (vanilla, no dependencies)
    Loaded in <head> without defer so the motion class is on <html> before
    first paint; everything else waits for DOMContentLoaded. Copied from
    cib-v7a.js where reused (never linked) and re-cut for continuous,

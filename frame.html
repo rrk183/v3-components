@@ -154,7 +154,7 @@
       if(cmp && mcols){ cmp.classList.remove('is-m-cols-1','is-m-cols-2'); cmp.classList.add(mcols); }
       if(mspeed){ root.querySelectorAll('.marquee').forEach(function(m){ m.style.setProperty('--marquee-dur', mspeed); }); }
       // block-specific markup options (lib-options.js): motion, buttons
-      if(window.LibOptions) LibOptions.apply(root, { btns: P.get('btns'), motion: P.get('motion'), app: P.get('app'), meyebrow: P.get('meyebrow'), mstats: P.get('mstats') });
+      if(window.LibOptions) LibOptions.apply(root, { btns: P.get('btns'), motion: P.get('motion'), app: P.get('app'), meyebrow: P.get('meyebrow'), mstats: P.get('mstats'), htlink: P.get('htlink') });
       // Desktop column count (Columns control — opt-in grid blocks like cards-thumb)
       if(cmp && cols){ cmp.classList.remove('is-cols-5','is-cols-4','is-cols-3','is-cols-2','is-cols-1','is-cols-auto'); cmp.classList.add(cols); }
       // CTA style (CTA control — opt-in card blocks like cards-thumb)
@@ -201,7 +201,7 @@
       syncBrandLogos(theme||'');
       if(root.querySelector('.cmp-site-header')){
         const demo=document.createElement('div');
-        demo.innerHTML='<div style="min-height:62vh;display:flex;align-items:flex-end;padding:190px clamp(20px,7vw,120px) 64px;background:radial-gradient(120% 120% at 80% 0%,var(--navy-strong) 0%,var(--navy-shade) 55%,var(--navy-deep) 100%);color:#fff"><div><div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:14px">Corporate &amp; Institutional</div><div style="font-size:clamp(34px,4.4vw,60px);font-weight:600;letter-spacing:-.02em;line-height:1.08;max-width:18ch">A dark hero to preview the header over.</div><div style="margin-top:18px;opacity:.75;max-width:46ch">Scroll down — the brand row fades from transparent to a solid white bar.</div></div></div><div style="height:120vh;background:#fff"></div>';
+        demo.innerHTML='<div style="min-height:62vh;display:flex;align-items:flex-end;padding:190px clamp(20px,7vw,120px) 64px;background:radial-gradient(120% 120% at 80% 0%,var(--navy-strong) 0%,var(--navy-shade) 55%,var(--navy-deep) 100%);color:#fff"><div><div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:14px">Wholesale Banking</div><div style="font-size:clamp(34px,4.4vw,60px);font-weight:600;letter-spacing:-.02em;line-height:1.08;max-width:18ch">A dark hero to preview the header over.</div><div style="margin-top:18px;opacity:.75;max-width:46ch">Scroll down — the brand row fades from transparent to a solid white bar.</div></div></div><div style="height:120vh;background:#fff"></div>';
         root.appendChild(demo);
         IS_SCROLL=true;
       }

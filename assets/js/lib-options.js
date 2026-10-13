@@ -13,7 +13,10 @@
    meyebrow: 'on' → add the optional .cm__eyebrow to World Map - V2
    mstats: 'row' → swap the counter for a 3-item .cm__figs stats row
            (+ .is-figs on the root); 'off' → delete the counter
-           (demo figures; authors use their own) */
+           (demo figures; authors use their own)
+   htlink: 'on' → add the optional see-all text link to History Timeline,
+           first in .ht-nav (btn btn-text is-arrow me-auto: start edge,
+           arrows stay at the end) */
 (function () {
   var ROLES = ['btn-filled', 'btn-accent', 'btn-outline'];
   var SETS = { '1': [0], '2s': [0, 1], '3': [0, 1, 2] };
@@ -67,12 +70,21 @@
     });
     c.replaceWith(ul); cmp.classList.add('is-figs');
   }
+  function htlink(root, v) {
+    if (v !== 'on') return;
+    var nav = root.querySelector('.cmp-history-timeline .ht-nav');
+    if (!nav || nav.querySelector('a.btn-text')) return;
+    var a = document.createElement('a');
+    a.className = 'btn btn-text is-arrow me-auto'; a.href = '#'; a.textContent = 'See all milestones';
+    nav.insertBefore(a, nav.firstChild);
+  }
   window.LibOptions = {
     MOTION: [['', 'Motion · On'], ['off', 'Motion · Off']],
     APP: [['', 'App row · On'], ['off', 'App row · Off']],
     MEYEBROW: [['', 'Eyebrow · Off'], ['on', 'Eyebrow · On']],
+    HTLINK: [['', 'See-all link · Off'], ['on', 'See-all link · On']],
     MSTATS: [['', 'Stats · Counter'], ['row', 'Stats · Row of 3'], ['off', 'Stats · Off']],
     BTNS: [['', 'Buttons · As built'], ['1', '1 · Primary'], ['2s', '2 · Primary + Secondary'], ['3', '3 · Primary + Secondary + Tertiary']],
-    apply: function (root, o) { if (!root || !o) return; if (o.btns) btns(root, o.btns); if (o.motion) motion(root, o.motion); if (o.app) app(root, o.app); if (o.meyebrow) meyebrow(root, o.meyebrow); if (o.mstats) mstats(root, o.mstats); }
+    apply: function (root, o) { if (!root || !o) return; if (o.btns) btns(root, o.btns); if (o.motion) motion(root, o.motion); if (o.app) app(root, o.app); if (o.meyebrow) meyebrow(root, o.meyebrow); if (o.mstats) mstats(root, o.mstats); if (o.htlink) htlink(root, o.htlink); }
   };
 })();

@@ -43,7 +43,7 @@
           <a href="#">Private</a>
           <a href="#">Emirati</a>
           <a href="#">Business</a>
-          <a href="#" class="is-active" aria-current="page">Corporate &amp; Institutional</a>
+          <a href="#" class="is-active" aria-current="page">Wholesale Banking</a>
           <a href="#">Islamic</a>
           <a href="#">International</a>
         </nav>
@@ -438,6 +438,9 @@
        • pill controls ....... button.filter-chip data-filter-key="area"  data-filter-value="markets" aria-pressed
        • select controls ..... select data-filter-key="region"
        • reset ............... [data-filter-reset]
+       • show more (option) .. data-filter-step="9" on the root + button[data-filter-more]
+                               inside [data-filter-more-wrap]; [data-filter-count] = on screen,
+                               [data-filter-total] = matching. Filters restart from the first 9.
        • live count .......... [data-filter-count]   (gets the visible number)
        • empty state ......... [data-filter-empty]    (shown when 0 match)
        • the grid ............ [data-filter-grid]
@@ -1303,7 +1306,7 @@
     <span class="ov ov-dark ov-gradient-t ov-40" aria-hidden="true"></span>
     <div class="container-ds hero-frame">
       <div class="hero-copy ds-stack">
-          <span class="ds-eyebrow ink-white" data-reveal="up">Corporate &amp; Institutional</span>
+          <span class="ds-eyebrow ink-white" data-reveal="up">Wholesale Banking</span>
           <h1 class="type-h1 ink-white" data-reveal="up" data-reveal-delay=".08">One bank for everything your business does</h1>
           <p class="type-body-lg measure ink-soft" data-reveal="up" data-reveal-delay=".16">From daily cash to landmark deals &mdash; every capability, one relationship.</p>
           <div class="hero-ctas flex flex-wrap items-center gap-4 mt-2" data-reveal="up" data-reveal-delay=".24">
@@ -1662,7 +1665,7 @@
 
     <div class="section-head is-center">
       <div class="ds-stack">
-        <span class="ds-eyebrow ink-accent" data-reveal="up">Corporate &amp; Institutional Banking</span>
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Wholesale Banking</span>
         <h2 class="bst-line type-display-xxl ink-primary" data-reveal><span class="bst-l"><span class="bst-w">Capital,</span></span><span class="bst-l"><span class="bst-w">in <em>motion.</em></span></span></h2>
       </div>
       <p class="bst-sub type-body-lg sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Everything a business needs to move money, manage risk and fund what's next — on one platform, backed by the region's anchor bank.</p>
@@ -9005,7 +9008,7 @@
      Split section: a media card on the start side (photo poster + optional
      film) carrying a frosted chat panel that plays a short conversation when
      it scrolls into view; copy on the end side (eyebrow, two-tone headline,
-     lead, labelled list-check, two buttons). Harvested from the C&IB home
+     lead, labelled list-check, two buttons). Harvested from the Wholesale Banking home
      relationship act (cib-home-final, section 3).
      Params: surface on the root; .is-rev flips the columns; --focus on the
      poster/film sets the focal point. The film is optional: delete the
@@ -11101,7 +11104,7 @@
 
     <div class="section-head is-split">
       <div class="ds-stack">
-        <span class="ds-eyebrow ink-accent" data-reveal="up">Emirates NBD · Corporate &amp; Institutional</span>
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Emirates NBD · Wholesale Banking</span>
         <h2 class="type-h2 max-w-xl ink-primary" data-reveal="up" data-reveal-delay=".06">Three capabilities. One bank.</h2>
       </div>
       <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">Global payments, trade finance and businessONLINE come together under a single trusted partner.</p>
@@ -11266,7 +11269,7 @@
 
     <div class="section-head is-split">
       <div class="ds-stack">
-        <span class="ds-eyebrow ink-accent" data-reveal="up">Corporate &amp; Institutional</span>
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Wholesale Banking</span>
         <h2 class="type-h1 ink-primary" data-reveal="up" data-reveal-delay=".06">One relationship.<br>Every capability.</h2>
       </div>
       <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">From trade and cash management to global markets and sustainable finance, all through one relationship.</p>
@@ -11333,7 +11336,7 @@
 
     <div class="section-head is-split">
       <div class="ds-stack">
-        <span class="ds-eyebrow ink-accent" data-reveal="up">Corporate &amp; Institutional</span>
+        <span class="ds-eyebrow ink-accent" data-reveal="up">Wholesale Banking</span>
         <h2 class="type-h1 ink-primary" data-reveal="up" data-reveal-delay=".06">One relationship.<br>Every capability.</h2>
       </div>
       <p class="type-body sh-lead ink-mute" data-reveal="up" data-reveal-delay=".12">From trade and cash management to global markets and sustainable finance, all through one relationship.</p>
@@ -11591,7 +11594,7 @@
      Two full-bleed photo panels side by side. Hover, focus or tap widens one
      panel (1.7 : 1), sharpens its photo, fades in its illustrative UI card and
      opens its paragraph and button; the other narrows to photo, chip and
-     headline. Harvested from the C&IB home trade and markets act
+     headline. Harvested from the Wholesale Banking home trade and markets act
      (cib-home-final, section 5).
      Params: surface on the root; the first pane carries .is-active (the one
      open on arrival); --focus on each photo sets its focal point. The
@@ -11664,7 +11667,7 @@
      (headline at the top; lead, glass chips and a text link at the bottom)
      beside a 4-wide ghost tile that stacks a headline, a claim line, topic
      badges and two research cards (wide photo, title, line, text link).
-     Harvested from the C&IB home Islamic finance + research act
+     Harvested from the Wholesale Banking home Islamic finance + research act
      (cib-home-final, section 8).
      Params: surface on the root. Spans are markup (is-w8 / is-w4,
      is-t-full); rows size to the research column and the photo tile
@@ -11997,7 +12000,11 @@
      dot per milestone (active / past / upcoming states), year + content, and
      prev/next arrows. Swipe or drag to move; the centred node becomes active.
      Pure scroll-snap + a tiny rAF read — data-behavior="timeline". No IDs, no
-     inline styles. Styled by .cmp-history-timeline. -->
+     inline styles. Styled by .cmp-history-timeline.
+     Options: eyebrow and split lead are optional (a title-only header drops
+     is-split). See-all link (off by default): put
+     <a class="btn btn-text is-arrow me-auto" href="...">See all ...</a>
+     first in .ht-nav; it sits at the start edge, the arrows stay at the end. -->
 <section class="cmp cmp-history-timeline surface-soft section-y" data-animate>
   <div class="container-ds">
 
@@ -13116,7 +13123,7 @@
      A mid-page proof beat: one tall rounded film card, inset from the page
      edges, with a headline + lead and an outline button at the bottom, then a
      hairline and a row of count-up figures with labels. Harvested from the
-     C&IB home investment banking act (cib-home-final, section 6).
+     Wholesale Banking home investment banking act (cib-home-final, section 6).
      Params: surface on the root (the band itself has no vertical padding, so
      it sits tight between sections; add section-y-tight for air); --focus on
      poster and film sets the focal point. The film is optional: delete the
@@ -13292,7 +13299,7 @@
      "Get the app" row under a hairline (App Store + Google Play badges and a
      QR tile whose iOS | Android chips swap the code), and a phone render on
      the end side that overlaps the panel top, with a floating status chip.
-     Harvested from the C&IB home closing act (cib-home-final, section 9).
+     Harvested from the Wholesale Banking home closing act (cib-home-final, section 9).
      Params: surface on the root (page) and on .adp-panel (the panel ground).
      QR: each [data-qr-os] chip carries data-qr-src + data-qr-alt. Phones: the
      badges and QR hide and one [data-app-link] button opens the visitor's own
@@ -13960,7 +13967,7 @@
       <div>
         <p class="type-body-sm type-semibold mb-3 ink-primary">First, choose the area you would like to speak with us about.</p>
         <div class="flex flex-wrap gap-2 mb-8" role="tablist">
-          <button type="button" class="chip chip-lg active" role="tab" aria-selected="true" data-aud="corp" tabindex="0">Corporate &amp; Institutional Banking</button>
+          <button type="button" class="chip chip-lg active" role="tab" aria-selected="true" data-aud="corp" tabindex="0">Wholesale Banking</button>
           <button type="button" class="chip chip-lg" role="tab" aria-selected="false" data-aud="trade" tabindex="-1">Trading &amp; Securities</button>
         </div>
         <div class="sac-card card-panel surface-white" style="--card-pad: clamp(26px,3vw,42px)" role="tabpanel" data-aud-panel="corp">
@@ -14042,7 +14049,7 @@
         <ol class="bc-trail">
           <li><a href="#" class="bc-link">Home</a></li>
           <li class="bc-sep">/</li>
-          <li><a href="#" class="bc-link">Corporate &amp; Institutional</a></li>
+          <li><a href="#" class="bc-link">Wholesale Banking</a></li>
           <li class="bc-sep">/</li>
           <li><span class="bc-current ink-mute" aria-current="page">Digital Solutions</span></li>
         </ol>
@@ -14056,7 +14063,7 @@
         <ol class="bc-trail">
           <li><a href="#" class="bc-link">Home</a></li>
           <li class="bc-sep">/</li>
-          <li><a href="#" class="bc-link">Corporate &amp; Institutional</a></li>
+          <li><a href="#" class="bc-link">Wholesale Banking</a></li>
           <li class="bc-sep">/</li>
           <li><a href="#" class="bc-link">Payments &amp; Trade Finance</a></li>
           <li class="bc-sep">/</li>
@@ -14072,7 +14079,7 @@
         <ol class="bc-trail">
           <li><a href="#" class="bc-link">Home</a></li>
           <li class="bc-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></li>
-          <li><a href="#" class="bc-link">Corporate &amp; Institutional</a></li>
+          <li><a href="#" class="bc-link">Wholesale Banking</a></li>
           <li class="bc-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></li>
           <li><span class="bc-current ink-mute" aria-current="page">businessONLINE</span></li>
         </ol>
@@ -14086,7 +14093,7 @@
         <ol class="bc-trail">
           <li><a href="#" class="bc-link ink-accent-soft">Home</a></li>
           <li class="bc-sep ink-faint">/</li>
-          <li><a href="#" class="bc-link ink-accent-soft">Corporate &amp; Institutional</a></li>
+          <li><a href="#" class="bc-link ink-accent-soft">Wholesale Banking</a></li>
           <li class="bc-sep ink-faint">/</li>
           <li><span class="bc-current ink-soft" aria-current="page">Digital Solutions</span></li>
         </ol>
@@ -15168,7 +15175,7 @@
         </button>
       </div>
       <div class="modal-content-body modal-content-body-plain">
-        <p class="type-body-sm mb-4 ink-mute">Effective 1 July 2025, the Schedule of Charges for Corporate &amp; Institutional Banking products has been updated. Please review the changes below before continuing to use businessONLINE.</p>
+        <p class="type-body-sm mb-4 ink-mute">Effective 1 July 2025, the Schedule of Charges for Wholesale Banking products has been updated. Please review the changes below before continuing to use businessONLINE.</p>
         <div class="modal-scroll">
           <p class="type-body-sm mb-4 ink-mute">1. Wire transfer fees for international payments have been revised in line with prevailing correspondent banking rates. Domestic payment processing remains free of charge for all account tiers.</p>
           <p class="type-body-sm mb-4 ink-mute">2. Trade finance tariffs for letters of credit and guarantees are now tiered by transaction value, with preferential pricing for high-volume clients.</p>

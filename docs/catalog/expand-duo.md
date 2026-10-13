@@ -9,7 +9,7 @@ optional white illustrative UI card at the top-end corner (with an
 "Illustrative" badge under it), and a white headline at the bottom. The active
 panel is wider (1.7 : 1), shows its photo at full colour and reveals a soft
 paragraph and an accent pill button under the headline. The other panel shows
-only photo, chip and headline, slightly dimmed. Harvested from the C&IB home
+only photo, chip and headline, slightly dimmed. Harvested from the Wholesale Banking home
 trade and markets act (`cib-home-final.html`, section 5).
 
 ## Motion

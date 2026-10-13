@@ -9,7 +9,7 @@ glass chat panel pinned to the bottom-end corner. The panel holds a "who"
 line with a green online dot, one white message bubble, a reply chip and an
 "Illustrative" badge. On the end side: eyebrow, a two-tone headline (second
 sentence in the mute ink), a lead, a small uppercase label over a check-list,
-and two pill buttons (filled + outline). Harvested from the C&IB home
+and two pill buttons (filled + outline). Harvested from the Wholesale Banking home
 relationship act (`cib-home-final.html`, section 3).
 
 ## Motion

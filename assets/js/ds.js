@@ -649,6 +649,15 @@
       function owned(sel) { return all(root, sel).filter(function (el) { return el.closest('[data-tabs]') === root; }); }
       var triggers = owned('[data-tab]'), panels = owned('[data-panel]');
       if (!triggers.length) return;
+      // Inks are declared in markup: the active trigger carries the "on" ink
+      // (e.g. ink-primary) and the others the "off" ink (e.g. ink-mute). Read
+      // that pair once and move it with the state, so the selected tab is
+      // always the one that reads strongest.
+      function inkOf(t) { return t && [].filter.call(t.classList, function (c) { return c.indexOf('ink-') === 0; })[0]; }
+      var onT = triggers.filter(function (t) { return t.classList.contains('active'); })[0] || triggers[0];
+      var offT = triggers.filter(function (t) { return t !== onT; })[0];
+      var inkOn = inkOf(onT), inkOff = inkOf(offT);
+      if (inkOn === inkOff) inkOn = inkOff = null;
 
       // Optional auto-advance: <div data-tabs data-autoplay="4000"> cycles tabs.
       // An optional [data-tabs-progress] bar inside the root fills 0→100% each
@@ -670,6 +679,7 @@
         triggers.forEach(function (t, i) {
           var on = t.getAttribute('data-tab') === key;
           t.classList.toggle('active', on); t.setAttribute('aria-selected', on);
+          if (inkOn && inkOff && (t.classList.contains(inkOn) || t.classList.contains(inkOff))) { t.classList.toggle(inkOn, on); t.classList.toggle(inkOff, !on); }
           if (on) current = i;
         });
         panels.forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-panel') === key); });
@@ -717,6 +727,19 @@
         bar.addEventListener('scroll', function () { markOverflow(bar); }, { passive: true });
         window.addEventListener('resize', function () { markOverflow(bar); });
         if (window.ResizeObserver) { try { new ResizeObserver(function () { markOverflow(bar); }).observe(bar); } catch (e) {} }
+      })();
+      /* Optional deep links: <div data-tabs data-tabs-hash> opens the tab whose
+         key matches the URL hash (page.html#ecm), and keeps the hash in step
+         when the reader switches tabs, so a tab can be linked and shared. */
+      if (root.hasAttribute('data-tabs-hash')) (function () {
+        function fromHash() {
+          var k = decodeURIComponent((location.hash || '').slice(1));
+          if (k && triggers.some(function (t) { return t.getAttribute('data-tab') === k; })) activate(k);
+        }
+        window.addEventListener('hashchange', fromHash);
+        triggers.forEach(function (t) {
+          t.addEventListener('click', function () { if (history.replaceState) history.replaceState(null, '', '#' + t.getAttribute('data-tab')); });
+        });
       })();
       function play() { if (!ms || !canAnimate) return; stop(); paintBar(); timer = setInterval(function () { activate(triggers[(current + 1) % triggers.length].getAttribute('data-tab')); }, ms); }
       function stop() { if (timer) { clearInterval(timer); timer = null; } }
@@ -768,7 +791,8 @@
           activate(nt.getAttribute('data-tab')); nt.focus(); if (ms) play();
         });
       });
-      var init = triggers.filter(function (t) { return t.classList.contains('active'); })[0] || triggers[0];
+      var hashKey = root.hasAttribute('data-tabs-hash') ? decodeURIComponent((location.hash || '').slice(1)) : '';
+      var init = (hashKey && triggers.filter(function (t) { return t.getAttribute('data-tab') === hashKey; })[0]) || triggers.filter(function (t) { return t.classList.contains('active'); })[0] || triggers[0];
       activate(init.getAttribute('data-tab'));
 
       if (ms && canAnimate) {
@@ -1294,9 +1318,18 @@
       var items = all(grid, '[data-filter-item]');
       if (!items.length) items = Array.prototype.slice.call(grid.children);
       var countEl = root.querySelector('[data-filter-count]');
+      var totalEl = root.querySelector('[data-filter-total]');
       var emptyEl = root.querySelector('[data-filter-empty]');
       var active = {};
       var query = '';
+      /* Optional "Show more": data-filter-step="9" on the root shows the first
+         N matching items; a [data-filter-more] button reveals the next N. Any
+         filter change starts again from N. [data-filter-count] then reports
+         how many are on screen and [data-filter-total] how many match. */
+      var step = parseInt(root.getAttribute('data-filter-step') || '0', 10);
+      var limit = step;
+      var moreBtn = root.querySelector('[data-filter-more]');
+      var moreWrap = moreBtn && (moreBtn.closest('[data-filter-more-wrap]') || moreBtn);
       function matches(item) {
         for (var key in active) {
           var want = active[key]; if (!want) continue;
@@ -1306,12 +1339,28 @@
         if (query && (item.textContent || '').toLowerCase().indexOf(query) === -1) return false;
         return true;
       }
-      function apply() {
-        var shown = 0;
-        items.forEach(function (it) { var ok = matches(it); it.hidden = !ok; if (ok) shown++; });
+      function apply(keepLimit) {
+        if (!keepLimit) limit = step;
+        var matched = 0, shown = 0;
+        items.forEach(function (it) {
+          var ok = matches(it);
+          if (ok) matched++;
+          var vis = ok && (!step || matched <= limit);
+          it.hidden = !vis; if (vis) shown++;
+        });
         if (countEl) countEl.textContent = String(shown);
-        if (emptyEl) emptyEl.hidden = shown !== 0;
+        if (totalEl) totalEl.textContent = String(matched);
+        if (emptyEl) emptyEl.hidden = matched !== 0;
+        if (moreWrap) moreWrap.hidden = !step || shown >= matched;
       }
+      if (moreBtn) moreBtn.addEventListener('click', function () {
+        var before = items.filter(function (it) { return !it.hidden; }).length;
+        limit += step; apply(true);
+        // move focus to the first newly revealed item for keyboard users
+        var next = items.filter(function (it) { return !it.hidden; })[before];
+        if (next) { if (!next.matches('a,button,[tabindex]')) next.setAttribute('tabindex', '-1'); next.focus({ preventScroll: false }); }
+        if (window.DS && DS.refresh) DS.refresh(root);
+      });
       all(root, 'select[data-filter-key]').forEach(function (sel) {
         active[sel.getAttribute('data-filter-key')] = sel.value || '';
         sel.addEventListener('change', function () { active[sel.getAttribute('data-filter-key')] = sel.value || ''; apply(); });
@@ -1787,14 +1836,14 @@
 
   /* ── Boot + public API ──────────────────────────────────────────────────── */
   window.DS = { refresh: run, register: register, recipe: recipe, canAnimate: canAnimate, dragScroll: dragify, isRTL: isRTL };
-  // Header: when the active customer segment is Corporate & institutional,
-  // point the brand logo at the C&IB home so clicking it returns the user
-  // there (only inside C&IB; other segments keep their own logo href).
+  // Header: when the active customer segment is Wholesale Banking,
+  // point the brand logo at the Wholesale Banking home so clicking it returns the user
+  // there (only inside Wholesale Banking; other segments keep their own logo href).
   function linkSegmentLogo(scope) {
     var root = scope || document;
     var seg = root.querySelector('.ish-segments a.is-active');
-    if (!seg || !/institutional/i.test(seg.textContent || '')) return;
-    // Logo always returns to the new C&IB home (Ram, 2026-10-01), resolved from
+    if (!seg || !/institutional|wholesale/i.test(seg.textContent || '')) return;
+    // Logo always returns to the new Wholesale Banking home (Ram, 2026-10-01), resolved from
     // ds.js's own URL so it works from sub-folders (ibv2/) and file:// alike.
     var ds = document.querySelector('script[src*="assets/js/ds.js"]');
     var home = ds ? new URL('../../cib-home-final.html', ds.src).href : 'cib-home-final.html';
@@ -2991,6 +3040,8 @@ DS.recipe('ib-hero', function (root) {
   DS.recipe('scroll-showcase', function (root) {
     var imgs=root.querySelectorAll(".ss-img"); var num=root.querySelector("[data-ss-num]");
     var steps=root.querySelectorAll(".ss-step"); var cur=-1;
+    // the total always matches the steps on the page, whatever the markup says
+    if(num && num.nextSibling && num.nextSibling.nodeType===3) num.nextSibling.textContent=" / "+steps.length;
     function tick(){
       var rr=root.getBoundingClientRect();
       if(rr.bottom<0 || rr.top>window.innerHeight){ requestAnimationFrame(tick); return; }

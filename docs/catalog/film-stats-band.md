@@ -9,7 +9,7 @@ bottom wash. At the bottom: a large white headline and a soft lead on the
 start side, an outline pill button on the end side level with them, then a
 thin white hairline and a row of four thin display figures (currency, number,
 small unit) with short labels, separated by faint vertical dividers.
-Harvested from the C&IB home investment banking act (`cib-home-final.html`,
+Harvested from the Wholesale Banking home investment banking act (`cib-home-final.html`,
 section 6).
 
 ## Motion

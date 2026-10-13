@@ -4,7 +4,11 @@
      dot per milestone (active / past / upcoming states), year + content, and
      prev/next arrows. Swipe or drag to move; the centred node becomes active.
      Pure scroll-snap + a tiny rAF read — data-behavior="timeline". No IDs, no
-     inline styles. Styled by .cmp-history-timeline. -->
+     inline styles. Styled by .cmp-history-timeline.
+     Options: eyebrow and split lead are optional (a title-only header drops
+     is-split). See-all link (off by default): put
+     <a class="btn btn-text is-arrow me-auto" href="...">See all ...</a>
+     first in .ht-nav; it sits at the start edge, the arrows stay at the end. -->
 <section class="cmp cmp-history-timeline surface-soft section-y" data-animate>
   <div class="container-ds">
 
