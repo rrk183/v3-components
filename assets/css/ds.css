@@ -6563,7 +6563,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 .cmp-cards.is-swipe .cd-scroll-outer { height: auto; }
 .cmp-cards.is-swipe .cd-scroll-pin { position: static; height: auto; overflow: visible; container-type: normal; padding-block: clamp(56px, 8vw, 96px); }
 .cmp-cards.is-swipe .cd-scroll-pin .cd-track > .cd-card { flex-basis: var(--cd-slide, clamp(258px, 72vw, 300px)); }
-.cmp-cards.is-swipe .cd-scroll-wrap { overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
+.cmp-cards.is-swipe .cd-scroll-wrap { overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; scroll-padding-inline: var(--cd-edge); }  /* snapping respects the page margin, so the first card lines up with the heading */
 .cmp-cards.is-swipe .cd-scroll-wrap::-webkit-scrollbar { display: none; }
 .cmp-cards.is-swipe .cd-scroll-wrap .cd-track { transform: none; }
 .cmp-cards.is-swipe .cd-scroll-wrap .cd-track > .cd-card { scroll-snap-align: start; }
