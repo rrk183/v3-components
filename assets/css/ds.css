@@ -1326,7 +1326,9 @@ html, body { background: #fff; }
 
 
 /* ── scroll-frames recipe — sticky stage + canvas (Tier-3, ds.js draws) ────── */
-[data-sf-stage]  { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+/* Pinned stage (browser-bar layer, 2026-10-14): the stage fills the LARGEST screen (lvh) so no gap shows when phone bars hide; its content sits in the SMALLEST screen (svh), lifted by the bar height, so nothing hides under the bars. Older browsers drop both lines and keep 100vh. */
+[data-sf-stage]  { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; }
+[data-sf-stage] > .inset-0 { bottom: calc(100lvh - 100svh); }
 [data-sf-canvas] { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
 /* ──────────────── cmp-accordion — editorial accordion ──────────────── */
@@ -2351,7 +2353,7 @@ html.st-lock { overflow: hidden; }
 /* ── Zoom-Parallax (data-behavior recipe; surface-dark default / surface-white) ── */
 .cmp-zoom-parallax .zp-header { height: 50vh; }
 .cmp-zoom-parallax .zp-container { height: 300vh; }
-.cmp-zoom-parallax .zp-sticky { height: 100vh; height: 100svh; }  /* was Tailwind h-screen in markup; svh keeps the pinned frame inside the visible area on phones (device audit 2026-10-14) */
+.cmp-zoom-parallax .zp-sticky { height: 100vh; height: 100lvh; }  /* was Tailwind h-screen in markup; svh keeps the pinned frame inside the visible area on phones (device audit 2026-10-14) */
 .cmp-zoom-parallax .zp-glow { top: -50%; height: 120vmin; width: 120vmin; filter: blur(30px); background: radial-gradient(ellipse at center, rgba(var(--blue-rgb), 0.15), transparent 50%); }
 .cmp-zoom-parallax .px-item { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; will-change: transform; transform-origin: center center; }
 .cmp-zoom-parallax .px-card { position: relative; border-radius: 16px; overflow: hidden; flex-shrink: 0; height: 25vh; width: 25vw; }
@@ -2405,7 +2407,8 @@ html.st-lock { overflow: hidden; }
   --cm-pin-core: var(--cm-dot);
   position: relative; height: 640vh; background: var(--cm-surface); color: var(--cm-ink); -webkit-font-smoothing: antialiased;
 }
-.cmp-markets-map .cm__stage { position: sticky; top: var(--cm-top, 0px); height: calc(100vh - var(--cm-top, 0px)); height: calc(100svh - var(--cm-top, 0px)); overflow: hidden; }
+.cmp-markets-map .cm__stage { position: sticky; top: var(--cm-top, 0px); height: calc(100vh - var(--cm-top, 0px)); height: calc(100lvh - var(--cm-top, 0px)); overflow: hidden; }
+.cmp-markets-map .cm__stage > :is(.cm__lead, .cm__stat) { margin-block-end: calc(100lvh - 100svh); }  /* bottom-anchored copy stays above the phone bars */
 .cmp-markets-map .cm__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .cmp-markets-map .cm__veil { position: absolute; inset: 0; pointer-events: none; opacity: 0; background: linear-gradient(90deg, var(--cm-veil) 0%, var(--cm-veil) 30%, transparent 46%); }
 .cmp-markets-map .cm__frame { position: absolute; left: 39%; right: 2%; top: 10%; bottom: 12%; pointer-events: none; }
@@ -2618,7 +2621,7 @@ html.st-lock { overflow: hidden; }
 /* scroll scrub: tall track, pinned viewport */
 .cmp-global-reach .gr-reach{position:relative;width:100%;overflow:hidden;z-index:2}
 .cmp-global-reach .gr-scrub{position:relative;height:600vh}
-.cmp-global-reach .gr-scrub__pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--gr-film)}
+.cmp-global-reach .gr-scrub__pin{position:sticky;top:0;height:100vh;height:100lvh;padding-block-end:calc(100lvh - 100svh);display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--gr-film)}
 .cmp-global-reach .gr-map{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 .cmp-global-reach .gr-scrub__hint{position:absolute;inset-inline-start:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font:600 12px/1 var(--font-sans);letter-spacing:.2em;text-transform:uppercase;pointer-events:none;transition:opacity .3s}
 .cmp-global-reach .gr-scrub__hint svg{width:16px;height:16px;animation:gr-nudge 1.6s ease-in-out infinite}
@@ -2742,12 +2745,13 @@ html.st-lock { overflow: hidden; }
 .cmp-video-chapters *, .cmp-video-chapters *::before, .cmp-video-chapters *::after { box-sizing: border-box; }
 .cmp-video-chapters { position: relative; }
 .cmp-video-chapters .vt { position: relative; }   /* height set by JS = scrub-vh */
-.cmp-video-chapters .vt-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--navy); display: flex; align-items: flex-end; }
+.cmp-video-chapters .vt-stage { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; background: var(--navy); display: flex; align-items: flex-end; }
 /* Looping video backgrounds crossfade via scroll (opacity driven inline). */
 .cmp-video-chapters .vt-video-fill { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0; will-change: opacity; }
 .cmp-video-chapters .vt-gradient { position: absolute; inset: 0; pointer-events: none; z-index: 1; background: linear-gradient(to top, rgba(var(--navy-rgb), 0.88) 0%, rgba(var(--navy-rgb), 0.45) 45%, rgba(var(--navy-rgb), 0.10) 75%, transparent 100%); }
 /* Each tab's content is a stacked, scroll-animated layer (bottom-aligned, gutter via container-ds). */
 .cmp-video-chapters .vt-layer { position: absolute; inset: 0; z-index: 2; display: flex; align-items: flex-end; opacity: 0; will-change: opacity, transform; }
+.cmp-video-chapters .vt-layer { bottom: calc(100lvh - 100svh); }
 /* container-ds (on the same element) owns width + centering/gutter; vt-content
    only adds vertical rhythm. The heading/bullets carry their own max-widths so
    the copy stays a readable left column on the standard gutter. */
@@ -3253,7 +3257,7 @@ html.lenis, html.lenis body { height: auto; }
 /* larger phone for the scroll showcase */
 .cmp-device-phone .phone { width: clamp(224px, 24vw, 304px); }
 /* the device pins and stays vertically centred while the steps column scrolls past */
-.cmp-device-scroll .dvs-device { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; justify-content: center; min-width: 0; }
+.cmp-device-scroll .dvs-device { position: sticky; top: 0; height: 100vh; height: 100lvh; padding-block-end: calc(100lvh - 100svh); display: flex; align-items: center; justify-content: center; min-width: 0; }
 /* device fits its grid column (grid items default to min-width:auto, which lets the laptop overflow) */
 .cmp-device-desktop .dvs-device .laptop { width: 100%; max-width: 540px; }
 /* steps flow normally — each fills a viewport so it scrolls past the pinned device */
@@ -3793,11 +3797,12 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 /* Opaque stage, no negative-margin trick: the section's box equals its full
    scroll length, so the next section can never overlap the still-pinned stage
    (and the dark bg means nothing bleeds through during the sticky handoff). */
-.cmp-hero-text-fade .sth-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--navy); z-index: 0; }
+.cmp-hero-text-fade .sth-stage { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; background: var(--navy); z-index: 0; }
 /* opacity/transform are driven inline per-frame by the scroll-story engine — no
    CSS transition (it would lag the scroll). Initial opacity:0 hides pre-JS. */
 .cmp-hero-text-fade .sth-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; will-change: opacity, transform; }
 .cmp-hero-text-fade .sth-caps { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; padding: 0 var(--page-x, 24px); }
+.cmp-hero-text-fade .sth-caps { bottom: calc(100lvh - 100svh); }
 .cmp-hero-text-fade .sth-cap { position: absolute; max-width: 880px; text-align: center; opacity: 0; will-change: opacity, transform, filter; }
 
 /* sth-title COLLAPSED onto type-display-lg (2026-09-01 atoms pass) */
@@ -3866,7 +3871,8 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 
 /* ═══ Hero — Scroll Cinema (scrollytelling: scrubbed frames + phased text) ══ */
 .cmp-hero-cinematic-pinned .scin { position: relative; }   /* height set by JS = scrub-vh */
-.cmp-hero-cinematic-pinned .scin-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--navy-deep); }
+.cmp-hero-cinematic-pinned .scin-stage { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; background: var(--navy-deep); }
+.cmp-hero-cinematic-pinned .scin-phase { bottom: calc(100lvh - 100svh); }
 .cmp-hero-cinematic-pinned .scin-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .cmp-hero-cinematic-pinned .scin-overlay { position: absolute; inset: 0; pointer-events: none; opacity: .4; will-change: opacity;
   background: linear-gradient(to top, color-mix(in srgb, var(--navy-deep) 92%, transparent) 0%, color-mix(in srgb, var(--navy-deep) 45%, transparent) 45%, color-mix(in srgb, var(--navy-deep) 18%, transparent) 100%); }
@@ -3935,13 +3941,14 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 
 /* ═══ App Cinema — pinned cinematic download-app sequence ═══════════════════ */
 .cmp-scroll-scenes .aci { position: relative; }   /* height set by JS = scrub-vh */
-.cmp-scroll-scenes .aci-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; perspective: 1500px; }
+.cmp-scroll-scenes .aci-stage { position: sticky; top: 0; height: 100vh; height: 100lvh; padding-block-end: calc(100lvh - 100svh); overflow: hidden; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; perspective: 1500px; }
 .cmp-scroll-scenes .aci-grain { position: absolute; inset: 0; z-index: 50; pointer-events: none; opacity: .05; mix-blend-mode: overlay; background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%25" height="100%25" filter="url(%23n)"/></svg>'); }
 .cmp-scroll-scenes .aci-grid { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5; background-size: 60px 60px; background-image: linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px); -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%); mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%); }
 
 /* Hero + CTA text layers */
 .cmp-scroll-scenes .aci-hero, .cmp-scroll-scenes .aci-cta { position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 1.5rem; will-change: transform, opacity; }
 .cmp-scroll-scenes .aci-cta { opacity: 0; pointer-events: none; }
+.cmp-scroll-scenes :is(.aci-hero, .aci-cta) { bottom: calc(100lvh - 100svh); }
 .cmp-scroll-scenes .aci-t1, .cmp-scroll-scenes .aci-t2 { font-size: clamp(34px, 6vw, 76px); font-weight: 600; letter-spacing: -.03em; line-height: 1.12; }
 .cmp-scroll-scenes .aci-t1 { color: #fff; text-shadow: 0 0 40px rgba(255,255,255,.4), 0 4px 12px rgba(255,255,255,.3); animation: aci-rise 1.4s cubic-bezier(.16,1,.3,1) both; }
 .cmp-scroll-scenes .aci-t2 { color: #fff; text-shadow: 0 0 30px rgba(255,255,255,.5), 0 0 70px rgba(255,255,255,.25); animation: aci-wipe 1.4s .3s cubic-bezier(.65,0,.35,1) both; }
@@ -4060,7 +4067,9 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    the element's inline (settled) values written by the recipe. */
 @keyframes ds-story-intro { from { opacity: 0; transform: translate3d(0, 28px, 0); filter: blur(6px); } }
 .cmp-scroll-story .sst { position: relative; }   /* height set by JS */
-.cmp-scroll-story .sst-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; place-items: center; background: radial-gradient(120% 120% at 50% 0%, var(--navy-shade) 0%, var(--navy) 60%); perspective: 1200px; padding: 0 var(--page-x, 24px); }
+.cmp-scroll-story .sst-stage { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; display: grid; place-items: center; background: radial-gradient(120% 120% at 50% 0%, var(--navy-shade) 0%, var(--navy) 60%); perspective: 1200px; padding: 0 var(--page-x, 24px); }
+.cmp-scroll-story .sst-stage { padding-block-end: calc(100lvh - 100svh); }
+.cmp-scroll-story.is-bottom .sst-beat { margin-block-end: calc(100lvh - 100svh); }
 .cmp-scroll-story .sst-beat { position: absolute; max-width: 880px; text-align: center; will-change: transform, opacity, filter; }
 
 /* sst-h COLLAPSED onto type-display-lg (2026-09-01 atoms pass) */
@@ -4072,7 +4081,8 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 
 /* ═══ Scroll Story — Video Scrub ═══════════════════════════════════════════ */
 .cmp-scroll-story-video .ssv { position: relative; }   /* height set by JS */
-.cmp-scroll-story-video .ssv-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--navy); }
+.cmp-scroll-story-video .ssv-stage { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; background: var(--navy); }
+.cmp-scroll-story-video .ssv-caps { bottom: calc(100lvh - 100svh); }
 .cmp-scroll-story-video .ssv-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .cmp-scroll-story-video .ssv-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .cmp-scroll-story-video .ssv-caps { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; text-align: center; padding: 0 var(--page-x, 24px); }
@@ -4371,7 +4381,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
     .cmp-feature-scroll-story{display:block}
     
     .ess{position:relative}
-    .ess-stage{position:sticky;top:0;height:100vh; height: 100svh;overflow:hidden;display:flex;align-items:center}
+    .ess-stage{position:sticky;top:0;height:100vh; height: 100lvh;overflow:hidden;display:flex;align-items:center}
     .ess-grid{display:grid;grid-template-columns:.96fr 1.04fr;gap:clamp(40px,6vw,80px);align-items:center;width:100%}
     .ess.rev .ess-vis{order:-1}
     .ess-col{display:flex;flex-direction:column;justify-content:center;gap:clamp(26px,4.4vh,46px);min-height:0;width:100%}
@@ -4383,6 +4393,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
     .ess-line{max-width:21ch}  /* type = type-h3 on-surface (atoms pass 2026-09-01) */
     /* opening title scene (fades/blurs out as the beats take over) */
     .ess-opener{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 24px;z-index:4;will-change:opacity,transform}
+    .ess-opener,.ess-beats{bottom:calc(100lvh - 100svh)}  /* content in the small screen; the stage fills the large one (browser-bar layer) */
     .ess-opener-in{max-width:60ch;margin:0 auto}
     .ess-opener .ds-eyebrow{display:inline-flex;justify-content:center}
     .ess-opener-h{font-size:clamp(38px,5.2vw,74px);font-weight:600;letter-spacing:-.03em;line-height:1.02;color:var(--navy,var(--navy));margin:16px 0 0}
@@ -4839,14 +4850,14 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 }
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .cmp-tabs-desk .td-track { height: calc(100vh + var(--td-n, 6) * 48vh); height: calc(100svh + var(--td-n, 6) * 48svh); }
-  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100vh - var(--td-hdr)); height: calc(100svh - var(--td-hdr)); display: flex; align-items: center; padding-block: 24px; }
+  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100vh - var(--td-hdr)); height: calc(100lvh - var(--td-hdr)); display: flex; align-items: center; padding-block: 24px; padding-block-end: calc(24px + 100lvh - 100svh); }
   .cmp-tabs-desk .td-stage { aspect-ratio: auto; height: min(calc(100vh - var(--td-hdr) - 96px), 640px); height: min(calc(100svh - var(--td-hdr) - 96px), 640px); }
 }
 /* phones, foldables, tablets: same reel; the pin holds sentence, chips and photo,
    the copy and CTAs follow in .td-after (moved there by the recipe) */
 @media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
   .cmp-tabs-desk .td-track { height: calc(100svh + var(--td-n, 6) * 45svh); }
-  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100svh - var(--td-hdr)); display: flex; padding-block: 24px 20px; }
+  .cmp-tabs-desk .td-pin { position: sticky; top: var(--td-hdr); height: calc(100vh - var(--td-hdr)); height: calc(100lvh - var(--td-hdr)); display: flex; padding-block: 24px 20px; padding-block-end: calc(20px + 100lvh - 100svh); }
   .cmp-tabs-desk .td-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; height: 100%; }
   .cmp-tabs-desk .td-copy { flex: none; }
   .cmp-tabs-desk .td-q { margin-bottom: 10px; }
@@ -6486,7 +6497,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    page scrolls (root: data-behavior="scroll-track"; hooks: data-scroll-outer /
    data-scroll-wrap / data-track) */
 .cmp-cards .cd-scroll-outer { position: relative; height: var(--st-len, 300vh); } /* --st-len set by the scroll-track engine: 100vh + track overflow, so 1px of scroll = 1px of pan */
-.cmp-cards .cd-scroll-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: clamp(28px, 3.5vw, 48px); }
+.cmp-cards .cd-scroll-pin { position: sticky; top: 0; height: 100vh; height: 100lvh; padding-block-end: calc(100lvh - 100svh); overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: clamp(28px, 3.5vw, 48px); }
 .cmp-cards .cd-scroll-wrap { overflow: hidden; }
 .cmp-cards .cd-scroll-wrap .cd-track { overflow-x: visible; scroll-snap-type: none; will-change: transform; margin-inline-start: var(--cd-edge); padding-inline-end: var(--cd-edge); } /* end stop: the pan finishes with the last card at the container inset, not flush to the screen edge (Hakan, 2026-09-03) — the engine's scrollWidth measure includes this padding */
 /* DIVIDED — hairline columns instead of gaps (the image-band strip pattern:

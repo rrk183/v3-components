@@ -648,7 +648,7 @@
 }
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .hf-ask-track { height: calc(100vh + 6 * 48vh); }
-  .hf-ask-pin { position: sticky; top: var(--hf-hdr); height: calc(100vh - var(--hf-hdr)); display: flex; align-items: center; padding-block: 24px; }
+  .hf-ask-pin { position: sticky; top: var(--hf-hdr); height: calc(100vh - var(--hf-hdr)); height: calc(100lvh - var(--hf-hdr)); display: flex; align-items: center; padding-block: 24px; padding-block-end: calc(24px + 100lvh - 100svh); }  /* pin fills the large screen, content sits in the small one (browser-bar layer, 2026-10-14) */
   .hf-ask-stage { aspect-ratio: auto; height: min(calc(100vh - var(--hf-hdr) - 96px), 640px); }
 }
 @media (max-width: 1023px) {
@@ -741,7 +741,7 @@
    in .hf-ask-after (moved there by cib-home-flow.js). */
 @media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
   .hf-ask-track { height: calc(100svh + 6 * 45svh); }
-  .hf-ask-pin { position: sticky; top: var(--hf-hdr, 64px); height: calc(100svh - var(--hf-hdr, 64px)); display: flex; padding-block: 24px 20px; }
+  .hf-ask-pin { position: sticky; top: var(--hf-hdr, 64px); height: calc(100vh - var(--hf-hdr, 64px)); height: calc(100lvh - var(--hf-hdr, 64px)); display: flex; padding-block: 24px 20px; padding-block-end: calc(20px + 100lvh - 100svh); }
   .hf-ask-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; height: 100%; }
   .hf-ask-copy { flex: none; }
   .hf-ask-q { margin-bottom: 10px; }
