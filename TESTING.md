@@ -84,6 +84,13 @@ push to `ds-rearchitecture`).
   browser. Protocol: run `/audit.html` once per brand (it sweeps all blocks ×
   navy/dark/blue and flags text under 3:1) after adding a component or a
   brand. Photo-backed text is skipped there — eyeball it.
+- **Devices and foldables** (device audit 2026-10-14) — besides 375 / 768 /
+  1024 / 1440, check a changed component at **344 × 882** (Galaxy Z Fold cover
+  screen, the narrowest real phone), **882 × 1104** (Fold unfolded, near-square),
+  **852 × 393** (phone held landscape, short), **1180 × 820** (iPad landscape)
+  and **2560 × 1080** (21:9 ultrawide). Screen-height sizing uses `svh` with a
+  `vh` fallback (the gate warns otherwise); browser bars cannot be simulated in
+  a desktop browser, so confirm pinned stages on a real phone.
 - **Scroll-driven motion** — pinned stages, scrub heroes, reveal timing
   (geometry asserts lie here; only eyes catch a janky pin).
 - **Cross-engine rendering** — Safari + Firefox passes of all-components
