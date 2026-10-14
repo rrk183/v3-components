@@ -732,6 +732,20 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
       fail(5, `ds.css:${css.slice(0, m.index).split("\n").length} comment contains live-looking CSS rules — lost '*/' upstream?`);
   const hasCount = (css.match(/:has\(/g) || []).length;
   if (hasCount > 1) fail(5, `:has() budget exceeded: ${hasCount} uses (max 1)`);
+  // Screen-height sizing must survive phone browser bars (device audit
+  // 2026-10-14): a height of 60-100vh needs an svh/dvh partner in the same rule
+  // (vh first as the fallback), or the bottom ~90px hides under the bars.
+  {
+    const code = css.replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, " "));
+    for (const r of code.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+      for (const d of r[2].matchAll(/((?:min-|max-)?height)\s*:\s*([^;}]*)/g)) {
+        const n = [...d[2].matchAll(/(\d+(?:\.\d+)?)vh\b/g)].map((x) => +x[1]).filter((v) => v >= 60);
+        if (!n.length || Math.max(...n) > 100) continue;
+        if (new RegExp(d[1] + "\\s*:\\s*[^;]*(svh|dvh|lvh)").test(r[2])) continue;
+        warn(5, `ds.css:${code.slice(0, r.index).split("\n").length} "${r[1].trim().slice(0, 60)}" sizes by ${d[1]}: ${d[2].trim().slice(0, 40)} with no svh partner; add "${d[1]}: ${d[2].trim().replace(/(\d+(?:\.\d+)?)vh\b/g, "$1svh").slice(0, 40)}" after it`);
+      }
+    }
+  }
 }
 
 // ── flow 6: page-builder prompts ───────────────────────────────────────────
