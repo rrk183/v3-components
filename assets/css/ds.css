@@ -2456,7 +2456,7 @@ html.st-lock { overflow: hidden; }
   .cmp-markets-map .cm__title { left: 5%; top: 9%; font-size: clamp(28px, 3.4vw, 44px); }
   .cmp-markets-map .cm__frame { left: 3%; right: 3%; top: 21%; bottom: 21%; }
   .cmp-markets-map .cm__veil { background: linear-gradient(180deg, var(--cm-veil) 0%, var(--cm-veil) 15%, transparent 26%, transparent 78%, var(--cm-veil) 88%); }
-  .cmp-markets-map .cm__lead { top: auto; bottom: 8%; width: min(46%, 480px); font-size: 15px; }
+  .cmp-markets-map .cm__lead { top: auto; bottom: 8%; width: min(480px, calc(100% - 6% - 5% - min(44%, 420px) - 40px)); font-size: 15px; }  /* only the room left beside the stats, so the two columns keep a 40px gap */
   .cmp-markets-map .cm__stat, .cmp-markets-map.is-figs .cm__stat { left: auto; right: 5%; bottom: 8%; width: min(44%, 420px); }
   .cmp-markets-map .cm__num { font-size: clamp(56px, 6.4vw, 84px); }
   .cmp-markets-map .cm__count { gap: 16px; }
@@ -2517,6 +2517,22 @@ html.st-lock { overflow: hidden; }
    counter digits never mirror */
 .lang-ar .cmp-markets-map, .lang-ar .cmp-markets-map * { font-family: var(--font-arabic, 'Tajawal'), sans-serif; letter-spacing: 0; }
 .lang-ar .cmp-markets-map :is(.cm__num, .cm__num *, .cm__fig-num) { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -.04em; }
+/* Arabic figures carry their words ("أكثر من 90 مليار دولار أمريكي"), far longer than "USD 90bn+": let them wrap inside their column instead of running into the next one */
+.lang-ar .cmp-markets-map .cm__fig-num { white-space: normal; line-height: 1.2; }
+/* Phones and foldables (device feedback 2026-10-14): the map shows the dots
+   only; under the stats rule a single line names the region and the place whose
+   dot lit up last ("UAE - Dubai", then "ASIA - Mumbai", "ASIA - Shanghai"...).
+   The place name swaps, it never accumulates. The recipe builds .cm__places. */
+.cmp-markets-map .cm__places { display: none; }
+@media (max-width: 1023px) {
+  .cmp-markets-map .cm-pin__label { display: none; }
+  .cmp-markets-map .cm__chapters { display: none; }
+  .cmp-markets-map .cm__places { display: flex; align-items: baseline; gap: 8px; min-height: 1.6em; margin: 0 0 12px; font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: .18em; text-transform: uppercase; color: var(--cm-muted); }
+  .cmp-markets-map .cm__places-sep { opacity: .6; }
+  .cmp-markets-map .cm__places-place { color: var(--cm-ink); letter-spacing: .04em; text-transform: none; font-size: 15px; font-weight: 600; transition: opacity .25s ease, transform .25s ease; }
+  .cmp-markets-map .cm__places-place.is-swap { opacity: 0; transform: translateY(4px); }
+  .cmp-markets-map .cm__places:not(.has-place) :is(.cm__places-sep, .cm__places-place) { visibility: hidden; }
+}
 [dir="rtl"] .cmp-markets-map :is(.cm__eyebrow, .cm__title, .cm__lead, .cm__stat) { left: auto; right: 6%; }
 [dir="rtl"] .cmp-markets-map .cm__frame { left: 8%; right: 39%; }
 [dir="rtl"] .cmp-markets-map .cm__veil { background: linear-gradient(270deg, var(--cm-veil) 0%, var(--cm-veil) 30%, transparent 46%); }
