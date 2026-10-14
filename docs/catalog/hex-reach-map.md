@@ -68,3 +68,9 @@ section.cmp.cmp-markets-map.surface-*[data-behavior=markets-map][aria-label] (.i
 ## Authoring rule
 Start from `blocks/hex-reach-map.html`. Change content only (headline,
 lead, chapters, markets, stats, eyebrow text) and the documented options.
+
+## Phones and foldables (2026-10-14)
+- Below 1024px the map shows the dots only (no place labels). Under the stats rule one line names the region and the place whose dot lit up last ("UAE - Dubai", then "ASIA - Mumbai", "ASIA - Shanghai"...); the place name swaps, it never accumulates. The recipe builds `.cm__places` from `ol.cm__markets`, so nothing to author; Arabic uses the translated names.
+- Tablets and foldables (768-1023): the lead takes only the room left beside the stats (40px gap). Phones: the recipe places the lead 28px above the stats block.
+- The map area always ends above the lead and stats, and lifts with them above phone browser bars.
+- Arabic figures wrap inside their column (they carry their words).

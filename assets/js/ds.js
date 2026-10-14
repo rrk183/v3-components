@@ -3384,6 +3384,16 @@ DS.recipe('ib-hero', function (root) {
     }
 
     strips.forEach(function(s){ for(var d=0;d<=10;d++){ var e=document.createElement('span'); e.textContent=d%10; s.appendChild(e);} });
+    /* phones and foldables: the map shows dots only, so one line under the stats
+       rule names the region and the place whose dot lit up last (CSS shows it
+       below 1024px). Built once, updated every frame. */
+    var chaptersEl=root.querySelector('.cm__chapters'), places=null, placeName=null, placeEl=null, placeCh=-1, placeCur=null, placeT=0;
+    if(chaptersEl){
+      places=document.createElement('div'); places.className='cm__places'; places.setAttribute('aria-hidden','true');
+      places.innerHTML='<span class="cm__places-name"></span><span class="cm__places-sep">-</span><span class="cm__places-place"></span>';
+      chaptersEl.parentNode.insertBefore(places, chaptersEl.nextSibling);
+      placeName=places.children[0]; placeEl=places.children[2];
+    }
 
     var markets=[].slice.call(root.querySelectorAll('.cm__markets li')).map(function(li){
       var m={ name:li.textContent.trim(), chapter:+li.dataset.chapter, country:li.dataset.country||'',
@@ -3485,6 +3495,14 @@ DS.recipe('ib-hero', function (root) {
       var sr=stage.getBoundingClientRect();
       W=sr.width; H=sr.height; DPR=Math.min(window.devicePixelRatio||1,2);
       canvas.width=Math.round(W*DPR); canvas.height=Math.round(H*DPR);
+      /* phone: the closing lead sits a fixed 28px above the stats block, whatever
+         its height (the place line adds to it); its own bar lift is netted out */
+      if(lead&&stat){
+        if(mqMobile.matches){
+          var lift=parseFloat(getComputedStyle(lead).marginBottom)||0;
+          lead.style.bottom=(stage.clientHeight-stat.offsetTop+28-lift)+'px';
+        } else lead.style.bottom='';
+      }
       var fr=frameEl.getBoundingClientRect();
       frame={x:fr.left-sr.left,y:fr.top-sr.top,w:fr.width,h:fr.height};
       /* the map never runs under the lead or stats: when either sits across a
@@ -3614,10 +3632,12 @@ DS.recipe('ib-hero', function (root) {
 
       /* stat block + chapters */
       stat.style.opacity=smooth(lin(t,T_DOCK-0.035,T_DOCK+0.01)).toFixed(3);
+      var bestCh=0, bestO=-1;
       chapters.forEach(function(c,i){
         var a=i===0?T_DOCK-0.03:chStart[i]-0.012, b=i===nCh-1?2:chStart[i+1]-0.012;
         var inn=smooth(lin(t,a,a+0.022)), out=i===nCh-1?0:smooth(lin(t,b,b+0.022));
         var o=inn*(1-out);
+        if(o>bestO){ bestO=o; bestCh=i; }
         c.style.opacity=o.toFixed(3);
         c.style.transform='translate3d(0,'+((1-inn)*8-out*8).toFixed(2)+'px,0)';
       });
@@ -3633,7 +3653,7 @@ DS.recipe('ib-hero', function (root) {
       markets.forEach(function(m){
         var p=progs[m.code];
         var X=cam.rx+(m.x-cam.cx)*cam.s, Y=cam.ry-(m.y-cam.cy)*cam.s;
-        var o=smooth(lin(p,0.12,0.42));
+        var o=smooth(lin(p,0.12,0.42)); m.lit=o;
         /* pins drifting out of the map area (over the copy) fade away */
         var M=36, out=Math.max(frame.x-X, X-(frame.x+frame.w), frame.y-Y, Y-(frame.y+frame.h), 0);
         o*=1-smooth(clamp(out/M,0,1));
@@ -3645,6 +3665,18 @@ DS.recipe('ib-hero', function (root) {
         m.halo.style.opacity=(Math.sin(h*Math.PI)*0.9).toFixed(3);
         m.halo.style.transform='scale('+(0.3+h*1.1).toFixed(3)+')';
       });
+
+      /* the place line: region name, then the last place in it that has lit up */
+      if(places){
+        places.style.opacity=Math.min(1,bestO*1.2).toFixed(3);
+        if(bestCh!==placeCh){ placeCh=bestCh; placeName.textContent=chapters[bestCh].textContent.trim(); }
+        var cur=null; markets.forEach(function(m){ if(m.chapter===bestCh && m.lit>0.5) cur=m.name; });
+        places.classList.toggle('has-place', !!cur);
+        if(cur!==placeCur){
+          placeCur=cur; placeEl.classList.add('is-swap'); clearTimeout(placeT);
+          placeT=setTimeout(function(){ placeEl.textContent=placeCur||''; placeEl.classList.remove('is-swap'); },160);
+        }
+      }
 
       /* closing line */
       var l=smooth(lin(t,T_END+0.02,T_FINAL));
