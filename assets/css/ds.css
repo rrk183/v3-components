@@ -165,6 +165,15 @@
   --type-caption-size: clamp(11px, 0.85vw, 12px);
   --type-micro-size:   clamp(9px,  0.75vw, 10px);
 }
+/* Display headlines also respect the screen HEIGHT: on short, wide screens (a
+   foldable held open, ~928 x 515) a width-only size fills the first screen.
+   Large screens already sit at the cap, so they are unchanged (2026-10-14). */
+@supports (height: 1svh) {
+  :root {
+    --type-display-xxl-size: clamp(64px, min(9vw, 14svh), 120px);
+    --type-display-xl-size:  clamp(48px, min(7vw, 11svh), 96px);
+  }
+}
 
 /* ── Display ──────────────────────────────────────────────────────────── */
 /* Display = very large text/numbers → REGULAR weight (editorial, Apple-like) */
@@ -1518,6 +1527,10 @@ html, body { background: #fff; }
 .rank-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent); margin-top: clamp(22px, 2.6vw, 32px); }
 .rank-strip > div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; padding: clamp(32px, 3.6vw, 48px) 26px; border-left: 1px solid color-mix(in srgb, currentColor 14%, transparent); }
 .rank-strip > div:first-child { border-left: 0; }
+/* From 640px the items share ONE row, however many there are (3 or 4), so a
+   foldable-width strip never breaks 3 + 1 (device feedback 2026-10-14, Galaxy
+   Z Fold open, 928px). Phones keep the auto-fit stack. */
+@media (min-width: 640px) { .rank-strip { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); } }
 .rank-strip > div::before { content: ''; width: 32px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--blue), var(--blue-pale)); }
 .rank-strip .rs-num { font-size: clamp(34px, 3.2vw, 48px); font-weight: 600; letter-spacing: -.02em; line-height: 1; }
 .rank-strip .rs-label { font-size: clamp(16px, 1.4vw, 18px); font-weight: 700; letter-spacing: -.01em; line-height: 1.34; max-width: 18ch; }
@@ -2549,6 +2562,29 @@ html.st-lock { overflow: hidden; }
   [dir="rtl"] .cmp-markets-map .cm__frame { left: 8px; right: 8px; }
   [dir="rtl"] .cmp-markets-map .cm__veil { background: linear-gradient(180deg, var(--cm-veil) 0%, var(--cm-veil) 13%, transparent 21%, transparent 64%, var(--cm-veil) 74%); }
 }
+/* Landscape foldables and small landscape tablets (stage 768-1023 wide and
+   wider than tall, e.g. Galaxy Z Fold 8 open at 928 x 515-613): the stacked
+   tablet layout leaves the map a thin middle band (~276 x 128px). Here the
+   title keeps the top row and the space below splits in two: copy column on
+   the start side (lead, then the place line and stats, one edge), the map
+   filling the rest at full height. A container query on the stage itself, so
+   it follows the real screen shape (device feedback 2026-10-14). */
+.cmp-markets-map .cm__stage { container: cm-stage / size; }
+@container cm-stage (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  .cmp-markets-map .cm__title { font-size: 3cqw; }
+  .cmp-markets-map .cm__frame { left: 45%; right: 2%; top: 25%; bottom: 5%; }
+  .cmp-markets-map .cm__veil { background: linear-gradient(180deg, var(--cm-veil) 0%, var(--cm-veil) 16%, transparent 24%), linear-gradient(90deg, var(--cm-veil) 0%, var(--cm-veil) 38%, transparent 46%); }
+  .cmp-markets-map .cm__lead { left: 5%; right: auto; top: 30%; bottom: auto; width: 35%; font-size: 14px; line-height: 1.55; }
+  .cmp-markets-map .cm__stat, .cmp-markets-map.is-figs .cm__stat { left: 5%; right: auto; bottom: 7%; width: 37%; }
+  .cmp-markets-map .cm__figs { gap: 16px; }
+  .cmp-markets-map .cm__fig-num { font-size: 22px; }
+  .cmp-markets-map .cm__num { font-size: 52px; }
+  .cmp-markets-map .cm__count { gap: 14px; }
+  .cmp-markets-map .cm__rule { margin-bottom: 14px; }
+  [dir="rtl"] .cmp-markets-map .cm__frame { left: 2%; right: 45%; }
+  [dir="rtl"] .cmp-markets-map .cm__veil { background: linear-gradient(180deg, var(--cm-veil) 0%, var(--cm-veil) 16%, transparent 24%), linear-gradient(270deg, var(--cm-veil) 0%, var(--cm-veil) 38%, transparent 46%); }
+  [dir="rtl"] .cmp-markets-map :is(.cm__lead, .cm__stat), [dir="rtl"] .cmp-markets-map.is-figs .cm__stat { left: auto; right: 5%; }
+}
 @media (prefers-reduced-motion: reduce) {
   .cmp-markets-map, .cmp-markets-map * { transition: none !important; animation: none !important; }
   .cmp-markets-map { height: auto; }
@@ -3118,6 +3154,8 @@ html.lenis, html.lenis body { height: auto; }
 
 /* ═══ Bento — Expand (flex accordion panels, CSS-only) ═════════════════════ */
 .cmp-bento-expand .be-row { display: flex; gap: 12px; height: clamp(380px, 52vw, 460px); }
+/* short screens (a passport foldable open, ~928 x 515): the row also fits the visible height; taller screens keep 460px */
+@supports (height: 1svh) { .cmp-bento-expand .be-row { height: clamp(320px, min(52vw, 72svh), 460px); } }
 .cmp-bento-expand .be-panel { position: relative; flex: 1 1 0; min-width: 0; border-radius: 22px; overflow: hidden; text-decoration: none; display: block; transition: flex-grow .6s var(--ease-out, cubic-bezier(.16,1,.3,1)); }
 .cmp-bento-expand .be-panel.is-open { flex-grow: 3.4; }
 .cmp-bento-expand .be-row:hover .be-panel, .cmp-bento-expand .be-row:focus-within .be-panel { flex-grow: 1; }

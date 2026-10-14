@@ -86,8 +86,10 @@ push to `ds-rearchitecture`).
   brand. Photo-backed text is skipped there — eyeball it.
 - **Devices and foldables** (device audit 2026-10-14) — besides 375 / 768 /
   1024 / 1440, check a changed component at **344 × 882** (Galaxy Z Fold cover
-  screen, the narrowest real phone), **882 × 1104** (Fold unfolded, near-square),
-  **852 × 393** (phone held landscape, short), **1180 × 820** (iPad landscape)
+  screen, the narrowest real phone), **928 × 515** and **928 × 613** (Galaxy Z
+  Fold 8 open, landscape, with and without the browser bar: measured from device
+  screenshots 2026-10-14; portrait is about **700 × 742 / 840**), **852 × 393**
+  (phone held landscape, short), **1180 × 820** (iPad landscape)
   and **2560 × 1080** (21:9 ultrawide). Screen-height sizing uses `svh` with a
   `vh` fallback (the gate warns otherwise); browser bars cannot be simulated in
   a desktop browser, so confirm pinned stages on a real phone.

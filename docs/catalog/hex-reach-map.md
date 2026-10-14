@@ -74,3 +74,4 @@ lead, chapters, markets, stats, eyebrow text) and the documented options.
 - Tablets and foldables (768-1023): the lead takes only the room left beside the stats (40px gap). Phones: the recipe places the lead 28px above the stats block.
 - The map area always ends above the lead and stats, and lifts with them above phone browser bars.
 - Arabic figures wrap inside their column (they carry their words).
+- Landscape foldables and small landscape tablets (stage 768-1023 wide and wider than tall, e.g. Galaxy Z Fold 8 open at 928 x 515-613): the title keeps the top row; below it the copy column (lead, place line, stats) sits on the start side and the map fills the rest at full height. Container query `cm-stage` on the stage; mirrors in Arabic.

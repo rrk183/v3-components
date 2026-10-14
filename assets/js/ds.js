@@ -3495,13 +3495,17 @@ DS.recipe('ib-hero', function (root) {
       var sr=stage.getBoundingClientRect();
       W=sr.width; H=sr.height; DPR=Math.min(window.devicePixelRatio||1,2);
       canvas.width=Math.round(W*DPR); canvas.height=Math.round(H*DPR);
-      /* phone: the closing lead sits a fixed 28px above the stats block, whatever
-         its height (the place line adds to it); its own bar lift is netted out */
+      /* the closing lead's own bar lift is netted out of the stacked position */
       if(lead&&stat){
-        if(mqMobile.matches){
+        lead.style.bottom='';
+        var shareCol=Math.min(lead.offsetLeft+lead.offsetWidth,stat.offsetLeft+stat.offsetWidth)-Math.max(lead.offsetLeft,stat.offsetLeft)>lead.offsetWidth*0.5;
+        if(window.innerWidth<1024 && shareCol){
+          /* phones and landscape foldables: lead and stats share a column, so the
+             lead sits a fixed 28px above the stats block, whatever its height */
+          lead.style.top='auto';
           var lift=parseFloat(getComputedStyle(lead).marginBottom)||0;
           lead.style.bottom=(stage.clientHeight-stat.offsetTop+28-lift)+'px';
-        } else lead.style.bottom='';
+        } else { lead.style.bottom=''; lead.style.top=''; }
       }
       var fr=frameEl.getBoundingClientRect();
       frame={x:fr.left-sr.left,y:fr.top-sr.top,w:fr.width,h:fr.height};
