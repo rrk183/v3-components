@@ -12,12 +12,17 @@
   // (scroll-story[-scrub], scroll-frames, zoom-parallax, ib-hero, sticky-scroll):
   // these MUST render in the fixed-height scrolling iframe, never inline.
   var SCROLL_SLUGS = new Set(['hero-cinematic-pinned', 'tabs-desk', 'scroll-scenes', 'hero-text-fade', 'scroll-story', 'scroll-story-video', 'feature-scroll-story', 'hero-image-sequence', 'phone-scroll', 'desktop-scroll', 'video-chapters', 'site-header', 'site-header-v2', 'site-header-v2-scroll', 'site-header-v4', 'zoom-parallax', 'scroll-showcase', 'scroll-showcase-rev', 'hex-reach-map', 'world-map', 'cards-scroll', 'cards-boxed-scroll', 'cards-plain-scroll', 'cards-icon-scroll', 'cards-icon-linked-scroll', 'cards-number-scroll', 'cards-kicker-scroll', 'cards-steps-scroll', 'cards-case-study-scroll', 'cards-people-scroll', 'cards-partners-scroll', 'cards-tombstones-scroll', 'cards-testimonials-scroll', 'cards-promo-scroll', 'cards-tiles-scroll', 'cards-illustrated-scroll', 'cards-dashboard-scroll', 'cards-quote-scroll']);
-  var DEV_W = { desktop: 0, tablet: 820, mobile: 400, foldable: 434 };
+  var DEV_W = { desktop: 0, tablet: 820, mobile: 400, foldable: 434, passport: 480 };
   // Foldable canvases (inner, unfolded screen): primary = iPhone Fold 434x576
   // (3:4); Galaxy Z Fold 8 = the wider 4:3 at the same height. Scroll/pinned
   // components get the real device height so 100vh heroes show as on device.
   var FOLDS = [['', 'Folded'], ['fold8', 'Open']];   // Folded = 434x576, Open = 768x576
   var FOLD_WH = { '': [434, 576], fold8: [768, 576] };
+  // Passport foldable (the wide Galaxy Z Fold 8): sizes measured from device
+  // screenshots 2026-10-14, with Chrome's address bar showing (the tighter
+  // case). Folded = cover screen; Open = landscape; Open portrait.
+  var PASSES = [['', 'Folded'], ['open', 'Open'], ['open-p', 'Open, portrait']];
+  var PASS_WH = { '': [480, 610], open: [928, 515], 'open-p': [700, 742] };
   var OV_MAP = { tint: 'ov-tint ov-60', 'grad-up': 'ov-gradient-b ov-70', 'grad-down': 'ov-gradient-t ov-70', scrim: 'ov-scrim ov-50', vignette: 'ov-vignette ov-70', 'grad-left': 'ov-gradient-l ov-70', 'grad-right': 'ov-gradient-r ov-70' };
   // Surfaces are ROLE-named, never colour-named (RULING 2026-09-03) — so the
   // gallery labels read "Primary"/"Accent" too: under Emirates Islamic the
@@ -198,7 +203,8 @@
     desktop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
     tablet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/></svg>',
     mobile: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>',
-    foldable: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16" stroke-dasharray="2 2"/></svg>'
+    foldable: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16" stroke-dasharray="2 2"/></svg>',
+    passport: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M12 6v13" stroke-dasharray="2 2"/></svg>'
   };
 
   // impact = visual/narrative weight (loudest → quietest):
@@ -572,6 +578,7 @@
     if (currentTheme()) params.set('theme', currentTheme());
     var vw = DEV_W[dev], devH = 0;
     if (dev === 'foldable') { var cardEl = stage.closest('.lib-card'), fwh = FOLD_WH[(cardEl && cardEl.dataset.fold) || ''] || FOLD_WH['']; vw = fwh[0]; devH = fwh[1]; }
+    if (dev === 'passport') { var pcard = stage.closest('.lib-card'), pwh = PASS_WH[(pcard && pcard.dataset.pass) || ''] || PASS_WH['']; vw = pwh[0]; devH = pwh[1]; }
     var vpStyle = vw ? 'width:' + vw + 'px' : 'width:100%';   // desktop scroll components → full width
     stage.innerHTML = '<div class="lib-vp" style="' + vpStyle + '"><iframe class="lib-if" src="frame.html?' + params + '" title="' + slug + '"' + (devH ? ' data-devh="' + devH + '"' : '') + '></iframe></div>';
   }
@@ -672,7 +679,7 @@
     card.dataset.search = (item.name + ' ' + item.variants.map(function (v) { return v.slug; }).join(' ') + ' ' + catName + ' ' + (item.impact || '') + ' ' + (item.whenToUse || '')).toLowerCase();
     var chips = item.variants.length > 1
       ? '<div class="lib-chips">' + item.variants.map(function (v, i) { return '<button class="lib-chip' + (i === 0 ? ' active' : '') + '" data-slug="' + v.slug + '">' + v.label + '</button>'; }).join('') + '</div>' : '';
-    var seg = '<div class="lib-seg">' + ['desktop', 'tablet', 'mobile', 'foldable'].map(function (d, i) { return '<button data-dev="' + d + '"' + (i === 0 ? ' class="active"' : '') + ' title="' + d + '">' + ICON[d] + '</button>'; }).join('') + '</div>';
+    var seg = '<div class="lib-seg">' + ['desktop', 'tablet', 'mobile', 'foldable', 'passport'].map(function (d, i) { return '<button data-dev="' + d + '"' + (i === 0 ? ' class="active"' : '') + ' title="' + d + '">' + ICON[d] + '</button>'; }).join('') + '</div>';
     var langSeg = '<div class="lib-seg lib-lang" title="Preview direction — EN (LTR) / AR (RTL + Tajawal)">' +
       '<button data-rtl="" class="active" title="English · LTR">EN</button>' +
       '<button data-rtl="1" title="عربي · RTL">AR</button></div>';
@@ -725,7 +732,7 @@
         (item.v4 ? '<span class="lib-tag-new" title="Rebuilt on the v4 atom/composition architecture in the standardization pass">New</span>' : '') +
         (item.legacy ? '<span class="lib-tag-legacy" title="Superseded by a v4 component — updated or retired at the sweep">Legacy</span>' : '') +
         (item.reviewed === false ? '<span class="lib-tag-unreviewed" title="New block — not yet reviewed by the front-end team">Unreviewed</span>' : '') +
-        '<div class="lib-ctrls">' + chips + seg + selectHTML('fold', FOLDS, true) + langSeg + selectHTML('head', HEADS, true) + alignSel + placeSel + malignSel + gutterSel + wminkSel + colsSel + mcolsSel + mspeedSel + motionSel + htSel + btnsSel + appSel + mapSel + ctaSel + hoverSel + cAutoSel + cNavSel + cardSel + cardOvSel + surfaceSel + overlaySel +
+        '<div class="lib-ctrls">' + chips + seg + selectHTML('fold', FOLDS, true) + selectHTML('pass', PASSES, true) + langSeg + selectHTML('head', HEADS, true) + alignSel + placeSel + malignSel + gutterSel + wminkSel + colsSel + mcolsSel + mspeedSel + motionSel + htSel + btnsSel + appSel + mapSel + ctaSel + hoverSel + cAutoSel + cNavSel + cardSel + cardOvSel + surfaceSel + overlaySel +
           '<button class="lib-btn lib-replay" title="Replay animations">↻</button>' +
           '<button class="lib-btn lib-copy">Copy HTML</button>' +
         '</div>' +
@@ -768,7 +775,7 @@
       var lang = e.target.closest('.lib-lang button');
       if (lang) { card.querySelectorAll('.lib-lang button').forEach(function (b) { b.classList.toggle('active', b === lang); }); card.dataset.rtl = lang.dataset.rtl; render(card); return; }
       var seg = e.target.closest('.lib-seg button');
-      if (seg) { card.querySelectorAll('.lib-seg button').forEach(function (b) { b.classList.toggle('active', b === seg); }); card.dataset.dev = seg.dataset.dev; var fs = card.querySelector('.lib-select[data-role="fold"]'); if (fs) fs.style.display = seg.dataset.dev === 'foldable' ? '' : 'none'; render(card); return; }
+      if (seg) { card.querySelectorAll('.lib-seg button').forEach(function (b) { b.classList.toggle('active', b === seg); }); card.dataset.dev = seg.dataset.dev; var fs = card.querySelector('.lib-select[data-role="fold"]'); if (fs) fs.style.display = seg.dataset.dev === 'foldable' ? '' : 'none'; var ps = card.querySelector('.lib-select[data-role="pass"]'); if (ps) ps.style.display = seg.dataset.dev === 'passport' ? '' : 'none'; render(card); return; }
       if (e.target.closest('.lib-info')) { openInfo(card); return; }
       if (e.target.closest('.lib-replay')) { render(card); return; }
       if (e.target.closest('.lib-copy')) {
