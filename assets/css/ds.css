@@ -2408,7 +2408,7 @@ html.st-lock { overflow: hidden; }
   position: relative; height: 640vh; background: var(--cm-surface); color: var(--cm-ink); -webkit-font-smoothing: antialiased;
 }
 .cmp-markets-map .cm__stage { position: sticky; top: var(--cm-top, 0px); height: calc(100vh - var(--cm-top, 0px)); height: calc(100lvh - var(--cm-top, 0px)); overflow: hidden; }
-.cmp-markets-map .cm__stage > :is(.cm__lead, .cm__stat) { margin-block-end: calc(100lvh - 100svh); }  /* bottom-anchored copy stays above the phone bars */
+.cmp-markets-map .cm__stage > :is(.cm__lead, .cm__stat, .cm__frame) { margin-block-end: calc(100lvh - 100svh); }  /* bottom-anchored copy, and the map area with it, stay above the phone bars */
 .cmp-markets-map .cm__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .cmp-markets-map .cm__veil { position: absolute; inset: 0; pointer-events: none; opacity: 0; background: linear-gradient(90deg, var(--cm-veil) 0%, var(--cm-veil) 30%, transparent 46%); }
 .cmp-markets-map .cm__frame { position: absolute; left: 39%; right: 2%; top: 10%; bottom: 12%; pointer-events: none; }
@@ -5474,8 +5474,6 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 @media (max-width: 1023px) and (max-height: 640px) {
   /* Pinned horizontal card scroll: cap card media so head + cards fit. */
   .cmp-cards .cd-scroll-pin { gap: 16px; }
-  .cmp-cards .cd-scroll-pin .cd-card > [class*="aspect-"] { aspect-ratio: auto; height: clamp(110px, 26vh, 210px); }
-  .cmp-cards .cd-scroll-pin .media-cover { background-position: center 25%; }
   /* Feature scroll story (stacked): scale the mockup to the space it has. */
   .ess:not(.cine) .ess-vis { min-height: 0; height: 300px; transform: scale(.66); }
   .ess:not(.cine) .ess-grid { gap: 20px; }
@@ -6497,7 +6495,24 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    page scrolls (root: data-behavior="scroll-track"; hooks: data-scroll-outer /
    data-scroll-wrap / data-track) */
 .cmp-cards .cd-scroll-outer { position: relative; height: var(--st-len, 300vh); } /* --st-len set by the scroll-track engine: 100vh + track overflow, so 1px of scroll = 1px of pan */
-.cmp-cards .cd-scroll-pin { position: sticky; top: 0; height: 100vh; height: 100lvh; padding-block-end: calc(100lvh - 100svh); overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: clamp(28px, 3.5vw, 48px); }
+.cmp-cards .cd-scroll-pin { position: sticky; top: 0; height: 100vh; height: 100lvh; padding-block-start: 72px; padding-block-end: calc(100lvh - 100svh); overflow: hidden; container-type: size; display: flex; flex-direction: column; justify-content: center; gap: clamp(28px, 3.5vw, 48px); }
+/* The pin reserves the fixed site header (72px) so the section head never
+   sits under it. On a short pin (landscape tablets and foldables, ~600-780px)
+   the cards narrow instead of squashing their media: a 3:2 photo may be as
+   tall as the pin minus the head and card copy (~255px + 6% of the width), so everything fits one
+   screen; laptops and desktops have room to spare and keep the full slide
+   (device audit 2026-10-14, Galaxy Z Fold landscape). */
+.cmp-cards .cd-scroll-pin .cd-track > .cd-card { flex-basis: min(var(--cd-slide, clamp(258px, 72vw, 300px)), max(220px, calc((100cqh - 255px - 6cqw) * 1.5))); }
+/* is-swipe (set by the scroll-track recipe when the pinned row cannot fit the
+   screen height, e.g. a phone held landscape): unpinned, the row swipes
+   natively and the cards keep their full slide width and 3:2 media. */
+.cmp-cards.is-swipe .cd-scroll-outer { height: auto; }
+.cmp-cards.is-swipe .cd-scroll-pin { position: static; height: auto; overflow: visible; container-type: normal; padding-block: clamp(56px, 8vw, 96px); }
+.cmp-cards.is-swipe .cd-scroll-pin .cd-track > .cd-card { flex-basis: var(--cd-slide, clamp(258px, 72vw, 300px)); }
+.cmp-cards.is-swipe .cd-scroll-wrap { overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
+.cmp-cards.is-swipe .cd-scroll-wrap::-webkit-scrollbar { display: none; }
+.cmp-cards.is-swipe .cd-scroll-wrap .cd-track { transform: none; }
+.cmp-cards.is-swipe .cd-scroll-wrap .cd-track > .cd-card { scroll-snap-align: start; }
 .cmp-cards .cd-scroll-wrap { overflow: hidden; }
 .cmp-cards .cd-scroll-wrap .cd-track { overflow-x: visible; scroll-snap-type: none; will-change: transform; margin-inline-start: var(--cd-edge); padding-inline-end: var(--cd-edge); } /* end stop: the pan finishes with the last card at the container inset, not flush to the screen edge (Hakan, 2026-09-03) — the engine's scrollWidth measure includes this padding */
 /* DIVIDED — hairline columns instead of gaps (the image-band strip pattern:
