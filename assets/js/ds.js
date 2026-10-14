@@ -2973,7 +2973,31 @@ DS.recipe('ib-hero', function (root) {
     if(!outer || !track || !wrap) return;
     var maxX = 0;
     var clamp = function(v,a,b){ return v<a?a:(v>b?b:v); };
+    /* Short screens (a phone held landscape): when the pinned head + cards do
+       not fit one screen, the section unpins (.is-swipe) and the row swipes
+       natively instead of panning on scroll (device audit 2026-10-14). */
+    var pin = root.querySelector('.cd-scroll-pin');
+    var swipe = false;
+    function fitMode(){
+      if(!pin) return;
+      root.classList.remove('is-swipe');
+      var cs = getComputedStyle(pin), kids = pin.children, need = 0;
+      for(var i=0;i<kids.length;i++){ need += Math.max(kids[i].getBoundingClientRect().height, kids[i].scrollHeight); }  /* scrollHeight: the flex row shrinks the card strip, its cards do not */
+      need += (parseFloat(cs.rowGap) || 0) * Math.max(0, kids.length - 1);
+      var room = pin.clientHeight - (parseFloat(cs.paddingTop) || 0) - (parseFloat(cs.paddingBottom) || 0);
+      var tooTall = need > room + 2;
+      if(tooTall !== swipe || tooTall){
+        swipe = tooTall;
+        root.classList.toggle('is-swipe', swipe);
+        if(swipe){
+          track.style.transform = '';
+          if(!wrap.hasAttribute('data-drag-bound')){ wrap.setAttribute('data-drag-scroll',''); if(window.DS && DS.refresh) DS.refresh(root); }
+        }
+      }
+    }
     function measure(){
+      fitMode();
+      if(swipe){ maxX = 0; outer.style.removeProperty('--st-len'); return; }
       /* The track starts at the container inset inside the full-bleed wrap, so
          the pan must cover that offset too or the last card never clears the
          viewport edge. Read the offset with the transform cleared (same frame,
@@ -2998,6 +3022,7 @@ DS.recipe('ib-hero', function (root) {
       else outer.style.removeProperty('--st-len');
     }
     function frame(){
+      if(swipe){ track.style.transform = ''; return; }
       var r = outer.getBoundingClientRect();
       var dist = r.height - window.innerHeight;
       var p = dist>0 ? clamp(-r.top/dist, 0, 1) : 0;
@@ -3462,6 +3487,15 @@ DS.recipe('ib-hero', function (root) {
       canvas.width=Math.round(W*DPR); canvas.height=Math.round(H*DPR);
       var fr=frameEl.getBoundingClientRect();
       frame={x:fr.left-sr.left,y:fr.top-sr.top,w:fr.width,h:fr.height};
+      /* the map never runs under the lead or stats: when either sits across a
+         large part of the map's width (stacked tablet, foldable and phone
+         layouts), the map area ends just above it. Desktop places the copy
+         beside the map, so this never triggers there (device audit 2026-10-14). */
+      [].forEach.call(root.querySelectorAll('.cm__lead, .cm__stat'),function(el){
+        var l=el.offsetLeft, t=el.offsetTop, w=el.offsetWidth;
+        var over=Math.min(l+w,frame.x+frame.w)-Math.max(l,frame.x);
+        if(over>frame.w*0.3 && t<frame.y+frame.h && t>frame.y) frame.h=Math.max(frame.h*0.5,t-frame.y-28);
+      });
       lines.forEach(function(l){ l.style.transform='none'; });
       var widest=0, rects=lines.map(function(l){ var r=l.getBoundingClientRect(); widest=Math.max(widest,r.width); return r; });
       var k=Math.min(1.45,(W*0.88)/widest);
