@@ -237,7 +237,7 @@
     H.cy = slotR.top - stageR.top + slotR.height / 2;
     H.X0 = vw / 2;                                              // centre stage after the pull-back
     H.Y0 = Math.min(trackR.top - stageR.top + parseFloat(tcs.paddingTop) + tileH / 2, vh * 0.56);
-    H.sBig = Math.min(tileH * (isMobile ? 0.84 : 0.98), vh - 2 * rowTop) / PH;      // centred, clear of the header
+    H.sBig = Math.min(tileH * (isMobile ? 0.84 : 0.98), vh - 2 * rowTop, isMobile ? vh * 0.6 : Infinity) / PH;      // centred, clear of the header; on phones at most 60% of the screen height so it never fills the screen (device feedback 2026-10-16)
     H.psCard = psCard;
     H.el.style.setProperty('--pcy', Math.round(H.Y0) + 'px');
     H.el.style.setProperty('--phw', Math.round(PW * H.sBig) + 'px');

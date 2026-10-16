@@ -1175,7 +1175,9 @@ html, body {
 html { overflow-x: clip; }
 body { overflow-x: clip; }
 /* Long unbroken strings (email addresses, URLs) break only when they would otherwise run past their box; ordinary words never split (device audit 2026-10-14). */
-body { overflow-wrap: break-word; }
+:where(p, li, dd, td, address, figcaption, blockquote) { overflow-wrap: break-word; }
+/* never split a figure or a headline mid-word ("USD 150b / n+", "0 / 4"): display type and numbers wrap only at spaces */
+:where(h1, h2, h3, h4, h5, h6, .ds-num, [class*="type-display"], [class*="-num"], [class*="-n "]) { overflow-wrap: normal; }
 body * { font-family: inherit; }
 .ds-skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; z-index: 9999; }
 .ds-skip-link:focus { position: fixed; left: 1rem; top: 1rem; width: auto; height: auto; overflow: visible; padding: .75rem 1.5rem; background: var(--blue); color: #fff; border-radius: 8px; font-weight: 600; text-decoration: none; }
@@ -3633,7 +3635,7 @@ html.lenis, html.lenis body { height: auto; }
    hover of anywhere in the header (:hover), regardless of scroll position. */
 .cmp-site-header.is-solid .ish-brand,
 .cmp-site-header.is-menu-open .ish-brand,
-.cmp-site-header:hover .ish-brand { background: var(--navy); color: #fff; box-shadow: 0 8px 28px rgba(var(--navy-rgb), .28); }
+.cmp-site-header:hover .ish-brand { background: var(--navy); color: #fff; box-shadow: 0 -120px 0 0 var(--navy), 0 8px 28px rgba(var(--navy-rgb), .28); }   /* the -120px navy band sits off-screen; it covers the sliver iPhone Safari's floating address bar can leave above the fixed bar (device feedback 2026-10-16) */
 /* Drop the readability scrim once the bar is opaque (it's no longer needed). */
 .cmp-site-header.is-solid .ish-brand::before,
 .cmp-site-header.is-menu-open .ish-brand::before,
@@ -5874,9 +5876,9 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 .cmp-how-it-works-steps .section-head { margin-bottom:clamp(32px,4vw,48px); }
 
 .cmp-how-it-works-steps .hiw-steps { list-style:none; margin:0; padding:0; display:grid; gap:clamp(28px,4vw,44px); max-width:860px; }
-.cmp-how-it-works-steps .hiw-step { position:relative; display:grid; grid-template-columns:clamp(84px,12vw,150px) 1fr; gap:clamp(16px,3vw,40px); align-items:start; }
+.cmp-how-it-works-steps .hiw-step { position:relative; display:grid; grid-template-columns:minmax(clamp(84px,12vw,150px), max-content) 1fr; gap:clamp(16px,3vw,40px); align-items:start; }
 .cmp-how-it-works-steps .hiw-step-marker { position:relative; }
-.cmp-how-it-works-steps .hiw-step-n { display:block; font-size:clamp(58px,9vw,120px); font-weight:800; line-height:.85; letter-spacing:-.04em; color:color-mix(in srgb, var(--blue) 16%, #ffffff); font-variant-numeric:proportional-nums; }
+.cmp-how-it-works-steps .hiw-step-n { display:block; white-space:nowrap; font-size:clamp(58px,9vw,120px); font-weight:800; line-height:.85; letter-spacing:-.04em; color:color-mix(in srgb, var(--blue) 16%, #ffffff); font-variant-numeric:proportional-nums; }
 .cmp-how-it-works-steps .hiw-step-content { padding-top:clamp(4px,1vw,12px); }
 .cmp-how-it-works-steps .hiw-step-content .hiw-step-h { margin:0 0 12px; }  /* type = type-h3 (atoms pass 2026-09-01) */
 .cmp-how-it-works-steps .hiw-step-content .hiw-step-p { max-width:56ch; margin:0; }  /* type = type-body on-surface-mid */
