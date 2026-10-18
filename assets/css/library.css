@@ -1,9 +1,10 @@
 /* INTERNAL TOOLING — the gallery shell. Per the 2026-09-03 separation
    ruling it must SURVIVE deletion of the product bundle: these hardcoded
    token values (deliberate — tooling may hardcode) make the shell
-   self-sufficient when style.css is absent; when style.css is present its
-   identical :root values simply agree. */
-:root {
+   self-sufficient when style.css is absent. :where() gives this block ZERO
+   specificity: this file loads LAST, so a plain :root here would beat
+   themes.css's [data-theme] blocks and freeze the Brand switch on ENBD. */
+:where(:root) {
   --navy: #072447; --navy-rgb: 7, 36, 71;
   --blue: #2765FF; --blue-rgb: 39, 101, 255;
   --blue-wash: #EEF3FF; --light: #F4F7FB; --mid: #3A4B5C;
