@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    BRAND THEMES — one block per brand, VARIABLE DECLARATIONS ONLY.
    ─────────────────────────────────────────────────────────────────────────
-   ds.css is the single shared runtime for every brand; a theme repaints it
+   style.css is the single shared runtime for every brand; a theme repaints it
    by overriding the THEMED token tier from :root. Activate on a page with
    <html data-theme="ei"> (no attribute = Emirates NBD from :root).
 

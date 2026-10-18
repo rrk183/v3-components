@@ -29,7 +29,7 @@ _Defaults for autonomous building — all overridable on explicit instruction._
 - **Never invent a button class** (`btn-light` and `hvl-btn-secondary` were exactly this drift). If a design seems to need one, it is a type × mode × size × radius combination — check here first, then ask.
 - Never drop the `.sr-only` label from an icon-only button.
 - Contact CTAs point at the contact page, never `mailto:` (repo convention).
-- This card is documentation; the atoms live in ds.css `.btn*` — changing a button's look is an atom edit, not a card edit.
+- This card is documentation; the atoms live in style.css `.btn*` — changing a button's look is an atom edit, not a card edit.
 
 ## Authoring rule
 Read `blocks/buttons.html` for the exact markup of each combination and copy the one you need. Pages compose these atoms directly; there is no `cmp-buttons` on real pages.

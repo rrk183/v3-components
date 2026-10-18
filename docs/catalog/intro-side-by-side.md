@@ -4,7 +4,7 @@
 
 > **Unreviewed** — imported from the V7 Payments & Trade Finance page (2026-08).
 > Awaiting front-end review (surface-adaptivity on dark, token cleanup). Root
-> class `.cmp-intro-side-by-side`; all styling lives in `ds.css` under that class —
+> class `.cmp-intro-side-by-side`; all styling lives in `style.css` under that class —
 > the block itself is pure markup.
 
 ## Look

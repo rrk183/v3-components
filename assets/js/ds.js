@@ -2002,9 +2002,9 @@ function wmV2(root){
      hex adds a second, accent layer (the highlighted market tiles) */
   if(flagMode) root.classList.add('hx-map'); /* hex chrome: 4-side fade + spacing */
   var artLayers=[];
-  /* artwork URLs ride the site ?v= (read from the ds.css link) so artwork
+  /* artwork URLs ride the site ?v= (read from the style.css link) so artwork
      edits reach browsers through the same cache-bust ritual as css/js */
-  var wmV=(function(){ var l=document.querySelector('link[href*="ds.css"], link[href*="ds.min.css"]'); var m=l&&l.href.match(/[?&]v=(\w+)/); return m?m[1]:null; })();
+  var wmV=(function(){ var l=document.querySelector('link[href*="style.css"], link[href*="style.min.css"]'); var m=l&&l.href.match(/[?&]v=(\w+)/); return m?m[1]:null; })();
   function mkArt(srcUrl, cls){
     var a=document.createElement('div'); a.className=cls; a.setAttribute('aria-hidden','true');
     ['mask','-webkit-mask'].forEach(function(pre){
@@ -3726,7 +3726,7 @@ DS.recipe('ib-hero', function (root) {
        data-routes="dubai-london dubai-cairo …"  route set (default: the home
          film's seven); cities and timings come from the tables below.
        data-end-camera="k x y"  end-frame camera (default "1 1190 462").
-     Canvas colours read from the --gr-* tokens the ground sets in ds.css.
+     Canvas colours read from the --gr-* tokens the ground sets in style.css.
      ?t=<seconds> in the URL freezes the timeline (QA). */
   DS.recipe('global-reach', function (root) {
     var reach = root.querySelector('.gr-reach'), frame = root.querySelector('.gr-reach__frame'),

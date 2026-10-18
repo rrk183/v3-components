@@ -13,7 +13,7 @@ Identical pinned, scrubbed narrative to the default, but mirrored: the product-U
 
 ## How it differs from the default
 - The `.ess` element carries `class="ess rev …"`.
-- `ds.css` flips the visual column with `.ess.rev .ess-vis{order:-1}` — no new CSS,
+- `style.css` flips the visual column with `.ess.rev .ess-vis{order:-1}` — no new CSS,
   one existing modifier class. On mobile both variants stack identically
   (`.ess.rev .ess-vis{order:0}`).
 - Nothing else changes: same root, engine, baked-PNG mockups (`.ess-shot-img` in

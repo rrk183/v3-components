@@ -2,7 +2,7 @@
 
 `cards` · Cards · **statement** · any surface · _(grid; carousel variant uses the shared data-carousel recipe)_
 
-**THE card component (2026-09-01).** Composition-first: the `cmp-cards` zone in ds.css owns ONLY the collection layout (columns, carousel, the card frame + link hover). Everything inside a card is atoms in the markup — `media-cover` (+`--focus`) and `.ov` for the medium and wash, `card-panel`/`card-media` for the look, `icon-tile`/`ds-num` marks, `.type-*` text (tag-agnostic titles), `chip`/`badge` labels, `btn`/`btn-text` CTAs, `list-check` bullets. Supersedes the cmp-cards-thumb family (legacy until the sweep) and covers the media-less card estate (highlights-tiles, kicker-cards, pillar-grid, …) — see docs/MIGRATION.md.
+**THE card component (2026-09-01).** Composition-first: the `cmp-cards` zone in style.css owns ONLY the collection layout (columns, carousel, the card frame + link hover). Everything inside a card is atoms in the markup — `media-cover` (+`--focus`) and `.ov` for the medium and wash, `card-panel`/`card-media` for the look, `icon-tile`/`ds-num` marks, `.type-*` text (tag-agnostic titles), `chip`/`badge` labels, `btn`/`btn-text` CTAs, `list-check` bullets. Supersedes the cmp-cards-thumb family (legacy until the sweep) and covers the media-less card estate (highlights-tiles, kicker-cards, pillar-grid, …) — see docs/MIGRATION.md.
 
 ## THE CARD MODEL (2026-09-02, Hakan)
 A card is three independent axes, never a component variant:

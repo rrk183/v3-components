@@ -124,8 +124,7 @@ def chrome(html, rel):
                   '<button class="ish-lang" type="button" lang="en" aria-label="English، التبديل إلى الإنجليزية">English</button>', html)
     html = re.sub(r'<button class="ish-lang-m" type="button" lang="ar"[^>]*>عربي</button>',
                   '<button class="ish-lang-m" type="button" lang="en" aria-label="English، التبديل إلى الإنجليزية">English</button>', html)
-    if 'assets/css/rtl.css' not in html:
-        html = html.replace('</head>', '<link rel="stylesheet" href="assets/css/rtl.css?v=261208" />\n</head>', 1)
+    # (RTL page fixes ship inside style.css, scoped to [dir="rtl"] — no extra link)
     # physical Tailwind utilities -> logical ones (Arabic edition only)
     LOGICAL = {'text-left': 'text-start', 'text-right': 'text-end', 'ml-0': 'ms-0', 'mr-0': 'me-0'}
     def cls(m):

@@ -18,7 +18,7 @@ Registered 2026-08-31 (component-standardization pass). Makes the **mark atoms**
 _Defaults for autonomous building — all overridable on explicit instruction._
 - **Never hand-roll an icon square or a number clamp.** Legacy `.ht-icon`/`.pg-icon`-style rules are what this atom retires; new components compose `.icon-tile`.
 - Don't mix tile sizes within one card grid — pick one size per section.
-- This card is documentation; the atoms live in ds.css.
+- This card is documentation; the atoms live in style.css.
 
 ## Authoring rule
 Read `blocks/icon-tiles.html` for exact markup. Pages compose these atoms directly; there is no `cmp-icon-tiles` on real pages.

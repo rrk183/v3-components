@@ -43,7 +43,7 @@ section.cmp.surface-grey.section-y[data-animate]
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._
 - The root `<section>` has no `cmp-*` modifier class — styling comes from
-  `.epos` in ds.css. Keep the `.epos*` class names intact.
+  `.epos` in style.css. Keep the `.epos*` class names intact.
 - Keep the 9-key keypad and the screen's four lines; the keys are decorative,
   not interactive.
 - Change the label, amount and status text; keep structure and the wrapper

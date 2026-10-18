@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "verify": "node scripts/verify.mjs",
-    "minify": "node scripts/minify.mjs"
+    "minify": "node scripts/minify.mjs",
+    "prepare": "git config core.hooksPath .githooks"
   },
   "engines": {
     "node": ">=18"

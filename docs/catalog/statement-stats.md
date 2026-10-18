@@ -3,13 +3,13 @@
 `statement-stats` · Feature Sections · **statement** · surface-white · data-behavior="text-reveal"
 
 Ported from the CIB review codebase (2026-08). Root class `.cmp-statement-stats`; all of its
-styling lives in `ds.css` under that class — the block itself is pure markup.
+styling lives in `style.css` under that class — the block itself is pure markup.
 
 ## Look
 Two columns: eyebrow, looping video and supporting copy on the left; a large statement heading and a row of count-up proof stats on the right. The heading fills word-by-word from muted to full colour as the section scrolls (scrubbed, not a one-shot reveal).
 
 ## Options
-- **Live tracker media** (2026-10-12): the `.as-media` slot may hold the animated payment-tracker card (`.as-media.as-track[data-pt-track]` with `.tr-*` rows; styled in ds.css, animated by ds.js) instead of the video.
+- **Live tracker media** (2026-10-12): the `.as-media` slot may hold the animated payment-tracker card (`.as-media.as-track[data-pt-track]` with `.tr-*` rows; styled in style.css, animated by ds.js) instead of the video.
 - **Source footnote:** an optional `p.as-src` under the stats naming where the figures come from.
 
 ## Content contract

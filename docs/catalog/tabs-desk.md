@@ -1,6 +1,6 @@
 # Tabs - Desk reel
 
-`tabs-desk` · Tabs · **statement** · surface-white (or surface-soft) · behavior `tabs-desk` (ds.css + ds.js since 2026-10-10)
+`tabs-desk` · Tabs · **statement** · surface-white (or surface-soft) · behavior `tabs-desk` (style.css + ds.js since 2026-10-10)
 
 Ported from the Wholesale Banking home lending section (`cib-home-final.html` section 6, `hf-ask-*`), renamed `td-*`. "With a desk for ____.": the chips rail picks a sector desk, the blank in the sentence rolls like a reel, the photo crossfades and a `card-panel` names the desk.
 

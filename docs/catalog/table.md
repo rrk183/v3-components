@@ -49,7 +49,7 @@ _Defaults for autonomous building — all overridable on explicit instruction._
 - Keep `.tbl-scroll` around each `table.tbl` — it provides horizontal scroll on
   narrow viewports; removing it breaks overflow on mobile.
 - Reuse the badge/`.num`/`.tbl-mono`/`positive`/`negative` classes for styling
-  rather than inventing cell classes; these are the contract with `ds.css`.
+  rather than inventing cell classes; these are the contract with `style.css`.
 - Keep `data-reveal` on the labels/wraps only, not on rows or the section root.
 
 ## Authoring rule

@@ -44,7 +44,7 @@ section.cmp.surface-grey.section-y[data-animate]
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._
 - The root `<section>` has no `cmp-*` modifier class — styling comes from `.eph`
-  in ds.css. Keep the `.eph*` class names intact.
+  in style.css. Keep the `.eph*` class names intact.
 - Keep the single-screen structure and the 2-wallet row; do not add real
   payment behavior — it is a static mockup.
 - Change the note, amount, masked digits and button label; keep structure and

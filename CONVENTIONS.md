@@ -5,8 +5,7 @@ runtime and it works — styled and animated — with **no per-component CSS or 
 and no IDs**. The runtime is pre-deployed, loaded once per page:
 
 ```html
-<link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/ds.css" />
+<link rel="stylesheet" href="assets/css/style.css" />   <!-- fonts + design system + RTL fixes; style.min.css is its generated twin -->
 <script src="assets/js/tailwind.cdn.js"></script>
 <script src="assets/js/ds-tailwind-config.js"></script>
 <script defer src="assets/js/ds.js"></script>
@@ -30,7 +29,7 @@ enforces this mechanically, and it is not advisory:
 
 | Gate rule | What fails |
 |---|---|
-| §8a anti-context | Any ds.css rule whose selector crosses a combinator from a `.surface-*`/`.on-light` ancestor and declares a colour or colour-token property. Geometry under a surface is fine — colour is not. |
+| §8a anti-context | Any style.css rule whose selector crosses a combinator from a `.surface-*`/`.on-light` ancestor and declares a colour or colour-token property. Geometry under a surface is fine — colour is not. |
 | §8b no new indirection | Defining any `--on-*` / `--ink-*` custom property. Ink classes consume **brand tokens** (`--navy`, `--blue`, the greys) directly — one level of indirection, so a brand theme repaints the system by overriding brand tokens alone. |
 | §8c closed vocabulary | Any `surface-*` / `ink-*` / `ov-*` class, anywhere, that is not in the enumerated palette / mode / strength / paint sets. Adding a word is a system decision, not a local one. |
 | §8d block pairing | Every text element in every block, statically resolved to its ground and checked against the pairing rulebook. Blocks are the library's own compositions — they are provably legal before any page is audited against them. |
@@ -53,7 +52,7 @@ has teeth.
 | responsive breakpoints (`md: lg: xl:`)     | type: `.type-h1…h6`, `.type-display-*`, `.ds-eyebrow`       |
 | simple positioning (`absolute inset-0`)    | overlays: `.ov .ov-gradient-b .ov-70 .ov-primary`           |
 | one-off layout tweaks                      | layout primitives: `.container-ds`, `.section-y`, `.ds-stack` |
-|                                            | complex / repeated component styling: `.cmp-<name>` (keyframes, pseudo-elements, intricate selectors) — kept in `ds.css` |
+|                                            | complex / repeated component styling: `.cmp-<name>` (keyframes, pseudo-elements, intricate selectors) — kept in `style.css` |
 
 **Don't utility-spam reusable things.** A button is `class="btn btn-accent"`, not
 ten utilities. If you'd repeat the same utility cluster, make it an atom or a
@@ -111,7 +110,7 @@ outline. New work composes only the role types.
 
 **THE GLYPH AXIS (2026-09-03, Hakan).** A button's icon is a FIFTH axis, and it
 is a CLASS, not markup. Inline `<svg>` blobs inside buttons are retired: the
-glyph lives once in ds.css as a data-URI **mask painted with `currentColor`**,
+glyph lives once in style.css as a data-URI **mask painted with `currentColor`**,
 so it inherits the button's ink on every surface, in every brand, in dark mode
 and on hover for free. Markup only NAMES it.
 
@@ -156,7 +155,7 @@ per-component RTL icon rules — the axis already covers it.
 forced-colors mode strips backgrounds, so every glyph repaints with
 `ButtonText` under `@media (forced-colors: active)`.
 
-**ADDING A GLYPH IS A ds.css EDIT** — deliberately a system-level, roughly
+**ADDING A GLYPH IS A style.css EDIT** — deliberately a system-level, roughly
 monthly-cadence decision, never a per-page one. If a page seems to need a
 fifteenth glyph, the answer is almost always one of the fourteen. Genuine
 brand marks (a LinkedIn logo, App Store / Google Play badges) are NOT glyphs:
@@ -192,7 +191,7 @@ explicitly. The sweep pins every intentional choice.
 - Root carries the component class + a surface + optional `data-animate` / `data-behavior`.
 - **No IDs.** Address everything by class / `data-*`, so a block can appear any
   number of times on one page without collisions.
-- A component's non-utility CSS lives in `ds.css` under `.cmp-<name>`.
+- A component's non-utility CSS lives in `style.css` under `.cmp-<name>`.
 
 ## Animation — opt-in, three tiers (all in `ds.js`)
 
@@ -211,7 +210,7 @@ content is static and visible (also the reduced-motion / JS-off fallback).
    `data-filter-reset`/`-count`/`-empty`. **Filtering is a generic capability —
    any card grid in any block becomes filterable by adding these attributes;
    never write a page-local filter script.** Controls styled with `.filter-bar`
-   / `.filter-chip` / `.filter-select` (ds.css).
+   / `.filter-chip` / `.filter-select` (style.css).
 **Overlay atom:** `.ov` paints a flat tint by DEFAULT; `.ov-black`/`.ov-blue` set only
 the colour and `.ov-NN` only the alpha. Add a type class (`ov-tint`, `ov-scrim`,
 `ov-gradient-b|t|l|r`, `ov-vignette`) to choose the paint. The atom sits at
@@ -326,7 +325,7 @@ forbidden is a ground reaching DOWN a combinator to repaint content.
 recipe at heavier fills — dark-context only).
 
 `surface-accent2` stays **RESERVED**: named so nobody invents a different
-spelling, defined nowhere. The gate fails if ds.css ever defines it.
+spelling, defined nowhere. The gate fails if style.css ever defines it.
 
 ### A self-painting panel DECLARES its ground
 
@@ -563,8 +562,8 @@ After inserting markup at runtime, call `DS.refresh(scope)` to wire the subtree.
 
 ## Scaling Tier-3 recipes (decision)
 Foundation + common cores (reveal, tabs, accordion, carousel, modals, scroll-frames,
-zoom-parallax) stay in the single `ds.css` / `ds.js`. Bespoke Tier-3 recipes
-(WebGL/GSAP/canvas) currently also live appended in `ds.js` + `ds.css`. **Once they
+zoom-parallax) stay in the single `style.css` / `ds.js`. Bespoke Tier-3 recipes
+(WebGL/GSAP/canvas) currently also live appended in `ds.js` + `style.css`. **Once they
 grow heavy or exceed ~15–20**, split each into its own file —
 `assets/js/recipes/<name>.js` + `assets/css/recipes/<name>.css` — and have `ds.js`
 **lazy-load** a recipe module the first time it sees a `[data-behavior="<name>"]`

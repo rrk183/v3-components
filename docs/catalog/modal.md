@@ -48,7 +48,7 @@ Six overlay IDs: `modal-transaction`, `modal-confirm`, `modal-delete`,
 _Defaults for autonomous building — all overridable on explicit instruction._
 - The `.modal` card is a LIGHT ISLAND: it paints itself white, so on a dark
   section its content keeps light-mode ink. That is handled centrally by the
-  island group in ds.css — do NOT add white-text overrides to a modal.
+  island group in style.css — do NOT add white-text overrides to a modal.
 - Keep the `data-modal-open` / `data-modal-close` / `data-modal-dismiss`
   wiring and the `.overlay` IDs in sync — `ds.js` resolves panels by
   `getElementById`, so an ID mismatch leaves the trigger dead. These IDs are
