@@ -3,7 +3,7 @@
 `feature-highlight` · Bento Grids · **supporting** · surface-white · —
 
 Ported from the CIB review codebase (2026-08). Root class `.cmp-feature-highlight`; all of its
-styling lives in `ds.css` under that class — the block itself is pure markup.
+styling lives in `style.css` under that class — the block itself is pure markup.
 
 ## Look
 One highlighted feature with a media panel, plus three supporting cards beneath carrying icon, title and a line of copy.

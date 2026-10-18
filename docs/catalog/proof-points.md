@@ -40,7 +40,7 @@ section.cmp.cmp-proof-points.surface-white.section-y[data-animate]
 
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._
-- `.cbn-divider` / `.cbn-rule` get their border WIDTH from ds.css and their
+- `.cbn-divider` / `.cbn-rule` get their border WIDTH from style.css and their
   COLOUR from `.on-surface-border`. Keep both classes: as page-local copies
   (before this was a block) they carried colour only and drew nothing at all.
 - Don't bold the figures — `type-display-lg` is regular by design.

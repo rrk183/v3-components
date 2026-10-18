@@ -3,7 +3,7 @@
 `how-it-works-timeline` · Process & Steps · **supporting** · surface-white · —
 
 Ported from the CIB review codebase (2026-08). Root class `.cmp-how-it-works-timeline`; all of its
-styling lives in `ds.css` under that class — the block itself is pure markup.
+styling lives in `style.css` under that class — the block itself is pure markup.
 
 ## Look
 The same sequence as a connected timeline: numbered circular nodes on a gradient rule, with the copy beneath each node. Stacks to a vertical rail on small screens.

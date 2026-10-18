@@ -42,7 +42,7 @@ section.cmp.surface-grey.section-y[data-animate]
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._
 - This block has **no `.cmp-api-request` class** — styling comes from `.eapi`,
-  `.eapi-bar`, `.eapi-code` in ds.css. Keep those exact classes.
+  `.eapi-bar`, `.eapi-code` in style.css. Keep those exact classes.
 - Indentation/newlines inside `.eapi-code` are significant (rendered verbatim) —
   edit the text but preserve the JSON-like formatting.
 - Only `.m` / `.k` / `.s` spans are styled; don't invent new token classes.

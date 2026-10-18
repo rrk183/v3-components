@@ -37,7 +37,7 @@ for (const d of SATELLITES)
 const PARKED = /-(ram|codex)\.html$/;
 // Internal TOOLING pages, exempt from the first-party product rules. Per the
 // 2026-09-03 ruling, tooling is completely separate from the product bundle:
-// it must NOT load ds.css/ds.js/Tailwind, it may hardcode brand constants, and
+// it must NOT load style.css/ds.js/Tailwind, it may hardcode brand constants, and
 // it may use markup the product bans (site-index-v2.html uses native <details>
 // disclosure and carries its own assets/css/site-index.css + site-index.js).
 // Tooling never ships to the CMS, so the product contract does not apply.
@@ -46,13 +46,13 @@ const firstParty = allPages.filter((f) => !PARKED.test(f) && !DEV_RIGS.has(f) &&
 const junk = allPages.filter((f) => f.includes(" "));
 for (const j of junk) fail(4, `junk filename in repo root: "${j}"`);
 
-const css = read("assets/css/ds.css");
+const css = read("assets/css/style.css");
 // ── tooling/product SEPARATION (ruling 2026-09-03): the product bundle may
 // contain NO tooling selectors, and no product page may load tooling assets.
 {
   const cssNoComments = css.replace(/\/\*[\s\S]*?\*\//g, "");
   for (const bad of ["#sfx-", ".lib-", ".sx-"]) {
-    if (cssNoComments.includes(bad)) fail(5, `tooling selector "${bad}" inside ds.css — tooling styles live in library.css/site-index.css`);
+    if (cssNoComments.includes(bad)) fail(5, `tooling selector "${bad}" inside style.css — tooling styles live in library.css/site-index.css`);
   }
   for (const f of firstParty) {
     const h = read(f);
@@ -341,17 +341,17 @@ for (const js of ["assets/js/ds.js", "assets/js/library.js", "assets/js/ds-palet
 }
 {
   const open = (css.match(/\{/g) || []).length, close = (css.match(/\}/g) || []).length;
-  if (open !== close) fail(2, `ds.css unbalanced braces: ${open} { vs ${close} }`);
+  if (open !== close) fail(2, `style.css unbalanced braces: ${open} { vs ${close} }`);
   // Every palette GROUND is defined, and defines a background — a ground that
   // paints nothing is a word the author can write and not see. Modes are
   // exempt: surface-clear paints nothing BY DEFINITION, and surface-image's
   // ground is the data-bg photo.
   for (const s of PAL.PALETTE.map((w) => `surface-${w}`))
     if (!new RegExp(`(^|[,\\s])\\.${s}[\\s,{][^{]*\\{[^}]*background`, "m").test(css))
-      fail(2, `.${s} is in the palette but paints no background in ds.css`);
+      fail(2, `.${s} is in the palette but paints no background in style.css`);
   for (const i of PAL.INKS)
     if (!new RegExp(`(^|[,\\s])\\.${i}[\\s,{][^{]*\\{[^}]*color\\s*:`, "m").test(css))
-      fail(2, `.${i} is in the palette but sets no colour in ds.css`);
+      fail(2, `.${i} is in the palette but sets no colour in style.css`);
   if (!/^\.surface-dark[\s,{][^{]*\{[^}]*background:\s*#030303/m.test(css))
     fail(2, ".surface-dark definition altered or selector-polluted");
   // Comments legitimately DISCUSS the old names (the deprecation notes do), so
@@ -363,7 +363,7 @@ for (const js of ["assets/js/ds.js", "assets/js/library.js", "assets/js/ds-palet
   // is exactly where the rename has to hold.
   for (const old of ["surface-navy", "surface-blue"]) {
     const hits = (cssCode.match(new RegExp(`\\.${old}(?![a-z0-9-])`, "g")) || []).length;
-    if (hits > 2) fail(2, `.${old} appears ${hits}× in ds.css — the deprecated alias belongs on the 2 definition blocks only`);
+    if (hits > 2) fail(2, `.${old} appears ${hits}× in style.css — the deprecated alias belongs on the 2 definition blocks only`);
   }
   // surface-accent2 is RESERVED: named in the docs, defined nowhere. If it ever
   // gains a definition, that is a deliberate act that must update the docs too.
@@ -371,7 +371,7 @@ for (const js of ["assets/js/ds.js", "assets/js/library.js", "assets/js/ds-palet
     fail(2, ".surface-accent2 is RESERVED — it must stay undefined until it is deliberately introduced");
   const vs = new Set();
   for (const p of [...firstParty, ...[...DEV_RIGS].filter((d) => existsSync(path.join(ROOT, d)))])
-    for (const m of read(p).matchAll(/ds\.(?:css|js)\?v=(\w+)/g)) vs.add(m[1]);
+    for (const m of read(p).matchAll(/(?:style\.css|ds\.js)\?v=(\w+)/g)) vs.add(m[1]);
   if (vs.size > 1) fail(2, `inconsistent cache-bust versions across pages: ${[...vs].join(", ")}`);
 }
 
@@ -387,9 +387,13 @@ for (const js of ["assets/js/ds.js", "assets/js/library.js", "assets/js/ds-palet
   for (const d of dossiers) if (!blockNames.includes(d)) fail(3, `dossier ${d}.md has no block`);
   if (read("all-components.html") !== buildPage())
     fail(3, "all-components.html is stale — run: node scripts/build-all-components.mjs --write");
+  // style.min.css is committed beside style.css (the CMS ships the pair); the
+  // pre-commit hook regenerates it, and this catches a commit that skipped it
+  try { execFileSync(process.execPath, [path.join(ROOT, "scripts/minify.mjs"), "--check"], { stdio: "pipe" }); }
+  catch { fail(3, "assets/css/style.min.css is stale — run: npm run minify"); }
 }
 
-// Button/control icons live ONCE in ds.css as data-URI masks named by a
+// Button/control icons live ONCE in style.css as data-URI masks named by a
 // modifier class (the BUTTON GLYPH ENGINE, 2026-09-03 ruling) — an inline <svg>
 // inside a button is markup carrying a design decision it should not own.
 // A "button" is the atom, not a tag: the class token `btn` itself, or one of
@@ -443,7 +447,7 @@ for (const p of firstParty) {
   if (!/<title>[^<]{3,}/.test(src)) fail(4, `${p}: missing <title>`);
   if (!/name="description"/.test(src)) warn(4, `${p}: missing meta description`);
   if (/<style(?!>body\{margin:0\})/i.test(src.replace(/<style>body\{margin:0\}<\/style>/, "")) && /<style[\s>]/i.test(src.replace(/<style>(html,)?body\{margin:0\}<\/style>/g, "")))
-    warn(4, `${p}: page-level <style> block (legacy debt — extract to ds.css/utilities)`);
+    warn(4, `${p}: page-level <style> block (legacy debt — extract to style.css/utilities)`);
   if (/lorem ipsum|dolor sit amet|\[PLACEHOLDER\]|TK-TK/i.test(src)) fail(4, `${p}: placeholder copy`);
   if (/#030303|#04101f/i.test(src.replace(/color:\s*#04101f/gi, ""))) fail(4, `${p}: raw near-black background value`);
   for (const m of src.matchAll(/class="cmp (cmp-[a-z0-9-]+)/g))
@@ -458,7 +462,7 @@ for (const p of firstParty) {
   for (const m of src.matchAll(/class="[^"]*\bsurface-dark\b[^"]*"/g))
     if (!/hero-cinematic-cards/.test(m[0])) fail(4, `${p}: surface-dark outside the sanctioned component`);
   // Surfaces are ROLE-named (RULING 2026-09-03). The colour spellings still
-  // paint (deprecated aliases in ds.css) but get NONE of the compound rules —
+  // paint (deprecated aliases in style.css) but get NONE of the compound rules —
   // island guards, flip groups and :is() lists were migrated to the role names
   // only — so a page left on the old name renders subtly wrong, not obviously
   // broken. That is exactly what a warning is for.
@@ -489,8 +493,8 @@ for (const p of firstParty) {
   //    Hakan found codified rules silently violated across imported pages) ──
   // (a) a head class that does not exist: .sh-split was Ram's; ours is .is-split.
   //     It renders as a PLAIN stacked head with zero errors — 12 pages shipped
-  //     that way. Any head layout class must be one ds.css actually defines.
-  if (/class="[^"]*\bsh-split\b/.test(src)) fail(4, `${p}: legacy .sh-split head (undefined in ds.css — use .is-split with two groups)`);
+  //     that way. Any head layout class must be one style.css actually defines.
+  if (/class="[^"]*\bsh-split\b/.test(src)) fail(4, `${p}: legacy .sh-split head (undefined in style.css — use .is-split with two groups)`);
   // (b) the forbidden light button atom (outline-light is THE dark outline)
   if (/class="[^"]*\bbtn btn-light\b/.test(src)) fail(4, `${p}: forbidden btn-light — use btn-primary / btn-outline-light`);
   // (c) mailto funnels: pages route to contact-us / the support forms instead
@@ -546,7 +550,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
       if (!ALPHA.test(value)) continue;
       // rgba(…, 1) / rgba(…, 100%) is opaque in effect but still spells alpha —
       // forbidden outright so the rule stays a bright line.
-      fail(5, `ds.css:${lineOf(m.index)} text ink with alpha — "${prop}: ${value.trim().slice(0, 46)}" — inks are OPAQUE colours (use a --ink-* token or color-mix(in srgb, …)); alpha is for non-text paint only`);
+      fail(5, `style.css:${lineOf(m.index)} text ink with alpha — "${prop}: ${value.trim().slice(0, 46)}" — inks are OPAQUE colours (use a --ink-* token or color-mix(in srgb, …)); alpha is for non-text paint only`);
     }
   }
   // NO raw hex colours outside :root — every colour goes through a token so a
@@ -559,7 +563,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
     "\\.(?:eph|epc|epos|epl|ebr|eapi|chat|tdash|trep|tintg|tform|tnotif|tdisc|tonb|tup|mkw|aconsole|alist|akeys|sfx|aci|eic|lpulse)[a-z0-9-]*" +
     "|\\.(?:api-dark|boapp|pbento|sw-card|ess-vis|bento-ship|laptop-screen|laptop-base|phone|phone-pill|ls-lid|ls-base|ls-glow" +
     "|sb-shell|sb-btn|sb-screen|ps-screen|hp-dash-card|map-stat-card|ssv-mini-card|mcard|callout|t-badge|eco-fb|as-track)\\b");
-  // Blocks are ID-free by contract, so a ds.css rule scoped to an #id styles
+  // Blocks are ID-free by contract, so a style.css rule scoped to an #id styles
   // nothing the moment that id is absent — the component renders completely
   // unstyled with no error (scroll-tab shipped this way: its id was dropped as
   // unreferenced while 20 rules still targeted it). Warn rather than fail:
@@ -573,7 +577,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
       const id = m[1];
       if (/^[0-9a-fA-F]{3,8}$/.test(id) || declared.has(id) || seen.has(id)) continue;
       seen.add(id);
-      warn(5, `ds.css targets #${id}, which no block declares — those rules style nothing`);
+      warn(5, `style.css targets #${id}, which no block declares — those rules style nothing`);
     }
   }
 
@@ -590,12 +594,12 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
           if (/^[a-zA-Z_-][\w-]*$/.test(w) && !/^(none|initial|inherit|unset|infinite|alternate|reverse|forwards|backwards|both|normal|linear|ease|ease-in|ease-out|ease-in-out|step-start|step-end|running|paused)$/.test(w))
             used.add(w);
     for (const name of used)
-      if (!defined.has(name)) fail(5, `ds.css: animation "${name}" has no @keyframes — anything it fades in stays invisible`);
+      if (!defined.has(name)) fail(5, `style.css: animation "${name}" has no @keyframes — anything it fades in stays invisible`);
   }
 
   // The MIRROR of the stray-'*/' bug below: a comment that LOSES its closer
   // runs on until the next '*/' anywhere in the file, eating every rule in
-  // between. Braces cannot legitimately appear inside a ds.css comment, so a
+  // between. Braces cannot legitimately appear inside a style.css comment, so a
   // comment containing one has swallowed live CSS. Both known cases came from
   // the same script splitting selector lists on commas — and both comments end
   // mid-sentence at a comma. Browsers drop the eaten rules in silence; the
@@ -604,7 +608,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
   for (const m of css.matchAll(/\/\*([\s\S]*?)\*\//g)) {
     if (/[{}]/.test(m[1])) {
       const line = css.slice(0, m.index).split("\n").length;
-      fail(5, `ds.css:${line} comment swallows live CSS (missing '*/') — rules after it are silently dropped: "${m[1].trim().slice(0, 60)}…"`);
+      fail(5, `style.css:${line} comment swallows live CSS (missing '*/') — rules after it are silently dropped: "${m[1].trim().slice(0, 60)}…"`);
     }
   }
   {
@@ -621,7 +625,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
         // rule invalid — browsers drop it silently (this shipped once: a
         // script split selectors on commas inside a comma-bearing comment)
         if (sel.includes("*/"))
-          fail(5, `ds.css:${lineOf(prev)} stray '*/' inside a selector — the rule is silently dropped: ${sel.slice(0, 60)}`);
+          fail(5, `style.css:${lineOf(prev)} stray '*/' inside a selector — the rule is silently dropped: ${sel.slice(0, 60)}`);
         stack.push(sel);
       }
       else {
@@ -631,12 +635,12 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
         // NEVER from CSS — so a url() in any surface-image rule is a leak
         // (this is how a brand ends up seeing another brand's artwork).
         if (/\.surface-image\b/.test(ctx) && /url\(/.test(chunk))
-          fail(5, `ds.css:${lineOf(prev)} url() inside a .surface-image rule — background images come from data-bg in markup, not CSS`);
+          fail(5, `style.css:${lineOf(prev)} url() inside a .surface-image rule — background images come from data-bg in markup, not CSS`);
         if (!inRoot && !ILLUS.test(ctx)) {
           const sel = (stack[stack.length - 1] || "?").slice(0, 60);
           for (const h of chunk.matchAll(/#([0-9a-fA-F]{3,8})\b/g))
             if (!HEX_OK.has(h[1].toLowerCase()))
-              fail(5, `ds.css:${lineOf(prev + h.index)} raw hex #${h[1]} in "${sel}" — use a token`);
+              fail(5, `style.css:${lineOf(prev + h.index)} raw hex #${h[1]} in "${sel}" — use a token`);
           // raw rgb()/rgba() triplets are the same leak in disguise (the hex
           // rule can't see them — that's how the overlay tint stayed ENBD
           // navy under every theme). Sanctioned forms: rgba(var(--x-rgb), a)
@@ -644,10 +648,10 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
           const TRIPLET_OK = new Set(["255,255,255", "0,0,0", "3,3,3"]);
           for (const t of chunk.matchAll(/rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})/g))
             if (!TRIPLET_OK.has(`${t[1]},${t[2]},${t[3]}`))
-              fail(5, `ds.css:${lineOf(prev + t.index)} raw rgb triplet ${t[1]},${t[2]},${t[3]} in "${sel}" — use rgba(var(--x-rgb), a) or color-mix on a token`);
+              fail(5, `style.css:${lineOf(prev + t.index)} raw rgb triplet ${t[1]},${t[2]},${t[3]} in "${sel}" — use rgba(var(--x-rgb), a) or color-mix on a token`);
           for (const d of chunk.matchAll(/--[\w-]+\s*:\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*[;\n]/g))
             if (!TRIPLET_OK.has(`${d[1]},${d[2]},${d[3]}`))
-              fail(5, `ds.css:${lineOf(prev + d.index)} raw triplet declaration in "${sel}" — point it at a var(--x-rgb) token`);
+              fail(5, `style.css:${lineOf(prev + d.index)} raw triplet declaration in "${sel}" — point it at a var(--x-rgb) token`);
         }
         stack.pop();
       }
@@ -663,7 +667,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
   // flow 8 (§ 8a anti-context, § 8d block pairing) replaces both, and does it
   // at the source — it is now impossible to WRITE the rule they guarded.
   // every var(--x) without a fallback must resolve to a definition somewhere:
-  // ds.css/themes.css declarations, ds.js setProperty, or style="--x:…" passing
+  // style.css/themes.css declarations, ds.js setProperty, or style="--x:…" passing
   // in blocks/pages (the one sanctioned inline-style form)
   {
     const themes = existsSync(path.join(ROOT, "assets/css/themes.css")) ? read("assets/css/themes.css") : "";
@@ -678,7 +682,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
     for (const m of decomment(css).matchAll(/var\(\s*--([a-zA-Z0-9-]+)\s*\)/g))
       if (!defined.has(m[1])) missing.set(m[1], (missing.get(m[1]) || 0) + 1);
     for (const [name, n] of missing)
-      fail(5, `ds.css: var(--${name}) never defined anywhere (${n} use(s), no fallback)`);
+      fail(5, `style.css: var(--${name}) never defined anywhere (${n} use(s), no fallback)`);
   }
   // themes.css (when present): variables only, and every theme block must
   // define the identical token set — a brand silently inheriting another
@@ -729,7 +733,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
   // whole selector groups — this shipped once via a script-mangled closer
   for (const m of css.matchAll(/\/\*[\s\S]*?\*\//g))
     if (/\n\s*\.[a-z][^\n]*\{/.test(m[0]) && m[0].length < 2000)
-      fail(5, `ds.css:${css.slice(0, m.index).split("\n").length} comment contains live-looking CSS rules — lost '*/' upstream?`);
+      fail(5, `style.css:${css.slice(0, m.index).split("\n").length} comment contains live-looking CSS rules — lost '*/' upstream?`);
   const hasCount = (css.match(/:has\(/g) || []).length;
   if (hasCount > 1) fail(5, `:has() budget exceeded: ${hasCount} uses (max 1)`);
   // Screen-height sizing must survive phone browser bars (device audit
@@ -742,7 +746,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
         const n = [...d[2].matchAll(/(\d+(?:\.\d+)?)vh\b/g)].map((x) => +x[1]).filter((v) => v >= 60);
         if (!n.length || Math.max(...n) > 100) continue;
         if (new RegExp(d[1] + "\\s*:\\s*[^;]*(svh|dvh|lvh)").test(r[2])) continue;
-        warn(5, `ds.css:${code.slice(0, r.index).split("\n").length} "${r[1].trim().slice(0, 60)}" sizes by ${d[1]}: ${d[2].trim().slice(0, 40)} with no svh partner; add "${d[1]}: ${d[2].trim().replace(/(\d+(?:\.\d+)?)vh\b/g, "$1svh").slice(0, 40)}" after it`);
+        warn(5, `style.css:${code.slice(0, r.index).split("\n").length} "${r[1].trim().slice(0, 60)}" sizes by ${d[1]}: ${d[2].trim().slice(0, 40)} with no svh partner; add "${d[1]}: ${d[2].trim().replace(/(\d+(?:\.\d+)?)vh\b/g, "$1svh").slice(0, 40)}" after it`);
       }
     }
   }
@@ -782,7 +786,7 @@ for (const wf of ["page-research-blueprint.js", "page-build-review.js", "page-co
   // spacing, borders-as-shape) is not colour and is left alone.
   // The custom-property arm matters as much as the real properties: a context
   // rule that sets `--dt-bg` repaints its component exactly as `background:`
-  // would, one indirection later. That hole let ds.css's `.surface-primary
+  // would, one indirection later. That hole let style.css's `.surface-primary
   // .cmp-ticker { --dt-bg: … }` through the lint for the whole migration
   // (estate audit 2026-09-03, C-4), so the arm now names every custom property
   // whose stem reads as PAINT — ink/surface/colour/fill/accent/bg/background/
@@ -799,7 +803,7 @@ for (const wf of ["page-research-blueprint.js", "page-build-review.js", "page-co
       return /[\s>+~]\S/.test(one.slice(m.index + m[0].length));
     });
     if (contextual)
-      fail(8, `ds.css:${lineOf(r.start)} CONTEXT RULE — "${r.sel.trim().slice(0, 88)}" repaints content from its ground. CSS never adapts content by context: put the ink in the markup as a different composition (CONVENTIONS.md § The law).`);
+      fail(8, `style.css:${lineOf(r.start)} CONTEXT RULE — "${r.sel.trim().slice(0, 88)}" repaints content from its ground. CSS never adapts content by context: put the ink in the markup as a different composition (CONVENTIONS.md § The law).`);
   }
 
   // ── 8b · NO NEW INDIRECTION ──────────────────────────────────────────────
@@ -812,27 +816,27 @@ for (const wf of ["page-research-blueprint.js", "page-build-review.js", "page-co
   for (const m of cssCode.matchAll(/(^|[;{\s])(--(?:on|ink)-[a-z0-9-]+)\s*:/g)) {
     const name = m[2];
     if (SANCTIONED_PROPS.has(name)) continue;
-    fail(8, `ds.css:${lineOf(m.index)} defines ${name} — a relative-ink indirection layer. Inks are declared in markup and consume BRAND tokens directly (--navy/--blue/greys); there is no second token layer.`);
+    fail(8, `style.css:${lineOf(m.index)} defines ${name} — a relative-ink indirection layer. Inks are declared in markup and consume BRAND tokens directly (--navy/--blue/greys); there is no second token layer.`);
   }
 
   // ── 8c · CLOSED VOCABULARY ───────────────────────────────────────────────
   // surface-* / ink-* / ov-* are RESERVED prefixes. A name outside the
   // enumerated palette / mode / strength / paint sets is a failure wherever it
-  // appears — ds.css, blocks, or the gallery — so nobody invents an axis.
+  // appears — style.css, blocks, or the gallery — so nobody invents an axis.
   const vocabHit = (where, cls, ctx) => {
     if (!PAL.isReservedName(cls) || PAL.inVocabulary(cls)) return;
     if (PAL.DEPRECATED[cls]) return; // handled as a deprecation, not an invention
     fail(8, `${where}: "${cls}" is not in the colour vocabulary${ctx ? ` (${ctx})` : ""} — surface-*/ink-*/ov-* is a CLOSED set (assets/js/ds-palette.js). Adding a word is a system decision, not a local one.`);
   };
   for (const r of cssRules(cssCode))
-    for (const m of r.sel.matchAll(/\.((?:surface|ink|ov)-[a-z0-9-]+)/g)) vocabHit(`ds.css:${lineOf(r.start)}`, m[1]);
+    for (const m of r.sel.matchAll(/\.((?:surface|ink|ov)-[a-z0-9-]+)/g)) vocabHit(`style.css:${lineOf(r.start)}`, m[1]);
   for (const f of blockFiles)
     for (const m of read(`blocks/${f}`).matchAll(/class\s*=\s*"([^"]*)"/g))
       for (const c of m[1].split(/\s+/)) vocabHit(`blocks/${f}`, c);
   // …and over FIRST-PARTY PAGES. CONVENTIONS says the closed vocabulary binds
   // "any surface-*/ink-*/ov-* class, ANYWHERE"; until 2026-09-03 this check ran
-  // over ds.css, blocks and the gallery but not pages, so `ov-65` — a strength
-  // ds.css never defines, silently falling back to the base --ov-a — lived on
+  // over style.css, blocks and the gallery but not pages, so `ov-65` — a strength
+  // style.css never defines, silently falling back to the base --ov-a — lived on
   // 9 pages through the whole migration (estate audit, C-3). A page invents an
   // axis exactly as easily as a block does.
   for (const p of firstParty)

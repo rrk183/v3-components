@@ -2,7 +2,7 @@
 
 `tabs-underline` · Tabs · **supporting** · any surface · _(ds.js data-tabs)_
 
-**THE tabs shell, default rail (cmp-tabs v4, 2026-09-01).** One behavior, rails as atoms/compositions, panels take ANY HTML. The v4 zone in ds.css owns ONLY the plain-rail indicator (underline / vertical start-border), the composed-trigger state hooks and the panel switch — everything else inside is atoms. Supersedes the legacy `.tab-ul/.tab-pill/.tab-card/.tab-vert` zone (kept for pasted pages until the sweep).
+**THE tabs shell, default rail (cmp-tabs v4, 2026-09-01).** One behavior, rails as atoms/compositions, panels take ANY HTML. The v4 zone in style.css owns ONLY the plain-rail indicator (underline / vertical start-border), the composed-trigger state hooks and the panel switch — everything else inside is atoms. Supersedes the legacy `.tab-ul/.tab-pill/.tab-card/.tab-vert` zone (kept for pasted pages until the sweep).
 
 ## Anatomy
 `section.cmp.cmp-tabs` > `.container-ds` > `[data-tabs]` > `.tb-rail.is-underline[role=tablist]` of `button.tb-tab[data-tab]` + `.tb-panel[data-panel]` siblings. Active state = `.active` (ds.js toggles it). Rail scrolls horizontally on overflow.

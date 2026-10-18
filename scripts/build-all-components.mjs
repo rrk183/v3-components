@@ -49,7 +49,7 @@ export function buildBody() {
 }
 
 export function currentVersion() {
-  const m = read("index.html").match(/ds\.css\?v=(\w+)/);
+  const m = read("index.html").match(/style\.css\?v=(\w+)/);
   if (!m) throw new Error("cannot read ?v= from index.html");
   return m[1];
 }
@@ -66,8 +66,7 @@ export function buildPage() {
   <title>All Components — browser pass | Emirates NBD DS</title>
   <meta name="description" content="Internal review page: every design-system block stacked as one seamless page for cross-browser and breakpoint passes." />
   <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="assets/css/fonts.css" />
-  <link rel="stylesheet" href="assets/css/ds.css?v=${v}" />
+  <link rel="stylesheet" href="assets/css/style.css?v=${v}" />
   <link rel="stylesheet" href="assets/css/themes.css?v=${v}" />
   <script src="assets/js/tailwind.cdn.js"></script>
   <script src="assets/js/ds-tailwind-config.js?v=${v}"></script>

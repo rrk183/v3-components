@@ -5,7 +5,7 @@
 > **Unreviewed** — formalised 2026-08 from the shared `.ess` "scroll-story feature
 > section" pattern that already lives on many pages (payments, api-banking,
 > businessonline, smartscf). Registered as a first-class block; the engine +
-> styling stay under the shared `.ess-*` classes in `ds.css`, and this block adds
+> styling stay under the shared `.ess-*` classes in `style.css`, and this block adds
 > a thin `.cmp-feature-scroll-story` marker on the section. Awaiting front-end
 > review (surface-adaptivity on dark, and the image-capture authoring flow).
 
@@ -39,7 +39,7 @@ HTML so they remain translatable and theme-aware.
 ## Variants
 - **Mockup right** (default, `feature-scroll-story`) — chapters left, mockup right.
 - **Mockup left** (`feature-scroll-story-rev`) — the SAME block with `rev` added to
-  the `.ess` element (`.ess.rev .ess-vis{order:-1}` in `ds.css`); mockup left,
+  the `.ess` element (`.ess.rev .ess-vis{order:-1}` in `style.css`); mockup left,
   chapters right. Same `.cmp-feature-scroll-story` root, same engine, same baked
   PNGs — the ONLY difference is the side. Alternate the two across sibling scroll
   stories on one page (e.g. Online then Point-of-sale) for visual rhythm. No new

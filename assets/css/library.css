@@ -1,9 +1,10 @@
 /* INTERNAL TOOLING — the gallery shell. Per the 2026-09-03 separation
    ruling it must SURVIVE deletion of the product bundle: these hardcoded
    token values (deliberate — tooling may hardcode) make the shell
-   self-sufficient when ds.css is absent; when ds.css is present its
-   identical :root values simply agree. */
-:root {
+   self-sufficient when style.css is absent. :where() gives this block ZERO
+   specificity: this file loads LAST, so a plain :root here would beat
+   themes.css's [data-theme] blocks and freeze the Brand switch on ENBD. */
+:where(:root) {
   --navy: #072447; --navy-rgb: 7, 36, 71;
   --blue: #2765FF; --blue-rgb: 39, 101, 255;
   --blue-wash: #EEF3FF; --light: #F4F7FB; --mid: #3A4B5C;
@@ -11,7 +12,7 @@
 }
 /* ═══ Component Library — gallery chrome (not part of the DS runtime) ═══════ */
 /* Gallery chrome rides the DS tokens, so the Brand switch repaints the
-   gallery itself too (ds.css + themes.css load before this file). The
+   gallery itself too (style.css + themes.css load before this file). The
    hairline stays neutral by design. */
 :root { --lib-navy:var(--navy, #072447); --lib-blue:var(--blue, var(--lib-blue)); --lib-line:#e6eaf0; --lib-ink:var(--mid, #3A4B5C); --lib-ease:cubic-bezier(.16,1,.3,1); }
 * { box-sizing: border-box; }

@@ -21,7 +21,7 @@ A grey band. A full-width white frame holding a looping brand-blue "signal" anim
 - **Frame** — `span.media-frame.surface-X.relative.block.aspect-[R]`. The `surface-*` class is load-bearing *documentation*: it declares which face the bake targets, so a mismatch is readable in the markup.
 - **Media** — `video.media-cover` with `muted autoplay loop playsinline preload="metadata" poster="…" src="…" aria-hidden="true"`. **No `controls`, no `<source>` ladder, no overlay.**
 - **Inset composition** — `div.card-panel.surface-X` holding the frame + a `ds-stack` of `type-*` copy.
-- **Specimen labels** — `.bt-label` (the shared capability-board chrome; this component is on its `:is(…)` list in ds.css).
+- **Specimen labels** — `.bt-label` (the shared capability-board chrome; this component is on its `:is(…)` list in style.css).
 
 ## Content contract
 - **`poster` is REQUIRED.** ds.js's global reduced-motion register pauses any `video[autoplay][loop][poster]:not([controls])` and re-raises the poster (`preload='none'` + `load()`); a poster-less illustration video would go blank for those readers instead of standing down. It is also the first paint and the fallback.

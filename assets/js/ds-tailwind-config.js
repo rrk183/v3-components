@@ -32,7 +32,7 @@ tailwind.config = {
         mid:    'var(--mid)',
         light:  'var(--light)',
         hair:   'var(--border)',   /* hairline border */
-        /* derived brand tier (ds.css :root) — themable like the base five */
+        /* derived brand tier (style.css :root) — themable like the base five */
         'navy-deep':   'var(--navy-deep)',
         'navy-shade':  'var(--navy-shade)',
         'navy-strong': 'var(--navy-strong)',

@@ -43,7 +43,7 @@ section.cmp-toast.surface-white.section-y[data-animate]
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._
 - `.toast` / `.notif` are LIGHT ISLANDS — they paint their own light card, so
-  their ink is light-mode on any surface (handled centrally in ds.css).
+  their ink is light-mode on any surface (handled centrally in style.css).
 - This is a **static showcase**, not a live notification system — don't wire it
   to a queue or expect the close button / `.toast-progress` to do anything.
 - Keep the `toast-{variant}` / `notif-{variant}` classes paired with matching

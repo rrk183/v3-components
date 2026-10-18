@@ -4,7 +4,7 @@ verify: node scripts/verify.mjs
 
 ## What this repo is (context for the reviewer)
 A pure-markup design system: 85 canonical components in `blocks/`, one shared
-runtime (`assets/css/ds.css` + `assets/js/ds.js`), ~30 first-party pages
+runtime (`assets/css/style.css` + `assets/js/ds.js`), ~30 first-party pages
 composed by pasting blocks and changing only content, and an AI page-builder
 (`.claude/workflows/*.js` + `/build-page`) that generates new pages from the
 same blocks. Pages must stay CSS/JS-free (classes + data-attributes only).
@@ -23,7 +23,7 @@ push to `ds-rearchitecture`).
    `.is-center`/`.is-split` variants and the gallery Header control become
    silent no-ops (the row class belongs ON the header; the link is a
    `.sh-action` child).
-2. **The runtime pair** — ds.css/ds.js must parse; every first-party page must
+2. **The runtime pair** — style.css/ds.js must parse; every first-party page must
    reference them with ONE consistent `?v=` cache-bust; the surface system
    must stay intact (`.surface-primary` = brand navy `#072447`, `--on-surface`
    tokens present on all five surfaces; `surface-dark` never a default —
@@ -41,7 +41,7 @@ push to `ds-rearchitecture`).
    colour goes through a token so a brand theme can repaint the system by
    overriding variables only. Exempt: `#fff`/`#000`/`#030303` (ink, not brand)
    and the CSS-drawn product-mockup illustrations (artwork). Every
-   `var(--x)` without a fallback must resolve to a real definition (ds.css,
+   `var(--x)` without a fallback must resolve to a real definition (style.css,
    themes.css, a ds.js `setProperty`, or `style="--x:…"` passing).
    `assets/css/themes.css`, when present, may contain variable declarations
    only, and every `[data-theme=…]` block must define the identical token set
@@ -61,12 +61,12 @@ push to `ds-rearchitecture`).
    CSS never adapts content by context; a different look on a different ground
    is a different markup composition.* Five checks, all reading ONE source of
    truth (`assets/js/ds-palette.js`, which the gallery reads too):
-   **8a anti-context** — no ds.css rule may cross a combinator from a
+   **8a anti-context** — no style.css rule may cross a combinator from a
    `.surface-*`/`.on-light` ancestor and declare colour (geometry is fine);
    **8b no new indirection** — no `--on-*`/`--ink-*` custom property may be
    defined at all, so ink classes consume brand tokens directly;
    **8c closed vocabulary** — `surface-*`/`ink-*`/`ov-*` outside the enumerated
-   palette/mode/strength/paint sets fails, in ds.css, blocks or the gallery;
+   palette/mode/strength/paint sets fails, in style.css, blocks or the gallery;
    **8d block pairing** — every text element in every block is statically
    resolved to its ground (nearest `surface-*` ancestor; `surface-image` through
    its overlay's COLOUR) and checked against the categorical pairing rulebook,
@@ -118,7 +118,7 @@ push to `ds-rearchitecture`).
 - Layout utilities (incl. Tailwind arbitrary values from the inline-style
   migration) require the JIT runtime `assets/js/tailwind.cdn.js` to execute.
   It is a SAME-ORIGIN asset (not a third-party CDN), so its failure domain
-  equals ds.css/ds.js — accepted repo-wide pattern.
+  equals style.css/ds.js — accepted repo-wide pattern.
 - Markup colour literals: BLOCKS may not carry any (arbitrary hex utilities
   or raw rgb triplets — they bypass brand theming; flow-1 fails). First-party
   pages WARN (remaining hits are tracked legacy `<style>` debt). White/black

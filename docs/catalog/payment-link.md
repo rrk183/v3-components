@@ -46,7 +46,7 @@ section.cmp.surface-grey.section-y[data-animate]
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._
 - The root `<section>` has no `cmp-*` modifier class — styling comes from `.epl`
-  in ds.css. Keep the `.epl*` class names intact.
+  in style.css. Keep the `.epl*` class names intact.
 - Keep the 3-chip share row; adding/removing chips unbalances the layout.
 - Change the labels, amount and link text; keep structure and the `data-reveal`
   on the wrapper.

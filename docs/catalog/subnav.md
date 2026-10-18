@@ -35,7 +35,7 @@ _Defaults for autonomous building — all overridable on explicit instruction._
 - The bar is ONE line high by contract. Don't let it wrap — that pushes the
   page content down on every resize; the sideways scroll below 768 is deliberate.
 - `top: 72px` clears the solid brand row. If a page uses a taller header, adjust
-  in ds.css — never with an inline style.
+  in style.css — never with an inline style.
 - Highlighting the active section as the reader scrolls would need a recipe;
   there is none today, so the active link is authored, not computed.
 

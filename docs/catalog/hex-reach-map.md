@@ -2,7 +2,7 @@
 
 `hex-reach-map` · Storytelling & Scroll · **showpiece** · surface-white (any ground) · behavior `markets-map`
 
-Root class `.cmp-markets-map`. Styled in `ds.css`, driven by the `markets-map`
+Root class `.cmp-markets-map`. Styled in `style.css`, driven by the `markets-map`
 recipe in `ds.js`. Until 2026-10-12 the block carried its own inline style and
 script; both moved into the runtime so master changes reach every instance.
 
@@ -60,7 +60,7 @@ section.cmp.cmp-markets-map.surface-*[data-behavior=markets-map][aria-label] (.i
 - Stats row figures: at most about 10 characters; labels at most about 50.
 
 ## Drift cautions
-- No IDs and no inline style or script: everything lives in ds.css / ds.js.
+- No IDs and no inline style or script: everything lives in style.css / ds.js.
 - Colours are component tokens (`--cm-*`) pointing at brand tokens; set the
   ground in markup, never recolour the map in page CSS.
 - The section is very tall (about 6 viewports): use one per page.

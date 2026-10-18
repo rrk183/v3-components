@@ -5,7 +5,7 @@
 > **Unreviewed** — new component (2026-08), the below-media sibling of
 > [[cards-thumb]]. One of three flexible card components meant to replace the
 > many one-off card blocks (case-study, article, story, product tiles). Awaiting
-> front-end review. Root class `.cmp-cards-thumb-box`; styling in `ds.css`. Own
+> front-end review. Root class `.cmp-cards-thumb-box`; styling in `style.css`. Own
 > `.ct-*` markup under its own root — does not touch cards-thumb.
 
 ## Look

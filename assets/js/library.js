@@ -32,7 +32,7 @@
   var SURFACES = [['', 'Surface · Default'], ['surface-white', 'White'], ['surface-soft', 'Soft'], ['surface-mute', 'Mute'], ['surface-primary-soft', 'Primary soft'], ['surface-accent-soft', 'Accent soft'], ['surface-primary', 'Primary'], ['surface-dark', 'Dark'], ['surface-accent', 'Accent'], ['surface-clear', 'Clear (no paint)'], ['surface-image', 'Image']];
   // Extra Surface option offered ONLY for the "Bento Grids" category: an abstract
   // background image behind the mosaic. surface-image is a STANDALONE dark surface
-  // (ds.css twins every surface-primary-keyed rule), so no surface-primary pairing.
+  // (style.css twins every surface-primary-keyed rule), so no surface-primary pairing.
   var BENTO_BG_SURFACE = ['surface-image', 'Background Image'];
   var OVERLAYS = [['', 'Overlay · None'], ['tint', 'Tint'], ['grad-up', 'Gradient ↑'], ['grad-down', 'Gradient ↓'], ['grad-left', 'Gradient ←'], ['grad-right', 'Gradient →'], ['scrim', 'Scrim'], ['vignette', 'Vignette']];
   // Brand themes (themes.css). GLOBAL control in the topbar, not per-card:
@@ -85,15 +85,15 @@
   var HEADS = [['', 'Header · As built'], ['is-left', 'Left (pinned)'], ['is-center', 'Centered'], ['is-right', 'Right'], ['is-split', 'Split (L/R)']];
   // Content-alignment variants for blocks that opt in via `align: true` in the
   // catalog (blocks without a .section-head, where the Header control never
-  // shows — e.g. cta-band). Values are real .cmp variant classes in ds.css.
+  // shows — e.g. cta-band). Values are real .cmp variant classes in style.css.
   var ALIGNS = [['', 'Align · As built'], ['is-left', 'Left'], ['is-center', 'Centered'], ['is-right', 'Right']];
   // Where a full-bleed block sits its copy vertically (catalog: place: true).
   var PLACES = [['', 'Content · As built'], ['is-top', 'Top'], ['is-middle', 'Middle'], ['is-bottom', 'Bottom']];
   // Desktop column count for grid card blocks that opt in via `cols: true`
-  // (values are real .is-cols-* variant classes in ds.css; default = 4-up).
+  // (values are real .is-cols-* variant classes in style.css; default = 4-up).
   var COLS = [['', 'Columns · As built'], ['is-cols-4', '4 up'], ['is-cols-3', '3 up'], ['is-cols-2', '2 up'], ['is-cols-auto', 'Uncapped (full-bleed)']];
   // Per-card CTA style for card blocks that opt in via `cta: true`
-  // (values are real .is-cta-* variant classes in ds.css; default = circle).
+  // (values are real .is-cta-* variant classes in style.css; default = circle).
   var CTAS = [['', 'CTA · Circle'], ['is-cta-text', 'Text link'], ['is-cta-btn', 'Button']];
   // Card-surface axis for cmp-cards compositions (cardsurf: true): applied to
   // every .cd-card in the preview — the card's own surface, independent of the
@@ -329,7 +329,7 @@
     ] },
     { cat: 'Storytelling & Scroll', sub: 'Narrative sections — timeline, maps, ticker.', items: [
       { name: 'History Timeline', htopts: true, impact: 'statement', whenToUse: 'Walk through milestones on an animated timeline. Option: a see-all text link at the start of the arrow row (e.g. "See all tombstones" on the home page deals timeline).', variants: [{ label: 'Default', slug: 'history-timeline' }] },
-      { name: 'World Map - V1', v4: true, impact: 'showpiece', reviewed: false, whenToUse: 'Global reach network film, from the Wholesale Banking home (cib-home-final): "Your ambition, powered by our network." A scroll-scrubbed canvas map pins full-screen, opens on the intro line, flies from Dubai along routes to London, Cairo, Riyadh, Mumbai, Singapore, Shanghai and Tokyo, then lands on the Global reach / Local intelligence copy and four ranking stats. Landscape 16:9 on desktop and tablet, a recomposed portrait layout on phones; all copy is real HTML (sr-only mirror for screen readers), reduced motion shows the end state. Runtime: ds.css .cmp-global-reach + ds.js recipe global-reach, ID-free so any number per page. Options: navy or light ground (surface-soft with ink-primary, as on Payments & Trade Finance), data-routes (15-city network), data-end-camera, is-long-copy.', variants: [{ label: 'Default', slug: 'world-map' }] },
+      { name: 'World Map - V1', v4: true, impact: 'showpiece', reviewed: false, whenToUse: 'Global reach network film, from the Wholesale Banking home (cib-home-final): "Your ambition, powered by our network." A scroll-scrubbed canvas map pins full-screen, opens on the intro line, flies from Dubai along routes to London, Cairo, Riyadh, Mumbai, Singapore, Shanghai and Tokyo, then lands on the Global reach / Local intelligence copy and four ranking stats. Landscape 16:9 on desktop and tablet, a recomposed portrait layout on phones; all copy is real HTML (sr-only mirror for screen readers), reduced motion shows the end state. Runtime: style.css .cmp-global-reach + ds.js recipe global-reach, ID-free so any number per page. Options: navy or light ground (surface-soft with ink-primary, as on Payments & Trade Finance), data-routes (15-city network), data-end-camera, is-long-copy.', variants: [{ label: 'Default', slug: 'world-map' }] },
       { name: 'World Map - V2', v4: true, mapopts: true, reviewed: false, impact: 'showpiece', whenToUse: 'Scroll-scrubbed dot-matrix world map: the headline docks, the camera flies UAE, region, Europe, Asia while market pins light up and a rolling counter tallies the markets. Copy and markets are editable HTML.', variants: [{ label: 'Default', slug: 'hex-reach-map' }], overlays: [] },
       { name: 'Video Chapters (scroll)', v4: true, reviewed: false, impact: 'showpiece', whenToUse: 'Pinned scroll sequence of numbered chapters over crossfading looping video backdrops — NOT tabs (renamed 2026-09-01); copy per chapter animates in as you scroll.', variants: [{ label: 'Default', slug: 'video-chapters' }] },
       { name: 'Zoom Parallax', impact: 'showpiece', whenToUse: 'Scroll-scaled image grid that zooms into view — pure spectacle.', variants: [{ label: 'Default', slug: 'zoom-parallax' }] },
@@ -491,7 +491,7 @@
 
   /* ── Arabic / RTL preview (EN·AR toggle) ──────────────────────────────────
      Flips the preview to dir="rtl" + lang="ar" + .lang-ar (Tajawal via
-     fonts.css/ds.css). Content stays as authored — this tests layout
+     style.css). Content stays as authored — this tests layout
      mirroring + the Arabic typeface, and doubles as the RTL audit tool. */
   function applyRtl(scope, rtl) {
     if (rtl) { scope.setAttribute('dir', 'rtl'); scope.setAttribute('lang', 'ar'); scope.classList.add('lang-ar'); }
@@ -700,7 +700,7 @@
     // background media, so every overlay would be a silent no-op — e.g. cta-band).
     var overlaySel = (item.overlays && item.overlays.length === 0) ? '' : selectHTML('overlay', OVERLAYS);
     // Align control is opt-in (align: true) — only for blocks with real
-    // is-left / is-center / is-right variant classes in ds.css.
+    // is-left / is-center / is-right variant classes in style.css.
     var alignSel = item.align ? selectHTML('align', ALIGNS) : '';
     var placeSel = item.place ? selectHTML('place', PLACES) : '';
     var malignSel = item.malign ? selectHTML('malign', MALIGNS) : '';

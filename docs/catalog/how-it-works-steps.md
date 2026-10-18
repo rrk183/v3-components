@@ -3,7 +3,7 @@
 `how-it-works-steps` · Process & Steps · **supporting** · surface-white · —
 
 Ported from the CIB review codebase (2026-08). Root class `.cmp-how-it-works-steps`; all of its
-styling lives in `ds.css` under that class — the block itself is pure markup.
+styling lives in `style.css` under that class — the block itself is pure markup.
 
 ## Look
 A numbered 'how it works' sequence; each step carries a title, a line of copy and a short bulleted list.

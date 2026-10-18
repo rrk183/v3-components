@@ -21,7 +21,7 @@ is marked TODO — never guess.
   (collection layout, the card frame). Components add THIN skins only
   (custom-prop overrides like `--it-fill`/`--it-ink`), never re-implementations.
 - **Minimize CSS.** The sweep's whole point: every section moved onto atoms is
-  a legacy ds.css zone that can be deleted (§6). No raw hexes, no literal radii.
+  a legacy style.css zone that can be deleted (§6). No raw hexes, no literal radii.
 - **Markers, not classes.** A card composition is `cmp-cards cards-<comp>`
   (e.g. `cmp-cards is-hover-zoom cards-thumb`) — the `cards-<comp>` marker
   identifies the composition to the gate/audit but carries no CSS. Never mint
@@ -370,7 +370,7 @@ includes `-box`/`-nobox` substring matches).
   → `.type-*` classes in markup — TODO: pick the exact pair on first hit
   (candidates `type-h6 on-surface` / `type-body-sm on-surface-mid`, matching
   the cards-icon slot types) and record it here.
-- NOTES: after the rewrite the `ip-ic`/`ip-t`/`ip-d` paint rules in ds.css
+- NOTES: after the rewrite the `ip-ic`/`ip-t`/`ip-d` paint rules in style.css
   become deletable; `intro-grid`/`intro-pillar` layout rules stay.
 
 ### feature-highlight (card row) → in-place atom rewrite  [AUTO]
@@ -393,7 +393,7 @@ never content.
 | Old | New | Notes |
 |---|---|---|
 | **THE COLOUR LAW — 2026-09-03. Every row below is MECHANICAL: swap the class, never the content.** | | |
-| `surface-grey` | `surface-soft` | palette rename; alias kept in ds.css, gate WARNs |
+| `surface-grey` | `surface-soft` | palette rename; alias kept in style.css, gate WARNs |
 | `surface-grey-2` | `surface-mute` | palette rename |
 | `surface-navy` | `surface-primary` | palette rename (2026-09-03 role naming) |
 | `surface-blue` | `surface-accent` | palette rename |
@@ -428,7 +428,7 @@ never content.
 | `sst-card` glass panel | JUDGE at sweep vs the `surface-glass-25/-50/-75` ladder | geometry (24px radius, wide pad, deep shadow) differs from the ladder today |
 | `btn-navy` | `btn-filled` | |
 | `hvl-btn-secondary`, `hfb-cta`, `ibc-btn-ghost`, `scin-ghost`, `hvc-btn-ghost`, `hil-btn-outline` | `btn-outline-light` | hand-rolled ghost CTAs on dark heroes |
-| `badge-green` / `badge-amber` / `badge-red` / `badge-blue` | `badge-ok` / `badge-warn` / `badge-danger` / `badge-info` | semantic tones (legacy names still aliased in ds.css until the sweep completes) |
+| `badge-green` / `badge-amber` / `badge-red` / `badge-blue` | `badge-ok` / `badge-warn` / `badge-danger` / `badge-info` | semantic tones (legacy names still aliased in style.css until the sweep completes) |
 | `bt-purple`, `bt-grey` | `badge-neutral` | |
 | `bt-sky` | `badge-info` | |
 | `bt-xs`, `bt-tiny` | `badge-sm` | |
@@ -436,7 +436,7 @@ never content.
 | `bt-solid-navy` | `badge-solid` | |
 | `bt-outline-*` | `badge-outline` + tone class | style axis + tone |
 | `.stat-card` (+ `.stat-card-n`/`.stat-card-l`) | `card-panel` + `ds-num` + a label | composition, not a class; 7 pages still paste it — retires at the sweep |
-| `es-btn-neutral` | `btn btn-outline btn-xs` | es-btn-* CSS already deleted from ds.css |
+| `es-btn-neutral` | `btn btn-outline btn-xs` | es-btn-* CSS already deleted from style.css |
 | `es-btn-blue` | `btn btn-outline-blue btn-xs` | on a dark ground write `btn-outline-light` — there are no flips any more |
 | `pg-*` (pagination) | `pgn-*` | renamed 2026-09-01 — pillar-grid owns `pg-`; rows carry `.pgn-row`; no `pgn-dbtn` twin (dark = a `.surface-primary` wrapper; the controls declare `surface-glass`) |
 | `pg-dbtn`, `bc-dark`, `pg-dark` | `.surface-primary` wrapper (+ Tailwind `p-8 rounded-2xl`) + the normal classes | the global dark-surface flips do the recolor |
@@ -523,9 +523,9 @@ never content.
 
 | Old | New | Notes |
 |---|---|---|
-| `surface-navy` | `surface-primary` | SURFACES ARE ROLE-NAMED, 2026-09-03 (Hakan — the button-model precedent). A colour name lies under a second brand: Emirates Islamic paints "navy" purple. 397 occurrences across 74 root pages + 116 across 49 blocks + 161 in ds.css. `.surface-navy` survives as a **DEPRECATED alias on the definition blocks only** (base paint + ink ramp); every compound selector — island guards, flip groups, `:is()` lists — uses the role name ONLY, so stale markup keeps its ground and white `--on-surface` but loses the flips. Gate WARNs on it. Sweep-delete the alias later |
-| `surface-blue` | `surface-accent` | same 2026-09-03 ruling; 13 page + 8 block + 161 ds.css occurrences. Same definition-block-only alias (`.surface-blue`), same WARN, same sweep-delete |
-| (none) | `surface-accent2` | RESERVED 2026-09-03 — a second accent role, NAMED so nobody invents a rival spelling, and deliberately **undefined**. The gate FAILS if ds.css ever defines it; introducing it is a deliberate act that must update CONVENTIONS.md too |
+| `surface-navy` | `surface-primary` | SURFACES ARE ROLE-NAMED, 2026-09-03 (Hakan — the button-model precedent). A colour name lies under a second brand: Emirates Islamic paints "navy" purple. 397 occurrences across 74 root pages + 116 across 49 blocks + 161 in style.css. `.surface-navy` survives as a **DEPRECATED alias on the definition blocks only** (base paint + ink ramp); every compound selector — island guards, flip groups, `:is()` lists — uses the role name ONLY, so stale markup keeps its ground and white `--on-surface` but loses the flips. Gate WARNs on it. Sweep-delete the alias later |
+| `surface-blue` | `surface-accent` | same 2026-09-03 ruling; 13 page + 8 block + 161 style.css occurrences. Same definition-block-only alias (`.surface-blue`), same WARN, same sweep-delete |
+| (none) | `surface-accent2` | RESERVED 2026-09-03 — a second accent role, NAMED so nobody invents a rival spelling, and deliberately **undefined**. The gate FAILS if style.css ever defines it; introducing it is a deliberate act that must update CONVENTIONS.md too |
 | `ds-card` | `card-panel` | THE CARD MODEL, 2026-09-02. `.ds-card` stays a **compat alias** — grouped into every rule via `:is(.ds-card, .card-panel)`, pixel-identical, so no page breaks. Do not author it; sweep-rename. 289 occurrences swapped across 47 blocks |
 | `card-clear` (+ `is-fill-25/50/75`) | `card-panel surface-clear` (glass → `card-panel surface-glass`) | the outline card is a PANEL with the NULL surface, not its own class. `.card-clear` rules kept working and flagged `/* LEGACY alias — sweep-delete */` |
 | `card-clear is-fill-25 / -50 / -75` | `card-panel surface-glass-25 / -50 / -75` | FINISH/PAINT decomposition, 2026-09-02. Strength is PAINT, so it is spelled as a surface, not an `is-*` modifier. Identical white-alpha fills (.25/.50/.75) plus the glass recipe (blur + white ink tokens + rgba border), so a strength is now a full surface instead of a bare `background`. Removed from the gallery cardsurf list; the `is-fill-*` CSS is kept as a zero-usage legacy alias for the dated pages |
@@ -588,11 +588,11 @@ never content.
 
 `/page-fix` records, per page: **bytes before/after** (the HTML file) and
 **which legacy zones the page stopped referencing**. At estate completion it
-reports the ds.css deletions unlocked — a legacy zone is deletable only when
+reports the style.css deletions unlocked — a legacy zone is deletable only when
 `grep -l` over ALL pages returns zero for its classes. The target zones
-(selector-line counts from ds.css, 2026-08-31, approximate):
+(selector-line counts from style.css, 2026-08-31, approximate):
 
-| ds.css zone | ~lines | freed by |
+| style.css zone | ~lines | freed by |
 |---|---|---|
 | `cmp-cards-thumb` (incl. its carousel + is-cta-*/is-portrait modifiers) | 120 | cards-thumb recipe |
 | `cmp-cards-thumb-box` (+ carousel) | 40 | cards-boxed recipe |

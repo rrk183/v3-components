@@ -2,10 +2,10 @@
 
 `link-directory` · Feature Sections · **supporting** · surface-white · (no behavior — reveal only)
 
-Formalized 2026-08-27 from the `.ptf-dir` drift (it had lived only in `ds.css` +
+Formalized 2026-08-27 from the `.ptf-dir` drift (it had lived only in `style.css` +
 hand-pasted markup across api-banking / businessONLINE-X / digital-solutions-hub,
 with no block file). Root class `.cmp-link-directory`; all styling lives in
-`ds.css` under that class (surface-adaptive `.ld-*`) — the block is pure markup.
+`style.css` under that class (surface-adaptive `.ld-*`) — the block is pure markup.
 
 ## Look
 A standard section-head (eyebrow + heading + lead) over a multi-column directory. Each column is a category heading — uppercase, letter-spaced, with a hairline rule beneath — above a short stack of plain text links. An optional CTA button sits below the grid. Three columns on desktop; one column, stacked, on mobile.

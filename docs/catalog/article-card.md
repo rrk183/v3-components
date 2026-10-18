@@ -3,7 +3,7 @@
 `article-card` · Blogs & Articles · **supporting** · surface-grey · —
 
 Ported from the CIB review codebase (2026-08). Root class `.cmp-article-card`; all of its
-styling lives in `ds.css` under that class — the block itself is pure markup.
+styling lives in `style.css` under that class — the block itself is pure markup.
 
 ## Look
 A three-card insight/article feed. Each card is a media panel with a category tag, a three-line clamped title, and a footer byline with author and exact date, separated by a hairline.

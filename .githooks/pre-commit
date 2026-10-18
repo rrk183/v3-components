@@ -1,0 +1,12 @@
+#!/bin/sh
+# Keep assets/css/style.min.css in step with style.css: whenever style.css is
+# part of a commit, rebuild the .min from the STAGED style.css and stage it.
+# Activated by `npm install` (package.json "prepare" sets core.hooksPath).
+if git diff --cached --name-only | grep -qx 'assets/css/style.css'; then
+  if [ ! -d node_modules/esbuild ]; then
+    echo "pre-commit: style.css changed but esbuild is missing — run: npm install" >&2
+    exit 1
+  fi
+  node scripts/minify.mjs --css --staged || exit 1
+  git add assets/css/style.min.css
+fi

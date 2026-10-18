@@ -5,7 +5,7 @@
 > **Unreviewed** — new component (2026-08). Consolidates three older card
 > patterns (bento-photo cards, story-cards, story-cards-video) into one flexible
 > portrait card with optional slots. Awaiting front-end review. Root class
-> `.cmp-cards-thumb`; all styling lives in `ds.css` under that class — the block
+> `.cmp-cards-thumb`; all styling lives in `style.css` under that class — the block
 > is pure markup. Does NOT touch `story-cards` / `bento-image-cards` (own `.ct-*`
 > namespace), so existing pages are unaffected.
 

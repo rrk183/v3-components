@@ -8,12 +8,11 @@
   <title>All Components — browser pass | Emirates NBD DS</title>
   <meta name="description" content="Internal review page: every design-system block stacked as one seamless page for cross-browser and breakpoint passes." />
   <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="assets/css/fonts.css" />
-  <link rel="stylesheet" href="assets/css/ds.css?v=261209" />
-  <link rel="stylesheet" href="assets/css/themes.css?v=261208" />
+  <link rel="stylesheet" href="assets/css/style.css?v=261210" />
+  <link rel="stylesheet" href="assets/css/themes.css?v=261210" />
   <script src="assets/js/tailwind.cdn.js"></script>
-  <script src="assets/js/ds-tailwind-config.js?v=261208"></script>
-  <script defer src="assets/js/ds.js?v=261208"></script>
+  <script src="assets/js/ds-tailwind-config.js?v=261210"></script>
+  <script defer src="assets/js/ds.js?v=261210"></script>
   <style>body{margin:0}</style>
 </head>
 <body>
@@ -433,7 +432,7 @@
      script. Here it wraps the cmp-cards KICKER composition; swap in any other
      cards composition, article cards, a table — the wiring is identical.
 
-     Wiring (all in ds.js behavior "filter", styled by .filter-* utilities in ds.css):
+     Wiring (all in ds.js behavior "filter", styled by .filter-* utilities in style.css):
        • region root ......... data-filter
        • pill controls ....... button.filter-chip data-filter-key="area"  data-filter-value="markets" aria-pressed
        • select controls ..... select data-filter-key="region"
@@ -1157,7 +1156,7 @@
      motion on, a tall track pins the stage and scroll rolls the reel, photo
      and desk card. Phones/tablets: the copy and CTAs follow the pin. Reduced
      motion: no pin, first desk shown, chips still work. Atoms: chip chip-lg,
-     card-panel, type-*, btn. Styling lives in ds.css (.cmp-tabs-desk) and
+     card-panel, type-*, btn. Styling lives in style.css (.cmp-tabs-desk) and
      behaviour in ds.js (recipe tabs-desk) since 2026-10-10, so instances
      receive master changes. Optional per-desk CTA: data-td-href /
      data-td-label on chips + data-td-cta on the link. Registered as a
@@ -1656,7 +1655,7 @@
      the wrapper, which would pin every variant to centred.
      Params: surface (surface-white|grey|navy…), data-animate (on/off).
      Pure markup — NO inline styles, NO IDs. Styled by .cmp-big-statement in
-     ds.css, animated by ds.js. Oversized headline weight is intentionally
+     style.css, animated by ds.js. Oversized headline weight is intentionally
      regular (400); the emphasised word is blue.
      Options: compact headline (h2.bst-line.type-h2, no line/word spans); closing link optional.
      Options: a rank strip (.rank-strip) or a figure strip in place of the closing link. -->
@@ -7882,7 +7881,7 @@
      SAME cards on the shared data-carousel recipe with prev/next arrows.
      For a video card, swap <span class="ct-media" data-bg> for
        <video class="ct-media" autoplay muted loop playsinline><source …></video>
-     No IDs, no inline styles. Styled by .cmp-cards-thumb in ds.css. -->
+     No IDs, no inline styles. Styled by .cmp-cards-thumb in style.css. -->
 <section class="cmp cmp-cards-thumb surface-white section-y" data-animate>
   <div class="container-ds">
 
@@ -8725,7 +8724,7 @@
      .is-cta-btn); the Columns control sets desktop count. The Carousel variant
      (cards-thumb-box-carousel) shows the SAME cards on the data-carousel recipe.
      For a video card, swap <span class="ct-img" data-bg> for a <video>. No IDs,
-     no inline styles. Styled by .cmp-cards-thumb-box in ds.css. -->
+     no inline styles. Styled by .cmp-cards-thumb-box in style.css. -->
 <section class="cmp cmp-cards-thumb-box surface-soft section-y" data-animate>
   <div class="container-ds">
 
@@ -9068,7 +9067,7 @@
      a large statement heading and a row of count-up proof stats on the right.
      The heading fills word-by-word from muted to full colour as the block
      scrolls through the viewport (data-behavior="text-reveal", scrubbed). Stats
-     count up on enter (data-countup). Styled by .cmp-statement-stats in ds.css; reduced-motion
+     count up on enter (data-countup). Styled by .cmp-statement-stats in style.css; reduced-motion
      reveals the full heading. Params: surface (surface-white default). ────────
      Options: live tracker card in the media slot, source footnote under the stats. -->
 <section class="cmp cmp-statement-stats surface-white section-y" data-behavior="text-reveal" data-animate aria-label="About us">
@@ -9304,7 +9303,7 @@
      Promoted from page-local markup (it shipped on lending, smartSCF,
      sustainable-finance and industry-specific-finance before it was a block);
      the `.cbn-divider` / `.cbn-rule` hairlines now get their width from
-     ds.css — as page copies they had colour but no width, so they never drew.
+     style.css — as page copies they had colour but no width, so they never drew.
      Figures ride type-h1 (32-56 — the exact clamp the old override drew), never bold. Pure markup:
      surface-* and data-animate are the only knobs. -->
 <section class="cmp cmp-proof-points surface-white section-y" data-animate>
@@ -9353,7 +9352,7 @@
 
 <!-- ═══ Content Block — No Numbers ═══════════════════════════════════════════
      Params: surface (surface-grey|white|navy…), data-animate (on/off).
-     Pure markup — NO inline styles. Type/surface/layout from ds.css; reveal
+     Pure markup — NO inline styles. Type/surface/layout from style.css; reveal
      via ds.js. Two variants: stacked, and side-by-side. Heading is .type-h2,
      body is .type-body in the muted on-surface tone. -->
 
@@ -9429,7 +9428,7 @@
      Right: a stacked list of icon-pillars (icon + title + short description),
      divided by hairlines. Collapses to a single column below 768px. Reuse the
      shell verbatim and change CONTENT only — swap each pillar's SVG + copy.
-     All styling lives in ds.css under .cmp-intro-side-by-side.
+     All styling lives in style.css under .cmp-intro-side-by-side.
      Option: split header above the grid, media tile in the left column.
      More options: badge row under the intro, trailing multi-column capability list, pillars optional (lead, second paragraph or jump-link pills on the right). -->
 <section class="cmp cmp-intro-side-by-side surface-soft section-y" data-animate>
@@ -9462,7 +9461,7 @@
 <!-- ═══ Feature Spotlight — large media + tight copy (alternating) ═══════════
      Params: surface (surface-white|grey|navy…), data-animate (on/off).
      Pure markup — NO inline styles, NO IDs. Styled by .cmp-feature-spotlight
-     in ds.css, animated by ds.js. Per-instance images via data-bg.
+     in style.css, animated by ds.js. Per-instance images via data-bg.
      Add .fsp-reverse on a row to flip media to the right. The .fsp-points tick
      list is optional per row; any number of rows. -->
 <section class="cmp cmp-feature-spotlight surface-white section-y" data-animate>
@@ -10035,7 +10034,7 @@
      the other. Two columns on desktop, stacked on mobile. Use it for ONE strong
      voice (for several, reach for the Cards quote/testimonial compositions).
      Image via data-bg; pure markup — NO IDs, NO inline styles, NO scripts.
-     Styled by .cmp-quote-band in ds.css.
+     Styled by .cmp-quote-band in style.css.
      Option: specialist spotlight (heading + name + role + link instead of the quote). -->
 <section class="cmp cmp-quote-band surface-primary section-y" data-animate>
   <div class="container-ds">
@@ -10062,7 +10061,7 @@
      the other. Two columns on desktop, stacked on mobile. Use it for ONE strong
      voice (for several, reach for the Cards quote/testimonial compositions).
      Image via data-bg; pure markup — NO IDs, NO inline styles, NO scripts.
-     Styled by .cmp-quote-band in ds.css. -->
+     Styled by .cmp-quote-band in style.css. -->
 <section class="cmp cmp-quote-band is-rev surface-primary section-y" data-animate>
   <div class="container-ds">
     <div class="qb-inner">
@@ -10149,7 +10148,7 @@
 <!-- ═══ Solutions & Awards ══════════════════════════════════════════════════
      Params: surface (surface-white|grey|navy…), data-animate (on/off).
      Pure markup — NO inline styles, NO IDs. Styled by .cmp-solutions-awards in
-     ds.css, animated by ds.js. Award logos are greyscale by default and colour
+     style.css, animated by ds.js. Award logos are greyscale by default and colour
      on hover; "See all awards" link nudges its arrow on hover. -->
 <section class="cmp cmp-solutions-awards surface-white section-y" data-animate>
   <div class="container-ds">
@@ -10245,7 +10244,7 @@
 
 <!-- ═══ Logo Wall ═══════════════════════════════════════════
      Params: surface (surface-white default), data-animate (on/off).
-     Pure markup — NO inline styles / IDs. Styled by .cmp-logo-wall in ds.css; columns via the is-cols-* axis
+     Pure markup — NO inline styles / IDs. Styled by .cmp-logo-wall in style.css; columns via the is-cols-* axis
      (mobile via is-m-cols-*), dividers column-agnostic (gap trick), animated by ds.js (data-reveal + staggered delays). Logos are
      inline SVG, grayscale by default → colour + scale on hover. -->
 <section class="cmp cmp-logo-wall surface-white section-y" data-animate>
@@ -10475,7 +10474,7 @@
      optional CTA below. Reach for it to lay out "X by domain / by category" —
      a scannable index into deeper pages or sections. Pure markup — NO inline
      styles, NO IDs, NO inline script. Columns are .ld-col; links are plain <a>.
-     Styled by .cmp-link-directory in ds.css (surface-adaptive .ld-* — white,
+     Styled by .cmp-link-directory in style.css (surface-adaptive .ld-* — white,
      grey or navy), reveal-animated by ds.js. -->
 <section class="cmp cmp-link-directory surface-white section-y" data-animate>
   <div class="container-ds">
@@ -10523,7 +10522,7 @@
      mark — icons ALL-OR-NONE per instance (mixed rows misalign titles).
      Columns: default 3; is-cols-1 / is-cols-2 / is-cols-3 on the root
      (--ul-cols). Pure markup — NO inline styles, NO IDs, NO inline script.
-     Styled by .cmp-useful-links in ds.css (surface-adaptive .ul-*),
+     Styled by .cmp-useful-links in style.css (surface-adaptive .ul-*),
      reveal-animated by ds.js.
      Options: live search, or a full filter bar (search + topic chips + count) over rows grouped by topic. -->
 <section class="cmp cmp-useful-links surface-soft" data-animate>
@@ -10563,7 +10562,7 @@
      Vertical numbered process list: oversized muted step numeral (01, 02…) in a
      left rail, then heading + supporting copy + a short proof-point list in the
      content column. Reveals on scroll (data-reveal via ds.js). Pure markup +
-     ds.css (.cmp-how-it-works-steps). Params: surface (surface-white default). ─────────────────────
+     style.css (.cmp-how-it-works-steps). Params: surface (surface-white default). ─────────────────────
      Options: per-step tick list, closing button and intro line are optional. -->
 <section class="cmp cmp-how-it-works-steps surface-white section-y" data-animate aria-labelledby="hiw-heading">
 <div class="container-ds">
@@ -11097,7 +11096,7 @@
 <!-- ═══ Bento — Image Cards ════════════════════════════════════════════════
      Three gradient cards with decorative SVG art (globe / waves / constellation).
      Pure markup — NO inline styles, NO IDs. Styled by .cmp-bento-image-cards in
-     ds.css, reveal-animated by ds.js. Card backgrounds are intrinsic gradients
+     style.css, reveal-animated by ds.js. Card backgrounds are intrinsic gradients
      (not per-instance raster images), so they live in the scoped block. -->
 <section class="cmp cmp-bento bento-image-cards is-hover-lift surface-white section-y" style="--bn-row: 220px" data-animate>
   <div class="container-ds">
@@ -11740,7 +11739,7 @@
      (heading + lead) over a large rounded 16:9 frame. Before playing, the
      poster shows with "Watch the video" and the running time; a click plays
      the film WITH sound and hands over to the native controls; at the end it
-     returns to the poster. Styled by .cmp-video-explainer in ds.css, driven
+     returns to the poster. Styled by .cmp-video-explainer in style.css, driven
      by the videoExplainer behaviour in ds.js ([data-video-explainer]).
      No-JS: the native controls stay, so the film still plays.
      Params: surface on the root (soft default). Optional phone cut: add
@@ -11773,7 +11772,7 @@
 <!-- ═══ Product Showcase — credit-card feature highlights ═══════════════════
      Params: surface (surface-primary in original), data-animate (on/off).
      Pure markup — NO inline styles, NO IDs. Glows / float frame live in
-     .cmp-product-showcase (ds.css); the card itself is an IMAGE via data-bg. -->
+     .cmp-product-showcase (style.css); the card itself is an IMAGE via data-bg. -->
 <section class="cmp cmp-product-showcase surface-primary section-y" data-animate>
   <div class="ps-glow ps-glow-1" aria-hidden="true"></div>
   <div class="ps-glow ps-glow-2" aria-hidden="true"></div>
@@ -12105,7 +12104,7 @@
      then the copy and four stats. Landscape 16:9 on desktop and tablet, a
      recomposed portrait layout on phones; all copy is real HTML (the sr-only
      block mirrors it for screen readers). Reduced motion shows the end state.
-     Runtime: ds.css (.cmp-global-reach) + ds.js recipe "global-reach". No IDs,
+     Runtime: style.css (.cmp-global-reach) + ds.js recipe "global-reach". No IDs,
      so any number per page.
      Params:
        ground   surface-primary (navy film) or a light surface such as
@@ -12159,7 +12158,7 @@
      Scroll-scrubbed dot-matrix world map: the headline starts centred and
      docks start-side, the camera flies chapter by chapter, market pins pop
      and their countries light up, then a closing overview with the lead.
-     Styled by .cmp-markets-map in ds.css, driven by the markets-map recipe in
+     Styled by .cmp-markets-map in style.css, driven by the markets-map recipe in
      ds.js (moved out of the block's inline style and script on 2026-10-12, so master
      changes reach every instance). No IDs.
      Markets: each li in .cm__markets is one pin: data-country (the map's
@@ -12502,7 +12501,7 @@
      with progress dots below. Driven declaratively by ds.js
      (data-behavior="scroll-story" + per-element data-anim keyframes on a 0→1
      scrub timeline). The engine + styling live under the shared .ess-* classes
-     in ds.css; this block wraps them in .cmp-feature-scroll-story.
+     in style.css; this block wraps them in .cmp-feature-scroll-story.
 
      MOCKUPS ARE IMAGES. Each visual is a transparent 2x PNG dropped in as
      <img class="ess-shot-img"> inside <div class="mkw mkw-img"> — captured once
@@ -12570,7 +12569,7 @@
      The REVERSED sibling of Feature Scroll Story: identical pinned, scrubbed
      narrative, but the product-UI mockup column sits on the LEFT and the
      numbered chapters on the RIGHT. The ONLY difference from the default is
-     `rev` on the .ess element (`.ess.rev .ess-vis{order:-1}` in ds.css) — same
+     `rev` on the .ess element (`.ess.rev .ess-vis{order:-1}` in style.css) — same
      engine, same .cmp-feature-scroll-story root, same baked-PNG mockups and
      live .mcard callouts. Reach for it to alternate sides across two scroll
      stories on one page (e.g. Online then Point-of-sale), for visual rhythm.
@@ -13268,7 +13267,7 @@
 <!-- ═══ Static Banner ═══════════════════════════════════════════════════════
      Params: surface (surface-primary by default), data-animate (on/off).
      Pure markup — NO inline styles, NO IDs. Styled by .cmp-static-banner in
-     ds.css, animated by ds.js (data-reveal). Bespoke navy gradient + radial glow stay;
+     style.css, animated by ds.js (data-reveal). Bespoke navy gradient + radial glow stay;
      the twin iPhones are a transparent PNG render.
      NOTE: the phone-screen market-data is hardcoded static markup here (DFM +
      ADX). The original built it from a JS data array — see NEEDS_MANUAL. -->
@@ -13365,7 +13364,7 @@
 
 <!-- ═══ CTA Band ═══════════════════════════════════════════════════════════════
      Centred call-to-action band on a navy surface: eyebrow + big headline + lead
-     + a single CTA. Styled by .ptf-ctaband / .ptf-ctarow in ds.css.
+     + a single CTA. Styled by .ptf-ctaband / .ptf-ctarow in style.css.
      Options: photo ground (surface-image + ov washes), fine-print line under the button.
      Options: is-left / is-right (full content column), photo ground (surface-image +
      data-bg + ov washes), stats column (.ptf-band-grid). See docs/catalog/cta-band.md. -->
@@ -13629,7 +13628,7 @@
 
 <!-- ═══ Checkout Card (payment mockup) ════════════════════════════════════════
      A hosted-checkout card mockup: amount, card field, pay button + wallets.
-     Pure markup, styled by .epc in ds.css. No recipe. -->
+     Pure markup, styled by .epc in style.css. No recipe. -->
 <section class="cmp checkout-card surface-soft section-y" data-animate>
   <div class="container-ds flex justify-center" data-reveal="up">
     <div class="epc">
@@ -13647,7 +13646,7 @@
 </section>
 
 <!-- ═══ POS Terminal (payment mockup) ═════════════════════════════════════════
-     A point-of-sale terminal: screen (approved) + keypad. .epos in ds.css. -->
+     A point-of-sale terminal: screen (approved) + keypad. .epos in style.css. -->
 <section class="cmp pos-terminal surface-soft section-y" data-animate>
   <div class="container-ds flex justify-center" data-reveal="up">
     <div class="epos">
@@ -13658,7 +13657,7 @@
 </section>
 
 <!-- ═══ Phone Checkout (payment mockup) ═══════════════════════════════════════
-     A phone (dynamic island + home bar) showing a mobile checkout. .eph in ds.css. -->
+     A phone (dynamic island + home bar) showing a mobile checkout. .eph in style.css. -->
 <section class="cmp phone-checkout surface-soft section-y" data-animate>
   <div class="container-ds flex justify-center" data-reveal="up">
     <div class="eph">
@@ -13674,7 +13673,7 @@
 </section>
 
 <!-- ═══ Payment Link card (payment mockup) ════════════════════════════════════
-     A shareable payment-request card with link + share chips. .epl in ds.css. -->
+     A shareable payment-request card with link + share chips. .epl in style.css. -->
 <section class="cmp payment-link surface-soft section-y" data-animate>
   <div class="container-ds flex justify-center" data-reveal="up">
     <div class="epl">
@@ -13691,7 +13690,7 @@
 </section>
 
 <!-- ═══ Chat Pay Invite (payment mockup) ══════════════════════════════════════
-     A phone chat thread with a received payment request. .eph.chat in ds.css. -->
+     A phone chat thread with a received payment request. .eph.chat in style.css. -->
 <section class="cmp chat-pay-invite surface-soft section-y" data-animate>
   <div class="container-ds flex justify-center" data-reveal="up">
     <div class="eph chat">
@@ -13714,7 +13713,7 @@
 
 <!-- ═══ Browser Checkout (payment mockup) ═════════════════════════════════════
      A browser window with an embedded checkout on a representative store.
-     .ebrowser in ds.css. -->
+     .ebrowser in style.css. -->
 <section class="cmp browser-checkout surface-soft section-y" data-animate>
   <div class="container-ds flex justify-center" data-reveal="up">
     <div class="ebrowser">
@@ -13743,7 +13742,7 @@
 </section>
 
 <!-- ═══ API Request card (mockup) ═════════════════════════════════════════════
-     A terminal/code window showing an API request + response. .eapi in ds.css. -->
+     A terminal/code window showing an API request + response. .eapi in style.css. -->
 <section class="cmp api-request surface-soft section-y" data-animate>
   <div class="container-ds flex justify-center" data-reveal="up">
     <div class="eapi">
@@ -14034,7 +14033,7 @@
 
 <!-- ═══ Breadcrumb ══════════════════════════════════════════════════════════
      Params: surface (surface-white|grey|navy…), data-animate (on/off).
-     Pure markup — styled by .cmp-breadcrumb in ds.css. No IDs.
+     Pure markup — styled by .cmp-breadcrumb in style.css. No IDs.
      THE PASTE UNIT IS THE <nav> ALONE: <nav aria-label="Breadcrumb">
      <ol class="bc-trail"> with .bc-link / .bc-sep or .bc-chev / .bc-current.
      Drop it into the page's existing top section or hero — no wrapper
@@ -14111,7 +14110,7 @@
 <!-- ═══ Pagination ══════════════════════════════════════════════════════════
      Params: surface, data-animate.
      Static showcase of four pagination styles (default, with count, compact,
-     dark). Pure markup — styled by the global pgn-* classes in ds.css (the
+     dark). Pure markup — styled by the global pgn-* classes in style.css (the
      dark row is a .surface-primary wrapper; the dark-surface flips style it).
      No IDs, no inline styles, no interactivity (presentational demos). -->
 <section class="cmp cmp-pagination surface-white section-y" data-animate>
@@ -14184,11 +14183,11 @@
 
      THE GLYPH AXIS (2026-09-03, Hakan) — a button's icon is a CLASS, not
      markup. There is no inline <svg> anywhere in this block: each glyph lives
-     ONCE in ds.css as a data-URI mask painted with currentColor, so it
+     ONCE in style.css as a data-URI mask painted with currentColor, so it
      inherits the button's ink on every surface, in every brand and on hover.
      Trailing is the default (::after); .is-ic-start moves it to ::before.
      14 glyphs, named LOGICALLY — full table in CONVENTIONS.md § the glyph
-     axis. Adding a glyph is a ds.css edit on a deliberate cadence.
+     axis. Adding a glyph is a style.css edit on a deliberate cadence.
 
      Nothing here is new CSS beyond the .bt-label/.btn-row showcase chrome.
      Legacy paints (btn-primary, btn-navy, btn-ghost, btn-danger,
@@ -14359,7 +14358,7 @@
 
 <!-- ═══ Typography ══════════════════════════════════════════════════════════
      Showcase of the type ATOM ramp — every .type-* size, weight and colour
-     class, straight from ds.css. Nothing here is new CSS beyond the .ty-row/
+     class, straight from style.css. Nothing here is new CSS beyond the .ty-row/
      .ty-class specimen chrome; the classes are the ones pages compose with.
      THE RULE THIS CARD TEACHES: type is TAG-AGNOSTIC. The HTML tag is chosen
      for semantics (one h1 per page, SEO), the .type-* class for size — an
@@ -14434,7 +14433,7 @@
      panel is a COMPOSITION — card-panel + ds-num + label — not a class;
      .stat-card is legacy (demoted 2026-09-01). Never hand-roll a new icon
      square or number clamp. Nothing here is new CSS; the atoms live in
-     ds.css. Params: surface, data-animate. -->
+     style.css. Params: surface, data-animate. -->
 <section class="cmp cmp-icon-tiles surface-white section-y" data-animate>
   <div class="container-ds">
 
@@ -15341,7 +15340,7 @@
 <!-- ═══ Table ═══════════════════════════════════════════════════════════════
      Params: surface, data-animate. Two variants: standard (transactions) +
      financial (market data). Pure markup — static tables; horizontal scroll
-     via .tbl-scroll. Badges reuse ds.css .badge*. No IDs, no inline styles. -->
+     via .tbl-scroll. Badges reuse style.css .badge*. No IDs, no inline styles. -->
 <section class="cmp cmp-table surface-white section-y" data-animate>
   <div class="container-ds flex flex-col gap-16 md:gap-20">
 
@@ -15505,7 +15504,7 @@
 <!-- ═══ Empty State ═════════════════════════════════════════════════════════
      Params: surface (surface-white|grey…), data-animate (on/off).
      Pure markup. Cards compose .card-panel.is-flat, icons compose .icon-tile,
-     buttons reuse .btn atoms; es-* layout classes are global in ds.css. -->
+     buttons reuse .btn atoms; es-* layout classes are global in style.css. -->
 <section class="cmp cmp-empty-state surface-white section-y" data-animate>
   <div class="container-ds">
 
@@ -15625,7 +15624,7 @@
      labels and dividers resolve from --on-surface* tokens, so it stays legible
      on white, grey, navy or dark. Holds 2–4 columns of number + label (or short
      text). Recreate: swap the data-dots routes and the .wm-scale figures.
-     No IDs, no inline styles. Styled by .cmp-world-map in ds.css. -->
+     No IDs, no inline styles. Styled by .cmp-world-map in style.css. -->
 <section class="cmp cmp-world-map surface-white section-y" data-animate>
   <div class="container-ds">
 

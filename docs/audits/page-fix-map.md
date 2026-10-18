@@ -44,8 +44,8 @@ not mapped below.
 
 - **Zero FAILs name any of the 51 canonical pages.** Every page-level FAIL in that run
   belongs to a *dated/older* twin (`corporate-institutional-v2-2026-08-11` alone accounts for
-  ~190 of them), plus flow-3 `all-components.html is stale` and a block of flow-5 `ds.css`
-  LIGHT-ISLAND failures that are **another agent's in-flight ds.css work**, not page work.
+  ~190 of them), plus flow-3 `all-components.html is stale` and a block of flow-5 `style.css`
+  LIGHT-ISLAND failures that are **another agent's in-flight style.css work**, not page work.
 - **184 WARN lines name the 51 canonical pages** — every one is a work item and appears in
   the per-page tables below.
 - **Zero inline `style=` across all 51 pages.** (`style="--…"` custom-property passing is
@@ -96,7 +96,7 @@ not mapped below.
 | 2 | Hero, Image BG (Left)<br>`cmp cmp-hero-video-left surface-navy` | `hero` → `cmp cmp-hero surface-navy` + `video.media-cover` (or `data-bg`) + `ov ov-black ov-gradient-l ov-80` + `ov ov-gradient-t ov-50`; Place `is-bottom` | H: "Seamless, secure,intelligent payments." · media: 1 video | **JUDGE** |
 | 3 | Four pillars, scroll story<br>`cmp surface-grey` | `feature-scroll-story` / `-rev` — the `.ess` markup is the block's own but the root is BESPOKE (`cmp surface-*`), so the section is un-recognised: re-root to `cmp cmp-feature-scroll-story` (`.ess rev` = `-rev`) | H: "Move money faster." · 4× `ess-ch` · media: 4 img | **OK** |
 | 4 | Emirates NBD Pay, Feature Spotlight<br>`cmp cmp-feature-spotlight surface-grey section-y` | `feature-spotlight` — **current block** | H: "Payments, reimagined." · media: 1 data-bg | **OK** |
-| 5 | How can we help you, tabs-pills-grid service directory<br>`cmp cmp-tabs-pills-grid cmp-tabs surface-grey section-y` | `filter-grid` → ONE `cmp cmp-cards cards-kicker is-cols-3` grid + `data-filter` chips; delete the duplicated per-tab panels  ·  **inner classes undefined in ds.css — renders unstyled today** | H: "We understand that every business is unique." · 25× `tpl-pill` / 25× `tpl-pill-t` | **JUDGE** |
+| 5 | How can we help you, tabs-pills-grid service directory<br>`cmp cmp-tabs-pills-grid cmp-tabs surface-grey section-y` | `filter-grid` → ONE `cmp cmp-cards cards-kicker is-cols-3` grid + `data-filter` chips; delete the duplicated per-tab panels  ·  **inner classes undefined in style.css — renders unstyled today** | H: "We understand that every business is unique." · 25× `tpl-pill` / 25× `tpl-pill-t` | **JUDGE** |
 | 6 | Unlock new possibilities, cards-thumb 4-card grid<br>`cmp cmp-cards-thumb surface-white section-y` | `cards` / `cards-carousel` → `cmp cmp-cards is-hover-zoom cards-thumb`. NB `blocks/cards-thumb.html` is the HIDDEN legacy twin — never emit it | H: "Explore the full range of corporate solutions." · 4× `ct-card` · media: 4 data-bg | **OK** |
 | 7 | CTA Band<br>`cmp ptf-ctaband surface-navy section-y` | `cta-band` — **already canonical** (block root IS `cmp ptf-ctaband surface-navy section-y`; the anonymous root is the block's own) | H: "Let&rsquo;s move forward, together." | **OK** |
 | 8 | /CTA Band<br>`cmp cmp-footer-option1 surface-grey` | `footer-option1` — **already canonical** | 21× `fo1-link` | **OK** |
@@ -120,7 +120,7 @@ not mapped below.
 | 1 | —<br>`cmp cmp-site-header ish-v4` | `site-header-v4` — **already canonical** (block root is `cmp cmp-site-header ish-v4`) | H: "Emirates NBD Bank Websites" · 14× `ish-col` / 14× `ish-col-h` · media: 14 img | **OK** |
 | 2 | /Site Header — retail v4<br>`cmp cmp-hero-cinematic-pinned surface-navy` | `hero-cinematic-pinned` — **current block**; atom pass only: `scin-h1`→`type-display-lg on-surface`, `scin-sub`→`type-body-lg on-surface-mid`, `scin-ghost`→`btn btn-outline-light btn-lg` | H: "Transformingglobal flows." | **JUDGE** |
 | 3 | 2. Three value pillars, capability tiles (lg:grid-cols-3)<br>`cmp cmp-highlights-tiles surface-white section-y` | `cards-icon` → `cmp cmp-cards cards-icon` (+`is-cols-N` from the old Tailwind cols) | H: "Integrated trade finance, end to end." · 3× `ht-tile` / 3× `ht-tile-title` | **OK** |
-| 4 | 3. How can we help you, Tabbed solutions directory<br>`cmp cmp-tabs-pills-grid cmp-tabs surface-grey section-y` | `filter-grid` → ONE `cmp cmp-cards cards-kicker is-cols-3` grid + `data-filter` chips; delete the duplicated per-tab panels  ·  **inner classes undefined in ds.css — renders unstyled today** | H: "Solutions for the full flow of trade." · 14× `tpl-pill` / 14× `tpl-pill-t` | **JUDGE** |
+| 4 | 3. How can we help you, Tabbed solutions directory<br>`cmp cmp-tabs-pills-grid cmp-tabs surface-grey section-y` | `filter-grid` → ONE `cmp cmp-cards cards-kicker is-cols-3` grid + `data-filter` chips; delete the duplicated per-tab panels  ·  **inner classes undefined in style.css — renders unstyled today** | H: "Solutions for the full flow of trade." · 14× `tpl-pill` / 14× `tpl-pill-t` | **JUDGE** |
 | 5 | 4. Testimonial, quote band (navy, topic image)<br>`cmp cmp-quote-band surface-navy section-y` | `quote-band` — **current block** | media: 1 data-bg | **OK** |
 | 6 | Channels, scroll-story (pinned image, swaps per channel)<br>`cmp cmp-scroll-tab surface-white section-y` | `scroll-showcase` → `cmp cmp-scroll-showcase` + `data-behavior="scroll-showcase"` + `data-scroll-pinned`; `ss-*` inners carry over; long `ss-points` → `list-check`, short labels stay `ss-chips` | H: "One platform for every trade." · 5× `ss-step` / 5× `ss-step-img` · media: 10 data-bg | **OK** |
 | 7 | 6. News, card grid<br>`cmp cmp-cards-thumb-box surface-grey section-y` | `cards-boxed` / `cards-boxed-carousel` → `cmp cmp-cards is-hover-zoom cards-boxed is-cols-N` (`card-panel` on the `cd-card` + `--card-pad:0`) | H: "Shaping the future of global trade." · 4× `ct-card` · media: 4 data-bg | **OK** |
@@ -253,7 +253,7 @@ not mapped below.
 | 4 | Everything trade, Bento Spotlight<br>`cmp cmp-bento-spotlight surface-navy section-y` | `bento-spotlight` → `cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight`; per-tile `is-w*/is-h*` spans replace `bs-grid--*` | H: "Your whole trade desk, on one portal." · 7× `bs-tile` · media: 1 data-bg | **OK** |
 | 5 | Ease & speed, scroll story (Trade finance in a few clicks)<br>`cmp cmp-feature-scroll-story surface-white` | `feature-scroll-story` / `-rev` — **current block** | H: "Trade finance in a few clicks." · 4× `ess-ch` · media: 4 img | **ASSET** |
 | 6 | /Ease & speed, scroll story<br>`cmp cmp-feature-scroll-story surface-grey` | `feature-scroll-story` / `-rev` — **current block** | H: "Real-time visibility, end to end." · 4× `ess-ch` · media: 4 img | **ASSET** |
-| 7 | /Visibility & control, scroll story<br>`cmp cmp-tabs-pills-grid cmp-tabs surface-white section-y` | `filter-grid` → ONE `cmp cmp-cards cards-kicker is-cols-3` grid + `data-filter` chips; delete the duplicated per-tab panels  ·  **inner classes undefined in ds.css — renders unstyled today** | H: "Explore how smartTRADE supports your business." · 12× `tpl-pill` / 12× `tpl-pill-t` | **JUDGE** |
+| 7 | /Visibility & control, scroll story<br>`cmp cmp-tabs-pills-grid cmp-tabs surface-white section-y` | `filter-grid` → ONE `cmp cmp-cards cards-kicker is-cols-3` grid + `data-filter` chips; delete the duplicated per-tab panels  ·  **inner classes undefined in style.css — renders unstyled today** | H: "Explore how smartTRADE supports your business." · 12× `tpl-pill` / 12× `tpl-pill-t` | **JUDGE** |
 | 8 | /All features<br>`cmp cmp-metrics-type1 surface-grey section-y` | `stats-quad` → `cmp cmp-stats-quad` (`ds-num is-lg`) | H: "Trade, made faster. Proven by numbers." · 4× `m1-cell` | **OK** |
 | 9 | /Metrics, Type 1<br>`cmp cmp-key-transactions surface-white section-y` | `fact-grid` → `cmp cmp-fact-grid` (glossary EMIT, capability rename) — **but MIGRATION §3 still routes this to `cards-tombstones`** | H: "Letters of credit, guarantees andcollections we powe" · 10× `kt-cell` | **JUDGE** |
 | 10 | Testimonials<br>`cmp cmp-testimonials surface-grey section-y` | `cards-testimonials-carousel` → `cmp cmp-cards is-hover-zoom cards-testimonials` + `is-center-peek` (autoplay + play/pause as built) | H: "Trusted by traders across the region" · 5× `tc-card` · media: 5 data-bg | **OK** |
@@ -289,7 +289,7 @@ not mapped below.
 | 5 | /Feature — Scroll Track<br>`cmp cmp-history-timeline surface-white section-y` | `history-timeline` — **current block** | H: "Seven steps from onboardingto early payment." · 7× `ht-node` | **OK** |
 | 6 | Key features, scroll story (Built to run the whole programme)<br>`cmp cmp-feature-scroll-story surface-grey` | `feature-scroll-story` / `-rev` — **current block** | H: "Built to run the whole programme." · 4× `ess-ch` · media: 4 img | **ASSET** |
 | 7 | Built to integrate, Bento Spotlight<br>`cmp cmp-bento-spotlight surface-white section-y` | `bento-spotlight` → `cmp cmp-bento bento-spotlight is-hover-lift is-hover-spotlight`; per-tile `is-w*/is-h*` spans replace `bs-grid--*` | H: "Plugs into how you already work." · 5× `bs-tile` · media: 1 data-bg | **OK** |
-| 8 | /Built to integrate<br>`cmp cmp-carousel-center surface-grey section-y` | `cards-carousel` + **`is-center-peek`** (the mode now exists in ds.css — MIGRATION §3's JUDGE is stale) | H: "Built for everysupply chain." · 5× `cc-slide` · media: 5 data-bg | **JUDGE** |
+| 8 | /Built to integrate<br>`cmp cmp-carousel-center surface-grey section-y` | `cards-carousel` + **`is-center-peek`** (the mode now exists in style.css — MIGRATION §3's JUDGE is stale) | H: "Built for everysupply chain." · 5× `cc-slide` · media: 5 data-bg | **JUDGE** |
 | 9 | /Carousel, Center<br>`cmp cmp-trusted-partners-grid surface-white section-y` | `logo-wall` → `cmp cmp-logo-wall` (Columns + Mobile-columns axes) | H: "The scale of relationships we support." · 8× `tpg-cell` | **OK** |
 | 10 | Testimonials<br>`cmp cmp-testimonials surface-grey section-y` | `cards-testimonials-carousel` → `cmp cmp-cards is-hover-zoom cards-testimonials` + `is-center-peek` (autoplay + play/pause as built) | H: "Trusted across the supply chain" · 5× `tc-card` · media: 5 data-bg | **OK** |
 | 11 | FAQ<br>`cmp cmp-accordion surface-white section-y` | `acc` → root rename `cmp-accordion`→`cmp-acc`; `.acc-icon`→`.ac-icon`, `.acc-inner`→`.ac-inner` (drop its 60ch cap, put `.measure` on prose), `.acc-pad` 2-col grids → a utility grid in the body; boxed rows → `acc-boxed`, long Q&A → `acc-faq` | H: "Frequently asked questions." · 5× `acc-icon` / 5× `acc-inner` | **JUDGE** |
@@ -346,8 +346,8 @@ not mapped below.
 | 1 | —<br>`cmp cmp-site-header ish-v4` | `site-header-v4` — **already canonical** (block root is `cmp cmp-site-header ish-v4`) | H: "Emirates NBD Bank Websites" · 14× `ish-col` / 14× `ish-col-h` · media: 14 img | **OK** |
 | 2 | 1. HERO, Image Left, surface-navy<br>`cmp cmp-hero-video-left surface-navy` | `hero` → `cmp cmp-hero surface-navy` + `video.media-cover` (or `data-bg`) + `ov ov-black ov-gradient-l ov-80` + `ov ov-gradient-t ov-50`; Place `is-bottom` | H: "Financing economic growthwith precision, scale, and " · media: 1 img | **JUDGE** |
 | 3 | 2. WHY EMIRATES NBD, Highlights Tiles, surface-white<br>`cmp cmp-highlights-tiles surface-white section-y` | `cards-icon` → `cmp cmp-cards cards-icon` (+`is-cols-N` from the old Tailwind cols) | H: "Why Emirates NBD" · 6× `ht-tile` / 6× `ht-tile-title` | **OK** |
-| 4 | 3. OUR AREAS OF EXPERTISE, Story Cards, surface-grey<br>`cmp cmp-story-cards surface-grey section-y` | **no current equivalent** — `cmp-story-cards` is RETIRED and `.sc-*` is undefined in ds.css (section renders unstyled today). Nearest: `cards` (Thumbnail, video card documented in `blocks/cards.html`) or `cards-boxed`  ·  **inner classes undefined in ds.css — renders unstyled today** | H: "Our areas of expertise" · 8× `sc-card` · media: 8 video | **JUDGE** |
-| 5 | 4. ★ SECTOR EXPLORER, Vertical Tabs, surface-white, id=explorer<br>`cmp cmp-tabs surface-white section-y` | `tabs-*` v4 → `.tabs-vert`→`.tb-rail.is-vertical`, `.tab-vert`→`.tb-tab`, `.tabs-underline`→`.tb-rail.is-underline`, `.tab-ul`→`.tb-tab`, `.tab-panel`→`.tb-panel`; strip runtime ARIA  ·  **`.tabs-vert`/`.tab-vert` are UNDEFINED in ds.css today — this section renders unstyled** (single column, no rail) | H: "Take a closer look at each desk" | **OK** |
+| 4 | 3. OUR AREAS OF EXPERTISE, Story Cards, surface-grey<br>`cmp cmp-story-cards surface-grey section-y` | **no current equivalent** — `cmp-story-cards` is RETIRED and `.sc-*` is undefined in style.css (section renders unstyled today). Nearest: `cards` (Thumbnail, video card documented in `blocks/cards.html`) or `cards-boxed`  ·  **inner classes undefined in style.css — renders unstyled today** | H: "Our areas of expertise" · 8× `sc-card` · media: 8 video | **JUDGE** |
+| 5 | 4. ★ SECTOR EXPLORER, Vertical Tabs, surface-white, id=explorer<br>`cmp cmp-tabs surface-white section-y` | `tabs-*` v4 → `.tabs-vert`→`.tb-rail.is-vertical`, `.tab-vert`→`.tb-tab`, `.tabs-underline`→`.tb-rail.is-underline`, `.tab-ul`→`.tb-tab`, `.tab-panel`→`.tb-panel`; strip runtime ARIA  ·  **`.tabs-vert`/`.tab-vert` are UNDEFINED in style.css today — this section renders unstyled** (single column, no rail) | H: "Take a closer look at each desk" | **OK** |
 | 6 | 5. UNLOCK NEW POSSIBILITIES, Content Block Numbers, surface-grey<br>`cmp cmp-cards-thumb surface-grey section-y` | `cards` / `cards-carousel` → `cmp cmp-cards is-hover-zoom cards-thumb`. NB `blocks/cards-thumb.html` is the HIDDEN legacy twin — never emit it | H: "Explore the full range of corporate solutions." · 4× `ct-card` · media: 4 data-bg | **OK** |
 | 7 | 6. CTA Band, surface-navy, id=contact<br>`cmp ptf-ctaband surface-navy section-y` | `cta-band` — **already canonical** (block root IS `cmp ptf-ctaband surface-navy section-y`; the anonymous root is the block's own) | H: "Let&rsquo;s move forward, together." | **OK** |
 | 8 | /6. CTA Band<br>`cmp cmp-footer-option1 surface-grey` | `footer-option1` — **already canonical** | 21× `fo1-link` | **OK** |
@@ -746,7 +746,7 @@ not mapped below.
 | 6 | 5. INVESTMENT, surface-grey<br>`cmp cmp-content-block-sidebyside surface-grey section-y` | `content-block-sidebyside` — **current block** | H: "Put surplus funds to work, on your risk and liquidit" | **OK** |
 | 7 | 6. PRECIOUS METALS, surface-white<br>`cmp cmp-content-block-sidebyside surface-white section-y` | `content-block-sidebyside` — **current block** | H: "Delivering trusted bullion expertise for real-asset " | **OK** |
 | 8 | 7. ESG-LINKED, surface-grey<br>`cmp cmp-content-block-sidebyside surface-grey section-y` | `content-block-sidebyside` — **current block** | H: "Financing progress through sustainable, performance-" | **OK** |
-| 9 | 8. INSIGHTS, surface-navy<br>`cmp cmp-cards-thumb-box is-cols-3 is-cta-text is-full-desc surface-navy section-y` | `cards-boxed` / `cards-boxed-carousel` → `cmp cmp-cards is-hover-zoom cards-boxed is-cols-N` (`card-panel` on the `cd-card` + `--card-pad:0`)  ·  **`is-full-desc` has no axis on the cards compositions** (1 declaration in ds.css, dies with the `cmp-cards-thumb-box` zone)  ·  carry axes `is-cols-3 is-cta-text is-full-desc` | H: "Stay ahead of the markets." · 3× `ct-card` · media: 3 data-bg | **JUDGE** |
+| 9 | 8. INSIGHTS, surface-navy<br>`cmp cmp-cards-thumb-box is-cols-3 is-cta-text is-full-desc surface-navy section-y` | `cards-boxed` / `cards-boxed-carousel` → `cmp cmp-cards is-hover-zoom cards-boxed is-cols-N` (`card-panel` on the `cd-card` + `--card-pad:0`)  ·  **`is-full-desc` has no axis on the cards compositions** (1 declaration in style.css, dies with the `cmp-cards-thumb-box` zone)  ·  carry axes `is-cols-3 is-cta-text is-full-desc` | H: "Stay ahead of the markets." · 3× `ct-card` · media: 3 data-bg | **JUDGE** |
 | 10 | 9. CROSS-SELL, surface-grey<br>`cmp cmp-cards-thumb surface-grey section-y` | `cards` / `cards-carousel` → `cmp cmp-cards is-hover-zoom cards-thumb`. NB `blocks/cards-thumb.html` is the HIDDEN legacy twin — never emit it | H: "Explore more of Global Markets &amp; Treasury." · 4× `ct-card` · media: 4 data-bg | **OK** |
 | 11 | 10. CTA, surface-navy<br>`cmp ptf-ctaband surface-navy section-y` | `cta-band` — **already canonical** (block root IS `cmp ptf-ctaband surface-navy section-y`; the anonymous root is the block's own) | H: "Build your treasury strategy with us." | **OK** |
 | 12 | /10. CTA<br>`cmp cmp-footer-option1 surface-grey` | `footer-option1` — **already canonical** | 21× `fo1-link` | **OK** |
@@ -1236,7 +1236,7 @@ not mapped below.
 | 1 | —<br>`cmp cmp-site-header ish-v4` | `site-header-v4` — **already canonical** (block root is `cmp cmp-site-header ish-v4`) | H: "Emirates NBD Bank Websites" · 14× `ish-col` / 14× `ish-col-h` · media: 14 img | **OK** |
 | 2 | 1. HERO, video (surface-dark)<br>`cmp cmp-hero-video-left surface-navy` | `hero` → `cmp cmp-hero surface-navy` + `video.media-cover` (or `data-bg`) + `ov ov-black ov-gradient-l ov-80` + `ov ov-gradient-t ov-50`; Place `is-bottom` | H: "One channel. Every bank." · media: 1 video | **JUDGE** |
 | 3 | 2. THE PROBLEM, big statement (surface-white)<br>`cmp cmp-big-statement surface-white section-y` | `big-statement` — **current block**; `bst-line` type → `type-display-xxl` in markup, `bst-link`→`btn btn-text btn-lg` | H: "Many banks should not mean many portals." | **OK** |
-| 4 | 3. THE FACTS, photographic bento (surface-grey)<br>`cmp cmp-cards-thumb-box is-cols-3 is-full-desc surface-grey section-y` | `cards-boxed` / `cards-boxed-carousel` → `cmp cmp-cards is-hover-zoom cards-boxed is-cols-N` (`card-panel` on the `cd-card` + `--card-pad:0`)  ·  **`is-full-desc` has no axis on the cards compositions** (1 declaration in ds.css, dies with the `cmp-cards-thumb-box` zone)  ·  carry axes `is-cols-3 is-full-desc` | H: "What SWIFT for Corporates gives&nbsp;you." · 3× `ct-card` · media: 3 data-bg | **JUDGE** |
+| 4 | 3. THE FACTS, photographic bento (surface-grey)<br>`cmp cmp-cards-thumb-box is-cols-3 is-full-desc surface-grey section-y` | `cards-boxed` / `cards-boxed-carousel` → `cmp cmp-cards is-hover-zoom cards-boxed is-cols-N` (`card-panel` on the `cd-card` + `--card-pad:0`)  ·  **`is-full-desc` has no axis on the cards compositions** (1 declaration in style.css, dies with the `cmp-cards-thumb-box` zone)  ·  carry axes `is-cols-3 is-full-desc` | H: "What SWIFT for Corporates gives&nbsp;you." · 3× `ct-card` · media: 3 data-bg | **JUDGE** |
 | 5 | 3.5 THE CONNECTIVITY MODEL, SCORE explainer (surface-navy)<br>`cmp cmp-content-block-sidebyside surface-navy section-y` | `content-block-sidebyside` — **current block** | H: "Built on SCORE, the Standardised Corporate Environme" · 4× `ip-ic` | **OK** |
 | 6 | 4. HOW IT WORKS, numbered steps (surface-white)<br>`cmp cmp-how-it-works-timeline surface-white section-y` | `how-it-works-timeline` — **current block** | H: "From sign up to reconciled reporting, in five&nbsp;s" | **OK** |
 | 7 | 5. FAQ, accordion (surface-grey)<br>`cmp cmp-accordion surface-grey section-y` | `acc` → root rename `cmp-accordion`→`cmp-acc`; `.acc-icon`→`.ac-icon`, `.acc-inner`→`.ac-inner` (drop its 60ch cap, put `.measure` on prose), `.acc-pad` 2-col grids → a utility grid in the body; boxed rows → `acc-boxed`, long Q&A → `acc-faq` | H: "Questions, answered." · 3× `acc-icon` / 3× `acc-inner` | **OK** |
@@ -1499,7 +1499,7 @@ under "Process & Steps". Two docs disagree.
 
 **J5 · `cmp-tabs-pills-grid` → filter — 3 sections on 3 pages** (`payments-v2` ×25 pills,
 `trade-supply-chain-finance-v2` ×14, `smarttrade-v2` ×12). RETIRED, and `.tpl-*` is
-**undefined in ds.css — these sections render unstyled today**. Tiles are label-only
+**undefined in style.css — these sections render unstyled today**. Tiles are label-only
 (+ a short desc on TSCF).
 - **(a)** ONE `filter-grid` — `cmp cmp-cards cards-kicker is-cols-3` + `data-filter` chips,
   delete the duplicated per-tab panels (the glossary EMIT; matches "faceted directory").
@@ -1530,7 +1530,7 @@ noting "no gallery block teaches them".
   next touched (the glossary's own "block-consistent authored markup" exemption).
 
 **J9 · VERTICAL TABS — 2 sections on 2 pages** (`industry-specific-finance-v2` §5,
-`fx-hub` §6). `.tabs-vert` / `.tab-vert` are **undefined in ds.css** — the ISF sector explorer
+`fx-hub` §6). `.tabs-vert` / `.tab-vert` are **undefined in style.css** — the ISF sector explorer
 (8 panels, 17 eyebrows, strengths + stats + advantage) renders as a single unstyled column.
 - **(a)** Mechanical v4 rename (`tb-rail is-vertical` / `tb-tab` / `tb-panel`, strip runtime
   ARIA) + compose the rich panel from atoms per the glossary `isf` recipe.
@@ -1538,7 +1538,7 @@ noting "no gallery block teaches them".
   the per-sector narrative panels.
 
 **J10 · `is-full-desc` — 2 sections on 2 pages** (`structured-solutions` §9,
-`swift-corporates` §4). A `cmp-cards-thumb-box` modifier with **one** declaration in ds.css;
+`swift-corporates` §4). A `cmp-cards-thumb-box` modifier with **one** declaration in style.css;
 it dies with that zone, and the cards compositions have no unclamp axis (the glossary states
 "nothing clamps in the composition").
 - **(a)** Drop the class — verify at 1280/768/375 that `cards-boxed` descriptions are already
@@ -1553,7 +1553,7 @@ glossary route it to `cmp-fact-grid` (capability rename). The docs contradict.
 - **(b)** `cards-tombstones` — "one tombstone family", per the §3 recipe.
 
 **J12 · `cmp-story-cards` — 1 section** (`industry-specific-finance-v2` §4, 8 cards).
-RETIRED; `.sc-*` is **undefined in ds.css** so the section renders unstyled. The 8 `<video>`
+RETIRED; `.sc-*` is **undefined in style.css** so the section renders unstyled. The 8 `<video>`
 elements have **zero `<source>`** — poster-only, i.e. not real video (the `es-bgvid`
 precedent). Four colour tints (`sc-tint-sky/sand/rose/indigo`) have no composition equivalent.
 - **(a)** `cards` (Thumbnail) with the poster moved to `data-bg` on a `media-cover`, tag →
@@ -1569,7 +1569,7 @@ per-letter blur reveal and the `.p-title` word pill have no slot.
 
 **J14 · `cmp-carousel-center` — 1 section** (`smartscf-v2` §8, 5 slides).
 MIGRATION §3 marks this the one JUDGE recipe "pending the center-peek option" — but
-**`is-center-peek` now exists in ds.css (6 declarations) and ships on
+**`is-center-peek` now exists in style.css (6 declarations) and ships on
 `cards-testimonials-carousel`.** The recipe text is stale.
 - **(a)** Emit `cards-carousel is-center-peek` and update MIGRATION §3 to drop the JUDGE.
 - **(b)** Emit start-aligned and accept the layout change.
@@ -1593,7 +1593,7 @@ buttons, QR, sheened device card, 3 imgs + 1 video) has no composition.
 MIGRATION §5: the CSS laptop (`ls-lid`/`ls-screen`/`ls-base`) becomes an `.ls-device-img`
 transparent PNG. The asset does not exist yet.
 - **(a)** Bake the 2× transparent PNG now (blocks this page's sweep until it exists).
-- **(b)** Keep the CSS kit for this page — ds.css already keeps it "for pre-sweep pages".
+- **(b)** Keep the CSS kit for this page — style.css already keeps it "for pre-sweep pages".
 
 **Resolved while mapping — no decision needed, recorded so nobody re-opens them:**
 `emirates-nbd-pay-v2`'s `mt2-num` slots hold `All` / `PCI-DSS` — short compact labels, which
@@ -1638,7 +1638,7 @@ two pilots cover 10 distinct recipes and every top-frequency pattern except `car
 
 **5.1 Asset paths — pages move to `/pages/`, so go absolute.**
 Every asset reference on all 51 pages is **relative** today: `data-bg="assets/images/…"`,
-`src="assets/js/ds.js?v=…"`, `href="assets/css/ds.css?v=…"`, `poster="assets/images/…"`,
+`src="assets/js/ds.js?v=…"`, `href="assets/css/style.css?v=…"`, `poster="assets/images/…"`,
 and `<video><source src="assets/videos/…">`. Moving a page one directory down silently
 breaks every one of them — and `data-bg` failures are invisible (a blank panel, no console
 error). **Recommendation: rewrite to absolute `/assets/…` as the first mechanical step of
@@ -1667,7 +1667,7 @@ section-y`) — the "anonymous root" there is the block's own design, not page d
   the four `section-head` prose bands) must be spot-checked at `?dir=rtl`: they use
   `start-*`/`end-*` and `meta-dot`'s `margin-inline-end`, so they should be clean, but they
   are the only markup the sweep is not re-deriving from a block.
-- Each RETIRED zone deleted from ds.css takes its `[dir="rtl"]` re-statements with it
+- Each RETIRED zone deleted from style.css takes its `[dir="rtl"]` re-statements with it
   (MIGRATION §6 names `kt-link`, `pl-link`, `pg-go`, `dts-link`, the `pc-*` family). A page is
   only "swept" when its zone's RTL block can go too — so record the zone, not just the page.
 - The AR preview renders the *page*, so a page swept section-by-section will show a mixed
@@ -1685,7 +1685,7 @@ section-y`) — the "anonymous root" there is the block's own design, not page d
 4. Section-by-section emit, top to bottom, per this map's table for that page.
 5. `node scripts/verify.mjs` — zero NEW failures; the page's WARN lines should go to zero.
 6. Screenshots at 1280 / 768 / 375 vs the pre-sweep page; then the RTL pass (5.3).
-7. Record the byte delta and the ds.css zones the page stopped referencing (MIGRATION §6).
+7. Record the byte delta and the style.css zones the page stopped referencing (MIGRATION §6).
 
 ---
 
@@ -1785,7 +1785,7 @@ All 17 JUDGE items are answered. Recorded so nobody re-opens them:
 |---|---|---|
 | **J1** heroes (49) | **root fixed:** `cmp cmp-hero surface-navy`, content preserved | not "(a) or (b)" — he named the root. The per-type *wash* is settled by rule (i): keep the section's OWN `.ov` atoms; only a hero with none gets the §3 J1(a) default. |
 | **J2** accordion 2-col body (14) | **(b)-with-fidelity** | "if it is simple text, use simple text. Don't overcomplicate" — the body keeps the *original's* inner layout; a 2-col `.acc-pad` stays 2-col, prose stays prose. |
-| **J3** pinned scroll-track (7) | **(b), already available** | he named `cmp cmp-cards is-hover-zoom cards-plain surface-grey with scroll pin` — that is `blocks/cards-plain-scroll.html` verbatim. The pin **is** generalized (`DS.recipe('scroll-track')` in ds.js, `.cd-scroll-outer/-pin/-wrap` in ds.css, 18 `*-scroll` blocks). §3 J3 and the glossary row saying "not generalized" are **STALE**. |
+| **J3** pinned scroll-track (7) | **(b), already available** | he named `cmp cmp-cards is-hover-zoom cards-plain surface-grey with scroll pin` — that is `blocks/cards-plain-scroll.html` verbatim. The pin **is** generalized (`DS.recipe('scroll-track')` in ds.js, `.cd-scroll-outer/-pin/-wrap` in style.css, 18 `*-scroll` blocks). §3 J3 and the glossary row saying "not generalized" are **STALE**. |
 | **J4** how-it-works-steps (4) | **(a)** keep the block | "ok with proposal how it works" — MIGRATION §3's route to `cards-number` is dropped for this pattern. |
 | **J5** tabs-pills-grid (3) | **neither — `tabs-directory`** | override, see (v). |
 | **J6** gls-global navy band (4) | **(a)** CUSTOM-KEEP as-is | "ok with the proposal". |
@@ -1796,7 +1796,7 @@ All 17 JUDGE items are answered. Recorded so nobody re-opens them:
 | **J11** key-transactions (1) | **(a)** `fact-grid` | glossary EMIT wins; MIGRATION §3's `cards-tombstones` route for `cmp-key-transactions` is dead. |
 | **J12** story-cards (1) | **(a) ALT A** — `cards` with media | "use cards with media, ALT A". |
 | **J13** process-cards losses (1) | **(a)** accept the losses | "ok with proposal but keep the existing content". |
-| **J14** carousel-center (1) | **(a)** `is-center-peek` | the mode exists (6 declarations in ds.css); §3's JUDGE text is stale. |
+| **J14** carousel-center (1) | **(a)** `is-center-peek` | the mode exists (6 declarations in style.css); §3's JUDGE text is stale. |
 | **J15** quote-band portrait-bleed (1) | **(a)** plain band | "ok for proposal". |
 | **J16** app-cinema interior (1) | **(a)** rebuild from atoms | "change to scroll-scenes, port content". |
 | **J17** laptop-showcase asset (1) | **use the existing PNG** | `assets/images/device/laptop-showcase.png` **exists** (309 kb, the block's own `.ls-device-img`). §3 J17's "the asset does not exist yet" is stale. |
@@ -1835,7 +1835,7 @@ importer, the sweep recipes and the judge board all inherit them.
 > unchanged; TOKENS such as `--navy` and `.type-navy` unchanged). Every recipe
 > written above this line predates the rename — **read `surface-navy` as
 > `surface-primary` and `surface-blue` as `surface-accent`** throughout this
-> document. The old spellings still paint (deprecated aliases in ds.css) but get
+> document. The old spellings still paint (deprecated aliases in style.css) but get
 > none of the flip/island rules, and the verify gate warns on them, so emit the
 > role names. See CONVENTIONS.md and docs/MIGRATION.md §5.
 
@@ -1926,12 +1926,12 @@ importer, the sweep recipes and the judge board all inherit them.
 
 **Buttons & controls**
 - Icon-only buttons are ALWAYS circles: `.btn.btn-icon` rounds itself in
-  ds.css. Never a square close/pause; `btn-pill` on icon buttons is
+  style.css. Never a square close/pause; `btn-pill` on icon buttons is
   redundant. Carousel play/pause = `.crl-toggle` (circle), never raw
   utility stacks.
 - BUTTON ICONS ARE CLASSES, NOT MARKUP (Hakan, 2026-09-03). Button and
   control icons stop being inline `<svg>` blobs. The glyph lives ONCE in
-  ds.css as a data-URI mask painted with `currentColor`; markup only names
+  style.css as a data-URI mask painted with `currentColor`; markup only names
   it with a modifier — `is-arrow`, `is-arrow-back`, `is-next`, `is-back`,
   `is-up`, `is-down`, `is-up-right`, `is-close`, `is-plus`, `is-minus`,
   `is-download`, `is-search`, `is-play`, `is-pause` — trailing by default,
@@ -1939,7 +1939,7 @@ importer, the sweep recipes and the judge board all inherit them.
   modal / drawer / menu navs (content icons — `icon-tile` and friends —
   are OUT, pending a separate ruling). RTL mirroring and forced-colors are
   solved once at the engine, so never add a per-component icon rule for
-  either. Adding a glyph is a ds.css edit on a deliberate cadence, not a
+  either. Adding a glyph is a style.css edit on a deliberate cadence, not a
   page-level choice. Brand marks (LinkedIn, store badges) are not glyphs
   and stay inline. Vocabulary table: CONVENTIONS.md § the glyph axis.
   Landed 2026-09-03: 1399 inline svgs swept across 72 pages + 72 blocks.
@@ -1974,8 +1974,8 @@ importer, the sweep recipes and the judge board all inherit them.
 - These review findings were: (a) agent infidelity to existing canon, or
   (b) latent library bugs surfacing under real content — NOT new judgment.
   Check pages against canon mechanically (dead-class lint: any page class
-  with zero ds.css declarations is drift; block-copy diff; atoms-presence
-  from ds.css "atoms pass" comments) before asking Hakan to look.
+  with zero style.css declarations is drift; block-copy diff; atoms-presence
+  from style.css "atoms pass" comments) before asking Hakan to look.
 - OPEN (awaiting Hakan): events-library hero is is-center by faithful port
   of the original cmp-hero-video-center — normalize-vs-preserve for
   center-variant heroes not yet ruled.
@@ -2047,7 +2047,7 @@ importer, the sweep recipes and the judge board all inherit them.
     (`btn-text` — CONVENTIONS' named quiet text-link atom — plus `be-link`,
     the one hand-rolled survivor that is genuinely a text-only link and
     genuinely sits on media). DELIBERATELY EXCLUDED: `art-c-link`, which is
-    the whole clickable CARD, not a link atom (ds.css:4857 paints it
+    the whole clickable CARD, not a link atom (style.css:4954 paints it
     background/border/radius/shadow); and `bc-link` / `sn-link` / `fo1-link` /
     `ds-skip-link`, which are navigation chrome and never occur on media.
   - SOLID DARK GROUNDS ARE UNCHANGED. `ink-accent-soft` stays legal there.
@@ -2096,7 +2096,7 @@ One executable recipe per board group (**73 groups + the `is-full-desc` sub-item
 order `g01…g73`. Each recipe is: **Emit** (the exact root class string + the block FILE to paste
 verbatim) · **Port** (which slots take the old section's content) · **Note** (normalization,
 override, or asset dependency). Every slug and class below was grep-verified against `blocks/`,
-`assets/css/ds.css` and `assets/js/ds.js` on 2026-09-02.
+`assets/css/style.css` and `assets/js/ds.js` on 2026-09-02.
 
 **The invariant, before any recipe:** *paste the block file, change only content.* A recipe never
 authorizes new markup, new `cmp-*` classes, inline `style=` (except `--var` passing), `<style>`,
@@ -2242,7 +2242,7 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 
 **g07-sub · `is-full-desc` modifier — 2 sections (`structured-solutions` §9, `swift-corporates` §4)**
 *Ruling: "ok with mock-j10.html"*
-- **Do:** **drop the class.** `.cmp-cards-thumb-box.is-full-desc` is a single declaration (ds.css:5798) inside the retired `cmp-cards-thumb-box` zone; the `cards-boxed` composition has no clamp, so descriptions are already unclamped — which is what `mock-j10.html` ("J10 mock — is-full-desc dropped") demonstrates.
+- **Do:** **drop the class.** `.cmp-cards-thumb-box.is-full-desc` is a single declaration (style.css:5895) inside the retired `cmp-cards-thumb-box` zone; the `cards-boxed` composition has no clamp, so descriptions are already unclamped — which is what `mock-j10.html` ("J10 mock — is-full-desc dropped") demonstrates.
 - **Note:** the declaration is deleted **with its zone**, not separately; do not mint an unclamp axis on `cmp-cards`.
 
 **g10 · `cmp-kicker-cards` → ~~`cards-kicker`~~ **`cards-icon-linked`** — 11 sections, 11 pages** *(OVERRIDE)*
@@ -2260,7 +2260,7 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 *Ruling: "ok with proposal, keep four columns … Add the CTAs if needed as per original."*
 - **Emit:** `<section class="cmp cmp-cards cards-tombstones is-cols-4 surface-<own> section-y">` ← paste `blocks/cards-tombstones.html`.
 - **Port:** the count + ESG-legend head row (part of the composition) and **every** deal cell — 56 / 30 / 36 / … per page, with its logo `<img>`, amount, role, year. Rule (i): no truncation to a demo set.
-- **Note:** `.tomb-grid` has no ds.css rules left; the target grid is `.cd-grid`, whose default is 4 columns — "keep four columns" is literally satisfiable here (`is-cols-4`).
+- **Note:** `.tomb-grid` has no style.css rules left; the target grid is `.cd-grid`, whose default is 4 columns — "keep four columns" is literally satisfiable here (`is-cols-4`).
 
 **g18 · `cmp-pillar-grid` → `cards-icon-linked` — 4 sections, 4 pages**
 *Ruling: "ok with proposal, keep four columns … Add the CTAs if needed as per original."*
@@ -2337,7 +2337,7 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 *Ruling: "cmp cmp-cards is-hover-zoom cards-plain surface-grey with scroll pin, keep the same content as per original"*
 - **Emit:** `<section class="cmp cmp-cards is-hover-zoom cards-plain surface-grey" data-animate data-behavior="scroll-track">` ← paste **`blocks/cards-plain-scroll.html`**. His class string is that block's root **verbatim**; its interior is `.cd-scroll-outer[data-scroll-outer] > .cd-scroll-pin > (container-ds + section-head) + .cd-scroll-wrap[data-scroll-wrap] > .cd-track[data-track]`.
 - **Port:** all 5–7 `cst-card`s per instance — image, title, body, link — into `.cd-card`s on the track; the section head becomes canonical `section-head is-split` (lead as an `.sh-lead` sibling of `.ds-stack`); drop the section `id`.
-- **Note:** **the pin is NOT lost.** Verified 2026-09-02: `DS.recipe('scroll-track')` in `assets/js/ds.js`, `.cd-scroll-outer` (300vh) / `.cd-scroll-pin` (sticky, 100vh) / `.cd-scroll-wrap` in `assets/css/ds.css`, and 18 `*-scroll` composition blocks. §3 J3 and the importer-glossary `.cst-*` row both still say the recipe "has NOT been generalized" — **both are stale and are corrected by this ruling.** Rule (iii): he named `surface-grey`; keep it.
+- **Note:** **the pin is NOT lost.** Verified 2026-09-02: `DS.recipe('scroll-track')` in `assets/js/ds.js`, `.cd-scroll-outer` (300vh) / `.cd-scroll-pin` (sticky, 100vh) / `.cd-scroll-wrap` in `assets/css/style.css`, and 18 `*-scroll` composition blocks. §3 J3 and the importer-glossary `.cst-*` row both still say the recipe "has NOT been generalized" — **both are stale and are corrected by this ruling.** Rule (iii): he named `surface-grey`; keep it.
 
 **g31 · `cmp-scroll-story-video` — 2 sections (`digital-channels-v2`, `businessonline-x-v2`) — DO NOT TOUCH**
 *Ruling: "keep the original. This is beyond components."*
@@ -2357,7 +2357,7 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 *Ruling: "ok with proposal but keep the existing content"*
 - **Emit:** `<section class="cmp cmp-cards is-hover-zoom cards-thumb is-center-peek surface-<own> section-y">` ← `blocks/cards-carousel.html` + the `is-center-peek` axis.
 - **Port:** all 5 `cc-slide`s with `data-bg`, title, body; keep the `data-carousel-toggle` pause/play control styled `btn btn-outline btn-icon btn-sm` + `.sr-only`.
-- **Note:** `is-center-peek` exists (ds.css, 6 declarations); §3 J14's "pending" text is stale.
+- **Note:** `is-center-peek` exists (style.css, 6 declarations); §3 J14's "pending" text is stale.
 
 **g63 · `cmp-features-autoprogress` → `features-autoprogress` — 1 section (`global-loan-solutions-v2`)**
 *Ruling: "ok with proposal but keep the existing content"*
@@ -2388,13 +2388,13 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 *Ruling: "use tabs-directory"*
 - **Emit:** `<section class="cmp cmp-tabs tabs-directory surface-<own> section-y">` ← paste `blocks/tabs-directory.html`.
 - **Port:** the **tabs are kept, not collapsed** — rail `tb-rail is-underline` of `button.tb-tab[data-tab]`, one `.tb-panel[data-panel]` per tab holding its `.tpl-intro` lead (`type-body-lg on-surface-mid measure`) and its tiles as `div.cd-card.card-panel.is-flat` inside `.cmp-cards.is-cols-auto.is-hover-lift > .cd-grid`. All 25 / 14 / 12 pills per instance; keep tiles label-only (a short desc where TSCF has one) — do not invent descriptions.
-- **Note:** the block was formalized **from this exact section** — `blocks/tabs-directory.html` ships the `payments-v2` copy ("How we can help you" / "We understand that every business is unique."), so the port is near-verbatim. The old `filter-grid` route (one grid + `data-filter` chips, panels deleted) is **struck**; the per-tab reading is preserved. `.tpl-*` had no ds.css and rendered unstyled — nothing to preserve from it.
+- **Note:** the block was formalized **from this exact section** — `blocks/tabs-directory.html` ships the `payments-v2` copy ("How we can help you" / "We understand that every business is unique."), so the port is near-verbatim. The old `filter-grid` route (one grid + `data-filter` chips, panels deleted) is **struck**; the per-tab reading is preserved. `.tpl-*` had no style.css and rendered unstyled — nothing to preserve from it.
 
 **g37 · `cmp-tabs` → ~~`tabs-*` rename in place~~ **`tabs-vertical`** — 2 sections (`industry-specific-finance-v2` §5, `fx-hub` §6)** *(OVERRIDE)*
 *Ruling: "use tabs-vertical"*
 - **Emit:** `<section class="cmp cmp-tabs surface-<own> section-y">` ← paste `blocks/tabs-vertical.html`: wrap `div[data-tabs][data-tabs-swipe].flex.flex-col.md:flex-row.gap-8`, rail `div.tb-rail.is-vertical.shrink-0.md:w-56[role=tablist]` of `button.tb-tab[data-tab]`, panels column `div.flex-1.pt-2` of `div.tb-panel[data-panel]`.
 - **Port:** ISF — all 8 sector panels with their 17 eyebrows, strengths lists, stats and advantage lines, composed from atoms per the glossary `isf` recipe (label → `ds-eyebrow`; strengths → `grid sm:grid-cols-2 gap-x-8 gap-y-5` of title `type-body on-surface font-semibold block` + body `type-body-sm on-surface-mid`; stats → `flex flex-wrap gap-10` of `ds-num is-sm` + `type-caption on-surface-mid`; advantage → `ds-eyebrow` + `type-body … measure`). FX Hub — panels plus their 3 `data-bg` media.
-- **Note:** **strip the authored tab ARIA and ids** (`id=`, `role="tab"/"tabpanel"`, `aria-controls`, `aria-labelledby`, `tabindex`) — `ds.js` re-adds them. `.tabs-vert`/`.tab-vert` are undefined in ds.css today, so nothing is preserved from the old markup.
+- **Note:** **strip the authored tab ARIA and ids** (`id=`, `role="tab"/"tabpanel"`, `aria-controls`, `aria-labelledby`, `tabindex`) — `ds.js` re-adds them. `.tabs-vert`/`.tab-vert` are undefined in style.css today, so nothing is preserved from the old markup.
 
 **g70 · `(anonymous root)` → `data-filter` — 1 section (`faqs` §3) — BUILD ITEM, not a transform**
 *Ruling: "we need to build this"*
@@ -2462,7 +2462,7 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 
 **g20 · `(anonymous root)` → `gls-global` — 4 sections, 4 pages — KEEP**
 *Ruling: "ok with the proposal"* — the proposal was CUSTOM-KEEP.
-- **Do:** leave the navy band as-is (`cmp surface-navy section-y` + `section-head is-split` + 6–8 `badge badge-solid` market pills). Do **not** fold onto `market-band` (J6 (b) declined; `market-band` has no ds.css zone of its own).
+- **Do:** leave the navy band as-is (`cmp surface-navy section-y` + `section-head is-split` + 6–8 `badge badge-solid` market pills). Do **not** fold onto `market-band` (J6 (b) declined; `market-band` has no style.css zone of its own).
 - **Note:** it is one of the four bespoke sections the sweep does not re-derive from a block → **RTL spot-check required** at `?dir=rtl` (§5.3).
 
 **g22 · `(anonymous root)` → `section-head is-split` — 4 sections, 3 pages**
@@ -2548,7 +2548,7 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 *Ruling: "use insight split"*
 - **Emit:** `<section class="cmp cmp-illustration-split surface-<own> section-y">` ← paste `blocks/illustration-split.html`.
 - **Port:** eyebrow, headline, sub, CTA, and the `isp-*` illustration composition.
-- **Note:** **the rename is name-only — `cmp-illustration-split` IS insight-split.** Verified: the block's interior is the same `isp-grid` / `isp-copy` / `isp-comp` / `isp-blob` / `isp-cta` family the page already uses, and `cmp-insight-split` has no ds.css zone (MIGRATION records it as a pure rename). "use insight split" is therefore satisfied by keeping the insight-split design under its current name. Page-only `isp-*` extras (`isp-tile`, `isp-spark s1/s2`, `isp-stage`) are content of the illustration — rule (i), they carry over.
+- **Note:** **the rename is name-only — `cmp-illustration-split` IS insight-split.** Verified: the block's interior is the same `isp-grid` / `isp-copy` / `isp-comp` / `isp-blob` / `isp-cta` family the page already uses, and `cmp-insight-split` has no style.css zone (MIGRATION records it as a pure rename). "use insight split" is therefore satisfied by keeping the insight-split design under its current name. Page-only `isp-*` extras (`isp-tile`, `isp-spark s1/s2`, `isp-stage`) are content of the illustration — rule (i), they carry over.
 
 **g56 · `cmp-trusted-partners-grid` → `logo-wall` — 1 section (`smartscf-v2`)** — *"ok for proposal but keep the original content"*
 - **Emit:** `<section class="cmp cmp-logo-wall is-cols-4 surface-<own> section-y">` ← `blocks/logo-wall.html` (`is-cols-4` = `--lw-cols: 4`; Mobile-columns axis as the original renders).
@@ -2620,7 +2620,7 @@ survives §5.1's path rewrite.
   `[data-filter-item]` + one `data-filter-<key>` per item, `select[data-filter-key]` or
   `button[data-filter-key][data-filter-value]`, `[data-filter-search]`, `[data-filter-reset]`,
   `[data-filter-count]`, `[data-filter-empty]`; AND across keys, OR within a key).
-- `ds.css` has the `.filter-bar` / `.filter-chips` / `.filter-chip` / `.filter-search` /
+- `style.css` has the `.filter-bar` / `.filter-chips` / `.filter-chip` / `.filter-search` /
   `.filter-count` / `.filter-empty` utilities.
 - `blocks/filter-grid.html` is the registered DEMO of that capability — but it filters items
   **inside its own root**.
@@ -2710,11 +2710,11 @@ verbatim header / footer / CTA-band and the still-current blocks that need nothi
    map-stat overlay. Zero `<style>` blocks and zero page `id=`-on-a-`cmp`-root violations beyond
    the anchor ids the 51 also carry (5–13 per page; `payments-v2` = 5, `fx-hub` = 7 for scale).
 3. **Asset paths are relative on all nine** (22–53 `="assets/…"` refs per page) → §5.1's
-   absolute-path rewrite applies identically. Cache-bust is `?v=261159` on ds.css **and** ds.js on
+   absolute-path rewrite applies identically. Cache-bust is `?v=261159` on style.css **and** ds.js on
    every one of the nine — in step with the estate.
 4. **Gate: 0 FAIL naming any of the nine**, 36 WARN total (`node scripts/verify.mjs` on this
    branch, 2026-09-02 → `264 failure(s), 376 warning(s)` overall; the FAILs belong to dated twins
-   and another agent's in-flight ds.css work, exactly as §0's baseline records).
+   and another agent's in-flight style.css work, exactly as §0's baseline records).
 5. **Six of the nine carry the identical cross-sell band** ("Explore the full range of corporate
    solutions", 4× `ct-card`): P2, P3, P5, P6, P7, P8 — one g05 emit, six applications.
 
@@ -2746,8 +2746,8 @@ verbatim header / footer / CTA-band and the still-current blocks that need nothi
 | 6 | Why Emirates NBD, Highlights Tiles<br>`cmp cmp-highlights-tiles surface-white section-y` | ~~`cards-icon`~~ **`cards-icon-linked`** (override v) — `cmp cmp-cards cards-icon-linked is-cols-4` | H: "Built to carry your most demanding work." · 4× `ht-tile` / `ht-icon` / `ht-tile-body` · media: 4 svg | **OK-RULED** (g11) |
 | 7 | Feature Spotlight<br>`cmp cmp-feature-spotlight surface-grey section-y` | `feature-spotlight` — **current block**, "ok with proposal" | H: "Run your whole relationship, online." · 2× `fsp-row` · 6× `fsp-check` · media: 2 data-bg | **OK-RULED** (g13) |
 | 8 | Big Statement<br>`cmp cmp-big-statement surface-navy section-y` | `big-statement` — **current block**, "ok with proposal"; keeps its own navy (rule iii) | 3× `bst-l` / `bst-w` · 1× `bst-sub` | **OK-RULED** (g09) |
-| 9 | (unnamed) video-backed scroll chapters<br>`cmp cmp-video-tabs surface-navy` | **PROPOSAL** — rename-in-place to `cmp cmp-video-chapters surface-navy` and paste `blocks/video-chapters.html`: the `vt-*` vocabulary is identical (`vt`, `vt-stage`, `vt-video-fill`, `vt-gradient`, `vt-layer`, `vt-content`, `vt-label`, `vt-heading`, `vt-bullets`, `vt-bullet`, `vt-suite`), `MIGRATION.md:535` records the 2026-09-01 rename, and ds.css has the `.cmp-video-chapters` zone. **No ledger line — Hakan judges.** | H: "Your command centre. One secure platform." · 7× `vt-bullets` / 28× `vt-bullet` · 6× `vt-suite` · media: 4 video | **NEEDS-JUDGING** (P-A) |
-| 10 | Sector expertise, Industry Cards<br>`cmp surface-grey section-y` *(anonymous root)* | **PROPOSAL** — `cmp cmp-cards is-hover-zoom cards-thumb is-cols-3`, title-only cards (no desc, no CTA — the original has neither), `data-bg` per tile; this also fixes the anonymous root. Precedent: g05 (cards-thumb → cards) for the target, g33/g43/g59 for anonymous-root re-rooting. `hp-ind-grid`/`hp-ind-card` have ds.css declarations but **no block** and no ledger line — **Hakan judges.** | H: "Supporting the industries of tomorrow." · 6× `hp-ind-card` (label only) · media: 6 data-bg | **NEEDS-JUDGING** (P-B) |
+| 9 | (unnamed) video-backed scroll chapters<br>`cmp cmp-video-tabs surface-navy` | **PROPOSAL** — rename-in-place to `cmp cmp-video-chapters surface-navy` and paste `blocks/video-chapters.html`: the `vt-*` vocabulary is identical (`vt`, `vt-stage`, `vt-video-fill`, `vt-gradient`, `vt-layer`, `vt-content`, `vt-label`, `vt-heading`, `vt-bullets`, `vt-bullet`, `vt-suite`), `MIGRATION.md:535` records the 2026-09-01 rename, and style.css has the `.cmp-video-chapters` zone. **No ledger line — Hakan judges.** | H: "Your command centre. One secure platform." · 7× `vt-bullets` / 28× `vt-bullet` · 6× `vt-suite` · media: 4 video | **NEEDS-JUDGING** (P-A) |
+| 10 | Sector expertise, Industry Cards<br>`cmp surface-grey section-y` *(anonymous root)* | **PROPOSAL** — `cmp cmp-cards is-hover-zoom cards-thumb is-cols-3`, title-only cards (no desc, no CTA — the original has neither), `data-bg` per tile; this also fixes the anonymous root. Precedent: g05 (cards-thumb → cards) for the target, g33/g43/g59 for anonymous-root re-rooting. `hp-ind-grid`/`hp-ind-card` have style.css declarations but **no block** and no ledger line — **Hakan judges.** | H: "Supporting the industries of tomorrow." · 6× `hp-ind-card` (label only) · media: 6 data-bg | **NEEDS-JUDGING** (P-B) |
 | 11 | Testimonials, Centre Carousel<br>`cmp cmp-testimonials surface-white section-y` | `cards-testimonials-carousel` — "keep the content and images from the existing page" | H: "Trusted by the region's businesses" · 5× `tc-card` · 10× `tc-link` / `tc-ico` · media: 5 data-bg | **OK-RULED** (g35) |
 | 12 | Our track record of delivery, Deal Timeline<br>`cmp cmp-history-timeline surface-white section-y` | `history-timeline` — "ok for proposal" | H: "Our track record of delivery." · 3× `ht-node` / `ht-year` / `ht-title` · 3× `badge` · media: 3 svg | **OK-RULED** (g36) |
 | 13 | Awards & Recognition<br>`cmp cmp-solutions-awards surface-white section-y` | `solutions-awards` — "keep the original content" | H: "Recognised by the industry, year after year." · 3× `sa-logo` / `sa-logo-fill` · media: 4 svg | **OK-RULED** (g65) |
@@ -2777,7 +2777,7 @@ debt is the `.ptf-dir` band and the loose modal wrapper.
 | 4 | 4 · Bento — Expand (What we do)<br>`cmp cmp-bento-expand surface-white section-y` | `bento-expand` — **current block**; "keep the existing content and surface color" → rule (iii) keeps this one's **white**, not the ledger line's navy | H: "Multiple capabilities. One bank." · 3× `be-panel` / `be-eyebrow` / `be-title` / `be-detail` · media: 3 data-bg | **OK-RULED** (g29) |
 | 5 | 6 · Big statement, Transaction Banking<br>`cmp cmp-big-statement surface-white section-y` | `big-statement` — **current block**, "ok with proposal"; keeps its own white | 3× `bst-l` / `bst-w` · 1× `bst-sub` (`is-center`) | **OK-RULED** (g09) |
 | 6 | 7 · World Map, Animated Routes<br>`cmp cmp-world-map surface-grey section-y` | `world-map` — **current block**; unified map contract (`data-behavior="world-map"`) | H: "From Dubai to the world." · 4× route `n`/`l` pairs · media: 1 img | **OK-RULED** (g19) |
-| 7 | 8 · Everything your treasury runs on + Product directory<br>`cmp surface-white section-y` *(anonymous root)*, `id="directory"` | `link-directory` → `cmp cmp-link-directory …` + `ld-grid` / `ld-col` / `ld-col-h`. **This is the exact source of the target block**: ds.css's `.cmp-link-directory` zone header records it was *"formalized 2026-08-27 from the `.ptf-dir` drift"*, and `.ld-*` reproduces `.ptf-dir`'s rules 1:1. Carries the section-head atoms already | H: "Everything your treasury runs on." · 3 columns × `ptf-dir-h` + link lists · **3 links carry `data-modal-open` → emit with §11** | **OK-RULED** (g58) |
+| 7 | 8 · Everything your treasury runs on + Product directory<br>`cmp surface-white section-y` *(anonymous root)*, `id="directory"` | `link-directory` → `cmp cmp-link-directory …` + `ld-grid` / `ld-col` / `ld-col-h`. **This is the exact source of the target block**: style.css's `.cmp-link-directory` zone header records it was *"formalized 2026-08-27 from the `.ptf-dir` drift"*, and `.ld-*` reproduces `.ptf-dir`'s rules 1:1. Carries the section-head atoms already | H: "Everything your treasury runs on." · 3 columns × `ptf-dir-h` + link lists · **3 links carry `data-modal-open` → emit with §11** | **OK-RULED** (g58) |
 | 8 | 9 · Unlock new possibilities<br>`cmp cmp-cards-thumb surface-white section-y` | `cards` → `cmp cmp-cards is-hover-zoom cards-thumb is-cols-4`. NB `blocks/cards-thumb.html` is the HIDDEN legacy twin — never emit it | H: "Explore the full range of corporate solutions." · 4× `ct-card` · media: 4 data-bg, 4 svg | **OK-RULED** (g05) |
 | 9 | 11 · CTA, Horizontal Marquee<br>`cmp cmp-cta-marquee surface-navy section-y` | `cta-marquee` — "ok for proposal"; closing heading = `type-h1 on-surface`. **This page has no `cta-band`** — the marquee is the finale | H: "Ready to move forward?" · 10× `cm-item` | **OK-RULED** (g32) |
 | 10 | Footer, Option 1<br>`cmp cmp-footer-option1 surface-grey` | `footer-option1` — **NO RECIPE**, rule (vi); byte-identical | 21× `fo1-link` · media: 8 svg | **OK-RULED** (g02) |
@@ -2799,7 +2799,7 @@ debt is the `.ptf-dir` band and the loose modal wrapper.
 | # | section (root / marker) | → target block / composition | content to port | flag |
 |---|---|---|---|---|
 | 1 | —<br>`cmp cmp-site-header ish-v4` | `site-header-v4` — **NO RECIPE**, rule (vi); byte-identical | H: "Emirates NBD Bank Websites" · 14× `ish-col` · media: 14 img | **OK-RULED** (g01) |
-| 2 | 1. HERO, Scroll Text Fade<br>`cmp cmp-hero-text-fade surface-navy` | **PROPOSAL** — keep `hero-text-fade` and do an atom pass only. `blocks/hero-text-fade.html` **exists**, ds.css has 15 `.cmp-hero-text-fade` / 12 `.sth-*` declarations, `library.js` lists it as **"Hero — Text Fade", `v4: true`, impact `showpiece`**, and the gate does **not** WARN on it — it is a current block, not retired markup. Precedent: **g44**, where the other pinned-scroll hero (`hero-cinematic-pinned`) was kept rather than folded into `hero`. **No ledger line — Hakan judges** (the only open question is whether J1's "use `cmp cmp-hero surface-navy`" was meant to swallow scroll-driven heroes too). | H: "Corporate lending, built around your needs." · 3× `sth-bg` / `sth-cap` / `sth-title` / `sth-sub` · `data-behavior="scroll-story" data-scrub-vh="340"` · media: 3 data-bg | **NEEDS-JUDGING** (P-C) |
+| 2 | 1. HERO, Scroll Text Fade<br>`cmp cmp-hero-text-fade surface-navy` | **PROPOSAL** — keep `hero-text-fade` and do an atom pass only. `blocks/hero-text-fade.html` **exists**, style.css has 15 `.cmp-hero-text-fade` / 12 `.sth-*` declarations, `library.js` lists it as **"Hero — Text Fade", `v4: true`, impact `showpiece`**, and the gate does **not** WARN on it — it is a current block, not retired markup. Precedent: **g44**, where the other pinned-scroll hero (`hero-cinematic-pinned`) was kept rather than folded into `hero`. **No ledger line — Hakan judges** (the only open question is whether J1's "use `cmp cmp-hero surface-navy`" was meant to swallow scroll-driven heroes too). | H: "Corporate lending, built around your needs." · 3× `sth-bg` / `sth-cap` / `sth-title` / `sth-sub` · `data-behavior="scroll-story" data-scrub-vh="340"` · media: 3 data-bg | **NEEDS-JUDGING** (P-C) |
 | 3 | 2. STRENGTH, stats band<br>`cmp cmp-impact-stats surface-grey section-y` | `stats-row` — "keep the existing content and surface color" → rule (iii) keeps this one's **grey** | H: "The region's strongest balance sheet, behind your growth." · 4× `is-stat` / `is-num` / `is-label` | **OK-RULED** (g45) |
 | 4 | 3. OUR CLIENTS, Highlights Tiles (4-up)<br>`cmp cmp-highlights-tiles surface-white section-y` | ~~`cards-icon`~~ **`cards-icon-linked`** (override v) — `is-cols-4` | H: "Capital for institutional and corporate clients of every size" · 4× `ht-tile` / `ht-icon` / `ht-tile-body` · media: 4 svg | **OK-RULED** (g11) |
 | 5 | 4. INDUSTRIES, image cards (12)<br>`cmp cmp-cards-thumb surface-grey section-y` | `cards` → `cmp cmp-cards is-hover-zoom cards-thumb`. **12 cards** — rule (iv): the original's count wins, this is not a 4-up | H: "Purpose-built solutions for strategic growth." · 12× `ct-card` / `ct-title` / `ct-desc` · media: 12 data-bg | **OK-RULED** (g05) |
@@ -2859,7 +2859,7 @@ debt is the `.ptf-dir` band and the loose modal wrapper.
 | 3 | 2. STRENGTHS<br>`cmp cmp-content-block-sidebyside surface-white section-y` | `content-block-sidebyside` — "use our generic content component but build with atoms properly"; the 6 `badge badge-neutral` pills stay atoms | H: "Six trading hubs, one connected desk." · 6× `badge badge-neutral` | **OK-RULED** (g06) |
 | 4 | 3. WHY EMIRATES NBD<br>`cmp cmp-bento-expand surface-grey section-y` | `bento-expand` — **current block**; rule (iii) keeps this one's **grey** | H: "Three reasons to trade with us." · 3× `be-panel` / `be-eyebrow` / `be-title` / `be-detail` · media: 3 data-bg | **OK-RULED** (g29) |
 | 5 | 4. PRODUCT OFFERING<br>`cmp cmp-cards-thumb-box is-cols-2 is-full-desc surface-white section-y` | `cards-boxed` → `cmp cmp-cards is-hover-zoom cards-boxed is-cols-2`; **drop `is-full-desc`** per J10 / g07-sub | H: "Execution that delivers." · 2× `ct-card` · 2× `badge badge-solid` · media: 2 data-bg | **OK-RULED** (g07 + g07-sub) |
-| 6 | 5. TREASURY SOLUTIONS — Zoom Parallax<br>`cmp cmp-zoom-parallax surface-navy`, `data-behavior="zoom-parallax"` | **PROPOSAL** — keep `zoom-parallax` and do an atom pass only. `blocks/zoom-parallax.html` **exists**, ds.css has 9 `.cmp-zoom-parallax` declarations, `library.js` registers it (**"Zoom Parallax", impact `showpiece`**, and in the HEAVY + scroll-slug sets), and the gate does **not** WARN on it. Precedent: **g50** (`coverflow-carousel`, "ok with proposal but keep the existing content") — the other single-instance showpiece scroll component. **No ledger line — Hakan judges.** | H: "Solutions shaped around your risk and objectives." · 7× `px-item` / `px-card` / `px-img` · media: 7 data-bg | **NEEDS-JUDGING** (P-D) |
+| 6 | 5. TREASURY SOLUTIONS — Zoom Parallax<br>`cmp cmp-zoom-parallax surface-navy`, `data-behavior="zoom-parallax"` | **PROPOSAL** — keep `zoom-parallax` and do an atom pass only. `blocks/zoom-parallax.html` **exists**, style.css has 9 `.cmp-zoom-parallax` declarations, `library.js` registers it (**"Zoom Parallax", impact `showpiece`**, and in the HEAVY + scroll-slug sets), and the gate does **not** WARN on it. Precedent: **g50** (`coverflow-carousel`, "ok with proposal but keep the existing content") — the other single-instance showpiece scroll component. **No ledger line — Hakan judges.** | H: "Solutions shaped around your risk and objectives." · 7× `px-item` / `px-card` / `px-img` · media: 7 data-bg | **NEEDS-JUDGING** (P-D) |
 | 7 | 6. DIGITAL CAPABILITIES<br>`cmp cmp-cards-thumb-box is-cta-text is-full-desc surface-white section-y` | `cards-boxed` → `cmp cmp-cards is-hover-zoom cards-boxed is-cols-4`; carry the `is-cta-text` CTAs (rule ii); **drop `is-full-desc`** (J10) | H: "Trade and hedge on your terms." · 4× `ct-card` / `ct-title` / `ct-desc` · media: 4 data-bg, 4 svg | **OK-RULED** (g07 + g07-sub) |
 | 8 | 7. RESEARCH<br>`cmp cmp-cards-thumb-box is-cols-3 is-cta-text is-full-desc surface-grey section-y` | `cards-boxed` → `… is-cols-3`; **drop `is-full-desc`** (J10) | H: "Stay ahead with global insights." · 3× `ct-card` / `ct-label` · media: 3 data-bg, 4 svg | **OK-RULED** (g07 + g07-sub) |
 | 9 | 8. CROSS-SELL<br>`cmp cmp-cards-thumb surface-white section-y` | `cards` → `cmp cmp-cards is-hover-zoom cards-thumb is-cols-4` | H: "Explore the full range of corporate solutions." · 4× `ct-card` · media: 4 data-bg | **OK-RULED** (g05) |
@@ -2888,7 +2888,7 @@ debt is the `.ptf-dir` band and the loose modal wrapper.
 | 4 | 3. ISLAMIC DEPOSIT PRODUCTS<br>`cmp cmp-kicker-cards surface-grey section-y` | ~~`cards-kicker`~~ **`cards-icon-linked`** (override v — "use Cards — Icon Linked"); **5** cards → rule (iv), the original's count wins | H: "Manage your money the Shariah-compliant way." · 5× `kc-card` / `kc-title` / `kc-body` | **OK-RULED** (g10) |
 | 5 | 4. ISLAMIC TRADE FINANCE<br>`cmp cmp-bento-expand surface-white section-y` | `bento-expand` — **current block**; rule (iii) keeps its **white** | H: "Expert Islamic trade support for stronger supply chains." · 3× `be-panel` / `be-eyebrow` / `be-title` / `be-detail` · media: 3 data-bg | **OK-RULED** (g29) |
 | 6 | 5. FINANCING — Scroll Tab (pinned image swaps)<br>`cmp cmp-scroll-tab surface-grey section-y`, `data-behavior="scroll-tab" data-scroll-pinned` | `scroll-showcase` → `cmp cmp-scroll-showcase` + `data-behavior="scroll-showcase"` + `data-scroll-pinned`; the long `ss-points` already ride `list-check` — keep them | H: "Financing structured to fit how you grow." · 7× `ss-step` / `ss-name` / `ss-desc` / `list-check` · media: 14 data-bg | **OK-RULED** (g12) |
-| 7 | 6. INVESTMENT BANKING / SUKUK<br>`cmp cmp-kicker-cards is-glass is-cols-2 surface-image section-y relative overflow-hidden` + `data-bg` | **`cards-icon-linked`** (override v) `is-cols-2`; rule (iii) keeps `surface-image` + the section's own `ov ov-black ov-tint ov-70`. **Normalization note:** `is-glass` has **0 declarations in ds.css** — it renders as nothing today; on an image/dark surface the canonical card is `cd-card card-clear` (its border rides `var(--on-surface-border)`), so the glass look is delivered by the card axis, not by resurrecting `is-glass` | H: "Investment banking backed by market-leading Sukuk insight." · 2× `kc-card` / `kc-kicker` / `kc-title` / `kc-body` · media: 1 data-bg | **OK-RULED** (g10) |
+| 7 | 6. INVESTMENT BANKING / SUKUK<br>`cmp cmp-kicker-cards is-glass is-cols-2 surface-image section-y relative overflow-hidden` + `data-bg` | **`cards-icon-linked`** (override v) `is-cols-2`; rule (iii) keeps `surface-image` + the section's own `ov ov-black ov-tint ov-70`. **Normalization note:** `is-glass` has **0 declarations in style.css** — it renders as nothing today; on an image/dark surface the canonical card is `cd-card card-clear` (its border rides `var(--on-surface-border)`), so the glass look is delivered by the card axis, not by resurrecting `is-glass` | H: "Investment banking backed by market-leading Sukuk insight." · 2× `kc-card` / `kc-kicker` / `kc-title` / `kc-body` · media: 1 data-bg | **OK-RULED** (g10) |
 | 8 | 7. FAQs, accordion<br>`cmp cmp-accordion surface-white section-y` | `acc` → `cmp cmp-acc` as the SECTION root; body keeps the original's inner layout (J2 — "if it is simple text, use simple text") | H: "Islamic deposits, answered." · 5× `acc-inner` / `acc-pad` · media: 5 svg | **OK-RULED** (g08, J2) |
 | 9 | 8. CROSS-SELL<br>`cmp cmp-cards-thumb surface-grey section-y` | `cards` → `cmp cmp-cards is-hover-zoom cards-thumb is-cols-4` | H: "Explore the full range of corporate solutions." · 4× `ct-card` · media: 4 data-bg, 4 svg | **OK-RULED** (g05) |
 | 10 | 9. CTA<br>`cmp ptf-ctaband surface-navy section-y` | `cta-band` — **already canonical** | H: "Let's move forward, together." | **OK-RULED** (g03) |
@@ -2962,7 +2962,7 @@ debt is the `.ptf-dir` band and the loose modal wrapper.
 |---|---|---|---|---|
 | 1 | —<br>`cmp cmp-site-header ish-v4` | `site-header-v4` — **NO RECIPE**, rule (vi); byte-identical | H: "Emirates NBD Bank Websites" · 14× `ish-col` · media: 14 img | **OK-RULED** (g01) |
 | 2 | 1. HERO<br>`cmp cmp-hero-video-left relative overflow-hidden min-h-screen flex items-end pt-28 pb-24 surface-navy` | `hero` → `cmp cmp-hero surface-navy` + `video.media-cover` + Place `is-bottom`; keep the section's own `ov ov-black ov-tint ov-65` (rule i / J1) | H: "Intelligent support, wherever you are." · media: 1 video | **OK-RULED** (g04, J1) |
-| 3 | 2. QUICK LINKS<br>`cmp cmp-pillar-grid is-cols-4 surface-white section-y` | `cards-icon-linked` → `cmp cmp-cards cards-icon-linked is-cols-4` — "keep four columns" is literal here, the original renders 4-up. `pg-go` dies with its ds.css zone, RTL restatement with it (§5.3) | H: "Four ways to get help, fast." · 4× `pg-card` / `pg-icon` / `pg-name` / `pg-desc` / `pg-go` · media: 4 svg | **OK-RULED** (g18) |
+| 3 | 2. QUICK LINKS<br>`cmp cmp-pillar-grid is-cols-4 surface-white section-y` | `cards-icon-linked` → `cmp cmp-cards cards-icon-linked is-cols-4` — "keep four columns" is literal here, the original renders 4-up. `pg-go` dies with its style.css zone, RTL restatement with it (§5.3) | H: "Four ways to get help, fast." · 4× `pg-card` / `pg-icon` / `pg-name` / `pg-desc` / `pg-go` · media: 4 svg | **OK-RULED** (g18) |
 | 4 | 3. DIGITAL HELP & TUTORIALS<br>`cmp cmp-cards-thumb-box surface-grey section-y` | `cards-boxed` → `cmp cmp-cards is-hover-zoom cards-boxed is-cols-4` (`card-panel` + `--card-pad:0`) | H: "Learn the platform at your own pace." · 4× `ct-card` / `ct-title` / `ct-desc` · media: 4 data-bg | **OK-RULED** (g07) |
 | 5 | 4. FORM CENTRE<br>`cmp surface-white section-y` *(anonymous root)* + `dl-row` rows | **"use our generic content component but build with atoms properly"** — plain `cmp surface-*` band, canonical `section-head`, and the `dl-row` molecule (minted 2026-08-29, registered LIGHT ISLAND) for the rows. Atoms only. **RTL spot-check** (§5.3) | H: "Form centre." · 3× `dl-row` / `dl-ico` / `dl-name` / `dl-meta` · media: 3 svg | **OK-RULED** (g40) |
 | 6 | 5. SUPPORT + FRAUD<br>`cmp cmp-highlights-tiles surface-grey section-y` | ~~`cards-icon`~~ **`cards-icon-linked`** (override v); **2** tiles → rule (iv), the original's count wins; the tiles carry `ht-cta` links — keep them (rule ii) | H: "Help and protection, when it matters." · 2× `ht-tile` / `ht-icon` / `ht-tile-body` / `ht-cta` · media: 2 svg | **OK-RULED** (g11) |
@@ -3001,13 +3001,13 @@ anonymous-root grid.
 
 | id | pattern (source) | sections | proposal (model-proposed — Hakan judges) | prior-ruling precedent |
 |---|---|---|---|---|
-| **P-A** | `cmp-video-tabs` (P1 §9) | 1 | Rename in place to **`cmp-video-chapters`** and paste `blocks/video-chapters.html`; the `vt-*` inner vocabulary is already identical and ds.css has the zone. `MIGRATION.md:535` records the 2026-09-01 rename. | the mechanical-rename precedents (g37 `cmp-tabs` → `tabs-vertical`, g69 `pg-*` → `pgn-*`) |
+| **P-A** | `cmp-video-tabs` (P1 §9) | 1 | Rename in place to **`cmp-video-chapters`** and paste `blocks/video-chapters.html`; the `vt-*` inner vocabulary is already identical and style.css has the zone. `MIGRATION.md:535` records the 2026-09-01 rename. | the mechanical-rename precedents (g37 `cmp-tabs` → `tabs-vertical`, g69 `pg-*` → `pgn-*`) |
 | **P-B** | anonymous root + `hp-ind-grid` / `hp-ind-card` image tiles (P1 §10) | 1 | **`cmp cmp-cards is-hover-zoom cards-thumb is-cols-3`**, title-only (the original has no desc and no CTA — rule ii forbids inventing one); re-roots the anonymous section. | g05 (cards-thumb → cards) for the target; g33 / g43 / g59 for anonymous-root re-rooting; g60 ("use cards with media") for a label-only media card |
-| **P-C** | `cmp-hero-text-fade` (P3 §2) | 1 | **KEEP `hero-text-fade`**, atom pass only. Current v4 block (`blocks/hero-text-fade.html`, 15 + 12 ds.css declarations, `library.js` "Hero — Text Fade", `v4: true`, showpiece) and the gate does **not** flag it. The real question: does J1's *"use `cmp cmp-hero surface-navy`"* swallow scroll-driven heroes? | **g44** — `hero-cinematic-pinned`, the other pinned-scroll hero, was kept rather than folded into `hero` |
-| **P-D** | `cmp-zoom-parallax` (P5 §6) | 1 | **KEEP `zoom-parallax`**, atom pass only. Current block (`blocks/zoom-parallax.html`, 9 ds.css declarations, registered in `library.js` as a HEAVY showpiece + a scroll slug); no gate WARN. | **g50** — `coverflow-carousel`, the comparable single-instance showpiece scroll component, "ok with proposal but keep the existing content" |
+| **P-C** | `cmp-hero-text-fade` (P3 §2) | 1 | **KEEP `hero-text-fade`**, atom pass only. Current v4 block (`blocks/hero-text-fade.html`, 15 + 12 style.css declarations, `library.js` "Hero — Text Fade", `v4: true`, showpiece) and the gate does **not** flag it. The real question: does J1's *"use `cmp cmp-hero surface-navy`"* swallow scroll-driven heroes? | **g44** — `hero-cinematic-pinned`, the other pinned-scroll hero, was kept rather than folded into `hero` |
+| **P-D** | `cmp-zoom-parallax` (P5 §6) | 1 | **KEEP `zoom-parallax`**, atom pass only. Current block (`blocks/zoom-parallax.html`, 9 style.css declarations, registered in `library.js` as a HEAVY showpiece + a scroll slug); no gate WARN. | **g50** — `coverflow-carousel`, the comparable single-instance showpiece scroll component, "ok with proposal but keep the existing content" |
 
 **Not judgments — normalization notes already covered by a ruling** (listed so nobody re-opens them):
-`is-glass` on P6 §7 has **0 ds.css declarations** → the glass card is delivered by `card-clear` on
+`is-glass` on P6 §7 has **0 style.css declarations** → the glass card is delivered by `card-clear` on
 the image surface, inside g10. `hp-map-story` on P1 §5 is **named in the importer glossary as the
 canonical story form of the unified map contract**, so it is g19 contract, not drift.
 `cmp-editorial-story` used mid-page (P1 §4, P4 §6) matches how g61 was already judged — the

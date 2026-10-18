@@ -6,7 +6,7 @@
 > from Ram's V7 pages, which repeatedly fold a data strip under the map
 > (payments-trade-finance, agency, global-loan-solutions). Awaiting front-end
 > review. Root class `.cmp-world-map`; the strip is styled by `.cmp-world-map
-> .wm-scale` in `ds.css` — the block is pure markup.
+> .wm-scale` in `style.css` — the block is pure markup.
 
 ## Look
 The animated-routes world map, with a multi-column data strip folded in directly

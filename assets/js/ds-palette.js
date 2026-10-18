@@ -82,7 +82,7 @@
        instead of rendering plausibly. This is a gate change only; no paint
        moves. It is the correct next step and needs no new information.
 
-       STAGE 3 — the alias DEFINITIONS come out of ds.css, at which point an
+       STAGE 3 — the alias DEFINITIONS come out of style.css, at which point an
        old spelling paints nothing. That is the irreversible one: the CMS and
        any third-party snippet outside this repo are not covered by our gate,
        so stage 3 is a deliberate, announced cadence with Hakan's go — not a
@@ -199,7 +199,7 @@
      moment to take the case back to Hakan.
 
      THE CLASS SET — derived from CONVENTIONS, not guessed:
-       eyebrow    · .ds-eyebrow — the standardized eyebrow atom (ds.css:862).
+       eyebrow    · .ds-eyebrow — the standardized eyebrow atom (style.css:959).
        text-link  · .btn-text  — CONVENTIONS § THE BUTTON MODEL names it "the
                     quiet text button + optional arrow", and § atoms calls
                     hand-rolling "a new text+arrow link" drift, so it is THE
@@ -209,7 +209,7 @@
                     tile) and genuinely sits on media: 22 instances, all of
                     them on surface-image.
      DELIBERATELY EXCLUDED: .art-c-link is not a text link — it is the whole
-     clickable CARD (ds.css:4857 paints it background/border/radius/shadow).
+     clickable CARD (style.css:4954 paints it background/border/radius/shadow).
      .bc-link (breadcrumb), .sn-link (subnav tab), .fo1-link (footer nav) and
      .ds-skip-link are navigation chrome, not the in-content "go deeper"
      affordance, and none of them occurs on a media ground.                 */
