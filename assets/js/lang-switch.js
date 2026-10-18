@@ -28,7 +28,7 @@
              [/^Show testimonial (\d+)$/, 'عرض الشهادة $1'], [/^Explore (.+)$/, 'استكشف $1']];
   function fix(el) {
     var v = el.getAttribute('aria-label');
-    if (!v || /[؀-ۿ]/.test(v)) return;
+    if (!v || /[\u0600-\u06FF]/.test(v)) return;
     var n = exact[v];
     if (!n) for (var i = 0; i < pre.length && !n; i++) if (pre[i][0].test(v)) n = v.replace(pre[i][0], pre[i][1]);
     if (n) el.setAttribute('aria-label', n);

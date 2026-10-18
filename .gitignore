@@ -1,2 +1,6 @@
 # Claude Code local settings
 .claude/
+
+# Dependencies and generated handoff builds (npm run minify)
+node_modules/
+dist/
