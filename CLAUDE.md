@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Emirates NBD Design System v4 (Wholesale Banking): a **pure-markup** design system plus ~80 static pages built from it. No build step, no bundler, no npm dependencies. Pages are plain HTML that load one shared runtime; components are HTML blocks pasted into pages with only their content changed.
+Emirates NBD Design System v4 (Wholesale Banking): a **pure-markup** design system plus ~80 static pages built from it. No build step and no bundler; the site itself has no npm dependencies (esbuild is a dev-only dependency for the CMS handoff build). Pages are plain HTML that load one shared runtime; components are HTML blocks pasted into pages with only their content changed.
 
 `CONVENTIONS.md` (authoring law) and `TESTING.md` (what the gate enforces and what needs a human eye) are authoritative. Read the relevant section before changing CSS, blocks, or page markup.
 
@@ -15,12 +15,14 @@ npm start                                         # node server.js → http://lo
 node scripts/verify.mjs                           # the verify gate (npm run verify); exits non-zero on any FAIL
 node scripts/build-all-components.mjs --write     # regenerate all-components.html from blocks/
 node scripts/build-all-components.mjs --check     # exit 1 if all-components.html is stale
+npm run minify                                    # CMS handoff: minified runtime → dist/ (gitignored, rebuilt each run)
 ```
 
 - Pages must be served over HTTP. `file://` breaks images, video and components.
 - `server.js` is a zero-dependency static server. Setting `SITE_PASSWORD` turns on HTTP Basic Auth. `assets/js/gate.js` + `gate-config.js` add a separate client-side prompt() gate for static deploys.
-- `all-components.html` is **not in this checkout**, so `verify.mjs` currently crashes with ENOENT. Run `build-all-components.mjs --write` first.
+- `.claude/workflows/` is **not in this checkout** (it's gitignored), so `verify.mjs` currently crashes with ENOENT before reporting.
 - There are no unit tests. Rendered-layout checks live under `scripts/browser-checks/`, which is also absent here. You run them in the browser console against a served page; see TESTING.md.
+- **CMS handoff** (`scripts/minify.mjs`): the source files stay the only thing anyone edits; `dist/` mirrors `assets/` with `.min.css`/`.min.js` names plus the vendor libs `ds.js` lazy-loads from its own folder (`lenis.min.js`, `lottie_light.min.js`). `ds.js` locates itself by matching `ds.js` *or* `ds.min.js` (and reads `?v=` from `ds.css` *or* `ds.min.css`). Keep both names in any new self-lookup. Add any new runtime file to the `MINIFY`/`COPY` lists.
 - Entry pages: `start-here.html` (index of all pages), `index.html` (component gallery), `cib-home-final.html` (Wholesale Banking home).
 
 ## Architecture
@@ -38,7 +40,7 @@ node scripts/build-all-components.mjs --check     # exit 1 if all-components.htm
 - `assets/js/library.js`: the gallery catalog (`slug:` entries). It also sets the order of `all-components.html`.
 - `docs/catalog/<slug>.md`: per-block dossiers covering look, motion, anatomy, **content contract** (slot counts, copy lengths, image ratios) and drift cautions. Read the dossier before filling a block.
 
-**Pages:** root-level `*.html`. Each is composed by pasting blocks and changing content only, with no page-local CSS/JS. Some older pages still load legacy per-page stylesheets (`ds-cib-v6-base.css`, `cib-home-*.css`, etc.) as tracked debt. `staging/<page>/` holds per-page media. `*-ram.html` / `*-codex.html` are parked reference pages (out of scope).
+**Pages:** root-level `*.html`. Each is composed by pasting blocks and changing content only, with no page-local CSS/JS. The Wholesale Banking home's page styles now live in a scoped section at the end of `ds.css` (`:where(.hf-main)`, `--hf-*` tokens), with known debt listed in its banner; its `cib-home-flow.js` is still page-local. `staging/<page>/` holds per-page media. `*-ram.html` / `*-codex.html` are parked reference pages (out of scope).
 
 ## The colour law (gate-enforced, verify.mjs flow 8)
 
