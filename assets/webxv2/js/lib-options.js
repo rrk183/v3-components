@@ -7,6 +7,10 @@
    motion: 'off'  → .is-static on the root (author switch: no float)
    app:    'off'  → delete .adp-get (badges + QR) and the phone-only
            .adp-app-btn (author: panel without app promotion)
+   stores: which store badges show: 'ios' | 'android' | 'huawei' or a
+           pair joined by '-' ('' = all three). Deletes the other
+           .adp-store[data-store] badges and their data-<store> link on the
+           phone-only button (author: delete the badges you do not offer)
    btns:   '1' | '2s' | '3' → rebuild .adp-btns in button-role order:
            primary btn-filled, secondary btn-accent, tertiary btn-outline.
            ('' = as built: primary + tertiary)
@@ -45,6 +49,16 @@
     if (v !== 'off') return;
     [].forEach.call(root.querySelectorAll('.adp-get, .adp-app-btn'), function (el) { el.remove(); });
   }
+  function stores(root, v) {
+    if (!v) return;
+    var keep = v.split('-');
+    [].forEach.call(root.querySelectorAll('.adp-store[data-store]'), function (a) {
+      if (keep.indexOf(a.getAttribute('data-store')) < 0) a.remove();
+    });
+    [].forEach.call(root.querySelectorAll('[data-app-link]'), function (b) {
+      ['ios', 'android', 'huawei'].forEach(function (k) { if (keep.indexOf(k) < 0) b.removeAttribute('data-' + k); });
+    });
+  }
   function meyebrow(root, v) {
     if (v !== 'on') return;
     var t = root.querySelector('.cm__title');
@@ -81,10 +95,11 @@
   window.LibOptions = {
     MOTION: [['', 'Motion · On'], ['off', 'Motion · Off']],
     APP: [['', 'App row · On'], ['off', 'App row · Off']],
+    STORES: [['', 'Stores · All three'], ['ios-android', 'Stores · App Store + Google Play'], ['ios-huawei', 'Stores · App Store + AppGallery'], ['android-huawei', 'Stores · Google Play + AppGallery'], ['ios', 'Stores · App Store'], ['android', 'Stores · Google Play'], ['huawei', 'Stores · AppGallery']],
     MEYEBROW: [['', 'Eyebrow · Off'], ['on', 'Eyebrow · On']],
     HTLINK: [['', 'See-all link · Off'], ['on', 'See-all link · On']],
     MSTATS: [['', 'Stats · Counter'], ['row', 'Stats · Row of 3'], ['off', 'Stats · Off']],
     BTNS: [['', 'Buttons · As built'], ['1', '1 · Primary'], ['2s', '2 · Primary + Secondary'], ['3', '3 · Primary + Secondary + Tertiary']],
-    apply: function (root, o) { if (!root || !o) return; if (o.btns) btns(root, o.btns); if (o.motion) motion(root, o.motion); if (o.app) app(root, o.app); if (o.meyebrow) meyebrow(root, o.meyebrow); if (o.mstats) mstats(root, o.mstats); if (o.htlink) htlink(root, o.htlink); }
+    apply: function (root, o) { if (!root || !o) return; if (o.btns) btns(root, o.btns); if (o.motion) motion(root, o.motion); if (o.app) app(root, o.app); if (o.stores) stores(root, o.stores); if (o.meyebrow) meyebrow(root, o.meyebrow); if (o.mstats) mstats(root, o.mstats); if (o.htlink) htlink(root, o.htlink); }
   };
 })();

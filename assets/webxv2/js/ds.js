@@ -3310,20 +3310,20 @@ DS.recipe('ib-hero', function (root) {
      visible, never under reduced motion or on a static instance (.is-static).
      QR and store link work regardless. */
   DS.recipe('app-download', function (root) {
-    [].forEach.call(root.querySelectorAll('[data-qr]'), function (tile) {
-      var img = tile.querySelector('[data-qr-img]'), btns = [].slice.call(tile.querySelectorAll('[data-qr-os]'));
-      btns.forEach(function (b) {
-        b.addEventListener('click', function () {
-          btns.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
-          if (img && b.getAttribute('data-qr-src')) { img.src = b.getAttribute('data-qr-src'); img.alt = b.getAttribute('data-qr-alt') || img.alt; }
-        });
-      });
-    });
-    var android = /android/i.test(navigator.userAgent);
+    /* phones: the one store button opens the visitor's own store. The single
+       QR needs no script: it encodes the get-app.html smart link. */
+    var ua = navigator.userAgent || '';
+    var os = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? 'ios'
+           : /HuaweiBrowser|HMSCore|HarmonyOS|\bHUAWEI\b/i.test(ua) ? 'huawei'
+           : /Android/i.test(ua) ? 'android' : 'ios';
+    var STORE = { ios: 'the App Store', android: 'Google Play', huawei: 'AppGallery' };
+    /* a store the instance does not offer (its data-<store> removed) falls
+       back to the next one on, so the button never goes dead */
     [].forEach.call(root.querySelectorAll('[data-app-link]'), function (a) {
-      var href = a.getAttribute(android ? 'data-android' : 'data-ios');
-      if (href) a.setAttribute('href', href);
-      a.setAttribute('aria-label', 'Download the app on ' + (android ? 'Google Play' : 'the App Store'));
+      var pick = [os, 'android', 'ios', 'huawei'].filter(function (k) { return a.hasAttribute('data-' + k); })[0];
+      if (!pick) return;
+      a.setAttribute('href', a.getAttribute('data-' + pick));
+      a.setAttribute('aria-label', 'Download the app on ' + STORE[pick]);
     });
     if (root.classList.contains('is-static') || window.matchMedia('(prefers-reduced-motion:reduce)').matches || !('IntersectionObserver' in window)) return;
     var inView = false, settled = false;
