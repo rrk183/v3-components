@@ -11,8 +11,8 @@ READ: the one moment that belongs only to equity capital markets is listing day:
 
 ## Current media notes
 
-- Hero video (`assets/videos/heroes/equity-capital-markets-v2-2026-07-04-hero.mp4`, 1280x720, 11.5 s, 7.4 MB): stock daylight walk-and-talk of three people in light grey and black suits on a glass skybridge, tablets and folders in hand. Wrong on every family axis: flat daylight grey, people as the subject, a generic Western office-park look with no Gulf cue, and casting and wardrobe that read as stock rather than the regional market. It is also only 720p, soft at hero width, and heavy for what it shows.
-- Poster (`assets/images/shared/common/ib-bg-b.jpg`, 2000x1100): a night skyline of downtown Dubai with the Burj Khalifa dead centre. Recognisable landmark, a magenta-violet cast off the brand palette, red and green street lights, and a rooftop developer sign that is close to legible. It also shows a completely different picture from the video, so the poster flash on load jumps from skyline to three people walking.
+- Hero video (`assets/webxv2/videos/heroes/equity-capital-markets-v2-2026-07-04-hero.mp4`, 1280x720, 11.5 s, 7.4 MB): stock daylight walk-and-talk of three people in light grey and black suits on a glass skybridge, tablets and folders in hand. Wrong on every family axis: flat daylight grey, people as the subject, a generic Western office-park look with no Gulf cue, and casting and wardrobe that read as stock rather than the regional market. It is also only 720p, soft at hero width, and heavy for what it shows.
+- Poster (`assets/webxv2/images/shared/common/ib-bg-b.jpg`, 2000x1100): a night skyline of downtown Dubai with the Burj Khalifa dead centre. Recognisable landmark, a magenta-violet cast off the brand palette, red and green street lights, and a rooftop developer sign that is close to legible. It also shows a completely different picture from the video, so the poster flash on load jumps from skyline to three people walking.
 - The same poster is the page's `og:image` and is also used on `lending-v1a.html`. Replace it on this page only (new file in this folder), do not overwrite the shared file.
 
 ## Treatment
@@ -76,7 +76,7 @@ The hero video is `aria-hidden`, so alt text applies to the OG image (replacing 
 3. Brightest point between 42 and 60 percent of the width and 20 to 45 percent of the height; lower half dark and even before the 70 percent tint. Preview at 1440 and 375, EN and AR.
 4. No people crept in, including reflections in the glass and stone.
 5. If the slot stays video: animate only the approved still (slow 3 percent push-in, the spotlight steady, a faint drift of dawn light on the floor, city lights shimmer), never a fresh text-to-video, encode 1920x1080 under 6 MB, and set the new plate as the poster so load and play show the same picture.
-6. Write a new poster and OG file in this folder; do not overwrite `assets/images/shared/common/ib-bg-b.jpg`, which `lending-v1a.html` also uses.
+6. Write a new poster and OG file in this folder; do not overwrite `assets/webxv2/images/shared/common/ib-bg-b.jpg`, which `lending-v1a.html` also uses.
 
 ---
 

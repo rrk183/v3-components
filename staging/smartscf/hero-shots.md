@@ -11,8 +11,8 @@ READ: the headline is "Pay suppliers early. Free up working capital." The pictur
 
 ## Current asset notes
 
-- Hero video (`/assets/videos/heroes/smartscf-hero.mp4`, 1920x1080, 15 s): stock overhead shot of two workers in hard hats in an orange-and-blue racked warehouse, overlaid with floating white globe and chart icons joined by network lines. This is exactly the hologram cliché the family look excludes, it reads as generic stock, the racking colours fight the navy brand palette, and carton labels and price tags are semi-legible. It also weighs 63 MB, far too heavy for a hero loop; a re-encode to under 6 MB is needed whatever plate wins.
-- OG image (`assets/images/shared/common/smartscf-hero.jpg`): a 3:4 portrait shot of a big-box retail warehouse aisle with legible shelf labels and an exit sign. Wrong ratio for social cards (should be 1200x630) and a different picture from the hero. Replace it with a 1200x630 crop of the winning plate.
+- Hero video (`/assets/webxv2/videos/heroes/smartscf-hero.mp4`, 1920x1080, 15 s): stock overhead shot of two workers in hard hats in an orange-and-blue racked warehouse, overlaid with floating white globe and chart icons joined by network lines. This is exactly the hologram cliché the family look excludes, it reads as generic stock, the racking colours fight the navy brand palette, and carton labels and price tags are semi-legible. It also weighs 63 MB, far too heavy for a hero loop; a re-encode to under 6 MB is needed whatever plate wins.
+- OG image (`assets/webxv2/images/shared/common/smartscf-hero.jpg`): a 3:4 portrait shot of a big-box retail warehouse aisle with legible shelf labels and an exit sign. Wrong ratio for social cards (should be 1200x630) and a different picture from the hero. Replace it with a 1200x630 crop of the winning plate.
 - No landmark or wrong-region problem in either, but neither reads as the Gulf.
 
 ## Treatment

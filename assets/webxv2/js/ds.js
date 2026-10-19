@@ -56,7 +56,7 @@
   function isRTL(el) { try { return getComputedStyle(el).direction === 'rtl'; } catch (e) { return false; } }
 
   /* ── Per-instance background image — keeps markup style-free ───────────────
-     <span class="bp-img" data-bg="/assets/images/x.jpg"></span>
+     <span class="bp-img" data-bg="/assets/webxv2/images/x.jpg"></span>
      The runtime sets background-image, so component HTML carries no inline CSS. */
   register(function backgrounds(scope) {
     var apply = function (el) {
@@ -1662,11 +1662,11 @@
   /* recipe: lottie — vector illustration from a JSON asset (capability 1 of the
      illustration doctrine; the other is the chromeless baked-background MP4).
        <div class="lot-stage" data-behavior="lottie"
-            data-lottie-src="assets/lottie/name.json"
+            data-lottie-src="assets/webxv2/lottie/name.json"
             data-lottie-loop="true" data-lottie-speed="1">
-         <img class="lot-poster" src="assets/lottie/name.png" alt="">
+         <img class="lot-poster" src="assets/webxv2/lottie/name.png" alt="">
        </div>
-     The player is VENDORED (assets/js/lottie_light.min.js, pinned) and
+     The player is VENDORED (assets/webxv2/js/lottie_light.min.js, pinned) and
      LAZY-LOADED on first sighting — same pattern as Lenis: loadScript() +
      dsBaseDir(), one <script> for the whole page however many stages exist.
      The poster <img> is the still: it is the sizer, it is what shows before
@@ -1714,7 +1714,7 @@
   /* recipe: scroll-frames — image-sequence (sprite) or video scrubbing on scroll.
        <div data-behavior="scroll-frames" data-scrub-vh="300"
             data-source="images" data-count="121"
-            data-path="assets/images/hero-frames/ezgif-frame-###.jpg" data-start="1">
+            data-path="assets/webxv2/images/hero-frames/ezgif-frame-###.jpg" data-start="1">
          <div data-sf-stage><canvas data-sf-canvas></canvas></div>   (sticky stage)
        </div>
      For video: data-source="video" + a <video data-sf-video> inside the stage.
@@ -1808,12 +1808,12 @@
      horizontal scrollers are drag-scrollable instead. #anchors scroll via Lenis. */
   function dsBaseDir() {
     var s = document.currentScript || document.querySelector('script[src*="ds.js"], script[src*="ds.min.js"]');
-    return (s && s.src) ? s.src.replace(/[^/]*$/, '') : 'assets/js/';
+    return (s && s.src) ? s.src.replace(/[^/]*$/, '') : 'assets/webxv2/js/';
   }
   // ds.js's folder, captured NOW (document.currentScript is null once it has run).
   // Every asset the runtime builds a URL for resolves from here — never from the
-  // site root — so the bundle works wherever it is hosted (assets/js/ here,
-  // assets/webxv2/js/ in the CMS): DS.asset('images/x.svg') → <js folder>/../images/x.svg
+  // site root — so the bundle works wherever it is hosted (assets/webxv2/js/ here
+  // and in the CMS): DS.asset('images/x.svg') → <js folder>/../images/x.svg
   var DS_JS_DIR = new URL(dsBaseDir(), location.href).href;
   function asset(path) { return new URL('../' + path, DS_JS_DIR).href; }
   function loadScript(src, cb) {
@@ -1851,11 +1851,11 @@
     if (!seg || !/institutional|wholesale/i.test(seg.textContent || '')) return;
     // Logo always returns to the Wholesale Banking home (Ram, 2026-10-01). A host
     // that knows its home URL declares it: <html data-home-url="/wholesale/">
-    // (the CMS must — its asset folder sits at a different depth). Otherwise it's
-    // resolved from ds.js's own folder (assets/js/ → site root), which works from
-    // sub-folders (ibv2/) and file:// alike.
+    // (the CMS should — its home page URL is its own). Otherwise it's resolved
+    // from ds.js's own folder (assets/webxv2/js/ → three levels up = site root),
+    // which works from sub-folders (ibv2/) and file:// alike.
     var home = document.documentElement.getAttribute('data-home-url') ||
-               new URL('../../cib-home-final.html', DS_JS_DIR).href;
+               new URL('../../../cib-home-final.html', DS_JS_DIR).href;
     root.querySelectorAll('a.ish-logo').forEach(function (a) { a.setAttribute('href', home); });
   }
   function boot() { run(document); linkSegmentLogo(document); initSmoothScroll(); }
@@ -3212,7 +3212,7 @@ DS.recipe('ib-hero', function (root) {
 
   /* recipe: tabs-desk — the Tabs - Desk reel block (cmp-tabs-desk). Moved here
      on 2026-10-10 from the block's inline <script> (port of the newer shared
-     assets/js/tabs-desk.js) so instances receive master changes. Chips pick a
+     assets/webxv2/js/tabs-desk.js) so instances receive master changes. Chips pick a
      desk at every size (aria-pressed); with motion on, the pinned track's
      scroll rolls the reel, photo and desk card. Sets --td-n (desk count, pin
      length) and --td-hdr (the sticky site header's height, so the pin starts

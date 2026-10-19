@@ -52,7 +52,7 @@ section.cmp-scroll-story-video.surface-dark[data-animate]
 - Each beat: eyebrow + headline; the closing beat adds one
   `.btn.btn-primary.btn-lg.ssv-cta` button.
 - **1 video slot** — `<video data-story-video src>` (default
-  `/assets/videos/hero-video.mp4`); supply a landscape clip that reads well
+  `/assets/webxv2/videos/hero-video.mp4`); supply a landscape clip that reads well
   full-bleed. No countup.
 
 ## Drift cautions

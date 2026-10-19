@@ -40,7 +40,7 @@ section.cmp.cmp-coverflow-carousel.surface-grey.section-y[data-animate]
   panel has an eyebrow, an `h3.fr-title`, and a short `.fr-desc` paragraph.
 - The pager count (`data-fr-count`, "1 / 4") is set by the recipe — match its
   total to the card count.
-- Card images are CSS backgrounds via `data-bg` (e.g. `/assets/images/image-1.jpg`)
+- Card images are CSS backgrounds via `data-bg` (e.g. `/assets/webxv2/images/image-1.jpg`)
   — no fixed aspect ratio in markup; the stage sizes the cards.
 - No live numbers (no countup).
 

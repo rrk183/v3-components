@@ -2,7 +2,7 @@
    Lightweight client-side password gate ("simple browser stuff" — the native
    prompt(), no login screen). For light protection of a STATIC deployment so
    it can be shared for testing. The password is read from window.SITE_PASSWORD
-   (set in assets/js/gate-config.js, injected at build time from the SITE_PASSWORD
+   (set in assets/webxv2/js/gate-config.js, injected at build time from the SITE_PASSWORD
    env var). Empty password = open (local dev).
 
    NOTE: this is a static site, so the password lives client-side — it deters

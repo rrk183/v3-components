@@ -40,7 +40,7 @@ section.cmp.cmp-bento-expand.surface-white.section-y[data-animate]
   (e.g. "01 — Trade Finance"), a `.be-title` ≤5 words, a 1-sentence `.be-desc`,
   and a `.be-link` (ends with →).
 - Images are set via `data-bg` on `.be-img` (panels are landscape/portrait
-  crops — point at existing `/assets/images/*.jpg`). No live numbers.
+  crops — point at existing `/assets/webxv2/images/*.jpg`). No live numbers.
 
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._

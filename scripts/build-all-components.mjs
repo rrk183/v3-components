@@ -14,7 +14,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(path.join(ROOT, p), "utf8");
 
 export function blockOrder() {
-  const cat = read("assets/js/library.js");
+  const cat = read("assets/webxv2/js/library.js");
   const slugs = [];
   for (const m of cat.matchAll(/slug:\s*'([a-z0-9-]+)'/g))
     if (!slugs.includes(m[1])) slugs.push(m[1]);
@@ -60,17 +60,17 @@ export function buildPage() {
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <script src="assets/js/gate-config.js"></script>
-  <script src="assets/js/gate.js"></script>
+  <script src="assets/webxv2/js/gate-config.js"></script>
+  <script src="assets/webxv2/js/gate.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>All Components — browser pass | Emirates NBD DS</title>
   <meta name="description" content="Internal review page: every design-system block stacked as one seamless page for cross-browser and breakpoint passes." />
   <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="assets/css/style.css?v=${v}" />
-  <link rel="stylesheet" href="assets/css/themes.css?v=${v}" />
-  <script src="assets/js/tailwind.cdn.js"></script>
-  <script src="assets/js/ds-tailwind-config.js?v=${v}"></script>
-  <script defer src="assets/js/ds.js?v=${v}"></script>
+  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=${v}" />
+  <link rel="stylesheet" href="assets/webxv2/css/themes.css?v=${v}" />
+  <script src="assets/webxv2/js/tailwind.cdn.js"></script>
+  <script src="assets/webxv2/js/ds-tailwind-config.js?v=${v}"></script>
+  <script defer src="assets/webxv2/js/ds.js?v=${v}"></script>
   <style>body{margin:0}</style>
 </head>
 <body>

@@ -14,7 +14,7 @@ section.cmp.cmp-static-banner.surface-*[data-animate]
 └ .container-ds
   └ banner body (flex-col md:flex-row)
     ├ copy: .ds-stack › eyebrow/headline (br-split line) + .sb-cta .btn
-    └ img.sb-phones-img  ← ONE transparent PNG (assets/images/device/sb-phones.png)
+    └ img.sb-phones-img  ← ONE transparent PNG (assets/webxv2/images/device/sb-phones.png)
 ```
 
 ## Content contract

@@ -131,8 +131,8 @@ def chrome(html, rel):
         toks = [LOGICAL.get(t, re.sub(r'^(-?)(p|m)([lr])-', lambda x: x.group(1) + x.group(2) + ('s' if x.group(3) == 'l' else 'e') + '-', t)) for t in m.group(2).split(' ')]
         return m.group(1) + ' '.join(toks) + m.group(3)
     html = re.sub(r'(\sclass=")([^"]*)(")', cls, html)
-    if 'assets/js/lang-switch.js' not in html:
-        html = html.replace('</head>', '<script defer src="assets/js/lang-switch.js"></script>\n</head>', 1)
+    if 'assets/webxv2/js/lang-switch.js' not in html:
+        html = html.replace('</head>', '<script defer src="assets/webxv2/js/lang-switch.js"></script>\n</head>', 1)
     return html
 
 

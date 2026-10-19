@@ -43,10 +43,10 @@
   // surface-image never gets its image from CSS: sections carry data-bg
   // (real pages author it per brand); the gallery supplies the preview
   // asset for the active theme. Keep in sync with frame.html.
-  var SURFACE_IMAGE_ASSET = { '': 'assets/images/bento-bg-placeholder.svg', ei: 'assets/images/bento-bg-ei.svg' };
+  var SURFACE_IMAGE_ASSET = { '': 'assets/webxv2/images/bento-bg-placeholder.svg', ei: 'assets/webxv2/images/bento-bg-ei.svg' };
   function surfaceImageAsset(t) { return SURFACE_IMAGE_ASSET[t] || SURFACE_IMAGE_ASSET['']; }
   // header previews + the gallery's own brand row follow the active theme
-  var BRAND_LOGO_ASSET = { ei: '/assets/images/ei-logo.svg' };
+  var BRAND_LOGO_ASSET = { ei: '/assets/webxv2/images/ei-logo.svg' };
   var BRAND_NAME = { '': 'Emirates NBD', ei: 'Emirates Islamic' };
   function currentTheme() { try { return localStorage.getItem('ds-theme') || ''; } catch (e) { return ''; } }
   function applyTheme(t) {
@@ -506,7 +506,7 @@
       var cmp = stage.querySelector('.cmp');
       // THE SURFACE CONTROL IS A MARKUP SWAP (Hakan, 2026-09-03): flipping the
       // ground shows a DIFFERENT COMPOSITION, recomposed by the pairing
-      // rulebook in assets/js/ds-palette.js — the same rulebook the gate
+      // rulebook in assets/webxv2/js/ds-palette.js — the same rulebook the gate
       // enforces. No CSS adapts anything.
       if (cmp && surface) DSPalette.recompose(cmp, surface);
       if (cmp && /\bsurface-image\b/.test(surface || '')) cmp.setAttribute('data-bg', surfaceImageAsset(currentTheme()));

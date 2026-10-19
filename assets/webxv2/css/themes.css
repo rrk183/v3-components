@@ -64,4 +64,4 @@
 }
 /* Brand IMAGES never live in CSS (not even here): a section that wants a
    background image carries data-bg="…" in markup, and each brand's page
-   references its own asset — e.g. assets/images/bento-bg-ei.svg. */
+   references its own asset — e.g. assets/webxv2/images/bento-bg-ei.svg. */
