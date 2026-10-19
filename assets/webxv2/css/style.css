@@ -8090,6 +8090,44 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 :where(.hf-main) .fv-news .sh-lead { margin-top: 0; }
 /* ═══ /Wholesale Banking home ══════════════════════════════════════════════ */
 
+/* ── Product scrub (ENBD Business hero, 2026-10-20) ─────────────────────────
+   Scroll-scrubbed Rotato sequences with live app screens, drawn by
+   product-scrub.js on one WebGL canvas (.ps-gl, inserted by the script).
+   The script places the opener, the captions and the camera per screen shape;
+   these rules only set type, the cue and the stage. Inks are markup. */
+.cmp-product-scrub{display:block}
+.cmp-product-scrub .ps{position:relative;height:920vh}
+.cmp-product-scrub .ps-stage{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:radial-gradient(60% 70% at 62% 55%,rgba(var(--light-rgb),1) 0,var(--grey-100) 70%)}
+.cmp-product-scrub .ps-world{position:absolute;inset:0;bottom:calc(100lvh - 100svh)}
+.cmp-product-scrub .ps-gl{position:absolute;left:0;top:0;z-index:1;pointer-events:none}
+.cmp-product-scrub .ps-cap{position:absolute;z-index:3;opacity:0;pointer-events:none;will-change:transform,opacity}
+.cmp-product-scrub .ps-cap.is-on{pointer-events:auto}
+.cmp-product-scrub .ps-h{margin:10px 0 0;font-size:clamp(28px,4.4vmin,56px);line-height:1.06;letter-spacing:-.02em;text-wrap:balance}
+.cmp-product-scrub .ps-sub{margin:14px 0 0;font-size:clamp(15px,1.9vmin,19px);line-height:1.55;max-width:34ch}
+.cmp-product-scrub .ps-cap .btn{margin-top:24px}
+/* opener as on the original hero: title top | app icon middle | quote + cue bottom */
+.cmp-product-scrub .ps-opener{position:absolute;left:0;right:0;z-index:3;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:clamp(104px,16vh,168px) 24px clamp(44px,8vh,92px);will-change:transform,opacity}
+.cmp-product-scrub .ps-op-top,.cmp-product-scrub .ps-op-bottom{display:flex;flex-direction:column;align-items:center}
+.cmp-product-scrub .ps-h1{margin:14px 0 0;font-size:clamp(40px,7.4vmin,92px);line-height:1.02;letter-spacing:-.03em}
+.cmp-product-scrub .ps-op-bottom .ps-sub{margin:0 auto;max-width:30ch;font-size:clamp(15px,2vmin,20px);line-height:1.5}
+.cmp-product-scrub .ps-icon{display:block;width:clamp(120px,24vmin,220px);height:auto;border-radius:23%;box-shadow:0 24px 44px -18px rgba(var(--navy-rgb),.55),0 6px 14px -6px rgba(var(--navy-rgb),.3)}
+/* scroll cue: the DS cue (line LEFT of the label, 1.6s pulse) in navy for the light ground */
+.cmp-product-scrub .ps-cue{display:flex;align-items:center;gap:.85rem;margin-top:clamp(20px,3vh,32px)}
+.cmp-product-scrub .ps-cue-line{display:block;width:1px;height:38px;background:rgba(var(--navy-rgb),.45);transform-origin:top;animation:ps-cue 1.6s ease-in-out infinite}
+.cmp-product-scrub .ps-cue-label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+@keyframes ps-cue{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.4);opacity:.6}}
+/* phones: the opener gathers into one centred stack with even gaps */
+@media (max-width: 767px){
+  .cmp-product-scrub .ps-opener{justify-content:center;gap:clamp(28px,5vh,44px);padding:88px 20px 24px}
+  .cmp-product-scrub .ps-icon{width:clamp(112px,30vw,150px)}
+  .cmp-product-scrub .ps-cue{margin-top:18px}
+}
+@media (prefers-reduced-motion: reduce){
+  .cmp-product-scrub .ps{height:auto}
+  .cmp-product-scrub .ps-stage{position:relative;height:100vh;height:100svh}
+  .cmp-product-scrub .ps-cue-line{animation:none}
+}
+
 /* ═══ 3. RTL FIXES ═══════════════════════════════════════════════════════════ */
 /* Page-level RTL fixes for the Arabic editions (<page>-ar.html). Component
    RTL lives in style.css (shared with the library's RTL preview); this file only
