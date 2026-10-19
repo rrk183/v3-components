@@ -1637,9 +1637,9 @@ two pilots cover 10 distinct recipes and every top-frequency pattern except `car
 ## 5 · Mechanical notes for the sweep recipe
 
 **5.1 Asset paths — pages move to `/pages/`, so go absolute.**
-Every asset reference on all 51 pages is **relative** today: `data-bg="assets/images/…"`,
-`src="assets/js/ds.js?v=…"`, `href="assets/css/style.css?v=…"`, `poster="assets/images/…"`,
-and `<video><source src="assets/videos/…">`. Moving a page one directory down silently
+Every asset reference on all 51 pages is **relative** today: `data-bg="assets/webxv2/images/…"`,
+`src="assets/webxv2/js/ds.js?v=…"`, `href="assets/webxv2/css/style.css?v=…"`, `poster="assets/webxv2/images/…"`,
+and `<video><source src="assets/webxv2/videos/…">`. Moving a page one directory down silently
 breaks every one of them — and `data-bg` failures are invisible (a blank panel, no console
 error). **Recommendation: rewrite to absolute `/assets/…` as the first mechanical step of
 each page's sweep**, before any section work, and verify with a single grep per page:
@@ -1799,7 +1799,7 @@ All 17 JUDGE items are answered. Recorded so nobody re-opens them:
 | **J14** carousel-center (1) | **(a)** `is-center-peek` | the mode exists (6 declarations in style.css); §3's JUDGE text is stale. |
 | **J15** quote-band portrait-bleed (1) | **(a)** plain band | "ok for proposal". |
 | **J16** app-cinema interior (1) | **(a)** rebuild from atoms | "change to scroll-scenes, port content". |
-| **J17** laptop-showcase asset (1) | **use the existing PNG** | `assets/images/device/laptop-showcase.png` **exists** (309 kb, the block's own `.ls-device-img`). §3 J17's "the asset does not exist yet" is stale. |
+| **J17** laptop-showcase asset (1) | **use the existing PNG** | `assets/webxv2/images/device/laptop-showcase.png` **exists** (309 kb, the block's own `.ls-device-img`). §3 J17's "the asset does not exist yet" is stale. |
 
 ---
 
@@ -1890,7 +1890,7 @@ importer, the sweep recipes and the judge board all inherit them.
 > closed vocabulary, and a per-block pairing check that resolves every text
 > element's ground from the markup alone. A context rule is a GATE FAILURE,
 > not a technique. Vocabulary + rulebook live in ONE file,
-> `assets/js/ds-palette.js`, read by the gate AND by the gallery's Surface
+> `assets/webxv2/js/ds-palette.js`, read by the gate AND by the gallery's Surface
 > control, which now RECOMPOSES the demo markup instead of asking CSS to
 > adapt. Every earlier instruction in this document that says "the flips
 > handle it", "it is a light island" or "surface-adaptive" is VOID — declare it.
@@ -2055,7 +2055,7 @@ importer, the sweep recipes and the judge board all inherit them.
     admitted by `ALLOWED_INKS.dark`, and the sweep NEVER overwrites an ink an
     author already declared off media — it only declares a missing one.
 
-  **ENCODING** (`assets/js/ds-palette.js` § 4b). A role-override map over the
+  **ENCODING** (`assets/webxv2/js/ds-palette.js` § 4b). A role-override map over the
   one pairing table, reached through the single function `inkForAtom()`, which
   the gate and the gallery both call. NOT a fourth PAIRING row: `media` is a
   kind that RESOLVES through the overlay's colour, so the four generic roles
@@ -2096,7 +2096,7 @@ One executable recipe per board group (**73 groups + the `is-full-desc` sub-item
 order `g01…g73`. Each recipe is: **Emit** (the exact root class string + the block FILE to paste
 verbatim) · **Port** (which slots take the old section's content) · **Note** (normalization,
 override, or asset dependency). Every slug and class below was grep-verified against `blocks/`,
-`assets/css/style.css` and `assets/js/ds.js` on 2026-09-02.
+`assets/webxv2/css/style.css` and `assets/webxv2/js/ds.js` on 2026-09-02.
 
 **The invariant, before any recipe:** *paste the block file, change only content.* A recipe never
 authorizes new markup, new `cmp-*` classes, inline `style=` (except `--var` passing), `<style>`,
@@ -2206,14 +2206,14 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 **g57 · `cmp-hero-fullbleed` → `hero` — 1 section (`api-banking-v2`)**
 *Ruling: "Use cmp cmp-hero surface-navy but ensure we keep the content from the existing page"*
 - **Emit:** `<section class="cmp cmp-hero is-bottom surface-navy">` ← `blocks/hero.html` + the `is-bottom` Place axis.
-- **Port:** the `<video>` → `video.media-cover`; **the poster currently passed as `style="--hfb-poster:url('assets/images/shared/common/api-bg.jpg')"` becomes `data-bg` on the media element** — this is the page's only remaining custom-prop hero hack and it must not be carried across.
+- **Port:** the `<video>` → `video.media-cover`; **the poster currently passed as `style="--hfb-poster:url('assets/webxv2/images/shared/common/api-bg.jpg')"` becomes `data-bg` on the media element** — this is the page's only remaining custom-prop hero hack and it must not be carried across.
 - **Note:** `hfb-media/scrim/inner/eyebrow/title/sub/btn` all die. The section has no `.ov` atoms today, so it takes the J1(a) default wash.
 
 **g61 · `cmp-editorial-story` → `hero-editorial` — 1 section (`sustainable-finance-v2`)**
 *Ruling: "ok with proposal but ensure we keep the content and video from the existing page"*
 - **Emit:** `<section class="cmp cmp-hero is-bottom surface-navy">` ← paste `blocks/hero-editorial.html`.
 - **Port:** eyebrow / display headline / lead + the **4-up stat strip** (`es-stat-num`/`-unit`/`-lbl` → `ds-num` + `ds-num-unit` + `type-body-sm on-surface-mid`, countups carry over); both `.ov` atoms carry over.
-- **Note:** rule (i) corollary — **this section has NO video.** Its media is `data-bg="assets/images/sustainable-finance/sf-editorial-poster.jpg"` on the root. "keep the video" = keep that poster as the `media-cover` `data-bg`.
+- **Note:** rule (i) corollary — **this section has NO video.** Its media is `data-bg="assets/webxv2/images/sustainable-finance/sf-editorial-poster.jpg"` on the root. "keep the video" = keep that poster as the `media-cover` `data-bg`.
 
 **g68 · `cmp-hero-video-center` → `hero` — 1 section (`events-library`)**
 *Ruling: "Use cmp cmp-hero surface-navy but ensure we keep the content from the existing page"*
@@ -2337,7 +2337,7 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 *Ruling: "cmp cmp-cards is-hover-zoom cards-plain surface-grey with scroll pin, keep the same content as per original"*
 - **Emit:** `<section class="cmp cmp-cards is-hover-zoom cards-plain surface-grey" data-animate data-behavior="scroll-track">` ← paste **`blocks/cards-plain-scroll.html`**. His class string is that block's root **verbatim**; its interior is `.cd-scroll-outer[data-scroll-outer] > .cd-scroll-pin > (container-ds + section-head) + .cd-scroll-wrap[data-scroll-wrap] > .cd-track[data-track]`.
 - **Port:** all 5–7 `cst-card`s per instance — image, title, body, link — into `.cd-card`s on the track; the section head becomes canonical `section-head is-split` (lead as an `.sh-lead` sibling of `.ds-stack`); drop the section `id`.
-- **Note:** **the pin is NOT lost.** Verified 2026-09-02: `DS.recipe('scroll-track')` in `assets/js/ds.js`, `.cd-scroll-outer` (300vh) / `.cd-scroll-pin` (sticky, 100vh) / `.cd-scroll-wrap` in `assets/css/style.css`, and 18 `*-scroll` composition blocks. §3 J3 and the importer-glossary `.cst-*` row both still say the recipe "has NOT been generalized" — **both are stale and are corrected by this ruling.** Rule (iii): he named `surface-grey`; keep it.
+- **Note:** **the pin is NOT lost.** Verified 2026-09-02: `DS.recipe('scroll-track')` in `assets/webxv2/js/ds.js`, `.cd-scroll-outer` (300vh) / `.cd-scroll-pin` (sticky, 100vh) / `.cd-scroll-wrap` in `assets/webxv2/css/style.css`, and 18 `*-scroll` composition blocks. §3 J3 and the importer-glossary `.cst-*` row both still say the recipe "has NOT been generalized" — **both are stale and are corrected by this ruling.** Rule (iii): he named `surface-grey`; keep it.
 
 **g31 · `cmp-scroll-story-video` — 2 sections (`digital-channels-v2`, `businessonline-x-v2`) — DO NOT TOUCH**
 *Ruling: "keep the original. This is beyond components."*
@@ -2536,13 +2536,13 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 *Ruling: "cards-icon-linked but with no background, and in 4 columns, no carousel"*
 - **Emit:** `<section class="cmp cmp-cards cards-icon-linked is-cols-4 surface-white section-y">` ← paste `blocks/cards-icon-linked.html` (the **static** block — explicitly **not** `cards-icon-linked-carousel` / `-scroll`).
 - **Port:** all **8** `dvf-feat` tiles → `a.cd-card.card-panel.surface-clear > .ds-stack >` `icon-tile` + `type-h6` + `type-body-sm` (+ `btn btn-text` where the tile linked). Headline "The full corporate toolkit, on mobile." carries over.
-- **Note:** **"no background" reads on two levels and both are satisfied by this emit** — the section drops its tinted band (`surface-grey` → `surface-white`), and the cards are the composition's own **clear** panels (`card-panel surface-clear`, the null surface). This is an explicit surface override, so rule (iii) does **not** apply here. The `devices-features` block and its device PNGs (`assets/images/device/dvf-laptop.png` / `dvf-phone.png`) are **not** used by this section any more.
+- **Note:** **"no background" reads on two levels and both are satisfied by this emit** — the section drops its tinted band (`surface-grey` → `surface-white`), and the cards are the composition's own **clear** panels (`card-panel surface-clear`, the null surface). This is an explicit surface override, so rule (iii) does **not** apply here. The `devices-features` block and its device PNGs (`assets/webxv2/images/device/dvf-laptop.png` / `dvf-phone.png`) are **not** used by this section any more.
 
 **g47 · `cmp-laptop-showcase` → `laptop-showcase` — 1 section (`businessonline-x-v2` §8) — ASSET RESOLVED**
 *Ruling: "ok for proposal but keep the existing content and use the PNG from the original"*
 - **Emit:** `<section class="cmp cmp-laptop-showcase surface-navy section-y">` ← paste `blocks/laptop-showcase.html`.
 - **Port:** eyebrow, "Your treasury, on one screen." headline, the `ls-sub` lead, all 3 `ls-step` / `ls-step-num` rows, and both live `ls-badge`s (badges stay UI).
-- **Note:** the CSS laptop (`ls-lid` / `ls-screen` / `ls-screen-sheen` / `ls-base`) is replaced by `<img class="ls-device-img" src="/assets/images/device/laptop-showcase.png" alt="">` — **that PNG EXISTS** (309 kb, verified 2026-09-02), so §3 J17's "the asset does not exist yet" is stale and this section no longer blocks. See **WI-2** for the one open reading of "the PNG from the original".
+- **Note:** the CSS laptop (`ls-lid` / `ls-screen` / `ls-screen-sheen` / `ls-base`) is replaced by `<img class="ls-device-img" src="/assets/webxv2/images/device/laptop-showcase.png" alt="">` — **that PNG EXISTS** (309 kb, verified 2026-09-02), so §3 J17's "the asset does not exist yet" is stale and this section no longer blocks. See **WI-2** for the one open reading of "the PNG from the original".
 
 **g51 · `cmp-insight-split` → `illustration-split` — 1 section (`smarttrade-v2`)**
 *Ruling: "use insight split"*
@@ -2562,7 +2562,7 @@ untouched. It also closes **J8** — the `ssv-*` / `cap-*` type-class collapse i
 *Ruling: "ok for proposal but keep the original content and for the image keep the one from suggestions"*
 - **Emit:** `<section class="cmp cmp-ecosystem eco-fb">` ← paste `blocks/ecosystem-devices.html` (this fixes the anonymous root).
 - **Port:** headline "One connected ecosystem." + every card: `card-panel is-hover` + `icon-tile` + `type-h6` / `type-caption` + `btn btn-text btn-sm` (replacing `eco-fb-ico/nm/ds/mo`).
-- **Note:** **"the image from suggestions" = the proposed block's own asset, `/assets/images/ecosystem.png`** (332 kb, exists) — not the page's current image. This is the one place a ruling prefers the block's media over the page's. See **WI-3**.
+- **Note:** **"the image from suggestions" = the proposed block's own asset, `/assets/webxv2/images/ecosystem.png`** (332 kb, exists) — not the page's current image. This is the one place a ruling prefers the block's media over the page's. See **WI-3**.
 
 **g65 · `cmp-solutions-awards` → `solutions-awards` — 1 section (`global-loan-solutions-v2`)** — *"ok for proposal but keep the original content"*
 - **Emit:** `<section class="cmp cmp-solutions-awards surface-<own> section-y">` ← `blocks/solutions-awards.html`.
@@ -2590,7 +2590,7 @@ The current left side is bespoke live UI: `as-media as-track` holding `tr-eyebro
 **Build:** author the gpi tracker as a **block-level mock** (the pattern `devices-features`,
 `static-banner`, `checkout-card`, `pos-terminal`, `browser-checkout`, `api-request`,
 `payment-link`, `phone-checkout`, `chat-pay-invite` all follow), then capture it once as a
-**transparent PNG at 2×** via the Playwright capture rig and drop it into `assets/images/device/`;
+**transparent PNG at 2×** via the Playwright capture rig and drop it into `assets/webxv2/images/device/`;
 `as-media` then holds an `<img>` with the section's existing `role="img"` description as `alt`.
 Per the device-image doctrine (MIGRATION: CSS device kits are DELETED in favour of renders),
 regenerate the PNG through the rig whenever the mock changes.
@@ -2600,22 +2600,22 @@ regenerate the PNG through the rig whenever the mock changes.
 
 **WI-2 · `laptop-showcase` device PNG** *(g47, `businessonline-x-v2`, shard 4)*
 *Ruling: "use the PNG from the original"*
-`assets/images/device/laptop-showcase.png` exists (309 kb) and is what `blocks/laptop-showcase.html`
+`assets/webxv2/images/device/laptop-showcase.png` exists (309 kb) and is what `blocks/laptop-showcase.html`
 references — the block comment says *"pages supply their own render"*. **Default: use that PNG**,
 which unblocks the section today. **The one open reading:** if "from the original" means a
 page-specific render, the source is the page's current screen image
-`assets/images/businessonline-x/ls-screen-2026-08-04.jpg?v=1`, which would need a rig bake into a
+`assets/webxv2/images/businessonline-x/ls-screen-2026-08-04.jpg?v=1`, which would need a rig bake into a
 device render. Confirm in one line before the shard-4 sweep; everything else on this section is
 unblocked either way.
 
 **WI-3 · `ecosystem-devices` image** *(g59, `api-banking-v2`, shard 4)*
-*Ruling: "for the image keep the one from suggestions"* — use `/assets/images/ecosystem.png`
+*Ruling: "for the image keep the one from suggestions"* — use `/assets/webxv2/images/ecosystem.png`
 (the proposed block's own asset, 332 kb, exists). No bake needed; just confirm the absolute path
 survives §5.1's path rewrite.
 
 **WI-4 · BUILD the FAQ filter band** *(g70, `faqs`, shard 7)*
 *Ruling: "we need to build this"* — the only ruling that is a build, not a transform.
-**What exists today** (verified in `faqs-2026-07-20.html` + `assets/js/ds.js`):
+**What exists today** (verified in `faqs-2026-07-20.html` + `assets/webxv2/js/ds.js`):
 - `ds.js` already owns a **generic** `data-filter` capability (root `[data-filter]`, `[data-filter-grid]`,
   `[data-filter-item]` + one `data-filter-<key>` per item, `select[data-filter-key]` or
   `button[data-filter-key][data-filter-value]`, `[data-filter-search]`, `[data-filter-reset]`,

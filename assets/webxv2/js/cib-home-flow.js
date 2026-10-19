@@ -595,8 +595,8 @@
   /* ── App QR tile: iOS | Android swaps the QR (DS chips, aria-pressed) ── */
   function initQr() {
     var QR = {
-      ios: { src: 'assets/images/cib-home-flow/qr-appstore.svg', alt: 'QR code to download ENBD Business from the App Store' },
-      android: { src: 'assets/images/cib-home-flow/qr-googleplay.svg', alt: 'QR code to download ENBD Business from Google Play' }
+      ios: { src: 'assets/webxv2/images/cib-home-flow/qr-appstore.svg', alt: 'QR code to download ENBD Business from the App Store' },
+      android: { src: 'assets/webxv2/images/cib-home-flow/qr-googleplay.svg', alt: 'QR code to download ENBD Business from Google Play' }
     };
     $$('[data-qr]').forEach(function (tile) {
       if (tile.closest('[data-master]')) return;   // master instances are wired by ds.js

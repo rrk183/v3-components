@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    style.css — the Emirates NBD Design System stylesheet. ONE file, loaded by
-   every page:  <link rel="stylesheet" href="assets/css/style.css?v=…">
+   every page:  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=…">
      1. FONTS          brand faces + the dirham glyph   (was fonts.css)
      2. DESIGN SYSTEM  every component, token and atom  (was ds.css)
      3. RTL FIXES      [dir="rtl"]-only page patches    (was rtl.css)
@@ -481,7 +481,7 @@
    library's job is narrower and absolute: every vocabulary word renders
    exactly as declared. Doctrine: CONVENTIONS.md § Styling — THE LAW.
    Enforcement: scripts/verify.mjs flow 8. Machine-readable vocabulary:
-   assets/js/ds-palette.js — ONE file, read by the gate AND by the gallery's
+   assets/webxv2/js/ds-palette.js — ONE file, read by the gate AND by the gallery's
    Surface control, which recomposes markup rather than asking CSS to adapt.
 
    ONE palette word, THREE prefixes. The word names a role-POSITION; each
@@ -632,7 +632,7 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════
    SURFACE / OVERLAY SWITCHER (preview tool)
-   A floating control injected by assets/js/surface-switcher.js lets you
+   A floating control injected by assets/webxv2/js/surface-switcher.js lets you
    preview any component on different surfaces/overlays. The `!important`
    declarations only apply once the switcher marks a target, so normal
    rendering is untouched.
@@ -4970,7 +4970,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    "With a desk for ____." Chips pick a sector desk; with motion on, a tall
    track pins the stage and scroll rolls the reel word, the photo and the desk
    card. Moved here from the block's inline <style> on 2026-10-10 (port of the
-   newer assets/css/tabs-desk.css), so instances receive master changes. Ground
+   newer assets/webxv2/css/tabs-desk.css), so instances receive master changes. Ground
    is markup (surface-* on the root). --td-n (desk count) and --td-hdr (site
    header height, so the pin starts below it) are set by the tabs-desk recipe. */
 .cmp-tabs-desk { --td-hdr: 0px; --td-sec: clamp(88px, 9vw, 128px); }
@@ -7055,7 +7055,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 
    Which ink is legal on which ground is CATEGORICAL and lives in the pairing
    rulebook at the top of this file (and machine-readably in
-   assets/js/ds-palette.js, which the gate and the gallery both read).
+   assets/webxv2/js/ds-palette.js, which the gate and the gallery both read).
    Strength never enters into it: surface-glass-75 pairs like surface-primary.
 
    CASCADE POSITION IS DELIBERATE. These sit at the END of the sheet so that,

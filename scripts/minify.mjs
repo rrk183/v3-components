@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 // Minified builds of the runtime.
 //
-//   npm run minify            → assets/css/style.min.css (committed) + JS handoff in dist/
+//   npm run minify            → assets/webxv2/css/style.min.css (committed) + JS handoff in dist/
 //   node scripts/minify.mjs --css            style.min.css only
 //   node scripts/minify.mjs --css --staged   …built from the STAGED style.css (pre-commit hook)
 //   node scripts/minify.mjs --check          exit 1 if style.min.css is stale (verify gate)
 //
-// CSS: style.css → style.min.css, side by side in assets/css/ and COMMITTED —
+// CSS: style.css → style.min.css, side by side in assets/webxv2/css/ and COMMITTED —
 // the CMS keeps the same pair (style.css for dev, style.min.css for prod). The
 // .githooks/pre-commit hook regenerates it whenever style.css is committed.
 // Whitespace/comment-only (no rule merging — the cascade stays equivalent).
 //
 // JS: minified copies for the CMS handoff in dist/ (gitignored, rebuilt from
-// scratch). Folder layout mirrors assets/js/ on purpose: ds.js lazy-loads
+// scratch). Folder layout mirrors assets/webxv2/js/ on purpose: ds.js lazy-loads
 // lenis.min.js / lottie_light.min.js from ITS OWN folder, so those vendor
 // files ship alongside it.
 //
@@ -28,8 +28,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = new Set(process.argv.slice(2));
 const kb = (n) => (n / 1024).toFixed(1).padStart(7) + " KB";
 
-const CSS_SRC = "assets/css/style.css";
-const CSS_OUT = "assets/css/style.min.css";
+const CSS_SRC = "assets/webxv2/css/style.css";
+const CSS_OUT = "assets/webxv2/css/style.min.css";
 const CSS_BANNER = "/* style.min.css - generated from style.css by `npm run minify` (pre-commit hook); edit style.css, not this file. */\n";
 
 async function minCss(src) {
@@ -56,15 +56,15 @@ if (args.has("--css")) process.exit(0);
 // ── JS handoff (dist/) ─────────────────────────────────────────────────────
 const OUT = path.join(ROOT, "dist");
 const MINIFY = [
-  "assets/js/ds.js",
-  "assets/js/ds-tailwind-config.js",
-  "assets/js/lang-switch.js",
-  "assets/js/cib-home-flow.js",      // Wholesale Banking home only
+  "assets/webxv2/js/ds.js",
+  "assets/webxv2/js/ds-tailwind-config.js",
+  "assets/webxv2/js/lang-switch.js",
+  "assets/webxv2/js/cib-home-flow.js",      // Wholesale Banking home only
 ];
 const COPY = [                       // already minified vendor files — shipped as-is
-  "assets/js/tailwind.cdn.js",
-  "assets/js/lenis.min.js",
-  "assets/js/lottie_light.min.js",
+  "assets/webxv2/js/tailwind.cdn.js",
+  "assets/webxv2/js/lenis.min.js",
+  "assets/webxv2/js/lottie_light.min.js",
 ];
 rmSync(OUT, { recursive: true, force: true });
 for (const rel of MINIFY) {

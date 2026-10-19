@@ -3,7 +3,7 @@
 Deep, per-component reference for the page-creation workflow — one file per block:
 `docs/catalog/<slug>.md`.
 
-The gallery catalog (`assets/js/library.js`) answers **"which block do I pick?"**
+The gallery catalog (`assets/webxv2/js/library.js`) answers **"which block do I pick?"**
 (impact + when-to-use). These dossiers answer the two things markup alone can't
 tell a text agent:
 
