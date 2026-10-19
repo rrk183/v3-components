@@ -6,14 +6,14 @@
   <script src="assets/webxv2/js/gate.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DS frame</title>
-  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261216" />
+  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261217" />
   <link rel="stylesheet" href="assets/webxv2/css/themes.css?v=261193" />
   <script src="assets/webxv2/js/tailwind.cdn.js"></script>
   <script src="assets/webxv2/js/ds-tailwind-config.js?v=261193"></script>
   <script src="assets/webxv2/js/ds-palette.js?v=261193"></script>
   <script src="assets/webxv2/js/ar-preview.js?v=261208"></script>
   <script src="assets/webxv2/js/lib-options.js?v=261208"></script>
-  <script defer src="assets/webxv2/js/ds.js?v=261216"></script>
+  <script defer src="assets/webxv2/js/ds.js?v=261217"></script>
   <style>html,body{margin:0}</style>
 </head>
 <body>
@@ -30,14 +30,16 @@
     // preview asset for the ACTIVE theme when the option is picked.
     const SURFACE_IMAGE_ASSET = { '': 'assets/webxv2/images/bento-bg-placeholder.svg', ei: 'assets/webxv2/images/bento-bg-ei.svg' };
     const surfaceImageAsset = (t) => SURFACE_IMAGE_ASSET[t] || SURFACE_IMAGE_ASSET[''];
-    // header previews carry the ACTIVE brand's logotype (real pages author
-    // --brand-logo themselves; the harness mirrors that per theme)
-    const BRAND_LOGO_ASSET = { ei: '/assets/webxv2/images/ei-logo.svg' };
+    // logos are <img> in the markup (real pages author the right file per
+    // brand); the harness swaps their src for the ACTIVE theme and restores
+    // the block's own file when the theme is cleared
+    const BRAND_LOGO_ASSET = { ei: { '.ish-logo-img': '/assets/webxv2/images/ei-logo.svg', '.ish-drawer-logo': '/assets/webxv2/images/ei-logo-navy.svg', '.fo1-copy-logo': '/assets/webxv2/images/ei-logo-navy.svg' } };
     function syncBrandLogos(t) {
-      document.querySelectorAll('.cmp-site-header').forEach((h) => {
-        if (BRAND_LOGO_ASSET[t]) h.style.setProperty('--brand-logo', "url('" + BRAND_LOGO_ASSET[t] + "')");
-        else h.style.removeProperty('--brand-logo');
-      });
+      const set = BRAND_LOGO_ASSET[t] || {};
+      Object.keys(BRAND_LOGO_ASSET.ei).forEach((sel) => document.querySelectorAll('img' + sel).forEach((img) => {
+        if (!img.hasAttribute('data-src-base')) img.setAttribute('data-src-base', img.getAttribute('src'));
+        img.setAttribute('src', set[sel] || img.getAttribute('data-src-base'));
+      }));
     }
     function syncSurfaceImages(t) {
       document.querySelectorAll('.surface-image[data-bg]').forEach((el) => {

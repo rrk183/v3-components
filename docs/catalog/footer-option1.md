@@ -8,7 +8,7 @@ switchers**: an `عربي` language toggle at the start and a "You are currently
 browsing" label + segment-switcher pill at the end. A grey link body spreads
 **5 columns** — 4 link lists plus a 5th column with two app-download rows and a
 "Follow us" row of 5 social icons. A deeper-grey copyright bar closes it with the
-licensing line and a navy masked ENBD logo.
+licensing line and the navy ENBD logo (an <img> in the markup).
 
 ## Motion
 No `data-animate` / `data-reveal` — nothing scroll-animates. But the block is
@@ -32,7 +32,7 @@ footer.cmp-footer-option1.surface-grey
 │   │     (Customer support col has one .fo1-ai-badge "AI")
 │   └ 5th column .fo1-apps: p.fo1-col-head + 2 × a.fo1-app
 │                 + div ← p.fo1-social-head + 5 a.fo1-social (svg icons)
-└ .fo1-copyright > .container-ds ← p.fo1-copy-text + span.fo1-copy-logo
+└ .fo1-copyright > .container-ds ← p.fo1-copy-text + img.fo1-copy-logo (navy logo file, alt = brand name)
 ```
 
 ## Content contract
