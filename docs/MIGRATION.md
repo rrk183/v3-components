@@ -548,7 +548,7 @@ never content.
 | `cmp-bento-photo` / `-spotlight` / `-image-cards` / `-magazine` / `-grid`, `cmp-feature-highlight` | `cmp-bento` compositions (same slugs) | CSS deleted 2026-09-01 after parity sign-off; per-tile spans `is-w*/is-h*`, hover axes on root, designed art sets copied into the cmp-bento zone |
 | `pos-ways` / `pos-way` (Ways to Accept triad) | Cards — Icon Linked (`cards-icon-linked`) | deleted 2026-09-01; 17 pages still carry the markup — gate WARNs |
 | `cmp-digital-tools-showcase` | Cards compositions (Carousel/Scroll variants) | deleted 2026-09-01; 7 pages still carry the markup — gate WARNs |
-| `dvs-num` / `dvs-title` / `dvs-desc` (device-scroll steps) | `type-eyebrow type-blue` / `type-h3 on-surface` / `type-body on-surface-mid measure` | bespoke rules deleted 2026-09-01; device is now a stack of transparent PNG renders (assets/images/device/) crossfaded by the same data-anim windows |
+| `dvs-num` / `dvs-title` / `dvs-desc` (device-scroll steps) | `type-eyebrow type-blue` / `type-h3 on-surface` / `type-body on-surface-mid measure` | bespoke rules deleted 2026-09-01; device is now a stack of transparent PNG renders (assets/webxv2/images/device/) crossfaded by the same data-anim windows |
 | `dvf-icon` / `dvf-title` / `dvf-desc` (devices-features) | `icon-tile` / `type-h6` / `type-body-sm` | bespoke rules deleted 2026-09-01 |
 | `ps-feature-icon` / `ps-ghost` / ps card mock (product-showcase) | `icon-tile` / `btn btn-text` / `.ps-card` image slot via data-bg | 2026-09-01 |
 | eco-fb card interiors (`eco-fb-ico/nm/ds/mo`, bespoke panel) | `card-panel is-hover` + `icon-tile` + `type-h6`/`type-caption` + `btn btn-text btn-sm` | root is now `cmp cmp-ecosystem eco-fb`; old `cmp eco-fb` pages WARN (6 pages) |

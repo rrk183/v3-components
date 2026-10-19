@@ -11,9 +11,9 @@ import { fileURLToPath } from "node:url";
 import { buildPage } from "./build-all-components.mjs";
 
 // THE COLOUR VOCABULARY + PAIRING RULEBOOK — one file, two readers: this gate
-// and the gallery's Surface control (assets/js/library.js + frame.html). It is
+// and the gallery's Surface control (assets/webxv2/js/library.js + frame.html). It is
 // never restated; a rule that needs a palette fact imports it.
-const PAL = createRequire(import.meta.url)("../assets/js/ds-palette.js");
+const PAL = createRequire(import.meta.url)("../assets/webxv2/js/ds-palette.js");
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(path.join(ROOT, p), "utf8");
@@ -39,14 +39,14 @@ const PARKED = /-(ram|codex)\.html$/;
 // 2026-09-03 ruling, tooling is completely separate from the product bundle:
 // it must NOT load style.css/ds.js/Tailwind, it may hardcode brand constants, and
 // it may use markup the product bans (site-index-v2.html uses native <details>
-// disclosure and carries its own assets/css/site-index.css + site-index.js).
+// disclosure and carries its own assets/webxv2/css/site-index.css + site-index.js).
 // Tooling never ships to the CMS, so the product contract does not apply.
 const DEV_RIGS = new Set(["frame.html", "harness.html", "review.html", "index.html", "category.html", "all-components.html", "audit.html", "site-index-v2.html"]);
 const firstParty = allPages.filter((f) => !PARKED.test(f) && !DEV_RIGS.has(f) && !f.includes(" "));
 const junk = allPages.filter((f) => f.includes(" "));
 for (const j of junk) fail(4, `junk filename in repo root: "${j}"`);
 
-const css = read("assets/css/style.css");
+const css = read("assets/webxv2/css/style.css");
 // ── tooling/product SEPARATION (ruling 2026-09-03): the product bundle may
 // contain NO tooling selectors, and no product page may load tooling assets.
 {
@@ -61,7 +61,7 @@ const css = read("assets/css/style.css");
     }
   }
 }
-const dsjs = read("assets/js/ds.js");
+const dsjs = read("assets/webxv2/js/ds.js");
 
 // ── shared readers: CSS rules + a markup walk with ground context ───────────
 // Both are deliberately small and tolerant. The CSS reader yields LEAF rules
@@ -335,7 +335,7 @@ for (const f of blockFiles) {
 }
 
 // ── flow 2: runtime pair ────────────────────────────────────────────────────
-for (const js of ["assets/js/ds.js", "assets/js/library.js", "assets/js/ds-palette.js", "server.js", "assets/js/gate.js", "assets/js/gate-config.js"]) {
+for (const js of ["assets/webxv2/js/ds.js", "assets/webxv2/js/library.js", "assets/webxv2/js/ds-palette.js", "server.js", "assets/webxv2/js/gate.js", "assets/webxv2/js/gate-config.js"]) {
   try { execFileSync("node", ["--check", path.join(ROOT, js)], { stdio: "pipe" }); }
   catch (e) { fail(2, `${js} fails node --check: ${String(e.stderr).slice(0, 200)}`); }
 }
@@ -377,7 +377,7 @@ for (const js of ["assets/js/ds.js", "assets/js/library.js", "assets/js/ds-palet
 
 // ── flow 3: library coherence ───────────────────────────────────────────────
 {
-  const cat = read("assets/js/library.js");
+  const cat = read("assets/webxv2/js/library.js");
   const slugs = new Set([...cat.matchAll(/slug:\s*'([a-z0-9-]+)'/g)].map((m) => m[1]));
   for (const s of slugs) if (!blockNames.includes(s)) fail(3, `catalog slug "${s}" has no blocks/${s}.html`);
   for (const b of blockNames) if (!slugs.has(b)) fail(3, `blocks/${b}.html not in the gallery catalog`);
@@ -390,7 +390,7 @@ for (const js of ["assets/js/ds.js", "assets/js/library.js", "assets/js/ds-palet
   // style.min.css is committed beside style.css (the CMS ships the pair); the
   // pre-commit hook regenerates it, and this catches a commit that skipped it
   try { execFileSync(process.execPath, [path.join(ROOT, "scripts/minify.mjs"), "--check"], { stdio: "pipe" }); }
-  catch { fail(3, "assets/css/style.min.css is stale — run: npm run minify"); }
+  catch { fail(3, "assets/webxv2/css/style.min.css is stale — run: npm run minify"); }
 }
 
 // Button/control icons live ONCE in style.css as data-URI masks named by a
@@ -670,7 +670,7 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
   // style.css/themes.css declarations, ds.js setProperty, or style="--x:…" passing
   // in blocks/pages (the one sanctioned inline-style form)
   {
-    const themes = existsSync(path.join(ROOT, "assets/css/themes.css")) ? read("assets/css/themes.css") : "";
+    const themes = existsSync(path.join(ROOT, "assets/webxv2/css/themes.css")) ? read("assets/webxv2/css/themes.css") : "";
     const decomment = (s) => s.replace(/\/\*[\s\S]*?\*\//g, " ");
     const defined = new Set();
     for (const src of [decomment(css), decomment(themes)])
@@ -687,8 +687,8 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
   // themes.css (when present): variables only, and every theme block must
   // define the identical token set — a brand silently inheriting another
   // brand's colour is the failure mode this exists to catch
-  if (existsSync(path.join(ROOT, "assets/css/themes.css"))) {
-    const themes = read("assets/css/themes.css");
+  if (existsSync(path.join(ROOT, "assets/webxv2/css/themes.css"))) {
+    const themes = read("assets/webxv2/css/themes.css");
     const masked = themes.replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, " "));
     if (/url\(/.test(masked))
       fail(5, "themes.css contains url() — brand images are authored in markup via data-bg, never in theme CSS");
@@ -775,7 +775,7 @@ for (const wf of ["page-research-blueprint.js", "page-build-review.js", "page-co
 // my invented CSS axes — library markup + Ram content is the rule"). A
 // context rule is a GATE FAILURE, not a technique. The vocabulary and the
 // pairing rulebook are NOT restated here — they are imported from
-// assets/js/ds-palette.js, the one file the gallery reads too.
+// assets/webxv2/js/ds-palette.js, the one file the gallery reads too.
 {
   const cssCode = css.replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, " "));
   const lineOf = (idx) => cssCode.slice(0, idx).split("\n").length;
@@ -826,7 +826,7 @@ for (const wf of ["page-research-blueprint.js", "page-build-review.js", "page-co
   const vocabHit = (where, cls, ctx) => {
     if (!PAL.isReservedName(cls) || PAL.inVocabulary(cls)) return;
     if (PAL.DEPRECATED[cls]) return; // handled as a deprecation, not an invention
-    fail(8, `${where}: "${cls}" is not in the colour vocabulary${ctx ? ` (${ctx})` : ""} — surface-*/ink-*/ov-* is a CLOSED set (assets/js/ds-palette.js). Adding a word is a system decision, not a local one.`);
+    fail(8, `${where}: "${cls}" is not in the colour vocabulary${ctx ? ` (${ctx})` : ""} — surface-*/ink-*/ov-* is a CLOSED set (assets/webxv2/js/ds-palette.js). Adding a word is a system decision, not a local one.`);
   };
   for (const r of cssRules(cssCode))
     for (const m of r.sel.matchAll(/\.((?:surface|ink|ov)-[a-z0-9-]+)/g)) vocabHit(`style.css:${lineOf(r.start)}`, m[1]);
@@ -844,7 +844,7 @@ for (const wf of ["page-research-blueprint.js", "page-build-review.js", "page-co
       for (const c of m[1].split(/\s+/)) vocabHit(p, c);
   // The gallery names classes inside quoted strings; its prose (whenToUse
   // copy) is quoted too, so only strings that are ENTIRELY class-like count.
-  for (const g of ["assets/js/library.js", "frame.html"])
+  for (const g of ["assets/webxv2/js/library.js", "frame.html"])
     for (const m of read(g).matchAll(/['"]([^'"\n]{1,80})['"]/g)) {
       const toks = m[1].trim().split(/\s+/);
       if (!toks.length || !toks.every((t) => /^[a-z][a-z0-9-]*$/.test(t))) continue;

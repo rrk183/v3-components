@@ -38,7 +38,7 @@ Six overlay IDs: `modal-transaction`, `modal-confirm`, `modal-delete`,
 - Widths: default `.modal`, `.modal-w420` (confirm/delete), `.modal-w480`
   (form), `.modal-content` (the two content modals).
 - Cover content modal: one image slot via `data-bg` on `.modal-cover`
-  (`/assets/images/hero-bg.webp`), with an `.ov` gradient, eyebrow + title; body
+  (`/assets/webxv2/images/hero-bg.webp`), with an `.ov` gradient, eyebrow + title; body
   has a lead, a paragraph, a 3-item `.modal-list`, and 2 actions.
 - Plain content modal: eyebrow + title, intro paragraph, a `.modal-scroll`
   region of 3 paragraphs, an accept checkbox, and 2 actions.

@@ -50,7 +50,7 @@ section.cmp.cmp-scroll-scenes.surface-primary[data-animate]
   bold title + italic sub-line).
 - Left copy: one heading + one paragraph.
 - The counter is live via `data-anim count:[0,180]`; the brand logo is the one
-  image (`/assets/images/EmiratesNBD-logo.svg`).
+  image (`/assets/webxv2/images/EmiratesNBD-logo.svg`).
 
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._

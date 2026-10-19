@@ -18,7 +18,7 @@ section.cmp.cmp-devices-features.surface-*[data-animate]
 
 ## Content contract
 - 3–4 feature cards; title ≤4 words, body one sentence.
-- Devices are ONE image each (assets/images/device/dvf-laptop.png /
+- Devices are ONE image each (assets/webxv2/images/device/dvf-laptop.png /
   dvf-phone.png) — swap assets, never rebuild chrome.
 
 ## Drift cautions

@@ -4,7 +4,7 @@
 
 Registered 2026-09-03 as **capability 1 of 2** in the illustration doctrine (Hakan, 2026-09-03 — `docs/audits/page-fix-map.md` Addendum 3; summary in CONVENTIONS.md → "Illustrations"). The other capability is [Illustration Video](illustration-video.md); the two are chosen **per use-case at authoring time**, not ranked.
 
-It is a **demo of a behaviour**, not a component with scoped CSS. There is no `.cmp-lottie` ruleset and there should not be one — the root is a marker class, and the mount contract is a small set of **generic `lot-*` atoms** in `style.css` so *any* block or page can host a stage. The player (`assets/js/lottie_light.min.js` — lottie-web **5.12.2**, SVG renderer only, ~164 KB) is **vendored and pinned**, and `ds.js` lazy-loads it on first sighting of a stage, exactly as it lazy-loads Lenis. Pages never reference the player and never carry a `<script>`. **Flagged Unreviewed.**
+It is a **demo of a behaviour**, not a component with scoped CSS. There is no `.cmp-lottie` ruleset and there should not be one — the root is a marker class, and the mount contract is a small set of **generic `lot-*` atoms** in `style.css` so *any* block or page can host a stage. The player (`assets/webxv2/js/lottie_light.min.js` — lottie-web **5.12.2**, SVG renderer only, ~164 KB) is **vendored and pinned**, and `ds.js` lazy-loads it on first sighting of a stage, exactly as it lazy-loads Lenis. Pages never reference the player and never carry a `<script>`. **Flagged Unreviewed.**
 
 ## Look
 A grey band. Two cards side by side — one white-faced, one navy-faced — each holding the *same* JSON: a brand-blue dot breathing inside two expanding rings, drawn on transparency so each card face shows through. Below, the poster PNG shown as itself: the still that a reduced-motion reader gets.
@@ -25,7 +25,7 @@ A grey band. Two cards side by side — one white-faced, one navy-faced — each
 | attribute | required | default | meaning |
 |---|---|---|---|
 | `data-behavior="lottie"` | yes | — | binds the recipe |
-| `data-lottie-src` | yes | — | path to the JSON asset (`assets/lottie/….json`) |
+| `data-lottie-src` | yes | — | path to the JSON asset (`assets/webxv2/lottie/….json`) |
 | `data-lottie-loop` | no | `true` | `"false"` plays once and holds the last frame |
 | `data-lottie-speed` | no | `1` | playback rate multiplier |
 
@@ -39,11 +39,11 @@ A grey band. Two cards side by side — one white-faced, one navy-faced — each
 
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._
-- **Never add a `<script>` to a page to run a Lottie**, and never load the player from a CDN. It is vendored, pinned and lazy — that is the whole capability. Upgrading means replacing `assets/js/lottie_light.min.js` **and** the version recorded in its header comment and in CONVENTIONS.md.
+- **Never add a `<script>` to a page to run a Lottie**, and never load the player from a CDN. It is vendored, pinned and lazy — that is the whole capability. Upgrading means replacing `assets/webxv2/js/lottie_light.min.js` **and** the version recorded in its header comment and in CONVENTIONS.md.
 - **Never drop the poster** "because the animation loads fast". It is the reduced-motion state and the 404 fallback.
 - Do not mint a `.cmp-lottie` ruleset or component-scoped `lot-*` variants. The atoms are deliberately generic — the capability is not a component.
 - Do not expect the engine to mirror, recolour, retime or crop the artwork. Everything about the drawing is authored in the JSON.
-- The demo asset (`assets/lottie/demo-pulse.json`, ~3 KB, hand-authored 2026-09-03) is demo CONTENT — real pages upload their own.
+- The demo asset (`assets/webxv2/lottie/demo-pulse.json`, ~3 KB, hand-authored 2026-09-03) is demo CONTENT — real pages upload their own.
 
 ## Authoring rule
 Read `blocks/lottie.html`. Reuse the `lot-stage` + poster contract verbatim and change CONTENT only (`data-lottie-src`, the poster, the copy). To put a Lottie in a *different* block, drop the same four lines into that block's media slot — the behaviour and atoms are shared, and the player loads itself. See CONVENTIONS.md → "Illustrations".

@@ -5,7 +5,7 @@
 ## Usage
 **PNG-generation boilerplate — not a page component.** This mock exists to be
 rendered once and captured as a TRANSPARENT PNG (the Playwright capture rig;
-same doctrine as the device mocks in `assets/images/device/`). The PNG is what
+same doctrine as the device mocks in `assets/webxv2/images/device/`). The PNG is what
 pages use — inside Scroll Scenes, Device Showcase slots, stories and heroes.
 Never paste the raw mock markup on a page; dated pages that still carry it are
 sweep debt, not precedent.

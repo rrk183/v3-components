@@ -23,7 +23,7 @@
      the recipe returns before it touches the network, so a reduced-motion
      reader downloads neither the player nor the JSON.
 
-     THE PLAYER IS VENDORED AND LAZY: assets/js/lottie_light.min.js (lottie-web
+     THE PLAYER IS VENDORED AND LAZY: assets/webxv2/js/lottie_light.min.js (lottie-web
      5.12.2, SVG renderer only). ds.js loads it on first sighting of a stage —
      the Lenis pattern — so a page with no Lottie pays nothing, and a page with
      six pays for one fetch. Pages never reference the player and never carry a
@@ -62,24 +62,24 @@
     <div class="grid gap-6 md:grid-cols-2">
 
       <div class="card-panel surface-white" data-reveal="up">
-        <div class="lot-stage w-40 mx-auto" data-behavior="lottie" data-lottie-src="assets/lottie/demo-pulse.json" data-lottie-loop="true">
-          <img class="lot-poster" src="assets/lottie/demo-pulse.png" alt="" width="400" height="400">
+        <div class="lot-stage w-40 mx-auto" data-behavior="lottie" data-lottie-src="assets/webxv2/lottie/demo-pulse.json" data-lottie-loop="true">
+          <img class="lot-poster" src="assets/webxv2/lottie/demo-pulse.png" alt="" width="400" height="400">
         </div>
         <div class="ds-stack mt-6" style="--ds-stack-gap: 8px">
           <h3 class="type-h5 ink-primary">Always on, always live</h3>
           <p class="type-body-sm ink-mute">Drawn on transparency, so the card face shows through. Nothing about the asset changes between these two cards &mdash; only the surface under it.</p>
-          <code class="type-micro block ink-mute">assets/lottie/demo-pulse.json &middot; 3 KB</code>
+          <code class="type-micro block ink-mute">assets/webxv2/lottie/demo-pulse.json &middot; 3 KB</code>
         </div>
       </div>
 
       <div class="card-panel surface-primary" data-reveal="up" data-reveal-delay=".08">
-        <div class="lot-stage w-40 mx-auto" data-behavior="lottie" data-lottie-src="assets/lottie/demo-pulse.json" data-lottie-loop="true">
-          <img class="lot-poster" src="assets/lottie/demo-pulse.png" alt="" width="400" height="400">
+        <div class="lot-stage w-40 mx-auto" data-behavior="lottie" data-lottie-src="assets/webxv2/lottie/demo-pulse.json" data-lottie-loop="true">
+          <img class="lot-poster" src="assets/webxv2/lottie/demo-pulse.png" alt="" width="400" height="400">
         </div>
         <div class="ds-stack mt-6" style="--ds-stack-gap: 8px">
           <h3 class="type-h5 ink-white">The same file, no second export</h3>
           <p class="type-body-sm ink-soft">Where a baked video needs one file per face, a transparent Lottie needs one file full stop. That is the trade: transparency and size against photographic richness.</p>
-          <code class="type-micro block ink-soft">assets/lottie/demo-pulse.json &middot; 3 KB</code>
+          <code class="type-micro block ink-soft">assets/webxv2/lottie/demo-pulse.json &middot; 3 KB</code>
         </div>
       </div>
 
@@ -89,7 +89,7 @@
     <p class="bt-label mt-14 ink-mute" data-reveal="up">The poster &middot; the still, the sizer and the reduced-motion state</p>
     <div class="card-panel surface-white is-tile" data-reveal="up">
       <div class="grid gap-6 md:grid-cols-2 items-center">
-        <img class="lot-poster block w-40 h-auto mx-auto" src="assets/lottie/demo-pulse.png" alt="" width="400" height="400">
+        <img class="lot-poster block w-40 h-auto mx-auto" src="assets/webxv2/lottie/demo-pulse.png" alt="" width="400" height="400">
         <div class="ds-stack" style="--ds-stack-gap: 8px">
           <h3 class="type-h5 ink-primary">No motion, no download</h3>
           <p class="type-body-sm ink-mute">Under a reduced-motion preference the recipe stops before the network: the player is never fetched, the JSON is never fetched, and this frame stays. Export it from frame 0 of the animation so the two never disagree.</p>

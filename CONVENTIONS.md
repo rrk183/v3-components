@@ -5,10 +5,10 @@ runtime and it works — styled and animated — with **no per-component CSS or 
 and no IDs**. The runtime is pre-deployed, loaded once per page:
 
 ```html
-<link rel="stylesheet" href="assets/css/style.css" />   <!-- fonts + design system + RTL fixes; style.min.css is its generated twin -->
-<script src="assets/js/tailwind.cdn.js"></script>
-<script src="assets/js/ds-tailwind-config.js"></script>
-<script defer src="assets/js/ds.js"></script>
+<link rel="stylesheet" href="assets/webxv2/css/style.css" />   <!-- fonts + design system + RTL fixes; style.min.css is its generated twin -->
+<script src="assets/webxv2/js/tailwind.cdn.js"></script>
+<script src="assets/webxv2/js/ds-tailwind-config.js"></script>
+<script defer src="assets/webxv2/js/ds.js"></script>
 ```
 
 ## Styling — THE LAW (2026-09-03, Hakan)
@@ -35,7 +35,7 @@ enforces this mechanically, and it is not advisory:
 | §8d block pairing | Every text element in every block, statically resolved to its ground and checked against the pairing rulebook. Blocks are the library's own compositions — they are provably legal before any page is audited against them. |
 | §8e deprecations | Old spellings in first-party pages (warn — pages migrate in the estate audit). |
 
-The vocabulary and the rulebook live in **one file**, `assets/js/ds-palette.js`,
+The vocabulary and the rulebook live in **one file**, `assets/webxv2/js/ds-palette.js`,
 which both the gate and the gallery's Surface control read. Nothing restates
 them; a rule that needs a palette fact imports it.
 
@@ -303,7 +303,7 @@ and `.bc-link` / `.sn-link` / `.fo1-link` / `.ds-skip-link` are navigation
 chrome. Hand-rolling a new text+arrow link instead of composing `.btn-text` is
 drift (see § atoms) — and it is also how a link escapes this rule, so don't.
 
-Machine-readable in `assets/js/ds-palette.js` § 4b (`ATOM_ROLE`,
+Machine-readable in `assets/webxv2/js/ds-palette.js` § 4b (`ATOM_ROLE`,
 `MEDIA_ROLE_INK`, `inkForAtom()`); enforced by `verify.mjs` §8d (blocks) and
 §8f (pages), which FAIL an accent-family **or un-inked** eyebrow/text-link on
 media — `.ds-eyebrow` and `.btn-text` both default to `var(--blue)`, so
@@ -536,11 +536,11 @@ timeline at authoring time (neither is the default):
 
 | | **Lottie** (`blocks/lottie.html`) | **Illustration video** (`blocks/illustration-video.html`) |
 |---|---|---|
-| asset | `assets/lottie/*.json` + a poster PNG | chromeless MP4 + a poster |
+| asset | `assets/webxv2/lottie/*.json` + a poster PNG | chromeless MP4 + a poster |
 | for | drawn vector work | rendered / textured / 3D work |
 | background | transparent — one file, every surface | **baked flat face** — one file per surface |
 | wiring | `data-behavior="lottie"` (recipe in ds.js) | none — plain `<video class="media-cover">` |
-| player | vendored **lottie-web 5.12.2** (`assets/js/lottie_light.min.js`, SVG-renderer "light" build), lazy-loaded by ds.js on first sighting — pages never carry a `<script>` | the browser |
+| player | vendored **lottie-web 5.12.2** (`assets/webxv2/js/lottie_light.min.js`, SVG-renderer "light" build), lazy-loaded by ds.js on first sighting — pages never carry a `<script>` | the browser |
 
 Load-bearing rules for both: a **poster is mandatory** (it is the
 reduced-motion state, and ds.js globally stands autoplay+loop videos down to
@@ -565,7 +565,7 @@ Foundation + common cores (reveal, tabs, accordion, carousel, modals, scroll-fra
 zoom-parallax) stay in the single `style.css` / `ds.js`. Bespoke Tier-3 recipes
 (WebGL/GSAP/canvas) currently also live appended in `ds.js` + `style.css`. **Once they
 grow heavy or exceed ~15–20**, split each into its own file —
-`assets/js/recipes/<name>.js` + `assets/css/recipes/<name>.css` — and have `ds.js`
+`assets/webxv2/js/recipes/<name>.js` + `assets/webxv2/css/recipes/<name>.css` — and have `ds.js`
 **lazy-load** a recipe module the first time it sees a `[data-behavior="<name>"]`
 that isn't registered yet (dynamic `import()` of the matching file). Heavy libs
 (GSAP, three, cobe) are likewise loaded once on demand by the recipe that needs

@@ -4,7 +4,7 @@ verify: node scripts/verify.mjs
 
 ## What this repo is (context for the reviewer)
 A pure-markup design system: 85 canonical components in `blocks/`, one shared
-runtime (`assets/css/style.css` + `assets/js/ds.js`), ~30 first-party pages
+runtime (`assets/webxv2/css/style.css` + `assets/webxv2/js/ds.js`), ~30 first-party pages
 composed by pasting blocks and changing only content, and an AI page-builder
 (`.claude/workflows/*.js` + `/build-page`) that generates new pages from the
 same blocks. Pages must stay CSS/JS-free (classes + data-attributes only).
@@ -43,7 +43,7 @@ push to `ds-rearchitecture`).
    and the CSS-drawn product-mockup illustrations (artwork). Every
    `var(--x)` without a fallback must resolve to a real definition (style.css,
    themes.css, a ds.js `setProperty`, or `style="--x:…"` passing).
-   `assets/css/themes.css`, when present, may contain variable declarations
+   `assets/webxv2/css/themes.css`, when present, may contain variable declarations
    only, and every `[data-theme=…]` block must define the identical token set
    (no silent inheritance of another brand's colour). Media queries only from
    the canonical set (479/639/767/1023/1279 max, 640/768/1024/1280 min, +
@@ -60,7 +60,7 @@ push to `ds-rearchitecture`).
 8. **The colour law** — *surfaces, inks and overlays are declared in markup;
    CSS never adapts content by context; a different look on a different ground
    is a different markup composition.* Five checks, all reading ONE source of
-   truth (`assets/js/ds-palette.js`, which the gallery reads too):
+   truth (`assets/webxv2/js/ds-palette.js`, which the gallery reads too):
    **8a anti-context** — no style.css rule may cross a combinator from a
    `.surface-*`/`.on-light` ancestor and declare colour (geometry is fine);
    **8b no new indirection** — no `--on-*`/`--ink-*` custom property may be
@@ -116,7 +116,7 @@ push to `ds-rearchitecture`).
 
 ## Accepted tradeoffs
 - Layout utilities (incl. Tailwind arbitrary values from the inline-style
-  migration) require the JIT runtime `assets/js/tailwind.cdn.js` to execute.
+  migration) require the JIT runtime `assets/webxv2/js/tailwind.cdn.js` to execute.
   It is a SAME-ORIGIN asset (not a third-party CDN), so its failure domain
   equals style.css/ds.js — accepted repo-wide pattern.
 - Markup colour literals: BLOCKS may not carry any (arbitrary hex utilities

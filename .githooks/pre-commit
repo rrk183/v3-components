@@ -1,8 +1,8 @@
 #!/bin/sh
-# Keep assets/css/style.min.css in step with style.css: whenever style.css is
+# Keep assets/webxv2/css/style.min.css in step with style.css: whenever style.css is
 # part of a commit, rebuild the .min from the STAGED style.css and stage it.
 # Activated by `npm install` (package.json "prepare" sets core.hooksPath).
-if git diff --cached --name-only | grep -qx 'assets/css/style.css'; then
+if git diff --cached --name-only | grep -qx 'assets/webxv2/css/style.css'; then
   major=$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null || echo 0)
   if [ "$major" -lt 18 ]; then
     echo "pre-commit: rebuilding style.min.css needs Node 18+ (found $(node -v 2>/dev/null || echo none)) — run: nvm use" >&2
@@ -13,5 +13,5 @@ if git diff --cached --name-only | grep -qx 'assets/css/style.css'; then
     exit 1
   fi
   node scripts/minify.mjs --css --staged || exit 1
-  git add assets/css/style.min.css
+  git add assets/webxv2/css/style.min.css
 fi

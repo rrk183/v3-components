@@ -59,7 +59,7 @@ _Defaults for autonomous building — all overridable on explicit instruction._
 - v4's panel caret is a clip-path TRIANGLE seated entirely above the panel
   edge, not the shared rotated square — the square's lower half shows as a
   floating diamond once it lands on the promo image. Don't "restore" it.
-- The group-entity tiles in `assets/images/websites/` are PLACEHOLDERS. Drop
+- The group-entity tiles in `assets/webxv2/images/websites/` are PLACEHOLDERS. Drop
   the real logo in at the same filename to replace one — the icon slot takes an
   inline `<svg>`, an `<img>` or an icon-font `<i>` at 26px either way.
 - `.ish-site-langs a` must stay `inline-flex`: `.ish-col a` and the ≤639

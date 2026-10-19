@@ -2,18 +2,18 @@
 <html lang="en" data-no-smooth>
 <head>
   <meta charset="UTF-8" />
-  <script src="assets/js/gate-config.js"></script>
-  <script src="assets/js/gate.js"></script>
+  <script src="assets/webxv2/js/gate-config.js"></script>
+  <script src="assets/webxv2/js/gate.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DS frame</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=261212" />
-  <link rel="stylesheet" href="assets/css/themes.css?v=261193" />
-  <script src="assets/js/tailwind.cdn.js"></script>
-  <script src="assets/js/ds-tailwind-config.js?v=261193"></script>
-  <script src="assets/js/ds-palette.js?v=261193"></script>
-  <script src="assets/js/ar-preview.js?v=261208"></script>
-  <script src="assets/js/lib-options.js?v=261208"></script>
-  <script defer src="assets/js/ds.js?v=261212"></script>
+  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261216" />
+  <link rel="stylesheet" href="assets/webxv2/css/themes.css?v=261193" />
+  <script src="assets/webxv2/js/tailwind.cdn.js"></script>
+  <script src="assets/webxv2/js/ds-tailwind-config.js?v=261193"></script>
+  <script src="assets/webxv2/js/ds-palette.js?v=261193"></script>
+  <script src="assets/webxv2/js/ar-preview.js?v=261208"></script>
+  <script src="assets/webxv2/js/lib-options.js?v=261208"></script>
+  <script defer src="assets/webxv2/js/ds.js?v=261216"></script>
   <style>html,body{margin:0}</style>
 </head>
 <body>
@@ -28,11 +28,11 @@
     // surface-image never gets its image from CSS: the section carries
     // data-bg (real pages author it per brand). The harness supplies the
     // preview asset for the ACTIVE theme when the option is picked.
-    const SURFACE_IMAGE_ASSET = { '': 'assets/images/bento-bg-placeholder.svg', ei: 'assets/images/bento-bg-ei.svg' };
+    const SURFACE_IMAGE_ASSET = { '': 'assets/webxv2/images/bento-bg-placeholder.svg', ei: 'assets/webxv2/images/bento-bg-ei.svg' };
     const surfaceImageAsset = (t) => SURFACE_IMAGE_ASSET[t] || SURFACE_IMAGE_ASSET[''];
     // header previews carry the ACTIVE brand's logotype (real pages author
     // --brand-logo themselves; the harness mirrors that per theme)
-    const BRAND_LOGO_ASSET = { ei: '/assets/images/ei-logo.svg' };
+    const BRAND_LOGO_ASSET = { ei: '/assets/webxv2/images/ei-logo.svg' };
     function syncBrandLogos(t) {
       document.querySelectorAll('.cmp-site-header').forEach((h) => {
         if (BRAND_LOGO_ASSET[t]) h.style.setProperty('--brand-logo', "url('" + BRAND_LOGO_ASSET[t] + "')");
@@ -141,7 +141,7 @@
       // self-contained global-reach map) so they execute once the markup exists.
       root.querySelectorAll('script').forEach(function(o){ var n=document.createElement('script'); [].forEach.call(o.attributes,function(a){ if(a.name!=='defer') n.setAttribute(a.name,a.value); }); if(o.src){ n.async=false; } else { n.textContent=o.textContent; } o.replaceWith(n); });
       const cmp=root.querySelector('.cmp');
-      if(cmp && surface) DSPalette.recompose(cmp, surface);   /* markup swap, not a CSS flip — see assets/js/ds-palette.js */
+      if(cmp && surface) DSPalette.recompose(cmp, surface);   /* markup swap, not a CSS flip — see assets/webxv2/js/ds-palette.js */
       if(cmp && /\bsurface-image\b/.test(surface||'')) cmp.setAttribute('data-bg', surfaceImageAsset(theme||''));
       // Vertical placement of a full-bleed block's copy (Content control).
       if(cmp && place){ cmp.classList.remove('is-top','is-middle','is-bottom'); cmp.classList.add(place); }

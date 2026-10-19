@@ -19,7 +19,7 @@
    Both consumers read it — there is no second copy:
      · scripts/verify.mjs  — the gate (closed vocabulary, no-new-indirection,
                              anti-context lint, block pairing conformance)
-     · assets/js/library.js + frame.html — the gallery Surface control, which
+     · assets/webxv2/js/library.js + frame.html — the gallery Surface control, which
                              RECOMPOSES the demo markup rather than relying on
                              CSS to adapt it.
 
