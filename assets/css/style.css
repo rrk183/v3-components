@@ -5041,10 +5041,13 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    stage height. Width media queries cannot see height; the stage can (device
    audit 2026-10-14). */
 .cmp-feature-scroll-story .ess-stage { container-type: size; }
-@container (max-height: 560px) and (min-width: 600px) {
+/* Short or landscape-tablet stages (Fold 8 open with the address bar, 928x515,
+   phones in landscape): copy left, mockup right, for every variant incl. rev,
+   mockup scaled so it clears the 72px header. */
+@container (min-width: 600px) and ((max-height: 560px) or ((max-width: 1023px) and (orientation: landscape))) {
   .cmp-feature-scroll-story .ess-grid { grid-template-columns: .96fr 1.04fr; gap: 32px; justify-items: stretch; }
   .cmp-feature-scroll-story .ess-vis { order: 0; min-height: 0; zoom: .62; }
-  .cmp-feature-scroll-story.rev .ess-vis, .cmp-feature-scroll-story .ess.rev .ess-vis { order: -1; }
+  .cmp-feature-scroll-story .ess.ess:not(.cine) .ess-vis { order: 1; height: 70cqh; transform: none; }
   .cmp-feature-scroll-story .ess-col { order: 0; }
   .cmp-feature-scroll-story .ess-chapters { min-height: 0; }
   .cmp-feature-scroll-story .ess-ch { align-items: flex-start; text-align: start; }
