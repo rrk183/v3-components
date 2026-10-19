@@ -19,6 +19,7 @@ npm run minify                                    # style.css → style.min.css 
 node scripts/minify.mjs --check                   # exit 1 if style.min.css is stale
 ```
 
+- Needs **Node 18+** (`.nvmrc` pins 20: run `nvm use`). An older default Node fails the scripts and the pre-commit hook.
 - Pages must be served over HTTP. `file://` breaks images, video and components.
 - `server.js` is a zero-dependency static server. Setting `SITE_PASSWORD` turns on HTTP Basic Auth. `assets/js/gate.js` + `gate-config.js` add a separate client-side prompt() gate for static deploys.
 - `.claude/workflows/` is **not in this checkout** (it's gitignored), so `verify.mjs` currently crashes with ENOENT before reporting.
@@ -57,5 +58,6 @@ Surfaces, inks and overlays are declared **in markup**. CSS never adapts content
 - **Cards** have three independent axes: identity `cd-card`, look `card-panel | card-media`, and paint `surface-*`. Finishes (`is-tile | is-flat | is-hover`) add only border/elevation, never fill. Behaviour (`is-hover-*`, `is-cols-*`) goes on the `.cmp-cards` root, never on a card.
 - **Section headers own their row.** Never wrap `.section-head` in a bespoke flex row. Put `is-split`/`is-center` on the header and make the link a `.sh-action` child.
 - **Filtering** is generic (`data-filter*` attributes in ds.js). Never write a page-local filter script.
+- **No site-root paths in the runtime.** The CMS hosts it under `assets/webxv2/`, not `assets/`. `style.css` references files relative to itself (`../fonts/…`, `../images/…`); `ds.js` builds asset URLs with `DS.asset('images/…')`, which resolves from its own folder. The Wholesale Banking logo link reads `<html data-home-url="…">` when present. Never write `/assets/…` in either file.
 - **Media queries** come only from the canonical set: max 479/639/767/1023/1279, min 640/768/1024/1280. The `:has()` budget is ≤ 1.
 - The gate is static analysis only. For visual changes, check `all-components.html` at 375/768/1024/1440 and run `/audit.html` for contrast on dark grounds.

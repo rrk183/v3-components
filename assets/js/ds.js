@@ -1810,6 +1810,12 @@
     var s = document.currentScript || document.querySelector('script[src*="ds.js"], script[src*="ds.min.js"]');
     return (s && s.src) ? s.src.replace(/[^/]*$/, '') : 'assets/js/';
   }
+  // ds.js's folder, captured NOW (document.currentScript is null once it has run).
+  // Every asset the runtime builds a URL for resolves from here — never from the
+  // site root — so the bundle works wherever it is hosted (assets/js/ here,
+  // assets/webxv2/js/ in the CMS): DS.asset('images/x.svg') → <js folder>/../images/x.svg
+  var DS_JS_DIR = new URL(dsBaseDir(), location.href).href;
+  function asset(path) { return new URL('../' + path, DS_JS_DIR).href; }
   function loadScript(src, cb) {
     var s = document.createElement('script'); s.src = src; s.defer = true;
     s.onload = cb; s.onerror = function () { if (window.console) console.warn('[DS] failed to load ' + src); };
@@ -1835,7 +1841,7 @@
   }
 
   /* ── Boot + public API ──────────────────────────────────────────────────── */
-  window.DS = { refresh: run, register: register, recipe: recipe, canAnimate: canAnimate, dragScroll: dragify, isRTL: isRTL };
+  window.DS = { refresh: run, register: register, recipe: recipe, canAnimate: canAnimate, dragScroll: dragify, isRTL: isRTL, asset: asset };
   // Header: when the active customer segment is Wholesale Banking,
   // point the brand logo at the Wholesale Banking home so clicking it returns the user
   // there (only inside Wholesale Banking; other segments keep their own logo href).
@@ -1843,10 +1849,13 @@
     var root = scope || document;
     var seg = root.querySelector('.ish-segments a.is-active');
     if (!seg || !/institutional|wholesale/i.test(seg.textContent || '')) return;
-    // Logo always returns to the new Wholesale Banking home (Ram, 2026-10-01), resolved from
-    // ds.js's own URL so it works from sub-folders (ibv2/) and file:// alike.
-    var ds = document.querySelector('script[src*="assets/js/ds.js"], script[src*="assets/js/ds.min.js"]');
-    var home = ds ? new URL('../../cib-home-final.html', ds.src).href : 'cib-home-final.html';
+    // Logo always returns to the Wholesale Banking home (Ram, 2026-10-01). A host
+    // that knows its home URL declares it: <html data-home-url="/wholesale/">
+    // (the CMS must — its asset folder sits at a different depth). Otherwise it's
+    // resolved from ds.js's own folder (assets/js/ → site root), which works from
+    // sub-folders (ibv2/) and file:// alike.
+    var home = document.documentElement.getAttribute('data-home-url') ||
+               new URL('../../cib-home-final.html', DS_JS_DIR).href;
     root.querySelectorAll('a.ish-logo').forEach(function (a) { a.setAttribute('href', home); });
   }
   function boot() { run(document); linkSegmentLogo(document); initSmoothScroll(); }
@@ -1878,7 +1887,7 @@
    Labels are HTML chips (px type, translatable) — never SVG text (unreadable on phones). */
 var WM_STYLES = {
   dots: {
-    src: '/assets/images/shared/common/dotted-map-clear.svg',
+    src: DS.asset('images/shared/common/dotted-map-clear.svg'),
     w: 800, h: 400,
     /* calibrated on the shipped artwork (proven positions harvested from live pages;
        dubai x cross-checks hp-map-story's hand-drawn 530.8) — extend here, never per page.
@@ -1897,9 +1906,9 @@ var WM_STYLES = {
                [30.04,20.306],[31.23,21.788],[41.01,34.01],[50.11,42.75],[51.51,47.25],[55.76,48.15]]
   },
   hex: {
-    src: '/assets/images/shared/common/hex-map-base.svg',
-    accentSrc: '/assets/images/shared/common/hex-map-accent.svg',       /* highlighted market tiles (cluster) */
-    accentSingleSrc: '/assets/images/shared/common/hex-map-accent-single.svg', /* one tile per market */
+    src: DS.asset('images/shared/common/hex-map-base.svg'),
+    accentSrc: DS.asset('images/shared/common/hex-map-accent.svg'),       /* highlighted market tiles (cluster) */
+    accentSingleSrc: DS.asset('images/shared/common/hex-map-accent-single.svg'), /* one tile per market */
     w: 1705, h: 984,
     chip: 'flag',        /* flag chips + leader lines + hex ripples (the hx-* CSS family) */
     off: 52,             /* leader length: point → chip anchor, artwork units */
@@ -2063,7 +2072,7 @@ function wmV2(root){
         b.style.left=((p._ax-vb.x)/vb.w*100)+'%';
         b.style.top=((p._ay-vb.y)/vb.h*100)+'%';
         b.style.transitionDelay=(0.5+i*0.05)+'s';
-        b.innerHTML='<img class="hx-flag" src="/assets/images/shared/flags/'+(p.flag||'')+'.svg" alt="" loading="lazy"><span class="hx-name"></span>';
+        b.innerHTML='<img class="hx-flag" src="'+DS.asset('images/shared/flags/'+(p.flag||'')+'.svg')+'" alt="" loading="lazy"><span class="hx-name"></span>';
         b.querySelector('.hx-name').textContent=p.label;
         labels.appendChild(b);
       }
@@ -4045,7 +4054,7 @@ DS.recipe('ib-hero', function (root) {
     b.style.left=((m.a.x - VB.x)/VB.w*100)+'%';
     b.style.top=((m.a.y - VB.y)/VB.h*100)+'%';
     b.style.transitionDelay=(0.5+idx*0.05)+'s';
-    b.innerHTML='<img class="hx-flag" src="/assets/images/shared/flags/'+m.flag+'.svg" alt="" loading="lazy">'
+    b.innerHTML='<img class="hx-flag" src="'+DS.asset('images/shared/flags/'+m.flag+'.svg')+'" alt="" loading="lazy">'
                +'<span class="hx-name">'+m.name+'</span>';
     chipsG.appendChild(b);
     });

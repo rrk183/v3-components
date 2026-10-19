@@ -1833,7 +1833,7 @@ html, body { background: #fff; }
    centred. */
 .cmp-footer-option1 .fo1-copy-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; }
 .cmp-footer-option1 .fo1-copy-text { flex: 1; min-width: 0; }
-.cmp-footer-option1 .fo1-copy-logo { flex: none; margin-inline-start: auto; width: 116px; height: 30px; background-color: var(--navy); -webkit-mask: url(/assets/images/EmiratesNBD-logo.svg) no-repeat center / contain; mask: url(/assets/images/EmiratesNBD-logo.svg) no-repeat center / contain; }
+.cmp-footer-option1 .fo1-copy-logo { flex: none; margin-inline-start: auto; width: 116px; height: 30px; background-color: var(--navy); -webkit-mask: url(../images/EmiratesNBD-logo.svg) no-repeat center / contain; mask: url(../images/EmiratesNBD-logo.svg) no-repeat center / contain; }
 @media (max-width: 639px) {
   .cmp-footer-option1 .fo1-copy-row { flex-direction: column; }
   .cmp-footer-option1 .fo1-copy-text { text-align: center; flex: none; }
@@ -3641,7 +3641,7 @@ html.lenis, html.lenis body { height: auto; }
    bar. The DEFAULT mask is the base (ENBD) mark; another brand's page
    passes its own via style="--brand-logo:url(…)" on the section root —
    markup-authored asset, same rule as surface-image / data-bg. */
-.cmp-site-header .ish-logo-img { display: block; width: 128px; height: 34px; background-color: currentColor; -webkit-mask: var(--brand-logo, url(/assets/images/EmiratesNBD-logo.svg)) no-repeat left center / contain; mask: var(--brand-logo, url(/assets/images/EmiratesNBD-logo.svg)) no-repeat left center / contain; }
+.cmp-site-header .ish-logo-img { display: block; width: 128px; height: 34px; background-color: currentColor; -webkit-mask: var(--brand-logo, url(../images/EmiratesNBD-logo.svg)) no-repeat left center / contain; mask: var(--brand-logo, url(../images/EmiratesNBD-logo.svg)) no-repeat left center / contain; }
 .cmp-site-header .ish-menu { display: flex; align-items: center; gap: 28px; }
 .cmp-site-header .ish-mega { display: flex; align-items: center; }
 .cmp-site-header .ish-menu-trigger { display: inline-flex; align-items: center; gap: 5px; background: none; border: 0; padding: 0; font: inherit; font-size: 14px; font-weight: 500; color: currentColor; opacity: .9; white-space: nowrap; cursor: pointer; transition: opacity .2s; }
@@ -3782,7 +3782,7 @@ html.ish-nav-lock { overflow: hidden; }
   .cmp-site-header.is-nav-open .ish-drawer-panel { transform: none; }
   .cmp-site-header .ish-drawer-head { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px; background: #fff; border-bottom: 1px solid rgba(var(--navy-rgb), .08); }
   .cmp-site-header .ish-drawer-close { flex: none; }
-  .cmp-site-header .ish-drawer-logo { display: block; width: 116px; height: 30px; background-color: var(--navy); -webkit-mask: url(/assets/images/EmiratesNBD-logo.svg) no-repeat left center / contain; mask: url(/assets/images/EmiratesNBD-logo.svg) no-repeat left center / contain; }
+  .cmp-site-header .ish-drawer-logo { display: block; width: 116px; height: 30px; background-color: var(--navy); -webkit-mask: url(../images/EmiratesNBD-logo.svg) no-repeat left center / contain; mask: url(../images/EmiratesNBD-logo.svg) no-repeat left center / contain; }
   .cmp-site-header .ish-drawer-close { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex: none; padding: 0; border: 0; background: none; color: var(--navy); cursor: pointer; }
   .cmp-site-header .ish-drawer-close { --ic-size: 24px; }
 
@@ -5064,7 +5064,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 /* ═══ API scroll-story — ambient bg + offset cards on the mockups ═══════════ */
 /* Abstract image background behind the pinned API story (api-bg on the section).
    The image is already dark — no tint overlay on the beats. */
-.api-dark.api-bg .ess-stage::before{content:"";position:absolute;inset:0;z-index:0;background:#040b1a var(--api-bg-img, url(/assets/images/api-bg.jpg)) center/cover no-repeat}
+.api-dark.api-bg .ess-stage::before{content:"";position:absolute;inset:0;z-index:0;background:#040b1a var(--api-bg-img, url(../images/api-bg.jpg)) center/cover no-repeat}
 .api-dark.api-bg .ess-beats,.api-dark.api-bg .ess-opener{z-index:2}
 /* Tint ONLY behind the title scene — darkens the bg so the big title reads;
    it fades out with the opener as the mockup beats take over. */
