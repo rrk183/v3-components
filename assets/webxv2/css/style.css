@@ -7894,6 +7894,20 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
   :where(.hf-main) .hf-row__lede { grid-column: 1; grid-row: 2; }
   :where(.hf-main) .hf-arrows { display: flex; grid-column: 1; grid-row: 3; justify-self: end; }
 }
+/* ── Fit to screen (Ram 2026-10-19): the pinned solutions row (head + cards +
+   CTAs) always fits the visible screen. cib-home-flow.js scales the cards as a
+   whole (design ratio kept, min 228px wide, sized to 100svh so the address bar
+   never changes them) and adds .is-fit. If a min-size card still does not fit,
+   the intro text steps aside, and on landscape screens .is-fit-side puts the
+   head + CTAs left and the cards right. ── */
+:where(.hf-main) .hf-hero.is-fit .hf-track { padding-inline: var(--hf-edge); scroll-padding-inline: var(--hf-edge); }
+:where(.hf-main) .hf-hero.is-fit .hf-slot { scroll-snap-align: start; }
+:where(.hf-main) .hf-hero.is-live.is-fit-side .hf-row { display: grid; grid-template-columns: minmax(240px, 36%) minmax(0, 1fr); grid-template-rows: auto auto; align-content: center; column-gap: 0; }
+:where(.hf-main) .hf-hero.is-fit-side .hf-row__head { grid-column: 1; grid-row: 1; align-self: end; grid-template-columns: minmax(0, 1fr); }
+:where(.hf-main) .hf-hero.is-fit-side .hf-hero__ctas { grid-column: 1; grid-row: 2; align-self: start; flex-direction: column; align-items: flex-start; }
+:where(.hf-main) .hf-hero.is-fit-side .hf-hero__ctas .btn { flex: none; white-space: nowrap; }
+:where(.hf-main) .hf-hero.is-fit-side .hf-track { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; padding-inline: 0 var(--hf-edge); scroll-padding-inline: 0; }
+:where(.hf-main) .hf-hero.is-fit-side .hf-arrows { display: none; }
 
 /* ── CTA float (Ram 2026-09-30): phone + chip drift independently, on the
    independent translate / rotate properties so they compose with the
