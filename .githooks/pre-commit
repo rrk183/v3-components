@@ -3,6 +3,11 @@
 # part of a commit, rebuild the .min from the STAGED style.css and stage it.
 # Activated by `npm install` (package.json "prepare" sets core.hooksPath).
 if git diff --cached --name-only | grep -qx 'assets/css/style.css'; then
+  major=$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null || echo 0)
+  if [ "$major" -lt 18 ]; then
+    echo "pre-commit: rebuilding style.min.css needs Node 18+ (found $(node -v 2>/dev/null || echo none)) — run: nvm use" >&2
+    exit 1
+  fi
   if [ ! -d node_modules/esbuild ]; then
     echo "pre-commit: style.css changed but esbuild is missing — run: npm install" >&2
     exit 1
