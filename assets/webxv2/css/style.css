@@ -8106,7 +8106,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 .cmp-product-scrub .ps-sub{margin:14px 0 0;font-size:clamp(15px,1.9vmin,19px);line-height:1.55;max-width:34ch}
 .cmp-product-scrub .ps-cap .btn{margin-top:24px}
 /* opener as on the original hero: title top | app icon middle | quote + cue bottom */
-.cmp-product-scrub .ps-opener{position:absolute;left:0;right:0;z-index:3;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:clamp(104px,16vh,168px) 24px clamp(44px,8vh,92px);will-change:transform,opacity}
+.cmp-product-scrub .ps-opener{position:absolute;left:0;right:0;z-index:3;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:clamp(104px,16vh,168px) 24px calc(20vh + 12px);will-change:transform,opacity}
 .cmp-product-scrub .ps-op-top,.cmp-product-scrub .ps-op-bottom{display:flex;flex-direction:column;align-items:center}
 .cmp-product-scrub .ps-h1{margin:14px 0 0;font-size:clamp(40px,7.4vmin,92px);line-height:1.02;letter-spacing:-.03em}
 .cmp-product-scrub .ps-op-bottom .ps-sub{margin:0 auto;max-width:30ch;font-size:clamp(15px,2vmin,20px);line-height:1.5}
@@ -8118,7 +8118,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 @keyframes ps-cue{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.4);opacity:.6}}
 /* phones: the opener gathers into one centred stack with even gaps */
 @media (max-width: 767px){
-  .cmp-product-scrub .ps-opener{justify-content:center;gap:clamp(28px,5vh,44px);padding:88px 20px 24px}
+  .cmp-product-scrub .ps-opener{justify-content:center;gap:clamp(28px,5vh,44px);padding:88px 20px calc(20vh + 8px)}
   .cmp-product-scrub .ps-icon{width:clamp(112px,30vw,150px)}
   .cmp-product-scrub .ps-cue{margin-top:18px}
 }

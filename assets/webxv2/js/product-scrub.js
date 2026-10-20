@@ -13,7 +13,7 @@
   if (!root) return;
   var stage = root.querySelector('.ps-stage'), world = root.querySelector('.ps-world');
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var FW = 1920, FH = 1080, VER = '?v=6';
+  var FW = 1920, FH = 1080, VER = '?v=8';
 
   function ease(t) { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); }
   function seg(p, a) { return Math.max(0, Math.min(1, (p - a[0]) / (a[1] - a[0]))); }
@@ -48,14 +48,15 @@
     'uniform sampler2D uF,uS0,uS1,uS2;',
     'uniform vec3 uCam;uniform vec2 uStage;uniform float uDpr,uOp;',
     'uniform mat3 uH0,uH1,uH2;uniform vec4 uB0,uB1,uB2;uniform vec4 uT0,uT1,uT2;',
-    // uB: sw, sh, radius px, mode (0 = fit width + scroll, 1 = fit height, centred)
+    // uB: sw, sh, radius px, mode (0 = fit width + scroll, 1 = fit height, centred, 2 = as 0 with a sticky status bar)
     // uT: imgW, imgH, scroll px, on (1/0)
     'float rbox(vec2 p,vec2 s,float r){vec2 q=abs(p-s*.5)-s*.5+r;return length(max(q,0.))+min(max(q.x,q.y),0.)-r;}',
     'vec4 scr(sampler2D t,mat3 Hi,vec4 b,vec4 m,vec2 fp,vec4 bg){',
     '  if(m.w<.5)return bg; vec3 h=Hi*vec3(fp,1.); if(h.z<=0.)return bg; vec2 uv=h.xy/h.z;',
     '  if(uv.x<0.||uv.x>1.||uv.y<0.||uv.y>1.)return bg; vec2 sp=uv*b.xy;',
     '  if(rbox(sp,b.xy,b.z)>0.)return bg; vec2 tc;',
-    '  if(b.w<.5){tc=vec2(uv.x,(sp.y+m.z)/(b.x*m.y/m.x));}else{float dw=b.y*m.x/m.y;tc=vec2((sp.x-(b.x-dw)*.5)/dw,uv.y);}',
+    '  if(b.w<.5||b.w>1.5){float bd=b.w>1.5?124.*b.x/m.x:0.;tc=vec2(uv.x,(sp.y<bd?sp.y:sp.y+m.z)/(b.x*m.y/m.x));}else{',   // mode 2: the status bar (top 124 texture px) stays put while the app scrolls under it
+    'float dw=b.y*m.x/m.y;tc=vec2((sp.x-(b.x-dw)*.5)/dw,uv.y);}',
     '  return vec4(texture2D(t,tc).rgb,1.);}',
     'void main(){',
     '  vec2 sp=vec2(gl_FragCoord.x,uStage.y*uDpr-gl_FragCoord.y)/uDpr;',
@@ -108,7 +109,7 @@
   /* ── layout ──────────────────────────────────────────────────────────── */
   var W, H, prof, TZ, DZ, hdr, small, dpr;
   var caps = [].slice.call(root.querySelectorAll('[data-cap]')).map(function (el) { return { el: el, t: el.getAttribute('data-cap').split(',').map(Number) }; });
-  var opener = root.querySelector('.ps-opener'), RTL = (document.documentElement.getAttribute('dir') || '').toLowerCase() === 'rtl';
+  var opener = root.querySelector('.ps-opener'), opTop = root.querySelector('.ps-op-top'), opIcon = root.querySelector('.ps-icon'), opBot = root.querySelector('.ps-op-bottom'), RTL = (document.documentElement.getAttribute('dir') || '').toLowerCase() === 'rtl';
   function measure() {
     W = stage.clientWidth;
     var pr = document.createElement('div'); pr.style.cssText = 'position:fixed;top:0;height:100vh;height:100svh;width:0;visibility:hidden';
@@ -226,11 +227,34 @@
     var z = zone(FAMILY_START_BOX), k = .94 + .06 * ease(seg(p, [.776, .8])), cx = z.x + 938 * z.s, cy = z.y + 505 * z.s;
     return { s: z.s * k, x: cx - 938 * z.s * k, y: cy - 505 * z.s * k };
   }
+  function PEEK_TOP() { return prof === 'wide' ? .87 : .84; }   // phone top, as a share of the screen height
+  /* opening move (Ram, 2026-10-20): the phone peeks under the scroll cue. The spin clip's first ~100 frames have the
+     phone's bottom cut by the frame edge, so the frame bottom (y 1080) is
+     kept at or below the screen bottom until the clip has risen.
+       0    peek: the top of the phone shows under the scroll cue
+       0-.06 it rises straight up and the camera dollies in (hero moment)
+             while the opener lifts away in layers
+       .06-.14 it turns (the clip runs) and glides into its zone in one arc,
+             as the first caption slides in */
+  function peekCams() {
+    var z = zone(SPIN_BOX), s1 = z.s * (prof === 'wide' ? 1.4 : 1.18);
+    var peek = { s: z.s, x: W / 2 - 934 * z.s, y: H * PEEK_TOP() - 546 * z.s };
+    var stage = { s: s1, x: W / 2 - 934 * s1, y: H + 4 - 1080 * s1 };
+    return { z: z, peek: peek, stage: stage };
+  }
   var shots = [
-    new Shot({ dir: 'seq-spin/', screens: [{ img: 'phone-home-tex.jpg', sw: 390, sh: 850, radius: .13 }],
-      frame: function (p, N) { return 1 + Math.round(ease(seg(p, [.05, .3])) * (N - 1)); },
-      cam: function (p) { var sc = Math.max(W / 430, H / 937) * 1.06; return mix(zone(SPIN_BOX), { s: sc, x: W / 2 - 960 * sc, y: H / 2 - 540 * sc }, ease(seg(p, [.31, .5]))); },
-      opacity: function (p) { return ease(seg(p, [.03, .07])) * (1 - ease(seg(p, [.57, .62]))); },
+    new Shot({ dir: 'seq-spin/', screens: [{ img: 'phone-home-tex-v2.jpg', sw: 390, sh: 850, radius: .13, mode: 2 }],
+      frame: function (p, N) { return 1 + Math.round(ease(seg(p, [.06, .3])) * (N - 1)); },
+      cam: function (p) {
+        var k = peekCams(), sc = Math.max(W / 430, H / 937) * 1.06;
+        var c = mix(k.peek, k.stage, ease(seg(p, [0, .065])));
+        // glide: x and scale ease together, y follows a touch later so the path arcs
+        var g = seg(p, [.06, .14]), gx = ease(g), gy = ease(Math.pow(g, 1.4));
+        c = { s: lerp(c.s, k.z.s, gx), x: lerp(c.x + 934 * c.s, k.z.x + 960 * k.z.s, gx), y: lerp(c.y, k.z.y, gy) };
+        c.x -= (934 + (960 - 934) * gx) * c.s;
+        return mix(c, { s: sc, x: W / 2 - 960 * sc, y: H / 2 - 540 * sc }, ease(seg(p, [.31, .5])));
+      },
+      opacity: function (p) { return 1 - ease(seg(p, [.57, .62])); },
       scroll: function (p) { return .5 * ease(seg(p, [.26, .6])); } }),
     new Shot({ dir: 'seq-laptop/', screens: [{ img: 'desktop-home-tex.jpg', sw: 1440, sh: 931, radius: .006 }],
       frame: function (p, N) { return 1 + Math.round(ease(seg(p, [.6, .76])) * (N - 1)); },
@@ -239,7 +263,7 @@
       scroll: function (p) { return .12 * ease(seg(p, [.62, .8])); } }),
     /* family quads are [laptop, tablet, phone]; drawn tablet first (it sits behind) */
     new Shot({ dir: 'seq-family/', order: [1, 0, 2],
-      screens: [{ img: 'desktop-home-tex.jpg', sw: 834, sh: 1118, radius: .03, mode: 1, scroll: false }, { img: 'desktop-home-tex.jpg', sw: 1440, sh: 929, radius: .006, scroll: false }, { img: 'phone-home-tex.jpg', sw: 390, sh: 873, radius: .13, scroll: false }],
+      screens: [{ img: 'desktop-home-tex.jpg', sw: 834, sh: 1118, radius: .03, mode: 1, scroll: false }, { img: 'desktop-home-tex.jpg', sw: 1440, sh: 929, radius: .006, scroll: false }, { img: 'phone-home-tex-v2.jpg', sw: 390, sh: 873, radius: .13, scroll: false }],
       frame: function (p, N) { return 1 + Math.round(ease(seg(p, [.79, .92])) * (N - 1)); },
       cam: function (p) { return mix(familyStart(p), zone(prof === 'wide' ? FAMILY_BOX : FAMILY_BOX_TALL), ease(seg(p, [.79, .92]))); },
       opacity: function (p) { return ease(seg(p, [.776, .796])); } })
@@ -251,8 +275,15 @@
     if (Math.abs(p - last) < .0002) return; last = p;
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
     shots.forEach(function (s) { if (s.Q) s.draw(p); });
-    if (opener) { var o = 1 - ease(seg(p, [0, .05])); opener.style.opacity = o.toFixed(3); opener.style.transform = 'translate3d(0,' + (-(1 - o) * 28).toFixed(1) + 'px,0)'; }
-    caps.forEach(function (cp) { var v = band(cp.t, p); cp.el.style.opacity = v.toFixed(3); cp.el.style.transform = 'translate3d(0,' + ((1 - v) * 22).toFixed(1) + 'px,0)'; cp.el.classList.toggle('is-on', v > .5); });
+    if (opener) {   // the opener lifts away in layers: the quote first, the title fastest, the icon last
+      opener.style.opacity = '1';
+      var a = ease(seg(p, [0, .03])), b = ease(seg(p, [0, .05])), c = ease(seg(p, [.005, .055]));
+      if (opTop) { opTop.style.opacity = (1 - b).toFixed(3); opTop.style.transform = 'translate3d(0,' + (-b * H * .16).toFixed(1) + 'px,0)'; }
+      if (opIcon) { opIcon.style.opacity = (1 - c).toFixed(3); opIcon.style.transform = 'translate3d(0,' + (-c * H * .1).toFixed(1) + 'px,0) scale(' + (1 - .12 * c).toFixed(3) + ')'; }
+      if (opBot) { opBot.style.opacity = (1 - a).toFixed(3); opBot.style.transform = 'translate3d(0,' + (-a * H * .05).toFixed(1) + 'px,0)'; }
+      opener.style.visibility = p > .06 ? 'hidden' : '';
+    }
+    caps.forEach(function (cp, n) { var v = band(cp.t, p), d = (1 - v) * (n ? 22 : 56); cp.el.style.opacity = v.toFixed(3); cp.el.style.transform = n ? 'translate3d(0,' + d.toFixed(1) + 'px,0)' : 'translate3d(' + ((RTL ? 1 : -1) * d).toFixed(1) + 'px,0,0)'; cp.el.classList.toggle('is-on', v > .5); });   // the first caption slides in beside the phone
   }
 
   /* ── loop ────────────────────────────────────────────────────────────── */
