@@ -837,6 +837,7 @@
 "Real-time approvals, balance monitoring, and secure self-service — available on iOS and Android.": "موافقات فورية ومراقبة الأرصدة وخدمة ذاتية آمنة — متاح على iOS وAndroid.",
 "Download on the": "حمّله من",
 "Get it on": "متوفر على",
+"Explore it on": "اكتشفه على",
 "Scan to install": "امسح للتثبيت",
 "Today": "اليوم",
 "Secure Transactions": "معاملات آمنة",

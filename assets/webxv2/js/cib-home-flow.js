@@ -192,6 +192,67 @@
   }
 
   // tiles are a fixed size (the act 4 card: 323 x 540, mobile 380 x 590), set in CSS
+  // FIT TO SCREEN (Ram 2026-10-19): the pinned row (head + cards + CTAs) fits the
+  // screen. Rules:
+  //  - the card scales as a whole: width and height together, design ratio kept
+  //  - never smaller than CARD_MIN_W wide (below that the card stops reading well)
+  //  - sized against 100svh (address bar showing), so it is the SAME size with
+  //    or without the bar
+  //  - if a min-size card still does not fit: intro text steps aside first,
+  //    then on landscape screens the row goes side by side (head + CTAs left,
+  //    cards right)
+  var CARD_MIN_W = 228;
+  var svhProbe;
+  function screenH() {
+    if (!svhProbe) {
+      svhProbe = document.createElement('div');
+      svhProbe.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none';
+      document.body.appendChild(svhProbe);
+    }
+    return svhProbe.offsetHeight || vh;
+  }
+  function compactStep(n) {
+    var b = H.head.querySelector('.hf-row__lede-b'), a = H.head.querySelector('.hf-arrows'), l = H.head.querySelector('.hf-row__lede');
+    if (b) b.style.display = n >= 1 ? 'none' : '';
+    if (a) a.style.display = n >= 2 ? 'none' : '';
+    if (l) l.style.display = n >= 3 ? 'none' : '';
+  }
+  function fitTiles(rowTop, rowBot) {
+    var el = H.el;
+    el.style.removeProperty('--tile-h');
+    el.style.removeProperty('--tile-w');
+    el.classList.remove('is-fit', 'is-fit-side');
+    el.removeAttribute('data-fit-compact');
+    compactStep(0);
+    var t0 = H.tiles[0] && H.tiles[0].el;
+    if (!t0) return sizeTiles();
+    // standard design sizes (style.css): phone 380 x 590 (narrower screens: 100vw - 10px), else 323 x 540
+    var dH = isMobile ? 590 : 540, dW = isMobile ? Math.min(380, vw - 10) : 323, ratio = (isMobile ? 380 : 323) / dH, sh = screenH();
+    if (isMobile && dW < 380) dH = Math.round(dW / ratio);
+    var minH = Math.round(CARD_MIN_W / ratio);
+    function chrome() {                     // everything in the column except the cards
+      var tcs = getComputedStyle(H.track), ccs = getComputedStyle(H.ctas);
+      return H.head.offsetHeight + parseFloat(tcs.marginTop) + parseFloat(tcs.paddingTop) + parseFloat(tcs.paddingBottom) + H.ctas.offsetHeight + parseFloat(ccs.marginTop);
+    }
+    function room() { return Math.floor(sh - rowTop - rowBot - chrome()); }
+    var r = room();
+    if (r < dH) {
+      for (var n = 1; n <= 3 && r < minH; n++) { compactStep(n); el.setAttribute('data-fit-compact', n); r = room(); }
+      if (r < minH && vw > sh) {             // landscape: side by side, the cards get the full height
+        compactStep(1); el.setAttribute('data-fit-compact', 1);
+        el.classList.add('is-fit-side');
+        var tcs = getComputedStyle(H.track);
+        r = Math.floor(sh - rowTop - rowBot - parseFloat(tcs.paddingTop) - parseFloat(tcs.paddingBottom));
+      }
+    }
+    var h = Math.min(dH, Math.max(minH, r)), w = Math.round(h * ratio);
+    if (h < dH) {
+      el.style.setProperty('--tile-h', h + 'px');
+      el.style.setProperty('--tile-w', w + 'px');
+      el.classList.add('is-fit');
+    }
+    return t0.offsetHeight;
+  }
   function sizeTiles() { return H.tiles[0] ? H.tiles[0].el.offsetHeight : (isMobile ? 590 : 540); }
   // the phone's resting scale inside the Digital solutions card (above its text block)
   function sizeCardPhone() {
@@ -224,10 +285,13 @@
     var trackExtra = parseFloat(tcs.marginTop) + parseFloat(tcs.paddingTop) + parseFloat(tcs.paddingBottom);
     var ccs = getComputedStyle(H.ctas);
     var ctaH = H.ctas.offsetHeight + parseFloat(ccs.marginTop);
-    var tileH = sizeTiles();
+    var tileH = fitTiles(rowTop, rowBot);
+    tcs = getComputedStyle(H.track); trackExtra = parseFloat(tcs.marginTop) + parseFloat(tcs.paddingTop) + parseFloat(tcs.paddingBottom);
+    ccs = getComputedStyle(H.ctas); ctaH = H.ctas.offsetHeight + parseFloat(ccs.marginTop);
     // the composed row may be taller than the viewport (mobile 590px tiles): the
     // stage grows to fit and the pin simply releases with the CTAs below the fold
-    H.stageH = Math.max(vh, Math.ceil(rowTop + rowBot + H.head.offsetHeight + trackExtra + tileH + ctaH));
+    var colH = H.el.classList.contains('is-fit-side') ? Math.max(trackExtra + tileH, H.head.offsetHeight + ctaH) : H.head.offsetHeight + trackExtra + tileH + ctaH;
+    H.stageH = Math.max(vh, Math.ceil(rowTop + rowBot + colH));
     H.el.style.setProperty('--stage-h', H.stageH + 'px');
     H.el.style.setProperty('--stage-extra', (H.stageH - vh) + 'px');
     H.el.style.setProperty('--hero-top', Math.max(0, H.el.getBoundingClientRect().top + window.pageYOffset) + 'px');   // at rest the stage starts below the utility bar

@@ -2199,16 +2199,20 @@ html.st-lock { overflow: hidden; }
 .cmp-app-download-panel{padding-top:clamp(128px,11vw,160px);padding-inline:clamp(12px,1.4vw,24px)}
 .cmp-app-download-panel .adp-panel{position:relative;max-width:1400px;margin-inline:auto;border-radius:var(--r-xl);padding:clamp(56px,6.6vw,96px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:center}
 .cmp-app-download-panel .adp-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(34% 58% at 76% 52%,rgba(var(--blue-rgb),.08),transparent 72%)}
-.cmp-app-download-panel .adp-text{position:relative;z-index:1;grid-column:1 / span 6}
+.cmp-app-download-panel .adp-text{position:relative;z-index:1;grid-column:1 / span 6;grid-row:1}
 .cmp-app-download-panel .adp-h{margin:20px 0 0;max-width:18ch;line-height:1.1;text-wrap:balance}
 .cmp-app-download-panel .adp-lead{margin:20px 0 0;max-width:46ch}
 .cmp-app-download-panel .adp-line{margin:12px 0 0;max-width:42ch}
 .cmp-app-download-panel .adp-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
 .cmp-app-download-panel .adp-app-btn{display:none}
-.cmp-app-download-panel .adp-get{display:flex;flex-wrap:wrap;align-items:stretch;gap:16px 20px;margin-top:40px;padding-top:32px;border-top:1px solid rgba(var(--navy-rgb),.12)}
+/* Get the app: a full-width strip under both columns. Store badges in one row
+   on the start side, the ONE QR (smart link to the visitor's store) on the end
+   side. space-between, not an auto margin: when the row is too narrow the QR
+   wraps to its own line and starts under the badges instead of floating right. */
+.cmp-app-download-panel .adp-get{position:relative;z-index:1;grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 24px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(var(--navy-rgb),.12)}
 .cmp-app-download-panel .adp-get-h{flex-basis:100%;margin:0;font-size:13px;font-weight:600}
-.cmp-app-download-panel .adp-stores{display:flex;flex-direction:column;gap:10px}
-.cmp-app-download-panel .adp-store{display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 1.6rem;border-radius:var(--r-lg);line-height:1.15;text-decoration:none;box-shadow:0 12px 24px -8px rgba(var(--navy-rgb),.35);transition:transform .3s var(--ease-out),box-shadow .3s ease}
+.cmp-app-download-panel .adp-stores{display:flex;flex-wrap:wrap;gap:12px}
+.cmp-app-download-panel .adp-store{display:inline-flex;align-items:center;gap:.7rem;padding:.8rem 1.3rem;border-radius:var(--r-lg);line-height:1.15;text-decoration:none;box-shadow:0 12px 24px -8px rgba(var(--navy-rgb),.35);transition:transform .3s var(--ease-out),box-shadow .3s ease}
 .cmp-app-download-panel .adp-store:hover{transform:translateY(-3px)}
 /* vendor brand badge: Apple requires a black badge; the dark ground is restricted in blocks, so this one mark is painted here */
 .cmp-app-download-panel .adp-store.is-dark{background:var(--neutral-900);color:#fff}
@@ -2216,13 +2220,13 @@ html.st-lock { overflow: hidden; }
 .cmp-app-download-panel .adp-store-ic{width:26px;height:26px;flex:none}
 .cmp-app-download-panel .adp-store-tx{display:flex;flex-direction:column;align-items:flex-start}
 .cmp-app-download-panel .adp-store-k{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
-.cmp-app-download-panel .adp-store-b{font-size:19px;font-weight:700;letter-spacing:-.01em}
-.cmp-app-download-panel .adp-qr{display:flex;align-items:center;align-self:stretch;gap:18px;margin:0;--card-pad:14px 22px 14px 14px}
-.cmp-app-download-panel .adp-qr img{width:auto;height:100%;max-height:116px;aspect-ratio:1;flex:none}
-.cmp-app-download-panel .adp-qr figcaption{display:flex;flex-direction:column;justify-content:center;gap:12px}
+.cmp-app-download-panel .adp-store-b{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.cmp-app-download-panel .adp-qr{display:flex;flex-direction:column;align-items:center;gap:12px;margin:0;text-align:center}
+.cmp-app-download-panel .adp-qr img{width:112px;height:112px;flex:none;border-radius:var(--r-sm)}
+.cmp-app-download-panel .adp-qr figcaption{display:flex;flex-direction:column;align-items:center;gap:4px;max-width:200px}
 .cmp-app-download-panel .adp-qr-t{font-size:13px;font-weight:600}
-.cmp-app-download-panel .adp-qr-seg{display:inline-flex;gap:6px}
-.cmp-app-download-panel .adp-device{position:relative;z-index:1;grid-column:7 / span 6;justify-self:center;align-self:start;margin-top:calc(-1 * (clamp(56px,6.6vw,96px) + 72px))}
+
+.cmp-app-download-panel .adp-device{position:relative;z-index:1;grid-column:7 / span 6;grid-row:1;justify-self:center;align-self:start;margin-top:calc(-1 * (clamp(56px,6.6vw,96px) + 72px))}
 .cmp-app-download-panel .adp-phone{display:block;width:auto;height:min(640px,70vh); height: min(640px,70svh);max-width:100%;transform-origin:50% 90%;-webkit-mask-image:linear-gradient(to right,#000 86%,transparent 100%),linear-gradient(to bottom,#000 90%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,#000 86%,transparent 100%),linear-gradient(to bottom,#000 90%,transparent 100%);mask-composite:intersect}
 .cmp-app-download-panel .adp-chip{position:absolute;inset-inline-start:-8%;top:44%;display:inline-flex;align-items:center;gap:10px;margin:0;--card-pad:12px 16px;font-size:14px;font-weight:500;white-space:nowrap;box-shadow:0 20px 40px -18px rgba(var(--navy-rgb),.35)}
 /* The phone render is a photo, so it does NOT mirror in RTL: its right edge
@@ -2248,7 +2252,7 @@ html.st-lock { overflow: hidden; }
 @media (max-width: 767px){
   .cmp-app-download-panel{padding-top:clamp(96px,10vw,144px)}
   .cmp-app-download-panel .adp-panel{grid-template-columns:minmax(0,1fr);row-gap:40px;padding:32px 20px 36px}
-  .cmp-app-download-panel .adp-text,.cmp-app-download-panel .adp-device{grid-column:1}
+  .cmp-app-download-panel .adp-text,.cmp-app-download-panel .adp-device{grid-column:1;grid-row:auto}
   .cmp-app-download-panel .adp-device{order:-1;margin-top:0}
   .cmp-app-download-panel .adp-phone{height:360px}
   .cmp-app-download-panel .adp-chip{inset-inline-start:-4%;top:52%;font-size:13px}
@@ -7392,18 +7396,21 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 :where(.hf-main) .hf-pause { position: absolute; z-index: 4; }
 :where(.hf-main) .hf-pause[hidden] { display: none; }
 
-/* Glass captions (iOS liquid glass, alpha .4): copied from V7A */
+/* Hero captions (Ram, 2026-10-20): a quiet navy glass chip with a brand icon
+   tile, like a notification, instead of the glossy grey pill */
 :where(.hf-main) .hf-hero__cap {
   --drift: 0px;
-  position: relative; z-index: 3; align-self: flex-end; margin: 0; max-width: 13.2em; font-size: 20px; line-height: 1.3; font-weight: 400; letter-spacing: -.01em; color: #fff;
-  padding: 16px 22px; border-radius: var(--r-xl); isolation: isolate;
-  background: rgba(var(--hf-cap-rgb), .4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.8); backdrop-filter: blur(24px) saturate(1.8);
-  border: 1px solid rgba(255, 255, 255, .34);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(255, 255, 255, .1), 0 24px 48px -22px rgba(var(--hf-shade-rgb), .6), 0 6px 14px -8px rgba(var(--hf-shade-rgb), .35);
-  text-shadow: 0 1px 12px rgba(var(--navy-rgb), .45);
+  position: relative; z-index: 3; align-self: flex-end; margin: 0; display: flex; align-items: center; gap: 10px; width: max-content; max-width: none;
+  font-size: 15px; line-height: 1.3; font-weight: 500; letter-spacing: -.005em; color: #fff;
+  padding-block: 9px; padding-inline: 9px 16px; border-radius: 15px; isolation: isolate;
+  background: rgba(var(--navy-rgb), .8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6); backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, .14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 22px 44px -20px rgba(var(--hf-shade-rgb), .6), 0 4px 12px -6px rgba(var(--hf-shade-rgb), .3);
 }
-:where(.hf-main) .hf-hero__cap::before { content: ''; position: absolute; inset: 1px 1px 45% 1px; z-index: -1; border-radius: inherit; pointer-events: none; background: linear-gradient(180deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, 0)); }
+:where(.hf-main) .hf-cap__t { max-width: 12.5em; }
+:where(.hf-main) .hf-cap__ico { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; color: #fff; background: linear-gradient(145deg, var(--blue), rgba(var(--navy-rgb), 1) 130%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), 0 4px 10px -4px rgba(var(--hf-shade-rgb), .5); }
+:where(.hf-main) .hf-cap__ico svg { width: 16px; height: 16px; }
 /* static layout: the two captions sit bottom-right of the intro band */
 :where(.hf-main) .hf-hero__cap--l { position: absolute; right: var(--hf-edge); bottom: 150px; }
 :where(.hf-main) .hf-hero__cap--r { position: absolute; right: var(--hf-edge); bottom: 72px; }
@@ -7465,8 +7472,8 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 @keyframes hf-cue { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.4); } }
 /* captions hug the centred phone during the pull-back (vars set by JS) */
 :where(.hf-main) .hf-hero.is-live .hf-hero__cap { position: absolute; bottom: auto; opacity: 0; transform: translate3d(0, calc(16px + var(--drift)), 0) scale(.96); transition: opacity .6s var(--hf-ease), transform .9s var(--hf-ease); pointer-events: none; }
-:where(.hf-main) .hf-hero.is-live .hf-hero__cap--l { right: calc(50% + var(--phw, 140px) / 2 + 6px); top: calc(var(--pcy, 50vh) - 150px); }
-:where(.hf-main) .hf-hero.is-live .hf-hero__cap--r { right: auto; left: calc(50% + var(--phw, 140px) / 2 + 6px); top: calc(var(--pcy, 50vh) + 70px); }
+:where(.hf-main) .hf-hero.is-live .hf-hero__cap--l { right: calc(50% + var(--phw, 140px) / 2 + 16px); top: calc(var(--pcy, 50vh) - 150px); }
+:where(.hf-main) .hf-hero.is-live .hf-hero__cap--r { right: auto; left: calc(50% + var(--phw, 140px) / 2 + 16px); top: calc(var(--pcy, 50vh) + 70px); }
 :where(.hf-main) .hf-hero.is-live .hf-hero__cap.is-in { opacity: 1; transform: translate3d(0, var(--drift), 0); animation: hf-float 2.4s ease-in-out .9s 2; }
 :where(.hf-main) .hf-hero.is-live .hf-hero__cap--r.is-in { animation-delay: 1.3s; }
 :where(.hf-main) .hf-hero.is-live .hf-hero__cap.is-out { opacity: 0; transform: translate3d(0, calc(var(--drift) - 12px), 0) scale(.97); }
@@ -7645,7 +7652,9 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
   :where(.hf-main) .hf-body { font-size: 16px; }
   /* hero: static */
   :where(.hf-main) .hf-hero__intro { min-height: 72vh; padding: 132px var(--hf-edge) 36px; gap: 12px; }
-  :where(.hf-main) .hf-hero__cap { position: static; align-self: flex-start; font-size: 16px; padding: 10px 16px; }
+  :where(.hf-main) .hf-hero__cap { position: static; align-self: flex-start; font-size: 14px; padding-block: 8px; padding-inline: 8px 14px; gap: 9px; border-radius: 14px; }
+  :where(.hf-main) .hf-cap__ico { width: 26px; height: 26px; border-radius: 8px; }
+  :where(.hf-main) .hf-cap__ico svg { width: 14px; height: 14px; }
   :where(.hf-main) .hf-hero__cap--r { align-self: flex-end; }
   :where(.hf-main) .hf-hero__cap--r br { display: none; }
   :where(.hf-main) .hf-row { padding: 48px 0 64px; }
@@ -7658,7 +7667,8 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
   /* hero: live */
   :where(.hf-main) .hf-hero.is-live { height: 340vh; }
   :where(.hf-main) .hf-hero.is-live .hf-hero__copy { bottom: 88px; }
-  :where(.hf-main) .hf-hero.is-live .hf-hero__cap { font-size: 15px; padding: 9px 14px; max-width: 11em; }
+  :where(.hf-main) .hf-hero.is-live .hf-hero__cap { font-size: 13px; padding-block: 7px; padding-inline: 7px 12px; }
+  :where(.hf-main) .hf-hero.is-live .hf-cap__t { max-width: 10.5em; }
   :where(.hf-main) .hf-hero.is-live .hf-hero__cap--l { right: auto; left: 16px; top: calc(var(--pcy, 50vh) - var(--phh, 400px) / 2 - 58px); }
   :where(.hf-main) .hf-hero.is-live .hf-hero__cap--r { left: auto; right: 16px; top: calc(var(--pcy, 50vh) + var(--phh, 400px) / 2 + 14px); }
   :where(.hf-main) .hf-hero.is-live .hf-row__head { gap: 8px; }
@@ -7702,7 +7712,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 
 /* ── CONTRAST over imagery (measured on the worst frame, 4.5:1 for small text) ── */
 /* glass panes carry a deeper smoke so white text holds 4.5:1 over bright sky */
-:where(.hf-main) .hf-hero__cap { background: rgba(var(--hf-cap-deep-rgb), .7); }
+:where(.hf-main) .hf-hero__cap { background: rgba(var(--navy-rgb), .8); }
 /* tile tags: the DS chip-glass is a 16% white film; over a bright photo top it
    needs a navy smoke to stay legible (same treatment as the network pills) */
 :where(.hf-main) .hf-row .hf-tile .chip.chip-glass { background: rgba(var(--navy-rgb), .88); border-color: rgba(255, 255, 255, .16); }
@@ -7819,7 +7829,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 :where(.hf-main) .hf-hero.is-live .hf-row .hf-slot .cd-card.hf-tile--digital { box-shadow: 0 2px 4px rgba(var(--navy-rgb), calc(.06 * var(--chrome, 1))), 0 18px 32px -20px rgba(var(--navy-rgb), calc(.45 * var(--chrome, 1))); }
 
 /* hero captions: deeper smoke while live (worst frame 4.5:1) */
-:where(.hf-main) .hf-hero.is-live .hf-hero__cap { background: rgba(var(--hf-cap-deep-rgb), .8); }
+:where(.hf-main) .hf-hero.is-live .hf-hero__cap { background: rgba(var(--navy-rgb), .82); }
 
 /* hero background-video control: hidden until keyboard focus (WCAG 2.2.2 for
    the looping clip), then shown top-left of the hero as the DS btn-icon */
@@ -7893,6 +7903,20 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
   :where(.hf-main) .hf-row__lede { grid-column: 1; grid-row: 2; }
   :where(.hf-main) .hf-arrows { display: flex; grid-column: 1; grid-row: 3; justify-self: end; }
 }
+/* ── Fit to screen (Ram 2026-10-19): the pinned solutions row (head + cards +
+   CTAs) always fits the visible screen. cib-home-flow.js scales the cards as a
+   whole (design ratio kept, min 228px wide, sized to 100svh so the address bar
+   never changes them) and adds .is-fit. If a min-size card still does not fit,
+   the intro text steps aside, and on landscape screens .is-fit-side puts the
+   head + CTAs left and the cards right. ── */
+:where(.hf-main) .hf-hero.is-fit .hf-track { padding-inline: var(--hf-edge); scroll-padding-inline: var(--hf-edge); }
+:where(.hf-main) .hf-hero.is-fit .hf-slot { scroll-snap-align: start; }
+:where(.hf-main) .hf-hero.is-live.is-fit-side .hf-row { display: grid; grid-template-columns: minmax(240px, 36%) minmax(0, 1fr); grid-template-rows: auto auto; align-content: center; column-gap: 0; }
+:where(.hf-main) .hf-hero.is-fit-side .hf-row__head { grid-column: 1; grid-row: 1; align-self: end; grid-template-columns: minmax(0, 1fr); }
+:where(.hf-main) .hf-hero.is-fit-side .hf-hero__ctas { grid-column: 1; grid-row: 2; align-self: start; flex-direction: column; align-items: flex-start; }
+:where(.hf-main) .hf-hero.is-fit-side .hf-hero__ctas .btn { flex: none; white-space: nowrap; }
+:where(.hf-main) .hf-hero.is-fit-side .hf-track { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; padding-inline: 0 var(--hf-edge); scroll-padding-inline: 0; }
+:where(.hf-main) .hf-hero.is-fit-side .hf-arrows { display: none; }
 
 /* ── CTA float (Ram 2026-09-30): phone + chip drift independently, on the
    independent translate / rotate properties so they compose with the
@@ -8070,6 +8094,44 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 :where(.hf-main) .fv-news .hf-h { max-width: none; }
 :where(.hf-main) .fv-news .sh-lead { margin-top: 0; }
 /* ═══ /Wholesale Banking home ══════════════════════════════════════════════ */
+
+/* ── Product scrub (ENBD Business hero, 2026-10-20) ─────────────────────────
+   Scroll-scrubbed Rotato sequences with live app screens, drawn by
+   product-scrub.js on one WebGL canvas (.ps-gl, inserted by the script).
+   The script places the opener, the captions and the camera per screen shape;
+   these rules only set type, the cue and the stage. Inks are markup. */
+.cmp-product-scrub{display:block}
+.cmp-product-scrub .ps{position:relative;height:920vh}
+.cmp-product-scrub .ps-stage{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:radial-gradient(60% 70% at 62% 55%,rgba(var(--light-rgb),1) 0,var(--grey-100) 70%)}
+.cmp-product-scrub .ps-world{position:absolute;inset:0;bottom:calc(100lvh - 100svh)}
+.cmp-product-scrub .ps-gl{position:absolute;left:0;top:0;z-index:1;pointer-events:none}
+.cmp-product-scrub .ps-cap{position:absolute;z-index:3;opacity:0;pointer-events:none;will-change:transform,opacity}
+.cmp-product-scrub .ps-cap.is-on{pointer-events:auto}
+.cmp-product-scrub .ps-h{margin:10px 0 0;font-size:clamp(28px,4.4vmin,56px);line-height:1.06;letter-spacing:-.02em;text-wrap:balance}
+.cmp-product-scrub .ps-sub{margin:14px 0 0;font-size:clamp(15px,1.9vmin,19px);line-height:1.55;max-width:34ch}
+.cmp-product-scrub .ps-cap .btn{margin-top:24px}
+/* opener as on the original hero: title top | app icon middle | quote + cue bottom */
+.cmp-product-scrub .ps-opener{position:absolute;left:0;right:0;z-index:3;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:clamp(104px,16vh,168px) 24px calc(20vh + 12px);will-change:transform,opacity}
+.cmp-product-scrub .ps-op-top,.cmp-product-scrub .ps-op-bottom{display:flex;flex-direction:column;align-items:center}
+.cmp-product-scrub .ps-h1{margin:14px 0 0;font-size:clamp(40px,7.4vmin,92px);line-height:1.02;letter-spacing:-.03em}
+.cmp-product-scrub .ps-op-bottom .ps-sub{margin:0 auto;max-width:30ch;font-size:clamp(15px,2vmin,20px);line-height:1.5}
+.cmp-product-scrub .ps-icon{display:block;width:clamp(120px,24vmin,220px);height:auto;border-radius:23%;box-shadow:0 24px 44px -18px rgba(var(--navy-rgb),.55),0 6px 14px -6px rgba(var(--navy-rgb),.3)}
+/* scroll cue: the DS cue (line LEFT of the label, 1.6s pulse) in navy for the light ground */
+.cmp-product-scrub .ps-cue{display:flex;align-items:center;gap:.85rem;margin-top:clamp(20px,3vh,32px)}
+.cmp-product-scrub .ps-cue-line{display:block;width:1px;height:38px;background:rgba(var(--navy-rgb),.45);transform-origin:top;animation:ps-cue 1.6s ease-in-out infinite}
+.cmp-product-scrub .ps-cue-label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+@keyframes ps-cue{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.4);opacity:.6}}
+/* phones: the opener gathers into one centred stack with even gaps */
+@media (max-width: 767px){
+  .cmp-product-scrub .ps-opener{justify-content:center;gap:clamp(28px,5vh,44px);padding:88px 20px calc(20vh + 8px)}
+  .cmp-product-scrub .ps-icon{width:clamp(112px,30vw,150px)}
+  .cmp-product-scrub .ps-cue{margin-top:18px}
+}
+@media (prefers-reduced-motion: reduce){
+  .cmp-product-scrub .ps{height:auto}
+  .cmp-product-scrub .ps-stage{position:relative;height:100vh;height:100svh}
+  .cmp-product-scrub .ps-cue-line{animation:none}
+}
 
 /* ═══ 3. RTL FIXES ═══════════════════════════════════════════════════════════ */
 /* Page-level RTL fixes for the Arabic editions (<page>-ar.html). Component

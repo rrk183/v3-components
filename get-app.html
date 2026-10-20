@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" data-ios="https://apps.apple.com/ae/app/enbd-business/id6762097902" data-android="https://play.google.com/store/apps/details?id=ae.emiratesnbd.businessonlinex&amp;hl=en" data-huawei="#">
+<!-- Smart app link: the ONE QR in the App Download Panel encodes this page's
+     URL. It sends iPhones / iPads to the App Store, Huawei phones (HMS, no
+     Google Play) to AppGallery and other Androids to Google Play. Desktop and
+     unknown devices see the three store badges. Set the three store URLs on
+     <html> (data-ios / data-android / data-huawei); "#" = not supplied yet,
+     so the page stays on the badges instead of redirecting. No gate: this
+     page must open straight from a phone camera. -->
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<meta name="description" content="Get the ENBD Business app from the App Store, Google Play or AppGallery." />
+<title>Get the ENBD Business app | Emirates NBD</title>
+<link rel="stylesheet" href="assets/webxv2/css/style.css?v=261220" />
+<script>
+(function () {
+  var d = document.documentElement, ua = navigator.userAgent || '';
+  var os = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? 'ios'
+         : /HuaweiBrowser|HMSCore|HarmonyOS|\bHUAWEI\b/i.test(ua) ? 'huawei'
+         : /Android/i.test(ua) ? 'android' : '';
+  var url = os && d.getAttribute('data-' + os);
+  if (url && url !== '#') location.replace(url);
+})();
+</script>
+</head>
+<body class="surface-mute">
+<main class="cmp cmp-app-download-panel section-y">
+  <div class="adp-panel surface-white">
+    <div class="adp-text">
+      <p class="ds-eyebrow ink-accent">ENBD Business</p>
+      <h1 class="type-h2 adp-h ink-primary">Get the app</h1>
+      <p class="type-body adp-line ink-mute">Choose your app store.</p>
+    </div>
+    <div class="adp-get">
+      <div class="adp-stores" data-get-stores>
+        <a href="#" data-store="ios" class="adp-store is-dark" aria-label="Download ENBD Business on the App Store">
+          <svg class="adp-store-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.09l-.02-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          <span class="adp-store-tx"><span class="adp-store-k">Download on the</span><span class="adp-store-b">App Store</span></span>
+        </a>
+        <a href="#" data-store="android" class="adp-store surface-white" aria-label="Get ENBD Business on Google Play">
+          <svg class="adp-store-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#00A0FF" d="M3.6 2.3c-.3.3-.5.7-.5 1.3v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.1v-.2L3.7 2.2l-.1.1z"/><path fill="#FFCE00" d="M16.3 15.4 13 12.1v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2-.1.1z"/><path fill="#FF3A44" d="M16.4 15.3 13 12 3.6 21.7c.4.4 1 .4 1.7.1l11.1-6.5z"/><path fill="#00E676" d="M16.4 8.7 5.3 2.2c-.7-.4-1.3-.3-1.7.1L13 12l3.4-3.3z"/></svg>
+          <span class="adp-store-tx"><span class="adp-store-k">Get it on</span><span class="adp-store-b">Google Play</span></span>
+        </a>
+        <a href="#" data-store="huawei" class="adp-store is-dark" aria-label="Explore ENBD Business on AppGallery">
+          <svg class="adp-store-ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5.5" fill="#C8102E"/><path d="M8.2 6.4a3.8 3.8 0 0 0 7.6 0" fill="none" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/><text x="12" y="16.6" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="3.6" font-weight="700" text-anchor="middle" letter-spacing=".15">HUAWEI</text></svg>
+          <span class="adp-store-tx"><span class="adp-store-k">Explore it on</span><span class="adp-store-b">AppGallery</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+[].forEach.call(document.querySelectorAll('[data-store]'), function (a) {
+  var u = document.documentElement.getAttribute('data-' + a.getAttribute('data-store'));
+  if (u && u !== '#') a.href = u; else a.remove();   // store not offered yet: no dead badge
+});
+</script>
+</body>
+</html>

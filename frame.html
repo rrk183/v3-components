@@ -6,14 +6,14 @@
   <script src="assets/webxv2/js/gate.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DS frame</title>
-  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261217" />
+  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261220" />
   <link rel="stylesheet" href="assets/webxv2/css/themes.css?v=261193" />
   <script src="assets/webxv2/js/tailwind.cdn.js"></script>
   <script src="assets/webxv2/js/ds-tailwind-config.js?v=261193"></script>
   <script src="assets/webxv2/js/ds-palette.js?v=261193"></script>
   <script src="assets/webxv2/js/ar-preview.js?v=261208"></script>
-  <script src="assets/webxv2/js/lib-options.js?v=261208"></script>
-  <script defer src="assets/webxv2/js/ds.js?v=261217"></script>
+  <script src="assets/webxv2/js/lib-options.js?v=261220"></script>
+  <script defer src="assets/webxv2/js/ds.js?v=261220"></script>
   <style>html,body{margin:0}</style>
 </head>
 <body>
@@ -155,7 +155,7 @@
       if(cmp && mcols){ cmp.classList.remove('is-m-cols-1','is-m-cols-2'); cmp.classList.add(mcols); }
       if(mspeed){ root.querySelectorAll('.marquee').forEach(function(m){ m.style.setProperty('--marquee-dur', mspeed); }); }
       // block-specific markup options (lib-options.js): motion, buttons
-      if(window.LibOptions) LibOptions.apply(root, { btns: P.get('btns'), motion: P.get('motion'), app: P.get('app'), meyebrow: P.get('meyebrow'), mstats: P.get('mstats'), htlink: P.get('htlink') });
+      if(window.LibOptions) LibOptions.apply(root, { btns: P.get('btns'), motion: P.get('motion'), app: P.get('app'), stores: P.get('stores'), meyebrow: P.get('meyebrow'), mstats: P.get('mstats'), htlink: P.get('htlink') });
       // Desktop column count (Columns control — opt-in grid blocks like cards-thumb)
       if(cmp && cols){ cmp.classList.remove('is-cols-5','is-cols-4','is-cols-3','is-cols-2','is-cols-1','is-cols-auto'); cmp.classList.add(cols); }
       // CTA style (CTA control — opt-in card blocks like cards-thumb)

@@ -357,7 +357,7 @@
     { cat: 'CTA & Banners', sub: 'Conversion moments and promotional bands.', items: [
       { name: 'CTA Marquee', v4: true, mspeed: true, impact: 'statement', whenToUse: 'Bold scrolling marquee call-to-action band.', variants: [{ label: 'Default', slug: 'cta-marquee' }] },
       { name: 'Static Banner', impact: 'supporting', whenToUse: 'Simple promotional banner.', variants: [{ label: 'Default', slug: 'static-banner' }] },
-      { name: 'App Download Panel', v4: true, motion: true, btns: true, app: true, impact: 'statement', reviewed: false, whenToUse: 'The closing conversion panel of a page: eyebrow, headline, lead and two buttons, then a "Get the app" row with App Store and Google Play badges and a QR tile (iOS | Android chips swap the code), beside a phone render that overlaps the panel top with a floating status chip. On phones one store button replaces the badges and QR. Harvested from the Wholesale Banking home closing act.', variants: [{ label: 'Default', slug: 'app-download-panel' }], overlays: [] },
+      { name: 'App Download Panel', v4: true, motion: true, btns: true, app: true, stores: true, impact: 'statement', reviewed: false, whenToUse: 'The closing conversion panel of a page: eyebrow, headline, lead and two buttons, beside a phone render that overlaps the panel top with a floating status chip, then a full-width "Get the app" strip: App Store, Google Play and AppGallery badges in one row and ONE QR on the end side (a smart link that opens the scanning phone\'s own store). On phones one store button replaces the strip. Harvested from the Wholesale Banking home closing act.', variants: [{ label: 'Default', slug: 'app-download-panel' }], overlays: [] },
       { name: 'CTA Band', impact: 'supporting', whenToUse: 'Compact closing call-to-action band.', variants: [{ label: 'Default', slug: 'cta-band' }], overlays: [], align: true },
     ] },
     { cat: 'Tools & Calculators', sub: 'Interactive tools that compute a real answer — not mockups.', items: [
@@ -528,7 +528,7 @@
       if (mspeed) { stage.querySelectorAll('.marquee').forEach(function (m) { m.style.setProperty('--marquee-dur', mspeed); }); }
       syncBrandLogos(stage, currentTheme());
       var oc = stage.closest('.lib-card');   // block-specific markup options (lib-options.js)
-      if (window.LibOptions && oc) LibOptions.apply(stage, { btns: oc.dataset.btns, motion: oc.dataset.motion, app: oc.dataset.app, meyebrow: oc.dataset.meyebrow, mstats: oc.dataset.mstats, htlink: oc.dataset.htlink });
+      if (window.LibOptions && oc) LibOptions.apply(stage, { btns: oc.dataset.btns, motion: oc.dataset.motion, app: oc.dataset.app, stores: oc.dataset.stores, meyebrow: oc.dataset.meyebrow, mstats: oc.dataset.mstats, htlink: oc.dataset.htlink });
       applyCols(stage, cols);
       applyCta(stage, cta);
       applyCardSurf(stage, cardsurf);
@@ -582,6 +582,7 @@
     if (ocard && ocard.dataset.btns) params.set('btns', ocard.dataset.btns);
     if (ocard && ocard.dataset.motion) params.set('motion', ocard.dataset.motion);
     if (ocard && ocard.dataset.app) params.set('app', ocard.dataset.app);
+    if (ocard && ocard.dataset.stores) params.set('stores', ocard.dataset.stores);
     if (ocard && ocard.dataset.meyebrow) params.set('meyebrow', ocard.dataset.meyebrow);
     if (ocard && ocard.dataset.mstats) params.set('mstats', ocard.dataset.mstats);
     if (ocard && ocard.dataset.htlink) params.set('htlink', ocard.dataset.htlink);
@@ -720,7 +721,7 @@
     var mspeedSel = item.mspeed ? selectHTML('mspeed', MSPEEDS) : '';
     var motionSel = (item.motion && window.LibOptions) ? selectHTML('motion', LibOptions.MOTION) : '';
     var btnsSel = (item.btns && window.LibOptions) ? selectHTML('btns', LibOptions.BTNS) : '';
-    var appSel = (item.app && window.LibOptions) ? selectHTML('app', LibOptions.APP) : '';
+    var appSel = (item.app && window.LibOptions) ? selectHTML('app', LibOptions.APP) + (item.stores ? selectHTML('stores', LibOptions.STORES) : '') : '';
     var mapSel = (item.mapopts && window.LibOptions) ? selectHTML('meyebrow', LibOptions.MEYEBROW) + selectHTML('mstats', LibOptions.MSTATS) : '';
     var htSel = (item.htopts && window.LibOptions) ? selectHTML('htlink', LibOptions.HTLINK) : '';
     var colsSel = item.cols ? selectHTML('cols', item.colsOpts === 'wall' ? WALLCOLS : item.colsOpts === 'dir' ? DIRCOLS : item.colsOpts === 'links' ? LINKCOLS : COLS) : '';
@@ -794,7 +795,18 @@
         // copy the composition the author is LOOKING AT, recomposed from the
         // block source (not the live DOM, which carries runtime clones)
         fetch('blocks/' + slug + '.html').then(function (r) { return r.text(); })
-          .then(function (html) { return navigator.clipboard.writeText(surf ? DSPalette.recomposeHTML(html, surf) : html); })
+          .then(function (html) {
+            if (surf) html = DSPalette.recomposeHTML(html, surf);
+            // markup options (Buttons, App row, Stores, …) are applied too, so
+            // the copy matches the preview
+            var d = card.dataset;
+            if (window.LibOptions && (d.btns || d.motion || d.app || d.stores || d.meyebrow || d.mstats || d.htlink)) {
+              var tpl = document.createElement('template'); tpl.innerHTML = html;
+              LibOptions.apply(tpl.content, { btns: d.btns, motion: d.motion, app: d.app, stores: d.stores, meyebrow: d.meyebrow, mstats: d.mstats, htlink: d.htlink });
+              html = tpl.innerHTML;
+            }
+            return navigator.clipboard.writeText(html);
+          })
           .then(function () { toast('Copied ' + slug + '.html' + (surf ? ' · ' + surf : '')); })
           .catch(function () { toast('Copy failed'); });
       }

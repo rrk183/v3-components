@@ -22,50 +22,10 @@
   <meta name="twitter:image:alt" content="ENBD Business، تطبيق الخدمات المصرفية للشركات من الإمارات دبي الوطني، على هاتف ذكي." />
   <script src="assets/webxv2/js/gate-config.js"></script>
   <script src="assets/webxv2/js/gate.js"></script>
-  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261217" />
-  <style>
-    /* ENBD Business opener, phone layout. The 16:9 scrub is auto-framed by
-       ds.js (data-fit="auto") into the lower band of the screen (40% to 86%),
-       so every caption moves into the clear zone above it instead of sitting
-       on top of the devices. */
-    /* phones AND portrait tablets: ds.js only adds .is-fit on a portrait stage
-       under 1100px (data-fit-max), so landscape tablets keep the desktop layout */
-    @media (max-width:1099px){
-      .cmp-scroll-story-video .ssv.is-fit .ssv-stage{height:100vh;height:100lvh;background:#fff}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-caps{display:block;padding:0}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap,
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-left,
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-l,
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-r{left:20px;right:20px;top:calc(var(--bx-top,96px));bottom:auto;max-width:none;margin:0;text-align:center;padding:0}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-h{font-size:clamp(28px,8.2vw,36px);line-height:1.12;letter-spacing:-.025em;text-shadow:none}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap .ds-eyebrow{display:block;margin-bottom:10px}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-l .ssv-h,
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-r .ssv-h{font-size:clamp(34px,10vw,44px);line-height:1.08}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-l{top:calc(var(--bx-top,96px) + 14px)}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-r{top:calc(var(--bx-top,96px) + 14px + 1.1 * clamp(34px,10vw,44px))}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cta{margin-top:20px}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-op-h{font-size:clamp(38px,11vw,48px)}
-      .cmp-scroll-story-video .ssv.is-fit{--bx-top:clamp(150px,22.5svh,210px)}
-    }
-    /* portrait tablet: same stack, larger type, measure capped and centred */
-    @media (min-width:768px) and (max-width:1099px){
-      .cmp-scroll-story-video .ssv.is-fit{--bx-top:clamp(170px,19svh,260px)}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap,
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-left,
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-l,
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-r{left:0;right:0;max-width:680px;margin:0 auto}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-h{font-size:clamp(40px,5.6vw,56px)}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-l .ssv-h,
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-r .ssv-h{font-size:clamp(52px,7vw,72px)}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cap.cap-split-r{top:calc(var(--bx-top) + 14px + 1.1 * clamp(52px,7vw,72px))}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-cta{margin-top:28px}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-op-h{font-size:clamp(56px,7.5vw,76px)}
-      .cmp-scroll-story-video .ssv.is-fit .ssv-op-sub{font-size:20px}
-    }
-  </style>
+  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261220" />
   <script src="assets/webxv2/js/tailwind.cdn.js"></script>
   <script src="assets/webxv2/js/ds-tailwind-config.js"></script>
-  <script defer src="assets/webxv2/js/ds.js?v=261217"></script>
+  <script defer src="assets/webxv2/js/ds.js?v=261220"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -426,59 +386,47 @@
 <!-- ═══ /Site Header ═════════════════════════════════════════════════════════ -->
 
   <main id="main" tabindex="-1">
-  <!-- ═══ ENBD Business, image-sequence scrub story (page opener) ══════════
-       Scrubbed image sequence (assets/webxv2/images/businessonline-x/box-seq, 121 JPG frames,
-       data-source="images" data-count="121") with declarative beats placed in
-       the sequence's open zones: title intro, then split (every tool) ->
-       left (closing CTA). -->
-  <!-- INSTANCE of master "Scroll Story: Video" (blocks/scroll-story-video.html). Documented
-       options: image-sequence source (box-v2 frames), light ground, opener with
-       scroll cue, left and split captions, closing button. Overrides: content only. -->
-  <section class="cmp cmp-scroll-story-video ssv-light ssv-split-in" data-animate data-master="scroll-story-video">
-    <div class="ssv" data-behavior="scroll-story-scrub" data-scrub-vh="620" data-fit="auto" data-fit-band="0.4,0.86" data-fit-max="1100" data-source="images" data-count="313" data-start="1" data-path="assets/webxv2/images/frames/box-v2/box_###.jpg?v=2" data-path-sm="assets/webxv2/images/frames/box-v2-m/box_###.jpg?v=1" data-step-sm="2">
-      <div class="ssv-stage">
-        <canvas class="ssv-canvas" data-story-canvas aria-hidden="true"></canvas>
-        <!-- Opener, full-screen title + download over the first (blue) frame;
-             fades out by ~p0.17 as the device tumbles in. -->
-        <!-- Beat 1, Opener; hold then start disappearing at 2.15s (p0.089) -->
-        <div class="ssv-opener" data-anim='{"0-0.05":{"opacity":[1,0],"y":[0,-28],"blur":[0,7]}}'>
-          <div class="ssv-op-top">
-            <span class="ds-eyebrow ink-accent">ENBD Business</span>
-            <h1 class="ssv-op-h">خدماتكم المصرفية أثناء التنقل.</h1>
-          </div>
-          <div class="ssv-op-dl ssv-op-dl--belowicon">
-            <p class="ssv-op-sub">“حساباتكم ومدفوعاتكم وموافقاتكم وخدماتكم، في جيبكم.”</p>
-            <div class="scin-cue" aria-hidden="true">
-              <span class="scin-cue-line"></span> <span class="scin-cue-label">مرّر للاستكشاف</span>
+  <!-- ═══ ENBD Business hero: product scrub (page opener, 2026-10-20) ═══════
+       Rotato green-screen sequences scrubbed on one WebGL canvas with the live
+       app screens composited per frame: iPhone spin, push into the app,
+       laptop pull-back, device family. Engine: assets/webxv2/js/product-scrub.js
+       (+ style.css .cmp-product-scrub). Caption copy for the desktop and
+       device beats is placeholder pending approval. -->
+  <section class="cmp cmp-product-scrub surface-soft" aria-label="ENBD Business على كل الأجهزة">
+    <div class="ps" data-product-scrub data-assets="assets/webxv2/images/product-scrub/">
+      <div class="ps-stage">
+        <div class="ps-world">
+          <div class="ps-opener">
+            <div class="ps-op-top">
+              <span class="ds-eyebrow ink-accent">ENBD Business</span>
+              <h1 class="ps-h1 ink-primary">خدماتكم المصرفية أثناء التنقل.</h1>
+            </div>
+            <img class="ps-icon" src="assets/webxv2/images/product-scrub/screens/app-icon.png" alt="أيقونة تطبيق ENBD Business" width="512" height="512" />
+            <div class="ps-op-bottom">
+              <p class="ps-sub ink-mute">“حساباتكم ومدفوعاتكم وموافقاتكم وخدماتكم، في جيبكم.”</p>
+              <span class="ps-cue" aria-hidden="true"><span class="ps-cue-line"></span><span class="ps-cue-label ink-mute">مرّر للاستكشاف</span></span>
             </div>
           </div>
-        </div>
-
-        <div class="ssv-caps">
-
-          <!-- Beat A, phone opener, LEFT; box_032 to box_052 -->
-          <div class="ssv-cap cap-left is-app-cap" data-anim='{"0.064-0.09":{"x":[-44,0],"opacity":[0,1]},"0.155-0.176":{"opacity":[1,0],"y":[0,-24],"blur":[0,6]}}'>
+          <div class="ps-cap" data-cap="0.08,0.125,0.27,0.31">
             <span class="ds-eyebrow ink-accent">تطبيق ENBD Business</span>
-            <h2 class="ssv-h">أعمالكم بالكامل،<br>في جيبكم.</h2>
+            <h2 class="ps-h ink-primary">أعمالكم بالكامل، في جيبكم.</h2>
+            <p class="ps-sub ink-mute">وافقوا على المدفوعات، وتابعوا كل حساب، واطلبوا الخدمات، أينما كنتم.</p>
           </div>
-
-          <!-- Beat 2, SPLIT L+R; appears @7.20s (p0.297) -->
-          <!-- Beat 2, SPLIT L+R; appears @7.20s (p0.297), disappears @10s (p0.412) -->
-          <!-- Beat 2, disappear earlier ~8.5s (p0.35) -->
-          <div class="ssv-cap cap-split-l" data-anim='{"0.356-0.38":{"x":[-60,0],"opacity":[0,1]},"0.40-0.42":{"opacity":[1,0],"x":[0,30]}}'>
-            <h2 class="ssv-h">كل الأدوات</h2>
+          <div class="ps-cap" data-cap="0.68,0.72,0.75,0.766">
+            <span class="ds-eyebrow ink-accent">على جهاز الكمبيوتر</span>
+            <h2 class="ps-h ink-primary">أعمالكم بالكامل، على شاشة واحدة.</h2>
+            <p class="ps-sub ink-mute">الحسابات والموافقات والمدفوعات والتجارة في لوحة تحكم واحدة.</p>
           </div>
-          <div class="ssv-cap cap-split-r" data-anim='{"0.356-0.38":{"x":[60,0],"opacity":[0,1]},"0.40-0.42":{"opacity":[1,0],"x":[0,-30]}}'>
-            <h2 class="ssv-h">التي تحتاجونها.</h2>
+          <div class="ps-cap" data-cap="0.84,0.88,0.92,0.94">
+            <span class="ds-eyebrow ink-accent">على كل الأجهزة</span>
+            <h2 class="ps-h ink-primary">كل الأدوات التي تحتاجونها.</h2>
+            <p class="ps-sub ink-mute">الحسابات والموافقات والمدفوعات نفسها على هاتفكم وجهازكم اللوحي وجهاز الكمبيوتر.</p>
           </div>
-
-          <!-- Beat 5, LEFT; @20s (p0.824). Existing closing CTA -->
-          <div class="ssv-cap cap-left" data-anim='{"0.91-0.95":{"x":[-44,0],"opacity":[0,1]}}'>
+          <div class="ps-cap" data-cap="0.94,0.97">
             <span class="ds-eyebrow ink-accent">مستعدون للانطلاق؟</span>
-            <h2 class="ssv-h">خدمات مصرفية<br>تواكب إيقاعكم.</h2>
-            <a href="digital-solutions-v1a-ar.html" class="btn btn-filled btn-lg ssv-cta">استكشفوا الحلول الرقمية ←</a>
+            <h2 class="ps-h ink-primary">خدمات مصرفية تواكبكم.</h2>
+            <a href="digital-solutions-v1a-ar.html" class="btn btn-filled btn-lg">استكشفوا الحلول الرقمية</a>
           </div>
-
         </div>
       </div>
     </div>
@@ -775,5 +723,6 @@
 
 <!-- Phone-screen video play-nudge (recovers a power-paused muted video; poster shows meanwhile). -->
 
+<script defer src="assets/webxv2/js/product-scrub.js?v=261219"></script>
 </body>
 </html>
