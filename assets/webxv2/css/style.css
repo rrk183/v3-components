@@ -3638,7 +3638,7 @@ html.lenis, html.lenis body { height: auto; }
    Layout: the utility bar is in normal flow (so it scrolls away with the page);
    the brand row is fixed and the site-header recipe slides its `top` from below
    the utility bar to 0 as you scroll, then keeps it pinned. */
-.cmp-site-header { position: relative; z-index: 100; }
+.cmp-site-header { position: relative; }   /* no z-index here (2026-10-20): it made the header a stacking layer, and iPhone browsers then let the fixed .ish-brand inside it drift down the screen on a fast flick. The bar's own z-index (100) does the stacking. */
 .cmp-site-header .ish-bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 /* Row 1 — utility / segment bar (solid navy, NOT sticky — scrolls away) */
 /* Above the fixed brand row (z:100): the active segment tab hangs a few px
