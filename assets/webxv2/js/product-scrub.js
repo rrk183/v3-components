@@ -158,31 +158,56 @@
   function Shot(cfg) { var s = this; s.cfg = cfg; s.frames = []; s.frameTex = tex(); s.uploaded = 0; s.want = 1; s.scr = cfg.screens.map(function (z) { return screenTex(SC + z.img); }); }
   Shot.prototype.load = function () { var s = this; return fetch(SQ + s.cfg.dir + 'quads.json' + VER).then(function (r) { return r.json(); }).then(function (j) { s.Q = j.quads; s.N = j.count; if (s.cfg.order) s.Q = s.Q.map(function (q) { return s.cfg.order.map(function (k) { return q[k]; }); }); }); };
   Shot.prototype.src = function (i) { return SQ + this.cfg.dir + (small ? 'sm/' : 'lg/') + 'f' + ('00' + i).slice(-3) + '.webp' + VER; };
-  /* a frame counts as loaded only once it is fully DECODED (ImageBitmap), so
-     the GPU never receives a half-ready image and keeps showing the old plate */
+  /* Memory (Ram's iPhone, 2026-10-20): keeping every frame of all three clips
+     decoded (~1 GB on a phone) made iPhone browsers kill the page a few
+     seconds after load. Frames are now fetched once as compressed images
+     (cheap), and only a small window around the current frame is decoded to
+     an ImageBitmap; the rest are closed. A frame counts as ready only once it
+     is decoded, so the GPU never receives a half-ready image. */
+  var KEEP = 14;   // decoded frames kept per clip
   Shot.prototype.img = function (i) {
     var s = this, f = s.frames[i]; if (f) return f;
-    f = s.frames[i] = { ready: false, bmp: null };
-    var im = new Image(); im.decoding = 'async';
-    im.onload = function () {
-      var done = function (b) { f.bmp = b; f.ready = true; if (i === s.want) { last = -1; request(); } };
-      if (window.createImageBitmap) createImageBitmap(im).then(done, function () { im.decode ? im.decode().then(function () { done(im); }) : done(im); });
-      else if (im.decode) im.decode().then(function () { done(im); }); else done(im);
-    };
-    im.src = s.src(i); return f;
+    f = s.frames[i] = { loaded: false, ready: false, bmp: null, busy: false, im: new Image() };
+    f.im.decoding = 'async';
+    f.im.onload = function () { f.loaded = true; if (Math.abs(i - s.want) <= 6) s.decode(i); };
+    f.im.src = s.src(i); return f;
   };
-  Shot.prototype.preload = function () { var s = this, k = 1; (function next() { var n = 0; while (k <= s.N && n < 6) { s.img(k++); n++; } if (k <= s.N) setTimeout(next, 50); })(); };
-  /* the frame actually shown: the wanted one, or the nearest loaded one before
-     it. Its own quads drive the screens, so plate and screen always match. */
+  Shot.prototype.decode = function (i) {
+    var s = this, f = s.img(i); if (!f.loaded || f.ready || f.busy) return;
+    f.busy = true;
+    var done = function (b) {
+      f.busy = false;
+      if (Math.abs(i - s.want) > KEEP) { if (b && b.close) b.close(); return; }   // scrolled away meanwhile
+      f.bmp = b; f.ready = true; s.evict();
+      if (Math.abs(i - s.want) <= 2) { last = -1; request(); }
+    };
+    if (window.createImageBitmap) createImageBitmap(f.im).then(done, function () { f.busy = false; });
+    else if (f.im.decode) f.im.decode().then(function () { done(f.im); }, function () { f.busy = false; });
+    else done(f.im);
+  };
+  Shot.prototype.evict = function () {   // close decoded frames far from the current one
+    var s = this, live = [];
+    for (var j = 1; j <= s.N; j++) { var f = s.frames[j]; if (f && f.ready) live.push(j); }
+    if (live.length <= KEEP) return;
+    live.sort(function (a, b) { return Math.abs(b - s.want) - Math.abs(a - s.want); });
+    for (var n = 0; n < live.length - KEEP; n++) {
+      var g = s.frames[live[n]]; if (g.bmp && g.bmp.close) g.bmp.close(); g.bmp = null; g.ready = false;
+    }
+  };
+  Shot.prototype.window = function () { for (var d = -4; d <= 6; d++) { var j = this.want + d; if (j >= 1 && j <= this.N) this.decode(j); } };
+  Shot.prototype.preload = function () { var s = this, k = 1; (function next() { var n = 0; while (k <= s.N && n < 6) { s.img(k++); n++; } if (k <= s.N) setTimeout(next, 60); })(); };
+  /* the frame actually shown: the wanted one, the nearest decoded one before
+     it, or the one already on the GPU. Its own quads drive the screens, so
+     plate and screen always match. */
   Shot.prototype.frameShown = function () {
-    for (var j = this.want; j >= 1; j--) { var f = this.frames[j]; if (f && f.ready) return j; }
-    return 0;
+    for (var j = this.want; j >= 1; j--) { var f = this.frames[j]; if (f && f.ready) return j; if (j === this.uploaded) return j; }
+    return this.uploaded;
   };
   Shot.prototype.draw = function (p) {
     var s = this, c = s.cfg, o = c.opacity(p);
     if (o < .002) return;
     s.want = Math.max(1, Math.min(s.N, c.frame(p, s.N)));
-    s.img(s.want);
+    s.img(s.want); s.window();
     var i = s.frameShown(); if (!i) return;
     if (i !== s.uploaded) { gl.activeTexture(gl.TEXTURE0); upload(s.frameTex, s.frames[i].bmp); s.uploaded = i; }
     var k = c.cam(p);
@@ -293,7 +318,7 @@
   function request() { if (!raf) raf = requestAnimationFrame(tick); }
   function onScroll() { if (locked) return; target = REDUCED ? 1 : progress(); request(); }
   root.__setP = function (p) { locked = true; target = cur = p; last = -1; render(p); };   // QA hook (freezes scroll)
-  var rT; function onResize() { clearTimeout(rT); rT = setTimeout(function () { var was = small; measure(); if (was !== small) shots.forEach(function (s) { s.frames = []; s.uploaded = 0; s.preload(); }); last = -1; render(cur); }, 120); }
+  var rT; function onResize() { clearTimeout(rT); rT = setTimeout(function () { var was = small; measure(); if (was !== small) shots.forEach(function (s) { s.frames.forEach(function (f) { if (f && f.bmp && f.bmp.close) f.bmp.close(); }); s.frames = []; s.uploaded = 0; s.preload(); }); last = -1; render(cur); }, 120); }
   function boot() {
     Promise.all(shots.map(function (s) { return s.load(); })).then(function () {
       measure();
