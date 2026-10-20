@@ -4088,7 +4088,9 @@ DS.recipe('ib-hero', function (root) {
     var threshold = parseFloat(root.getAttribute('data-solid-after')) || 8;
     var lastY = -1;
     function update() {
-      var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      // iOS rubber-band gives a negative scroll at the top; clamp it, or the
+      // fixed bar is pushed down the screen by the pull distance
+      var y = Math.max(0, window.pageYOffset || document.documentElement.scrollTop || 0);
       if (y === lastY) return; lastY = y;
       var uh = util ? util.offsetHeight : 0;
       if (brand) brand.style.top = Math.max(0, uh - y) + 'px';   // dock under utility, then pin at 0
