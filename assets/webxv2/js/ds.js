@@ -1668,7 +1668,7 @@
        </div>
      The player is VENDORED (assets/webxv2/js/lottie_light.min.js, pinned) and
      LAZY-LOADED on first sighting — same pattern as Lenis: loadScript() +
-     dsBaseDir(), one <script> for the whole page however many stages exist.
+     DS_JS_DIR, one <script> for the whole page however many stages exist.
      The poster <img> is the still: it is the sizer, it is what shows before
      the player lands, and under prefers-reduced-motion it is ALL that ever
      shows — the recipe returns before the network is touched.
@@ -1705,7 +1705,7 @@
     if (window.lottie) { mount(); return; }
     if (lottiePending) { lottiePending.push(mount); return; }
     lottiePending = [mount];
-    loadScript(dsBaseDir() + 'lottie_light.min.js', function () {
+    loadScript(DS_JS_DIR + 'lottie_light.min.js', function () {
       var q = lottiePending || []; lottiePending = null;
       q.forEach(function (fn) { fn(); });
     });
@@ -1806,11 +1806,29 @@
      momentum already smooth), or when <html data-no-smooth> / window.DS_NO_SMOOTH.
      Lenis owns vertical scroll everywhere (no native handoff = no jitter);
      horizontal scrollers are drag-scrollable instead. #anchors scroll via Lenis. */
+  // Where ds.js's sibling files (lenis, lottie) and ../images live. In order:
+  //  1. <html data-ds-js-dir="/assets/webxv2/js/"> — for a host that BUNDLES or
+  //     renames ds.js (e.g. a .NET bundle), where its own URL says nothing;
+  //  2. the running script, if it really is ds.js / ds.min.js (EXACT file name —
+  //     a substring match also hits cards.js, leads.js, …);
+  //  3. any <script> on the page with that exact file name;
+  //  4. bundled + no attribute: the js/ folder beside the page's
+  //     webxv2/css/style(.min).css link (<…>/webxv2/css/ → <…>/webxv2/js/);
+  //  5. last resort: /assets/webxv2/js/, the CMS's own folder (the one site-root
+  //     path in the runtime — a page-relative guess 404s on /en/… URLs).
+  var DS_FILE = /(^|\/)ds(\.min)?\.js([?#]|$)/;
+  var DS_CSS = /\/webxv2\/css\/style(\.min)?\.css([?#]|$)/;   // OUR stylesheet only, not any style.css
   function dsBaseDir() {
-    var s = document.currentScript || document.querySelector('script[src*="ds.js"], script[src*="ds.min.js"]');
-    return (s && s.src) ? s.src.replace(/[^/]*$/, '') : 'assets/webxv2/js/';
+    var o = document.documentElement.getAttribute('data-ds-js-dir');
+    if (o) return o.replace(/\/?$/, '/');
+    var s = document.currentScript;
+    if (!(s && DS_FILE.test(s.src))) s = Array.prototype.filter.call(document.scripts, function (x) { return DS_FILE.test(x.src); })[0];
+    if (s && s.src) return s.src.replace(/[?#].*$/, '').replace(/[^/]*$/, '');
+    var css = Array.prototype.filter.call(document.querySelectorAll('link[href]'), function (l) { return DS_CSS.test(l.href); })[0];
+    return css ? new URL('../js/', css.href).href : '/assets/webxv2/js/';
   }
-  // ds.js's folder, captured NOW (document.currentScript is null once it has run).
+  // ds.js's folder, captured NOW (document.currentScript is null once it has run)
+  // — the lazy loaders below use this, never a late dsBaseDir() call.
   // Every asset the runtime builds a URL for resolves from here — never from the
   // site root — so the bundle works wherever it is hosted (assets/webxv2/js/ here
   // and in the CMS): DS.asset('images/x.svg') → <js folder>/../images/x.svg
@@ -1826,7 +1844,7 @@
     if (!canAnimate) return;                                   // reduced-motion / no-IO
     if (html.hasAttribute('data-no-smooth') || window.DS_NO_SMOOTH) return;
     if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;  // touch: native is smooth
-    loadScript(dsBaseDir() + 'lenis.min.js', function () {
+    loadScript(DS_JS_DIR + 'lenis.min.js', function () {
       if (!window.Lenis) return;
       var lenis = new Lenis({ duration: 1.05, lerp: 0.1, smoothWheel: true, wheelMultiplier: 1 });
       (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(0);
