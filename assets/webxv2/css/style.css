@@ -7462,7 +7462,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 
 /* ── live (pinned) ── */
 :where(.hf-main) .hf-hero.is-live { height: 400vh; }
-:where(.hf-main) .hf-hero.is-live .hf-hero__stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: #fff; }
+:where(.hf-main) .hf-hero.is-live .hf-hero__stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }   /* no fill here: iOS 26 Safari tints its top bar from the background of sticky/fixed elements at the top, and this white stage turned the bar white with a strip of page under it (the .hf-hero section behind it is already white) */
 :where(.hf-main) .hf-hero.is-live .hf-hero__intro { position: absolute; inset: 0; min-height: 0; padding: 0; background: transparent; display: block; overflow: visible; }
 :where(.hf-main) .hf-hero.is-live .hf-hero__world { z-index: 0; background: var(--hf-ink); }
 :where(.hf-main) .hf-hero.is-live .hf-hero__plate { will-change: transform; }
