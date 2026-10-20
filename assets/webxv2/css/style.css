@@ -3913,7 +3913,7 @@ html.lenis, html.lenis body { height: auto; }
    hover of anywhere in the header (:hover), regardless of scroll position. */
 .cmp-site-header.is-solid .ish-brand,
 .cmp-site-header.is-menu-open .ish-brand,
-.cmp-site-header:hover .ish-brand { background: var(--navy); color: #fff; box-shadow: 0 -120px 0 0 var(--navy), 0 8px 28px rgba(var(--navy-rgb), .28); }   /* the -120px navy band sits off-screen; it covers the sliver iPhone Safari's floating address bar can leave above the fixed bar (device feedback 2026-10-16) */
+.cmp-site-header:hover .ish-brand { background: var(--navy); color: #fff; box-shadow: 0 -100px 0 40px var(--navy), 0 8px 28px rgba(var(--navy-rgb), .28); }   /* a navy band above the bar covers the sliver iPhone Safari's floating address bar can leave above it (device feedback 2026-10-16). The 40px spread makes it run from 140px above the bar down behind it, so no gap is left at its top edge (2026-10-20) */
 /* Drop the readability scrim once the bar is opaque (it's no longer needed). */
 .cmp-site-header.is-solid .ish-brand::before,
 .cmp-site-header.is-menu-open .ish-brand::before,
