@@ -83,5 +83,5 @@ mobile drawer shows the segment bar as the compact selector and mirrors the
 links as a flat list, instead of the v4 per-segment accordions (which would
 have nothing to drill into). The utility bar doubles as the GROUP-PROPERTY
 switcher (Capital · CIB · Securities · Group); Login becomes a plain
-`<a class="ish-login">` CTA; the logotype comes in via `--brand-logo` on the
-root. Content-only composition — no new CSS.
+`<a class="ish-login">` CTA; the logotype is the `.ish-logo-img` `<img>` src
+(e.g. `EmiratesNBD-Capital-logo.png`). Content-only composition — no new CSS.

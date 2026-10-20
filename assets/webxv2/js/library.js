@@ -46,7 +46,19 @@
   var SURFACE_IMAGE_ASSET = { '': 'assets/webxv2/images/bento-bg-placeholder.svg', ei: 'assets/webxv2/images/bento-bg-ei.svg' };
   function surfaceImageAsset(t) { return SURFACE_IMAGE_ASSET[t] || SURFACE_IMAGE_ASSET['']; }
   // header previews + the gallery's own brand row follow the active theme
-  var BRAND_LOGO_ASSET = { ei: '/assets/webxv2/images/ei-logo.svg' };
+  // logos are <img> in the markup (real pages author the right file per
+  // brand); previews swap their src for the ACTIVE theme, restoring the
+  // block's own file when it's cleared
+  var BRAND_LOGO_ASSET = { ei: { '.ish-logo-img': '/assets/webxv2/images/ei-logo.svg', '.ish-drawer-logo': '/assets/webxv2/images/ei-logo-navy.svg', '.fo1-copy-logo': '/assets/webxv2/images/ei-logo-navy.svg' } };
+  function syncBrandLogos(scope, t) {
+    var set = BRAND_LOGO_ASSET[t] || {};
+    Object.keys(BRAND_LOGO_ASSET.ei).forEach(function (sel) {
+      scope.querySelectorAll('img' + sel).forEach(function (img) {
+        if (!img.hasAttribute('data-src-base')) img.setAttribute('data-src-base', img.getAttribute('src'));
+        img.setAttribute('src', set[sel] || img.getAttribute('data-src-base'));
+      });
+    });
+  }
   var BRAND_NAME = { '': 'Emirates NBD', ei: 'Emirates Islamic' };
   function currentTheme() { try { return localStorage.getItem('ds-theme') || ''; } catch (e) { return ''; } }
   function applyTheme(t) {
@@ -57,10 +69,7 @@
       el.setAttribute('data-bg', surfaceImageAsset(t));
       el.style.backgroundImage = "url('" + surfaceImageAsset(t) + "')";
     });
-    document.querySelectorAll('.cmp-site-header').forEach(function (h) {
-      if (BRAND_LOGO_ASSET[t]) h.style.setProperty('--brand-logo', "url('" + BRAND_LOGO_ASSET[t] + "')");
-      else h.style.removeProperty('--brand-logo');
-    });
+    syncBrandLogos(document, t);
     var brand = document.querySelector('.lib-brand');
     if (brand) {
       var label = (BRAND_NAME[t] || BRAND_NAME['']) + ' \u00b7 Component Library';
@@ -517,6 +526,7 @@
       if (wmink) { var wc = stage.querySelector('.cmp'); if (wc) wc.classList.add(wmink); }
       if (mcols) { var mc = stage.querySelector('.cmp'); if (mc) { mc.classList.remove('is-m-cols-1', 'is-m-cols-2'); mc.classList.add(mcols); } }
       if (mspeed) { stage.querySelectorAll('.marquee').forEach(function (m) { m.style.setProperty('--marquee-dur', mspeed); }); }
+      syncBrandLogos(stage, currentTheme());
       var oc = stage.closest('.lib-card');   // block-specific markup options (lib-options.js)
       if (window.LibOptions && oc) LibOptions.apply(stage, { btns: oc.dataset.btns, motion: oc.dataset.motion, app: oc.dataset.app, stores: oc.dataset.stores, meyebrow: oc.dataset.meyebrow, mstats: oc.dataset.mstats, htlink: oc.dataset.htlink });
       applyCols(stage, cols);

@@ -64,7 +64,7 @@ header.cmp-site-header[data-behavior=site-header]   (+ optional data-solid)
   each opening a **4-column** `.ish-panel`. Add/remove `.ish-mega` blocks to
   change the count.
 - Login dropdown: 4 menu items. Search panel: one input + a "Popular" link row.
-- No images beyond the logo (CSS-masked `.ish-logo-img`); no countup.
+- No images beyond the logos: `<img class="ish-logo-img">` (white logo on the navy bar) and `<img class="ish-drawer-logo">` (navy, mobile drawer). The page/CMS sets each `src`, so another brand swaps the file in markup; no countup.
 
 ## Drift cautions
 _Defaults for autonomous building — all overridable on explicit instruction._
