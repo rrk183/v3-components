@@ -31,7 +31,7 @@
           <legend class="lc-legend ink-mute">Choose a loan type</legend>
 
           <label class="lc-type">
-            <input type="radio" name="lc-split-type" data-lc-type checked
+            <input type="radio" name="lc-split-type" data-lc-type checked data-key="personal"
                    data-rate="5.99" data-min="30000" data-max="500000" data-amount="150000"
                    data-term-min="1" data-term-max="4" data-term="3">
             <span class="lc-type-inner ink-mute">
@@ -41,7 +41,7 @@
           </label>
 
           <label class="lc-type">
-            <input type="radio" name="lc-split-type" data-lc-type
+            <input type="radio" name="lc-split-type" data-lc-type data-key="auto"
                    data-rate="3.49" data-min="20000" data-max="400000" data-amount="120000"
                    data-term-min="1" data-term-max="5" data-term="4">
             <span class="lc-type-inner ink-mute">
@@ -51,7 +51,7 @@
           </label>
 
           <label class="lc-type">
-            <input type="radio" name="lc-split-type" data-lc-type
+            <input type="radio" name="lc-split-type" data-lc-type data-key="home"
                    data-rate="4.25" data-min="250000" data-max="5000000" data-amount="1200000"
                    data-term-min="5" data-term-max="25" data-term="20">
             <span class="lc-type-inner ink-mute">
@@ -59,6 +59,15 @@
             <span class="lc-type-label">Home Loan</span>
             </span>
           </label>
+        </fieldset>
+
+        <!-- Auto Loan only: New / Used, each with its own rate. ds.js shows the
+             group whose data-for matches the selected type's data-key; a
+             sub-option without data-rate keeps its parent's rate. -->
+        <fieldset class="lc-sub" data-lc-subgroup data-for="auto" hidden>
+          <legend class="sr-only">Car condition</legend>
+          <label class="radio type-body-sm ink-primary"><input type="radio" name="lc-split-auto" data-lc-sub data-for="auto" checked><span class="box"></span>New</label>
+          <label class="radio type-body-sm ink-primary"><input type="radio" name="lc-split-auto" data-lc-sub data-for="auto" data-rate="3.99"><span class="box"></span>Used</label>
         </fieldset>
 
         <div class="lc-field">

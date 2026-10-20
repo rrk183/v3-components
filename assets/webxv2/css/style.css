@@ -3313,6 +3313,12 @@ html.lenis, html.lenis body { height: auto; }
 .cmp-loan-calculator .lc-type-label { font-size: 15px; font-weight: 500; white-space: nowrap; }
 .cmp-loan-calculator .lc-type input:checked + .lc-type-inner { border-bottom-color: var(--blue); }
 .cmp-loan-calculator .lc-type input:focus-visible + .lc-type-inner { outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 8px; }
+/* Per-product sub-choice (Auto → New / Used): a row of .radio atoms that ds.js
+   shows only for its product. The [hidden] rule must restate display:none —
+   the flex row would otherwise beat the UA's hidden. Pulled up under the tabs
+   so it reads as part of the product choice, not a separate field. */
+.cmp-loan-calculator .lc-sub { display: flex; flex-wrap: wrap; gap: 12px 32px; min-width: 0; border: 0; padding: 0; margin: -12px 0 0; }
+.cmp-loan-calculator .lc-sub[hidden] { display: none; }
 /* The card is always navy; on a navy/dark/blue section it would otherwise be
    invisible. --on-surface-border is a light hairline on dark surfaces and a
    quiet grey one on light, so a single rule separates it everywhere. */
