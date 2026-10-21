@@ -7444,15 +7444,15 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 :where(.hf-main) .hf-phone {
   position: absolute; left: 50%; top: 50%; width: var(--pw); height: var(--ph); margin: calc(var(--ph) / -2) 0 0 calc(var(--pw) / -2);
   transform: scale(var(--ps)); box-sizing: border-box;
-  border-radius: 54px; padding: 12px; background: var(--hf-device);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14), inset 2px 0 0 rgba(255, 255, 255, .06), 0 0 0 1.5px var(--hf-device-edge), 0 40px 70px -36px rgba(var(--hf-shade-rgb), .55), 0 18px 32px -22px rgba(var(--hf-shade-rgb), .45);
+  /* the real iPhone (Ram, 2026-10-21): .hf-phone__frame is the front-facing
+     frame of the Business Online render with its green screen keyed out; the
+     app sits in its window (x 19-449, y 15-952 of the 469x968 frame) */
+  border-radius: 12% / 6%; padding: calc(var(--ph) * .0155 - 1px) calc(var(--pw) * .0426 - 1px) calc(var(--ph) * .0165 - 1px) calc(var(--pw) * .0405 - 1px); background: transparent;
 }
-:where(.hf-main) .hf-phone::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(100deg, rgba(255, 255, 255, .18), transparent 12%, transparent 88%, rgba(255, 255, 255, .1)); mix-blend-mode: screen; }
-:where(.hf-main) .hf-phone__btn { position: absolute; width: 3px; background: var(--hf-device-btn); border-radius: var(--r-pill); }
-:where(.hf-main) .hf-phone__btn--a { left: -3.5px; top: 110px; height: 28px; }
-:where(.hf-main) .hf-phone__btn--b { left: -3.5px; top: 160px; height: 52px; }
-:where(.hf-main) .hf-phone__btn--c { right: -3.5px; top: 180px; height: 80px; }
-:where(.hf-main) .hf-phone__screen { position: relative; width: 100%; height: 100%; border-radius: 42px; overflow: hidden; background: #fff; isolation: isolate; }
+:where(.hf-main) .hf-phone::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; box-shadow: 0 40px 70px -36px rgba(var(--hf-shade-rgb), .55), 0 18px 32px -22px rgba(var(--hf-shade-rgb), .45); }
+:where(.hf-main) .hf-phone__frame { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
+:where(.hf-main) .hf-phone__btn { display: none; }
+:where(.hf-main) .hf-phone__screen { position: relative; width: 100%; height: 100%; border-radius: calc(var(--pw) * .118); overflow: hidden; background: #fff; isolation: isolate; }
 :where(.hf-main) .hf-wall { position: absolute; left: 50%; top: 50%; width: var(--ww, 960px); height: var(--wh, 540px); margin-left: calc(var(--ww, 960px) / -2); margin-top: calc(var(--wh, 540px) / -2); z-index: 2; opacity: 0; }
 :where(.hf-main) .hf-wall__poster, :where(.hf-main) .hf-wall__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 :where(.hf-main) .hf-wall__veil { position: absolute; inset: 0; background: var(--hf-veil); mix-blend-mode: multiply; }
@@ -7463,7 +7463,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 :where(.hf-main) .hf-band--tab { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; }
 :where(.hf-main) .hf-app__view { position: absolute; left: 0; right: 0; top: 68px; bottom: 0; overflow: hidden; }
 :where(.hf-main) .hf-app__scroll { position: absolute; left: 0; top: 0; width: 100%; }
-:where(.hf-main) .hf-app__island { position: absolute; z-index: 4; left: 50%; top: 11px; width: 86px; height: 25px; margin-left: -43px; border-radius: var(--r-pill); background: var(--hf-device); }
+:where(.hf-main) .hf-app__island { display: none; }   /* the real frame carries its own Dynamic Island */
 
 /* ── live (pinned) ── */
 :where(.hf-main) .hf-hero.is-live { height: 400vh; }
@@ -7948,11 +7948,8 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    of its resting size (--pk, set by cib-home-flow.js); the app fades in after. */
 :where(.hf-main) .hf-hero__veil { position: absolute; inset: 0; background: var(--hf-veil); mix-blend-mode: multiply; opacity: 0; pointer-events: none; }
 :where(.hf-main) .hf-hero.is-live .hf-phone { background: transparent; box-shadow: none; isolation: isolate; }
-:where(.hf-main) .hf-hero.is-live .hf-phone::before { content: ''; position: absolute; inset: 0; z-index: -1; box-sizing: border-box; border-radius: inherit; background: transparent; border: 12px solid var(--hf-device); opacity: var(--pk, 1);
-  /* the soft drop shadows come last (--pk2), so no halo band shows around the edge while it is still large */
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14), inset 2px 0 0 rgba(255, 255, 255, .06), 0 0 0 1.5px var(--hf-device-edge), 0 40px 70px -36px rgb(2 10 24 / calc(.55 * var(--pk2, 1))), 0 18px 32px -22px rgb(2 10 24 / calc(.45 * var(--pk2, 1))); }
-:where(.hf-main) .hf-hero.is-live .hf-phone__btn { opacity: var(--pk, 1); }
-:where(.hf-main) .hf-hero.is-live .hf-phone::after { opacity: var(--pk2, 1); }   /* glass sheen: last, once the bezel reads */
+:where(.hf-main) .hf-hero.is-live .hf-phone::before { box-shadow: 0 40px 70px -36px rgb(2 10 24 / calc(.55 * var(--pk2, 1))), 0 18px 32px -22px rgb(2 10 24 / calc(.45 * var(--pk2, 1))); }   /* soft shadow only, no outline ring; it comes last (--pk2) so no halo shows while the phone is large */
+:where(.hf-main) .hf-hero.is-live .hf-phone__frame { opacity: var(--pk, 1); }
 :where(.hf-main) .hf-hero.is-live .hf-phone__screen { background: transparent; }
 :where(.hf-main) .hf-hero.is-live .hf-app { opacity: var(--app, 1); }
 
