@@ -46,8 +46,59 @@
     for (var i = 0; i < behaviors.length; i++) {
       try { behaviors[i](s); } catch (e) { if (window.console) console.error('[DS] behaviour error:', e); }
     }
+    claim(s);
+    if (keeper) keeper.takeRecords();   // our own DOM work is not a host re-render
   }
   function all(scope, sel) { return Array.prototype.slice.call((scope || document).querySelectorAll(sel)); }
+
+  /* ── Survive a host that RE-RENDERS our markup ─────────────────────────────
+     Some CMS scripts copy a content area after load (innerHTML = innerHTML, a
+     jQuery .html(), a sanitizer…). The copy keeps every attribute — including
+     our *-bound markers, so nothing re-binds — but no listeners, and loops
+     like scroll-showcase keep driving the detached original: images freeze,
+     spotlight stops following the pointer. Re-binding the copy is not safe
+     (header, carousels, stories, maps… inject DOM and would duplicate it).
+     So every bound component carries data-ds-uid; when a copy carrying a uid
+     appears while its original has left the page, the ORIGINAL — listeners,
+     loops, state intact — is put back in the copy's place. Markup ds.js never
+     saw is simply bound. ponytail: edits a host script made to the copy are
+     dropped with it; if a host must change our markup, it should call
+     DS.refresh(container) on fresh, never-bound markup instead. */
+  var keeper = null, uidSeq = 0, owned = {};
+  var OWN = '.cmp, [data-animate], [data-behavior]';   // .cmp = every block root (the footer has neither data-*)
+  function claim(scope) {
+    var els = all(scope, OWN);
+    if (scope.nodeType === 1 && scope.matches(OWN)) els.unshift(scope);
+    els.forEach(function (el) {
+      if (el.hasAttribute('data-ds-uid')) return;
+      var id = String(++uidSeq);
+      el.setAttribute('data-ds-uid', id);
+      owned[id] = el;
+    });
+  }
+  function adopt(records) {
+    var added = [];
+    records.forEach(function (m) {
+      for (var i = 0; i < m.addedNodes.length; i++) if (m.addedNodes[i].nodeType === 1) added.push(m.addedNodes[i]);
+    });
+    added.forEach(function (n) {
+      if (!n.isConnected) return;
+      var copies = all(n, '[data-ds-uid]');
+      if (n.hasAttribute('data-ds-uid')) copies.unshift(n);
+      copies.forEach(function (c) {             // outermost first (document order)
+        var orig = owned[c.getAttribute('data-ds-uid')];
+        if (orig && orig !== c && !orig.isConnected && c.isConnected) c.replaceWith(orig);
+      });
+      var host = n.isConnected ? n.parentNode : null;
+      if (host && (n.matches(OWN) || n.querySelector(OWN + ', [data-bg]'))) run(host);
+    });
+    if (keeper) keeper.takeRecords();
+  }
+  function keepOwned() {
+    if (!('MutationObserver' in window) || keeper) return;
+    keeper = new MutationObserver(adopt);
+    keeper.observe(document.documentElement, { childList: true, subtree: true });
+  }
   function animated(el) { return !!el.closest('[data-animate], .animate'); }
   // RTL awareness — one runtime serves both directions; markup never knows about
   // Arabic. Horizontal-scroll math must adapt: in an RTL scroll container,
@@ -208,7 +259,8 @@
   /* ── Tier 2 · loan calculator ────────────────────────────────────────────
      <section data-behavior="loan-calculator">   (data-currency = optional TEXT prefix)
        <input type="radio" name="…" data-lc-type data-key="auto" data-rate="5.99"
-              data-min data-max data-amount data-term-min data-term-max data-term>
+              data-min data-max data-step data-amount data-term-min data-term-max data-term
+              data-rate-basis="flat"   (optional; default is reducing balance)>
        optional sub-choice: <div data-lc-subgroup data-for="auto">
                               <input type="radio" data-lc-sub data-for="auto" data-rate="2.99">
        <input type="range" data-lc-amount>   <output data-lc-amount-out>
@@ -219,7 +271,8 @@
                                           <span data-lc-row-interest>
        <output data-lc-monthly> <output data-lc-total> <output data-lc-interest>
        <output data-lc-rate>    <span data-lc-term-unit>
-     Standard amortised payment: P·r / (1 − (1+r)^−n), r = annual/12. Picking a
+     Standard amortised payment: P·r / (1 − (1+r)^−n), r = annual/12; a flat-rate
+     type pays P/n + P·r instead. Picking a
      loan TYPE re-ranges both sliders from that radio's data-* (each product has
      its own floor/ceiling/tenor), so the controls can never offer an amount the
      product doesn't do. Track fill is published as --range-fill for CSS (.range atom).
@@ -232,6 +285,7 @@
       root.setAttribute('data-lc-bound', '');
       var amt = root.querySelector('[data-lc-amount]');
       var term = root.querySelector('[data-lc-term]');
+      var amtStep = amt && (amt.getAttribute('step') || '1');
       // Term is EITHER a range slider or a set of radio cards (the compare
       // variant picks its tenor by choosing a card, so it has no slider).
       var termOpts = all(root, '[data-lc-term-opt]');
@@ -294,9 +348,15 @@
       }
       // One place computes a payment; the headline and every comparison row
       // call it, so they can never disagree.
+      // A type marked data-rate-basis="flat" (Auto Loan, as on emiratesnbd.com)
+      // charges its rate on the full amount for the whole tenor.
+      function flat() {
+        var t = activeType();
+        return !!t && t.getAttribute('data-rate-basis') === 'flat';
+      }
       function payment(P, apr, yrs) {
         var n = Math.max(1, Math.round(yrs * 12)), r = apr / 100 / 12;
-        var m = r > 0 ? (P * r) / (1 - Math.pow(1 + r, -n)) : P / n;
+        var m = flat() ? P / n + P * r : r > 0 ? (P * r) / (1 - Math.pow(1 + r, -n)) : P / n;
         return { monthly: m, total: m * n, interest: m * n - P };
       }
       function paint() {
@@ -343,6 +403,9 @@
       function applyType(t) {
         if (!t) return;
         var a = { min: 'data-min', max: 'data-max', val: 'data-amount' };
+        // Step first: the browser snaps value to step, so a stale step would
+        // round the new amount. A type without data-step gets the markup step back.
+        amt.step = t.getAttribute('data-step') || amtStep;
         if (t.getAttribute(a.min)) amt.min = t.getAttribute(a.min);
         if (t.getAttribute(a.max)) amt.max = t.getAttribute(a.max);
         if (t.getAttribute(a.val)) amt.value = t.getAttribute(a.val);
@@ -1668,7 +1731,7 @@
        </div>
      The player is VENDORED (assets/webxv2/js/lottie_light.min.js, pinned) and
      LAZY-LOADED on first sighting — same pattern as Lenis: loadScript() +
-     dsBaseDir(), one <script> for the whole page however many stages exist.
+     DS_JS_DIR, one <script> for the whole page however many stages exist.
      The poster <img> is the still: it is the sizer, it is what shows before
      the player lands, and under prefers-reduced-motion it is ALL that ever
      shows — the recipe returns before the network is touched.
@@ -1705,7 +1768,7 @@
     if (window.lottie) { mount(); return; }
     if (lottiePending) { lottiePending.push(mount); return; }
     lottiePending = [mount];
-    loadScript(dsBaseDir() + 'lottie_light.min.js', function () {
+    loadScript(VENDOR_DIR + 'lottie_light.min.js', function () {
       var q = lottiePending || []; lottiePending = null;
       q.forEach(function (fn) { fn(); });
     });
@@ -1806,16 +1869,38 @@
      momentum already smooth), or when <html data-no-smooth> / window.DS_NO_SMOOTH.
      Lenis owns vertical scroll everywhere (no native handoff = no jitter);
      horizontal scrollers are drag-scrollable instead. #anchors scroll via Lenis. */
+  // Where ds.js's sibling files (lenis, lottie) and ../images live. In order:
+  //  1. <html data-ds-js-dir="/assets/webxv2/js/"> — for a host that BUNDLES or
+  //     renames ds.js (e.g. a .NET bundle), where its own URL says nothing;
+  //  2. the running script, if it really is ds.js / ds.min.js (EXACT file name —
+  //     a substring match also hits cards.js, leads.js, …);
+  //  3. any <script> on the page with that exact file name;
+  //  4. bundled + no attribute: the js/ folder beside the page's
+  //     webxv2/css/style(.min).css link (<…>/webxv2/css/ → <…>/webxv2/js/);
+  //  5. last resort: /assets/webxv2/js/, the CMS's own folder (the one site-root
+  //     path in the runtime — a page-relative guess 404s on /en/… URLs).
+  var DS_FILE = /(^|\/)ds(\.min)?\.js([?#]|$)/;
+  var DS_CSS = /\/webxv2\/css\/style(\.min)?\.css([?#]|$)/;   // OUR stylesheet only, not any style.css
   function dsBaseDir() {
-    var s = document.currentScript || document.querySelector('script[src*="ds.js"], script[src*="ds.min.js"]');
-    return (s && s.src) ? s.src.replace(/[^/]*$/, '') : 'assets/webxv2/js/';
+    var o = document.documentElement.getAttribute('data-ds-js-dir');
+    if (o) return o.replace(/\/?$/, '/');
+    var s = document.currentScript;
+    if (!(s && DS_FILE.test(s.src))) s = Array.prototype.filter.call(document.scripts, function (x) { return DS_FILE.test(x.src); })[0];
+    if (s && s.src) return s.src.replace(/[?#].*$/, '').replace(/[^/]*$/, '');
+    var css = Array.prototype.filter.call(document.querySelectorAll('link[href]'), function (l) { return DS_CSS.test(l.href); })[0];
+    return css ? new URL('../js/', css.href).href : '/assets/webxv2/js/';
   }
-  // ds.js's folder, captured NOW (document.currentScript is null once it has run).
+  // ds.js's folder, captured NOW (document.currentScript is null once it has run)
+  // — the lazy loaders below use this, never a late dsBaseDir() call.
   // Every asset the runtime builds a URL for resolves from here — never from the
   // site root — so the bundle works wherever it is hosted (assets/webxv2/js/ here
   // and in the CMS): DS.asset('images/x.svg') → <js folder>/../images/x.svg
   var DS_JS_DIR = new URL(dsBaseDir(), location.href).href;
   function asset(path) { return new URL('../' + path, DS_JS_DIR).href; }
+  // Lazy-loaded vendor files (lenis, lottie) ALWAYS come from the CMS folder
+  // /assets/webxv2/js/ — site-root, so a page URL like /en/... or a .NET script
+  // bundle can never change it. <html data-ds-js-dir="…"> still overrides.
+  var VENDOR_DIR = (document.documentElement.getAttribute('data-ds-js-dir') || '/assets/webxv2/js/').replace(/\/?$/, '/');
   function loadScript(src, cb) {
     var s = document.createElement('script'); s.src = src; s.defer = true;
     s.onload = cb; s.onerror = function () { if (window.console) console.warn('[DS] failed to load ' + src); };
@@ -1826,7 +1911,7 @@
     if (!canAnimate) return;                                   // reduced-motion / no-IO
     if (html.hasAttribute('data-no-smooth') || window.DS_NO_SMOOTH) return;
     if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;  // touch: native is smooth
-    loadScript(dsBaseDir() + 'lenis.min.js', function () {
+    loadScript(VENDOR_DIR + 'lenis.min.js', function () {
       if (!window.Lenis) return;
       var lenis = new Lenis({ duration: 1.05, lerp: 0.1, smoothWheel: true, wheelMultiplier: 1 });
       (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(0);
@@ -1858,7 +1943,7 @@
                new URL('../../../cib-home-final.html', DS_JS_DIR).href;
     root.querySelectorAll('a.ish-logo').forEach(function (a) { a.setAttribute('href', home); });
   }
-  function boot() { run(document); linkSegmentLogo(document); initSmoothScroll(); }
+  function boot() { run(document); linkSegmentLogo(document); initSmoothScroll(); keepOwned(); }
   // Defer the first scan a tick: recipes are registered via DS.recipe() AFTER
   // this IIFE (appended below), so they must be in the registry before we scan.
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
