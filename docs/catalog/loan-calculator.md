@@ -42,7 +42,8 @@ section.cmp.cmp-loan-calculator.surface-grey.section-y[data-behavior="loan-calcu
   keep. Each radio carries its OWN economics — `data-rate`, `data-min`,
   `data-max`, `data-amount`, `data-term-min`, `data-term-max`, `data-term` —
   so switching product re-ranges both sliders. Edit those attributes, never the
-  maths.
+  maths. `data-rate-basis="flat"` (Auto Loan) treats `data-rate` as a flat rate,
+  as emiratesnbd.com does; without it the rate is reducing-balance.
 - Exactly one radio `checked`, and its defaults must match the `value`/`min`/
   `max` authored on the two ranges (the markup is the pre-JS state crawlers and
   no-JS readers see).
