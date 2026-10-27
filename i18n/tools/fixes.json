@@ -137,5 +137,19 @@
 "Supported message channels.": "قنوات الرسائل المدعومة.",
 "<1></1> <3>03 · Status and reporting</3>": "<1></1> <3>03 · الحالة والتقارير</3>",
 "Acknowledged, then reported.": "إشعار، ثم تقرير.",
-"Receive ACK/NACK acknowledgements, pain.002 payment status reports and, for FileACT, file-level confirmations.": "استلموا إشعارات ACK/NACK، وتقارير حالة الدفع pain.002، وتأكيدات مستوى الملف لـ FileACT."
+"Receive ACK/NACK acknowledgements, pain.002 payment status reports and, for FileACT, file-level confirmations.": "استلموا إشعارات ACK/NACK، وتقارير حالة الدفع pain.002، وتأكيدات مستوى الملف لـ FileACT.",
+"Smart CDM is a self-service cash deposit machine Emirates NBD installs at your premises. Deposit bulk cash, cheques and coins in any currency, with same-day instant credit on AED cash, built-in security and full visibility of every deposit.": "Smart CDM جهاز إيداع نقدي بالخدمة الذاتية يركّبه بنك الإمارات دبي الوطني في مقر شركتكم. أودعوا النقد بكميات كبيرة والشيكات والعملات المعدنية بأي عملة، مع إضافة فورية في اليوم نفسه للإيداعات النقدية بالدرهم، وحماية مدمجة، ورؤية كاملة لكل إيداع.",
+"<1>Popular</1> <3>ENBD Business</3><5>smartTRADE</5><7>Trade Finance</7><9>Contact Us</9>": "<1>الأكثر بحثًا</1> <3>ENBD Business</3><5>smartTRADE</5><7>تمويل التجارة</7><9>اتصل بنا</9>",
+"Every note is screened for counterfeits, and your cash is insured in the machine and in transit.": "تُفحص كل ورقة نقدية للكشف عن التزييف، ونقدكم مؤمَّن عليه داخل الجهاز وأثناء النقل.",
+"When you deposit AED notes, the amount is credited to your account on the same day. Coins, foreign currency and cheques are credited once they are physically cleared and counted.": "عند إيداع الأوراق النقدية بالدرهم، يُقيَّد المبلغ في حسابكم في اليوم نفسه. أما العملات المعدنية والعملات الأجنبية والشيكات فتُقيَّد بعد تحصيلها وعدّها فعلياً.",
+"Each deposit gets a unique reference number recording the type, time, amount and who made it. Access is controlled by registered User ID.": "تحصل كل عملية إيداع على رقم مرجعي فريد يسجّل نوعها ووقتها ومبلغها والشخص الذي أجراها. ويُضبط الوصول عبر معرّف مستخدم مسجّل.",
+"Counterfeit notes are caught at the point of deposit, and cash no longer changes hands between staff. Your cash is insured in the machine, and in transit once the security agency clears it.": "تُكشف الأوراق المزيفة عند نقطة الإيداع، ولم يعد النقد يتنقّل بين أيدي الموظفين. نقدكم مؤمَّن عليه داخل الجهاز، وأثناء النقل بعد أن تستلمه شركة الأمن.",
+"Your cash volumes. Your choice of machine.": "حجم نقدكم. اختياركم للجهاز.",
+"After you subscribe, you receive insurance cover for cash in the machine and cash in transit when the security agency clears it. The machine also detects counterfeit notes.": "بعد الاشتراك، تحصلون على تغطية تأمينية للنقد داخل الجهاز وللنقد أثناء النقل عندما تستلمه شركة الأمن. كما يكشف الجهاز الأوراق النقدية المزيفة.",
+"The businessONLINE or ENBD Business Client Service Team:": "فريق خدمة عملاء businessONLINE أو ENBD Business:",
+"<1>Business Banking</1><3/>Tel: <4>+971 600 540009</4><6/>Email: <7>business.bb@emiratesnbd.com</7>": "<1>الخدمات المصرفية للأعمال</1><3/>الهاتف: <4>+971 600 540009</4><6/>البريد الإلكتروني: <7>business.bb@emiratesnbd.com</7>",
+"<1>Corporate & Institutional Banking</1><3/>Tel: <4>+971 4 3160075</4><6/>Email: <7>business.wb@emiratesnbd.com</7>": "<1>الخدمات المصرفية للشركات والمؤسسات</1><3/>الهاتف: <4>+971 4 3160075</4><6/>البريد الإلكتروني: <7>business.wb@emiratesnbd.com</7>",
+"<1><2>Corporate & Institutional Banking - Terms and conditions</2><4>PDF</4></1> <7/>": "<1><2>الخدمات المصرفية للشركات والمؤسسات: الشروط والأحكام</2><4>PDF</4></1> <7/>",
+"<1><2>Business Banking - Terms and conditions</2><4>PDF</4></1> <7/>": "<1><2>الخدمات المصرفية للأعمال: الشروط والأحكام</2><4>PDF</4></1> <7/>",
+"<1><2>Business Banking - Key Facts Statement</2><4>PDF</4></1> <7/>": "<1><2>الخدمات المصرفية للأعمال: بيان الحقائق الأساسية</2><4>PDF</4></1> <7/>"
 }
