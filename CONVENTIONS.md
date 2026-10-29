@@ -110,7 +110,7 @@ outline. New work composes only the role types.
 
 **THE GLYPH AXIS (2026-09-03, Hakan).** A button's icon is a FIFTH axis, and it
 is a CLASS, not markup. Inline `<svg>` blobs inside buttons are retired: the
-glyph lives once in style.css as a data-URI **mask painted with `currentColor`**,
+glyph is one SVG file in `assets/webxv2/images/icons/`, named once in style.css as a **mask painted with `currentColor`** (not a data URI: the CMS bundler's CssRewriteUrlTransform mangles those),
 so it inherits the button's ink on every surface, in every brand, in dark mode
 and on hover for free. Markup only NAMES it.
 
