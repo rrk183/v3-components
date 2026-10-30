@@ -926,7 +926,7 @@
 
 /* ═══ BUTTON GLYPH ENGINE (2026-09-03, Hakan ruling) ════════════════════════
    Button and control icons are NOT inline <svg> blobs in markup any more. Each
-   glyph lives ONCE, here, as a data-URI MASK painted with `currentColor`, so it
+   glyph is ONE mask file (images/icons/*.svg) named here, painted with `currentColor`, so it
    inherits the button's ink on every surface, in every brand, in dark mode and
    on hover — for free. Markup only NAMES the glyph with a modifier class:
 
@@ -949,20 +949,20 @@
    CONVENTIONS.md § The button model → the glyph axis. ═══════════════════════ */
 
 /* the vocabulary — 14 glyphs. --ic is the mask source; nothing else. */
-.is-arrow      { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzIuMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cGF0aCBkPSdNNSAxMmgxNE0xMyA2bDYgNi02IDYnLz48L3N2Zz4="); }
-.is-arrow-back { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzIuMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cGF0aCBkPSdNMTkgMTJINU0xMSAxOGwtNi02IDYtNicvPjwvc3ZnPg=="); }
-.is-next       { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzIuMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cGF0aCBkPSdNOSA2bDYgNi02IDYnLz48L3N2Zz4="); }
-.is-back       { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzIuMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cGF0aCBkPSdNMTUgMThsLTYtNiA2LTYnLz48L3N2Zz4="); }
-.is-up         { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzInIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCc+PHBvbHlsaW5lIHBvaW50cz0nMTggMTUgMTIgOSA2IDE1Jy8+PC9zdmc+"); }
-.is-down       { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzInIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCc+PHBvbHlsaW5lIHBvaW50cz0nNiA5IDEyIDE1IDE4IDknLz48L3N2Zz4="); }
-.is-up-right   { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzInIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCc+PHBhdGggZD0nTTcgMTdMMTcgN005IDdoOHY4Jy8+PC9zdmc+"); }
-.is-close      { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzIuNCcgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cGF0aCBkPSdNMTggNkw2IDE4TTYgNmwxMiAxMicvPjwvc3ZnPg=="); }
-.is-plus       { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzIuMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cGF0aCBkPSdNMTIgNXYxNE01IDEyaDE0Jy8+PC9zdmc+"); }
-.is-minus      { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzIuMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cGF0aCBkPSdNNSAxMmgxNCcvPjwvc3ZnPg=="); }
-.is-download   { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzInIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCc+PHBhdGggZD0nTTEyIDN2MTJtMCAwbC00LTRtNCA0bDQtNE00IDIxaDE2Jy8+PC9zdmc+"); }
-.is-search     { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMDAwJyBzdHJva2Utd2lkdGg9JzInIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCc+PGNpcmNsZSBjeD0nMTEnIGN5PScxMScgcj0nNycvPjxwYXRoIGQ9J00yMSAyMWwtNC4zNS00LjM1Jy8+PC9zdmc+"); }
-.is-play       { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nIzAwMCc+PHBhdGggZD0nTTggNXYxNGwxMS03eicvPjwvc3ZnPg=="); }
-.is-pause      { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nIzAwMCc+PHBhdGggZD0nTTcgNWgzLjV2MTRIN3pNMTMuNSA1SDE3djE0aC0zLjV6Jy8+PC9zdmc+"); }
+.is-arrow      { --ic: url("../images/icons/arrow.svg"); }
+.is-arrow-back { --ic: url("../images/icons/arrow-back.svg"); }
+.is-next       { --ic: url("../images/icons/next.svg"); }
+.is-back       { --ic: url("../images/icons/back.svg"); }
+.is-up         { --ic: url("../images/icons/up.svg"); }
+.is-down       { --ic: url("../images/icons/down.svg"); }
+.is-up-right   { --ic: url("../images/icons/up-right.svg"); }
+.is-close      { --ic: url("../images/icons/close.svg"); }
+.is-plus       { --ic: url("../images/icons/plus.svg"); }
+.is-minus      { --ic: url("../images/icons/minus.svg"); }
+.is-download   { --ic: url("../images/icons/download.svg"); }
+.is-search     { --ic: url("../images/icons/search.svg"); }
+.is-play       { --ic: url("../images/icons/play.svg"); }
+.is-pause      { --ic: url("../images/icons/pause.svg"); }
 
 /* the renderer — ONE shared rule. :is() (not :where()) so the glyph carries
    real specificity and a component's own ::after can still out-rank it on
@@ -1034,7 +1034,7 @@
   padding: 15px 16px; font-size: 15px; font-family: inherit; color: var(--navy);
   outline: none; transition: border-color .2s, box-shadow .2s; appearance: none; -webkit-appearance: none;
 }
-.field > select { background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTYnIGhlaWdodD0nMTYnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNNiA5bDYgNiA2LTYnIHN0cm9rZT0nIzNBNEI1Qycgc3Ryb2tlLXdpZHRoPScyJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnLz48L3N2Zz4="); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+.field > select { background-image: url("../images/icons/chevron-down.svg"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
 /* Empty/resting state: placeholder-label sits at the INPUT's vertical centre.
    Anchored at a fixed 27px (half the input's 54.5px box), NOT top:50% of the
    wrapper — .field also contains hints/errors and stretches in grid rows, so
@@ -1186,7 +1186,7 @@
 .list-check { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
 .list-check li { position: relative; padding-inline-start: 40px; font-size: 15px; line-height: 1.5; }
 .list-check li::before { content: ''; position: absolute; inset-inline-start: 0; top: -2px; width: 26px; height: 26px; border-radius: 50%; background: var(--lc-circle, var(--blue-wash)); }
-.list-check li::after { content: ''; position: absolute; inset-inline-start: 7px; top: 5px; width: 12px; height: 12px; background: var(--lc-check, var(--blue)); -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCc+PHBhdGggZD0nTTkgMTYuMiA0LjggMTJsLTEuNCAxLjRMOSAxOSAyMSA3bC0xLjQtMS40eicvPjwvc3ZnPg==") center/contain no-repeat; mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCc+PHBhdGggZD0nTTkgMTYuMiA0LjggMTJsLTEuNCAxLjRMOSAxOSAyMSA3bC0xLjQtMS40eicvPjwvc3ZnPg==") center/contain no-repeat; }
+.list-check li::after { content: ''; position: absolute; inset-inline-start: 7px; top: 5px; width: 12px; height: 12px; background: var(--lc-check, var(--blue)); -webkit-mask: url("../images/icons/check.svg") center/contain no-repeat; mask: url("../images/icons/check.svg") center/contain no-repeat; }
 :is(.surface-primary, .surface-dark) .list-check { --lc-circle: rgba(255, 255, 255, .12); --lc-check: var(--blue-soft); }
 
 /* ── stat-card: LEGACY (demoted 2026-09-01, Hakan) — kept only for the 5
@@ -4282,7 +4282,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 /* ═══ App Cinema — pinned cinematic download-app sequence ═══════════════════ */
 .cmp-scroll-scenes .aci { position: relative; }   /* height set by JS = scrub-vh */
 .cmp-scroll-scenes .aci-stage { position: sticky; top: 0; height: 100vh; height: 100lvh; padding-block-end: calc(100lvh - 100svh); overflow: hidden; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; perspective: 1500px; }
-.cmp-scroll-scenes .aci-grain { position: absolute; inset: 0; z-index: 50; pointer-events: none; opacity: .05; mix-blend-mode: overlay; background: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+"); }
+.cmp-scroll-scenes .aci-grain { position: absolute; inset: 0; z-index: 50; pointer-events: none; opacity: .05; mix-blend-mode: overlay; background: url("../images/icons/grain.svg"); }
 .cmp-scroll-scenes .aci-grid { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5; background-size: 60px 60px; background-image: linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px); -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%); mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%); }
 
 /* Hero + CTA text layers */
@@ -6201,7 +6201,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
   /* Own chevron with breathing room (Ram, 2026-10-13): the native arrow sat
      flush against the right border. Same glyph as .field > select. */
   appearance: none; -webkit-appearance: none;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTYnIGhlaWdodD0nMTYnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNNiA5bDYgNiA2LTYnIHN0cm9rZT0nIzNBNEI1Qycgc3Ryb2tlLXdpZHRoPScyJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnLz48L3N2Zz4=");
+  background-image: url("../images/icons/chevron-down.svg");
   background-repeat: no-repeat; background-position: right 14px center; padding-inline-end: 40px; }
 .filter-select select:focus-visible { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(var(--blue-rgb), .12); outline: none; }
 .filter-count { font-size: 14px; margin-top: 20px; }
@@ -7841,7 +7841,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    the looping clip), then shown top-left of the hero as the DS btn-icon */
 :where(.hf-main) .hf-pause--hero { position: absolute; z-index: 5; left: var(--hf-edge); top: calc(var(--hf-hdr) + 56px); }
 :where(.hf-main) .hf-pause--hero:not(:focus-visible) { width: 1px; height: 1px; min-height: 0; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); border: 0; white-space: nowrap; }
-:where(.hf-main) .hf-pause--hero[aria-pressed="true"] { --ic: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nIzAwMCc+PHBhdGggZD0nTTggNXYxNGwxMS03eicvPjwvc3ZnPg=="); }
+:where(.hf-main) .hf-pause--hero[aria-pressed="true"] { --ic: url("../images/icons/play.svg"); }
 :where(.hf-main) .hf-pause--hero[hidden] { display: none; }
 
 /* ══ Badges and chips: always one line; the label beside them wraps ══════ */
