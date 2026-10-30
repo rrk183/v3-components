@@ -5,6 +5,7 @@ trade-supply-chain-finance-v1a.html
 emirates-nbd-pay-v1a.html
 digital-solutions-v1a.html
 businessonline-x-v2.html
+businessonline-x-v1a.html
 smarttrade-v1a.html
 smartscf-v1a.html
 smartguarantees-v1a.html
