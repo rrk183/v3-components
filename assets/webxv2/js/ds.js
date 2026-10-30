@@ -4071,6 +4071,111 @@ DS.recipe('ib-hero', function (root) {
   });
 
 
+  /* recipe: tap-ripple — pinned card scene. The card lifts off a light floor,
+     turns once and faces the reader while contactless ripples spread; each
+     .tr-tile stands up when the first ripple reaches it (data-tr-x / -y are
+     floor positions at 1440 wide, card at 0,0). Arms (.tr-armed) only with
+     motion allowed and when the closing copy fits one screen, so reduced
+     motion, zoom and short landscape phones keep the static CSS layout. */
+  DS.recipe('tap-ripple', function (root) {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var world = root.querySelector('.tr-world'), card = root.querySelector('.tr-card');
+    var shadow = root.querySelector('.tr-shadow'), gloss = root.querySelector('.tr-gloss');
+    var open = root.querySelector('.tr-open'), end = root.querySelector('.tr-end');
+    if (!world || !card || !end) return;
+    var rings = [].slice.call(root.querySelectorAll('.tr-ring'));
+    var tiles = [].slice.call(root.querySelectorAll('.tr-tile')).map(function (el) {
+      var x = parseFloat(el.getAttribute('data-tr-x')) || 0, y = parseFloat(el.getAttribute('data-tr-y')) || 0;
+      return { el: el, x: x, y: y, d: Math.sqrt(x * x + y * y) };
+    });
+    var moved = [world, card, shadow, gloss, open, end].concat(rings, tiles.map(function (t) { return t.el; }));
+    function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+    function seg(p, a, b) { return clamp((p - a) / (b - a)); }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function io(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function out(t) { return 1 - Math.pow(1 - t, 3); }
+    var vh, k, up, cw, tall, cap, armed = false, cur = 0, target = 0, raf = 0;
+
+    function render(p) {
+      var tilt = lerp(74, 62, io(seg(p, .08, .9)));            // camera rises a little
+      var rz = lerp(-28, 7, io(seg(p, 0, .9)));                 // orbit around the card: wide sweep, eased, settling on the same final framing
+      var sc = lerp(1.1, .94, io(seg(p, .1, .95)));             // pull back to reveal
+      var wy = vh * (tall ? lerp(.66, .58, p) : lerp(.66, .68, p));
+      wy = lerp(wy, Math.min(wy, cap), io(seg(p, .6, .86)));   // lift the floor clear of the closing copy as it arrives (short screens)
+      world.style.transform = 'translate3d(0,' + wy + 'px,0) rotateX(' + tilt + 'deg) rotateZ(' + rz + 'deg) scale(' + sc + ')';
+      // card: lies flat, then lifts, turns once and faces the reader
+      var rise = io(seg(p, .1, .44)), lift = cw * lerp(0, .44, io(seg(p, .1, .5))), spin = lerp(0, 360, io(seg(p, .14, .5)));
+      card.style.transform = 'translate3d(0,0,' + (lift + 1) + 'px) rotateZ(' + (-rz) + 'deg) rotateX(' + (-tilt * rise) + 'deg) rotateY(' + spin + 'deg)';
+      if (gloss) gloss.style.transform = 'translate3d(' + (-1.6 * lerp(120, -20, seg(p, .3, .62)) / 2.6).toFixed(3) + '%,0,0)';
+      // contact shadow: a fixed box scaled, so no layout or repaint per frame
+      if (shadow) {
+        var sw = cw * 1.5, sh = cw * .9;
+        shadow.style.transform = 'translate3d(' + (-sw / 2) + 'px,' + (-sh / 2 - cw * .632 * lerp(.5, 0, rise)) + 'px,-1px) rotateZ(' + (-rz) + 'deg) scale(' + lerp(.7, 1, rise).toFixed(4) + ',' + lerp(.7333, 1, rise).toFixed(4) + ')';
+        shadow.style.opacity = lerp(.9, .55, rise);
+      }
+      // contactless ripples (800px band, so scale = radius / 400)
+      var R = 1750 * k, age0 = (p - .14) * 3.2;                 // ripple pace: reaches the far photos by ~45% of the scroll
+      rings.forEach(function (r, i) {
+        var t = age0 - i * .2;
+        if (t <= 0 || t >= 1) { r.style.opacity = 0; return; }
+        r.style.transform = 'translate3d(0,0,-3px) scale(' + (out(t) * R / 400).toFixed(4) + ')';
+        r.style.opacity = Math.pow(1 - t, 1.4) * Math.min(1, t * 6) * .9;
+      });
+      // each moment stands up when the first ripple reaches it; hidden while still flat (it aliases)
+      var wave = out(clamp(age0)) * R;
+      tiles.forEach(function (m) {
+        var u = out(clamp((wave - m.d * k) / (260 * k + 60))), a = clamp((u - .3) / .7);
+        m.el.style.opacity = a <= 0 ? 0 : Math.pow(a, 1.5) * lerp(1, .62, clamp((-m.y - 700) / 900));
+        m.el.style.transform = 'translate3d(' + (m.x * k) + 'px,' + (m.y * k) + 'px,' + (2 + up * clamp((-m.y - 300) / 700)) + 'px) rotateZ(' + (-rz) + 'deg) rotateX(' + (-tilt * u) + 'deg) scale(' + lerp(.86, 1, u) + ')';
+      });
+      if (open) {
+        var o = 1 - seg(p, .08, .2);
+        open.style.opacity = o; open.style.transform = 'translateY(' + (-30 * (1 - o)) + 'px)';
+        open.style.visibility = o <= 0 ? 'hidden' : '';
+      }
+      var e = io(seg(p, .7, .86));
+      end.style.opacity = e; end.style.transform = 'translateY(' + (24 * (1 - e)) + 'px)';
+      end.style.pointerEvents = e < .5 ? 'none' : '';
+    }
+    function progress() {
+      var span = root.offsetHeight - vh;
+      return span > 0 ? clamp(-root.getBoundingClientRect().top / span) : 1;
+    }
+    function tick() {
+      cur += (target - cur) * .14;
+      if (Math.abs(target - cur) < .0005) cur = target;
+      render(cur);
+      raf = cur !== target ? requestAnimationFrame(tick) : 0;
+    }
+    function setup() {
+      root.classList.add('tr-armed');
+      vh = window.innerHeight; cw = card.offsetWidth;
+      var vw = window.innerWidth;
+      if (end.offsetHeight + 48 > vh) {                         // closing copy must fit the pinned frame
+        root.classList.remove('tr-armed'); armed = false;
+        moved.forEach(function (el) { if (el) { el.style.transform = ''; el.style.opacity = ''; el.style.visibility = ''; el.style.pointerEvents = ''; } });
+        return;
+      }
+      armed = true;
+      if (shadow) { shadow.style.width = cw * 1.5 + 'px'; shadow.style.height = cw * .9 + 'px'; }
+      k = vw < 768 ? .36 : vw < 1024 ? .5 : Math.min(1.1, vw / 1440);
+      up = vw < 768 ? cw * lerp(.4, .95, clamp((vh - 576) / 200)) : 0;   // phones: the card fills more of the frame, so the far photos float up to clear it (less on short screens)
+      tall = vh / vw > 1.3;                                     // portrait phones: lift the floor so the top is not empty
+      var lbl = root.querySelector('.tr-label');                // labels hang below the floor line when shown
+      cap = vh - (parseFloat(window.getComputedStyle(end).bottom) || 0) - end.offsetHeight - (lbl && lbl.offsetParent ? 72 : 24);
+      target = cur = progress(); render(cur);
+    }
+    // keyboard users tabbing to the buttons early: jump to the closing beat
+    end.addEventListener('focusin', function () {
+      if (!armed || cur >= .86) return;
+      window.scrollTo(0, root.getBoundingClientRect().top + window.pageYOffset + (root.offsetHeight - vh) * .9);
+      target = cur = progress(); render(cur);
+    });
+    window.addEventListener('scroll', function () { if (!armed) return; target = progress(); if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+    window.addEventListener('resize', setup);
+    setup();
+  });
+
   /* recipe: hex-reach-map — builds the reach map's live layer over the supplied
      hex-grid artwork: hexagonal ripple rings, leader lines and flag chips are
      drawn per market from the MARKERS table below. Colours come from CSS
