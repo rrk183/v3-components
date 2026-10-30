@@ -537,5 +537,22 @@
   "<1>UAE</1> <3>Middle East</3> <5>Europe</5> <7>Asia</7>": "<1>الإمارات العربية المتحدة</1> <3>الشرق الأوسط</3> <5>أوروبا</5> <7>آسيا</7>",
   "Let’s move forward, together.": "معًا، نخطو نحو المستقبل.",
   "<1>Talk to an advisor →</1>": "<1>تواصل مع أحد مستشارينا</1>"
+ },
+ "businessonline-x-v1a.html": {
+  "businessONLINE X | Next-gen Business Banking | Emirates NBD": "businessONLINE X | الخدمات المصرفية للأعمال من الجيل الجديد | الإمارات دبي الوطني",
+  "businessONLINE X is Emirates NBDs corporate banking app that makes it easier than ever to approve payments on the move, track requests and balances in real time, and bank securely with biometric login.": "businessONLINE X هو تطبيق الخدمات المصرفية للشركات من الإمارات دبي الوطني، يجعل الموافقة على المدفوعات أثناء التنقل أسهل من أي وقت مضى، مع تتبع الطلبات والأرصدة لحظياً، وخدمات مصرفية آمنة بتسجيل الدخول البيومتري.",
+  "businessONLINE X, the Emirates NBD corporate banking app, on a smartphone.": "businessONLINE X، تطبيق الخدمات المصرفية للشركات من الإمارات دبي الوطني، على هاتف ذكي.",
+  "businessONLINE X": "businessONLINE X",
+  "Explore businessONLINE X →": "استكشفوا businessONLINE X ←",
+  "The businessONLINE dashboard on a laptop, showing account balances, upcoming payments and payment tracker status": "لوحة معلومات businessONLINE على جهاز كمبيوتر محمول، تعرض أرصدة الحسابات والمدفوعات القادمة وحالة Payment Tracker",
+  "The Make a new payment flow in businessONLINE, shown on laptop and mobile": "خطوات إجراء دفعة جديدة في businessONLINE، معروضة على جهاز كمبيوتر محمول وهاتف",
+  "businessONLINE on a laptop: a single-window dashboard with balance overview, recent transactions, required actions and service requests.": "businessONLINE على جهاز كمبيوتر محمول: لوحة معلومات موحّدة تعرض نظرة عامة على الأرصدة، وأحدث المعاملات، والإجراءات المطلوبة، وطلبات الخدمة.",
+  "New to businessONLINE? Tell us about your business and our team will set you up for web and app access.": "جديد على businessONLINE؟ أخبرونا عن أعمالكم وسيتولى فريقنا إعداد وصولكم عبر الويب والتطبيق.",
+  "<1><2>businessONLINE learning guide</2></1> <5/>": "<1><2>دليل التعلم لـ businessONLINE</2></1> <5/>",
+  "Instant Banking Services lets your business request, track and receive banking services on businessONLINE, from account letters and card management to maintenance requests, with real-time status and digital approvals.": "تتيح الخدمات المصرفية الفورية لأعمالكم طلب الخدمات المصرفية وتتبعها واستلامها عبر businessONLINE، من خطابات الحسابات وإدارة البطاقات إلى طلبات الصيانة، مع متابعة الحالة لحظياً وموافقات رقمية.",
+  "Manage debit and credit cards online": "إدارة بطاقات الخصم والائتمان عبر الإنترنت",
+  "Real-time status and digital approvals": "الحالة لحظياً وموافقات رقمية",
+  "Payment Tracker on businessONLINE follows every payment across your portfolio in real time, from release to receipt, with full history and Swift gpi status on cross-border payments.": "تتابع أداة Payment Tracker في businessONLINE كل دفعة عبر محفظتكم لحظياً، من إصدارها حتى استلامها، مع سجل كامل وحالة Swift gpi للمدفوعات عبر الحدود.",
+  "Start on the web in businessONLINE and approve on the move in businessONLINE X, every account, approval and payment, consolidated and live wherever you work.": "ابدأوا عبر الويب في businessONLINE ووافقوا أثناء التنقل عبر businessONLINE X، كل حساب وكل موافقة وكل دفعة، موحّدة ومحدّثة لحظياً أينما كنتم تعملون."
  }
 }

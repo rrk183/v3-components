@@ -5336,7 +5336,14 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 .cmp-scroll-story-video .ssv-cap.cap-split-r .ssv-h{font-size:clamp(34px,5.2vw,72px);letter-spacing:-.03em}
 @media (max-width: 1023px){
   .cmp-scroll-story-video .ssv-cap.cap-split-l,.cmp-scroll-story-video .ssv-cap.cap-split-r{left:0;right:0;text-align:center;max-width:88vw;margin:0 auto;justify-self:center}
+  /* Both halves are centred here, so stack them as two lines (first phrase above
+     the middle, second below) instead of printing one over the other. */
+  .cmp-scroll-story-video .ssv-cap.cap-split-l{top:auto;bottom:50%}
+  .cmp-scroll-story-video .ssv-cap.cap-split-r{top:50%;bottom:auto}
   .cmp-scroll-story-video .ssv-cap.cap-split-l .ssv-h,.cmp-scroll-story-video .ssv-cap.cap-split-r .ssv-h{font-size:clamp(26px,7vw,44px)}
+  /* ssv-split-desktop: a page opts out of the split line below 1024px, where the
+     phone fills the screen behind it (businessONLINE X, Ram 2026-10-30). */
+  .cmp-scroll-story-video.ssv-split-desktop .ssv-cap.cap-split-l,.cmp-scroll-story-video.ssv-split-desktop .ssv-cap.cap-split-r{display:none}
 }
 
 /* ═══ Scrub story — mini dashboard / bento tiles inside a caption ════════════ */
