@@ -1,0 +1,97 @@
+<!-- ═══ Tap Ripple ════════════════════════════════════════════════════════════
+     A pinned scroll scene for a card product. The card lies flat on a light
+     floor under the opening line, then lifts, turns once and faces the
+     reader while contactless ripples spread across the floor. Each benefit
+     photo stands up the moment the ripple reaches it, and the scene settles
+     on the closing line, a benefits sentence and the two buttons.
+     Styled by .cmp-tap-ripple in style.css, driven by the tap-ripple recipe
+     in ds.js. Harvested from the Tap Ripple section prototype
+     (My Team/tap-ripple-section), inspired by moto-card.com, not copied.
+     No-JS and reduced motion: no pin, a static composition (copy, card, the
+     labelled photos as a row, closing copy and buttons), everything visible.
+     Params:
+       · surface on the root (soft default; the floor reads best on a light ground)
+       · each .tr-tile: data-tr-x / data-tr-y = floor position in px at 1440 wide,
+         card at 0,0, negative y is further away. Keep labelled tiles within
+         x ±600 and y 0 to -600 so labels stay on screen.
+       · .tr-tile.is-ambient = photo with no label (scene only, hidden in the static layout)
+       · .tr-tile.is-edge = hidden under 1024px, where it would only show as an edge sliver
+       · .tr-tile.is-fold = shown only from 768 to 1023px (open foldables, tablets), where the
+         scene is narrower and the sides would otherwise sit empty
+     Content: card image 720x455 (ISO card ratio), photos 4:5 at 440x550,
+     4 labels at most (one short benefit each), AED amounts use .aed with an
+     sr-only "AED". No IDs (the section is labelled with aria-label). -->
+<section class="cmp cmp-tap-ripple surface-soft section-y" data-animate data-behavior="tap-ripple" aria-label="Visa Infinite Credit Card">
+  <div class="tr-stage">
+
+    <div class="tr-open container-ds">
+      <p class="ds-eyebrow ink-accent">Visa Infinite Credit Card</p>
+      <h2 class="type-display-lg ink-primary tr-h">It starts with a tap.</h2>
+      <p class="type-caption ink-mute tr-hint"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5"/></svg>Scroll</p>
+    </div>
+
+    <div class="tr-scene" aria-hidden="true">
+      <div class="tr-world">
+        <span class="tr-ring"></span><span class="tr-ring"></span><span class="tr-ring"></span><span class="tr-ring"></span><span class="tr-ring"></span>
+        <span class="tr-shadow"></span>
+
+        <figure class="tr-tile" data-tr-x="-560" data-tr-y="-40">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/credit-travel.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+          <figcaption class="tr-label surface-white type-caption ink-primary">1,000+ lounges for you and a guest</figcaption>
+        </figure>
+        <figure class="tr-tile" data-tr-x="590" data-tr-y="-90">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/hero-lifestyle.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+          <figcaption class="tr-label surface-white type-caption ink-primary">Up to 2 Plus Points on dining</figcaption>
+        </figure>
+        <figure class="tr-tile" data-tr-x="-480" data-tr-y="-540">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/slide-travel.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+          <figcaption class="tr-label surface-white type-caption ink-primary">Up to 2 Plus Points on flights</figcaption>
+        </figure>
+        <figure class="tr-tile" data-tr-x="480" data-tr-y="-600">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/deals-hotels.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+          <figcaption class="tr-label surface-white type-caption ink-primary">Points on every hotel stay</figcaption>
+        </figure>
+        <figure class="tr-tile is-ambient is-edge" data-tr-x="-990" data-tr-y="-400">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/deals-events.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="tr-tile is-ambient is-edge" data-tr-x="970" data-tr-y="-440">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/promo-anantara.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="tr-tile is-ambient" data-tr-x="-20" data-tr-y="-1080">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/promo-centara.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="tr-tile is-ambient" data-tr-x="-680" data-tr-y="-1040">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/lifestyle.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="tr-tile is-ambient" data-tr-x="690" data-tr-y="-1000">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/promo-trip.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+        </figure>
+
+        <!-- open foldables and tablets (768 to 1023px) only: one quiet accent per side where the narrower spread leaves them empty -->
+        <figure class="tr-tile is-ambient is-fold" data-tr-x="-800" data-tr-y="130">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/priority.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="tr-tile is-ambient is-fold" data-tr-x="800" data-tr-y="110">
+          <img class="tr-img" src="/assets/webxv2/images/tap-ripple/fx-travel.jpg" width="440" height="550" alt="" loading="lazy" decoding="async" />
+        </figure>
+
+        <div class="tr-card">
+          <div class="tr-face"><img class="tr-card-img" src="/assets/webxv2/images/tap-ripple/visa-infinite.jpg" width="720" height="455" alt="" decoding="async" /><span class="tr-gloss"></span></div>
+          <div class="tr-face tr-back"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tr-end container-ds">
+      <span class="ov ov-soft ov-gradient-b ov-90 tr-fade" aria-hidden="true"></span>
+      <p class="type-display-lg ink-primary tr-h">Then it ripples out.</p>
+      <p class="type-body-lg ink-mute tr-sub">Airport lounges in 300 cities, golf across the UAE, and up to 2 Plus Points for every <span class="aed"><span class="sr-only">AED </span>100</span> you spend.</p>
+      <div class="tr-ctas">
+        <a class="btn btn-filled btn-lg" href="#">Apply for Visa Infinite</a>
+        <a class="btn btn-outline btn-lg" href="#">See all benefits</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ /Tap Ripple ═══════════════════════════════════════════════════════════ -->

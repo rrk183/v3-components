@@ -13,6 +13,20 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 (function () {
   var M = {
+// ── tap-ripple (Tap Ripple · from the tap-ripple-section prototype)
+// Product name kept as the card's Arabic name on the ENBD site style; native review needed.
+"Visa Infinite Credit Card": "بطاقة فيزا إنفينيت الائتمانية",
+"It starts with a tap.": "كل شيء يبدأ بلمسة.",
+"Then it ripples out.": "ثم يمتد الأثر.",
+"1,000+ lounges for you and a guest": "أكثر من 1,000 صالة، لك ولضيف",
+"Up to 2 Plus Points on dining": "حتى 2 نقطة بلس على المطاعم",
+"Up to 2 Plus Points on flights": "حتى 2 نقطة بلس على الرحلات",
+"Points on every hotel stay": "نقاط على كل إقامة فندقية",
+"Airport lounges in 300 cities, golf across the UAE, and up to 2 Plus Points for every": "صالات مطارات في 300 مدينة، وملاعب غولف في أنحاء الإمارات، وما يصل إلى 2 نقطة بلس عن كل",
+"you spend.": "تنفقها.",
+"Apply for Visa Infinite": "قدّم طلب فيزا إنفينيت",
+"See all benefits": "اكتشف كل المزايا",
+"Scroll": "مرّر",
 // ── video-explainer (Video Explainer · from api-banking-v1a section 6)
 "Want to see how businessONLINE works?": "هل تريد أن ترى كيف يعمل businessONLINE؟",
 "Watch a short tour of the platform, from paying a beneficiary to approving a transaction on the go.": "شاهد جولة قصيرة في المنصة، من الدفع لمستفيد إلى اعتماد معاملة أثناء التنقل.",
