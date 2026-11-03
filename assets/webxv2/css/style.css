@@ -7433,16 +7433,29 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    former cmp-people-grid section CSS was refolded into that family
    (2026-08-28). op-* names kept for the modal skin only. ── */
 /* the modal bio skin (page-level overlays inside the existing cmp-modal) */
-.op-modal { max-width: 780px; width: 100%; }
-.op-modal-grid { display: grid; grid-template-columns: 1fr; overflow-y: auto; }
+/* Profile rail (2026-11-03): the portrait is a fixed 4:5 frame at the top of a
+   still rail, with role, name, years and actions under it; only the bio column
+   scrolls. The photo never stretches with the bio, so the face is never cropped. */
+.op-modal { max-width: 900px; width: 100%; }
+.op-modal-grid { display: grid; grid-template-columns: 1fr; flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.op-modal-rail { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 24px 20px 20px; background: var(--grey-100); border-block-end: 1px solid var(--border); }
+.op-modal-photo { display: block; width: 104px; aspect-ratio: 4 / 5; border-radius: 12px; background-color: var(--soft); background-size: cover; background-position: center 22%; }
+.op-modal-id { min-width: 0; }
+.op-modal-rail .op-modal-actions { grid-column: 1 / -1; margin-top: 0; }
+.op-modal-body { padding: 24px 20px; }
 @media (min-width: 768px) {
-  .op-modal-grid { grid-template-columns: 300px 1fr; }
-  .op-modal-photo { aspect-ratio: auto; height: 100%; min-height: 420px; }
+  .op-modal-grid { grid-template-columns: 296px 1fr; overflow: hidden; }
+  .op-modal-rail { grid-template-columns: 1fr; align-content: start; align-items: start; gap: 20px; padding: 28px; overflow-y: auto; border-block-end: 0; border-inline-end: 1px solid var(--border); }
+  .op-modal-photo { width: 100%; border-radius: 16px; }
+  .op-modal-rail .op-modal-actions { flex-direction: column; }
+  .op-modal-rail .op-modal-actions .btn { width: 100%; justify-content: center; white-space: nowrap; padding-inline: 16px; }
+  .op-modal-body { overflow-y: auto; padding: clamp(32px, 3.6vw, 44px); padding-inline-end: 64px; }
 }
-.op-modal-photo { display: block; width: 100%; aspect-ratio: 16 / 10; background-size: cover; background-position: center 18%; flex-shrink: 0; }
-.op-modal-body { padding: clamp(26px, 3.4vw, 42px); }
 .op-modal-eyebrow { display: block; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
-.op-modal-name { font-size: clamp(23px, 2.4vw, 30px); font-weight: 700; letter-spacing: -.02em; color: var(--navy); margin: 9px 0 18px; line-height: 1.1; }
+.op-modal-name { font-size: clamp(21px, 2vw, 24px); font-weight: 700; letter-spacing: -.02em; color: var(--navy); margin: 8px 0 0; line-height: 1.15; }
+.op-modal-meta { font-size: 13.5px; line-height: 1.5; color: var(--mid); margin: 8px 0 0; }
+.op-modal-meta strong { color: var(--navy); font-weight: 700; }
+.op-modal-body > :last-child { margin-bottom: 0; }
 .op-modal-bio { font-size: 14.5px; line-height: 1.62; color: var(--mid); margin: 0 0 14px; }
 .op-modal-deals { font-size: 13.5px; color: var(--mid); }
 .op-modal-deals strong { color: var(--navy); font-weight: 700; }
