@@ -8338,7 +8338,8 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 
 /* ── Product scrub (ENBD Business hero, 2026-10-20) ─────────────────────────
    Scroll-scrubbed Rotato sequences with live app screens, drawn by
-   product-scrub.js on one WebGL canvas (.ps-gl, inserted by the script).
+   ds.js ([data-product-scrub]; was product-scrub.js) on one WebGL canvas
+   (.ps-gl, inserted by the script).
    The script places the opener, the captions and the camera per screen shape;
    these rules only set type, the cue and the stage. Inks are markup. */
 .cmp-product-scrub{display:block}
@@ -8395,3 +8396,52 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 /* Rankings & awards award-title bullets (legacy page markup). */
 [dir="rtl"] .cmp-awards-grid .ag-titles li { padding-left: 0; padding-right: 22px; }
 [dir="rtl"] .cmp-awards-grid .ag-titles li::before { left: auto; right: 0; }
+
+/* ═══ Payments & Trade Finance hero — "The Handshake" (film) ═══════════════
+   cmp-hero-cinematic-pinned.hf: the scroll is the playhead of a video, with a
+   code-built cloud pass over the cut and copy in three line-reveal beats.
+   Moved here from the <style> block in payments-trade-finance-v1a(-ar).html
+   so the section works pasted into a CMS rich-text field; its JS is in ds.js
+   ([data-hf-film]). Kept at the END of the file, where the page block used to
+   cascade. :where(.cmp-hero-cinematic-pinned).hf has the same specificity as
+   the old .hf but cannot touch the Wholesale Banking pages (their <body> is
+   .hf too). */
+:where(.cmp-hero-cinematic-pinned).hf { overflow: clip; background: var(--navy); --ease: cubic-bezier(.16,1,.3,1); }
+:where(.cmp-hero-cinematic-pinned).hf .hf-track { position: relative; height: 520vh; }
+:where(.cmp-hero-cinematic-pinned).hf .hf-stage { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; background: var(--navy); }
+:where(.cmp-hero-cinematic-pinned).hf .hf-film, :where(.cmp-hero-cinematic-pinned).hf .hf-still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--fz, 1.02)); will-change: transform; }
+:where(.cmp-hero-cinematic-pinned).hf .hf-still { display: none; }
+/* code-built cloud pass that hides the cut between the two flight shots */
+:where(.cmp-hero-cinematic-pinned).hf .hf-cloud { position: absolute; inset: -10%; width: 120%; height: 120%; object-fit: cover; mix-blend-mode: screen; opacity: 0; pointer-events: none; will-change: transform, opacity;
+  -webkit-mask: radial-gradient(ellipse 72% 72% at 50% 50%, #000 55%, transparent 100%); mask: radial-gradient(ellipse 72% 72% at 50% 50%, #000 55%, transparent 100%); }
+:where(.cmp-hero-cinematic-pinned).hf .hf-white { position: absolute; inset: 0; background: radial-gradient(70% 70% at 50% 50%, #fff, var(--light) 70%); opacity: 0; pointer-events: none; }
+:where(.cmp-hero-cinematic-pinned).hf .hf-scrim { position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(0deg, rgba(var(--navy-rgb), .82) 0%, rgba(var(--navy-rgb), .5) 30%, rgba(var(--navy-rgb), 0) 58%),
+              linear-gradient(90deg, rgba(var(--navy-rgb), .45) 0%, rgba(var(--navy-rgb), 0) 55%); }
+:where(.cmp-hero-cinematic-pinned).hf .hf-phase { position: absolute; inset: 0; z-index: 2; display: flex; align-items: flex-end; padding-bottom: clamp(48px, 9vh, 104px); pointer-events: none; opacity: 0; }
+:where(.cmp-hero-cinematic-pinned).hf .hf-phase { bottom: calc(100lvh - 100svh); }  /* stage fills the large screen, copy sits in the small one (browser-bar layer, 2026-10-14) */
+:where(.cmp-hero-cinematic-pinned).hf .hf-phase.is-live .hf-actions { pointer-events: auto; }
+:where(.cmp-hero-cinematic-pinned).hf .hf-in { display: flex; flex-direction: column; align-items: flex-start; }
+:where(.cmp-hero-cinematic-pinned).hf .hf-title { margin-top: .8rem; font-weight: 600; letter-spacing: -.04em; line-height: 1; font-size: clamp(42px, 5.4vw, 88px); text-shadow: 0 2px 30px rgba(var(--navy-rgb), .4); }
+:where(.cmp-hero-cinematic-pinned).hf .hf-line { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+:where(.cmp-hero-cinematic-pinned).hf .hf-line > span { display: inline-block; transform: translate3d(0, var(--ly, 0%), 0); will-change: transform; }
+:where(.cmp-hero-cinematic-pinned).hf .hf-sub { margin-top: 1rem; max-width: 42ch; opacity: .92; text-shadow: 0 1px 14px rgba(var(--navy-rgb), .6); }
+:where(.cmp-hero-cinematic-pinned).hf .hf-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.8rem; }
+@media (max-width: 767px) {
+  :where(.cmp-hero-cinematic-pinned).hf .hf-track { height: 440vh; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-phase { padding-bottom: 24px; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-phase[data-hf-phase="2"], :where(.cmp-hero-cinematic-pinned).hf .hf-phase[data-hf-phase="3"] { padding-bottom: 144px; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-title { font-size: 40px; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-sub { font-size: 16px; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-actions { flex-direction: column; align-self: stretch; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-actions .btn { width: 100%; justify-content: center; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-scrim { background: linear-gradient(0deg, rgba(var(--navy-rgb), .9) 0%, rgba(var(--navy-rgb), .6) 38%, rgba(var(--navy-rgb), 0) 66%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.cmp-hero-cinematic-pinned).hf .hf-track { height: auto; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-stage { position: relative; height: auto; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-film { display: none; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-still { display: block; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-phase { position: relative; opacity: 1; min-height: 70vh; }
+  :where(.cmp-hero-cinematic-pinned).hf .hf-phase .hf-actions { pointer-events: auto; }
+}
