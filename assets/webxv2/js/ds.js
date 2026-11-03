@@ -41,11 +41,16 @@
 
   var behaviors = [];
   function register(fn) { behaviors.push(fn); }
+  var depth = 0;   // >0 while a pass is running (behaviours may call DS.refresh mid-pass)
   function run(scope) {
     var s = scope || document;
-    for (var i = 0; i < behaviors.length; i++) {
-      try { behaviors[i](s); } catch (e) { if (window.console) console.error('[DS] behaviour error:', e); }
-    }
+    if (!depth) scrub(s);          // a nested pass's markers are fresh, not stale
+    depth++;
+    try {
+      for (var i = 0; i < behaviors.length; i++) {
+        try { behaviors[i](s); } catch (e) { if (window.console) console.error('[DS] behaviour error:', e); }
+      }
+    } finally { depth--; }
     claim(s);
     if (keeper) keeper.takeRecords();   // our own DOM work is not a host re-render
   }
@@ -93,6 +98,31 @@
       if (host && (n.matches(OWN) || n.querySelector(OWN + ', [data-bg]'))) run(host);
     });
     if (keeper) keeper.takeRecords();
+  }
+  /* Markup COPIED FROM A RENDERED PAGE (browser "Copy outerHTML" pasted into a
+     CMS rich-text field) arrives already carrying our runtime markers
+     (data-*-bound, data-ds-uid…), so every behaviour skips it as "done" — it
+     looks right but has no listeners. A marker only counts if THIS runtime set
+     it, i.e. it sits inside a component root we own; anything else is stale
+     and is stripped before binding. (On first load nothing is ours yet, so all
+     markers in the HTML are stale.) */
+  var MARK = /^data-(?:ds-uid|rm-still|[a-z0-9-]+-(?:bound|done|ready|mounted))$/;
+  function scrub(scope) {
+    var els = all(scope, '*'), stale = [];
+    if (scope.nodeType === 1) els.unshift(scope);
+    els.forEach(function (el) {
+      var names = [];
+      for (var i = 0; i < el.attributes.length; i++) if (MARK.test(el.attributes[i].name)) names.push(el.attributes[i].name);
+      if (!names.length) return;
+      var r = el.closest('[data-ds-uid]');
+      if (r && owned[r.getAttribute('data-ds-uid')] === r) return;      // ours
+      names.forEach(function (n) { el.removeAttribute(n); });
+      stale.push(el);
+    });
+    if (stale.length && !scrub.warned && window.console) {
+      scrub.warned = true;
+      console.warn('[DS] ' + stale.length + ' element(s) arrived with ds.js runtime markers — markup was copied from a rendered page. Re-binding it; paste clean block markup (blocks/*.html) instead.', stale.slice(0, 10));
+    }
   }
   function keepOwned() {
     if (!('MutationObserver' in window) || keeper) return;
@@ -1038,6 +1068,7 @@
 
       var dotsWrap = root.querySelector('[data-carousel-dots]'), dots = [];
       if (dotsWrap) {
+        all(dotsWrap, '.carousel-dot').forEach(function (d) { d.remove(); });   // stale pasted dots
         slides.forEach(function (_, i) {
           var b = document.createElement('button'); b.className = 'carousel-dot'; b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
           b.addEventListener('click', function () { to(i); }); dotsWrap.appendChild(b); dots.push(b);
@@ -1748,6 +1779,7 @@
     var mount = function () {
       if (!window.lottie || stage.hasAttribute('data-lottie-mounted')) return;
       stage.setAttribute('data-lottie-mounted', '');
+      all(stage, '.lot-anim').forEach(function (d) { d.remove(); });   // stale pasted layer
       var box = document.createElement('div');
       box.className = 'lot-anim';
       box.setAttribute('aria-hidden', 'true');
@@ -2546,6 +2578,7 @@ DS.recipe('testimonials', function (root) {
   }
 
   if (dotsWrap) {
+    Array.prototype.forEach.call(dotsWrap.querySelectorAll('.tc-dot'), function (d) { d.remove(); });   // stale pasted dots
     cards.forEach(function (_, i) {
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'tc-dot'; b.setAttribute('aria-label', 'Show testimonial ' + (i + 1));
@@ -2613,6 +2646,7 @@ DS.recipe('synced-slider', function (root) {
   var N = cards.length; if (!N) return;
   var active = 0, playing = animate, timer = null, dots = [];
   if (dotsWrap) {
+    Array.prototype.forEach.call(dotsWrap.querySelectorAll('.vc-dot'), function (d) { d.remove(); });   // stale pasted dots
     for (var k = 0; k < N; k++) (function (i) {
       var b = document.createElement('button'); b.type = 'button'; b.className = 'vc-dot';
       b.setAttribute('aria-label', 'Slide ' + (i + 1));
@@ -2775,6 +2809,7 @@ DS.recipe('ib-hero', function (root) {
   // slide-navigator dots
   var nav = root.querySelector('[data-ibh-nav]');
   if (nav) {
+    Array.prototype.forEach.call(nav.querySelectorAll('.ibc-dot'), function (d) { d.remove(); });   // stale pasted dots
     for (var k = 0; k < n; k++) (function (i) {
       var b = document.createElement('button'); b.type = 'button'; b.className = 'ibc-dot';
       b.setAttribute('aria-label', 'Slide ' + (i + 1));
