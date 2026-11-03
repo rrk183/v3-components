@@ -6742,6 +6742,130 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    it simply asserts the light-mode defaults. */
 .on-light { color: var(--navy); }
 
+/* ═══ Hero — Screen Carousel (.v3a-hero) — "the carousel on your screen" ═══
+   Migrated from personal-home-v3a (was page-local under body.pg-home-v3;
+   now scoped to the hero root .v3a-hero so it works pasted into a CMS rich-text
+   field). One pinned stage: a real four-slide carousel plays on a monitor
+   in a home study (screen keyed to alpha); scroll pulls the camera back out
+   of the monitor, the hand + phone rise, the phone types, then its screen
+   opens to white. Geometry and every --var come from the
+   [data-v3a-hero] binding in ds.js. Markup and selectors as the source. */
+.v3a-hero { position: relative; background: var(--grey-2); }
+.v3a-hero .v3h-track { height: 300vh; }
+.v3a-hero .v3h-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; contain: paint; }
+
+/* the rig carries the study and the screen together, so the slide stays ON
+   the monitor as the camera pulls back. Never will-change: it starts at ~3x. */
+.v3a-hero .v3a-rig { position: absolute; inset: 0; transform-origin: 0 0; transform: translate(var(--rig-x, 0px), var(--rig-y, 0px)) scale(var(--rig-s, 1)); filter: blur(calc(var(--soft, 0) * 6px)); }
+.v3a-hero .v3a-screen { position: absolute; left: var(--sc-l, 0px); top: var(--sc-t, 0px); width: var(--sc-w, 100%); height: var(--sc-h, 100%); overflow: hidden; background: var(--navy); }
+.v3a-hero .v3a-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity .9s ease; }
+.v3a-hero .v3a-slide.is-on { opacity: 1; }
+.v3a-hero .v3a-room { position: absolute; inset: 0; background-size: cover; background-position: center; pointer-events: none; }
+
+/* slide copy sits outside the rig (real type at every scale) and steps
+   aside as soon as the pull-back begins */
+.v3a-hero .v3a-copy { position: absolute; inset: 0; z-index: 2; opacity: var(--copy-o, 1); transform: translateY(var(--copy-y, 0px)); }
+.v3a-hero .v3a-copy[data-off] { visibility: hidden; }
+.v3a-hero .v3a-item { position: absolute; inset: 0; display: flex; align-items: center; opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s; }
+.v3a-hero .v3a-item.is-on { opacity: 1; visibility: visible; transition: opacity .7s ease .15s, visibility 0s; }
+.v3a-hero .v3a-item .container-ds { position: relative; z-index: 2; width: 100%; padding-top: 96px; padding-bottom: 96px; }
+.v3a-hero .v3a-item .hero-copy { max-width: 36rem; }
+.v3a-hero .v3a-item p { margin: 14px 0 26px; }
+
+/* controls: DS crl toggle + loading-bar dots on a strip at the bottom. The
+   active line fills over the slide's time and its end advances the slide;
+   pausing freezes it in place. Fill is a transform, not width. */
+.v3a-hero .v3a-nav { position: absolute; left: 0; right: 0; bottom: 56px; z-index: 3; }
+.v3a-hero .v3a-dots { display: flex; gap: 8px; }
+.v3a-hero .v3a-dot { width: 28px; height: 4px; border: 0; padding: 0; border-radius: var(--r-pill); background: rgba(255, 255, 255, .35); cursor: pointer; position: relative; overflow: hidden; transition: width .4s ease; }
+.v3a-hero .v3a-dot::before { content: ''; position: absolute; inset: -12px -2px; }
+.v3a-hero .v3a-dot[aria-current="true"] { width: 56px; }
+.v3a-hero .v3a-dot:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.v3a-hero.is-light .v3a-dot { background: rgba(var(--navy-rgb), .3); }
+.v3a-hero.is-light .v3a-dot[aria-current="true"] { background: var(--navy); }
+.v3a-hero .v3a-dot-fill { position: absolute; inset: 0; border-radius: inherit; background: #fff; transform: scaleX(0); transform-origin: left center; pointer-events: none; }
+.v3a-hero .v3a-dot-fill.is-run { animation: v3a-fill var(--v3a-dur, 6s) linear forwards; }
+.v3a-hero.is-held .v3a-dot-fill.is-run { animation-play-state: paused; }
+@keyframes v3a-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Emirati Package slide: real figures in a stat row (count up on entry) */
+.v3a-hero .v3a-stats { display: grid; grid-template-columns: repeat(3, max-content); gap: 8px 32px; margin: 22px 0 28px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .28); }
+.v3a-hero .v3a-stat { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.v3a-hero .v3a-stat .ds-num { white-space: nowrap; font-variant-numeric: tabular-nums; font-size: clamp(30px, 2.8vw, 42px); line-height: 1.05; }
+.v3a-hero .v3a-stat .type-caption { max-width: 17ch; }
+
+/* Travel slide: the Voyager card floats between the copy and the traveller;
+   a light sheen separates the navy card from the navy scene */
+.v3a-hero .v3a-card { position: absolute; z-index: 2; left: 49%; top: 52%; width: clamp(230px, 21vw, 340px); aspect-ratio: 824 / 522; overflow: hidden; border-radius: 4.6% / 7.2%;
+  box-shadow: 0 40px 70px -16px rgba(0, 0, 0, .7), 0 14px 26px -12px rgba(0, 0, 0, .55);
+  transform: translate(0, 24px) rotate(-10deg); opacity: 0; transition: transform 1s cubic-bezier(.2, .8, .2, 1) .25s, opacity .6s ease .25s; }
+.v3a-hero .v3a-item.is-on .v3a-card { transform: translate(0, 0) rotate(-7deg); opacity: 1; animation: v3a-card-drift 7s ease-in-out 1.3s infinite alternate; }
+@keyframes v3a-card-drift { from { transform: translate(0, 0) rotate(-7deg); } to { transform: translate(0, -10px) rotate(-5.5deg); } }
+.v3a-hero .v3a-card img { display: block; width: 100%; height: 100%; }
+.v3a-hero .v3a-card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(118deg, rgba(255, 255, 255, .26) 0%, rgba(255, 255, 255, .06) 34%, rgba(255, 255, 255, 0) 52%, rgba(255, 255, 255, .08) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); }
+
+/* hand + phone: rises from below the fold; the screen centre (44.45% down
+   the cutout) lands on the viewport centre */
+.v3a-hero .v3h-hand { --hand-h: min(132vh, 1180px); position: absolute; z-index: 4; left: 50%; top: calc(50vh - var(--hand-h) * .4445); height: var(--hand-h); aspect-ratio: 1728 / 2304; transform-origin: 49.8% 44.45%; transform: translate(-49.8%, calc(var(--hand-y, 100) * 1%)) scale(var(--zoom, 1)); pointer-events: none; }
+.v3a-hero .v3h-hand img { width: 100%; height: 100%; display: block; }
+.v3a-hero .v3h-screen { position: absolute; left: 33.6%; top: 17.8%; width: 32.3%; height: 53.3%; border-radius: 11% / 5.2%; background: #fff; overflow: hidden; container-type: inline-size; }
+.v3a-hero .v3h-ui { display: flex; flex-direction: column; gap: 3cqw; height: 100%; box-sizing: border-box; padding: 16cqw 9cqw 11cqw; opacity: var(--ui-o, 0); }
+.v3a-hero .v3h-ui-q { font-size: 4.6cqw; line-height: 1.3; color: var(--mid); }
+.v3a-hero .v3h-ui-h { font-size: 10cqw; font-weight: 600; line-height: 1.12; color: var(--navy); letter-spacing: -.01em; }
+.v3a-hero .v3h-ui-h b { display: block; min-height: 1.12em; color: var(--blue); font-weight: 600; white-space: nowrap; }
+/* typing caret: blinks while the line is still being typed, rests after */
+.v3a-hero .v3h-caret { display: inline-block; width: .08em; height: .95em; margin-inline-start: .06em; vertical-align: -.1em; background: var(--blue); border-radius: 1px; animation: v3h-blink 1s steps(1) infinite; }
+.v3a-hero .v3h-type.is-done .v3h-caret { animation: none; opacity: 0; transition: opacity .3s ease .4s; }
+@keyframes v3h-blink { 50% { opacity: 0; } }
+.v3a-hero .v3h-screen ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2.6cqw; flex: 1; justify-content: flex-end; }
+.v3a-hero .v3h-screen li { border: 1px solid rgba(var(--navy-rgb), .14); border-radius: var(--r-pill); padding: 3.6cqw 6cqw; font-size: 5.2cqw; font-weight: 500; color: var(--navy); transition: border-color .3s ease, color .3s ease, background-color .3s ease; }
+.v3a-hero .v3h-screen li.is-on { border-color: var(--blue); color: var(--blue); background: var(--blue-wash); }
+
+/* the phone screen grows to the viewport: a white sheet clipped to the
+   screen rect, opened to full frame at the end */
+.v3a-hero .v3h-sheet { position: absolute; inset: 0; z-index: 5; background: #fff; pointer-events: none; clip-path: inset(var(--sh-t, 50%) var(--sh-r, 50%) var(--sh-b, 50%) var(--sh-l, 50%) round var(--sh-r0, 24px)); opacity: var(--sh-o, 0); }
+
+/* desktop: the hero starts under the 40px utility row, so lift the nav by it */
+@media (min-width: 1024px) { .v3a-hero .v3a-nav { bottom: calc(56px + 40px); } }
+@media (max-width: 1023px) {
+  .v3a-hero .v3h-track { height: 230vh; }
+  .v3a-hero .v3h-hand { --hand-h: min(112vh, 1000px); }
+  /* phones: the card sits just above its copy (--card-bottom from ds.js) */
+  .v3a-hero .v3a-card { left: 22px; top: auto; bottom: var(--card-bottom, 370px); width: clamp(130px, 38vw, 210px); }
+}
+@media (max-width: 767px) {
+  .v3a-hero .v3a-item { align-items: flex-end; }
+  .v3a-hero .v3a-item .container-ds { padding-top: 0; padding-bottom: 108px; }
+  .v3a-hero .v3a-item .btn { display: flex; justify-content: center; width: calc(100% + 2 * (var(--page-x) - 16px)); margin-inline: calc(16px - var(--page-x)); }
+  .v3a-hero .v3a-nav { bottom: 52px; }
+  .v3a-hero .v3a-stats { gap: 6px 18px; margin: 14px 0 18px; padding-top: 12px; }
+  .v3a-hero .v3a-stat .ds-num { font-size: 22px; }
+  .v3a-hero .v3a-stat .type-caption { font-size: 11px; line-height: 1.3; max-width: 12ch; }
+}
+
+/* reduced motion: a plain carousel, no study, no pin, no phone, no autoplay */
+@media (prefers-reduced-motion: reduce) {
+  .v3a-hero .v3h-track { height: auto; }
+  .v3a-hero .v3h-stage { position: relative; height: 88vh; height: 88svh; min-height: 560px; }
+  .v3a-hero :is(.v3a-room, .v3h-hand, .v3h-sheet) { display: none; }
+  .v3a-hero .v3a-rig { transform: none; filter: none; }
+  .v3a-hero .v3a-screen { left: 0; top: 0; width: 100%; height: 100%; }
+  .v3a-hero :is(.v3a-slide, .v3a-item) { transition: none; }
+  .v3a-hero .v3a-dot[aria-current="true"] .v3a-dot-fill { transform: scaleX(1); animation: none; }
+  .v3a-hero .v3a-card, .v3a-hero .v3a-item.is-on .v3a-card { transition: none; animation: none; transform: rotate(-7deg); }
+}
+
+/* Arabic: copy sits on the right, so each slide photo is mirrored to put its
+   subject on the left; the card art is never flipped, only its side + tilt */
+[dir="rtl"] .v3a-hero .v3a-dot-fill { transform-origin: right center; }
+[dir="rtl"] .v3a-hero .v3a-slide { transform: scaleX(-1); }
+[dir="rtl"] .v3a-hero .v3a-card { left: auto; right: 49%; transform: translate(0, 24px) rotate(10deg); }
+[dir="rtl"] .v3a-hero .v3a-item.is-on .v3a-card { transform: translate(0, 0) rotate(7deg); animation-name: v3a-card-drift-rtl; }
+@keyframes v3a-card-drift-rtl { from { transform: translate(0, 0) rotate(7deg); } to { transform: translate(0, -10px) rotate(5.5deg); } }
+@media (max-width: 1023px) { [dir="rtl"] .v3a-hero .v3a-card { left: auto; right: 22px; } }
+
 /* ════════════════════ RTL / ARABIC — [dir="rtl"] zone ════════════════════
    ONE runtime serves both directions: an Arabic page is the same markup under
    <html dir="rtl" lang="ar">. Blocks never carry RTL classes — everything here
