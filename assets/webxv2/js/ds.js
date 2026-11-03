@@ -4818,3 +4818,206 @@ DS.recipe('ib-hero', function (root) {
     });
   });
 })();
+
+/* ── hero-screen-carousel — "the carousel on your screen" ([data-v3a-hero]) ─
+   Migrated from personal-home-v3a-hero.js (page-local) with its markup and
+   selectors unchanged; bound through DS.register so it runs anywhere the
+   block is pasted, CMS rich-text fields included.
+   1. CAROUSEL: autoplay (the active dot's loading bar ends the slide), dots,
+      pause; holds for keyboard focus and hidden tabs. Count-ups per slide.
+   2. RIG: the study plate and its keyed monitor screen move as one; at the
+      top the screen fills the viewport, scrolling pulls the camera back to
+      the whole desk. Portrait screens pan to each slide's subject (data-fx).
+   3. PHONE: hand rises, focus pulls, the screen types data-text, then the
+      phone screen opens to white. Reduced motion: a static carousel. */
+DS.register(function (scope) {
+  var s = scope || document, sel = '[data-v3a-hero]:not([data-v3a-hero-bound])';
+  var els = [].slice.call(s.querySelectorAll(sel));
+  if (s.matches && s.matches(sel)) els.unshift(s);
+  els.forEach(function (root) { root.setAttribute('data-v3a-hero-bound', ''); heroV3a(root); });
+});
+function heroV3a(root) {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rtl = document.documentElement.getAttribute('dir') === 'rtl';
+  function q(sel) { return root.querySelector(sel); }
+  function qa(sel) { return [].slice.call(root.querySelectorAll(sel)); }
+
+  // ---------- carousel ----------
+  var slides = qa('.v3a-slide'), items = qa('.v3a-item'), dots = qa('.v3a-dot'), fills = qa('.v3a-dot-fill');
+  var toggle = q('[data-v3a-toggle]');
+  var cur = 0, playing = !reduce, targetFx = 0.5, fx = 0.5, kick = function () {};
+
+  function go(i) {
+    cur = (i + slides.length) % slides.length;
+    slides.forEach(function (s, k) { s.classList.toggle('is-on', k === cur); });
+    items.forEach(function (it, k) {
+      var on = k === cur;
+      it.classList.toggle('is-on', on);
+      if (on) { it.removeAttribute('inert'); it.removeAttribute('aria-hidden'); }
+      else { it.setAttribute('inert', ''); it.setAttribute('aria-hidden', 'true'); }
+    });
+    dots.forEach(function (d, k) { d.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
+    root.classList.toggle('is-light', items[cur] && items[cur].hasAttribute('data-light'));
+    targetFx = parseFloat(slides[cur].getAttribute('data-fx') || '0.5');
+    if (rtl) targetFx = 1 - targetFx;   // Arabic: slides are mirrored, so is the subject
+    countUp(items[cur]);
+    placeCard(items[cur]);
+    // restart the loading bar on the active dot; its end advances the slide
+    fills.forEach(function (f) { f.classList.remove('is-run'); });
+    if (!reduce && fills[cur]) { void fills[cur].offsetWidth; fills[cur].classList.add('is-run'); }
+    kick();
+  }
+  // paused = the bar freezes in place (animation-play-state), so resuming
+  // carries on from the same point instead of restarting the slide's time
+  var hold = { focus: false, hidden: false };
+  function schedule() { root.classList.toggle('is-held', !playing || hold.focus || hold.hidden); }
+  function setPlaying(v) {
+    playing = v;
+    if (v && fills[cur] && !fills[cur].classList.contains('is-run')) fills[cur].classList.add('is-run');
+    if (toggle) {
+      toggle.classList.toggle('is-paused', !v);
+      toggle.setAttribute('aria-label', v ? (toggle.getAttribute('data-label-pause') || 'Pause') : (toggle.getAttribute('data-label-play') || 'Play'));
+    }
+    schedule();
+  }
+  dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k); schedule(); }); });
+  fills.forEach(function (f, k) { f.addEventListener('animationend', function () { if (k === cur) go(cur + 1); }); });
+  if (toggle) toggle.addEventListener('click', function () { setPlaying(!playing); });
+  // hold only for keyboard focus (a mouse click on a dot must not stop it)
+  root.addEventListener('focusin', function (e) {
+    var kb = false; try { kb = e.target.matches(':focus-visible'); } catch (x) {}
+    hold.focus = kb; schedule();
+  });
+  root.addEventListener('focusout', function () { hold.focus = false; schedule(); });
+  document.addEventListener('visibilitychange', function () { hold.hidden = document.hidden; schedule(); });
+
+  // phones: a slide's floating card sits just above its copy, whatever the
+  // copy's height on that screen (headlines wrap differently per width)
+  var mqPhone = window.matchMedia('(max-width: 1023px)');
+  function placeCard(item) {
+    var card = item && item.querySelector('.v3a-card');
+    if (!card) return;
+    if (!mqPhone.matches) { card.style.removeProperty('--card-bottom'); return; }
+    var copyTop = item.querySelector('.hero-copy').getBoundingClientRect().top;
+    card.style.setProperty('--card-bottom', Math.round(item.getBoundingClientRect().bottom - copyTop + 16) + 'px');
+  }
+  window.addEventListener('resize', function () { items.forEach(placeCard); });
+
+  // figures count up each time their slide comes round (the final value is
+  // already in the markup for no-JS and reduced motion)
+  function fmt(el, v) {
+    var d = +(el.getAttribute('data-decimals') || 0);
+    el.textContent = (el.getAttribute('data-prefix') || '') + v.toFixed(d) + (el.getAttribute('data-suffix') || '');
+  }
+  function countUp(item) {
+    if (!item) return;
+    [].forEach.call(item.querySelectorAll('[data-v3a-count]'), function (el) {
+      var to = parseFloat(el.getAttribute('data-v3a-count'));
+      if (reduce) { fmt(el, to); return; }
+      var t0 = performance.now(), dur = 1400;
+      (function step(now) {
+        var k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        fmt(el, to * e);
+        if (k < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+  }
+
+  go(0);
+  setPlaying(!reduce);
+  if (reduce) return;            // static carousel; the CSS drops the study and the pin
+
+  // ---------- rig geometry ----------
+  var track = q('.v3h-track'), stage = q('.v3h-stage'), screenUI = q('.v3h-screen'), copy = q('.v3a-copy');
+  var PW = 2560, PH = 1440, SX = 684, SY = 276, SW = 1204, SH = 685;   // keyed screen in the study plate
+  var g = {};
+  function set(n, v) { root.style.setProperty(n, v); }
+  function measure() {
+    var vw = stage.clientWidth, vh = stage.clientHeight;
+    var k = Math.max(vw / PW, vh / PH);
+    var ox = (vw - PW * k) / 2, oy = (vh - PH * k) / 2;
+    g = { vw: vw, vh: vh, l: ox + SX * k, t: oy + SY * k, w: SW * k, h: SH * k };
+    g.s0 = Math.max(vw / g.w, vh / g.h) * 1.02;       // screen just covers the viewport
+    set('--sc-l', g.l.toFixed(1) + 'px');
+    set('--sc-t', g.t.toFixed(1) + 'px');
+    set('--sc-w', g.w.toFixed(1) + 'px');
+    set('--sc-h', g.h.toFixed(1) + 'px');
+  }
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+  function seg(p, a, b) { return clamp((p - a) / (b - a), 0, 1); }
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function out(t) { return 1 - Math.pow(1 - t, 3); }
+
+  var typeEl = q('.v3h-type'), typed = q('.v3h-typed'), firstOpt = q('.v3h-screen li');
+  var full = typeEl ? typeEl.getAttribute('data-text') : '', shown = -1;
+
+  function frame() {
+    var r = track.getBoundingClientRect();
+    var travel = track.offsetHeight - window.innerHeight;
+    var p = travel > 0 ? clamp(-r.top / travel, 0, 1) : 0;
+
+    // 1. pull back out of the monitor (log scale reads as constant speed)
+    var u = ease(seg(p, 0.04, 0.52));
+    var s = Math.pow(g.s0, 1 - u);
+    // focal point: the active slide's subject, kept so the screen still
+    // covers the viewport while zoomed in
+    var hv = g.vw / (2 * s), hh = g.vh / (2 * s);
+    var fxPx = clamp(g.l + fx * g.w, g.l + hv, g.l + g.w - hv);
+    var fyPx = clamp(g.t + g.h / 2, g.t + hh, g.t + g.h - hh);
+    var tx = (g.vw / 2 - s * fxPx) * (1 - u), ty = (g.vh / 2 - s * fyPx) * (1 - u);
+    set('--rig-s', s.toFixed(4));
+    set('--rig-x', tx.toFixed(1) + 'px');
+    set('--rig-y', ty.toFixed(1) + 'px');
+
+    // slide copy and controls step aside as the bezel appears
+    var tc = seg(p, 0.05, 0.14);
+    set('--copy-o', (1 - tc).toFixed(3));
+    set('--copy-y', (-20 * tc).toFixed(1) + 'px');
+    if (tc >= 1) copy.setAttribute('data-off', ''); else copy.removeAttribute('data-off');
+
+    // 2. focus pull + the hand rises
+    set('--soft', seg(p, 0.50, 0.66).toFixed(3));
+    set('--hand-y', (100 * (1 - out(seg(p, 0.50, 0.74)))).toFixed(2));
+    set('--ui-o', (seg(p, 0.54, 0.66) * (1 - seg(p, 0.80, 0.88))).toFixed(3));
+    if (typeEl) {
+      var n = Math.round(seg(p, 0.60, 0.73) * full.length);
+      if (n !== shown) {
+        shown = n; typed.textContent = full.slice(0, n);
+        var done = n === full.length;
+        typeEl.classList.toggle('is-done', done);
+        if (firstOpt) firstOpt.classList.toggle('is-on', done);
+      }
+    }
+
+    // 3. the phone comes toward you and its screen opens into the page
+    var z = ease(seg(p, 0.78, 0.96));
+    set('--zoom', (1 + 1.4 * z).toFixed(4));
+    var e = ease(seg(p, 0.84, 0.98));
+    if (e > 0) {
+      var sc = screenUI.getBoundingClientRect(), st = stage.getBoundingClientRect(), f = 1 - e;
+      set('--sh-t', ((sc.top - st.top) * f).toFixed(1) + 'px');
+      set('--sh-l', ((sc.left - st.left) * f).toFixed(1) + 'px');
+      set('--sh-r', ((st.right - sc.right) * f).toFixed(1) + 'px');
+      set('--sh-b', ((st.bottom - sc.bottom) * f).toFixed(1) + 'px');
+      set('--sh-r0', (sc.width * 0.11 * f).toFixed(1) + 'px');
+      set('--sh-o', 1);
+    } else set('--sh-o', 0);
+  }
+
+  // the framing pans smoothly between slides on portrait screens
+  var raf = 0;
+  function tick() {
+    raf = 0;
+    var d = targetFx - fx;
+    fx = Math.abs(d) < 0.001 ? targetFx : fx + d * 0.08;
+    frame();
+    if (fx !== targetFx) raf = requestAnimationFrame(tick);
+  }
+  kick = function () { if (!raf) raf = requestAnimationFrame(tick); };
+
+  window.addEventListener('scroll', kick, { passive: true });
+  window.addEventListener('resize', function () { measure(); kick(); });
+  measure();
+  fx = targetFx;
+  frame();
+}
