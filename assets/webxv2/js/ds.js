@@ -70,7 +70,7 @@
      dropped with it; if a host must change our markup, it should call
      DS.refresh(container) on fresh, never-bound markup instead. */
   var keeper = null, uidSeq = 0, owned = {};
-  var OWN = '.cmp, [data-animate], [data-behavior]';   // .cmp = every block root (the footer has neither data-*)
+  var OWN = '.cmp, [data-animate], [data-behavior], [data-hf-hero]';   // .cmp = every block root (the footer has neither data-*); the Wholesale Banking hero has none of them
   function claim(scope) {
     var els = all(scope, OWN);
     if (scope.nodeType === 1 && scope.matches(OWN)) els.unshift(scope);
@@ -5020,4 +5020,385 @@ function heroV3a(root) {
   measure();
   fx = targetFx;
   frame();
+}
+
+/* ── Wholesale Banking hero ([data-hf-hero]) — "the frame that becomes the row"
+   Moved from cib-home-flow.js (page-local) unchanged in logic, so the hero
+   works wherever its markup is pasted, CMS rich-text fields included: the
+   viewport is the phone screen (skyline loops), the camera pulls back to the
+   phone in front of the HQ, the ENBD Business screen assembles and scrolls,
+   then the phone shrinks into the Digital card as the five tiles fan out and
+   the pin releases into a scroll-snap row. Reduced motion: static row. */
+DS.register(function (scope) {
+  var s = scope || document, sel = '[data-hf-hero]:not([data-hf-hero-bound])';
+  var els = [].slice.call(s.querySelectorAll(sel));
+  if (s.matches && s.matches(sel)) els.unshift(s);
+  els.forEach(function (el) { el.setAttribute('data-hf-hero-bound', ''); hfHero(el); });
+});
+function hfHero(el) {
+  'use strict';
+  var REDUCED = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+  var clamp = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var lerp = function (a, b, t) { return a + (b - a) * t; };
+  var easeInOut = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+  var easeOut = function (t) { return 1 - Math.pow(1 - t, 3); };
+  var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+  function absTop(n) { var y = 0; while (n) { y += n.offsetTop; n = n.offsetParent; } return y; }
+  var vw = 0, vh = 0, isMobile = false;
+  function readViewport() { vw = window.innerWidth; vh = window.innerHeight; isMobile = vw < 768; }
+  function videoSrc(v) { return (isMobile && v.getAttribute('data-src-m')) || v.getAttribute('data-src'); }
+
+  /* ── HERO · pull-back, app screen, fan-out into the row ──────────────── */
+  var hero = null, H = {}, heroP = 0;
+  var PW = 273, PH = 564, SW = 249, SH = 540, SR = 42;   // phone + screen design size
+  var WW = Math.round(SH * 16 / 9), WH = SH;              // wallpaper covers the screen (16:9 film)
+  // timeline (share of the pinned run)
+  var T = { pull: .34, wallOut: [.34, .05], top: .36, tab: .385, bands: [.40, .42, .44, .47],
+            capL: .45, capR: .50, scroll: [.50, .17], capsOut: .69, fan: [.70, .20], world: [.74, .14],
+            head: .84, ctas: .88, row: .92 };
+
+  function coverScale(w, h, r, halfW, halfH) {
+    // smallest scale so the rounded screen rect contains the viewport, corners included
+    var s = Math.max(2 * halfW / w, 2 * halfH / h);
+    for (var i = 0; i < 400; i++) {
+      var W2 = w * s / 2, H2 = h * s / 2, R = r * s;
+      var dx = Math.max(0, halfW - (W2 - R)), dy = Math.max(0, halfH - (H2 - R));
+      if (halfW <= W2 && halfH <= H2 && (dx * dx + dy * dy) <= R * R) return s;
+      s *= 1.01;
+    }
+    return s;
+  }
+
+  // tiles are a fixed size (the act 4 card: 323 x 540, mobile 380 x 590), set in CSS
+  // FIT TO SCREEN (Ram 2026-10-19): the pinned row (head + cards + CTAs) fits the
+  // screen. Rules:
+  //  - the card scales as a whole: width and height together, design ratio kept
+  //  - never smaller than CARD_MIN_W wide (below that the card stops reading well)
+  //  - sized against 100svh (address bar showing), so it is the SAME size with
+  //    or without the bar
+  //  - if a min-size card still does not fit: intro text steps aside first,
+  //    then on landscape screens the row goes side by side (head + CTAs left,
+  //    cards right)
+  var CARD_MIN_W = 228;
+  var svhProbe;
+  function screenH() {
+    if (!svhProbe) {
+      svhProbe = document.createElement('div');
+      svhProbe.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none';
+      document.body.appendChild(svhProbe);
+    }
+    return svhProbe.offsetHeight || vh;
+  }
+  function compactStep(n) {
+    var b = H.head.querySelector('.hf-row__lede-b'), a = H.head.querySelector('.hf-arrows'), l = H.head.querySelector('.hf-row__lede');
+    if (b) b.style.display = n >= 1 ? 'none' : '';
+    if (a) a.style.display = n >= 2 ? 'none' : '';
+    if (l) l.style.display = n >= 3 ? 'none' : '';
+  }
+  function fitTiles(rowTop, rowBot) {
+    var el = H.el;
+    el.style.removeProperty('--tile-h');
+    el.style.removeProperty('--tile-w');
+    el.classList.remove('is-fit', 'is-fit-side');
+    el.removeAttribute('data-fit-compact');
+    compactStep(0);
+    var t0 = H.tiles[0] && H.tiles[0].el;
+    if (!t0) return sizeTiles();
+    // standard design sizes (style.css): phone 380 x 590 (narrower screens: 100vw - 10px), else 323 x 540
+    var dH = isMobile ? 590 : 540, dW = isMobile ? Math.min(380, vw - 10) : 323, ratio = (isMobile ? 380 : 323) / dH, sh = screenH();
+    if (isMobile && dW < 380) dH = Math.round(dW / ratio);
+    var minH = Math.round(CARD_MIN_W / ratio);
+    function chrome() {                     // everything in the column except the cards
+      var tcs = getComputedStyle(H.track), ccs = getComputedStyle(H.ctas);
+      return H.head.offsetHeight + parseFloat(tcs.marginTop) + parseFloat(tcs.paddingTop) + parseFloat(tcs.paddingBottom) + H.ctas.offsetHeight + parseFloat(ccs.marginTop);
+    }
+    function room() { return Math.floor(sh - rowTop - rowBot - chrome()); }
+    var r = room();
+    if (r < dH) {
+      for (var n = 1; n <= 3 && r < minH; n++) { compactStep(n); el.setAttribute('data-fit-compact', n); r = room(); }
+      if (r < minH && vw > sh) {             // landscape: side by side, the cards get the full height
+        compactStep(1); el.setAttribute('data-fit-compact', 1);
+        el.classList.add('is-fit-side');
+        var tcs = getComputedStyle(H.track);
+        r = Math.floor(sh - rowTop - rowBot - parseFloat(tcs.paddingTop) - parseFloat(tcs.paddingBottom));
+      }
+    }
+    var h = Math.min(dH, Math.max(minH, r)), w = Math.round(h * ratio);
+    if (h < dH) {
+      el.style.setProperty('--tile-h', h + 'px');
+      el.style.setProperty('--tile-w', w + 'px');
+      el.classList.add('is-fit');
+    }
+    return t0.offsetHeight;
+  }
+  function sizeTiles() { return H.tiles[0] ? H.tiles[0].el.offsetHeight : (isMobile ? 590 : 540); }
+  // the phone's resting scale inside the Digital solutions card (above its text block)
+  function sizeCardPhone() {
+    var bodyH = H.digBody.offsetHeight + 8;
+    H.el.style.setProperty('--dig-body', bodyH + 'px');
+    var sw = H.slot.clientWidth, sh = H.slot.clientHeight;
+    var ps = Math.max(0.2, Math.min(sh / PH, (sw - 24) / PW));
+    H.el.style.setProperty('--ps', ps.toFixed(4));
+    return ps;
+  }
+
+  function measureHero() {
+    if (!H.el) return;
+    if (!hero) {                                   // static (reduced motion): size the row, phone at rest in its card
+      sizeCardPhone();
+      H.scrollMax = Math.max(0, H.scroll.offsetHeight - (H.view.offsetHeight - H.tab.offsetHeight));
+      H.scroll.style.transform = 'translate3d(0,' + (-H.scrollMax) + 'px,0)';
+      return;
+    }
+    var brand = document.querySelector('.cmp-site-header .ish-brand');
+    var hdr = (brand && brand.offsetHeight) || (isMobile ? 64 : 68);
+    var rowTop = hdr + (isMobile ? 14 : 24), rowBot = isMobile ? 18 : 28;
+    H.el.style.setProperty('--row-top', rowTop + 'px');
+    H.el.style.setProperty('--row-bot', rowBot + 'px');
+    // clear transforms so the composed layout can be measured
+    H.phone.style.transform = '';
+    H.tiles.forEach(function (t) { t.el.style.transform = ''; t.el.style.opacity = ''; });
+    H.track.scrollLeft = 0;
+    var tcs = getComputedStyle(H.track);
+    var trackExtra = parseFloat(tcs.marginTop) + parseFloat(tcs.paddingTop) + parseFloat(tcs.paddingBottom);
+    var ccs = getComputedStyle(H.ctas);
+    var ctaH = H.ctas.offsetHeight + parseFloat(ccs.marginTop);
+    var tileH = fitTiles(rowTop, rowBot);
+    tcs = getComputedStyle(H.track); trackExtra = parseFloat(tcs.marginTop) + parseFloat(tcs.paddingTop) + parseFloat(tcs.paddingBottom);
+    ccs = getComputedStyle(H.ctas); ctaH = H.ctas.offsetHeight + parseFloat(ccs.marginTop);
+    // the composed row may be taller than the viewport (mobile 590px tiles): the
+    // stage grows to fit and the pin simply releases with the CTAs below the fold
+    var colH = H.el.classList.contains('is-fit-side') ? Math.max(trackExtra + tileH, H.head.offsetHeight + ctaH) : H.head.offsetHeight + trackExtra + tileH + ctaH;
+    H.stageH = Math.max(vh, Math.ceil(rowTop + rowBot + colH));
+    H.el.style.setProperty('--stage-h', H.stageH + 'px');
+    H.el.style.setProperty('--stage-extra', (H.stageH - vh) + 'px');
+    H.el.style.setProperty('--hero-top', Math.max(0, H.el.getBoundingClientRect().top + window.pageYOffset) + 'px');   // at rest the stage starts below the utility bar
+    var psCard = sizeCardPhone();
+    var stageR = H.stage.getBoundingClientRect(), slotR = H.slot.getBoundingClientRect(), trackR = H.track.getBoundingClientRect();
+    H.cx = slotR.left - stageR.left + slotR.width / 2;          // resting place in the card
+    H.cy = slotR.top - stageR.top + slotR.height / 2;
+    H.X0 = vw / 2;                                              // centre stage after the pull-back
+    H.Y0 = Math.min(trackR.top - stageR.top + parseFloat(tcs.paddingTop) + tileH / 2, vh * 0.56);
+    H.sBig = Math.min(tileH * (isMobile ? 0.84 : 0.98), vh - 2 * rowTop, isMobile ? vh * 0.6 : Infinity) / PH;      // centred, clear of the header; on phones at most 60% of the screen height so it never fills the screen (device feedback 2026-10-16)
+    H.psCard = psCard;
+    H.el.style.setProperty('--pcy', Math.round(H.Y0) + 'px');
+    H.el.style.setProperty('--phw', Math.round(PW * H.sBig) + 'px');
+    H.el.style.setProperty('--phh', Math.round(PH * H.sBig) + 'px');
+    H.s0 = coverScale(SW, SH, SR, vw / 2 + 2, vh / 2 + 2);
+    // short viewports: the scroll cue sits 48px below the headline
+    if (H.cue) { var h1 = H.copy.querySelector('h1'); H.el.style.setProperty('--cue-top', Math.round(h1.getBoundingClientRect().bottom - stageR.top + 48) + 'px'); }
+    var dr = H.dig.getBoundingClientRect();
+    H.digCX = dr.left - stageR.left + dr.width / 2;
+    var tl = trackR.left - stageR.left;
+    H.tiles.forEach(function (t) { t.cx = tl + t.el.offsetLeft + t.el.offsetWidth / 2; });
+    H.top = absTop(hero);
+    H.run = hero.offsetHeight - H.stageH;
+    H.wall.style.setProperty('--ww', WW + 'px');
+    H.wall.style.setProperty('--wh', WH + 'px');
+    H.scrollMax = Math.max(0, H.scroll.offsetHeight - (H.view.offsetHeight - H.tab.offsetHeight));
+  }
+
+  var lastP = -1;
+  function renderHero() {
+    if (!hero || !H.run) return;
+    var p = clamp((window.pageYOffset - H.top) / H.run, 0, 1);
+    if (Math.abs(p - lastP) < 0.0002) return;
+    lastP = p; heroP = p;
+    var q = easeInOut(clamp(p / T.pull, 0, 1));
+    var r = clamp((p - T.fan[0]) / T.fan[1], 0, 1);
+    var m = easeInOut(clamp(r / 0.45, 0, 1));                 // the phone shrinks into its card
+    // pull-back: full-screen phone to the centre of the row; then into the card
+    var S = Math.exp(lerp(Math.log(H.s0), Math.log(H.sBig), q));
+    S = Math.exp(lerp(Math.log(S), Math.log(H.psCard), m));
+    var X = lerp(H.X0, H.cx, m);
+    var Y = lerp(lerp(vh / 2, H.Y0, q), H.cy, m);
+    var tx = X - H.cx, ty = Y - H.cy;
+    var dCover = Math.max(vw / WW, (vh + 2 * Math.abs(vh / 2 - Y)) / WH) * 1.02;
+    var D = Math.min(S, dCover);
+    H.phone.style.transform = (m >= 1) ? '' : 'translate3d(' + tx.toFixed(2) + 'px,' + ty.toFixed(2) + 'px,0) scale(' + S.toFixed(4) + ')';
+    H.wall.style.transform = 'scale(' + (D / S).toFixed(4) + ')';
+    // the clip hands over to the plate as soon as the pull-back starts; the
+    // transparent screen then shows the same plate, so there is no seam
+    var wallOp = 1 - clamp((p - 0.01) / 0.04, 0, 1);
+    H.wall.style.opacity = wallOp.toFixed(3);
+    // phone chrome only once it is within 1.6x of its resting size
+    var pk = m > 0 ? 1 : clamp(Math.log(1.6 * H.sBig / S) / Math.log(1.6), 0, 1);
+    H.phone.style.setProperty('--pk', pk.toFixed(3)); H.phonePk = pk;
+    H.phone.style.setProperty('--pk2', clamp((pk - 0.7) / 0.3, 0, 1).toFixed(3));
+    H.phone.style.setProperty('--app', clamp((p - T.wallOut[0]) / T.wallOut[1], 0, 1).toFixed(3));
+    H.plate.style.transform = 'scale(' + (1.08 - 0.08 * q).toFixed(4) + ')';
+    H.world.style.opacity = (1 - easeInOut(clamp((p - T.world[0]) / T.world[1], 0, 1))).toFixed(3);
+    // the card chrome (navy surface, tag, text) forms around the phone as it lands
+    H.el.style.setProperty('--chrome', easeOut(clamp((r - 0.28) / 0.34, 0, 1)).toFixed(3));
+    H.copy.style.opacity = (1 - clamp(p / 0.12, 0, 1)).toFixed(3);
+    H.copy.style.transform = 'translateY(' + (-60 * easeOut(clamp(p / 0.15, 0, 1))).toFixed(1) + 'px)';
+    H.copy.style.visibility = p > 0.14 ? 'hidden' : 'visible';
+    var veil = (1 - 0.65 * clamp(p / 0.15, 0, 1));
+    H.veil.style.opacity = veil.toFixed(3);
+    if (H.wveil) H.wveil.style.opacity = (veil * (1 - wallOp)).toFixed(3);   // same tint on the plate once it shows through
+    if (H.cue) { H.cue.style.opacity = (1 - clamp(p / 0.03, 0, 1)).toFixed(3); H.cue.style.visibility = p > 0.03 ? 'hidden' : 'visible'; }
+    // the real screen assembles, then scrolls like a real app
+    for (var i = 0; i < T.bands.length; i++) H.bands[i].classList.toggle('is-in', p >= T.bands[i]);
+    H.tabbar.classList.toggle('is-in', p >= T.tab);
+    H.topbar.classList.toggle('is-in', p >= T.top);
+    var sc = easeInOut(clamp((p - T.scroll[0]) / T.scroll[1], 0, 1));
+    H.scroll.style.transform = 'translate3d(0,' + (-Math.round(H.scrollMax * sc)) + 'px,0)';
+    // glass captions: in beside the phone, drift, then leave before the fan-out
+    var fl = clamp((p - T.capL) / 0.25, 0, 1);
+    H.capL.style.setProperty('--drift', (-22 * fl).toFixed(1) + 'px');
+    H.capR.style.setProperty('--drift', (18 * fl).toFixed(1) + 'px');
+    var out = p >= T.capsOut;
+    var phoneReads = H.phonePk >= 0.95;                        // captions only once it reads as a phone
+    H.capL.classList.toggle('is-in', p >= T.capL && !out && phoneReads);
+    H.capR.classList.toggle('is-in', p >= T.capR && !out && phoneReads);
+    H.capL.classList.toggle('is-out', out);
+    H.capR.classList.toggle('is-out', out);
+    // then the five photo tiles fan out beside the Digital solutions card
+    for (var k = 0; k < H.tiles.length; k++) {
+      var t = H.tiles[k];
+      var e = easeOut(clamp((r - 0.38 - k * 0.05) / 0.37, 0, 1));
+      if (e >= 1) { t.el.style.transform = ''; t.el.style.opacity = ''; continue; }
+      var sx = (H.digCX - t.cx) * (1 - e);
+      t.el.style.transform = 'translate3d(' + sx.toFixed(1) + 'px,0,0) scale(' + (0.9 + 0.1 * e).toFixed(4) + ')';
+      t.el.style.opacity = clamp(e * 1.5, 0, 1).toFixed(3);
+    }
+    H.row.classList.toggle('is-head', p >= T.head);
+    H.row.classList.toggle('is-ctas', p >= T.ctas);
+    var rowOn = p >= T.row;
+    H.track.classList.toggle('is-row', rowOn);
+    if (!rowOn && H.track.scrollLeft) H.track.scrollLeft = 0;
+    heroVideoVisible(wallOp > 0);
+  }
+
+  /* ── Hero clip: loops seamlessly while it is on screen ──────────────────
+     The end frame differs from the first, so the last 0.5s crossfades the
+     video out onto the poster (the clip's first frame) and the loop restarts
+     from that same frame. Paused when off screen, when the tab is hidden and
+     under reduced motion (poster only). The control is hidden until focused. */
+  var HV = { v: null, want: true, onScreen: true, btn: null };
+  function heroVideoVisible(on) {
+    if (!HV.v || on === HV.onScreen) return;
+    HV.onScreen = on;
+    if (HV.btn) HV.btn.hidden = !on;
+    syncHeroVideo();
+  }
+  function syncHeroVideo() {
+    var v = HV.v; if (!v) return;
+    var run = HV.want && HV.onScreen && !document.hidden;
+    if (run && v.paused) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+    else if (!run && !v.paused) v.pause();
+  }
+  function initHeroVideo() {
+    var v = H.el.querySelector('[data-hero-video]');
+    HV.btn = H.el.querySelector('[data-hf-heropause]');
+    if (!v) return;
+    if (REDUCED) { if (HV.btn) HV.btn.hidden = true; return; }
+    HV.v = v; v.loop = true;
+    v.preload = 'auto'; v.src = videoSrc(v); v.load();
+    var FADE = 0.5;
+    var tick = function () {
+      var d = v.duration;
+      if (d) { var left = d - v.currentTime; v.style.opacity = left < FADE ? Math.max(0, left / FADE).toFixed(3) : '1'; }
+      if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(tick);
+    };
+    v.addEventListener('playing', function () { v.classList.add('is-ready'); }, { once: true });
+    if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(tick); else v.addEventListener('timeupdate', tick);
+    syncHeroVideo();
+    document.addEventListener('visibilitychange', syncHeroVideo);
+    if (HV.btn) HV.btn.addEventListener('click', function () {
+      HV.want = !HV.want;
+      HV.btn.setAttribute('aria-pressed', HV.want ? 'false' : 'true');
+      syncHeroVideo();
+    });
+  }
+
+  function tweenScroll(track, to) {
+    var from = track.scrollLeft, d = to - from;
+    if (Math.abs(d) < 1) return;
+    track.style.scrollSnapType = 'none';
+    if (REDUCED) { track.scrollLeft = to; track.style.scrollSnapType = ''; return; }
+    var t0 = null, dur = 420;
+    (function step(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur);
+      track.scrollLeft = from + d * easeOut(k);
+      if (k < 1) requestAnimationFrame(step); else track.style.scrollSnapType = '';
+    })(performance.now());
+  }
+
+  function initHero() {
+    H.el = el;
+    H.stage = H.el.querySelector('.hf-hero__stage');
+    H.world = H.el.querySelector('.hf-hero__world');
+    H.dig = H.el.querySelector('[data-hf-digital]');
+    H.slot = H.el.querySelector('.hf-tile--digital .hf-phone-slot');
+    H.digBody = H.el.querySelector('.hf-tile--digital .hf-tile__body');
+    H.phone = H.el.querySelector('.hf-phone');
+    H.wall = H.el.querySelector('.hf-wall');
+    H.veil = H.el.querySelector('.hf-wall__veil');
+    H.wveil = H.el.querySelector('.hf-hero__veil');
+    H.plate = H.el.querySelector('.hf-hero__plate');
+    H.copy = H.el.querySelector('.hf-hero__copy');
+    H.cue = H.el.querySelector('.hf-hero__cue');
+    H.scroll = H.el.querySelector('.hf-app__scroll');
+    H.bands = $$('.hf-band[data-band]', H.el).slice(0, 4);
+    H.tabbar = H.el.querySelector('.hf-band--tab');
+    H.topbar = H.el.querySelector('.hf-band--top');
+    H.view = H.el.querySelector('.hf-app__view');
+    H.tab = H.tabbar;
+    H.capL = H.el.querySelector('.hf-hero__cap--l');
+    H.capR = H.el.querySelector('.hf-hero__cap--r');
+    H.row = H.el.querySelector('[data-hf-row]');
+    H.head = H.el.querySelector('.hf-row__head');
+    H.track = H.el.querySelector('[data-hf-track]');
+    H.ctas = H.el.querySelector('.hf-hero__ctas');
+    H.tiles = $$('[data-hf-tile]', H.el).map(function (el) { return { el: el }; });
+
+    // DS btn-icon arrows: one tile per press, eased (snap held off while moving)
+    var prev = H.el.querySelector('[data-hf-prev]'), next = H.el.querySelector('[data-hf-next]');
+    function stepBy(dir) {
+      var tr = H.track, max = tr.scrollWidth - tr.clientWidth;
+      var step = (H.tiles[0] ? H.tiles[0].el.offsetWidth : 300) + 16;
+      var target = clamp(Math.round((tr.scrollLeft + dir * step) / step) * step, 0, max);
+      tweenScroll(tr, target);
+    }
+    function syncArrows() {
+      var tr = H.track, max = tr.scrollWidth - tr.clientWidth;
+      if (prev) prev.disabled = tr.scrollLeft <= 2;
+      if (next) next.disabled = tr.scrollLeft >= max - 2;
+    }
+    if (prev) prev.addEventListener('click', function () { stepBy(-1); });
+    if (next) next.addEventListener('click', function () { stepBy(1); });
+    H.track.addEventListener('scroll', function () { requestAnimationFrame(syncArrows); }, { passive: true });
+    H.syncArrows = syncArrows;
+
+    if (REDUCED) { hero = null; return; }        // static final composition
+    hero = H.el;
+    hero.classList.add('is-live');
+    // keyboard users tabbing into the row land on the composed end state
+    H.row.addEventListener('focusin', function () {
+      if (lastP < T.row) window.scrollTo(0, H.top + H.run * 0.97);
+    });
+  }
+
+  /* one rAF loop per hero, driven by scroll / resize */
+  var ticking = false;
+  function frame() { ticking = false; renderHero(); }
+  function request() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  function remeasure() { readViewport(); measureHero(); lastP = -1; request(); if (H.syncArrows) H.syncArrows(); }
+
+  readViewport();
+  initHero();
+  initHeroVideo();
+  remeasure();
+  window.addEventListener('scroll', request, { passive: true });
+  var rT; window.addEventListener('resize', function () { clearTimeout(rT); rT = setTimeout(remeasure, 120); });
+  // markup a CMS inserts after load is measured before late styles (Tailwind
+  // JIT) or images settle: re-measure when the card text or row head resizes
+  if ('ResizeObserver' in window && H.digBody && H.head) {
+    var ro = new ResizeObserver(function () { clearTimeout(rT); rT = setTimeout(remeasure, 120); });
+    ro.observe(H.digBody); ro.observe(H.head);
+  }
+  if (document.readyState !== 'complete') window.addEventListener('load', remeasure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
 }
