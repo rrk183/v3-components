@@ -5829,3 +5829,62 @@ function hfFilm(root) {
   }
   requestAnimationFrame(loop);
 }
+
+/* ── sub-nav scroll-spy (.cmp-subnav) ───────────────────────────────────────
+   Marks the link of the section being read: .is-active + aria-current="true"
+   move as the page scrolls (the authored .is-active is the starting state).
+   A section is current once its top passes just under the sticky bar; at the
+   very bottom of the page the last link wins (a short last section may never
+   reach the bar). A click marks its link at once and holds it while the
+   smooth scroll runs, so the bar doesn't flicker through the sections in
+   between. Below 768 the bar scrolls sideways: the active link is kept in
+   view. Markup unchanged, so it also works pasted into a CMS rich-text field. */
+DS.register(function (scope) {
+  var s = scope || document, sel = '.cmp-subnav:not([data-subnav-bound])';
+  var navs = [].slice.call(s.querySelectorAll(sel));
+  if (s.matches && s.matches(sel)) navs.unshift(s);
+  navs.forEach(function (nav) { nav.setAttribute('data-subnav-bound', ''); subnavSpy(nav); });
+});
+function subnavSpy(nav) {
+  var inner = nav.querySelector('.sn-inner') || nav;
+  var items = [].slice.call(nav.querySelectorAll('a.sn-link[href^="#"]')).map(function (a) {
+    var id = decodeURIComponent(a.getAttribute('href').slice(1));
+    return { a: a, el: id ? document.getElementById(id) : null };
+  }).filter(function (it) { return it.el; });
+  if (!items.length) return;
+  var cur = null, held = false, idle = 0, raf = 0;
+  function mark(it) {
+    if (it === cur) return;
+    cur = it;
+    items.forEach(function (x) {
+      var on = x === it;
+      x.a.classList.toggle('is-active', on);
+      if (on) x.a.setAttribute('aria-current', 'true'); else x.a.removeAttribute('aria-current');
+    });
+    // keep the active link visible in the sideways-scrolling bar (never scrolls the page)
+    // (measured on screen and moved with scrollBy, so it is right in RTL too)
+    if (inner.scrollWidth > inner.clientWidth + 1) {
+      var ir = inner.getBoundingClientRect(), ar = it.a.getBoundingClientRect();
+      if (ar.left < ir.left) inner.scrollBy(ar.left - ir.left - 16, 0);
+      else if (ar.right > ir.right) inner.scrollBy(ar.right - ir.right + 16, 0);
+    }
+  }
+  function spy() {
+    raf = 0;
+    if (held) return;
+    var line = nav.getBoundingClientRect().bottom + 24, pick = items[0];
+    var atEnd = window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 2;
+    if (atEnd) pick = items[items.length - 1];
+    else items.forEach(function (it) { if (it.el.getBoundingClientRect().top <= line) pick = it; });
+    mark(pick);
+  }
+  function request() { if (!raf) raf = requestAnimationFrame(spy); }
+  function settle() { clearTimeout(idle); idle = setTimeout(function () { held = false; request(); }, 180); }
+  nav.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.sn-link');
+    for (var i = 0; i < items.length; i++) if (items[i].a === a) { mark(items[i]); held = true; settle(); break; }
+  });
+  window.addEventListener('scroll', function () { if (held) settle(); else request(); }, { passive: true });
+  window.addEventListener('resize', request);
+  spy();
+}

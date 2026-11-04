@@ -1,6 +1,6 @@
 # Sub-nav — in-page anchors
 
-`subnav` · Navigation · **utility** · surface-white · static
+`subnav` · Navigation · **utility** · surface-white · scroll-spy (ds.js)
 
 ## Look
 A thin one-line row of jump links to the sections of a long page, with a
@@ -10,9 +10,12 @@ brand blue with a 2px blue underline. It sits directly under the hero and
 as the page scrolls.
 
 ## Motion
-Static — `position: sticky` only, no recipe and no `data-animate`. Anchor
-navigation uses the browser's own smooth scrolling; the block adds no JS.
-Below 768 the row scrolls sideways rather than wrapping.
+`position: sticky`, no `data-animate`. ds.js binds every `.cmp-subnav` with
+a scroll-spy: the link of the section being read gets `.is-active` +
+`aria-current="true"` as the page scrolls (a section is current once its top
+passes just under the bar; at the page bottom the last link wins). A click
+marks its link at once and holds it through the smooth scroll. Below 768 the
+row scrolls sideways rather than wrapping, and the active link is kept in view.
 
 ## Anatomy
 ```
@@ -27,7 +30,9 @@ nav.cmp.cmp-subnav.surface-white[aria-label="On this page"]
 - Labels are 1–3 words and must match the section headings they point at.
 - Every `href` is an in-page `#id` that exists on the host page — this is the
   one block whose links depend on the page around it.
-- Exactly one `.is-active` + `aria-current="true"`.
+- Exactly one `.is-active` + `aria-current="true"` — the starting state; the
+  scroll-spy moves it from there. Links whose `#id` is not on the page are
+  ignored.
 - Keep `aria-label="On this page"` on the `<nav>`.
 
 ## Drift cautions
@@ -36,8 +41,8 @@ _Defaults for autonomous building — all overridable on explicit instruction._
   page content down on every resize; the sideways scroll below 768 is deliberate.
 - `top: 72px` clears the solid brand row. If a page uses a taller header, adjust
   in style.css — never with an inline style.
-- Highlighting the active section as the reader scrolls would need a recipe;
-  there is none today, so the active link is authored, not computed.
+- The active link is computed by ds.js from the section ids; don't add a
+  page script for it.
 
 ## Authoring rule
 Read `blocks/subnav.html`. Reuse the structure verbatim; change only the link
