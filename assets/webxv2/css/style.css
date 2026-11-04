@@ -3843,6 +3843,14 @@ html.lenis, html.lenis body { height: auto; }
    open-state flip rotates the pseudo-element, not an inline svg. */
 .cmp-site-header .ish-menu-trigger::after { transition: transform .25s var(--ease-out, ease); }
 .cmp-site-header .ish-mega.is-open .ish-menu-trigger::after { transform: rotate(180deg); }
+/* menu items (ds.js decides per item): an <a> trigger looks like the button;
+   a direct link (.is-link) has no caret — ours or an inline <svg> chevron — and
+   no panel; an item with neither links nor URL (.is-empty) is hidden */
+.cmp-site-header a.ish-menu-trigger { text-decoration: none; }
+.cmp-site-header .ish-mega.is-link .ish-menu-trigger::after,
+.cmp-site-header .ish-mega.is-link .ish-menu-trigger svg,
+.cmp-site-header .ish-mega.is-link .ish-panel { display: none; }
+.cmp-site-header .ish-mega.is-empty { display: none; }
 /* Mega-menu panel — white, full-width, drops below the brand row */
 .cmp-site-header .ish-panel { position: absolute; top: 100%; left: 0; right: 0; background: #fff; box-shadow: 0 24px 48px rgba(var(--navy-rgb), .14); border-top: 1px solid rgba(var(--navy-rgb), .06); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .25s var(--ease-out, ease), transform .25s var(--ease-out, ease), visibility .25s; pointer-events: none; }
 .cmp-site-header .ish-mega.is-open .ish-panel { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }

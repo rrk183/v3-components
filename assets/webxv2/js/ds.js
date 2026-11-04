@@ -4329,6 +4329,39 @@ DS.recipe('ib-hero', function (root) {
     // Dropdowns — mega-menus (hover + click), the Login menu and the search
     // panel (click). All mutually exclusive; close on Escape or outside click.
     var megas = Array.prototype.slice.call(root.querySelectorAll('[data-mega]'));
+    // MENU ITEMS (2026-11-04): a CMS renders every top item through one loop,
+    // as [data-mega] with an <a href> trigger (a <button>, + optional
+    // data-href, works too). Per item, the PANEL decides:
+    //   links in the panel → a mega: the trigger opens it (an <a> trigger is
+    //     announced as a menu button; its href is the no-JS fallback);
+    //   no links           → a direct link (.is-link): no caret, no panel, no
+    //     hover-open, the click navigates;
+    //   no links, no URL   → hidden (.is-empty): it could neither open nor go.
+    // The mobile drawer lists direct links as plain rows (megaHref below).
+    function megaHref(m) {
+      var t = m.querySelector('.ish-menu-trigger');
+      if (t && t.matches('a[href]') && t.getAttribute('href') !== '#') return t.getAttribute('href');
+      return (t && t.getAttribute('data-href')) || m.getAttribute('data-href') || '';
+    }
+    var linkMegas = megas.filter(function (m) { return !m.querySelector('.ish-panel a[href]'); });
+    megas = megas.filter(function (m) { return linkMegas.indexOf(m) < 0; });
+    linkMegas.forEach(function (m) {
+      var t = m.querySelector('.ish-menu-trigger'), href = megaHref(m);
+      m.classList.add('is-link');
+      if (!href) { m.classList.add('is-empty'); return; }
+      if (!t) return;
+      t.removeAttribute('aria-haspopup'); t.removeAttribute('aria-expanded');
+      if (!t.matches('a[href]')) t.addEventListener('click', function () { location.href = href; });
+      m.addEventListener('mouseenter', function () { closeMegas(); syncSolid(); });
+    });
+    megas.forEach(function (m) {
+      var t = m.querySelector('.ish-menu-trigger');
+      if (!t || t.tagName !== 'A') return;
+      t.setAttribute('role', 'button'); t.setAttribute('aria-haspopup', 'true');
+      if (!t.hasAttribute('aria-expanded')) t.setAttribute('aria-expanded', 'false');
+      // a role=button link must also answer Space, as a real button does
+      t.addEventListener('keydown', function (e) { if (e.key === ' ') { e.preventDefault(); t.click(); } });
+    });
     var dropdowns = Array.prototype.slice.call(root.querySelectorAll('[data-dropdown]')); // Login, More
     var searchWrap = root.querySelector('[data-search]');
 
@@ -4663,11 +4696,18 @@ DS.recipe('ib-hero', function (root) {
       if (segs && isV4 && !isPlain) {
         // Subnav rows = the TOP menu categories (one per mega); drilling opens
         // the child panel with that category's headed link groups intact.
+        // in bar order: megas drill in; direct-link items (.is-link, or a bare
+        // <a> in the bar) are plain rows; hidden items (.is-empty) are skipped
         var cats = [];
-        megas.forEach(function (m) {
-          var trig = m.querySelector('.ish-menu-trigger'); var inner = m.querySelector('.ish-panel-inner');
-          if (!trig || !inner || !inner.querySelector('a')) return;
-          cats.push({ label: trig.textContent.replace(/\s+/g, ' ').trim(), inner: inner });
+        Array.prototype.forEach.call(root.querySelectorAll('.ish-menu > [data-mega], .ish-menu > a[href]'), function (m) {
+          var label = function (el) { return el.textContent.replace(/\s+/g, ' ').trim(); };
+          if (m.tagName === 'A') { cats.push({ label: label(m), href: m.getAttribute('href') }); return; }
+          var trig = m.querySelector('.ish-menu-trigger');
+          if (m.classList.contains('is-empty') || !trig) return;
+          if (m.classList.contains('is-link')) { cats.push({ label: label(trig), href: megaHref(m) }); return; }
+          var inner = m.querySelector('.ish-panel-inner');
+          if (!inner || !inner.querySelector('a')) return;
+          cats.push({ label: label(trig), inner: inner });
         });
         Array.prototype.forEach.call(segs.querySelectorAll('a'), function (a) {
           var det = document.createElement('details');
@@ -4678,6 +4718,13 @@ DS.recipe('ib-hero', function (root) {
           det.appendChild(sum);
           var wrap = document.createElement('div'); wrap.className = 'ish-drawer-groups';
           cats.forEach(function (g) {
+            if (g.href) {
+              var link = document.createElement('a');
+              link.className = 'ish-drawer-group'; link.href = g.href;
+              var lt = document.createElement('span'); lt.textContent = g.label;
+              link.appendChild(lt); wrap.appendChild(link);
+              return;
+            }
             var row = document.createElement('button');
             row.type = 'button'; row.className = 'ish-drawer-group';
             var t = document.createElement('span'); t.textContent = g.label;
