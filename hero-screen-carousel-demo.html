@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero — Screen Carousel | Emirates NBD</title>
+<meta name="description" content="Test page for the Hero — Screen Carousel component." />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="data:," />
+<link rel="preload" as="image" href="/assets/webxv2/images/personal-home/hero-v3a/slide-home.jpg" />
+<link rel="preload" as="image" href="/assets/webxv2/images/personal-home/hero-v3a/study.webp" />
+<link rel="stylesheet" href="assets/webxv2/css/style.css?v=261233" />
+<script defer src="assets/webxv2/js/tailwind.cdn.js"></script>
+<script defer src="assets/webxv2/js/ds-tailwind-config.js"></script>
+<script defer src="assets/webxv2/js/ds.js?v=261233"></script>
+</head>
+<body>
+<main id="main">
+<!-- Test page: the block is pasted inside a rich-text wrapper, the way the
+     CMS hosts it (section.rich-editor > div), to prove it binds there. -->
+<section class="rich-editor"><div>
+<!-- ═══ 1. HERO, "The carousel on your screen" (v3a test, 2026-10-01) ══════════
+     Stakeholders asked for a carousel at the top. The carousel is real (four
+     slides, own copy, dots, pause; live campaign copy 2026-10-01) and it is playing on a monitor in a calm
+     Dubai home study: scroll pulls the camera back out of the monitor, then
+     the phone rises and its screen opens into the "I'd like to" section.
+     Study plate: assets/images/personal-home/hero-v3a/ (keyed screen). Slides
+     reuse the brand-look set. Hand, typing screen and sheet reuse v3.
+     Behaviour: personal-home-v3a-hero.js. Reduced motion: plain carousel. -->
+<section class="cmp v3h v3a-hero" data-v3a-hero aria-roledescription="carousel" aria-label="Featured">
+  <div class="v3h-track">
+    <div class="v3h-stage">
+
+      <div class="v3a-rig" aria-hidden="true">
+        <div class="v3a-screen">
+          <span class="v3a-slide is-on" data-fx="0.68" data-bg="/assets/webxv2/images/personal-home/hero-v3a/slide-home.jpg"></span>
+          <span class="v3a-slide" data-fx="0.72" data-bg="/assets/webxv2/images/personal-home/hero-v3a/slide-emirati.jpg"></span>
+          <span class="v3a-slide" data-fx="0.66" data-bg="/assets/webxv2/images/personal-home/hero-v3a/slide-travel.jpg"></span>
+          <span class="v3a-slide" data-fx="0.70" data-bg="/assets/webxv2/images/personal-home/hero-v3a/slide-trade.jpg"></span>
+        </div>
+        <span class="v3a-room" data-bg="/assets/webxv2/images/personal-home/hero-v3a/study.webp"></span>
+      </div>
+
+      <div class="v3a-copy">
+        <div class="v3a-item is-on" role="group" aria-roledescription="slide" aria-label="1 of 4">
+          <span class="ov ov-primary ov-gradient-l ov-90 hidden lg:block" aria-hidden="true"></span>
+          <span class="ov ov-primary ov-gradient-l ov-60 hidden lg:block" aria-hidden="true"></span>
+          <span class="ov ov-primary ov-gradient-b ov-90 lg:hidden" aria-hidden="true"></span>
+          <div class="container-ds">
+            <div class="hero-copy">
+              <h1 class="type-h1 ink-white">Unlock the doorway to your dream home.</h1>
+              <p class="type-body-lg measure ink-white">Buy a new home, or renovate an existing one. Take advantage of our easy monthly payments and long tenures.</p>
+              <a href="https://www.emiratesnbd.com/en/campaigns/mortgage" class="btn btn-accent btn-lg">Apply now<span class="sr-only"> for a Home Loan</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="v3a-item" role="group" aria-roledescription="slide" aria-label="2 of 4" inert aria-hidden="true">
+          <span class="ov ov-primary ov-gradient-l ov-90 hidden lg:block" aria-hidden="true"></span>
+          <span class="ov ov-primary ov-gradient-l ov-60 hidden lg:block" aria-hidden="true"></span>
+          <span class="ov ov-primary ov-gradient-b ov-90 lg:hidden" aria-hidden="true"></span>
+          <div class="container-ds">
+            <div class="hero-copy">
+              <span class="ds-eyebrow ink-white">Emirati Package</span>
+              <h2 class="type-h1 ink-white mt-3">Distinctive benefits for your distinguished lifestyle.</h2>
+              <div class="v3a-stats">
+                <div class="v3a-stat"><span class="ds-num is-light ink-white" data-v3a-count="2.75" data-decimals="2" data-prefix="Up to " data-suffix="%" aria-hidden="true">Up to 2.75%</span><span class="type-caption ink-white" aria-hidden="true">interest p.a. on pooled family balances</span><span class="sr-only">Up to 2.75% interest rate per year on pooled balances, exclusive for UAE Nationals.</span></div>
+                <div class="v3a-stat"><span class="ds-num is-light ink-white" data-v3a-count="57" data-prefix="AED " data-suffix="M" aria-hidden="true">AED 57M</span><span class="type-caption ink-white" aria-hidden="true">in Millionaire Account prizes</span><span class="sr-only">AED 57 million in Millionaire Account prizes.</span></div>
+                <div class="v3a-stat"><span class="ds-num is-light ink-white" data-v3a-count="28" aria-hidden="true">28</span><span class="type-caption ink-white" aria-hidden="true">assured millionaires</span><span class="sr-only">28 assured millionaires.</span></div>
+              </div>
+              <a href="https://www.emiratesnbd.com/en/emirati" class="btn btn-accent btn-lg">Know more<span class="sr-only"> about the Emirati Package</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="v3a-item" role="group" aria-roledescription="slide" aria-label="3 of 4" inert aria-hidden="true">
+          <span class="ov ov-primary ov-gradient-l ov-90 hidden lg:block" aria-hidden="true"></span>
+          <span class="ov ov-primary ov-gradient-l ov-60 hidden lg:block" aria-hidden="true"></span>
+          <span class="ov ov-primary ov-gradient-b ov-90 lg:hidden" aria-hidden="true"></span>
+          <span class="v3a-card"><img src="/assets/webxv2/images/personal-home/hero-v3a/voyager-card.webp" width="824" height="522" alt="Emirates NBD Voyager Mastercard" loading="lazy" decoding="async"></span>
+          <div class="container-ds">
+            <div class="hero-copy">
+              <h2 class="type-h1 ink-white">Take off to extraordinary savings.</h2>
+              <p class="type-body-lg measure ink-white">Travel more. Save 20% with Mastercard and Trip.com.</p>
+              <a href="https://www.emiratesnbd.com/en/promotions/mastercard-trip-com-discount" class="btn btn-accent btn-lg">Know more<span class="sr-only"> about the Mastercard and Trip.com offer</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="v3a-item" role="group" aria-roledescription="slide" aria-label="4 of 4" inert aria-hidden="true">
+          <span class="ov ov-primary ov-gradient-l ov-90 hidden lg:block" aria-hidden="true"></span>
+          <span class="ov ov-primary ov-gradient-l ov-60 hidden lg:block" aria-hidden="true"></span>
+          <span class="ov ov-primary ov-gradient-b ov-90 lg:hidden" aria-hidden="true"></span>
+          <div class="container-ds">
+            <div class="hero-copy">
+              <h2 class="type-h1 ink-white">Trade local, trade free on ENBD&nbsp;X.</h2>
+              <p class="type-body-lg measure ink-white">Buy and sell Local Equities through ENBD&nbsp;X with zero commissions.</p>
+              <a href="https://www.emiratesnbd.com/en/campaigns/trade-for-free" class="btn btn-accent btn-lg">Start investing<span class="sr-only"> on ENBD X</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="v3a-nav">
+          <div class="container-ds flex items-center gap-4">
+            <button class="crl-toggle" type="button" data-v3a-toggle aria-label="Pause"><span class="crl-ic-pause" aria-hidden="true"></span><span class="crl-ic-play" aria-hidden="true"></span></button>
+            <div class="v3a-dots" role="group" aria-label="Choose a slide">
+              <button type="button" class="v3a-dot" aria-label="Slide 1: Home Loans" aria-current="true"><span class="v3a-dot-fill"></span></button>
+              <button type="button" class="v3a-dot" aria-label="Slide 2: Emirati Package" aria-current="false"><span class="v3a-dot-fill"></span></button>
+              <button type="button" class="v3a-dot" aria-label="Slide 3: Travel savings" aria-current="false"><span class="v3a-dot-fill"></span></button>
+              <button type="button" class="v3a-dot" aria-label="Slide 4: Trade local, trade free" aria-current="false"><span class="v3a-dot-fill"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="v3h-hand" aria-hidden="true">
+        <img src="/assets/webxv2/images/personal-home/hero-v3/hero-hand.webp" alt="" decoding="async">
+        <div class="v3h-screen"><div class="v3h-ui">
+          <span class="v3h-ui-q">What would you like to do today?</span>
+          <span class="v3h-ui-h">I&rsquo;d like to <b class="v3h-type" data-text="open an account"><span class="v3h-typed"></span><i class="v3h-caret"></i></b></span>
+          <ul>
+            <li>Open an account</li>
+            <li>Find my credit card</li>
+            <li>Borrow</li>
+            <li>Send money abroad</li>
+            <li>Invest</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="v3h-sheet" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+<!-- ═══ /1. HERO ═══ -->
+</div></section>
+
+<section class="cmp surface-white min-h-screen" aria-label="End of hero demo">
+  <div class="container-ds py-24">
+    <h2 class="type-h2 ink-primary">I&rsquo;d like to&hellip;</h2>
+    <p class="type-body-lg ink-mute mt-4">The next section of the page sits here; the hero&rsquo;s phone screen opens to white into it.</p>
+  </div>
+</section>
+</main>
+</body>
+</html>
