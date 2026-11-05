@@ -387,46 +387,57 @@
 
   <main id="main" tabindex="-1">
   <!-- ═══ ENBD Business hero: product scrub (page opener, 2026-10-20) ═══════
-       Rotato green-screen sequences scrubbed on one WebGL canvas with the live
-       app screens composited per frame: iPhone spin, push into the app,
-       laptop pull-back, device family. Engine: ds.js ([data-product-scrub])
-       (+ style.css .cmp-product-scrub). Caption copy for the desktop and
-       device beats is placeholder pending approval. -->
+       A JPG sequence (iPhone spin, push into the app, laptop pull-back, device
+       family; baked 2026-11-05 from the old WebGL scrub) scrubbed by ds.js
+       scroll-story-scrub, like the trade hero: no JSON, no data JS, no WebP.
+       lg = desktop (lg-rtl on Arabic: devices on the left), sm = portrait
+       < 1024px (every 2nd frame). Opener and captions run on data-anim.
+       Caption copy for the desktop and device beats is placeholder pending
+       approval. -->
   <section class="cmp cmp-product-scrub surface-soft" aria-label="ENBD Business على كل الأجهزة">
-    <div class="ps" data-product-scrub data-assets="assets/webxv2/images/product-scrub/">
+    <div class="ps" data-behavior="scroll-story-scrub" data-scrub-vh="920" data-scrub-vh-sm="920"
+         data-source="images" data-count="360" data-start="1" data-path="assets/webxv2/images/frames/business-hero/lg-rtl/frame-###.jpg"
+         data-path-sm="assets/webxv2/images/frames/business-hero/sm/frame-###.jpg" data-step-sm="2" data-fit-max="1024">
       <div class="ps-stage">
-        <div class="ps-world">
-          <div class="ps-opener">
-            <div class="ps-op-top">
-              <span class="ds-eyebrow ink-accent">ENBD Business</span>
-              <h1 class="ps-h1 ink-primary">خدماتكم المصرفية أثناء التنقل.</h1>
-            </div>
-            <img class="ps-icon" src="assets/webxv2/images/product-scrub/screens/app-icon.png" alt="أيقونة تطبيق ENBD Business" width="512" height="512" />
-            <div class="ps-op-bottom">
-              <p class="ps-sub ink-mute">“حساباتكم ومدفوعاتكم وموافقاتكم وخدماتكم، في جيبكم.”</p>
-              <span class="ps-cue" aria-hidden="true"><span class="ps-cue-line"></span><span class="ps-cue-label ink-mute">مرّر للاستكشاف</span></span>
-            </div>
+        <canvas class="ps-canvas" data-story-canvas aria-hidden="true" role="presentation"></canvas>
+        <div class="ps-opener">
+          <div class="ps-op-top" data-anim='{"0-0.05":{"opacity":[1,0],"y":["0vh","-16vh"]}}'>
+            <span class="ds-eyebrow ink-accent">ENBD Business</span>
+            <h1 class="ps-h1 ink-primary">خدماتكم المصرفية أثناء التنقل.</h1>
           </div>
-          <div class="ps-cap" data-cap="0.08,0.125,0.27,0.31">
+          <img class="ps-icon" data-anim='{"0.005-0.055":{"opacity":[1,0],"y":["0vh","-10vh"],"scale":[1,0.88]}}' src="assets/webxv2/images/frames/business-hero/app-icon.png" alt="أيقونة تطبيق ENBD Business" width="512" height="512" />
+          <div class="ps-op-bottom" data-anim='{"0-0.03":{"opacity":[1,0],"y":["0vh","-5vh"]}}'>
+            <p class="ps-sub ink-mute">“حساباتكم ومدفوعاتكم وموافقاتكم وخدماتكم، في جيبكم.”</p>
+            <span class="ps-cue" aria-hidden="true"><span class="ps-cue-line"></span><span class="ps-cue-label ink-mute">مرّر للاستكشاف</span></span>
+          </div>
+        </div>
+        <div class="ps-cap" data-anim='{"0.08-0.125":{"opacity":[0,1],"x":[56,0]},"0.27-0.31":{"opacity":[1,0],"x":[0,56]}}'>
+          <div class="container-ds"><div class="ps-cap-in">
             <span class="ds-eyebrow ink-accent">تطبيق ENBD Business</span>
             <h2 class="ps-h ink-primary">أعمالكم بالكامل، في جيبكم.</h2>
             <p class="ps-sub ink-mute">وافقوا على المدفوعات، وتابعوا كل حساب، واطلبوا الخدمات، أينما كنتم.</p>
-          </div>
-          <div class="ps-cap" data-cap="0.68,0.72,0.75,0.766">
+          </div></div>
+        </div>
+        <div class="ps-cap" data-anim='{"0.68-0.72":{"opacity":[0,1],"y":[22,0]},"0.75-0.766":{"opacity":[1,0],"y":[0,22]}}'>
+          <div class="container-ds"><div class="ps-cap-in">
             <span class="ds-eyebrow ink-accent">على جهاز الكمبيوتر</span>
             <h2 class="ps-h ink-primary">أعمالكم بالكامل، على شاشة واحدة.</h2>
             <p class="ps-sub ink-mute">الحسابات والموافقات والمدفوعات والتجارة في لوحة تحكم واحدة.</p>
-          </div>
-          <div class="ps-cap" data-cap="0.84,0.88,0.92,0.94">
+          </div></div>
+        </div>
+        <div class="ps-cap" data-anim='{"0.84-0.88":{"opacity":[0,1],"y":[22,0]},"0.92-0.94":{"opacity":[1,0],"y":[0,22]}}'>
+          <div class="container-ds"><div class="ps-cap-in">
             <span class="ds-eyebrow ink-accent">على كل الأجهزة</span>
             <h2 class="ps-h ink-primary">كل الأدوات التي تحتاجونها.</h2>
             <p class="ps-sub ink-mute">الحسابات والموافقات والمدفوعات نفسها على هاتفكم وجهازكم اللوحي وجهاز الكمبيوتر.</p>
-          </div>
-          <div class="ps-cap" data-cap="0.94,0.97">
+          </div></div>
+        </div>
+        <div class="ps-cap" data-anim='{"0.94-0.97":{"opacity":[0,1],"y":[22,0]}}'>
+          <div class="container-ds"><div class="ps-cap-in">
             <span class="ds-eyebrow ink-accent">مستعدون للانطلاق؟</span>
             <h2 class="ps-h ink-primary">خدمات مصرفية تواكبكم.</h2>
             <a href="digital-solutions-v1a-ar.html" class="btn btn-filled btn-lg">استكشفوا الحلول الرقمية</a>
-          </div>
+          </div></div>
         </div>
       </div>
     </div>
