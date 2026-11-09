@@ -390,7 +390,7 @@ for (const js of ["assets/webxv2/js/ds.js", "assets/webxv2/js/library.js", "asse
   // style.min.css is committed beside style.css (the CMS ships the pair); the
   // pre-commit hook regenerates it, and this catches a commit that skipped it
   try { execFileSync(process.execPath, [path.join(ROOT, "scripts/minify.mjs"), "--check"], { stdio: "pipe" }); }
-  catch { fail(3, "assets/webxv2/css/style.min.css is stale — run: npm run minify"); }
+  catch { fail(3, "style.min.css or ds.min.js is stale — run: npm run minify"); }
 }
 
 // Button/control icons live ONCE in style.css as data-URI masks named by a
