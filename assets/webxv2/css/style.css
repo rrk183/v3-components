@@ -1549,6 +1549,10 @@ html, body { background: #fff; }
      still placed by the RTL layout around it. */
   direction: ltr;
   unicode-bidi: isolate;
+  /* The ::before glyph is an inline-block, which opens a line-break
+     opportunity before the digits: narrow columns left the symbol orphaned
+     at the end of one line and the amount on the next. Keep them together. */
+  white-space: nowrap;
 }
 .aed::before {
   content: "\EADF" / "";
@@ -2363,6 +2367,10 @@ html.st-lock { overflow: hidden; }
 /* panels — the v4 vocabulary; anything inside */
 .cmp-tabs .tb-panel { display: none; }
 .cmp-tabs .tb-panel.active { display: block; animation: tb-fade .3s cubic-bezier(.16,1,.3,1); }
+/* A headless card grid inside a panel: the rail's own mb-8 is the gap, so the
+   grid's after-a-section-head margin would double it (80px desktop), and
+   between two stacked list columns on phones it split one list in two. */
+.cmp-tabs .tb-panel .cmp-cards > .cd-grid:first-child { margin-top: 0; }
 @keyframes tb-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
 /* ═══ cmp-bento v4 — THE bento component (2026-09-01 standardization) ═══
@@ -6284,7 +6292,9 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 
 @media (max-width: 639px){
   .cmp-how-it-works-steps .hiw-steps { gap:clamp(22px,6vw,30px); }
-  .cmp-how-it-works-steps .hiw-step { grid-template-columns:auto 1fr; gap:14px; }
+  /* a fixed-floor marker column, not auto: "01" is narrower than "02"/"03", and an
+     auto column let each step's content start at a different x */
+  .cmp-how-it-works-steps .hiw-step { grid-template-columns:minmax(66px, max-content) 1fr; gap:14px; }
   .cmp-how-it-works-steps .hiw-step-n { font-size:52px; }
 }
 
@@ -6735,7 +6745,7 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    underline runs the length of --hero-auto and restarts as .active moves,
    so the row reads as a timer. Arrows/toggle = frosted 46px circles. */
 .cmp-hero [data-carousel-dots] { gap: 8px; counter-reset: hslide; justify-content: flex-start; }
-.cmp-hero .carousel-dot { counter-increment: hslide; position: relative; min-width: 46px; padding: 4px 0 14px; color: color-mix(in srgb, #ffffff 50%, var(--navy)); font-size: 15px; font-weight: 600; letter-spacing: .06em; font-variant-numeric: tabular-nums; transition: color .3s ease; }
+.cmp-hero .carousel-dot { counter-increment: hslide; position: relative; min-width: 46px; padding: 4px 0 14px; color: color-mix(in srgb, #ffffff 70%, var(--navy)); /* A11Y (Ava): was 50%, 3.2:1 over the photo on phones; 70% holds 4.5:1 */ font-size: 15px; font-weight: 600; letter-spacing: .06em; font-variant-numeric: tabular-nums; transition: color .3s ease; }
 .cmp-hero [data-carousel-dots] .carousel-dot::before,
 .cmp-hero [data-carousel-dots] .carousel-dot:is(.active, [aria-current])::before { content: counter(hslide, decimal-leading-zero); display: inline; width: auto; height: auto; border-radius: 0; background: none; transition: none; }
 .cmp-hero .carousel-dot::after { content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, .22); }
@@ -7035,12 +7045,20 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    the bottom. The image zoom is already clipped by .media-frame, so the people card
    can safely let its text overflow its box. */
 .cmp-cards.cards-people .cd-card { overflow: visible; }
+/* Same story for bare Cards - Plain cards (image in a media-frame, text below):
+   the frame already clips the zoom, so an unpainted card lets its text breathe
+   (the first glyph of "Know more" was shaved at the card's left edge). */
+.cmp-cards.cards-plain .cd-card:not(.card-panel, .card-media, .ds-card, .justify-end, [class*="surface-"]) { overflow: visible; }
 /* HOVER AXIS — link cards lift by default; an EXPLICIT mode on the root
    (is-hover-zoom / is-hover-lift) applies to EVERY card, link or not (the
    Icon/Number/Text compositions use divs); is-hover-none opts out. */
 .cmp-cards a.cd-card, .cmp-cards:is(.is-hover-zoom, .is-hover-lift) .cd-card { transition: transform .35s ease, box-shadow .35s ease; }
 .cmp-cards a.cd-card:hover, .cmp-cards a.cd-card:focus-visible,
 .cmp-cards:is(.is-hover-zoom, .is-hover-lift) .cd-card:hover { transform: translateY(-4px); outline: none; }
+/* A11Y (WCAG 2.4.7): the lift alone is not a visible focus indicator, so a
+   keyboard-focused link card also gets the ring. Same rule the .hf-main
+   section already ships; keyboard only, mouse hover is unchanged. */
+.cmp-cards a.cd-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .cmp-cards.is-hover-zoom .cd-card .media-cover { transition: transform .6s cubic-bezier(.16, 1, .3, 1); }
 .cmp-cards.is-hover-zoom .cd-card:hover .media-cover { transform: scale(1.06); }
 /* the hover SHADOW only on cards that paint something — on a transparent

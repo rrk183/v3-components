@@ -1056,9 +1056,10 @@
           }
         }
         if (centerMode) maxIndex = slides.length - 1;
-        dots.forEach(function (d, i) { d.hidden = i > maxIndex; });
-        // No scroll range → the whole nav row is a lie: hide arrows too.
+        // No scroll range → the whole nav row is a lie: hide arrows too, and
+        // the lone "active" dot that would otherwise be left floating.
         var canNav = maxIndex > 0;
+        dots.forEach(function (d, i) { d.hidden = !canNav || i > maxIndex; });
         if (prev) prev.hidden = !canNav;
         if (next) next.hidden = !canNav;
       }
@@ -1157,13 +1158,19 @@
         var toggle = root.querySelector('[data-carousel-toggle]');
         function setPaused(p) {
           userPaused = p; root.classList.toggle('is-paused', p);
-          if (toggle) { toggle.setAttribute('aria-pressed', String(!p)); toggle.setAttribute('aria-label', p ? 'Play' : 'Pause'); }
+          // A11Y: the label alone carries the state (Pause / Play). Pairing it
+          // with aria-pressed read as "Pause, pressed" while it was playing.
+          if (toggle) { toggle.removeAttribute('aria-pressed'); toggle.setAttribute('aria-label', p ? 'Play' : 'Pause'); }
           if (p) stopTimer(); else startTimer();
         }
         if (toggle) toggle.addEventListener('click', function () { setPaused(!userPaused); });
         root.addEventListener('mouseenter', stopTimer);
         root.addEventListener('mouseleave', startTimer);
-        if (toggle) { toggle.setAttribute('aria-pressed', 'true'); toggle.setAttribute('aria-label', 'Pause'); }
+        // A11Y (WCAG 2.2.2, APG carousel): rotation stops while keyboard focus
+        // is inside, so a slide never moves out from under the focused link.
+        root.addEventListener('focusin', stopTimer);
+        root.addEventListener('focusout', function (e) { if (!root.contains(e.relatedTarget)) startTimer(); });
+        if (toggle) { toggle.removeAttribute('aria-pressed'); toggle.setAttribute('aria-label', 'Pause'); }
         startTimer();
       }
     });
