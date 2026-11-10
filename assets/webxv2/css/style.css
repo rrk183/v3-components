@@ -3270,7 +3270,13 @@ html.lenis, html.lenis body { height: auto; }
 [data-drag-scroll] { cursor: grab; }
 [data-drag-scroll].is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
 .lenis.lenis-stopped { overflow: clip; }
-.lenis.lenis-smooth iframe { pointer-events: none; }/* ═══ Testimonials — centre-mode carousel (data-behavior="testimonials") ════ */
+/* Lenis's stock rule: an iframe would swallow the wheel mid-scroll, so iframes on
+   the page ignore the mouse. Inside [data-lenis-prevent] (every open modal, set
+   by ds.js) Lenis isn't scrolling, so iframes there take clicks and scroll. */
+.lenis.lenis-smooth iframe { pointer-events: none; }
+.lenis.lenis-smooth [data-lenis-prevent] iframe { pointer-events: auto; }
+
+/* ═══ Testimonials — centre-mode carousel (data-behavior="testimonials") ════ */
 
 
 /* ═══ Deal Ticker — Bloomberg-style scrolling tape ═════════════════════════ */
