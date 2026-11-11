@@ -557,12 +557,14 @@ for (const p of allPages.filter((f) => PARKED.test(f)))
   // brand theme can repaint the whole system by overriding variables only.
   // Exempt: pure white/black (+#030303, the sanctioned near-black) which mean
   // "ink on a surface", not brand; and the CSS-drawn product-mockup
-  // illustrations (FILE MAP section 6) — those are artwork, not themable UI.
+  // illustrations (FILE MAP section 6) — those are artwork, not themable UI;
+  // and the verbatim select2 vendor stylesheet (style.css section 1b).
   const HEX_OK = new Set(["fff", "ffffff", "000", "000000", "030303"]);
   const ILLUS = new RegExp(
     "\\.(?:eph|epc|epos|epl|ebr|eapi|chat|tdash|trep|tintg|tform|tnotif|tdisc|tonb|tup|mkw|aconsole|alist|akeys|sfx|aci|eic|lpulse)[a-z0-9-]*" +
     "|\\.(?:api-dark|boapp|pbento|sw-card|ess-vis|bento-ship|laptop-screen|laptop-base|phone|phone-pill|ls-lid|ls-base|ls-glow" +
-    "|sb-shell|sb-btn|sb-screen|ps-screen|hp-dash-card|map-stat-card|ssv-mini-card|mcard|callout|t-badge|eco-fb|as-track)\\b");
+    "|sb-shell|sb-btn|sb-screen|ps-screen|hp-dash-card|map-stat-card|ssv-mini-card|mcard|callout|t-badge|eco-fb|as-track)\\b" +
+    "|\\.select2[a-z0-9-]*");
   // Blocks are ID-free by contract, so a style.css rule scoped to an #id styles
   // nothing the moment that id is absent — the component renders completely
   // unstyled with no error (scroll-tab shipped this way: its id was dropped as
