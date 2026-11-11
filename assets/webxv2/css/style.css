@@ -2527,8 +2527,11 @@ html.st-lock { overflow: hidden; }
 /* ── Modal (de-scoped 2026-09-01 — modal-* classes are global; the backdrop
    was renamed .overlay → .modal-overlay; icons compose .icon-tile; close
    buttons are .btn.btn-outline.btn-icon; status pill is .badge.badge-ok) ── */
-.modal-overlay { position: fixed; inset: 0; background: rgba(var(--navy-rgb), .5); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 200; opacity: 0; pointer-events: none; transition: opacity .25s; }
-.modal-overlay.open { opacity: 1; pointer-events: all; }
+/* closed overlays are visibility:hidden as well as pointer-events:none: iOS Safari's
+   scroll hit-testing ignores pointer-events, so a closed overlay's iframe stacked on top
+   would take the swipes meant for the open one. visibility waits out the fade on close. */
+.modal-overlay { position: fixed; inset: 0; background: rgba(var(--navy-rgb), .5); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 200; opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .25s, visibility 0s .25s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; visibility: visible; transition: opacity .25s; }
 .overlay-pad { padding: 1.5rem; }
 /* paint from .ds-card in the markup (2026-09-01); this rule is position/motion only */
 .modal { max-width: 520px; width: 90%; max-height: 90vh; max-height: 90svh; overflow-y: auto; transform: scale(.95) translateY(12px); opacity: 0; transition: transform .3s cubic-bezier(.16,1,.3,1), opacity .3s; }
@@ -2553,6 +2556,13 @@ html.st-lock { overflow: hidden; }
 .modal-content.is-full { max-width: none; width: 100%; height: 100vh; height: 100svh; max-height: none; border-radius: 0; }
 .modal-content.is-full > .modal-content-body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
 .modal-content.is-full .modal-frame { flex: 1; height: auto; min-height: 0; }
+/* phones: a framed page can't be scrolled sideways from out here, and one that sets
+   overflow-x:hidden (ebroker does) just clips. So the frame bleeds through the body's
+   side padding, and never drops below 500px (ebroker's widest table, Best Performing
+   Stocks, ends at ~475px); on phones the body scrolls sideways to reach the rest. */
+@media (max-width: 639px) {
+  .modal-frame { width: calc(100% + 4rem); min-width: 500px; margin-inline: -2rem; border-radius: 0; }
+}
 .modal-cover { position: relative; height: 220px; background-size: cover; background-position: center; flex-shrink: 0; }
 .modal-cover-text { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.75rem 2rem; gap: .5rem; }
 .modal-content-body { padding: 1.75rem 2rem 2rem; overflow-y: auto; }

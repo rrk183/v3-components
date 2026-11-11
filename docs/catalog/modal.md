@@ -43,8 +43,11 @@ Six overlay IDs: `modal-transaction`, `modal-confirm`, `modal-delete`,
 - Plain content modal: eyebrow + title, intro paragraph, a `.modal-scroll`
   region of 3 paragraphs, an accept checkbox, and 2 actions.
 - Wide iframe modal (`modal-content-frame`): `.modal-content.is-wide`, eyebrow +
-  title head, and one `iframe.modal-frame` in the body (`src`, a `title` for
-  screen readers, `loading="lazy"`). The page must allow framing (no
+  title head, and one `iframe.modal-frame` in the body (`data-src`, a `title`
+  for screen readers). ds.js sets `src` from `data-src` each time the modal
+  opens: iOS Safari never touch-scrolls an iframe that loaded while its
+  overlay was hidden (taps work, swipes scroll the page behind). A plain `src`
+  still works; ds.js reloads it on open. The page must allow framing (no
   `X-Frame-Options` / CSP `frame-ancestors` block), or the frame stays blank.
 - Full-screen modal (`modal-content-full`): `.modal-content.is-full` fills the
   viewport — leave `.overlay-pad` off its overlay. Same head; the body takes the
