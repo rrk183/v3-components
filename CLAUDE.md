@@ -15,8 +15,8 @@ npm start                                         # node server.js → http://lo
 node scripts/verify.mjs                           # the verify gate (npm run verify); exits non-zero on any FAIL
 node scripts/build-all-components.mjs --write     # regenerate all-components.html from blocks/
 node scripts/build-all-components.mjs --check     # exit 1 if all-components.html is stale
-npm run minify                                    # style.css → style.min.css (committed) + JS handoff → dist/ (gitignored)
-node scripts/minify.mjs --check                   # exit 1 if style.min.css is stale
+npm run minify                                    # style.css → style.min.css + ds.js → ds.min.js (both committed) + JS handoff → dist/ (gitignored)
+node scripts/minify.mjs --check                   # exit 1 if style.min.css or ds.min.js is stale
 ```
 
 - Needs **Node 18+** (`.nvmrc` pins 20: run `nvm use`). An older default Node fails the scripts and the pre-commit hook.
@@ -25,6 +25,7 @@ node scripts/minify.mjs --check                   # exit 1 if style.min.css is s
 - `.claude/workflows/` is **not in this checkout** (it's gitignored), so `verify.mjs` currently crashes with ENOENT before reporting.
 - There are no unit tests. Rendered-layout checks live under `scripts/browser-checks/`, which is also absent here. You run them in the browser console against a served page; see TESTING.md.
 - **CSS is one file pair, matching the CMS:** edit `assets/webxv2/css/style.css`; `assets/webxv2/css/style.min.css` is generated from it and committed. The `.githooks/pre-commit` hook rebuilds it from the staged `style.css` (activated by `npm install` via the `prepare` script), and the gate fails if it's stale. Never edit the `.min` by hand.
+- **`ds.js` is a file pair too:** `assets/webxv2/js/ds.min.js` is generated from `ds.js` and committed beside it (the CMS serves the `.min` under .NET bundling). The pre-commit hook rebuilds it from the staged `ds.js`, and the gate fails if it's stale. Every change to `ds.js` ships with a regenerated `ds.min.js` in the same commit. Never edit the `.min` by hand.
 - **JS handoff** (`scripts/minify.mjs`): `dist/assets/webxv2/js/` gets `.min.js` copies plus the vendor libs `ds.js` lazy-loads from its own folder (`lenis.min.js`, `lottie_light.min.js`). `ds.js` locates itself by matching `ds.js` *or* `ds.min.js`, and reads `?v=` from `style.css` *or* `style.min.css`. Keep both names in any new self-lookup.
 - Entry pages: `start-here.html` (index of all pages), `index.html` (component gallery), `cib-home-final.html` (Wholesale Banking home).
 

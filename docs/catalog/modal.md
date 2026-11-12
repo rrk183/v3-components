@@ -42,6 +42,13 @@ Six overlay IDs: `modal-transaction`, `modal-confirm`, `modal-delete`,
   has a lead, a paragraph, a 3-item `.modal-list`, and 2 actions.
 - Plain content modal: eyebrow + title, intro paragraph, a `.modal-scroll`
   region of 3 paragraphs, an accept checkbox, and 2 actions.
+- Wide iframe modal (`modal-content-frame`): `.modal-content.is-wide`, eyebrow +
+  title head, and one `iframe.modal-frame` in the body (`src`, a `title` for
+  screen readers, `loading="lazy"`). The page must allow framing (no
+  `X-Frame-Options` / CSP `frame-ancestors` block), or the frame stays blank.
+- Full-screen modal (`modal-content-full`): `.modal-content.is-full` fills the
+  viewport — leave `.overlay-pad` off its overlay. Same head; the body takes the
+  remaining height, and an `iframe.modal-frame` in it stretches to fill.
 - No live numbers — figures (USD 2,450,000 etc.) are static copy.
 
 ## Drift cautions

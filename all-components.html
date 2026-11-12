@@ -8,11 +8,11 @@
   <title>All Components — browser pass | Emirates NBD DS</title>
   <meta name="description" content="Internal review page: every design-system block stacked as one seamless page for cross-browser and breakpoint passes." />
   <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261233" />
-  <link rel="stylesheet" href="assets/webxv2/css/themes.css?v=261233" />
+  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261243" />
+  <link rel="stylesheet" href="assets/webxv2/css/themes.css?v=261243" />
   <script src="assets/webxv2/js/tailwind.cdn.js"></script>
-  <script src="assets/webxv2/js/ds-tailwind-config.js?v=261233"></script>
-  <script defer src="assets/webxv2/js/ds.js?v=261233"></script>
+  <script src="assets/webxv2/js/ds-tailwind-config.js?v=261243"></script>
+  <script defer src="assets/webxv2/js/ds.js?v=261243"></script>
   <style>body{margin:0}</style>
 </head>
 <body>
@@ -15241,9 +15241,11 @@
 <!-- ═══ Modal ═══════════════════════════════════════════════════════════════
      Triggers + page-level overlays. ds.js wires data-modal-open/close/dismiss.
      Overlay target IDs are required by the runtime (getElementById) and are the
-     one allowed ID use — kept descriptive. Six variants:
+     one allowed ID use — kept descriptive. Ten variants:
        modal-transaction · modal-confirm · modal-delete · modal-add-beneficiary
-       modal-content-cover · modal-content-plain
+       modal-content-cover · modal-content-plain · modal-content-long
+       modal-content-wide · modal-content-frame (wide, embeds a page in an iframe)
+       modal-content-full (is-full: fills the whole viewport, here with an iframe)
      -->
 <section class="cmp cmp-modal surface-soft section-y" data-animate>
   <div class="container-ds">
@@ -15257,6 +15259,8 @@
       <button class="btn btn-outline" data-modal-open="modal-content-plain">Content · No cover</button>
       <button class="btn btn-outline" data-modal-open="modal-content-long">Content · Long body</button>
       <button class="btn btn-outline" data-modal-open="modal-content-wide">Content · Wide</button>
+      <button class="btn btn-outline" data-modal-open="modal-content-frame">Content · Wide iframe</button>
+      <button class="btn btn-outline" data-modal-open="modal-content-full">Content · Full screen</button>
     </div>
   </div>
 
@@ -15469,6 +15473,44 @@
           <button class="btn btn-outline" data-modal-close="modal-content-wide">Close</button>
           <a class="btn btn-filled" href="#">Talk to a specialist</a>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Wide · iframe — an external page in the wide modal. .modal-frame is
+       the iframe slot (full width, 70svh); loading="lazy" keeps it from
+       loading until the modal opens. The page must allow framing. ───────── -->
+  <div class="modal-overlay overlay-pad" id="modal-content-frame" data-modal-dismiss>
+    <div class="modal-content card-panel is-wide" style="--card-pad:0">
+      <div class="modal-plain-head">
+        <div>
+          <span class="type-eyebrow ink-accent">Markets</span>
+          <h2 class="type-h4 ink-primary">Securities prices</h2>
+        </div>
+        <button class="btn btn-outline btn-icon btn-sm is-close" data-modal-close="modal-content-frame"><span class="sr-only">Close</span>
+        </button>
+      </div>
+      <div class="modal-content-body modal-content-body-plain">
+        <iframe class="modal-frame" src="https://ebroker.emiratesnbd.com/Market/Securities_home.jsp" title="Emirates NBD Securities: market prices" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Full screen · is-full fills the viewport (no .overlay-pad on the
+       overlay, no radius); the body takes the height under the head, and an
+       iframe.modal-frame in it stretches to fill. Any body content works. ── -->
+  <div class="modal-overlay" id="modal-content-full" data-modal-dismiss>
+    <div class="modal-content card-panel is-full" style="--card-pad:0">
+      <div class="modal-plain-head">
+        <div>
+          <span class="type-eyebrow ink-accent">Markets</span>
+          <h2 class="type-h4 ink-primary">Securities prices</h2>
+        </div>
+        <button class="btn btn-outline btn-icon btn-sm is-close" data-modal-close="modal-content-full"><span class="sr-only">Close</span>
+        </button>
+      </div>
+      <div class="modal-content-body modal-content-body-plain">
+        <iframe class="modal-frame" src="https://ebroker.emiratesnbd.com/Market/Securities_home.jsp" title="Emirates NBD Securities: market prices" loading="lazy"></iframe>
       </div>
     </div>
   </div>
