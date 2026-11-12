@@ -10,6 +10,7 @@ Ported from the Wholesale Banking home lending section (`cib-home-final.html` se
 ## Behaviour
 - Motion on: the track is tall and the stage pins; scroll position picks the desk. Clicking a chip scrolls to that desk.
 - Below 1024px: the pin holds sentence, chips and photo; the panel copy and CTAs are moved after the track.
+- Below 1024px each fact card shows its `.td-fact-link` ("Explore this desk", linking to that sector) and hides any line marked `.td-fact-meta` (use it for a line that repeats on every card, like "8 industry sector desks"; leave a real per-card description unmarked so it stays, as on payments-trade-finance-v1a), and the whole card is the tap target, so a CTA is always on screen inside the pin. Desktop shows the meta line and no link. A link ending `#<modal id>` opens that modal on the target page (ds.js deep link), e.g. `industry-specific-finance-v1a.html#modal-desk-aviation`.
 - Reduced motion: no pin, first desk shown, chips switch instantly.
 - The sentence auto-shrinks if the longest desk name is wider than the column.
 

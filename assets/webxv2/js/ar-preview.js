@@ -118,6 +118,7 @@
 "Manufacturing desk": "مكتب التصنيع",
 "Government & public sector desk": "مكتب الحكومة والقطاع العام",
 "8 industry sector desks": "8 مكاتب لقطاعات الصناعة",
+"Explore this desk": "استكشفوا هذا المكتب",
 "With 8 industry sector desks.": "مع 8 مكاتب لقطاعات الصناعة.",
 "From working capital to project, aviation and real-estate finance, structured by specialists who know your sector.": "من رأس المال العامل إلى تمويل المشاريع والطيران والعقارات، بهيكلة يتولاها متخصصون يعرفون قطاعك.",
 "Explore lending": "اكتشف الإقراض",
