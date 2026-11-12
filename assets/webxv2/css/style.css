@@ -5232,6 +5232,17 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
 .cmp-tabs-desk .td-fact > div.is-on { opacity: 1; transform: none; transition-delay: .25s; }
 .cmp-tabs-desk .td-fact > div > span { display: block; }
 .cmp-tabs-desk .td-fact-num { margin: 2px 0; }
+/* td-fact-link: each desk card links to its sector (phones and tablets only, where
+   the section CTAs sit after the reel). The link's ::before covers the card (::after is the arrow), so the
+   whole card is the tap target; only the showing desk's link is live. */
+.cmp-tabs-desk .td-fact-link { display: none; }
+@media (max-width: 1023px) {
+  .cmp-tabs-desk .td-fact > div > .td-fact-meta { display: none; }
+  .cmp-tabs-desk .td-fact-link { display: inline-flex; align-self: start; margin-top: 6px; }
+  .cmp-tabs-desk .td-fact-link::before { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+  .cmp-tabs-desk .td-fact > div:not(.is-on) { pointer-events: none; }
+  .cmp-tabs-desk .td-fact > div:not(.is-on) .td-fact-link { visibility: hidden; }
+}
 @media (min-width: 1024px) {
   .cmp-tabs-desk .td-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 5vw, 80px); align-items: center; width: 100%; }
   .cmp-tabs-desk .td-fact { inset-inline-start: 28px; inset-block-end: 28px; }

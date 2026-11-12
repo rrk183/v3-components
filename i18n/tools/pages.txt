@@ -3,6 +3,7 @@ payments-trade-finance-v1a.html
 payments-v1a.html
 trade-supply-chain-finance-v1a.html
 emirates-nbd-pay-v1a.html
+emirates-nbd-pay-v2.html
 digital-solutions-v1a.html
 businessonline-x-v2.html
 businessonline-x-v1a.html
