@@ -1651,6 +1651,10 @@
       // the page for the modal's lifetime.
       m.setAttribute('data-lenis-prevent', '');
       m.classList.add('open');
+      // iOS Safari never wires touch-scrolling into an iframe that loaded while
+      // the overlay was hidden (taps work, swipes scroll the page behind), so
+      // frames load on open: from data-src, or a reload of a plain src.
+      m.querySelectorAll('iframe').forEach(function (f) { var s = f.getAttribute('data-src') || f.src; if (s) f.src = s; });
       document.documentElement.style.overflow = 'hidden';
       if (window.DS && DS.lenis && DS.lenis.stop) DS.lenis.stop();
     }

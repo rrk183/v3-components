@@ -8,11 +8,11 @@
   <title>All Components — browser pass | Emirates NBD DS</title>
   <meta name="description" content="Internal review page: every design-system block stacked as one seamless page for cross-browser and breakpoint passes." />
   <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261243" />
-  <link rel="stylesheet" href="assets/webxv2/css/themes.css?v=261243" />
+  <link rel="stylesheet" href="assets/webxv2/css/style.css?v=261247" />
+  <link rel="stylesheet" href="assets/webxv2/css/themes.css?v=261247" />
   <script src="assets/webxv2/js/tailwind.cdn.js"></script>
-  <script src="assets/webxv2/js/ds-tailwind-config.js?v=261243"></script>
-  <script defer src="assets/webxv2/js/ds.js?v=261243"></script>
+  <script src="assets/webxv2/js/ds-tailwind-config.js?v=261247"></script>
+  <script defer src="assets/webxv2/js/ds.js?v=261247"></script>
   <style>body{margin:0}</style>
 </head>
 <body>
@@ -15478,9 +15478,10 @@
   </div>
 
   <!-- ── Wide · iframe — an external page in the wide modal. .modal-frame is
-       the iframe slot (full width, 70svh); loading="lazy" keeps it from
-       loading until the modal opens. The page must allow framing. ───────── -->
-  <div class="modal-overlay overlay-pad" id="modal-content-frame" data-modal-dismiss>
+       the iframe slot (full width, 70svh). Its URL goes in data-src: ds.js
+       loads it when the modal opens (iOS Safari won't touch-scroll a frame
+       that loaded while hidden). The page must allow framing. ───────── -->
+  <div class="modal-overlay p-2 sm:p-6" id="modal-content-frame" data-modal-dismiss>
     <div class="modal-content card-panel is-wide" style="--card-pad:0">
       <div class="modal-plain-head">
         <div>
@@ -15491,7 +15492,7 @@
         </button>
       </div>
       <div class="modal-content-body modal-content-body-plain">
-        <iframe class="modal-frame" src="https://ebroker.emiratesnbd.com/Market/Securities_home.jsp" title="Emirates NBD Securities: market prices" loading="lazy"></iframe>
+        <iframe class="modal-frame" data-src="https://ebroker.emiratesnbd.com/Market/Securities_home.jsp" title="Emirates NBD Securities: market prices"></iframe>
       </div>
     </div>
   </div>
@@ -15510,7 +15511,7 @@
         </button>
       </div>
       <div class="modal-content-body modal-content-body-plain">
-        <iframe class="modal-frame" src="https://ebroker.emiratesnbd.com/Market/Securities_home.jsp" title="Emirates NBD Securities: market prices" loading="lazy"></iframe>
+        <iframe class="modal-frame" data-src="https://ebroker.emiratesnbd.com/Market/Securities_home.jsp" title="Emirates NBD Securities: market prices"></iframe>
       </div>
     </div>
   </div>
