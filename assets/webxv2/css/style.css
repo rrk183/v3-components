@@ -370,8 +370,8 @@
 
   /* ── Type faces — THEMED (a brand may swap families; EI uses Poppins +
         Almarai via themes.css). All family declarations go through these. ── */
-  --font-sans:   'Plus Jakarta Sans', sans-serif;
-  --font-arabic: 'Tajawal', sans-serif;
+  --font-sans:   'Dirham Symbol', 'Plus Jakarta Sans', sans-serif;   /* Dirham Symbol draws only U+EADF (unicode-range), so typed dirham glyphs render anywhere */
+  --font-arabic: 'Dirham Symbol', 'Tajawal', sans-serif;
 
   /* ── Derived brand tier — THEMED (a brand theme overrides these; see
         themes.css when it lands). Literal values today; a theme block may
