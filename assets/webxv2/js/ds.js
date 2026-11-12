@@ -1669,6 +1669,10 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key !== 'Escape') return; var o = document.querySelectorAll('.open'); if (o.length) close(o[o.length - 1]); });
     window.openModal = open; window.closeModal = function (id) { close(document.getElementById(id)); };
+    // Deep link: a URL ending #<modal id> opens that modal on load, so another
+    // page can link straight to it (e.g. a sector desk on Industry Specific Finance).
+    var deep = decodeURIComponent((location.hash || '').slice(1)), dm = deep && document.getElementById(deep);
+    if (dm && dm.classList.contains('modal-overlay')) open(deep);
   }
   register(function () { bindModals(); });
 
