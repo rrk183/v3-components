@@ -3117,19 +3117,43 @@ DS.recipe('ib-hero', function (root) {
     if(!outer || !track || !wrap) return;
     var maxX = 0;
     var clamp = function(v,a,b){ return v<a?a:(v>b?b:v); };
-    /* Short screens (a phone held landscape): when the pinned head + cards do
-       not fit one screen, the section unpins (.is-swipe) and the row swipes
-       natively instead of panning on scroll (device audit 2026-10-14). */
+    /* Short screens: the section unpins (.is-swipe) and the row swipes
+       natively instead of panning on scroll. The switch is the SCREEN HEIGHT
+       alone (max-height 700px, the system's one height breakpoint), never the
+       content, so the EN and AR editions of a page always land in the same
+       mode. While pinned, a media card's --cd-min height is trimmed by the
+       measured overflow (--cd-fit, read by style.css, floor 200px) so head +
+       cards fit; text-driven panel cards ignore it, so a page whose content is
+       taller than the screen is clipped at the bottom, not unpinned. */
     var pin = root.querySelector('.cd-scroll-pin');
     var swipe = false;
-    function fitMode(){
-      if(!pin) return;
-      root.classList.remove('is-swipe');
+    var shortMq = window.matchMedia('(max-height: 700px)');
+    function over(){
       var cs = getComputedStyle(pin), kids = pin.children, need = 0;
       for(var i=0;i<kids.length;i++){ need += Math.max(kids[i].getBoundingClientRect().height, kids[i].scrollHeight); }  /* scrollHeight: the flex row shrinks the card strip, its cards do not */
       need += (parseFloat(cs.rowGap) || 0) * Math.max(0, kids.length - 1);
-      var room = pin.clientHeight - (parseFloat(cs.paddingTop) || 0) - (parseFloat(cs.paddingBottom) || 0);
-      var tooTall = need > room + 2;
+      return need - (pin.clientHeight - (parseFloat(cs.paddingTop) || 0) - (parseFloat(cs.paddingBottom) || 0));
+    }
+    function fitMode(){
+      if(!pin) return;
+      var tooTall = shortMq.matches;
+      root.style.removeProperty('--cd-fit');
+      root.style.removeProperty('--cd-media-h');
+      if(!tooTall){
+        root.classList.remove('is-swipe');
+        var extra = over();
+        if(extra > 2){
+          var tallest = null;
+          for(var c=0;c<track.children.length;c++){ if(!tallest || track.children[c].offsetHeight > tallest.offsetHeight) tallest = track.children[c]; }
+          root.style.setProperty('--cd-fit', Math.max(200, Math.floor(tallest.offsetHeight - extra - 2)) + 'px');
+          extra = over();
+          /* Panel cards whose height comes from their content (people,
+             testimonials, promo) ignore --cd-fit; their media frame or phone
+             mockup gives up the rest (--cd-media-h, read by style.css). */
+          var media = extra > 2 && tallest.querySelector('.media-frame, .phone');
+          if(media) root.style.setProperty('--cd-media-h', Math.max(120, Math.floor(media.offsetHeight - extra - 2)) + 'px');
+        }
+      }
       if(tooTall !== swipe || tooTall){
         swipe = tooTall;
         root.classList.toggle('is-swipe', swipe);
@@ -3185,6 +3209,7 @@ DS.recipe('ib-hero', function (root) {
     });
     measure(); frame();
     setTimeout(function(){ measure(); frame(); }, 350);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ measure(); frame(); });  /* a late web font re-wraps the head (EN vs AR differ) */
     /* is-mobile-swipe axis: below 768 the section is unpinned (CSS) and the
        track swipes natively — the scrub transform must stand down there, and
        mouse users get the DS dragScroll behavior (scrollbar is hidden). */
@@ -5418,16 +5443,19 @@ function hfHero(el) {
 
     // DS btn-icon arrows: one tile per press, eased (snap held off while moving)
     var prev = H.el.querySelector('[data-hf-prev]'), next = H.el.querySelector('[data-hf-next]');
+    // RTL rows scroll from 0 into NEGATIVE scrollLeft, so step in logical
+    // distance from the start edge and flip the sign on the way in and out
+    var sgn = getComputedStyle(H.track).direction === 'rtl' ? -1 : 1;
     function stepBy(dir) {
       var tr = H.track, max = tr.scrollWidth - tr.clientWidth;
       var step = (H.tiles[0] ? H.tiles[0].el.offsetWidth : 300) + 16;
-      var target = clamp(Math.round((tr.scrollLeft + dir * step) / step) * step, 0, max);
-      tweenScroll(tr, target);
+      var target = clamp(Math.round((tr.scrollLeft * sgn + dir * step) / step) * step, 0, max);
+      tweenScroll(tr, target * sgn);
     }
     function syncArrows() {
-      var tr = H.track, max = tr.scrollWidth - tr.clientWidth;
-      if (prev) prev.disabled = tr.scrollLeft <= 2;
-      if (next) next.disabled = tr.scrollLeft >= max - 2;
+      var tr = H.track, max = tr.scrollWidth - tr.clientWidth, pos = tr.scrollLeft * sgn;
+      if (prev) prev.disabled = pos <= 2;
+      if (next) next.disabled = pos >= max - 2;
     }
     if (prev) prev.addEventListener('click', function () { stepBy(-1); });
     if (next) next.addEventListener('click', function () { stepBy(1); });
