@@ -7132,9 +7132,17 @@ a.dvf-feat:hover .icon-tile { --it-fill: var(--blue); --it-ink: #fff; }
    tall as the pin minus the head and card copy (~255px + 6% of the width), so everything fits one
    screen; laptops and desktops have room to spare and keep the full slide
    (device audit 2026-10-14, Galaxy Z Fold landscape). */
-.cmp-cards .cd-scroll-pin .cd-track > .cd-card { flex-basis: min(var(--cd-slide, clamp(258px, 72vw, 300px)), max(220px, calc((100cqh - 255px - 6cqw) * 1.5))); }
-/* is-swipe (set by the scroll-track recipe when the pinned row cannot fit the
-   screen height, e.g. a phone held landscape): unpinned, the row swipes
+.cmp-cards .cd-scroll-pin .cd-track > .cd-card { flex-basis: min(var(--cd-slide, clamp(258px, 72vw, 300px)), max(220px, calc((100cqh - 255px - 6cqw) * 1.5))); min-height: min(var(--cd-min, 0px), var(--cd-fit, 100vh)); }
+/* --cd-fit: set by the scroll-track recipe on a short pinned screen (laptop
+   1280x720) to the card height that fits under the measured head + CTA, so a
+   media card's --cd-min floor gives way before the section has to unpin. */
+/* --cd-media-h: the same trim for panel cards sized by their content. A photo
+   frame gets shorter and crops (media-cover is object-fit: cover); the phone
+   mockup narrows instead so its own 1 / 2.03 shape holds. */
+.cmp-cards .cd-scroll-pin .cd-card .media-frame { max-height: var(--cd-media-h, none); }
+.cmp-cards .cd-scroll-pin .cd-card .phone { max-width: calc(var(--cd-media-h, 100vh) / 2.03); }
+/* is-swipe (set by the scroll-track recipe on a screen 700px tall or less, by
+   height alone so EN and AR always match, e.g. a phone held landscape): unpinned, the row swipes
    natively and the cards keep their full slide width and 3:2 media. */
 .cmp-cards.is-swipe .cd-scroll-outer { height: auto; }
 .cmp-cards.is-swipe .cd-scroll-pin { position: static; height: auto; overflow: visible; container-type: normal; padding-block: clamp(56px, 8vw, 96px); }
